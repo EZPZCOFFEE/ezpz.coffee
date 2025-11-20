@@ -1,4 +1,4 @@
-import { graphql } from "gql";
+import { graphql } from "@/gql";
 
 export const GET_PRODUCT = graphql(`
   query GetProduct($handle: String!) {
@@ -41,3 +41,4 @@ export const GET_PRODUCT = graphql(`
     }
   }
 `);
+

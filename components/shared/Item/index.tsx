@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductPrice } from "@whiteeespace/core";
+import { Image, ProductPrice } from "@shopify/hydrogen-react";
 import classNames from "classnames";
 import { motion } from "framer-motion";
 
@@ -24,22 +24,20 @@ const Item: React.FC<Props> = ({ product, className }) => {
   const { title, featuredImage, availableForSale } = product;
   const src = featuredImage?.url;
 
+  if (!src) return null;
+
   return (
     <motion.div className={classNames(styles["item-container"], className)} transition={{ duration: 0.5 }}>
-      <motion.img
-        transition={{ duration: 1 }}
-        src={`${src}&width=10`}
-        className={classNames(styles["image"], "lazyload", "lazyloaded", {
+      <Image
+        src={src}
+        alt={title}
+        sizes="(max-width: 768px) 50vw, 100vw"
+        className={classNames(styles.image, "lazyload", "lazyloaded", {
           [styles["image--not-available"]]: !availableForSale,
         })}
-        alt="taikataikataika"
-        data-sizes="auto"
-        data-srcset={`${src}&width=300 300w,
-          ${src}&width=600 600w,
-          ${src}&width=800 800w`}
       />
       <div className={styles["info-container"]}>
-        <p className={styles["title"]}>{title}</p>
+        <p className={styles.title}>{title}</p>
         <ProductPrice data={product} />
       </div>
     </motion.div>

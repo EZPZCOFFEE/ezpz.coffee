@@ -1,42 +1,41 @@
 "use client";
 
 import {
-  Button,
-  Image,
   AddToCartButton,
   BuyNowButton,
+  Image,
   ProductPrice,
   flattenConnection,
   useProduct,
-} from "@whiteeespace/core";
+} from "@shopify/hydrogen-react";
 
 export const ProductView = () => {
   const { product, selectedVariant } = useProduct();
+
   if (!product) {
     return <></>;
   }
 
-  const productImages = flattenConnection(product.images);
+  const productImages = product.images ? flattenConnection(product.images) : [];
+  const primaryImage = productImages[0];
+
   return (
     <div>
       <p>{product.title}</p>
-      <Image src={productImages[0]?.url} alt={`product-image-${0}`} />
+      {primaryImage && (
+        <Image
+          data={primaryImage}
+          sizes="(max-width: 768px) 50vw, 100vw"
+          alt={primaryImage.altText ?? product.title}
+        />
+      )}
       <p>{product.description}</p>
       <ProductPrice data={product} />
-      <AddToCartButton // @ts-expect-error typing issues with shopify
-        as={Button}
-        variantId={selectedVariant?.id}
-      >
-        <Button />
-      </AddToCartButton>
       {selectedVariant?.id && (
-        <BuyNowButton // @ts-expect-error typing issues with shopify
-          as={Button}
-          variant={"secondary"}
-          variantId={selectedVariant.id}
-        >
-          buy now
-        </BuyNowButton>
+        <>
+          <AddToCartButton variantId={selectedVariant.id}>Add to cart</AddToCartButton>
+          <BuyNowButton variantId={selectedVariant.id}>Buy now</BuyNowButton>
+        </>
       )}
     </div>
   );

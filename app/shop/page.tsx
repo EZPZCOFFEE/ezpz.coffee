@@ -1,37 +1,37 @@
-import { flattenConnection, getClient } from "@whiteeespace/core/utils";
+import { flattenConnection } from "@shopify/hydrogen-react";
 import classNames from "classnames";
 import Link from "next/link";
 
+import { shopifyQuery } from "@/lib/shopify";
 import Item from "@components/Item";
-import { GET_COLLECTION } from "@utils/queries/get-collection";
-import { GetCollectionQuery, GetCollectionQueryVariables } from "gql/graphql";
+import { GET_COLLECTION, type ShopifyCollectionOperation } from "@utils/queries/get-collection";
 
 import styles from "./styles.module.scss";
 
 const ShopPage = async () => {
-  const client = getClient();
-  const result = await client.query<GetCollectionQuery, GetCollectionQueryVariables>(GET_COLLECTION, {
+  const data = await shopifyQuery<
+    ShopifyCollectionOperation["data"],
+    ShopifyCollectionOperation["variables"]
+  >(GET_COLLECTION, {
     collectionHandle: "shop-all",
   });
 
-  const collection = result.data?.collection;
+  const collection = data.collection;
 
   if (!collection?.products) {
     return <></>;
   }
 
-  const products = flattenConnection(collection?.products);
+  const products = flattenConnection(collection.products);
 
   return (
-    <>
-      <div className={classNames(styles["products"])}>
-        {products.map((product) => (
-          <Link href={`/product/${product.handle}`} key={product.handle}>
-            <Item product={product} />
-          </Link>
-        ))}
-      </div>
-    </>
+    <div className={classNames(styles.products)}>
+      {products.map((product) => (
+        <Link href={`/product/${product.handle}`} key={product.handle}>
+          <Item product={product} />
+        </Link>
+      ))}
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
+import { graphql } from "@/gql";
 import { GetCollectionQuery } from "@/gql/graphql";
-import { graphql } from "gql";
 
 export const getCollectionQuery = /* GraphQL */ `
   query GetCollection($collectionHandle: String!, $after: String) {
@@ -30,13 +30,13 @@ export const getCollectionQuery = /* GraphQL */ `
   }
 `;
 
-export type ShopifyCollectionOperation = {
+export interface ShopifyCollectionOperation {
   data: {
     collection: GetCollectionQuery["collection"];
   };
   variables: {
     collectionHandle: string;
   };
-};
+}
 
 export const GET_COLLECTION = graphql(getCollectionQuery);

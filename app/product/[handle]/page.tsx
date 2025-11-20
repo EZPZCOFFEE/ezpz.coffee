@@ -1,31 +1,29 @@
-"use client";
-
-import { ProductProvider, useQuery } from "@whiteeespace/core";
-import { useParams } from "next/navigation";
-
+import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
+import { shopifyQuery } from "@/lib/shopify";
 import { GET_PRODUCT } from "@utils/queries/get-product";
-import { GetProductQuery, GetProductQueryVariables } from "gql/graphql";
 
-import { ProductView } from "./ProductView";
+import { ProductPageClient } from "./ProductPageClient";
 
-const ProductPage = () => {
-  const { handle } = useParams<{ handle: string }>();
+interface ProductPageProps {
+  params: Promise<{
+    handle: string;
+  }>;
+}
 
-  const [result] = useQuery<GetProductQuery, GetProductQueryVariables>({
-    query: GET_PRODUCT,
-    variables: { handle: handle! },
+const ProductPage = async ({ params }: ProductPageProps) => {
+  const { handle } = await params;
+
+  const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, {
+    handle,
   });
-  const product = result.data?.product;
+
+  const product = data.product;
 
   if (!product) {
     return <></>;
   }
 
-  return (
-    <ProductProvider data={product}>
-      <ProductView />
-    </ProductProvider>
-  );
+  return <ProductPageClient product={product} />;
 };
 
 export default ProductPage;

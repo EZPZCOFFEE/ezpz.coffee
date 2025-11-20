@@ -1,18 +1,18 @@
 "use client";
 
-import { UrqlProvider, WhiteeeShopifyProvider } from "@whiteeespace/core";
 import classNames from "classnames";
 import { PropsWithChildren } from "react";
+
+import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 
 import styles from "./styles.module.scss";
 
 const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <UrqlProvider>
-      <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
-        <div className={classNames(styles["container"])}>{children}</div>
-      </WhiteeeShopifyProvider>
-    </UrqlProvider>
+    <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
+      <div className={classNames(styles.container)}>{children}</div>
+    </WhiteeeShopifyProvider>
   );
 };
+
 export default Layout;
