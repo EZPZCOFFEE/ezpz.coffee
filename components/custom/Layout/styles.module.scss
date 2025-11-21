@@ -209,3 +209,45 @@
     display: none;
   }
 }
+
+.footer {
+  width: 100%;
+  background-color: #e6e6e6;
+}
+
+.footerInner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.footerBrand {
+  font-weight: 600;
+}
+
+.footerNav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footerLink {
+  border: none;
+  padding: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .footerInner {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
