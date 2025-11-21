@@ -1,0 +1,211 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.navbarRoot {
+  width: 100%;
+  background-color: #e6e6e6;
+  padding-top: env(safe-area-inset-top);
+
+  .navbarInner {
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  .logoImage {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
+}
+
+.desktopNavbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 0 12px;
+  width: 100%;
+
+  .desktopNavbarLeft,
+  .desktopNavbarRight {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    .navList {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+
+      .navItem {
+        font-size: 16px;
+        font-weight: 600;
+        color: #000000;
+        white-space: nowrap;
+
+        &__active {
+          color: #ff5a00;
+        }
+      }
+    }
+  }
+}
+
+.cartButton {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  img {
+    display: block;
+  }
+}
+
+.mobileNavbar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.mobileHeaderActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.menuButton {
+  border: none;
+  background: transparent;
+  padding: 6px;
+  position: relative;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButtonBar {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  margin: 0 auto;
+  width: 20px;
+  height: 2px;
+  background-color: #000000;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.menuButtonBarTop {
+  top: 4px;
+}
+
+.menuButtonBarMiddle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menuButtonBarBottom {
+  bottom: 4px;
+}
+
+[data-state="open"] .menuButtonBarTop {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+[data-state="open"] .menuButtonBarMiddle {
+  opacity: 0;
+}
+
+[data-state="open"] .menuButtonBarBottom {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.mobileMenuContent {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mobileMenuContent[data-state="open"] {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileMenuList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileMenuItem {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mobileMenuItemLabel {
+  color: #000000;
+}
+
+.mobileMenuItemActive .mobileMenuItemLabel {
+  color: #ff5a00;
+}
+
+@media (min-width: 1024px) {
+  .navbarInner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .desktopNavbar {
+    display: flex;
+  }
+
+  .mobileNavbar {
+    display: none;
+  }
+}
