@@ -1,6 +1,6 @@
 .newsletterSection {
   width: 100%;
-  padding: 64px 16px 56px;
+  padding: 48px 40px 44px;
   background-color: #ffffff;
 }
 
@@ -10,12 +10,12 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
 
 .newsletterTitle {
-  font-size: 32px;
-  line-height: 1.2;
+  font-size: 24px;
+  line-height: 1.5;
   font-weight: 700;
   color: #000000;
 }
@@ -28,29 +28,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .input {
   width: 100%;
   max-width: 720px;
-  padding: 20px 24px;
-  border-radius: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
   border: none;
   background-color: #e6e6e6;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .submitButton {
-  padding: 18px 48px;
+  padding: 14px 40px;
   border-radius: 999px;
   border: none;
   background-color: #ff5a00;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  min-width: 220px;
+  min-width: 200px;
 }
 
 .submitButton:hover {
@@ -71,14 +71,14 @@
 
 @media (min-width: 768px) {
   .newsletterSection {
-    padding: 96px 24px 88px;
+    padding: 80px 20px 72px;
   }
 
   .newsletterTitle {
-    font-size: 40px;
+    font-size: 24px;
   }
 
   .submitButton {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
