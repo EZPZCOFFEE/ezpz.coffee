@@ -11,27 +11,27 @@
 .navbarRoot {
   width: 100%;
   background-color: #e6e6e6;
-  border-bottom: 1px solid #d0d0d0;
-}
+  padding-top: env(safe-area-inset-top);
 
-.navbarInner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  .navbarInner {
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .logo {
   display: flex;
   align-items: center;
-}
+  gap: 24px;
 
-.logoImage {
-  display: block;
-  height: 40px;
-  width: auto;
+  .logoImage {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
 }
 
 .desktopNavbar {
@@ -39,27 +39,36 @@
   align-items: center;
   justify-content: space-between;
   gap: 48px;
-}
+  padding: 0 12px;
+  width: 100%;
 
-.navList {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+  .desktopNavbarLeft,
+  .desktopNavbarRight {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 
-.navItem {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #000000;
-  white-space: nowrap;
-}
+    .navList {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 100%;
 
-.navItemActive {
-  color: #ff5a00;
+      .navItem {
+        font-size: 16px;
+        font-weight: 600;
+        color: #000000;
+        white-space: nowrap;
+
+        &__active {
+          color: #ff5a00;
+        }
+      }
+    }
+  }
 }
 
 .cartButton {
@@ -68,22 +77,22 @@
   display: flex;
   align-items: center;
   padding: 0;
-}
 
-.cartButton img {
-  display: block;
+  img {
+    display: block;
+  }
 }
 
 .mobileNavbar {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
 
-.mobileHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 .mobileHeaderActions {
@@ -95,32 +104,45 @@
 .menuButton {
   border: none;
   background: transparent;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 4px;
+  padding: 6px;
+  position: relative;
+  width: 28px;
+  height: 22px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuButtonBar {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  margin: 0 auto;
   width: 20px;
   height: 2px;
   background-color: #000000;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .menuButtonBarTop {
+  top: 4px;
 }
 
 .menuButtonBarMiddle {
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .menuButtonBarBottom {
+  bottom: 4px;
 }
 
 [data-state="open"] .menuButtonBarTop {
-  transform: translateY(4px) rotate(45deg);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 [data-state="open"] .menuButtonBarMiddle {
@@ -128,7 +150,9 @@
 }
 
 [data-state="open"] .menuButtonBarBottom {
-  transform: translateY(-4px) rotate(-45deg);
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
 }
 
 .mobileMenuContent {
@@ -136,8 +160,10 @@
   max-height: 0;
   opacity: 0;
   transform: translateY(-8px);
-  transition: max-height 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-  border-top: 1px solid #d0d0d0;
+  transition:
+    max-height 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .mobileMenuContent[data-state="open"] {
@@ -168,7 +194,7 @@
   color: #ff5a00;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navbarInner {
     flex-direction: row;
     align-items: center;
