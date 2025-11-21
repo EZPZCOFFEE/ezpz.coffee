@@ -1,16 +1,19 @@
 "use client";
 
-import classNames from "classnames";
 import { PropsWithChildren } from "react";
 
 import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 
+import Navbar from "./Navbar";
 import styles from "./styles.module.scss";
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
     <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
-      <div className={classNames(styles.container)}>{children}</div>
+      <div className={styles.container}>
+        <Navbar />
+        <main className={styles.main}>{children}</main>
+      </div>
     </WhiteeeShopifyProvider>
   );
 };
