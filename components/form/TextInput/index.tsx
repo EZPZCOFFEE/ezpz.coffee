@@ -1,6 +1,6 @@
 "use client";
 
-import { Field } from "@ark-ui/react/field";
+import { Field } from "@ark-ui/react";
 import type { FieldError, FieldValues, Path } from "react-hook-form";
 import { useFormContext } from "react-hook-form";
 
@@ -44,10 +44,11 @@ const TextInput = <TFieldValues extends FieldValues = FieldValues>({
   const isInvalid = Boolean(errorMessage);
 
   const registered = register(name);
+  const showLabelRow = Boolean(label?.trim()) || Boolean(optionalLabel?.trim());
 
   return (
     <Field.Root className={styles.fieldRoot} invalid={isInvalid}>
-      {(label || optionalLabel) && (
+      {showLabelRow && (
         <div className={styles.labelRow}>
           {label && (
             <Field.Label asChild>
@@ -58,7 +59,7 @@ const TextInput = <TFieldValues extends FieldValues = FieldValues>({
         </div>
       )}
 
-      <Field.Control className={styles.inputWrapper} data-invalid={isInvalid ? "true" : "false"}>
+      <Field.Root className={styles.inputWrapper} data-invalid={isInvalid ? "true" : "false"}>
         <Field.Input asChild>
           <input
             {...registered}
@@ -67,7 +68,7 @@ const TextInput = <TFieldValues extends FieldValues = FieldValues>({
             className={styles.inputElement}
           />
         </Field.Input>
-      </Field.Control>
+      </Field.Root>
 
       {errorMessage ? (
         <Field.ErrorText asChild>
