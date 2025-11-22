@@ -2,29 +2,30 @@
 
 import { Field, NumberInput as ArkNumberInput } from "@ark-ui/react";
 import classNames from "classnames";
+import type { FieldValues, Path, PathValue } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
 
 import styles from "./styles.module.scss";
 
-type NumberInputProps = {
-  name: string;
+interface NumberInputProps<TFieldValues extends FieldValues = FieldValues> {
+  name: Path<TFieldValues>;
   label?: string;
   helperText?: string;
   min?: number;
   max?: number;
   step?: number;
-  defaultValue?: number;
+  defaultValue?: PathValue<TFieldValues, Path<TFieldValues>>;
   className?: string;
   disabled?: boolean;
   required?: boolean;
-};
+}
 
-type ValueChangeDetails = {
+interface ValueChangeDetails {
   value: string;
   valueAsNumber: number;
-};
+}
 
-const NumberInput: React.FC<NumberInputProps> = ({
+const NumberInput = <TFieldValues extends FieldValues = FieldValues>({
   name,
   label,
   helperText,
@@ -35,12 +36,12 @@ const NumberInput: React.FC<NumberInputProps> = ({
   className,
   disabled,
   required,
-}) => {
-  const { control } = useFormContext();
+}: NumberInputProps<TFieldValues>) => {
+  const { control } = useFormContext<TFieldValues>();
   const {
     field: { value, onChange, onBlur, ref, name: fieldName },
     fieldState,
-  } = useController({
+  } = useController<TFieldValues>({
     name,
     control,
     defaultValue,

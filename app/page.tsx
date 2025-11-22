@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
+import NumberInput from "@/components/form/NumberInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 
@@ -22,6 +23,11 @@ const customizationFormSchema = z.object({
     .max(120, "Tasting note must be 120 characters or fewer")
     .optional()
     .or(z.literal("")),
+  quantity: z
+    .number()
+    .int({ message: "Quantity must be a whole number" })
+    .min(1, "Select at least 1 bag")
+    .max(10, "Limit 10 bags per order"),
 });
 
 type CustomizationFormValues = z.infer<typeof customizationFormSchema>;
@@ -38,6 +44,7 @@ const Home = () => {
       roastProfile: "",
       grindSetting: "",
       tastingNote: "",
+      quantity: 1,
     },
     mode: "onBlur",
   });
@@ -45,7 +52,12 @@ const Home = () => {
   const watchedValues = formMethods.watch();
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
-    setStatusMessage(`Saved customization for ${formatPreviewValue(values.customerName, "your blend")}.`);
+    setStatusMessage(
+      `Saved ${values.quantity} bag${values.quantity > 1 ? "s" : ""} for ${formatPreviewValue(
+        values.customerName,
+        "your blend"
+      )}.`
+    );
   };
   const handleFormSubmit = formMethods.handleSubmit(onSubmit);
 
@@ -72,8 +84,17 @@ const Home = () => {
               optionalLabel="Optional"
               helperText="Describe what makes this blend unique."
             />
+            <NumberInput
+              name="quantity"
+              label="Quantity"
+              helperText="Limit 10 bags per order."
+              min={1}
+              max={10}
+              defaultValue={1}
+              required
+            />
             <Button type="submit" variant="primary">
-              Save customization
+              Add to cart
             </Button>
             {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
           </form>
@@ -107,6 +128,12 @@ const Home = () => {
               <span className={styles.previewLabel}>Tasting note</span>
               <span className={styles.previewValue}>
                 {formatPreviewValue(watchedValues.tastingNote, "Tell customers what to expect")}
+              </span>
+            </li>
+            <li>
+              <span className={styles.previewLabel}>Quantity</span>
+              <span className={styles.previewValue}>
+                {`${watchedValues.quantity ?? 1} bag${(watchedValues.quantity ?? 1) > 1 ? "s" : ""}`}
               </span>
             </li>
           </ul>
