@@ -12,12 +12,7 @@ const NewsletterSignup = () => {
           <label className={styles.visuallyHidden} htmlFor="newsletter-email">
             Email address
           </label>
-          <input
-            id="newsletter-email"
-            type="email"
-            className={styles.input}
-            placeholder="Enter your email"
-          />
+          <input id="newsletter-email" type="email" className={styles.input} placeholder="Enter your email" />
           <button type="button" className={styles.submitButton}>
             Subscribe
           </button>

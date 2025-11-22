@@ -2,11 +2,11 @@
 
 import { PropsWithChildren } from "react";
 
-import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 import NewsletterSignup from "@/components/custom/NewsletterSignup";
+import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 
-import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 import styles from "./styles.module.scss";
 
 const Layout = ({ children }: PropsWithChildren) => {
