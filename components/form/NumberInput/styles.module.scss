@@ -7,14 +7,14 @@
 .label {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #0f172a;
+  color: var(--color-ink-primary);
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
 }
 
 .required {
-  color: #dc2626;
+  color: var(--color-danger-strong);
 }
 
 .number-input {
@@ -24,10 +24,10 @@
 .control {
   display: inline-flex;
   align-items: center;
-  border: 1px solid #e2e8f0;
-  border-radius: 999px;
-  background: #fff;
-  color: #0f172a;
+  border: var(--color-border-width) solid var(--color-border-strong);
+  border-radius: var(--border-radius-rounded);
+  background: var(--color-white);
+  color: var(--color-ink-primary);
   min-width: 112px;
   height: 42px;
   padding: 0 0.25rem;
@@ -35,12 +35,12 @@
 }
 
 .control:focus-within {
-  border-color: #0f172a;
+  border-color: var(--color-ink-primary);
   box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.08);
 }
 
 .control--invalid {
-  border-color: #f87171;
+  border-color: var(--color-error-muted);
   box-shadow: 0 0 0 2px rgba(248, 113, 113, 0.1);
 }
 
@@ -53,31 +53,31 @@
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--border-radius-rounded);
   background: transparent;
   font-size: 1.125rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #475569;
+  color: var(--color-ink-secondary);
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .trigger:hover:not(:disabled) {
   background: rgba(15, 23, 42, 0.05);
-  color: #0f172a;
+  color: var(--color-ink-primary);
 }
 
 .trigger:disabled {
   cursor: not-allowed;
-  color: #cbd5f5;
+  color: var(--color-ink-disabled);
 }
 
 .trigger:focus-visible {
-  outline: 2px solid #0f172a;
-  outline-offset: 2px;
+  outline: var(--spacing-dot) solid var(--color-ink-primary);
+  outline-offset: var(--spacing-dot);
 }
 
 .input {
@@ -85,7 +85,7 @@
   text-align: center;
   font-size: 1rem;
   font-weight: 500;
-  color: #0f172a;
+  color: var(--color-ink-primary);
   border: none;
   background: transparent;
   appearance: none;
@@ -100,10 +100,10 @@
 
 .helper {
   font-size: 0.75rem;
-  color: #64748b;
+  color: var(--color-ink-tertiary);
 }
 
 .error {
   font-size: 0.75rem;
-  color: #dc2626;
+  color: var(--color-danger-strong);
 }

@@ -1,7 +1,7 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-house);
   width: 100%;
 }
 
@@ -10,7 +10,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #3c3c3c;
+  color: var(--color-text-secondary);
 }
 
 .group {
@@ -22,9 +22,9 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-  border-radius: 999px;
-  background: #f0f2f4;
-  padding: 4px;
+  border-radius: var(--border-radius-rounded);
+  background: var(--color-bg-muted);
+  padding: var(--spacing-room);
   min-height: 64px;
 }
 
@@ -32,8 +32,8 @@
   position: absolute;
   top: 4px;
   bottom: 4px;
-  border-radius: 999px;
-  background: #ff4200;
+  border-radius: var(--border-radius-rounded);
+  background: var(--color-accent);
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.15),
     inset 0 0 0 1px rgba(255, 255, 255, 0.3);
@@ -48,12 +48,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: calc(var(--spacing-room) + var(--spacing-dot));
   border: none;
   background: transparent;
-  border-radius: 999px;
+  border-radius: var(--border-radius-rounded);
   cursor: pointer;
-  color: #9ca3af;
+  color: var(--color-gray-500);
   text-transform: lowercase;
   font-size: 0.78rem;
   font-weight: 600;
@@ -67,11 +67,11 @@
   }
 
   &:hover {
-    color: #6b7280;
+    color: var(--color-neutral);
   }
 
   &[data-active="true"] {
-    color: #fff;
+    color: var(--color-white);
   }
 }
 
@@ -101,10 +101,10 @@
 
 .helper {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--color-neutral);
 }
 
 .error {
   font-size: 0.8rem;
-  color: #c2410c;
+  color: var(--color-warning-deep);
 }

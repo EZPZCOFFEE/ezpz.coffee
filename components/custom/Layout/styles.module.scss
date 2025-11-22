@@ -6,31 +6,31 @@
 
 .main {
   flex: 1;
-  padding: 24px;
+  padding: var(--spacing-state);
 }
 
 .navbarRoot {
   width: 100%;
-  background-color: #e6e6e6;
+  background-color: var(--color-bg-panel);
   padding-top: env(safe-area-inset-top);
 
   .navbarInner {
-    margin: 0 auto;
-    padding: 16px 24px;
+    margin: var(--spacing-none) auto;
+    padding: var(--spacing-city) var(--spacing-state);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--spacing-house);
   }
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--spacing-state);
 
   .logoImage {
     display: block;
-    height: 40px;
+    height: var(--spacing-continent);
     width: auto;
   }
 }
@@ -39,33 +39,33 @@
   display: none;
   align-items: center;
   justify-content: space-between;
-  gap: 48px;
-  padding: 0 12px;
+  gap: var(--spacing-planet);
+  padding: 0 var(--spacing-street);
   width: 100%;
 
   .desktopNavbarLeft,
   .desktopNavbarRight {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: var(--spacing-continent);
 
     .navList {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: var(--spacing-continent);
       list-style: none;
-      margin: 0;
-      padding: 0;
+      margin: var(--spacing-none);
+      padding: var(--spacing-none);
       width: 100%;
 
       .navItem {
-        font-size: 15px;
-        font-weight: 600;
-        color: #000000;
+        font-size: var(--font-size-fluid-lg);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-text-primary);
         white-space: nowrap;
 
         &__active {
-          color: #ff4200;
+          color: var(--color-accent);
         }
       }
     }
@@ -87,7 +87,7 @@
 .mobileNavbar {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-house);
 
   .mobileHeader {
     display: flex;
@@ -99,13 +99,13 @@
 .mobileHeaderActions {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--spacing-state);
 }
 
 .menuButton {
   border: none;
   background: transparent;
-  padding: 6px;
+  padding: calc(var(--spacing-room) + var(--spacing-dot));
   position: relative;
   width: 28px;
   height: 22px;
@@ -117,19 +117,19 @@
 
 .menuButtonBar {
   position: absolute;
-  left: 4px;
-  right: 4px;
-  margin: 0 auto;
-  width: 20px;
-  height: 2px;
-  background-color: #000000;
+  left: var(--spacing-room);
+  right: var(--spacing-room);
+  margin: var(--spacing-none) auto;
+  width: calc(var(--spacing-city) + var(--spacing-room));
+  height: var(--spacing-dot);
+  background-color: var(--color-text-primary);
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
 }
 
 .menuButtonBarTop {
-  top: 4px;
+  top: var(--spacing-room);
 }
 
 .menuButtonBarMiddle {
@@ -138,7 +138,7 @@
 }
 
 .menuButtonBarBottom {
-  bottom: 4px;
+  bottom: var(--spacing-room);
 }
 
 [data-state="open"] .menuButtonBarTop {
@@ -160,7 +160,7 @@
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(calc(-1 * var(--spacing-house)));
   transition:
     max-height 0.25s ease,
     opacity 0.25s ease,
@@ -175,24 +175,24 @@
 
 .mobileMenuList {
   list-style: none;
-  margin: 12px 0 0;
-  padding: 8px 0 0;
+  margin: var(--spacing-street) 0 0;
+  padding: var(--spacing-house) 0 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--spacing-street);
 }
 
 .mobileMenuItem {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--font-size-fluid-xxl);
+  font-weight: var(--font-weight-semibold);
 }
 
 .mobileMenuItemLabel {
-  color: #000000;
+  color: var(--color-text-primary);
 }
 
 .mobileMenuItemActive .mobileMenuItemLabel {
-  color: #ff5a00;
+  color: var(--color-accent-strong);
 }
 
 @media (min-width: 1024px) {
@@ -213,32 +213,32 @@
 
 .footer {
   width: 100%;
-  background-color: #e6e6e6;
+  background-color: var(--color-bg-panel);
 
   .footerInner {
-    margin: 0 auto;
-    padding: 32px 24px 24px;
+    margin: var(--spacing-none) auto;
+    padding: var(--spacing-country) var(--spacing-state) var(--spacing-state);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: var(--spacing-state);
     font-size: 14px;
-    color: #696969;
-    font-weight: 500;
+    color: var(--color-neutral);
+    font-weight: var(--font-weight-medium);
 
     .footerNav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: var(--spacing-state);
     }
 
     .footerLink {
       border: none;
-      padding: 0;
+      padding: var(--spacing-none);
       background: transparent;
       font-size: 14px;
-      font-weight: 500;
-      color: #696969;
+      font-weight: var(--font-weight-medium);
+      color: var(--color-neutral);
       cursor: pointer;
     }
   }

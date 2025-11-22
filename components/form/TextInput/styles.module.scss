@@ -1,14 +1,14 @@
 .fieldRoot {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--spacing-room);
 }
 
 .labelRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  font-size: var(--font-size-fluid-base);
 }
 
 .label {
@@ -16,20 +16,20 @@
 }
 
 .optionalLabel {
-  color: #9b9b9b;
-  font-size: 12px;
+  color: var(--color-text-optional);
+  font-size: var(--font-size-fluid-sm);
 }
 
 .inputWrapper {
   display: flex;
   align-items: center;
-  background-color: #f2f2f2;
-  border-radius: 9999px;
-  padding: 8px 14px;
+  background-color: var(--color-bg-muted);
+  border-radius: var(--border-radius-full);
+  padding: var(--spacing-house) calc(var(--spacing-street) + var(--spacing-dot));
 }
 
 .inputWrapper[data-invalid="true"] {
-  outline: 1px solid #e05959;
+  outline: var(--color-border-width) solid var(--color-error-strong);
 }
 
 .inputElement {
@@ -37,25 +37,25 @@
   border: none;
   outline: none;
   background: transparent;
-  font-size: 13px;
+  font-size: var(--font-size-fluid-base);
   line-height: 1.4;
-  color: #222222;
+  color: var(--color-text-primary);
 }
 
 .inputElement::placeholder {
-  color: #b3b3b3;
+  color: var(--color-text-placeholder);
 }
 
 .helperText,
 .errorText {
-  font-size: 12px;
-  margin-top: 2px;
+  font-size: var(--font-size-fluid-sm);
+  margin-top: var(--spacing-dot);
 }
 
 .helperText {
-  color: #8a8a8a;
+  color: var(--color-text-muted);
 }
 
 .errorText {
-  color: #e05959;
+  color: var(--color-error-strong);
 }

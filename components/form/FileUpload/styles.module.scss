@@ -1,32 +1,36 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-house);
 }
 
 .label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1f1f1f;
+  font-size: var(--font-size-fluid-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .uploadRoot {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-house);
 }
 
 .trigger {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-street);
   border: none;
-  border-radius: 9999px;
-  padding: 10px 18px 10px 10px;
-  background: #ff4200;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 13px;
+  border-radius: var(--border-radius-full);
+  padding:
+    calc(var(--spacing-house) + var(--spacing-dot))
+    calc(var(--spacing-street) + var(--spacing-room) + var(--spacing-dot))
+    calc(var(--spacing-house) + var(--spacing-dot))
+    calc(var(--spacing-house) + var(--spacing-dot));
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-fluid-base);
   cursor: pointer;
   transition:
     transform 150ms ease,
@@ -39,8 +43,8 @@
 }
 
 .trigger:focus-visible {
-  outline: 2px solid #1f1f1f;
-  outline-offset: 2px;
+  outline: var(--spacing-dot) solid var(--color-text-primary);
+  outline-offset: var(--spacing-dot);
 }
 
 .trigger:hover:not(:disabled) {
@@ -63,44 +67,44 @@
 }
 
 .recommendation {
-  font-size: 12px;
-  color: #6f6f6f;
+  font-size: var(--font-size-fluid-sm);
+  color: var(--color-neutral);
   margin: 0;
 }
 
 .recommendation span {
   font-weight: 600;
-  color: #262626;
+  color: var(--color-text-primary);
 }
 
 .fileList {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-house);
 }
 
 .fileItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #f7f7f7;
+  gap: var(--spacing-street);
+  padding: calc(var(--spacing-house) + var(--spacing-dot)) calc(var(--spacing-street) + var(--spacing-dot));
+  border-radius: var(--border-radius-md);
+  background: var(--color-beige);
 }
 
 .fileContent {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-street);
   flex: 1;
 }
 
 .filePreview {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  background: #eaeaea;
+  width: var(--spacing-planet);
+  height: var(--spacing-planet);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-bg-inset);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -117,27 +121,27 @@
 .fileDetails {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--spacing-dot);
   flex: 1;
 }
 
 .fileName {
-  font-size: 13px;
-  font-weight: 600;
-  color: #232323;
+  font-size: var(--font-size-fluid-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
 }
 
 .fileSize {
-  font-size: 12px;
-  color: #7a7a7a;
+  font-size: var(--font-size-fluid-sm);
+  color: var(--color-neutral);
 }
 
 .deleteTrigger {
   border: none;
   background: none;
-  color: #c04d2e;
-  font-size: 12px;
-  font-weight: 600;
+  color: var(--color-accent-muted);
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
 }
 
@@ -147,14 +151,14 @@
 
 .helperText,
 .errorText {
-  font-size: 12px;
+  font-size: var(--font-size-fluid-sm);
   margin: 0;
 }
 
 .helperText {
-  color: #7a7a7a;
+  color: var(--color-neutral);
 }
 
 .errorText {
-  color: #c62828;
+  color: var(--color-danger-strong);
 }

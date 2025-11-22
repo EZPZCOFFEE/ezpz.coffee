@@ -1,28 +1,28 @@
 .container {
   display: grid;
   grid-template-columns: 500px auto;
-  gap: 24px;
+  gap: var(--spacing-state);
 }
 
 .panel {
-  padding: 24px;
+  padding: var(--spacing-state);
 
   .panelTitle {
-    font-size: 16px;
-    font-weight: 600;
-    color: #000000;
+    font-size: var(--font-size-fluid-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
     margin: 0;
   }
 
   .panelForm {
-    margin-top: 24px;
+    margin-top: var(--spacing-state);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--spacing-city);
 
     .statusMessage {
-      font-size: 12px;
-      color: #2e7d32;
+      font-size: var(--font-size-fluid-sm);
+      color: var(--color-success-deep);
       margin: 0;
     }
   }
@@ -31,38 +31,38 @@
 .display {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 24px;
+  gap: var(--spacing-state);
+  padding: var(--spacing-state);
 
   .displayHeader {
-    font-size: 16px;
-    font-weight: 600;
-    color: #000000;
+    font-size: var(--font-size-fluid-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
     margin: 0;
 
     .productTitle {
-      font-size: 16px;
-      font-weight: 600;
-      color: #ff4200;
+      font-size: var(--font-size-fluid-xl);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-accent);
     }
   }
 
   .displayContent {
     font-size: 14px;
-    background-color: #f0f0f0;
-    padding: 16px;
-    border-radius: 16px;
+    background-color: var(--color-bg-muted);
+    padding: var(--spacing-city);
+    border-radius: var(--border-radius-lg);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--spacing-city);
 
     .canvasWrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 16px;
+      background: var(--color-bg-primary);
+      border-radius: var(--border-radius-xl);
+      padding: var(--spacing-city);
     }
 
     .previewCanvas {
@@ -70,8 +70,8 @@
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 4;
-      background: #fafafa;
-      border-radius: 16px;
+      background: var(--color-bg-subtle);
+      border-radius: var(--border-radius-lg);
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
     }
 
@@ -81,34 +81,34 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: var(--spacing-street);
 
       li {
         display: flex;
         justify-content: space-between;
-        gap: 16px;
+        gap: var(--spacing-city);
       }
 
       .previewLabel {
         font-weight: 600;
-        color: #333333;
+        color: var(--color-text-secondary);
       }
 
       .previewValue {
         flex: 1;
         text-align: right;
-        color: #4f4f4f;
+        color: var(--color-text-tertiary);
       }
     }
   }
 
   .displayFooter {
-    font-size: 12px;
-    color: #696969;
+    font-size: var(--font-size-fluid-sm);
+    color: var(--color-neutral);
     margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 8px;
+    padding: 0 var(--spacing-house);
   }
 }
