@@ -1,12 +1,8 @@
 "use client";
 
 import { Field, FileUpload } from "@ark-ui/react";
-import type {
-  FileUploadFileChangeDetails,
-  FileUploadFileError,
-  FileUploadFileMimeType,
-} from "@ark-ui/react";
-import { UploadSimple } from "@phosphor-icons/react";
+import type { FileUploadFileChangeDetails, FileUploadFileError, FileUploadFileMimeType } from "@ark-ui/react";
+import { UploadSimpleIcon } from "@phosphor-icons/react";
 import classNames from "classnames";
 import { useState } from "react";
 import type { FieldValues, Path, PathValue } from "react-hook-form";
@@ -109,7 +105,7 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
 
         <FileUpload.Trigger className={styles.trigger} disabled={disabled} type="button">
           <span className={styles.triggerIcon}>
-            <UploadSimple size={18} weight="bold" />
+            <UploadSimpleIcon size={18} weight="bold" />
           </span>
           <span className={styles.triggerText}>Use our template</span>
         </FileUpload.Trigger>
@@ -120,17 +116,32 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
 
         {hasFiles && (
           <FileUpload.ItemGroup className={styles.fileList} type="accepted">
-            {acceptedFiles.map((file) => (
-              <FileUpload.Item key={`${file.name}-${file.size}`} file={file} className={styles.fileItem} type="accepted">
-                <div className={styles.fileDetails}>
-                  <FileUpload.ItemName className={styles.fileName} file={file} />
-                  <FileUpload.ItemSizeText className={styles.fileSize} file={file} />
-                </div>
-                <FileUpload.ItemDeleteTrigger file={file} className={styles.deleteTrigger} type="button">
-                  Remove
-                </FileUpload.ItemDeleteTrigger>
-              </FileUpload.Item>
-            ))}
+            {acceptedFiles.map((file) => {
+              const showPreview = file.type?.startsWith("image/");
+
+              return (
+                <FileUpload.Item key={`${file.name}-${file.size}`} file={file} className={styles.fileItem}>
+                  <div className={styles.fileContent}>
+                    {showPreview && (
+                      <FileUpload.ItemPreview className={styles.filePreview} type="image/.*">
+                        <FileUpload.ItemPreviewImage
+                          className={styles.filePreviewImage}
+                          alt={`${file.name} preview`}
+                        />
+                      </FileUpload.ItemPreview>
+                    )}
+
+                    <div className={styles.fileDetails}>
+                      <FileUpload.ItemName className={styles.fileName} />
+                      <FileUpload.ItemSizeText className={styles.fileSize} />
+                    </div>
+                  </div>
+                  <FileUpload.ItemDeleteTrigger className={styles.deleteTrigger} type="button">
+                    Remove
+                  </FileUpload.ItemDeleteTrigger>
+                </FileUpload.Item>
+              );
+            })}
           </FileUpload.ItemGroup>
         )}
       </FileUpload.Root>
