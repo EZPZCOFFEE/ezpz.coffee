@@ -24,7 +24,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@components/*": ["components/shared/*"],
+      "@components/*": ["components/shared/*", "components/*"],
       "@utils/*": ["lib/*"]
     },
     "strictNullChecks": true
