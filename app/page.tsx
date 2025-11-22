@@ -1,15 +1,17 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Image, { type StaticImageData } from "next/image";
-import { type ReactNode, useState } from "react";
+import NextImage, { type StaticImageData } from "next/image";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
+import FileUploadInput from "@/components/form/FileUpload";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
+import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 import beanGrindIcon from "@/public/grind/bean.png";
 import coarseGrindIcon from "@/public/grind/coarse.png";
 import fineGrindIcon from "@/public/grind/fine.png";
@@ -18,6 +20,9 @@ import lightRoastIcon from "@/public/roast/light.png";
 import mediumRoastIcon from "@/public/roast/medium.png";
 
 import styles from "./styles.module.scss";
+
+const CANVAS_WIDTH = 360;
+const CANVAS_HEIGHT = 480;
 
 const roastValues = ["light", "medium", "dark"] as const;
 type RoastValue = (typeof roastValues)[number];
@@ -32,7 +37,7 @@ interface OptionDefinition<TValue extends string> {
 }
 
 const createOptionIcon = (src: StaticImageData, alt: string) => (
-  <Image src={src} alt={alt} width={28} height={28} />
+  <NextImage src={src} alt={alt} width={28} height={28} />
 );
 
 const roastOptions: readonly OptionDefinition<RoastValue>[] = [
@@ -52,6 +57,27 @@ const getOptionLabel = <TValue extends string>(
   options: readonly OptionDefinition<TValue>[]
 ) => options.find((option) => option.value === value)?.label;
 
+const isFileLike = (value: unknown): value is File => {
+  if (typeof value !== "object" || value === null) {
+    return false;
+  }
+
+  if (typeof File !== "undefined" && value instanceof File) {
+    return true;
+  }
+
+  const possibleFile = value as Record<string, unknown>;
+  return (
+    typeof possibleFile.name === "string" &&
+    typeof possibleFile.size === "number" &&
+    typeof possibleFile.type === "string"
+  );
+};
+
+const fileSchema = z.custom<File>((value) => isFileLike(value), {
+  message: "Upload a valid artwork file",
+});
+
 const customizationFormSchema = z.object({
   customerName: z
     .string()
@@ -69,6 +95,10 @@ const customizationFormSchema = z.object({
     .int({ message: "Quantity must be a whole number" })
     .min(1, "Select at least 1 bag")
     .max(10, "Limit 10 bags per order"),
+  artworkFile: z
+    .array(fileSchema)
+    .min(1, "Upload your bag artwork")
+    .max(1, "Only one artwork file is allowed"),
 });
 
 type CustomizationFormValues = z.infer<typeof customizationFormSchema>;
@@ -78,6 +108,7 @@ const formatPreviewValue = (value: string | undefined, placeholder: string) =>
 
 const Home = () => {
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
@@ -86,6 +117,7 @@ const Home = () => {
       grindSetting: "bean",
       tastingNote: "",
       quantity: 1,
+      artworkFile: [],
     },
     mode: "onBlur",
   });
@@ -103,6 +135,32 @@ const Home = () => {
     );
   };
   const handleFormSubmit = formMethods.handleSubmit(onSubmit);
+
+  useEffect(() => {
+    const canvas = bagCanvasRef.current;
+    if (!canvas) return;
+
+    const context = canvas.getContext("2d");
+    if (!context) return;
+
+    const image = new Image();
+    image.src = bagMockupBlank.src;
+    image.onload = () => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      const scale = Math.min(canvas.width / image.width, canvas.height / image.height);
+      const drawWidth = image.width * scale;
+      const drawHeight = image.height * scale;
+      const offsetX = (canvas.width - drawWidth) / 2;
+      const offsetY = (canvas.height - drawHeight) / 2;
+
+      context.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+    };
+
+    return () => {
+      image.onload = null;
+    };
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -129,6 +187,12 @@ const Home = () => {
               optionalLabel="Optional"
               helperText="Describe what makes this blend unique."
             />
+            <FileUploadInput
+              name="artworkFile"
+              label="Upload artwork"
+              helperText="PNG, JPG, or PDF. Limit 1 file."
+              required
+            />
             <NumberInput
               name="quantity"
               label="Quantity"
@@ -150,6 +214,16 @@ const Home = () => {
           Preview <span className={styles.productTitle}>225g bag</span>
         </h2>
         <div className={styles.displayContent}>
+          <div className={styles.canvasWrapper}>
+            <canvas
+              ref={bagCanvasRef}
+              className={styles.previewCanvas}
+              width={CANVAS_WIDTH}
+              height={CANVAS_HEIGHT}
+              role="img"
+              aria-label="Bag mockup preview"
+            />
+          </div>
           <ul className={styles.previewList}>
             <li>
               <span className={styles.previewLabel}>Name</span>

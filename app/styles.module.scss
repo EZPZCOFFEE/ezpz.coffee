@@ -43,7 +43,7 @@
     .productTitle {
       font-size: 16px;
       font-weight: 600;
-      color: #ff5a00;
+      color: #ff4200;
     }
   }
 
@@ -52,6 +52,28 @@
     background-color: #f0f0f0;
     padding: 16px;
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .canvasWrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .previewCanvas {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      background: #fafafa;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+    }
 
     .previewList {
       list-style: none;
