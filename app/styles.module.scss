@@ -20,22 +20,6 @@
     flex-direction: column;
     gap: 16px;
 
-    .submitButton {
-      align-self: flex-start;
-      border: none;
-      border-radius: 999px;
-      padding: 10px 24px;
-      font-weight: 600;
-      background-color: #000000;
-      color: #ffffff;
-      cursor: pointer;
-      transition: opacity 0.2s ease;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-
     .statusMessage {
       font-size: 12px;
       color: #2e7d32;

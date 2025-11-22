@@ -1,3 +1,5 @@
+import Button from "@/components/shared/Button";
+
 import styles from "./styles.module.scss";
 
 const NewsletterSignup = () => {
@@ -13,9 +15,9 @@ const NewsletterSignup = () => {
             Email address
           </label>
           <input id="newsletter-email" type="email" className={styles.input} placeholder="Enter your email" />
-          <button type="button" className={styles.submitButton}>
+          <Button type="button" variant="primary">
             Subscribe
-          </button>
+          </Button>
         </form>
       </div>
     </section>
