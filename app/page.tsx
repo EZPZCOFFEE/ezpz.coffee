@@ -6,6 +6,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import TextInput from "@/components/form/TextInput";
+import Button from "@/components/shared/Button";
 
 import styles from "./styles.module.scss";
 
@@ -71,9 +72,9 @@ const Home = () => {
               optionalLabel="Optional"
               helperText="Describe what makes this blend unique."
             />
-            <button type="submit" className={styles.submitButton}>
+            <Button type="submit" variant="primary">
               Save customization
-            </button>
+            </Button>
             {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
           </form>
         </FormProvider>

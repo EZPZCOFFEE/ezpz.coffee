@@ -41,22 +41,6 @@
   font-size: 16px;
 }
 
-.submitButton {
-  padding: 14px 40px;
-  border-radius: 999px;
-  border: none;
-  background-color: #ff5a00;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  min-width: 200px;
-}
-
-.submitButton:hover {
-  filter: brightness(0.95);
-}
-
 .visuallyHidden {
   position: absolute;
   width: 1px;
@@ -76,9 +60,5 @@
 
   .newsletterTitle {
     font-size: 24px;
-  }
-
-  .submitButton {
-    font-size: 20px;
   }
 }

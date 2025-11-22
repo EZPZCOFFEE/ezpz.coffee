@@ -1,7 +1,7 @@
 "use client";
 
-import { forwardRef } from "react";
 import classNames from "classnames";
+import { forwardRef } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -21,11 +21,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         styles.button,
         styles[`button--${variant}`],
         { [styles["button--full-width"]]: fullWidth },
-        className,
+        className
       )}
       {...props}
     />
-  ),
+  )
 );
 
 Button.displayName = "Button";
