@@ -22,7 +22,7 @@
 
     .statusMessage {
       font-size: var(--font-size-fluid-sm);
-      color: var(--color-success-deep);
+      color: var(--color-success);
       margin: 0;
     }
   }
@@ -49,7 +49,7 @@
 
   .displayContent {
     font-size: 14px;
-    background-color: var(--color-bg-muted);
+    background-color: var(--color-bg-secondary);
     padding: var(--spacing-city);
     border-radius: var(--border-radius-lg);
     display: flex;
@@ -70,7 +70,7 @@
       width: 100%;
       height: auto;
       aspect-ratio: 3 / 4;
-      background: var(--color-bg-subtle);
+      background: var(--color-gray-100);
       border-radius: var(--border-radius-lg);
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
     }
@@ -97,7 +97,7 @@
       .previewValue {
         flex: 1;
         text-align: right;
-        color: var(--color-text-tertiary);
+        color: var(--color-gray-500);
       }
     }
   }

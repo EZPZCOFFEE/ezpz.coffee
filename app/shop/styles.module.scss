@@ -2,15 +2,15 @@
   display: grid;
   justify-content: center;
   align-content: center;
-  gap: var(--spacing-market);
+  gap: var(--spacing-state);
   width: 100%;
   max-width: 1400px;
   margin: var(--spacing-none) auto;
-  grid-template-columns: repeat(auto-fit, calc(25% - var(--spacing-market) * 3 / 4));
+  grid-template-columns: repeat(auto-fit, calc(25% - var(--spacing-state) * 3 / 4));
 
   @media only screen and (max-width: 900px) {
-    grid-template-columns: repeat(auto-fit, calc(50% - var(--spacing-avenue) * 3 / 4));
-    column-gap: var(--spacing-avenue);
+    grid-template-columns: repeat(auto-fit, calc(50% - var(--spacing-city) * 3 / 4));
+    column-gap: var(--spacing-city);
     row-gap: var(--spacing-state);
   }
 }

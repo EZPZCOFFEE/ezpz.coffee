@@ -21,7 +21,7 @@
   align-items: center;
   gap: var(--spacing-street);
   border: none;
-  border-radius: var(--border-radius-full);
+  border-radius: var(--border-radius-xxl);
   padding:
     calc(var(--spacing-house) + var(--spacing-dot))
     calc(var(--spacing-street) + var(--spacing-room) + var(--spacing-dot))
@@ -104,7 +104,7 @@
   width: var(--spacing-planet);
   height: var(--spacing-planet);
   border-radius: var(--border-radius-sm);
-  background: var(--color-bg-inset);
+  background: var(--color-gray-300);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -139,7 +139,7 @@
 .deleteTrigger {
   border: none;
   background: none;
-  color: var(--color-accent-muted);
+  color: var(--color-accent);
   font-size: var(--font-size-fluid-sm);
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
@@ -160,5 +160,5 @@
 }
 
 .errorText {
-  color: var(--color-danger-strong);
+  color: var(--color-danger);
 }

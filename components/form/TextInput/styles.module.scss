@@ -16,20 +16,20 @@
 }
 
 .optionalLabel {
-  color: var(--color-text-optional);
+  color: var(--color-gray-400);
   font-size: var(--font-size-fluid-sm);
 }
 
 .inputWrapper {
   display: flex;
   align-items: center;
-  background-color: var(--color-bg-muted);
-  border-radius: var(--border-radius-full);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--border-radius-xxl);
   padding: var(--spacing-house) calc(var(--spacing-street) + var(--spacing-dot));
 }
 
 .inputWrapper[data-invalid="true"] {
-  outline: var(--color-border-width) solid var(--color-error-strong);
+  outline: var(--color-border-width) solid var(--color-error);
 }
 
 .inputElement {
@@ -43,7 +43,7 @@
 }
 
 .inputElement::placeholder {
-  color: var(--color-text-placeholder);
+  color: var(--color-gray-400);
 }
 
 .helperText,
@@ -53,9 +53,9 @@
 }
 
 .helperText {
-  color: var(--color-text-muted);
+  color: var(--color-gray-500);
 }
 
 .errorText {
-  color: var(--color-error-strong);
+  color: var(--color-error);
 }

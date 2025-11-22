@@ -11,7 +11,7 @@
 
 .navbarRoot {
   width: 100%;
-  background-color: var(--color-bg-panel);
+  background-color: var(--color-bg-secondary);
   padding-top: env(safe-area-inset-top);
 
   .navbarInner {
@@ -192,7 +192,7 @@
 }
 
 .mobileMenuItemActive .mobileMenuItemLabel {
-  color: var(--color-accent-strong);
+  color: var(--color-accent-light);
 }
 
 @media (min-width: 1024px) {
@@ -213,7 +213,7 @@
 
 .footer {
   width: 100%;
-  background-color: var(--color-bg-panel);
+  background-color: var(--color-bg-secondary);
 
   .footerInner {
     margin: var(--spacing-none) auto;
