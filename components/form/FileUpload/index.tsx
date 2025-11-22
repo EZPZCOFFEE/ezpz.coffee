@@ -26,17 +26,16 @@ interface FileUploadInputProps<TFieldValues extends FieldValues = FieldValues> {
 
 const DEFAULT_ACCEPT: AcceptProp = {
   "image/*": [],
-  "application/pdf": [],
 };
 
-const DEFAULT_RECOMMENDATION = "6in wide by 6in tall";
+const DEFAULT_RECOMMENDATION = "Upload a square JPG or PNG (min 1800px)";
 
 const getRejectionMessage = (code?: FileUploadFileError): string | null => {
   if (!code) return null;
 
   switch (code) {
     case "FILE_INVALID_TYPE":
-      return "Only PNG, JPG, or PDF files are allowed.";
+      return "Only PNG or JPG image files are allowed.";
     case "FILE_TOO_LARGE":
       return "Your file is too large. Keep it under 10MB.";
     case "FILE_TOO_SMALL":
@@ -70,14 +69,15 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
   });
 
   const [rejectionMessage, setRejectionMessage] = useState<string | null>(null);
-  const acceptedFiles = (Array.isArray(value) ? value : []) as File[];
+  const acceptedFiles = (Array.isArray(value) ? value : []).slice(0, maxFiles) as File[];
   const hasFiles = acceptedFiles.length > 0;
 
   const handleFileChange = (details: FileUploadFileChangeDetails) => {
     const [firstRejected] = details.rejectedFiles;
     const rejectionCode = firstRejected?.errors?.[0];
     setRejectionMessage(getRejectionMessage(rejectionCode));
-    onChange(details.acceptedFiles as PathValue<TFieldValues, Path<TFieldValues>>);
+    const limitedFiles = (details.acceptedFiles ?? []).slice(0, maxFiles);
+    onChange(limitedFiles as PathValue<TFieldValues, Path<TFieldValues>>);
   };
 
   const errorMessage = fieldState.error?.message ?? rejectionMessage ?? undefined;
@@ -107,7 +107,7 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
           <span className={styles.triggerIcon}>
             <UploadSimpleIcon size={18} weight="bold" />
           </span>
-          <span className={styles.triggerText}>Use our template</span>
+          <span className={styles.triggerText}>Upload image</span>
         </FileUpload.Trigger>
 
         <p className={styles.recommendation}>
