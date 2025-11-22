@@ -21,12 +21,8 @@
   align-items: center;
   gap: var(--spacing-street);
   border: none;
-  border-radius: var(--border-radius-xxl);
-  padding:
-    calc(var(--spacing-house) + var(--spacing-dot))
-    calc(var(--spacing-street) + var(--spacing-room) + var(--spacing-dot))
-    calc(var(--spacing-house) + var(--spacing-dot))
-    calc(var(--spacing-house) + var(--spacing-dot));
+  border-radius: var(--border-radius-full);
+  padding: var(--spacing-street) var(--spacing-city) var(--spacing-street) var(--spacing-street);
   background: var(--color-accent);
   color: var(--color-white);
   font-weight: var(--font-weight-semibold);
@@ -88,7 +84,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-street);
-  padding: calc(var(--spacing-house) + var(--spacing-dot)) calc(var(--spacing-street) + var(--spacing-dot));
+  padding: var(--spacing-street) var(--spacing-city);
   border-radius: var(--border-radius-md);
   background: var(--color-beige);
 }

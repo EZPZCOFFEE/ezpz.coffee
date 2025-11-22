@@ -6,10 +6,10 @@
   width: 100%;
   max-width: 1400px;
   margin: var(--spacing-none) auto;
-  grid-template-columns: repeat(auto-fit, calc(25% - var(--spacing-state) * 3 / 4));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   @media only screen and (max-width: 900px) {
-    grid-template-columns: repeat(auto-fit, calc(50% - var(--spacing-city) * 3 / 4));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     column-gap: var(--spacing-city);
     row-gap: var(--spacing-state);
   }

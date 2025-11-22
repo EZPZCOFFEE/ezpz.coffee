@@ -105,7 +105,7 @@
 .menuButton {
   border: none;
   background: transparent;
-  padding: calc(var(--spacing-room) + var(--spacing-dot));
+  padding: var(--spacing-house);
   position: relative;
   width: 28px;
   height: 22px;
@@ -120,7 +120,7 @@
   left: var(--spacing-room);
   right: var(--spacing-room);
   margin: var(--spacing-none) auto;
-  width: calc(var(--spacing-city) + var(--spacing-room));
+  width: var(--spacing-state);
   height: var(--spacing-dot);
   background-color: var(--color-text-primary);
   transition:
@@ -160,7 +160,7 @@
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  transform: translateY(calc(-1 * var(--spacing-house)));
+  transform: translateY(-var(--spacing-house));
   transition:
     max-height 0.25s ease,
     opacity 0.25s ease,

@@ -22,7 +22,7 @@
   display: flex;
   align-items: stretch;
   width: 100%;
-  border-radius: var(--border-radius-xxl);
+  border-radius: var(--border-radius-full);
   background: var(--color-bg-secondary);
   padding: var(--spacing-room);
   min-height: 64px;
@@ -30,28 +30,29 @@
 
 .indicator {
   position: absolute;
-  top: 4px;
-  bottom: 4px;
-  border-radius: var(--border-radius-xxl);
+  inset: var(--spacing-dot);
+  border-radius: var(--border-radius-full);
   background: var(--color-accent);
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.15),
     inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-  z-index: 0;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .option {
   flex: 1;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--spacing-room) + var(--spacing-dot));
+  gap: var(--spacing-house);
   border: none;
   background: transparent;
-  border-radius: var(--border-radius-xxl);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
   cursor: pointer;
   color: var(--color-gray-500);
   text-transform: lowercase;

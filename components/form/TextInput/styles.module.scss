@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   background-color: var(--color-bg-secondary);
-  border-radius: var(--border-radius-xxl);
-  padding: var(--spacing-house) calc(var(--spacing-street) + var(--spacing-dot));
+  border-radius: var(--border-radius-full);
+  padding: var(--spacing-house) var(--spacing-city);
 }
 
 .inputWrapper[data-invalid="true"] {

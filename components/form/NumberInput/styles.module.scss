@@ -25,13 +25,15 @@
   display: inline-flex;
   align-items: center;
   border: var(--color-border-width) solid var(--color-border-secondary);
-  border-radius: var(--border-radius-xxl);
+  border-radius: var(--border-radius-full);
   background: var(--color-white);
   color: var(--color-text-primary);
   min-width: 112px;
   height: 42px;
   padding: 0 0.25rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .control:focus-within {
@@ -53,7 +55,7 @@
   width: 32px;
   height: 32px;
   border: none;
-  border-radius: var(--border-radius-xxl);
+  border-radius: var(--border-radius-full);
   background: transparent;
   font-size: 1.125rem;
   font-weight: 500;
@@ -62,7 +64,9 @@
   justify-content: center;
   color: var(--color-text-secondary);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .trigger:hover:not(:disabled) {

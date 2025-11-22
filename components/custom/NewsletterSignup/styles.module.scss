@@ -1,6 +1,6 @@
 .newsletterSection {
   width: 100%;
-  padding: var(--spacing-planet) var(--spacing-continent) calc(var(--spacing-planet) - var(--spacing-room));
+  padding: var(--spacing-planet) var(--spacing-continent) var(--spacing-planet);
   background-color: var(--color-bg-primary);
 }
 
@@ -34,7 +34,7 @@
 .input {
   width: 100%;
   max-width: 720px;
-  padding: var(--spacing-city) calc(var(--spacing-city) + var(--spacing-room));
+  padding: var(--spacing-city) var(--spacing-state);
   border-radius: var(--border-radius-md);
   border: none;
   background-color: var(--color-bg-secondary);
@@ -55,7 +55,7 @@
 
 @media (min-width: 768px) {
   .newsletterSection {
-    padding: var(--spacing-cluster) calc(var(--spacing-state) - var(--spacing-room)) var(--spacing-galaxy);
+    padding: var(--spacing-cluster) var(--spacing-state) var(--spacing-galaxy);
   }
 
   .newsletterTitle {

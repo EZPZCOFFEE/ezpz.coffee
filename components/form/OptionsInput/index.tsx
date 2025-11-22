@@ -9,8 +9,6 @@ import { Controller, useFormContext } from "react-hook-form";
 
 import styles from "./styles.module.scss";
 
-const INDICATOR_OFFSET = 4;
-
 interface Option {
   value: string;
   label: string;
@@ -37,7 +35,6 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
       control={control}
       render={({ field, fieldState }) => {
         const selectedValue = typeof field.value === "string" ? field.value : undefined;
-        const activeIndex = options.findIndex((option) => option.value === selectedValue);
 
         return (
           <Field.Root className={classNames(styles.root, className)} invalid={fieldState.invalid}>
@@ -56,20 +53,6 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
                   className={styles.group}
                 >
                   <div className={styles.track}>
-                    {activeIndex >= 0 && (
-                      <motion.span
-                        layout
-                        aria-hidden="true"
-                        className={styles.indicator}
-                        style={{
-                          width: `calc((100% - ${INDICATOR_OFFSET * 2}px) / ${optionCount})`,
-                          left: `${INDICATOR_OFFSET}px`,
-                        }}
-                        animate={{ x: `${activeIndex * 100}%` }}
-                        transition={{ type: "spring", stiffness: 350, damping: 30, mass: 0.7 }}
-                      />
-                    )}
-
                     {options.map((option) => {
                       const isActive = option.value === selectedValue;
                       return (
@@ -80,6 +63,14 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
                           data-active={isActive}
                         >
                           <RadioGroup.ItemHiddenInput />
+                          {isActive && (
+                            <motion.span
+                              layoutId={`options-input-indicator-${name}`}
+                              aria-hidden="true"
+                              className={styles.indicator}
+                              transition={{ type: "spring", stiffness: 350, damping: 30, mass: 0.7 }}
+                            />
+                          )}
                           <span className={styles.iconWrapper} aria-hidden="true">
                             {option.icon}
                           </span>
