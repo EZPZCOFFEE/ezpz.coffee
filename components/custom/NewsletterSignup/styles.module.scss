@@ -1,44 +1,44 @@
 .newsletterSection {
   width: 100%;
-  padding: 48px 40px 44px;
-  background-color: #ffffff;
+  padding: var(--spacing-planet) var(--spacing-continent) var(--spacing-planet);
+  background-color: var(--color-bg-primary);
 }
 
 .newsletterInner {
   max-width: 960px;
-  margin: 0 auto;
+  margin: var(--spacing-none) auto;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--spacing-city);
 }
 
 .newsletterTitle {
   font-size: 24px;
   line-height: 1.5;
-  font-weight: 700;
-  color: #000000;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
 }
 
 .highlight {
-  color: #ff4200;
+  color: var(--color-accent);
 }
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: var(--spacing-country);
 }
 
 .input {
   width: 100%;
   max-width: 720px;
-  padding: 16px 20px;
-  border-radius: 12px;
+  padding: var(--spacing-city) var(--spacing-state);
+  border-radius: var(--border-radius-md);
   border: none;
-  background-color: #e6e6e6;
-  font-size: 16px;
+  background-color: var(--color-bg-secondary);
+  font-size: var(--font-size-fluid-xl);
 }
 
 .visuallyHidden {
@@ -55,7 +55,7 @@
 
 @media (min-width: 768px) {
   .newsletterSection {
-    padding: 80px 20px 72px;
+    padding: var(--spacing-cluster) var(--spacing-state) var(--spacing-galaxy);
   }
 
   .newsletterTitle {
