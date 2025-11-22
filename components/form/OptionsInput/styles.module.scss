@@ -83,12 +83,14 @@
   justify-content: center;
   color: currentColor;
   transition: color 0.2s ease;
-  :global(svg) {
+  :global(svg),
+  :global(img) {
     width: 22px;
     height: 22px;
     display: block;
     fill: currentColor;
     stroke: currentColor;
+    object-fit: contain;
   }
 }
 

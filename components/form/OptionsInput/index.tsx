@@ -4,7 +4,7 @@ import { Field, RadioGroup } from "@ark-ui/react";
 import type { RadioGroupValueChangeDetails, UseFieldContext } from "@ark-ui/react";
 import classNames from "classnames";
 import { motion } from "framer-motion";
-import type { ReactElement } from "react";
+import type { ReactNode } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 import styles from "./styles.module.scss";
@@ -14,12 +14,12 @@ const INDICATOR_OFFSET = 4;
 interface Option {
   value: string;
   label: string;
-  icon: ReactElement<SVGSVGElement>;
+  icon: ReactNode;
 }
 
 interface OptionsInputProps {
   name: string;
-  options: Option[];
+  options: readonly Option[];
   label?: string;
   helperText?: string;
   className?: string;
@@ -83,7 +83,9 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
                           <span className={styles.iconWrapper} aria-hidden="true">
                             {option.icon}
                           </span>
-                          <RadioGroup.ItemText className={styles.optionLabel}>{option.label}</RadioGroup.ItemText>
+                          <RadioGroup.ItemText className={styles.optionLabel}>
+                            {option.label}
+                          </RadioGroup.ItemText>
                         </RadioGroup.Item>
                       );
                     })}
@@ -92,7 +94,9 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
               )}
             </Field.Context>
 
-            {helperText && !fieldState.error && <Field.HelperText className={styles.helper}>{helperText}</Field.HelperText>}
+            {helperText && !fieldState.error && (
+              <Field.HelperText className={styles.helper}>{helperText}</Field.HelperText>
+            )}
             {fieldState.error?.message && (
               <Field.ErrorText className={styles.error}>{fieldState.error.message}</Field.ErrorText>
             )}
