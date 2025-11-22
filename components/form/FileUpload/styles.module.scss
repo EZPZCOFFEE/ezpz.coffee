@@ -1,0 +1,131 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.uploadRoot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 18px 10px 10px;
+  background: linear-gradient(90deg, #ff5a00, #ff7b39);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #1f1f1f;
+  outline-offset: 2px;
+}
+
+.trigger:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(255, 90, 0, 0.35);
+}
+
+.triggerIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triggerText {
+  white-space: nowrap;
+}
+
+.recommendation {
+  font-size: 12px;
+  color: #6f6f6f;
+  margin: 0;
+}
+
+.recommendation span {
+  font-weight: 600;
+  color: #262626;
+}
+
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #f7f7f7;
+}
+
+.fileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fileName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #232323;
+}
+
+.fileSize {
+  font-size: 12px;
+  color: #7a7a7a;
+}
+
+.deleteTrigger {
+  border: none;
+  background: none;
+  color: #c04d2e;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.deleteTrigger:hover {
+  text-decoration: underline;
+}
+
+.helperText,
+.errorText {
+  font-size: 12px;
+  margin: 0;
+}
+
+.helperText {
+  color: #7a7a7a;
+}
+
+.errorText {
+  color: #c62828;
+}
