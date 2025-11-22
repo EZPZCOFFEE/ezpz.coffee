@@ -1,0 +1,110 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3c3c3c;
+}
+
+.group {
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 999px;
+  background: #f0f2f4;
+  padding: 4px;
+  min-height: 64px;
+}
+
+.indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #ff6400, #ff9b3d);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.option {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #9ca3af;
+  text-transform: lowercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid rgba(255, 100, 0, 0.6);
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    color: #6b7280;
+  }
+
+  &[data-active="true"] {
+    color: #fff;
+  }
+}
+
+.iconWrapper {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  transition: color 0.2s ease;
+  :global(svg),
+  :global(img) {
+    width: 22px;
+    height: 22px;
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+    object-fit: contain;
+  }
+}
+
+.optionLabel {
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+}
+
+.helper {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.error {
+  font-size: 0.8rem;
+  color: #c2410c;
+}

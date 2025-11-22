@@ -1,23 +1,64 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import Image, { type StaticImageData } from "next/image";
+import { type ReactNode, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
 import NumberInput from "@/components/form/NumberInput";
+import OptionsInput from "@/components/form/OptionsInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
+import beanGrindIcon from "@/public/grind/bean.png";
+import coarseGrindIcon from "@/public/grind/coarse.png";
+import fineGrindIcon from "@/public/grind/fine.png";
+import darkRoastIcon from "@/public/roast/dark.png";
+import lightRoastIcon from "@/public/roast/light.png";
+import mediumRoastIcon from "@/public/roast/medium.png";
 
 import styles from "./styles.module.scss";
+
+const roastValues = ["light", "medium", "dark"] as const;
+type RoastValue = (typeof roastValues)[number];
+
+const grindValues = ["bean", "coarse", "fine"] as const;
+type GrindValue = (typeof grindValues)[number];
+
+interface OptionDefinition<TValue extends string> {
+  value: TValue;
+  label: string;
+  icon: ReactNode;
+}
+
+const createOptionIcon = (src: StaticImageData, alt: string) => (
+  <Image src={src} alt={alt} width={28} height={28} />
+);
+
+const roastOptions: readonly OptionDefinition<RoastValue>[] = [
+  { value: "light", label: "Light roast", icon: createOptionIcon(lightRoastIcon, "Light roast") },
+  { value: "medium", label: "Medium roast", icon: createOptionIcon(mediumRoastIcon, "Medium roast") },
+  { value: "dark", label: "Dark roast", icon: createOptionIcon(darkRoastIcon, "Dark roast") },
+];
+
+const grindOptions: readonly OptionDefinition<GrindValue>[] = [
+  { value: "bean", label: "Whole bean", icon: createOptionIcon(beanGrindIcon, "Whole bean") },
+  { value: "coarse", label: "Coarse grind", icon: createOptionIcon(coarseGrindIcon, "Coarse grind") },
+  { value: "fine", label: "Fine grind", icon: createOptionIcon(fineGrindIcon, "Fine grind") },
+];
+
+const getOptionLabel = <TValue extends string>(
+  value: TValue | undefined,
+  options: readonly OptionDefinition<TValue>[]
+) => options.find((option) => option.value === value)?.label;
 
 const customizationFormSchema = z.object({
   customerName: z
     .string()
     .min(2, "Name must be at least 2 characters long")
     .max(50, "Name must be 50 characters or fewer"),
-  roastProfile: z.string().min(1, "Add a roast profile"),
-  grindSetting: z.string().min(1, "Add a grind setting"),
+  roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
+  grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   tastingNote: z
     .string()
     .max(120, "Tasting note must be 120 characters or fewer")
@@ -41,8 +82,8 @@ const Home = () => {
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
       customerName: "",
-      roastProfile: "",
-      grindSetting: "",
+      roastProfile: "medium",
+      grindSetting: "bean",
       tastingNote: "",
       quantity: 1,
     },
@@ -50,6 +91,8 @@ const Home = () => {
   });
 
   const watchedValues = formMethods.watch();
+  const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
+  const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
     setStatusMessage(
@@ -68,15 +111,17 @@ const Home = () => {
         <FormProvider {...formMethods}>
           <form className={styles.panelForm} onSubmit={(event) => void handleFormSubmit(event)} noValidate>
             <TextInput name="customerName" label="Name" helperText="Shown on the front label." />
-            <TextInput
+            <OptionsInput
               name="roastProfile"
               label="Roast profile"
-              helperText="Light, medium, or dark suggestions welcome."
+              helperText="Choose the roast intensity."
+              options={roastOptions}
             />
-            <TextInput
+            <OptionsInput
               name="grindSetting"
               label="Grind setting"
-              helperText="Whole bean, espresso, pour-over, etc."
+              helperText="Match the grind to your brew method."
+              options={grindOptions}
             />
             <TextInput
               name="tastingNote"
@@ -115,13 +160,13 @@ const Home = () => {
             <li>
               <span className={styles.previewLabel}>Roast profile</span>
               <span className={styles.previewValue}>
-                {formatPreviewValue(watchedValues.roastProfile, "Light / Medium / Dark")}
+                {formatPreviewValue(roastPreviewLabel, "Select a roast profile")}
               </span>
             </li>
             <li>
               <span className={styles.previewLabel}>Grind setting</span>
               <span className={styles.previewValue}>
-                {formatPreviewValue(watchedValues.grindSetting, "Whole bean")}
+                {formatPreviewValue(grindPreviewLabel, "Select a grind setting")}
               </span>
             </li>
             <li>
