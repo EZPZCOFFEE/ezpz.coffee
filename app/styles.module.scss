@@ -67,9 +67,12 @@
     padding: var(--spacing-city);
     border-radius: var(--border-radius-lg);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: var(--spacing-state);
     align-items: stretch;
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
   }
 
   .canvasWrapper {
@@ -81,12 +84,12 @@
     background: var(--color-bg-primary);
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-city);
-    flex: 1 1 320px;
+    width: 100%;
+    align-self: stretch;
   }
 
   .previewCanvas {
-    max-width: 360px;
-    width: 100%;
+    width: min(100%, 648px);
     height: auto;
     aspect-ratio: 3 / 4;
     background: var(--color-gray-100);
@@ -183,7 +186,8 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-street);
-    flex: 1 1 280px;
+    width: 100%;
+    align-self: stretch;
   }
 
   .previewList li {
@@ -212,13 +216,6 @@
     align-items: center;
     padding: 0 var(--spacing-house);
     gap: var(--spacing-street);
-  }
-}
-
-@media (max-width: 1024px) {
-  .displayContent {
-    flex-direction: column;
-    gap: var(--spacing-city);
   }
 }
 

@@ -15,11 +15,12 @@ import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
 import { SurfaceValue } from "./formConfig";
 
-const CANVAS_WIDTH = 360;
-const CANVAS_HEIGHT = 480;
-const LABEL_SQUARE_SIZE = 190;
+const CANVAS_SCALE = 1.8;
+const CANVAS_WIDTH = Math.round(360 * CANVAS_SCALE);
+const CANVAS_HEIGHT = Math.round(480 * CANVAS_SCALE);
+const LABEL_SQUARE_SIZE = 190 * CANVAS_SCALE;
 const LABEL_SQUARE_X = (CANVAS_WIDTH - LABEL_SQUARE_SIZE) / 2;
-const LABEL_SQUARE_Y = 155;
+const LABEL_SQUARE_Y = 155 * CANVAS_SCALE;
 const LABEL_RECT = {
   x: LABEL_SQUARE_X,
   y: LABEL_SQUARE_Y,
@@ -28,9 +29,9 @@ const LABEL_RECT = {
 const ARTWORK_SCALE_MIN = 1;
 const ARTWORK_SCALE_MAX = 3;
 const ARTWORK_SCALE_STEP = 0.01;
-const BOTTOM_STRIP_HEIGHT = 72;
-const PANEL_HEIGHT = 62;
-const PANEL_GAP = 30;
+const BOTTOM_STRIP_HEIGHT = 72 * CANVAS_SCALE;
+const PANEL_HEIGHT = 62 * CANVAS_SCALE;
+const PANEL_GAP = 30 * CANVAS_SCALE;
 
 interface ArtworkOffset {
   x: number;
@@ -183,7 +184,13 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps
     context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
     context.fillStyle = "rgba(255, 255, 255, 0.88)";
-    context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+    if (surfaceValue === "full") {
+      context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+    } else {
+      activeWindows.forEach((windowRect) => {
+        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+      });
+    }
 
     if (artworkImage) {
       const baseScale = Math.max(LABEL_RECT.size / artworkImage.width, LABEL_RECT.size / artworkImage.height);
@@ -214,7 +221,7 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps
     activeWindows.forEach((windowRect) => {
       context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
     });
-  }, [activeWindows, artworkImage, artworkOffset, artworkScale, bagImage]);
+  }, [activeWindows, artworkImage, artworkOffset, artworkScale, bagImage, surfaceValue]);
 
   useEffect(() => {
     drawCanvas();
