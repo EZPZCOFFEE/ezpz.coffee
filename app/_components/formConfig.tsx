@@ -2,6 +2,12 @@ import NextImage, { type StaticImageData } from "next/image";
 import { type ReactNode } from "react";
 import { z } from "zod";
 
+import bottomIconActive from "@/public/design/bottom-white.png";
+import bottomIcon from "@/public/design/bottom.png";
+import fullIconActive from "@/public/design/full-white.png";
+import fullIcon from "@/public/design/full.png";
+import panelsIconActive from "@/public/design/panels-white.png";
+import panelsIcon from "@/public/design/panels.png";
 import beanGrindIcon from "@/public/grind/bean.png";
 import coarseGrindIcon from "@/public/grind/coarse.png";
 import fineGrindIcon from "@/public/grind/fine.png";
@@ -19,10 +25,11 @@ export interface OptionDefinition<TValue extends string> {
   value: TValue;
   label: string;
   icon: ReactNode;
+  activeIcon?: ReactNode;
 }
 
-const createOptionIcon = (src: StaticImageData, alt: string) => (
-  <NextImage src={src} alt={alt} width={28} height={28} />
+const createOptionIcon = (src: StaticImageData, alt: string, size = 28) => (
+  <NextImage src={src} alt={alt} width={size} height={size} />
 );
 
 export const roastOptions: readonly OptionDefinition<RoastValue>[] = [
@@ -36,6 +43,43 @@ export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
   { value: "coarse", label: "Coarse grind", icon: createOptionIcon(coarseGrindIcon, "Coarse grind") },
   { value: "fine", label: "Fine grind", icon: createOptionIcon(fineGrindIcon, "Fine grind") },
 ];
+
+export const surfaceValues = ["panels", "full", "bottom"] as const;
+export type SurfaceValue = (typeof surfaceValues)[number];
+export const defaultSurfaceValue: SurfaceValue = "bottom";
+
+export const surfaceOptions: readonly OptionDefinition<SurfaceValue>[] = [
+  {
+    value: "panels",
+    label: "Panels",
+    icon: createOptionIcon(panelsIcon, "Panels surface", 30),
+    activeIcon: createOptionIcon(panelsIconActive, "Panels surface active", 30),
+  },
+  {
+    value: "full",
+    label: "Full",
+    icon: createOptionIcon(fullIcon, "Full surface", 30),
+    activeIcon: createOptionIcon(fullIconActive, "Full surface active", 30),
+  },
+  {
+    value: "bottom",
+    label: "Bottom",
+    icon: createOptionIcon(bottomIcon, "Bottom strip surface", 30),
+    activeIcon: createOptionIcon(bottomIconActive, "Bottom strip surface active", 30),
+  },
+] as const;
+
+export const surfacePreviewDetails: Record<SurfaceValue, { description: string }> = {
+  panels: {
+    description: "Twin panels keep typography crisp and separated from the artwork.",
+  },
+  full: {
+    description: "Edge-to-edge coverage—best for bold photography or seamless patterns.",
+  },
+  bottom: {
+    description: "Bottom strip treatment works best for high-detail imagery or signatures.",
+  },
+};
 
 export const getOptionLabel = <TValue extends string>(
   value: TValue | undefined,
@@ -70,6 +114,7 @@ export const customizationFormSchema = z.object({
     .max(50, "Name must be 50 characters or fewer"),
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
+  surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
   tastingNote: z
     .string()
     .max(120, "Tasting note must be 120 characters or fewer")

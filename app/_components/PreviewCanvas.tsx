@@ -5,6 +5,7 @@ import {
   type PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -12,11 +13,14 @@ import {
 import styles from "@/app/styles.module.scss";
 import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
-const CANVAS_WIDTH = 360;
-const CANVAS_HEIGHT = 480;
-const LABEL_SQUARE_SIZE = 190;
+import { SurfaceValue } from "./formConfig";
+
+const CANVAS_SCALE = 1.8;
+const CANVAS_WIDTH = Math.round(360 * CANVAS_SCALE);
+const CANVAS_HEIGHT = Math.round(480 * CANVAS_SCALE);
+const LABEL_SQUARE_SIZE = 190 * CANVAS_SCALE;
 const LABEL_SQUARE_X = (CANVAS_WIDTH - LABEL_SQUARE_SIZE) / 2;
-const LABEL_SQUARE_Y = 155;
+const LABEL_SQUARE_Y = 155 * CANVAS_SCALE;
 const LABEL_RECT = {
   x: LABEL_SQUARE_X,
   y: LABEL_SQUARE_Y,
@@ -25,6 +29,9 @@ const LABEL_RECT = {
 const ARTWORK_SCALE_MIN = 1;
 const ARTWORK_SCALE_MAX = 3;
 const ARTWORK_SCALE_STEP = 0.01;
+const BOTTOM_STRIP_HEIGHT = 72 * CANVAS_SCALE;
+const PANEL_HEIGHT = 62 * CANVAS_SCALE;
+const PANEL_GAP = 30 * CANVAS_SCALE;
 
 interface ArtworkOffset {
   x: number;
@@ -33,11 +40,41 @@ interface ArtworkOffset {
 
 const createDefaultArtworkOffset = (): ArtworkOffset => ({ x: 0, y: 0 });
 
-interface PreviewCanvasProps {
-  selectedArtworkFile: File | undefined;
+interface SurfaceWindow {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 }
 
-const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
+const createPanelsWindows = (): readonly SurfaceWindow[] => {
+  const totalPanelHeight = PANEL_HEIGHT * 2 + PANEL_GAP;
+  const startY = LABEL_RECT.y + (LABEL_RECT.size - totalPanelHeight) / 2;
+  return [
+    { x: LABEL_RECT.x, y: startY, width: LABEL_RECT.size, height: PANEL_HEIGHT },
+    { x: LABEL_RECT.x, y: startY + PANEL_HEIGHT + PANEL_GAP, width: LABEL_RECT.size, height: PANEL_HEIGHT },
+  ];
+};
+
+const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
+  panels: createPanelsWindows(),
+  full: [{ x: LABEL_RECT.x, y: LABEL_RECT.y, width: LABEL_RECT.size, height: LABEL_RECT.size }],
+  bottom: [
+    {
+      x: LABEL_RECT.x,
+      y: LABEL_RECT.y + LABEL_RECT.size - BOTTOM_STRIP_HEIGHT,
+      width: LABEL_RECT.size,
+      height: BOTTOM_STRIP_HEIGHT,
+    },
+  ],
+};
+
+interface PreviewCanvasProps {
+  selectedArtworkFile: File | undefined;
+  surfaceValue: SurfaceValue;
+}
+
+const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
     pointerId: number | null;
@@ -53,6 +90,10 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
   const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
   const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
   const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
+  const activeWindows = useMemo(
+    () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
+    [surfaceValue]
+  );
 
   useEffect(() => {
     const image = new Image();
@@ -143,7 +184,13 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
     context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
     context.fillStyle = "rgba(255, 255, 255, 0.88)";
-    context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+    if (surfaceValue === "full") {
+      context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+    } else {
+      activeWindows.forEach((windowRect) => {
+        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+      });
+    }
 
     if (artworkImage) {
       const baseScale = Math.max(LABEL_RECT.size / artworkImage.width, LABEL_RECT.size / artworkImage.height);
@@ -155,7 +202,9 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
 
       context.save();
       context.beginPath();
-      context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+      activeWindows.forEach((windowRect) => {
+        context.rect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+      });
       context.clip();
       context.drawImage(
         artworkImage,
@@ -169,8 +218,10 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
 
     context.strokeStyle = "rgba(255, 137, 92, 0.95)";
     context.lineWidth = 3;
-    context.strokeRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
-  }, [artworkImage, artworkOffset, artworkScale, bagImage]);
+    activeWindows.forEach((windowRect) => {
+      context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+    });
+  }, [activeWindows, artworkImage, artworkOffset, artworkScale, bagImage, surfaceValue]);
 
   useEffect(() => {
     drawCanvas();
@@ -186,10 +237,13 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
   };
 
   const isPointInsideCrop = (point: { x: number; y: number }) =>
-    point.x >= LABEL_RECT.x &&
-    point.x <= LABEL_RECT.x + LABEL_RECT.size &&
-    point.y >= LABEL_RECT.y &&
-    point.y <= LABEL_RECT.y + LABEL_RECT.size;
+    activeWindows.some(
+      (windowRect) =>
+        point.x >= windowRect.x &&
+        point.x <= windowRect.x + windowRect.width &&
+        point.y >= windowRect.y &&
+        point.y <= windowRect.y + windowRect.height
+    );
 
   const handleCanvasPointerDown = (event: ReactPointerEvent<HTMLCanvasElement>) => {
     if (!artworkImage) return;
@@ -304,7 +358,9 @@ const PreviewCanvas = ({ selectedArtworkFile }: PreviewCanvasProps) => {
                 Center image
               </button>
             </div>
-            <p className={styles.cropHint}>Drag inside the square—only the highlighted area prints.</p>
+            <p className={styles.cropHint}>
+              Drag inside the highlighted area—only the outlined surface prints.
+            </p>
           </>
         ) : (
           <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>

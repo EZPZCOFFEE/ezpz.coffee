@@ -6,9 +6,15 @@ interface PreviewSummaryProps {
   formValues: Partial<CustomizationFormValues>;
   roastPreviewLabel?: string;
   grindPreviewLabel?: string;
+  surfacePreviewLabel?: string;
 }
 
-const PreviewSummary = ({ formValues, roastPreviewLabel, grindPreviewLabel }: PreviewSummaryProps) => {
+const PreviewSummary = ({
+  formValues,
+  roastPreviewLabel,
+  grindPreviewLabel,
+  surfacePreviewLabel,
+}: PreviewSummaryProps) => {
   const quantity = formValues.quantity ?? 1;
 
   return (
@@ -29,6 +35,12 @@ const PreviewSummary = ({ formValues, roastPreviewLabel, grindPreviewLabel }: Pr
         <span className={styles.previewLabel}>Grind setting</span>
         <span className={styles.previewValue}>
           {formatPreviewValue(grindPreviewLabel, "Select a grind setting")}
+        </span>
+      </li>
+      <li>
+        <span className={styles.previewLabel}>Surface</span>
+        <span className={styles.previewValue}>
+          {formatPreviewValue(surfacePreviewLabel, "Choose a surface layout")}
         </span>
       </li>
       <li>

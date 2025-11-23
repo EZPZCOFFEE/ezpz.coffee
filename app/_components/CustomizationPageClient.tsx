@@ -10,10 +10,13 @@ import CustomizationPanel from "./CustomizationPanel";
 import {
   CustomizationFormValues,
   customizationFormSchema,
+  defaultSurfaceValue,
   formatPreviewValue,
   getOptionLabel,
   grindOptions,
   roastOptions,
+  surfaceOptions,
+  surfacePreviewDetails,
 } from "./formConfig";
 import PreviewDisplay from "./PreviewDisplay";
 
@@ -25,6 +28,7 @@ const CustomizationPageClient = () => {
       customerName: "",
       roastProfile: "medium",
       grindSetting: "bean",
+      surfaceLayout: defaultSurfaceValue,
       tastingNote: "",
       quantity: 1,
       artworkFile: [],
@@ -36,6 +40,9 @@ const CustomizationPageClient = () => {
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
   const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
   const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
+  const surfaceValue = watchedValues.surfaceLayout ?? defaultSurfaceValue;
+  const surfacePreviewLabel = getOptionLabel(surfaceValue, surfaceOptions);
+  const surfacePreviewDetail = surfacePreviewDetails[surfaceValue];
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
     setStatusMessage(
@@ -60,6 +67,9 @@ const CustomizationPageClient = () => {
           roastPreviewLabel={roastPreviewLabel}
           grindPreviewLabel={grindPreviewLabel}
           selectedArtworkFile={selectedArtworkFile}
+          surfaceValue={surfaceValue}
+          surfacePreviewLabel={surfacePreviewLabel}
+          surfacePreviewDescription={surfacePreviewDetail.description}
         />
       </div>
     </FormProvider>
