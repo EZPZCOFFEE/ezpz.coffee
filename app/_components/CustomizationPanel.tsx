@@ -1,4 +1,6 @@
-import { FormEvent } from "react";
+"use client";
+
+import type { FormEvent } from "react";
 
 import styles from "@/app/styles.module.scss";
 import FileUploadInput from "@/components/form/FileUpload";

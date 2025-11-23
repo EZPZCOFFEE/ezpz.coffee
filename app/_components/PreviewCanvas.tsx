@@ -351,7 +351,9 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps
                 Center image
               </button>
             </div>
-            <p className={styles.cropHint}>Drag inside the highlighted area—only the outlined surface prints.</p>
+            <p className={styles.cropHint}>
+              Drag inside the highlighted area—only the outlined surface prints.
+            </p>
           </>
         ) : (
           <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>

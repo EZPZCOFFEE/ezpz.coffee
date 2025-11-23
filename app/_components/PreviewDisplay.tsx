@@ -38,9 +38,7 @@ const PreviewDisplay = ({
         />
       </div>
       <div className={styles.displayFooter}>
-        <span>
-          Selected surface: {surfacePreviewLabel ?? "Choose a surface"}
-        </span>
+        <span>Selected surface: {surfacePreviewLabel ?? "Choose a surface"}</span>
         <span>{surfacePreviewDescription}</span>
       </div>
     </div>

@@ -58,7 +58,10 @@ const CustomizationPageClient = () => {
   return (
     <FormProvider {...formMethods}>
       <div className={styles.container}>
-        <CustomizationPanel statusMessage={statusMessage} onSubmit={(event) => void handleFormSubmit(event)} />
+        <CustomizationPanel
+          statusMessage={statusMessage}
+          onSubmit={(event) => void handleFormSubmit(event)}
+        />
         <PreviewDisplay
           formValues={watchedValues}
           roastPreviewLabel={roastPreviewLabel}
