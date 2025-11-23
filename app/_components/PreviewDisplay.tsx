@@ -29,7 +29,11 @@ const PreviewDisplay = ({
         Preview <span className={styles.productTitle}>225g bag</span>
       </h2>
       <div className={styles.displayContent}>
-        <PreviewCanvas selectedArtworkFile={selectedArtworkFile} surfaceValue={surfaceValue} />
+        <PreviewCanvas
+          selectedArtworkFile={selectedArtworkFile}
+          surfaceValue={surfaceValue}
+          customerName={formValues.customerName}
+        />
         <PreviewSummary
           formValues={formValues}
           roastPreviewLabel={roastPreviewLabel}

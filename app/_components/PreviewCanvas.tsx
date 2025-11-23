@@ -69,12 +69,77 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
   ],
 };
 
+const NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
+const NAME_FONT_MAX = 20 * CANVAS_SCALE;
+const NAME_FONT_MIN = 12 * CANVAS_SCALE;
+const NAME_PADDING_X = 24 * CANVAS_SCALE;
+const NAME_PADDING_Y = 28 * CANVAS_SCALE;
+const NAME_TEXT_RIGHT = LABEL_RECT.x + LABEL_RECT.size - NAME_PADDING_X;
+const NAME_TEXT_BASELINE = LABEL_RECT.y + LABEL_RECT.size - NAME_PADDING_Y;
+const NAME_MAX_TEXT_WIDTH = LABEL_RECT.size - NAME_PADDING_X * 2;
+const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
+
+const planNameRendering = (
+  context: CanvasRenderingContext2D,
+  rawName: string
+):
+  | {
+      text: string;
+      fontSize: number;
+    }
+  | null => {
+  const sanitized = rawName.trim();
+  if (!sanitized) {
+    return null;
+  }
+
+  const hardLimit = Math.max(1, NAME_CHARACTER_LIMIT);
+  let workingName = sanitized.length > hardLimit ? sanitized.slice(0, hardLimit) : sanitized;
+  let fontSize = NAME_FONT_MAX;
+
+  const setFont = (size: number) => {
+    context.font = `${size}px ${NAME_FONT_FAMILY}`;
+  };
+
+  setFont(fontSize);
+  let measuredWidth = context.measureText(workingName).width;
+
+  while (measuredWidth > NAME_MAX_TEXT_WIDTH && fontSize > NAME_FONT_MIN) {
+    const scale = Math.max(0.5, NAME_MAX_TEXT_WIDTH / measuredWidth);
+    const nextFontSize = Math.max(NAME_FONT_MIN, Math.floor(fontSize * scale));
+    if (nextFontSize === fontSize) {
+      fontSize = Math.max(NAME_FONT_MIN, fontSize - 1);
+    } else {
+      fontSize = nextFontSize;
+    }
+    setFont(fontSize);
+    measuredWidth = context.measureText(workingName).width;
+  }
+
+  if (measuredWidth > NAME_MAX_TEXT_WIDTH) {
+    const ellipsis = "…";
+    let truncated = workingName;
+    while (truncated.length > 1 && context.measureText(`${truncated}${ellipsis}`).width > NAME_MAX_TEXT_WIDTH) {
+      truncated = truncated.slice(0, -1);
+    }
+    workingName = `${truncated}${ellipsis}`;
+    fontSize = NAME_FONT_MIN;
+    setFont(fontSize);
+  }
+
+  return {
+    text: workingName,
+    fontSize,
+  };
+};
+
 interface PreviewCanvasProps {
   selectedArtworkFile: File | undefined;
   surfaceValue: SurfaceValue;
+  customerName?: string;
 }
 
-const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps) => {
+const PreviewCanvas = ({ selectedArtworkFile, surfaceValue, customerName }: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
     pointerId: number | null;
@@ -165,6 +230,8 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps
     [artworkImage, artworkScale]
   );
 
+  const sanitizedName = customerName?.trim() ?? "";
+
   const drawCanvas = useCallback(() => {
     const canvas = bagCanvasRef.current;
     if (!canvas) return;
@@ -221,7 +288,30 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue }: PreviewCanvasProps
     activeWindows.forEach((windowRect) => {
       context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
     });
-  }, [activeWindows, artworkImage, artworkOffset, artworkScale, bagImage, surfaceValue]);
+
+    if (sanitizedName) {
+      const namePlan = planNameRendering(context, sanitizedName);
+      if (namePlan) {
+        context.save();
+        context.font = `${namePlan.fontSize}px ${NAME_FONT_FAMILY}`;
+        context.textAlign = "right";
+        context.textBaseline = "bottom";
+        context.fillStyle = "rgba(16, 16, 16, 0.95)";
+        context.shadowColor = "rgba(255, 255, 255, 0.5)";
+        context.shadowBlur = 4;
+        context.fillText(namePlan.text, NAME_TEXT_RIGHT, NAME_TEXT_BASELINE);
+        context.restore();
+      }
+    }
+  }, [
+    activeWindows,
+    artworkImage,
+    artworkOffset,
+    artworkScale,
+    bagImage,
+    sanitizedName,
+    surfaceValue,
+  ]);
 
   useEffect(() => {
     drawCanvas();
