@@ -1,6 +1,6 @@
 import NextImage, { type StaticImageData } from "next/image";
-import { z } from "zod";
 import { type ReactNode } from "react";
+import { z } from "zod";
 
 import beanGrindIcon from "@/public/grind/bean.png";
 import coarseGrindIcon from "@/public/grind/coarse.png";

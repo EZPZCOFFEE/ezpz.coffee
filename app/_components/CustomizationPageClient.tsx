@@ -1,12 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
+import { SubmitHandler, FormProvider, useForm } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
+
 import CustomizationPanel from "./CustomizationPanel";
-import PreviewDisplay from "./PreviewDisplay";
 import {
   CustomizationFormValues,
   customizationFormSchema,
@@ -15,6 +15,7 @@ import {
   grindOptions,
   roastOptions,
 } from "./formConfig";
+import PreviewDisplay from "./PreviewDisplay";
 
 const CustomizationPageClient = () => {
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -50,7 +51,10 @@ const CustomizationPageClient = () => {
   return (
     <FormProvider {...formMethods}>
       <div className={styles.container}>
-        <CustomizationPanel statusMessage={statusMessage} onSubmit={handleFormSubmit} />
+        <CustomizationPanel
+          statusMessage={statusMessage}
+          onSubmit={(event) => void handleFormSubmit(event)}
+        />
         <PreviewDisplay
           formValues={watchedValues}
           roastPreviewLabel={roastPreviewLabel}

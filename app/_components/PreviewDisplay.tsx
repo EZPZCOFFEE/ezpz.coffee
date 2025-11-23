@@ -1,10 +1,11 @@
 import styles from "@/app/styles.module.scss";
+
 import { CustomizationFormValues } from "./formConfig";
 import PreviewCanvas from "./PreviewCanvas";
 import PreviewSummary from "./PreviewSummary";
 
 interface PreviewDisplayProps {
-  formValues: CustomizationFormValues;
+  formValues: Partial<CustomizationFormValues>;
   roastPreviewLabel?: string;
   grindPreviewLabel?: string;
   selectedArtworkFile?: File;

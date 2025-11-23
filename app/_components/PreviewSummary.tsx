@@ -1,8 +1,9 @@
 import styles from "@/app/styles.module.scss";
+
 import { CustomizationFormValues, formatPreviewValue } from "./formConfig";
 
 interface PreviewSummaryProps {
-  formValues: CustomizationFormValues;
+  formValues: Partial<CustomizationFormValues>;
   roastPreviewLabel?: string;
   grindPreviewLabel?: string;
 }

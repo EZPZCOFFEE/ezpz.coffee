@@ -9,8 +9,8 @@ import {
   useState,
 } from "react";
 
-import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 import styles from "@/app/styles.module.scss";
+import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
 const CANVAS_WIDTH = 360;
 const CANVAS_HEIGHT = 480;

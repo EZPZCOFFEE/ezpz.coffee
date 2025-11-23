@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import CustomizationPageClient from "./_components/customization/CustomizationPageClient";
+import CustomizationPageClient from "./_components/CustomizationPageClient";
 
 export const metadata: Metadata = {
   title: "Customize your EZPZ coffee bags",

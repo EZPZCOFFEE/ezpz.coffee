@@ -1,12 +1,12 @@
 import { FormEvent } from "react";
 
+import styles from "@/app/styles.module.scss";
 import FileUploadInput from "@/components/form/FileUpload";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 
-import styles from "@/app/styles.module.scss";
 import { grindOptions, roastOptions } from "./formConfig";
 
 interface CustomizationPanelProps {
