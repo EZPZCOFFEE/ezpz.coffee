@@ -7,7 +7,7 @@ import OptionsInput from "@/components/form/OptionsInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 
-import { grindOptions, roastOptions } from "./formConfig";
+import { grindOptions, roastOptions, surfaceOptions } from "./formConfig";
 
 interface CustomizationPanelProps {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
@@ -31,6 +31,12 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           label="Grind setting"
           helperText="Match the grind to your brew method."
           options={grindOptions}
+        />
+        <OptionsInput
+          name="surfaceLayout"
+          label="Bag surface"
+          helperText="Decide which part of the bag gets your art."
+          options={surfaceOptions}
         />
         <TextInput
           name="tastingNote"
