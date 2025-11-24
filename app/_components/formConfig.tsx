@@ -86,6 +86,15 @@ export const getOptionLabel = <TValue extends string>(
   options: readonly OptionDefinition<TValue>[]
 ) => options.find((option) => option.value === value)?.label;
 
+export const hexColorRegex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
+export const defaultNameColor = "#111827";
+
+export const sanitizeHexColor = (color: string | undefined): string => {
+  if (!color) return defaultNameColor;
+  const trimmed = color.trim();
+  return hexColorRegex.test(trimmed) ? trimmed : defaultNameColor;
+};
+
 const isFileLike = (value: unknown): value is File => {
   if (typeof value !== "object" || value === null) {
     return false;
@@ -112,6 +121,7 @@ export const customizationFormSchema = z.object({
     .string()
     .min(2, "Name must be at least 2 characters long")
     .max(50, "Name must be 50 characters or fewer"),
+  nameColor: z.string().regex(hexColorRegex, { message: "Enter a valid hex color (for example #111827)" }),
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),

@@ -13,7 +13,7 @@ import {
 import styles from "@/app/styles.module.scss";
 import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
-import { SurfaceValue } from "./formConfig";
+import { SurfaceValue, formatPreviewValue, sanitizeHexColor } from "./formConfig";
 
 const CANVAS_SCALE = 1.8;
 const CANVAS_WIDTH = Math.round(360 * CANVAS_SCALE);
@@ -82,12 +82,10 @@ const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_
 const planNameRendering = (
   context: CanvasRenderingContext2D,
   rawName: string
-):
-  | {
-      text: string;
-      fontSize: number;
-    }
-  | null => {
+): {
+  text: string;
+  fontSize: number;
+} | null => {
   const sanitized = rawName.trim();
   if (!sanitized) {
     return null;
@@ -119,7 +117,10 @@ const planNameRendering = (
   if (measuredWidth > NAME_MAX_TEXT_WIDTH) {
     const ellipsis = "…";
     let truncated = workingName;
-    while (truncated.length > 1 && context.measureText(`${truncated}${ellipsis}`).width > NAME_MAX_TEXT_WIDTH) {
+    while (
+      truncated.length > 1 &&
+      context.measureText(`${truncated}${ellipsis}`).width > NAME_MAX_TEXT_WIDTH
+    ) {
       truncated = truncated.slice(0, -1);
     }
     workingName = `${truncated}${ellipsis}`;
@@ -137,9 +138,15 @@ interface PreviewCanvasProps {
   selectedArtworkFile: File | undefined;
   surfaceValue: SurfaceValue;
   customerName?: string;
+  nameColor?: string;
 }
 
-const PreviewCanvas = ({ selectedArtworkFile, surfaceValue, customerName }: PreviewCanvasProps) => {
+const PreviewCanvas = ({
+  selectedArtworkFile,
+  surfaceValue,
+  customerName,
+  nameColor,
+}: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
     pointerId: number | null;
@@ -159,6 +166,8 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue, customerName }: Prev
     () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
     [surfaceValue]
   );
+  const displayName = useMemo(() => formatPreviewValue(customerName, "Your blend"), [customerName]);
+  const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
 
   useEffect(() => {
     const image = new Image();
@@ -283,6 +292,31 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue, customerName }: Prev
       context.restore();
     }
 
+    if (displayName.trim().length > 0) {
+      const maxWidth = LABEL_RECT.size - 40;
+      let fontSize = 56;
+      context.save();
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillStyle = nameTextColor;
+      context.shadowColor = "rgba(255, 255, 255, 0.4)";
+      context.shadowBlur = 8;
+
+      const fontFamily = "'Space Grotesk', 'Inter', sans-serif";
+      context.font = `600 ${fontSize}px ${fontFamily}`;
+      let metrics = context.measureText(displayName);
+      while (metrics.width > maxWidth && fontSize > 20) {
+        fontSize -= 2;
+        context.font = `600 ${fontSize}px ${fontFamily}`;
+        metrics = context.measureText(displayName);
+      }
+
+      const textX = LABEL_RECT.x + LABEL_RECT.size / 2;
+      const textY = LABEL_RECT.y + LABEL_RECT.size * 0.28;
+      context.fillText(displayName, textX, textY, maxWidth);
+      context.restore();
+    }
+
     context.strokeStyle = "rgba(255, 137, 92, 0.95)";
     context.lineWidth = 3;
     activeWindows.forEach((windowRect) => {
@@ -309,6 +343,8 @@ const PreviewCanvas = ({ selectedArtworkFile, surfaceValue, customerName }: Prev
     artworkOffset,
     artworkScale,
     bagImage,
+    displayName,
+    nameTextColor,
     sanitizedName,
     surfaceValue,
   ]);

@@ -10,6 +10,7 @@ import CustomizationPanel from "./CustomizationPanel";
 import {
   CustomizationFormValues,
   customizationFormSchema,
+  defaultNameColor,
   defaultSurfaceValue,
   formatPreviewValue,
   getOptionLabel,
@@ -26,6 +27,7 @@ const CustomizationPageClient = () => {
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
       customerName: "",
+      nameColor: defaultNameColor,
       roastProfile: "medium",
       grindSetting: "bean",
       surfaceLayout: defaultSurfaceValue,
