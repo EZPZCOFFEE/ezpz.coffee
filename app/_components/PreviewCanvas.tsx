@@ -11,7 +11,7 @@ import {
 } from "react";
 
 import styles from "@/app/styles.module.scss";
-import bagMockupBlank from "@/public/bags/mockup-blank.png";
+import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
 import { SurfaceValue, formatPreviewValue, sanitizeHexColor } from "./formConfig";
 
@@ -447,19 +447,22 @@ const PreviewCanvas = ({
 
   return (
     <div className={styles.canvasWrapper}>
-      <canvas
-        ref={bagCanvasRef}
-        className={styles.previewCanvas}
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-        role="img"
-        aria-label="Bag mockup preview"
-        onPointerDown={handleCanvasPointerDown}
-        onPointerMove={handleCanvasPointerMove}
-        onPointerUp={handleCanvasPointerUp}
-        onPointerLeave={handleCanvasPointerLeave}
-        onPointerCancel={handleCanvasPointerCancel}
-      />
+      <div className={styles.canvasContainer}>
+        <canvas
+          ref={bagCanvasRef}
+          className={styles.previewCanvas}
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+          role="img"
+          aria-label="Bag mockup preview"
+          onPointerDown={handleCanvasPointerDown}
+          onPointerMove={handleCanvasPointerMove}
+          onPointerUp={handleCanvasPointerUp}
+          onPointerLeave={handleCanvasPointerLeave}
+          onPointerCancel={handleCanvasPointerCancel}
+        />
+      </div>
+
       <div className={styles.canvasControls}>
         {artworkImage ? (
           <>
@@ -485,9 +488,6 @@ const PreviewCanvas = ({
                 Center image
               </button>
             </div>
-            <p className={styles.cropHint}>
-              Drag inside the highlighted area—only the outlined surface prints.
-            </p>
           </>
         ) : (
           <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>
