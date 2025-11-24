@@ -68,6 +68,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  pointer-events: none;
 }
 
 .previewSwatch {
@@ -81,6 +82,11 @@
   color: var(--color-gray-700);
 }
 
+.control {
+  width: 100%;
+  display: flex;
+}
+
 .content {
   position: relative;
   margin-top: var(--spacing-house);
@@ -92,10 +98,10 @@
   flex-direction: column;
   gap: var(--spacing-state);
   width: min(320px, calc(100vw - var(--spacing-country)));
-}
 
-.positioner {
-  z-index: 40;
+  &[data-state="closed"] {
+    display: none;
+  }
 }
 
 .areaSection {
@@ -105,23 +111,15 @@
 }
 
 .area {
-  position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-}
+  height: 160px;
+  min-height: 160px;
 
-.areaGrid,
-.areaBackground {
-  position: absolute;
-  inset: 0;
-}
-
-.areaGrid {
-  z-index: 0;
+  .areaBackground {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
 }
 
 .areaThumb {
@@ -158,6 +156,7 @@
   border-radius: var(--border-radius-full);
   height: 10px;
   z-index: 0;
+  pointer-events: none;
 }
 
 .sliderTrack {
@@ -167,6 +166,7 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
 .sliderThumb {
@@ -269,4 +269,10 @@
 
 .error {
   color: var(--color-error);
+}
+
+.positioner {
+  top: unset !important;
+  left: unset !important;
+  z-index: 4 !important;
 }
