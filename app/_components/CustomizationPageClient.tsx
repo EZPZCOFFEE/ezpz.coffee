@@ -60,19 +60,23 @@ const CustomizationPageClient = () => {
   return (
     <FormProvider {...formMethods}>
       <div className={styles.container}>
-        <CustomizationPanel
-          statusMessage={statusMessage}
-          onSubmit={(event) => void handleFormSubmit(event)}
-        />
-        <PreviewDisplay
-          formValues={watchedValues}
-          roastPreviewLabel={roastPreviewLabel}
-          grindPreviewLabel={grindPreviewLabel}
-          selectedArtworkFile={selectedArtworkFile}
-          surfaceValue={surfaceValue}
-          surfacePreviewLabel={surfacePreviewLabel}
-          surfacePreviewDescription={surfacePreviewDetail.description}
-        />
+        <div className={styles.panelColumn}>
+          <CustomizationPanel
+            statusMessage={statusMessage}
+            onSubmit={(event) => void handleFormSubmit(event)}
+          />
+        </div>
+        <div className={styles.previewColumn}>
+          <PreviewDisplay
+            formValues={watchedValues}
+            roastPreviewLabel={roastPreviewLabel}
+            grindPreviewLabel={grindPreviewLabel}
+            selectedArtworkFile={selectedArtworkFile}
+            surfaceValue={surfaceValue}
+            surfacePreviewLabel={surfacePreviewLabel}
+            surfacePreviewDescription={surfacePreviewDetail.description}
+          />
+        </div>
       </div>
     </FormProvider>
   );

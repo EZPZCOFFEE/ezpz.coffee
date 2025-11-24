@@ -2,7 +2,6 @@ import styles from "@/app/styles.module.scss";
 
 import { CustomizationFormValues, SurfaceValue } from "./formConfig";
 import PreviewCanvas from "./PreviewCanvas";
-import PreviewSummary from "./PreviewSummary";
 
 interface PreviewDisplayProps {
   formValues: Partial<CustomizationFormValues>;
@@ -16,8 +15,7 @@ interface PreviewDisplayProps {
 
 const PreviewDisplay = ({
   formValues,
-  roastPreviewLabel,
-  grindPreviewLabel,
+
   selectedArtworkFile,
   surfaceValue,
   surfacePreviewLabel,
@@ -34,12 +32,6 @@ const PreviewDisplay = ({
           surfaceValue={surfaceValue}
           customerName={formValues.customerName}
           nameColor={formValues.nameColor}
-        />
-        <PreviewSummary
-          formValues={formValues}
-          roastPreviewLabel={roastPreviewLabel}
-          grindPreviewLabel={grindPreviewLabel}
-          surfacePreviewLabel={surfacePreviewLabel}
         />
       </div>
       <div className={styles.displayFooter}>

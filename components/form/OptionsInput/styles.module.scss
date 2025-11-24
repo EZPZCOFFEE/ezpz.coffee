@@ -18,32 +18,38 @@
 }
 
 .track {
+  --track-padding: var(--spacing-room);
   position: relative;
   display: flex;
   align-items: stretch;
   width: 100%;
   border-radius: var(--border-radius-full);
   background: var(--color-bg-secondary);
-  padding: var(--spacing-room);
+  padding: var(--track-padding);
   min-height: 64px;
+  overflow: hidden;
 }
 
 .indicator {
   position: absolute;
-  inset: var(--spacing-dot);
+  top: var(--spacing-dot);
+  bottom: var(--spacing-dot);
+  left: var(--track-padding);
   border-radius: var(--border-radius-full);
   background: var(--color-accent);
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.15),
     inset 0 0 0 1px rgba(255, 255, 255, 0.3);
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
+  will-change: transform;
+  width: calc((100% - (var(--track-padding) * 2)) / var(--option-count, 1));
 }
 
 .option {
   flex: 1;
   position: relative;
-  z-index: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,22 +88,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: currentColor;
   transition: color 0.2s ease;
-  :global(svg),
-  :global(img) {
-    width: 22px;
-    height: 22px;
+  color: var(--color-gray-600);
+
+  svg {
+    width: 100%;
+    height: 100%;
     display: block;
-    fill: currentColor;
-    stroke: currentColor;
-    object-fit: contain;
   }
 }
 
+.option[data-active="true"] .iconWrapper {
+  color: var(--color-white);
+}
+
+.optionLabels {
+  display: flex;
+  gap: var(--spacing-room);
+  padding: 0 var(--spacing-room);
+  margin-top: var(--spacing-house);
+}
+
 .optionLabel {
+  flex: 1;
+  text-align: center;
   text-transform: lowercase;
   letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-gray-500);
+  transition: color 0.2s ease;
+}
+
+.optionLabelActive {
+  color: var(--color-accent);
 }
 
 .helper {
@@ -108,4 +132,16 @@
 .error {
   font-size: 0.8rem;
   color: var(--color-warning);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

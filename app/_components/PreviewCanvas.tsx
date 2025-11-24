@@ -15,9 +15,10 @@ import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
 import { SurfaceValue, formatPreviewValue, sanitizeHexColor } from "./formConfig";
 
-const CANVAS_SCALE = 1.8;
-const CANVAS_WIDTH = Math.round(360 * CANVAS_SCALE);
-const CANVAS_HEIGHT = Math.round(480 * CANVAS_SCALE);
+const CANVAS_SCALE = 2.2;
+const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
+const CANVAS_WIDTH = CANVAS_SIDE;
+const CANVAS_HEIGHT = CANVAS_SIDE;
 const LABEL_SQUARE_SIZE = 190 * CANVAS_SCALE;
 const LABEL_SQUARE_X = (CANVAS_WIDTH - LABEL_SQUARE_SIZE) / 2;
 const LABEL_SQUARE_Y = 155 * CANVAS_SCALE;
@@ -446,19 +447,22 @@ const PreviewCanvas = ({
 
   return (
     <div className={styles.canvasWrapper}>
-      <canvas
-        ref={bagCanvasRef}
-        className={styles.previewCanvas}
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-        role="img"
-        aria-label="Bag mockup preview"
-        onPointerDown={handleCanvasPointerDown}
-        onPointerMove={handleCanvasPointerMove}
-        onPointerUp={handleCanvasPointerUp}
-        onPointerLeave={handleCanvasPointerLeave}
-        onPointerCancel={handleCanvasPointerCancel}
-      />
+      <div className={styles.canvasContainer}>
+        <canvas
+          ref={bagCanvasRef}
+          className={styles.previewCanvas}
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+          role="img"
+          aria-label="Bag mockup preview"
+          onPointerDown={handleCanvasPointerDown}
+          onPointerMove={handleCanvasPointerMove}
+          onPointerUp={handleCanvasPointerUp}
+          onPointerLeave={handleCanvasPointerLeave}
+          onPointerCancel={handleCanvasPointerCancel}
+        />
+      </div>
+
       <div className={styles.canvasControls}>
         {artworkImage ? (
           <>
@@ -484,9 +488,6 @@ const PreviewCanvas = ({
                 Center image
               </button>
             </div>
-            <p className={styles.cropHint}>
-              Drag inside the highlighted area—only the outlined surface prints.
-            </p>
           </>
         ) : (
           <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>

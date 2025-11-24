@@ -1,25 +1,54 @@
 .container {
-  display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: var(--spacing-state);
+  display: flex;
   align-items: flex-start;
+  gap: var(--spacing-state);
   width: 100%;
+  margin: 0;
+  padding: 0 var(--spacing-state);
+}
+
+.panelColumn {
+  flex: 0 0 420px;
+  max-width: 420px;
+  height: 100vh;
+  padding: var(--spacing-state) 0;
+  width: 100%;
+}
+
+.previewColumn {
+  flex: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--spacing-state) 0 var(--spacing-state) var(--spacing-state);
 }
 
 @media (max-width: 1200px) {
   .container {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    padding: 0 var(--spacing-city);
   }
-}
 
-@media (max-width: 600px) {
-  .container {
-    gap: var(--spacing-city);
+  .panelColumn {
+    flex: 1;
+    max-width: none;
+    height: auto;
+    padding: var(--spacing-city) 0;
+  }
+
+  .previewColumn {
+    position: static;
+    height: auto;
+    width: 100%;
+    padding: 0 0 var(--spacing-city);
   }
 }
 
 .panel {
-  padding: var(--spacing-state);
+  width: 100%;
 
   .panelTitle {
     font-size: var(--font-size-fluid-xl);
@@ -47,6 +76,7 @@
   flex-direction: column;
   gap: var(--spacing-state);
   padding: var(--spacing-state);
+  height: 100%;
 
   .displayHeader {
     font-size: var(--font-size-fluid-xl);
@@ -68,10 +98,10 @@
     border-radius: var(--border-radius-lg);
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: var(--spacing-state);
     align-items: stretch;
     width: 100%;
-    max-width: 1040px;
     margin: 0 auto;
   }
 
@@ -81,26 +111,42 @@
     justify-content: center;
     align-items: center;
     gap: var(--spacing-city);
-    background: var(--color-bg-primary);
+    background: var(--color-bg-secondary);
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-city);
     width: 100%;
+    height: 100%;
     align-self: stretch;
+
+    .canvasContainer {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      background: var(--color-bg-primary);
+      border-radius: var(--border-radius-lg);
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+    }
   }
 
   .previewCanvas {
-    width: min(100%, 648px);
+    width: auto;
     height: auto;
-    aspect-ratio: 3 / 4;
-    background: var(--color-gray-100);
+    aspect-ratio: 1 / 1;
+    background: var(--color-bg-secondary);
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+
+    @media (max-width: 1200px) {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
   }
 
   .canvasControls {
     width: 100%;
     display: flex;
-    flex-direction: column;
     gap: var(--spacing-street);
   }
 
@@ -121,7 +167,7 @@
     appearance: none;
     height: 4px;
     border-radius: var(--border-radius-full);
-    background: var(--color-gray-200);
+    background: var(--color-gray-400);
     outline: none;
   }
 
@@ -159,13 +205,14 @@
 
   .cropResetButton {
     border: none;
-    background: var(--color-gray-100);
+    background: var(--color-white);
     color: var(--color-text-primary);
-    font-weight: var(--font-weight-semibold);
-    padding: var(--spacing-dot) var(--spacing-city);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-fluid-sm);
+    padding: var(--spacing-room) var(--spacing-house);
     border-radius: var(--border-radius-full);
     cursor: pointer;
-    transition: background 150ms ease;
+    white-space: nowrap;
   }
 
   .cropResetButton:hover {
@@ -179,32 +226,10 @@
     text-align: center;
   }
 
-  .previewList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-street);
-    width: 100%;
-    align-self: stretch;
-  }
-
-  .previewList li {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--spacing-city);
-  }
-
-  .previewLabel {
-    font-weight: 600;
-    color: var(--color-text-secondary);
-  }
-
-  .previewValue {
-    flex: 1;
-    text-align: right;
-    color: var(--color-gray-500);
+  @media (min-width: 1280px) {
+    .canvasControls {
+      width: 240px;
+    }
   }
 
   .displayFooter {
@@ -220,19 +245,6 @@
 }
 
 @media (max-width: 600px) {
-  .previewCanvas {
-    max-width: 100%;
-  }
-
-  .previewList li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .previewValue {
-    text-align: left;
-  }
-
   .displayFooter {
     flex-direction: column;
     align-items: flex-start;
