@@ -1,19 +1,17 @@
-import NextImage, { type StaticImageData } from "next/image";
-import { type ReactNode } from "react";
+import { type ReactNode, type SVGProps } from "react";
 import { z } from "zod";
 
-import bottomIconActive from "@/public/design/bottom-white.png";
-import bottomIcon from "@/public/design/bottom.png";
-import fullIconActive from "@/public/design/full-white.png";
-import fullIcon from "@/public/design/full.png";
-import panelsIconActive from "@/public/design/panels-white.png";
-import panelsIcon from "@/public/design/panels.png";
-import beanGrindIcon from "@/public/grind/bean.png";
-import coarseGrindIcon from "@/public/grind/coarse.png";
-import fineGrindIcon from "@/public/grind/fine.png";
-import darkRoastIcon from "@/public/roast/dark.png";
-import lightRoastIcon from "@/public/roast/light.png";
-import mediumRoastIcon from "@/public/roast/medium.png";
+import {
+  BeanGrindIcon,
+  BottomSurfaceIcon,
+  CoarseGrindIcon,
+  DarkRoastIcon,
+  FineGrindIcon,
+  FullSurfaceIcon,
+  LightRoastIcon,
+  MediumRoastIcon,
+  PanelsSurfaceIcon,
+} from "@/components/icons/CustomizationIcons";
 
 export const roastValues = ["light", "medium", "dark"] as const;
 export type RoastValue = (typeof roastValues)[number];
@@ -25,23 +23,46 @@ export interface OptionDefinition<TValue extends string> {
   value: TValue;
   label: string;
   icon: ReactNode;
-  activeIcon?: ReactNode;
 }
 
-const createOptionIcon = (src: StaticImageData, alt: string, size = 28) => (
-  <NextImage src={src} alt={alt} width={size} height={size} />
+const createOptionIcon = (Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element, size = 28) => (
+  <Icon width={size} height={size} aria-hidden="true" focusable="false" />
 );
 
 export const roastOptions: readonly OptionDefinition<RoastValue>[] = [
-  { value: "light", label: "Light roast", icon: createOptionIcon(lightRoastIcon, "Light roast") },
-  { value: "medium", label: "Medium roast", icon: createOptionIcon(mediumRoastIcon, "Medium roast") },
-  { value: "dark", label: "Dark roast", icon: createOptionIcon(darkRoastIcon, "Dark roast") },
+  {
+    value: "light",
+    label: "Light roast",
+    icon: createOptionIcon(LightRoastIcon),
+  },
+  {
+    value: "medium",
+    label: "Medium roast",
+    icon: createOptionIcon(MediumRoastIcon),
+  },
+  {
+    value: "dark",
+    label: "Dark roast",
+    icon: createOptionIcon(DarkRoastIcon),
+  },
 ];
 
 export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
-  { value: "bean", label: "Whole bean", icon: createOptionIcon(beanGrindIcon, "Whole bean") },
-  { value: "coarse", label: "Coarse grind", icon: createOptionIcon(coarseGrindIcon, "Coarse grind") },
-  { value: "fine", label: "Fine grind", icon: createOptionIcon(fineGrindIcon, "Fine grind") },
+  {
+    value: "bean",
+    label: "Whole bean",
+    icon: createOptionIcon(BeanGrindIcon),
+  },
+  {
+    value: "coarse",
+    label: "Coarse grind",
+    icon: createOptionIcon(CoarseGrindIcon),
+  },
+  {
+    value: "fine",
+    label: "Fine grind",
+    icon: createOptionIcon(FineGrindIcon),
+  },
 ];
 
 export const surfaceValues = ["panels", "full", "bottom"] as const;
@@ -52,20 +73,17 @@ export const surfaceOptions: readonly OptionDefinition<SurfaceValue>[] = [
   {
     value: "panels",
     label: "Panels",
-    icon: createOptionIcon(panelsIcon, "Panels surface", 30),
-    activeIcon: createOptionIcon(panelsIconActive, "Panels surface active", 30),
+    icon: createOptionIcon(PanelsSurfaceIcon, 30),
   },
   {
     value: "full",
     label: "Full",
-    icon: createOptionIcon(fullIcon, "Full surface", 30),
-    activeIcon: createOptionIcon(fullIconActive, "Full surface active", 30),
+    icon: createOptionIcon(FullSurfaceIcon, 30),
   },
   {
     value: "bottom",
     label: "Bottom",
-    icon: createOptionIcon(bottomIcon, "Bottom strip surface", 30),
-    activeIcon: createOptionIcon(bottomIconActive, "Bottom strip surface active", 30),
+    icon: createOptionIcon(BottomSurfaceIcon, 30),
   },
 ] as const;
 

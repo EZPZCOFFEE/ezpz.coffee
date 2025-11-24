@@ -11,13 +11,14 @@ import {
 } from "react";
 
 import styles from "@/app/styles.module.scss";
-import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
+import bagMockupBlank from "@/public/bags/mockup-blank.png";
 
 import { SurfaceValue, formatPreviewValue, sanitizeHexColor } from "./formConfig";
 
-const CANVAS_SCALE = 1.8;
-const CANVAS_WIDTH = Math.round(360 * CANVAS_SCALE);
-const CANVAS_HEIGHT = Math.round(480 * CANVAS_SCALE);
+const CANVAS_SCALE = 2.2;
+const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
+const CANVAS_WIDTH = CANVAS_SIDE;
+const CANVAS_HEIGHT = CANVAS_SIDE;
 const LABEL_SQUARE_SIZE = 190 * CANVAS_SCALE;
 const LABEL_SQUARE_X = (CANVAS_WIDTH - LABEL_SQUARE_SIZE) / 2;
 const LABEL_SQUARE_Y = 155 * CANVAS_SCALE;
