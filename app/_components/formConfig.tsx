@@ -49,9 +49,9 @@ export const roastOptions: readonly OptionDefinition<RoastValue>[] = [
 
 export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
   {
-    value: "bean",
-    label: "Whole bean",
-    icon: createOptionIcon(BeanGrindIcon),
+    value: "fine",
+    label: "Fine grind",
+    icon: createOptionIcon(FineGrindIcon),
   },
   {
     value: "coarse",
@@ -59,9 +59,9 @@ export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
     icon: createOptionIcon(CoarseGrindIcon),
   },
   {
-    value: "fine",
-    label: "Fine grind",
-    icon: createOptionIcon(FineGrindIcon),
+    value: "bean",
+    label: "Whole bean",
+    icon: createOptionIcon(BeanGrindIcon),
   },
 ];
 
@@ -143,11 +143,6 @@ export const customizationFormSchema = z.object({
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
-  tastingNote: z
-    .string()
-    .max(120, "Tasting note must be 120 characters or fewer")
-    .optional()
-    .or(z.literal("")),
   quantity: z
     .number()
     .int({ message: "Quantity must be a whole number" })

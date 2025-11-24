@@ -1,6 +1,6 @@
 "use client";
 
-import { ColorPicker, Field, type ColorPickerValueChangeDetails } from "@ark-ui/react";
+import { ColorPicker, Field, Popover, type ColorPickerValueChangeDetails } from "@ark-ui/react";
 import { EyedropperIcon } from "@phosphor-icons/react";
 import classNames from "classnames";
 import { useMemo } from "react";
@@ -91,82 +91,79 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
             {label && <Field.Label className={styles.label}>{label}</Field.Label>}
             <Field.Context>
               {({ ids, ariaDescribedby }) => (
-                <ColorPicker.Root
-                  // value={colorValue}
-                  onValueChange={handleValueChange}
-                  disabled={disabled}
-                  closeOnSelect
-                >
-                  <ColorPicker.Control className={styles.control}>
-                    <ColorPicker.Trigger
-                      id={ids.control}
-                      aria-describedby={ariaDescribedby}
-                      aria-invalid={fieldState.invalid || undefined}
-                      className={classNames(styles.trigger, {
-                        [styles["trigger--invalid"]]: fieldState.invalid,
-                        [styles["trigger--disabled"]]: disabled,
-                      })}
-                      onBlur={onBlur}
-                      disabled={disabled}
-                    >
-                      <span className={styles.sample} style={{ color: previewColor }}>
-                        Abc
-                      </span>
-                      <span className={styles.preview} aria-hidden="true">
-                        <ColorPicker.TransparencyGrid className={styles.previewGrid} />
-                        <ColorPicker.ValueSwatch className={styles.previewSwatch} />
-                        <EyedropperIcon className={styles.dropperIcon} weight="regular" />
-                      </span>
-                    </ColorPicker.Trigger>
-                  </ColorPicker.Control>
-                  <ColorPicker.Positioner className={styles.positioner}>
-                    <ColorPicker.Content className={styles.content}>
-                      <div className={styles.areaSection}>
-                        <ColorPicker.Area className={styles.area}>
-                          <ColorPicker.AreaBackground className={styles.areaBackground} />
-                          <ColorPicker.TransparencyGrid className={styles.areaGrid} />
-                          <ColorPicker.AreaThumb className={styles.areaThumb} />
-                        </ColorPicker.Area>
-
-                        <ColorPicker.ChannelSlider channel="hue" className={styles.slider}>
-                          <ColorPicker.ChannelSliderTrack className={styles.sliderTrack} />
-                          <ColorPicker.ChannelSliderThumb className={styles.sliderThumb} />
-                        </ColorPicker.ChannelSlider>
-                      </div>
-
-                      <div className={styles.inputsRow}>
-                        <ColorPicker.ChannelInput
-                          channel="hex"
-                          aria-label="Hex value"
-                          className={styles.hexInput}
+                <ColorPicker.Root onValueChange={handleValueChange} disabled={disabled} closeOnSelect>
+                  <Popover.Root positioning={{ placement: "bottom-start" }}>
+                    <Popover.Trigger asChild>
+                      <ColorPicker.Control className={styles.control}>
+                        <ColorPicker.Trigger
+                          id={ids.control}
+                          aria-describedby={ariaDescribedby}
+                          aria-invalid={fieldState.invalid || undefined}
+                          className={classNames(styles.trigger, {
+                            [styles["trigger--invalid"]]: fieldState.invalid,
+                            [styles["trigger--disabled"]]: disabled,
+                          })}
                           onBlur={onBlur}
-                        />
-                        <ColorPicker.EyeDropperTrigger
-                          className={styles.eyeDropperButton}
                           disabled={disabled}
                         >
-                          <EyedropperIcon weight="regular" />
-                        </ColorPicker.EyeDropperTrigger>
-                      </div>
+                          <span className={styles.sample} style={{ color: previewColor }}>
+                            Abc
+                          </span>
+                          <span className={styles.preview} aria-hidden="true">
+                            <EyedropperIcon className={styles.dropperIcon} weight="regular" />
+                          </span>
+                        </ColorPicker.Trigger>
+                      </ColorPicker.Control>
+                    </Popover.Trigger>
+                    <Popover.Positioner className={styles.popoverPositioner}>
+                      <Popover.Content className={styles.content}>
+                        <div className={styles.areaSection}>
+                          <ColorPicker.Area className={styles.area}>
+                            <ColorPicker.AreaBackground className={styles.areaBackground} />
+                            <ColorPicker.TransparencyGrid className={styles.areaGrid} />
+                            <ColorPicker.AreaThumb className={styles.areaThumb} />
+                          </ColorPicker.Area>
 
-                      {normalizedSwatches.length > 0 && (
-                        <ColorPicker.SwatchGroup className={styles.swatchGroup}>
-                          {normalizedSwatches.map((color) => (
-                            <ColorPicker.SwatchTrigger
-                              key={color}
-                              value={color}
-                              className={styles.swatchTrigger}
-                              aria-label={`Use ${color}`}
-                            >
-                              <ColorPicker.Swatch value={color} className={styles.swatch}>
-                                <ColorPicker.SwatchIndicator className={styles.swatchIndicator} />
-                              </ColorPicker.Swatch>
-                            </ColorPicker.SwatchTrigger>
-                          ))}
-                        </ColorPicker.SwatchGroup>
-                      )}
-                    </ColorPicker.Content>
-                  </ColorPicker.Positioner>
+                          <ColorPicker.ChannelSlider channel="hue" className={styles.slider}>
+                            <ColorPicker.ChannelSliderTrack className={styles.sliderTrack} />
+                            <ColorPicker.ChannelSliderThumb className={styles.sliderThumb} />
+                          </ColorPicker.ChannelSlider>
+                        </div>
+
+                        <div className={styles.inputsRow}>
+                          <ColorPicker.ChannelInput
+                            channel="hex"
+                            aria-label="Hex value"
+                            className={styles.hexInput}
+                            onBlur={onBlur}
+                          />
+                          <ColorPicker.EyeDropperTrigger
+                            className={styles.eyeDropperButton}
+                            disabled={disabled}
+                          >
+                            <EyedropperIcon weight="regular" />
+                          </ColorPicker.EyeDropperTrigger>
+                        </div>
+
+                        {normalizedSwatches.length > 0 && (
+                          <ColorPicker.SwatchGroup className={styles.swatchGroup}>
+                            {normalizedSwatches.map((color) => (
+                              <ColorPicker.SwatchTrigger
+                                key={color}
+                                value={color}
+                                className={styles.swatchTrigger}
+                                aria-label={`Use ${color}`}
+                              >
+                                <ColorPicker.Swatch value={color} className={styles.swatch}>
+                                  <ColorPicker.SwatchIndicator className={styles.swatchIndicator} />
+                                </ColorPicker.Swatch>
+                              </ColorPicker.SwatchTrigger>
+                            ))}
+                          </ColorPicker.SwatchGroup>
+                        )}
+                      </Popover.Content>
+                    </Popover.Positioner>
+                  </Popover.Root>
                 </ColorPicker.Root>
               )}
             </Field.Context>

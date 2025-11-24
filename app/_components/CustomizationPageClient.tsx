@@ -31,7 +31,6 @@ const CustomizationPageClient = () => {
       roastProfile: "medium",
       grindSetting: "bean",
       surfaceLayout: defaultSurfaceValue,
-      tastingNote: "",
       quantity: 1,
       artworkFile: [],
     },

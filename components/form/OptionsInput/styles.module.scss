@@ -1,13 +1,13 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-house);
+  gap: var(--spacing-city);
   width: 100%;
 }
 
 .label {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-text-secondary);
@@ -26,14 +26,14 @@
   border-radius: var(--border-radius-full);
   background: var(--color-bg-secondary);
   padding: var(--track-padding);
-  min-height: 64px;
+  min-height: 48px;
   overflow: hidden;
 }
 
 .indicator {
   position: absolute;
-  top: var(--spacing-dot);
-  bottom: var(--spacing-dot);
+  top: var(--spacing-room);
+  bottom: var(--spacing-room);
   left: var(--track-padding);
   border-radius: var(--border-radius-full);
   background: var(--color-accent);

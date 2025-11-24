@@ -1,13 +1,15 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-house);
+  gap: var(--spacing-street);
 }
 
 .label {
-  font-size: var(--font-size-fluid-base);
+  font-size: var(--font-size-fluid-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
 }
 
 .uploadRoot {
@@ -19,18 +21,16 @@
 .trigger {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-street);
+  gap: var(--spacing-city);
   border: none;
   border-radius: var(--border-radius-full);
-  padding: var(--spacing-street) var(--spacing-city) var(--spacing-street) var(--spacing-street);
-  background: var(--color-accent);
-  color: var(--color-white);
+  height: 48px;
+  padding: var(--spacing-room);
+  background: var(--color-bg-secondary);
+  color: var(--color-gray-500);
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-fluid-base);
   cursor: pointer;
-  transition:
-    transform 150ms ease,
-    box-shadow 150ms ease;
 }
 
 .trigger:disabled {
@@ -43,19 +43,24 @@
   outline-offset: var(--spacing-dot);
 }
 
-.trigger:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(255, 90, 0, 0.35);
-}
-
-.triggerIcon {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+.triggerContent {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-accent);
+
+  .triggerIcon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .triggerText {

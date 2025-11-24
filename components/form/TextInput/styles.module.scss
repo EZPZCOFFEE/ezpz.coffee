@@ -12,7 +12,11 @@
 }
 
 .label {
-  font-weight: 500;
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
 }
 
 .optionalLabel {
@@ -25,7 +29,8 @@
   align-items: center;
   background-color: var(--color-bg-secondary);
   border-radius: var(--border-radius-full);
-  padding: var(--spacing-house) var(--spacing-city);
+  padding: var(--spacing-room) var(--spacing-city);
+  height: 48px;
 }
 
 .inputWrapper[data-invalid="true"] {

@@ -47,12 +47,6 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           helperText="Decide which part of the bag gets your art."
           options={surfaceOptions}
         />
-        <TextInput
-          name="tastingNote"
-          label="Tasting note"
-          optionalLabel="Optional"
-          helperText="Describe what makes this blend unique."
-        />
         <FileUploadInput
           name="artworkFile"
           label="Upload artwork"

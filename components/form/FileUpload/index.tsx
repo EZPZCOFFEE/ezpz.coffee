@@ -2,11 +2,12 @@
 
 import { Field, FileUpload } from "@ark-ui/react";
 import type { FileUploadFileChangeDetails, FileUploadFileError, FileUploadFileMimeType } from "@ark-ui/react";
-import { UploadSimpleIcon } from "@phosphor-icons/react";
 import classNames from "classnames";
 import { useState } from "react";
 import type { FieldValues, Path, PathValue } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
+
+import { UploadIcon } from "@/components/icons/UploadIcon";
 
 import styles from "./styles.module.scss";
 
@@ -104,9 +105,12 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
         <FileUpload.HiddenInput ref={ref} name={fieldName} onBlur={onBlur} />
 
         <FileUpload.Trigger className={styles.trigger} disabled={disabled} type="button">
-          <span className={styles.triggerIcon}>
-            <UploadSimpleIcon size={18} weight="bold" />
-          </span>
+          <div className={styles.triggerContent}>
+            <span className={styles.triggerIcon}>
+              <UploadIcon />
+            </span>
+          </div>
+
           <span className={styles.triggerText}>Upload image</span>
         </FileUpload.Trigger>
 

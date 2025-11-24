@@ -167,7 +167,7 @@ const PreviewCanvas = ({
     () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
     [surfaceValue]
   );
-  const displayName = useMemo(() => formatPreviewValue(customerName, "Your blend"), [customerName]);
+  const displayName = useMemo(() => formatPreviewValue(customerName, ""), [customerName]);
   const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
 
   useEffect(() => {
