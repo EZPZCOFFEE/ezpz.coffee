@@ -3,6 +3,7 @@
 import type { FormEvent } from "react";
 
 import styles from "@/app/styles.module.scss";
+import ColorPickerInput from "@/components/form/ColorPickerInput";
 import FileUploadInput from "@/components/form/FileUpload";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
@@ -22,6 +23,12 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
       <h1 className={styles.panelTitle}>Customize</h1>
       <form className={styles.panelForm} onSubmit={(event) => void onSubmit(event)} noValidate>
         <TextInput name="customerName" label="Name" helperText="Shown on the front label." />
+        <ColorPickerInput
+          name="nameColor"
+          label="Name color"
+          helperText="Adjust the typography color shown on the bag."
+          required
+        />
         <OptionsInput
           name="roastProfile"
           label="Roast profile"

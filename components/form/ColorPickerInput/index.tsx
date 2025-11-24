@@ -1,12 +1,18 @@
 "use client";
 
-import { Field } from "@ark-ui/react";
-import { ColorPicker, type ColorPickerValueChangeDetails } from "@ark-ui/react/color-picker";
-import { Eyedropper } from "@phosphor-icons/react";
+import {
+  ColorPicker,
+  Field,
+  parseColor,
+  Portal,
+  type Color,
+  type ColorPickerValueChangeDetails,
+} from "@ark-ui/react";
+import { EyedropperIcon } from "@phosphor-icons/react";
 import classNames from "classnames";
+import { useMemo } from "react";
 import type { FieldValues, Path, PathValue } from "react-hook-form";
 import { Controller, useFormContext } from "react-hook-form";
-import { useMemo } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -40,7 +46,16 @@ const normalizeSwatches = (swatches: readonly string[]): string[] => {
   return Array.from(seen);
 };
 
-type ColorPickerInputProps<TFieldValues extends FieldValues = FieldValues> = {
+const toColorValue = (hex?: string): Color | undefined => {
+  if (!hex) return undefined;
+  try {
+    return parseColor(hex);
+  } catch {
+    return undefined;
+  }
+};
+
+interface ColorPickerInputProps<TFieldValues extends FieldValues = FieldValues> {
   name: Path<TFieldValues>;
   label?: string;
   helperText?: string;
@@ -49,7 +64,7 @@ type ColorPickerInputProps<TFieldValues extends FieldValues = FieldValues> = {
   required?: boolean;
   swatches?: readonly string[];
   defaultValue?: PathValue<TFieldValues, Path<TFieldValues>>;
-};
+}
 
 const DEFAULT_PREVIEW_COLOR = "#6B7280";
 
@@ -72,12 +87,15 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
       control={control}
       defaultValue={defaultValue}
       render={({ field, fieldState }) => {
-        const { value, onChange, onBlur } = field;
-        const normalizedValue = typeof value === "string" && value.trim().length ? value : undefined;
+        const { onChange, onBlur } = field;
+        const rawValue = field.value as unknown;
+        const normalizedValue = typeof rawValue === "string" && rawValue.trim().length ? rawValue : undefined;
         const previewColor = normalizedValue ?? DEFAULT_PREVIEW_COLOR;
+        const colorValue = toColorValue(normalizedValue);
 
-        const handleValueChange = ({ value: nextValue }: ColorPickerValueChangeDetails) => {
-          onChange(nextValue);
+        const handleValueChange = ({ value }: ColorPickerValueChangeDetails) => {
+          const hexValue = value?.toString("hex");
+          onChange(hexValue ?? normalizedValue ?? DEFAULT_PREVIEW_COLOR);
         };
 
         return (
@@ -90,10 +108,9 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
             <Field.Context>
               {({ ids, ariaDescribedby }) => (
                 <ColorPicker.Root
-                  value={normalizedValue ? { value: normalizedValue } : undefined}
+                  value={colorValue}
                   onValueChange={handleValueChange}
                   disabled={disabled}
-                  format="hex"
                   closeOnSelect
                 >
                   <ColorPicker.Trigger
@@ -113,62 +130,60 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
                     <span className={styles.preview} aria-hidden="true">
                       <ColorPicker.TransparencyGrid className={styles.previewGrid} />
                       <ColorPicker.ValueSwatch className={styles.previewSwatch} />
-                      <Eyedropper className={styles.dropperIcon} weight="regular" />
+                      <EyedropperIcon className={styles.dropperIcon} weight="regular" />
                     </span>
                   </ColorPicker.Trigger>
 
-                  <ColorPicker.Positioner>
-                    <ColorPicker.Content className={styles.content}>
-                      <div className={styles.areaSection}>
-                        <ColorPicker.Area className={styles.area}>
-                          <ColorPicker.TransparencyGrid className={styles.areaGrid} />
-                          <ColorPicker.AreaBackground className={styles.areaBackground} />
-                          <ColorPicker.AreaThumb className={styles.areaThumb} />
-                        </ColorPicker.Area>
+                  <Portal>
+                    <ColorPicker.Positioner className={styles.positioner}>
+                      <ColorPicker.Content className={styles.content}>
+                        <div className={styles.areaSection}>
+                          <ColorPicker.Area className={styles.area}>
+                            <ColorPicker.AreaBackground className={styles.areaBackground} />
+                            <ColorPicker.TransparencyGrid className={styles.areaGrid} />
+                            <ColorPicker.AreaThumb className={styles.areaThumb} />
+                          </ColorPicker.Area>
 
-                        <ColorPicker.ChannelSlider channel="hue" className={styles.slider}>
-                          <ColorPicker.ChannelSliderTrack className={styles.sliderTrack} />
-                          <ColorPicker.ChannelSliderThumb className={styles.sliderThumb} />
-                        </ColorPicker.ChannelSlider>
+                          <ColorPicker.ChannelSlider channel="hue" className={styles.slider}>
+                            <ColorPicker.ChannelSliderTrack className={styles.sliderTrack} />
+                            <ColorPicker.ChannelSliderThumb className={styles.sliderThumb} />
+                          </ColorPicker.ChannelSlider>
+                        </div>
 
-                        <ColorPicker.ChannelSlider channel="alpha" className={styles.slider}>
-                          <ColorPicker.TransparencyGrid className={styles.sliderGrid} />
-                          <ColorPicker.ChannelSliderTrack className={styles.sliderTrack} />
-                          <ColorPicker.ChannelSliderThumb className={styles.sliderThumb} />
-                        </ColorPicker.ChannelSlider>
-                      </div>
+                        <div className={styles.inputsRow}>
+                          <ColorPicker.ChannelInput
+                            channel="hex"
+                            aria-label="Hex value"
+                            className={styles.hexInput}
+                            onBlur={onBlur}
+                          />
+                          <ColorPicker.EyeDropperTrigger
+                            className={styles.eyeDropperButton}
+                            disabled={disabled}
+                          >
+                            <EyedropperIcon weight="regular" />
+                          </ColorPicker.EyeDropperTrigger>
+                        </div>
 
-                      <div className={styles.inputsRow}>
-                        <ColorPicker.ChannelInput
-                          channel="hex"
-                          aria-label="Hex value"
-                          className={styles.hexInput}
-                          onBlur={onBlur}
-                        />
-                        <ColorPicker.ValueText format="hex" className={styles.valueText} />
-                        <ColorPicker.EyeDropperTrigger className={styles.eyeDropperButton} disabled={disabled}>
-                          <Eyedropper weight="bold" />
-                          <span>Pick</span>
-                        </ColorPicker.EyeDropperTrigger>
-                      </div>
-
-                      {normalizedSwatches.length > 0 && (
-                        <ColorPicker.SwatchGroup className={styles.swatchGroup}>
-                          {normalizedSwatches.map((color) => (
-                            <ColorPicker.SwatchTrigger
-                              key={color}
-                              value={color}
-                              className={styles.swatchTrigger}
-                              aria-label={`Use ${color}`}
-                            >
-                              <ColorPicker.Swatch value={color} className={styles.swatch} />
-                              <ColorPicker.SwatchIndicator className={styles.swatchIndicator} />
-                            </ColorPicker.SwatchTrigger>
-                          ))}
-                        </ColorPicker.SwatchGroup>
-                      )}
-                    </ColorPicker.Content>
-                  </ColorPicker.Positioner>
+                        {normalizedSwatches.length > 0 && (
+                          <ColorPicker.SwatchGroup className={styles.swatchGroup}>
+                            {normalizedSwatches.map((color) => (
+                              <ColorPicker.SwatchTrigger
+                                key={color}
+                                value={color}
+                                className={styles.swatchTrigger}
+                                aria-label={`Use ${color}`}
+                              >
+                                <ColorPicker.Swatch value={color} className={styles.swatch}>
+                                  <ColorPicker.SwatchIndicator className={styles.swatchIndicator} />
+                                </ColorPicker.Swatch>
+                              </ColorPicker.SwatchTrigger>
+                            ))}
+                          </ColorPicker.SwatchGroup>
+                        )}
+                      </ColorPicker.Content>
+                    </ColorPicker.Positioner>
+                  </Portal>
                 </ColorPicker.Root>
               )}
             </Field.Context>

@@ -33,6 +33,7 @@ const PreviewDisplay = ({
           selectedArtworkFile={selectedArtworkFile}
           surfaceValue={surfaceValue}
           customerName={formValues.customerName}
+          nameColor={formValues.nameColor}
         />
         <PreviewSummary
           formValues={formValues}
