@@ -4,20 +4,16 @@
   gap: var(--spacing-room);
 }
 
-.labelRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--font-size-fluid-base);
-}
-
-.label {
-  font-weight: 500;
-}
-
-.optionalLabel {
-  color: var(--color-gray-400);
-  font-size: var(--font-size-fluid-sm);
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .inputWrapper {
@@ -25,7 +21,8 @@
   align-items: center;
   background-color: var(--color-bg-secondary);
   border-radius: var(--border-radius-full);
-  padding: var(--spacing-house) var(--spacing-city);
+  padding: var(--spacing-room) var(--spacing-city);
+  height: 48px;
 }
 
 .inputWrapper[data-invalid="true"] {

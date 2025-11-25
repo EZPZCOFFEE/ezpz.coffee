@@ -10,7 +10,6 @@
 .panelColumn {
   flex: 0 0 420px;
   max-width: 420px;
-  height: 100vh;
   padding: var(--spacing-state) 0;
   width: 100%;
 }
@@ -19,7 +18,6 @@
   flex: 1;
   position: sticky;
   top: 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -61,12 +59,51 @@
     margin-top: var(--spacing-state);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-city);
+    gap: var(--spacing-continent);
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-city);
+    }
 
     .statusMessage {
       font-size: var(--font-size-fluid-sm);
       color: var(--color-success);
       margin: 0;
+    }
+
+    .priceBreakdown {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-street);
+      padding: var(--spacing-city);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--color-gray-200);
+      background-color: var(--color-bg-secondary);
+    }
+
+    .priceRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--font-size-fluid-sm);
+    }
+
+    .priceLabel {
+      color: var(--color-text-secondary);
+    }
+
+    .priceValue {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-semibold);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .priceDivider {
+      width: 100%;
+      border: none;
+      border-top: 1px solid var(--color-gray-200);
     }
   }
 }
@@ -75,7 +112,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-state);
-  padding: var(--spacing-state);
   height: 100%;
 
   .displayHeader {
@@ -127,14 +163,17 @@
       justify-content: center;
       align-items: center;
       flex: 1;
+      overflow: hidden;
     }
   }
 
   .previewCanvas {
     width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 100%;
     aspect-ratio: 1 / 1;
-    background: var(--color-bg-secondary);
+    background: var(--color-white);
     border-radius: var(--border-radius-lg);
 
     @media (max-width: 1200px) {

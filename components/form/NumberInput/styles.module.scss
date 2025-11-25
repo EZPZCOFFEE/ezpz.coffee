@@ -1,24 +1,23 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--spacing-street);
 }
 
 .label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.required {
-  color: var(--color-danger);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .number-input {
-  width: fit-content;
+  width: 100%;
 }
 
 .control {
@@ -28,9 +27,9 @@
   border-radius: var(--border-radius-full);
   background: var(--color-white);
   color: var(--color-text-primary);
-  min-width: 112px;
-  height: 42px;
-  padding: 0 0.25rem;
+  width: 100%;
+  height: 48px;
+  padding: var(--spacing-room);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -52,12 +51,12 @@
 }
 
 .trigger {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border: none;
   border-radius: var(--border-radius-full);
   background: transparent;
-  font-size: 1.125rem;
+  font-size: var(--font-size-fluid-xxl);
   font-weight: 500;
   display: inline-flex;
   align-items: center;
@@ -85,9 +84,9 @@
 }
 
 .input {
-  width: 56px;
+  width: 100%;
   text-align: center;
-  font-size: 1rem;
+  font-size: var(--font-size-fluid-base);
   font-weight: 500;
   color: var(--color-text-primary);
   border: none;
@@ -103,11 +102,11 @@
 }
 
 .helper {
-  font-size: 0.75rem;
+  font-size: var(--font-size-fluid-sm);
   color: var(--color-gray-500);
 }
 
 .error {
-  font-size: 0.75rem;
+  font-size: var(--font-size-fluid-sm);
   color: var(--color-danger);
 }

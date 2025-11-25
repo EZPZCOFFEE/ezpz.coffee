@@ -19,20 +19,31 @@ const CANVAS_SCALE = 2.2;
 const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
 const CANVAS_WIDTH = CANVAS_SIDE;
 const CANVAS_HEIGHT = CANVAS_SIDE;
-const LABEL_SQUARE_SIZE = 190 * CANVAS_SCALE;
-const LABEL_SQUARE_X = (CANVAS_WIDTH - LABEL_SQUARE_SIZE) / 2;
-const LABEL_SQUARE_Y = 155 * CANVAS_SCALE;
+const LABEL_WIDTH_RATIO = 0.58;
+const LABEL_HEIGHT_RATIO = 0.44;
+const LABEL_VERTICAL_OFFSET_RATIO = 0.36;
+const LABEL_HORIZONTAL_SHIFT_RATIO = 0.008;
+const PANEL_GAP_RATIO = 0.6;
+const BOTTOM_STRIP_HEIGHT_RATIO = 0.2;
+const LABEL_WIDTH = Math.round(CANVAS_SIDE * LABEL_WIDTH_RATIO);
+const LABEL_HEIGHT = Math.round(CANVAS_SIDE * LABEL_HEIGHT_RATIO);
+const LABEL_SQUARE_X = Math.max(
+  0,
+  Math.round((CANVAS_WIDTH - LABEL_WIDTH) / 2 - CANVAS_SIDE * LABEL_HORIZONTAL_SHIFT_RATIO)
+);
+const LABEL_SQUARE_Y = Math.round(CANVAS_HEIGHT * LABEL_VERTICAL_OFFSET_RATIO);
 const LABEL_RECT = {
   x: LABEL_SQUARE_X,
   y: LABEL_SQUARE_Y,
-  size: LABEL_SQUARE_SIZE,
+  width: LABEL_WIDTH,
+  height: LABEL_HEIGHT,
 } as const;
 const ARTWORK_SCALE_MIN = 1;
 const ARTWORK_SCALE_MAX = 3;
 const ARTWORK_SCALE_STEP = 0.01;
-const BOTTOM_STRIP_HEIGHT = 72 * CANVAS_SCALE;
-const PANEL_HEIGHT = 62 * CANVAS_SCALE;
-const PANEL_GAP = 30 * CANVAS_SCALE;
+const BOTTOM_STRIP_HEIGHT = Math.round(LABEL_HEIGHT * BOTTOM_STRIP_HEIGHT_RATIO);
+const PANEL_GAP = Math.round(LABEL_HEIGHT * PANEL_GAP_RATIO);
+const PANEL_HEIGHT = Math.max(0, Math.round((LABEL_HEIGHT - PANEL_GAP) / 2));
 
 interface ArtworkOffset {
   x: number;
@@ -50,21 +61,21 @@ interface SurfaceWindow {
 
 const createPanelsWindows = (): readonly SurfaceWindow[] => {
   const totalPanelHeight = PANEL_HEIGHT * 2 + PANEL_GAP;
-  const startY = LABEL_RECT.y + (LABEL_RECT.size - totalPanelHeight) / 2;
+  const startY = LABEL_RECT.y + (LABEL_RECT.height - totalPanelHeight) / 2;
   return [
-    { x: LABEL_RECT.x, y: startY, width: LABEL_RECT.size, height: PANEL_HEIGHT },
-    { x: LABEL_RECT.x, y: startY + PANEL_HEIGHT + PANEL_GAP, width: LABEL_RECT.size, height: PANEL_HEIGHT },
+    { x: LABEL_RECT.x, y: startY, width: LABEL_RECT.width, height: PANEL_HEIGHT },
+    { x: LABEL_RECT.x, y: startY + PANEL_HEIGHT + PANEL_GAP, width: LABEL_RECT.width, height: PANEL_HEIGHT },
   ];
 };
 
 const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
-  panels: createPanelsWindows(),
-  full: [{ x: LABEL_RECT.x, y: LABEL_RECT.y, width: LABEL_RECT.size, height: LABEL_RECT.size }],
+  sandwich: createPanelsWindows(),
+  full: [{ x: LABEL_RECT.x, y: LABEL_RECT.y, width: LABEL_RECT.width, height: LABEL_RECT.height }],
   bottom: [
     {
       x: LABEL_RECT.x,
-      y: LABEL_RECT.y + LABEL_RECT.size - BOTTOM_STRIP_HEIGHT,
-      width: LABEL_RECT.size,
+      y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
+      width: LABEL_RECT.width,
       height: BOTTOM_STRIP_HEIGHT,
     },
   ],
@@ -75,9 +86,9 @@ const NAME_FONT_MAX = 20 * CANVAS_SCALE;
 const NAME_FONT_MIN = 12 * CANVAS_SCALE;
 const NAME_PADDING_X = 24 * CANVAS_SCALE;
 const NAME_PADDING_Y = 28 * CANVAS_SCALE;
-const NAME_TEXT_RIGHT = LABEL_RECT.x + LABEL_RECT.size - NAME_PADDING_X;
-const NAME_TEXT_BASELINE = LABEL_RECT.y + LABEL_RECT.size - NAME_PADDING_Y;
-const NAME_MAX_TEXT_WIDTH = LABEL_RECT.size - NAME_PADDING_X * 2;
+const NAME_TEXT_RIGHT = LABEL_RECT.x + LABEL_RECT.width - NAME_PADDING_X;
+const NAME_TEXT_BASELINE = LABEL_RECT.y + LABEL_RECT.height - NAME_PADDING_Y;
+const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
 
 const planNameRendering = (
@@ -167,7 +178,7 @@ const PreviewCanvas = ({
     () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
     [surfaceValue]
   );
-  const displayName = useMemo(() => formatPreviewValue(customerName, "Your blend"), [customerName]);
+  const displayName = useMemo(() => formatPreviewValue(customerName, ""), [customerName]);
   const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
 
   useEffect(() => {
@@ -225,12 +236,15 @@ const PreviewCanvas = ({
         return offset;
       }
 
-      const baseScale = Math.max(LABEL_RECT.size / artworkImage.width, LABEL_RECT.size / artworkImage.height);
+      const baseScale = Math.max(
+        LABEL_RECT.width / artworkImage.width,
+        LABEL_RECT.height / artworkImage.height
+      );
       const totalScale = baseScale * (scaleOverride ?? artworkScale);
       const drawWidth = artworkImage.width * totalScale;
       const drawHeight = artworkImage.height * totalScale;
-      const maxX = Math.max(0, (drawWidth - LABEL_RECT.size) / 2);
-      const maxY = Math.max(0, (drawHeight - LABEL_RECT.size) / 2);
+      const maxX = Math.max(0, (drawWidth - LABEL_RECT.width) / 2);
+      const maxY = Math.max(0, (drawHeight - LABEL_RECT.height) / 2);
 
       return {
         x: Math.min(maxX, Math.max(-maxX, offset.x)),
@@ -250,6 +264,8 @@ const PreviewCanvas = ({
     if (!context) return;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = "#fff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
     if (!bagImage) return;
 
     const bagScale = Math.min(canvas.width / bagImage.width, canvas.height / bagImage.height);
@@ -262,7 +278,7 @@ const PreviewCanvas = ({
 
     context.fillStyle = "rgba(255, 255, 255, 0.88)";
     if (surfaceValue === "full") {
-      context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.size, LABEL_RECT.size);
+      context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
     } else {
       activeWindows.forEach((windowRect) => {
         context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
@@ -270,12 +286,15 @@ const PreviewCanvas = ({
     }
 
     if (artworkImage) {
-      const baseScale = Math.max(LABEL_RECT.size / artworkImage.width, LABEL_RECT.size / artworkImage.height);
+      const baseScale = Math.max(
+        LABEL_RECT.width / artworkImage.width,
+        LABEL_RECT.height / artworkImage.height
+      );
       const totalScale = baseScale * artworkScale;
       const drawWidth = artworkImage.width * totalScale;
       const drawHeight = artworkImage.height * totalScale;
-      const centerX = LABEL_RECT.x + LABEL_RECT.size / 2 + artworkOffset.x;
-      const centerY = LABEL_RECT.y + LABEL_RECT.size / 2 + artworkOffset.y;
+      const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
+      const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
 
       context.save();
       context.beginPath();
@@ -294,7 +313,7 @@ const PreviewCanvas = ({
     }
 
     if (displayName.trim().length > 0) {
-      const maxWidth = LABEL_RECT.size - 40;
+      const maxWidth = LABEL_RECT.width - 40;
       let fontSize = 56;
       context.save();
       context.textAlign = "center";
@@ -312,14 +331,14 @@ const PreviewCanvas = ({
         metrics = context.measureText(displayName);
       }
 
-      const textX = LABEL_RECT.x + LABEL_RECT.size / 2;
-      const textY = LABEL_RECT.y + LABEL_RECT.size * 0.28;
+      const textX = LABEL_RECT.x + LABEL_RECT.width / 2;
+      const textY = LABEL_RECT.y + LABEL_RECT.height * 0.25;
       context.fillText(displayName, textX, textY, maxWidth);
       context.restore();
     }
 
-    context.strokeStyle = "rgba(255, 137, 92, 0.95)";
-    context.lineWidth = 3;
+    context.strokeStyle = "rgba(0, 0, 0, 0)";
+    context.lineWidth = 2;
     activeWindows.forEach((windowRect) => {
       context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
     });
