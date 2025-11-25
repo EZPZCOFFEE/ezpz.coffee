@@ -32,6 +32,7 @@ const PreviewDisplay = ({
           surfaceValue={surfaceValue}
           customerName={formValues.customerName}
           nameColor={formValues.nameColor}
+          panelColor={formValues.panelColor}
         />
       </div>
       <div className={styles.displayFooter}>

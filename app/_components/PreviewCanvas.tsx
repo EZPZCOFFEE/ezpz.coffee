@@ -13,7 +13,7 @@ import {
 import styles from "@/app/styles.module.scss";
 import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
 
-import { SurfaceValue, formatPreviewValue, sanitizeHexColor } from "./formConfig";
+import { SurfaceValue, defaultPanelColor, sanitizeHexColor } from "./formConfig";
 
 const CANVAS_SCALE = 2.2;
 const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
@@ -70,7 +70,7 @@ const createPanelsWindows = (): readonly SurfaceWindow[] => {
 
 const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
   sandwich: createPanelsWindows(),
-  full: [{ x: LABEL_RECT.x, y: LABEL_RECT.y, width: LABEL_RECT.width, height: LABEL_RECT.height }],
+  full: [],
   bottom: [
     {
       x: LABEL_RECT.x,
@@ -80,14 +80,12 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
     },
   ],
 };
+const PANEL_OVERLAY_ALPHA = 1;
 
 const NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
 const NAME_FONT_MAX = 20 * CANVAS_SCALE;
 const NAME_FONT_MIN = 12 * CANVAS_SCALE;
 const NAME_PADDING_X = 24 * CANVAS_SCALE;
-const NAME_PADDING_Y = 28 * CANVAS_SCALE;
-const NAME_TEXT_RIGHT = LABEL_RECT.x + LABEL_RECT.width - NAME_PADDING_X;
-const NAME_TEXT_BASELINE = LABEL_RECT.y + LABEL_RECT.height - NAME_PADDING_Y;
 const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
 
@@ -151,6 +149,7 @@ interface PreviewCanvasProps {
   surfaceValue: SurfaceValue;
   customerName?: string;
   nameColor?: string;
+  panelColor?: string;
 }
 
 const PreviewCanvas = ({
@@ -158,6 +157,7 @@ const PreviewCanvas = ({
   surfaceValue,
   customerName,
   nameColor,
+  panelColor,
 }: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
@@ -178,8 +178,22 @@ const PreviewCanvas = ({
     () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
     [surfaceValue]
   );
-  const displayName = useMemo(() => formatPreviewValue(customerName, ""), [customerName]);
   const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
+  const panelFillColor = useMemo<string>(() => sanitizeHexColor(panelColor, defaultPanelColor), [panelColor]);
+  const bottomPanelRect = useMemo(() => {
+    if (surfaceValue === "sandwich") {
+      return SURFACE_WINDOWS.sandwich[1];
+    }
+    if (surfaceValue === "bottom") {
+      return SURFACE_WINDOWS.bottom[0];
+    }
+    return {
+      x: LABEL_RECT.x,
+      y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
+      width: LABEL_RECT.width,
+      height: BOTTOM_STRIP_HEIGHT,
+    };
+  }, [surfaceValue]);
 
   useEffect(() => {
     const image = new Image();
@@ -276,14 +290,12 @@ const PreviewCanvas = ({
 
     context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
-    context.fillStyle = "rgba(255, 255, 255, 0.88)";
-    if (surfaceValue === "full") {
-      context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
-    } else {
-      activeWindows.forEach((windowRect) => {
-        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
-      });
-    }
+    context.save();
+    context.beginPath();
+    context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+    context.clip();
+    context.fillStyle = "rgba(255, 255, 255, 0.96)";
+    context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
 
     if (artworkImage) {
       const baseScale = Math.max(
@@ -296,12 +308,6 @@ const PreviewCanvas = ({
       const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
       const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
 
-      context.save();
-      context.beginPath();
-      activeWindows.forEach((windowRect) => {
-        context.rect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
-      });
-      context.clip();
       context.drawImage(
         artworkImage,
         centerX - drawWidth / 2,
@@ -309,51 +315,39 @@ const PreviewCanvas = ({
         drawWidth,
         drawHeight
       );
-      context.restore();
     }
+    context.restore();
 
-    if (displayName.trim().length > 0) {
-      const maxWidth = LABEL_RECT.width - 40;
-      let fontSize = 56;
+    if (activeWindows.length > 0) {
       context.save();
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = nameTextColor;
-      context.shadowColor = "rgba(255, 255, 255, 0.4)";
-      context.shadowBlur = 8;
-
-      const fontFamily = "'Space Grotesk', 'Inter', sans-serif";
-      context.font = `600 ${fontSize}px ${fontFamily}`;
-      let metrics = context.measureText(displayName);
-      while (metrics.width > maxWidth && fontSize > 20) {
-        fontSize -= 2;
-        context.font = `600 ${fontSize}px ${fontFamily}`;
-        metrics = context.measureText(displayName);
-      }
-
-      const textX = LABEL_RECT.x + LABEL_RECT.width / 2;
-      const textY = LABEL_RECT.y + LABEL_RECT.height * 0.25;
-      context.fillText(displayName, textX, textY, maxWidth);
+      context.fillStyle = panelFillColor;
+      context.globalAlpha = PANEL_OVERLAY_ALPHA;
+      activeWindows.forEach((windowRect) => {
+        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+      });
       context.restore();
     }
 
-    context.strokeStyle = "rgba(0, 0, 0, 0)";
-    context.lineWidth = 2;
-    activeWindows.forEach((windowRect) => {
-      context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
-    });
+    if (activeWindows.length > 0) {
+      context.strokeStyle = "rgba(0, 0, 0, 0)";
+      context.lineWidth = 2;
+      activeWindows.forEach((windowRect) => {
+        context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+      });
+    }
 
     if (sanitizedName) {
       const namePlan = planNameRendering(context, sanitizedName);
       if (namePlan) {
+        const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
+        const textX = bottomPanelRect.x + NAME_PADDING_X;
+        const textY = bottomPanelRect.y + bottomPanelRect.height / 2;
         context.save();
         context.font = `${namePlan.fontSize}px ${NAME_FONT_FAMILY}`;
-        context.textAlign = "right";
-        context.textBaseline = "bottom";
-        context.fillStyle = "rgba(16, 16, 16, 0.95)";
-        context.shadowColor = "rgba(255, 255, 255, 0.5)";
-        context.shadowBlur = 4;
-        context.fillText(namePlan.text, NAME_TEXT_RIGHT, NAME_TEXT_BASELINE);
+        context.textAlign = "left";
+        context.textBaseline = "middle";
+        context.fillStyle = nameTextColor;
+        context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
         context.restore();
       }
     }
@@ -363,10 +357,10 @@ const PreviewCanvas = ({
     artworkOffset,
     artworkScale,
     bagImage,
-    displayName,
     nameTextColor,
     sanitizedName,
-    surfaceValue,
+    panelFillColor,
+    bottomPanelRect,
   ]);
 
   useEffect(() => {
@@ -382,7 +376,13 @@ const PreviewCanvas = ({
     };
   };
 
-  const isPointInsideCrop = (point: { x: number; y: number }) =>
+  const isPointInsideLabel = (point: { x: number; y: number }) =>
+    point.x >= LABEL_RECT.x &&
+    point.x <= LABEL_RECT.x + LABEL_RECT.width &&
+    point.y >= LABEL_RECT.y &&
+    point.y <= LABEL_RECT.y + LABEL_RECT.height;
+
+  const isPointInsidePanel = (point: { x: number; y: number }) =>
     activeWindows.some(
       (windowRect) =>
         point.x >= windowRect.x &&
@@ -391,10 +391,13 @@ const PreviewCanvas = ({
         point.y <= windowRect.y + windowRect.height
     );
 
+  const isPointInsideArtworkRegion = (point: { x: number; y: number }) =>
+    isPointInsideLabel(point) && !isPointInsidePanel(point);
+
   const handleCanvasPointerDown = (event: ReactPointerEvent<HTMLCanvasElement>) => {
     if (!artworkImage) return;
     const point = getCanvasPoint(event);
-    if (!isPointInsideCrop(point)) return;
+    if (!isPointInsideArtworkRegion(point)) return;
 
     event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
