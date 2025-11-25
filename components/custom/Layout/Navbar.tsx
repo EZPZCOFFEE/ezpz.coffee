@@ -2,6 +2,7 @@
 
 import classNames from "classnames";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useId, useState } from "react";
 
@@ -64,12 +65,13 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
         <ul className={styles.navList}>
           {leftNavItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
+            const itemClassName = classNames(styles.navItem, { [styles.navItem__active]: isActive });
+
             return (
-              <li
-                key={item.href}
-                className={classNames(styles.navItem, { [styles.navItem__active]: isActive })}
-              >
-                <span>{item.label}</span>
+              <li key={item.href} className={itemClassName}>
+                <Link href={item.href} className={styles.navLink}>
+                  {item.label}
+                </Link>
               </li>
             );
           })}
@@ -79,12 +81,13 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
         <ul className={styles.navList}>
           {rightNavItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
+            const itemClassName = classNames(styles.navItem, { [styles.navItem__active]: isActive });
+
             return (
-              <li
-                key={item.href}
-                className={classNames(styles.navItem, { [styles.navItem__active]: isActive })}
-              >
-                <span>{item.label}</span>
+              <li key={item.href} className={itemClassName}>
+                <Link href={item.href} className={styles.navLink}>
+                  {item.label}
+                </Link>
               </li>
             );
           })}
@@ -143,7 +146,13 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
 
             return (
               <li key={item.href} className={itemClassName}>
-                <span className={styles.mobileMenuItemLabel}>{item.label}</span>
+                <Link
+                  href={item.href}
+                  className={styles.mobileMenuItemLabel}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
               </li>
             );
           })}

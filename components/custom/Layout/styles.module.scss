@@ -68,6 +68,14 @@
           color: var(--color-accent);
         }
       }
+
+      .navLink {
+        color: inherit;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-room);
+      }
     }
   }
 }
@@ -189,6 +197,11 @@
 
 .mobileMenuItemLabel {
   color: var(--color-text-primary);
+  text-decoration: none;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mobileMenuItemActive .mobileMenuItemLabel {

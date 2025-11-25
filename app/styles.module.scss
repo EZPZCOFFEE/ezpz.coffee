@@ -9,15 +9,13 @@
 
 .panelColumn {
   flex: 0 0 420px;
-  max-width: 420px;
+  max-width: 350px;
   padding: var(--spacing-state) 0;
   width: 100%;
 }
 
 .previewColumn {
   flex: 1;
-  position: sticky;
-  top: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
