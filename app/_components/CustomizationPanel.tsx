@@ -39,7 +39,7 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
       <h1 className={styles.panelTitle}>Customize</h1>
       <form className={styles.panelForm} onSubmit={(event) => void onSubmit(event)} noValidate>
         <div className={styles.formGroup}>
-          <Label>Name</Label>
+          <Label>Label</Label>
           <TextInput name="customerName" label="Name" helperText="Shown on the front label." />
           <ColorPickerInput name="nameColor" label="Name color" required />
         </div>
@@ -54,7 +54,9 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
         <div className={styles.formGroup}>
           <Label>Bag surface</Label>
           <OptionsInput name="surfaceLayout" label="Bag surface" options={surfaceOptions} />
+          <ColorPickerInput name="panelColor" label="Panel color" required />
         </div>
+
         <div className={styles.formGroup}>
           <Label>Upload artwork</Label>
           <FileUploadInput
@@ -75,7 +77,7 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>Quantity</span>
-            <span className={styles.priceValue}>{quantity}</span>
+            <span className={styles.priceValue}>{quantity} bags</span>
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>Subtotal</span>

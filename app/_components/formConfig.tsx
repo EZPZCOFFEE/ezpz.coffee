@@ -106,11 +106,12 @@ export const getOptionLabel = <TValue extends string>(
 
 export const hexColorRegex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
 export const defaultNameColor = "#111827";
+export const defaultPanelColor = "#F97316";
 
-export const sanitizeHexColor = (color: string | undefined): string => {
-  if (!color) return defaultNameColor;
+export const sanitizeHexColor = (color: string | undefined, fallback = defaultNameColor): string => {
+  if (!color) return fallback;
   const trimmed = color.trim();
-  return hexColorRegex.test(trimmed) ? trimmed : defaultNameColor;
+  return hexColorRegex.test(trimmed) ? trimmed : fallback;
 };
 
 const isFileLike = (value: unknown): value is File => {
@@ -143,6 +144,7 @@ export const customizationFormSchema = z.object({
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
+  panelColor: z.string().regex(hexColorRegex, { message: "Enter a valid panel color (for example #f3ebe1)" }),
   quantity: z
     .number()
     .int({ message: "Quantity must be a whole number" })
