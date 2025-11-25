@@ -20,11 +20,10 @@ interface OptionsInputProps {
   name: string;
   options: readonly Option[];
   label?: string;
-  helperText?: string;
   className?: string;
 }
 
-const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, options, className }) => {
+const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, options, className }) => {
   const { control } = useFormContext();
   const optionCount = options.length;
 
@@ -113,9 +112,6 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, helperText, op
               )}
             </Field.Context>
 
-            {helperText && !fieldState.error && (
-              <Field.HelperText className={styles.helper}>{helperText}</Field.HelperText>
-            )}
             {fieldState.error?.message && (
               <Field.ErrorText className={styles.error}>{fieldState.error.message}</Field.ErrorText>
             )}

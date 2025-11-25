@@ -59,12 +59,51 @@
     margin-top: var(--spacing-state);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-city);
+    gap: var(--spacing-continent);
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-city);
+    }
 
     .statusMessage {
       font-size: var(--font-size-fluid-sm);
       color: var(--color-success);
       margin: 0;
+    }
+
+    .priceBreakdown {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-street);
+      padding: var(--spacing-city);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--color-gray-200);
+      background-color: var(--color-bg-secondary);
+    }
+
+    .priceRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--font-size-fluid-sm);
+    }
+
+    .priceLabel {
+      color: var(--color-text-secondary);
+    }
+
+    .priceValue {
+      color: var(--color-text-primary);
+      font-weight: var(--font-weight-semibold);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .priceDivider {
+      width: 100%;
+      border: none;
+      border-top: 1px solid var(--color-gray-200);
     }
   }
 }

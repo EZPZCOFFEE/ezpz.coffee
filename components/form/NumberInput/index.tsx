@@ -71,12 +71,7 @@ const NumberInput = <TFieldValues extends FieldValues = FieldValues>({
       invalid={Boolean(errorMessage)}
       required={required}
     >
-      {label && (
-        <Field.Label className={styles.label}>
-          {label}
-          {required && <span className={styles.required}>*</span>}
-        </Field.Label>
-      )}
+      {label && <Field.Label className={styles.label}>{label}</Field.Label>}
 
       <ArkNumberInput.Root
         className={styles["number-input"]}
@@ -112,16 +107,10 @@ const NumberInput = <TFieldValues extends FieldValues = FieldValues>({
         </ArkNumberInput.Control>
       </ArkNumberInput.Root>
 
-      {errorMessage ? (
+      {errorMessage && (
         <Field.ErrorText id={errorId} className={styles.error}>
           {errorMessage}
         </Field.ErrorText>
-      ) : (
-        helperText && (
-          <Field.HelperText id={helperTextId} className={styles.helper}>
-            {helperText}
-          </Field.HelperText>
-        )
       )}
     </Field.Root>
   );

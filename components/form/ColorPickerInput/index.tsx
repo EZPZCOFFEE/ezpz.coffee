@@ -42,7 +42,6 @@ const normalizeSwatches = (swatches: readonly string[]): string[] => {
 interface ColorPickerInputProps<TFieldValues extends FieldValues = FieldValues> {
   name: Path<TFieldValues>;
   label?: string;
-  helperText?: string;
   className?: string;
   disabled?: boolean;
   required?: boolean;
@@ -55,7 +54,6 @@ const DEFAULT_PREVIEW_COLOR = "#6B7280";
 const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
   name,
   label,
-  helperText,
   className,
   disabled = false,
   required = false,
@@ -88,7 +86,7 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
             defaultValue={defaultValue}
             required={required}
           >
-            {label && <Field.Label className={styles.label}>{label}</Field.Label>}
+            {label && <Field.Label className={styles.srOnly}>{label}</Field.Label>}
             <Field.Context>
               {({ ids, ariaDescribedby }) => (
                 <ColorPicker.Root onValueChange={handleValueChange} disabled={disabled} closeOnSelect>
@@ -168,9 +166,6 @@ const ColorPickerInput = <TFieldValues extends FieldValues = FieldValues>({
               )}
             </Field.Context>
 
-            {helperText && !fieldState.error && (
-              <Field.HelperText className={styles.helper}>{helperText}</Field.HelperText>
-            )}
             {fieldState.error?.message && (
               <Field.ErrorText className={styles.error}>{fieldState.error.message}</Field.ErrorText>
             )}

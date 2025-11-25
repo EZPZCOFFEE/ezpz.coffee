@@ -44,22 +44,15 @@ const TextInput = <TFieldValues extends FieldValues = FieldValues>({
   const isInvalid = Boolean(errorMessage);
 
   const registered = register(name);
-  const showLabelRow = Boolean(label?.trim()) || Boolean(optionalLabel?.trim());
-
   return (
     <Field.Root className={styles.fieldRoot} invalid={isInvalid}>
-      {showLabelRow && (
-        <div className={styles.labelRow}>
-          {label && (
-            <Field.Label asChild>
-              <label className={styles.label}>{label}</label>
-            </Field.Label>
-          )}
-          {optionalLabel && <span className={styles.optionalLabel}>{optionalLabel}</span>}
-        </div>
+      {label && (
+        <Field.Label asChild>
+          <label className={styles.srOnly}>{optionalLabel ? `${label} (${optionalLabel})` : label}</label>
+        </Field.Label>
       )}
 
-      <Field.Root className={styles.inputWrapper} data-invalid={isInvalid ? "true" : "false"}>
+      <div className={styles.inputWrapper} data-invalid={isInvalid ? "true" : "false"}>
         <Field.Input asChild>
           <input
             {...registered}
@@ -68,18 +61,12 @@ const TextInput = <TFieldValues extends FieldValues = FieldValues>({
             className={styles.inputElement}
           />
         </Field.Input>
-      </Field.Root>
+      </div>
 
-      {errorMessage ? (
+      {errorMessage && (
         <Field.ErrorText asChild>
           <p className={styles.errorText}>{errorMessage}</p>
         </Field.ErrorText>
-      ) : (
-        helperText && (
-          <Field.HelperText asChild>
-            <p className={styles.helperText}>{helperText}</p>
-          </Field.HelperText>
-        )
       )}
     </Field.Root>
   );

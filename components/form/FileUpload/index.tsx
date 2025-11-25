@@ -51,7 +51,6 @@ const getRejectionMessage = (code?: FileUploadFileError): string | null => {
 const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
   name,
   label,
-  helperText,
   accept = DEFAULT_ACCEPT,
   maxFiles = 1,
   recommendedSize = DEFAULT_RECOMMENDATION,
@@ -150,11 +149,7 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
         )}
       </FileUpload.Root>
 
-      {errorMessage ? (
-        <Field.ErrorText className={styles.errorText}>{errorMessage}</Field.ErrorText>
-      ) : (
-        helperText && <Field.HelperText className={styles.helperText}>{helperText}</Field.HelperText>
-      )}
+      {errorMessage && <Field.ErrorText className={styles.errorText}>{errorMessage}</Field.ErrorText>}
     </Field.Root>
   );
 };

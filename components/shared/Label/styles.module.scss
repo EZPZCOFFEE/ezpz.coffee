@@ -1,0 +1,19 @@
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-dot);
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+}
+
+.hint {
+  font-size: var(--font-size-fluid-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-500);
+  text-transform: none;
+  letter-spacing: 0;
+}
