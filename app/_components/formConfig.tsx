@@ -65,14 +65,14 @@ export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
   },
 ];
 
-export const surfaceValues = ["panels", "full", "bottom"] as const;
+export const surfaceValues = ["sandwich", "full", "bottom"] as const;
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
 
 export const surfaceOptions: readonly OptionDefinition<SurfaceValue>[] = [
   {
-    value: "panels",
-    label: "Panels",
+    value: "sandwich",
+    label: "Sandwich",
     icon: createOptionIcon(PanelsSurfaceIcon, 30),
   },
   {
@@ -88,8 +88,8 @@ export const surfaceOptions: readonly OptionDefinition<SurfaceValue>[] = [
 ] as const;
 
 export const surfacePreviewDetails: Record<SurfaceValue, { description: string }> = {
-  panels: {
-    description: "Twin panels keep typography crisp and separated from the artwork.",
+  sandwich: {
+    description: "Sandwiched bands keep typography crisp and separated from the artwork.",
   },
   full: {
     description: "Edge-to-edge coverage—best for bold photography or seamless patterns.",
