@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { StaticImageData } from "next/image";
 
-import MarketingPage from "@/components/custom/MarketingPage";
+import MarketingContent from "@/components/custom/MarketingContent";
 import coffeeIllustration from "@/public/arts/our-coffee.svg";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 
 const CoffeePage = () => {
   return (
-    <MarketingPage
+    <MarketingContent
       eyebrow="Our coffee"
       title="The coffee is theirs. We're just the steward."
       intro="We obsess over agronomy, processing choices, and roast curves so you get a bag that carries a farmer’s signature intact."
@@ -51,7 +52,7 @@ const CoffeePage = () => {
         },
       ]}
       illustration={{
-        image: coffeeIllustration,
+        image: coffeeIllustration as StaticImageData,
         alt: "Coffee cup mascot flashing a peace sign",
         caption: "Our coffee mascot, pulled from the EZPZ arts pack.",
       }}

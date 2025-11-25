@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { StaticImageData } from "next/image";
 
-import MarketingPage from "@/components/custom/MarketingPage";
+import MarketingContent from "@/components/custom/MarketingContent";
 import aboutIllustration from "@/public/arts/about-us.svg";
 
 export const metadata: Metadata = {
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <MarketingPage
+    <MarketingContent
       eyebrow="About us"
-      title="Jungle at its simplest is a transmission belt. Nothing more."
+      title="About EZPZ Coffee"
       intro="Our real job is to get out of the way—spotlighting the coffee, the producers, and the stories that make each bag worth sharing."
       sections={[
         {
@@ -46,7 +47,7 @@ const AboutPage = () => {
         },
       ]}
       illustration={{
-        image: aboutIllustration,
+        image: aboutIllustration as StaticImageData,
         alt: "Heart character waving in the EZPZ illustration style",
         caption: "Illustration pulled from the EZPZ arts library.",
         priority: true,

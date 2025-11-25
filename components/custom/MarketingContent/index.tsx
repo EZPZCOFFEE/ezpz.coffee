@@ -20,7 +20,7 @@ export interface MarketingPageProps {
   };
 }
 
-const MarketingPage = ({ eyebrow, title, intro, sections, illustration }: MarketingPageProps) => {
+const MarketingContent = ({ eyebrow, title, intro, sections, illustration }: MarketingPageProps) => {
   return (
     <article className={styles.page} aria-labelledby="marketing-page-title">
       <div className={styles.copyColumn}>
@@ -62,4 +62,4 @@ const MarketingPage = ({ eyebrow, title, intro, sections, illustration }: Market
   );
 };
 
-export default MarketingPage;
+export default MarketingContent;
