@@ -14,8 +14,10 @@ import {
   defaultNameColor,
   defaultPanelColor,
   defaultSurfaceValue,
+  defaultFontValue,
   formatPreviewValue,
   getOptionLabel,
+  getFontFamily,
   useGrindOptions,
   useRoastOptions,
   useSurfaceOptions,
@@ -31,6 +33,7 @@ const CustomizationPageClient = () => {
     defaultValues: {
       customerName: "",
       nameColor: defaultNameColor,
+      labelFont: defaultFontValue,
       roastProfile: "medium",
       grindSetting: "bean",
       surfaceLayout: defaultSurfaceValue,
@@ -54,6 +57,7 @@ const CustomizationPageClient = () => {
   const surfaceValue = watchedValues.surfaceLayout ?? defaultSurfaceValue;
   const surfacePreviewLabel = getOptionLabel(surfaceValue, surfaceOptions);
   const surfacePreviewDetail = surfaceDescriptions[surfaceValue];
+  const labelFontFamily = getFontFamily(watchedValues.labelFont);
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
     const name = formatPreviewValue(values.customerName, t("defaultBlendName"));
@@ -80,6 +84,7 @@ const CustomizationPageClient = () => {
             surfaceValue={surfaceValue}
             surfacePreviewLabel={surfacePreviewLabel}
             surfacePreviewDescription={surfacePreviewDetail}
+            labelFontFamily={labelFontFamily}
           />
         </div>
       </div>

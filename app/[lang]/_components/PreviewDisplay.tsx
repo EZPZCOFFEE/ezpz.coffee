@@ -15,6 +15,7 @@ interface PreviewDisplayProps {
   surfaceValue: SurfaceValue;
   surfacePreviewLabel?: string;
   surfacePreviewDescription: string;
+  labelFontFamily?: string;
 }
 
 const PreviewDisplay = ({
@@ -24,6 +25,7 @@ const PreviewDisplay = ({
   surfaceValue,
   surfacePreviewLabel,
   surfacePreviewDescription,
+  labelFontFamily,
 }: PreviewDisplayProps) => {
   const t = useTranslations("home.preview");
 
@@ -39,12 +41,11 @@ const PreviewDisplay = ({
           customerName={formValues.customerName}
           nameColor={formValues.nameColor}
           panelColor={formValues.panelColor}
+          nameFontFamily={labelFontFamily}
         />
       </div>
       <div className={styles.displayFooter}>
-        <span>
-          {t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}
-        </span>
+        <span>{t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}</span>
         <span>{surfacePreviewDescription}</span>
       </div>
     </div>

@@ -7,13 +7,20 @@ import { useFormContext } from "react-hook-form";
 import styles from "@/app/styles.module.scss";
 import ColorPickerInput from "@/components/form/ColorPickerInput";
 import FileUploadInput from "@/components/form/FileUpload";
+import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
 
-import { type CustomizationFormValues, useRoastOptions, useGrindOptions, useSurfaceOptions } from "./formConfig";
+import {
+  type CustomizationFormValues,
+  useRoastOptions,
+  useGrindOptions,
+  useSurfaceOptions,
+  useFontOptions,
+} from "./formConfig";
 
 const BAG_PRICE_USD = 25;
 const currencyFormatter = new Intl.NumberFormat("en-US", {
@@ -36,6 +43,7 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
     typeof watchedQuantity === "number" && Number.isFinite(watchedQuantity) ? watchedQuantity : 0;
   const subtotal = quantity * BAG_PRICE_USD;
 
+  const fontOptions = useFontOptions();
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
   const surfaceOptions = useSurfaceOptions();
@@ -48,6 +56,7 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           <Label>{t("labelSection")}</Label>
           <TextInput name="customerName" label={t("nameLabel")} helperText={t("nameHelper")} />
           <ColorPickerInput name="nameColor" label={t("nameColorLabel")} required />
+          <FontSelectInput name="labelFont" label={t("fontLabel")} options={fontOptions} />
         </div>
         <div className={styles.formGroup}>
           <Label>{t("roastSection")}</Label>
@@ -74,7 +83,14 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
         </div>
         <div className={styles.formGroup}>
           <Label>{t("quantitySection")}</Label>
-          <NumberInput name="quantity" label={t("quantityLabel")} min={1} max={10} defaultValue={1} required />
+          <NumberInput
+            name="quantity"
+            label={t("quantityLabel")}
+            min={1}
+            max={10}
+            defaultValue={1}
+            required
+          />
         </div>
         <div className={styles.priceBreakdown} aria-live="polite">
           <div className={styles.priceRow}>
@@ -83,7 +99,9 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>{t("quantity")}</span>
-            <span className={styles.priceValue}>{quantity} {t("bags")}</span>
+            <span className={styles.priceValue}>
+              {quantity} {t("bags")}
+            </span>
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>{t("subtotal")}</span>

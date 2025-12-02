@@ -82,7 +82,7 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
 };
 const PANEL_OVERLAY_ALPHA = 1;
 
-const NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
+const DEFAULT_NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
 const NAME_FONT_MAX = 20 * CANVAS_SCALE;
 const NAME_FONT_MIN = 12 * CANVAS_SCALE;
 const NAME_PADDING_X = 24 * CANVAS_SCALE;
@@ -91,10 +91,12 @@ const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_
 
 const planNameRendering = (
   context: CanvasRenderingContext2D,
-  rawName: string
+  rawName: string,
+  fontFamily: string
 ): {
   text: string;
   fontSize: number;
+  fontFamily: string;
 } | null => {
   const sanitized = rawName.trim();
   if (!sanitized) {
@@ -106,7 +108,7 @@ const planNameRendering = (
   let fontSize = NAME_FONT_MAX;
 
   const setFont = (size: number) => {
-    context.font = `${size}px ${NAME_FONT_FAMILY}`;
+    context.font = `${size}px ${fontFamily}`;
   };
 
   setFont(fontSize);
@@ -141,6 +143,7 @@ const planNameRendering = (
   return {
     text: workingName,
     fontSize,
+    fontFamily,
   };
 };
 
@@ -150,6 +153,7 @@ interface PreviewCanvasProps {
   customerName?: string;
   nameColor?: string;
   panelColor?: string;
+  nameFontFamily?: string;
 }
 
 const PreviewCanvas = ({
@@ -158,6 +162,7 @@ const PreviewCanvas = ({
   customerName,
   nameColor,
   panelColor,
+  nameFontFamily,
 }: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
@@ -180,6 +185,19 @@ const PreviewCanvas = ({
   );
   const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
   const panelFillColor = useMemo<string>(() => sanitizeHexColor(panelColor, defaultPanelColor), [panelColor]);
+
+  // Resolve CSS variable to actual font family for canvas rendering
+  // Next.js localFont sets CSS variables on <body>, not <html>
+  const resolvedFontFamily = useMemo<string>(() => {
+    if (!nameFontFamily) return DEFAULT_NAME_FONT_FAMILY;
+    if (!nameFontFamily.startsWith("var(")) return nameFontFamily;
+
+    if (typeof document === "undefined") return DEFAULT_NAME_FONT_FAMILY;
+
+    const varName = nameFontFamily.replace(/var\((--[^)]+)\)/, "$1").trim();
+    const computedValue = getComputedStyle(document.body).getPropertyValue(varName);
+    return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
+  }, [nameFontFamily]);
   const bottomPanelRect = useMemo(() => {
     if (surfaceValue === "sandwich") {
       return SURFACE_WINDOWS.sandwich[1];
@@ -337,13 +355,13 @@ const PreviewCanvas = ({
     }
 
     if (sanitizedName) {
-      const namePlan = planNameRendering(context, sanitizedName);
+      const namePlan = planNameRendering(context, sanitizedName, resolvedFontFamily);
       if (namePlan) {
         const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
         const textX = bottomPanelRect.x + NAME_PADDING_X;
         const textY = bottomPanelRect.y + bottomPanelRect.height / 2;
         context.save();
-        context.font = `${namePlan.fontSize}px ${NAME_FONT_FAMILY}`;
+        context.font = `${namePlan.fontSize}px ${namePlan.fontFamily}`;
         context.textAlign = "left";
         context.textBaseline = "middle";
         context.fillStyle = nameTextColor;
@@ -361,6 +379,7 @@ const PreviewCanvas = ({
     sanitizedName,
     panelFillColor,
     bottomPanelRect,
+    resolvedFontFamily,
   ]);
 
   useEffect(() => {

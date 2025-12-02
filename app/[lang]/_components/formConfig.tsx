@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { type ReactNode, type SVGProps, useMemo } from "react";
 import { z } from "zod";
 
+import type { FontOption } from "@/components/form/FontSelectInput";
 import {
   BeanGrindIcon,
   BottomSurfaceIcon,
@@ -83,6 +84,149 @@ export const useGrindOptions = (): readonly OptionDefinition<GrindValue>[] => {
 export const surfaceValues = ["sandwich", "full", "bottom"] as const;
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
+
+export const fontValues = [
+  // Sans-serif
+  "dm-sans",
+  "inter",
+  "poppins",
+  "manrope",
+  "alegreya-sans",
+  "archivo-narrow",
+  "chivo",
+  "fira-sans",
+  "ibm-plex-sans",
+  "karla",
+  "libre-franklin",
+  "montserrat",
+  "open-sans",
+  "proza-libre",
+  "pt-sans",
+  "raleway",
+  "roboto",
+  "rubik",
+  "source-sans",
+  "work-sans",
+  // Serif
+  "playfair-display",
+  "lora",
+  "libre-baskerville",
+  "alegreya",
+  "cardo",
+  "cormorant",
+  "eczar",
+  "neuton",
+  "pt-serif",
+  "source-serif",
+  "spectral",
+  // Display
+  "fraunces",
+  "space-grotesk",
+  "bio-rhyme",
+  "inknut-antiqua",
+  "syne",
+  // Monospace
+  "inconsolata",
+  "space-mono",
+] as const;
+export type FontValue = (typeof fontValues)[number];
+export const defaultFontValue: FontValue = "dm-sans";
+
+const FONT_DEFINITIONS: Record<
+  FontValue,
+  { label: string; fontFamily: string; category: FontOption["category"] }
+> = {
+  // Sans-serif
+  "dm-sans": { label: "DM Sans", fontFamily: "var(--font-dm-sans)", category: "sans-serif" },
+  inter: { label: "Inter", fontFamily: "var(--font-inter)", category: "sans-serif" },
+  poppins: { label: "Poppins", fontFamily: "var(--font-poppins)", category: "sans-serif" },
+  manrope: { label: "Manrope", fontFamily: "var(--font-manrope)", category: "sans-serif" },
+  "alegreya-sans": {
+    label: "Alegreya Sans",
+    fontFamily: "var(--font-alegreya-sans)",
+    category: "sans-serif",
+  },
+  "archivo-narrow": {
+    label: "Archivo Narrow",
+    fontFamily: "var(--font-archivo-narrow)",
+    category: "sans-serif",
+  },
+  chivo: { label: "Chivo", fontFamily: "var(--font-chivo)", category: "sans-serif" },
+  "fira-sans": { label: "Fira Sans", fontFamily: "var(--font-fira-sans)", category: "sans-serif" },
+  "ibm-plex-sans": {
+    label: "IBM Plex Sans",
+    fontFamily: "var(--font-ibm-plex-sans)",
+    category: "sans-serif",
+  },
+  karla: { label: "Karla", fontFamily: "var(--font-karla)", category: "sans-serif" },
+  "libre-franklin": {
+    label: "Libre Franklin",
+    fontFamily: "var(--font-libre-franklin)",
+    category: "sans-serif",
+  },
+  montserrat: { label: "Montserrat", fontFamily: "var(--font-montserrat)", category: "sans-serif" },
+  "open-sans": { label: "Open Sans", fontFamily: "var(--font-open-sans)", category: "sans-serif" },
+  "proza-libre": { label: "Proza Libre", fontFamily: "var(--font-proza-libre)", category: "sans-serif" },
+  "pt-sans": { label: "PT Sans", fontFamily: "var(--font-pt-sans)", category: "sans-serif" },
+  raleway: { label: "Raleway", fontFamily: "var(--font-raleway)", category: "sans-serif" },
+  roboto: { label: "Roboto", fontFamily: "var(--font-roboto)", category: "sans-serif" },
+  rubik: { label: "Rubik", fontFamily: "var(--font-rubik)", category: "sans-serif" },
+  "source-sans": { label: "Source Sans", fontFamily: "var(--font-source-sans)", category: "sans-serif" },
+  "work-sans": { label: "Work Sans", fontFamily: "var(--font-work-sans)", category: "sans-serif" },
+  // Serif
+  "playfair-display": {
+    label: "Playfair Display",
+    fontFamily: "var(--font-playfair-display)",
+    category: "serif",
+  },
+  lora: { label: "Lora", fontFamily: "var(--font-lora)", category: "serif" },
+  "libre-baskerville": {
+    label: "Libre Baskerville",
+    fontFamily: "var(--font-libre-baskerville)",
+    category: "serif",
+  },
+  alegreya: { label: "Alegreya", fontFamily: "var(--font-alegreya)", category: "serif" },
+  cardo: { label: "Cardo", fontFamily: "var(--font-cardo)", category: "serif" },
+  cormorant: { label: "Cormorant", fontFamily: "var(--font-cormorant)", category: "serif" },
+  eczar: { label: "Eczar", fontFamily: "var(--font-eczar)", category: "serif" },
+  neuton: { label: "Neuton", fontFamily: "var(--font-neuton)", category: "serif" },
+  "pt-serif": { label: "PT Serif", fontFamily: "var(--font-pt-serif)", category: "serif" },
+  "source-serif": { label: "Source Serif", fontFamily: "var(--font-source-serif)", category: "serif" },
+  spectral: { label: "Spectral", fontFamily: "var(--font-spectral)", category: "serif" },
+  // Display
+  fraunces: { label: "Fraunces", fontFamily: "var(--font-fraunces)", category: "display" },
+  "space-grotesk": { label: "Space Grotesk", fontFamily: "var(--font-space-grotesk)", category: "display" },
+  "bio-rhyme": { label: "BioRhyme", fontFamily: "var(--font-bio-rhyme)", category: "display" },
+  "inknut-antiqua": {
+    label: "Inknut Antiqua",
+    fontFamily: "var(--font-inknut-antiqua)",
+    category: "display",
+  },
+  syne: { label: "Syne", fontFamily: "var(--font-syne)", category: "display" },
+  // Monospace
+  inconsolata: { label: "Inconsolata", fontFamily: "var(--font-inconsolata)", category: "monospace" },
+  "space-mono": { label: "Space Mono", fontFamily: "var(--font-space-mono)", category: "monospace" },
+};
+
+export const useFontOptions = (): readonly FontOption[] => {
+  return useMemo(
+    () =>
+      fontValues.map((value) => ({
+        value,
+        label: FONT_DEFINITIONS[value].label,
+        fontFamily: FONT_DEFINITIONS[value].fontFamily,
+        category: FONT_DEFINITIONS[value].category,
+      })),
+    []
+  );
+};
+
+export const getFontFamily = (fontValue: FontValue | undefined): string => {
+  if (!fontValue || !FONT_DEFINITIONS[fontValue]) {
+    return FONT_DEFINITIONS[defaultFontValue].fontFamily;
+  }
+  return FONT_DEFINITIONS[fontValue].fontFamily;
+};
 
 export const useSurfaceOptions = (): readonly OptionDefinition<SurfaceValue>[] => {
   const t = useTranslations("home.surfaceOptions");
@@ -167,6 +311,7 @@ export const customizationFormSchema = z.object({
     .min(2, "Name must be at least 2 characters long")
     .max(50, "Name must be 50 characters or fewer"),
   nameColor: z.string().regex(hexColorRegex, { message: "Enter a valid hex color (for example #111827)" }),
+  labelFont: z.enum(fontValues, { message: "Select a font" }),
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),

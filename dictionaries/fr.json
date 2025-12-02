@@ -49,6 +49,7 @@
     "nameLabel": "Nom",
     "nameHelper": "Affiché sur l'étiquette avant.",
     "nameColorLabel": "Couleur du nom",
+    "fontLabel": "Police",
     "roastSection": "Profil de torréfaction",
     "roastLabel": "Profil de torréfaction",
     "grindSection": "Type de mouture",
