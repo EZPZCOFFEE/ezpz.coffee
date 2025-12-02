@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "home": {
+      "title": "Customize your EZPZ coffee bags",
+      "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
+      "ogTitle": "Design a custom EZPZ coffee bag",
+      "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
+      "twitterDescription": "Personalize every detail and see the preview instantly."
+    },
+    "about": {
+      "title": "About EZPZ Coffee | Producer-first custom roastery",
+      "description": "EZPZ Coffee exists to spotlight the farmers and producers behind every bag. Learn how we keep sourcing transparent and give customers a direct line to origin stories.",
+      "ogTitle": "About EZPZ Coffee",
+      "ogDescription": "We are the transmission belt between microlot producers and the people who drink their coffee. Get to know the team and the promises that guide our work.",
+      "twitterTitle": "About EZPZ Coffee",
+      "twitterDescription": "Transparency, traceability, and respect for the producers behind every custom bag. Learn what drives us."
+    },
+    "coffee": {
+      "title": "Our Coffee | Sourcing, roasting, and brewing the EZPZ way",
+      "description": "See how EZPZ curates microlots, profiles each roast, and recommends brew parameters so your custom bags stay true to origin.",
+      "ogTitle": "Our Coffee",
+      "ogDescription": "From selective harvest calendars to deliberately gentle roast curves, here is every lever we pull to keep flavor honest.",
+      "twitterTitle": "How EZPZ sources and roasts",
+      "twitterDescription": "Producer partnerships, roast profiles, and brew specs—all in one place."
+    }
+  },
+  "nav": {
+    "customBag": "Custom bag",
+    "aboutUs": "About us",
+    "ourCoffee": "Our coffee",
+    "sampleBag": "Sample bag",
+    "corporateSolutions": "Corporate solutions",
+    "largeOrders": "Large orders",
+    "logoAlt": "EZPZ logo",
+    "cartAlt": "Cart",
+    "mainNavigation": "Main navigation",
+    "openCart": "Open cart",
+    "toggleMenu": "Toggle navigation menu"
+  },
+  "footer": {
+    "brand": "EZPZ 2025",
+    "navigation": "Footer navigation",
+    "contactUs": "Contact us",
+    "faq": "FAQ"
+  },
+  "home": {
+    "panelTitle": "Customize",
+    "labelSection": "Label",
+    "nameLabel": "Name",
+    "nameHelper": "Shown on the front label.",
+    "nameColorLabel": "Name color",
+    "roastSection": "Roast profile",
+    "roastLabel": "Roast profile",
+    "grindSection": "Grind setting",
+    "grindLabel": "Grind setting",
+    "surfaceSection": "Bag surface",
+    "surfaceLabel": "Bag surface",
+    "panelColorLabel": "Panel color",
+    "uploadSection": "Upload artwork",
+    "uploadLabel": "Upload artwork",
+    "uploadHelper": "Upload one JPG or PNG (max 10MB). Drag to crop in the preview.",
+    "quantitySection": "Quantity",
+    "quantityLabel": "Quantity",
+    "pricePerBag": "Price per bag",
+    "quantity": "Quantity",
+    "bags": "bags",
+    "subtotal": "Subtotal",
+    "addToCart": "Add to cart",
+    "savedMessage": "Saved {count, plural, one {# bag} other {# bags}} for {name}.",
+    "defaultBlendName": "your blend",
+    "preview": {
+      "title": "Preview",
+      "productTitle": "225g bag",
+      "selectedSurface": "Selected surface: {surface}",
+      "chooseSurface": "Choose a surface"
+    },
+    "roastOptions": {
+      "light": "Light roast",
+      "medium": "Medium roast",
+      "dark": "Dark roast"
+    },
+    "grindOptions": {
+      "fine": "Fine grind",
+      "coarse": "Coarse grind",
+      "bean": "Whole bean"
+    },
+    "surfaceOptions": {
+      "sandwich": "Sandwich",
+      "full": "Full",
+      "bottom": "Bottom"
+    },
+    "surfaceDescriptions": {
+      "sandwich": "Sandwiched bands keep typography crisp and separated from the artwork.",
+      "full": "Edge-to-edge coverage—best for bold photography or seamless patterns.",
+      "bottom": "Bottom strip treatment works best for high-detail imagery or signatures."
+    }
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "About EZPZ",
+    "intro": "EZPZ is a project created by entrepreneurs who have been working in the coffee industry for many years. This platform was designed to simplify production, no matter what your needs are.",
+    "illustrationAlt": "Heart character waving in the EZPZ illustration style",
+    "illustrationCaption": "Illustration pulled from the EZPZ arts library.",
+    "sections": {
+      "main": {
+        "paragraphs": [
+          "Our solution is made for anyone who wants to easily create and produce their own coffee bags.",
+          "Whether it's to offer a unique gift to someone or to launch large-scale production, our platform streamlines every step of the process. We can produce a single bag or hundreds of them, at a low cost, to suit your reality and your needs."
+        ]
+      }
+    }
+  },
+  "coffee": {
+    "eyebrow": "Our coffee",
+    "title": "An exceptional coffee, from bean to cup.",
+    "intro": "At EZPZ, we source our beans from passionate producers who cultivate exceptional coffee with rich, balanced aromas.",
+    "illustrationAlt": "Coffee cup mascot flashing a peace sign",
+    "illustrationCaption": "Our coffee mascot, pulled from the EZPZ arts pack.",
+    "sections": {
+      "main": {
+        "paragraphs": [
+          "Our roasting, carried out in Montréal at Canadian Roasting Company, highlights the full complexity of each origin.",
+          "Every bag is roasted with precision to guarantee an optimal experience — a cup worthy of the finest baristas, sure to delight your clients, your employees, or anyone who has the pleasure of enjoying your coffee."
+        ]
+      }
+    }
+  },
+  "newsletter": {
+    "title": "Get <highlight>5% off</highlight> when you join our email list.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe"
+  },
+  "fileUpload": {
+    "uploadImage": "Upload image",
+    "recommendedSize": "recommended size:",
+    "defaultRecommendation": "Upload a square JPG or PNG (min 1800px)",
+    "remove": "Remove",
+    "errors": {
+      "invalidType": "Only PNG or JPG image files are allowed.",
+      "tooLarge": "Your file is too large. Keep it under 10MB.",
+      "tooSmall": "Your file is too small. Upload a higher resolution image.",
+      "tooMany": "Only one artwork file can be uploaded.",
+      "generic": "We couldn't upload that file. Check the requirements and try again."
+    }
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "buyNow": "Buy now"
+  },
+  "validation": {
+    "invalidValue": "Invalid value",
+    "uploadArtwork": "Upload a valid artwork file",
+    "nameMinLength": "Name must be at least 2 characters long",
+    "nameMaxLength": "Name must be 50 characters or fewer",
+    "invalidHexColor": "Enter a valid hex color (for example #111827)",
+    "selectRoast": "Select a roast profile",
+    "selectGrind": "Select a grind setting",
+    "chooseSurface": "Choose a bag surface",
+    "invalidPanelColor": "Enter a valid panel color (for example #f3ebe1)",
+    "quantityWhole": "Quantity must be a whole number",
+    "quantityMin": "Select at least 1 bag",
+    "quantityMax": "Limit 10 bags per order",
+    "uploadRequired": "Upload your bag artwork",
+    "uploadMax": "Only one artwork file is allowed"
+  },
+  "common": {
+    "section": "Section {number}"
+  }
+}
+

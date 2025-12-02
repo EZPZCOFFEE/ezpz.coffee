@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { SubmitHandler, FormProvider, useForm } from "react-hook-form";
 
@@ -15,14 +16,15 @@ import {
   defaultSurfaceValue,
   formatPreviewValue,
   getOptionLabel,
-  grindOptions,
-  roastOptions,
-  surfaceOptions,
-  surfacePreviewDetails,
+  useGrindOptions,
+  useRoastOptions,
+  useSurfaceOptions,
+  useSurfaceDescriptions,
 } from "./formConfig";
 import PreviewDisplay from "./PreviewDisplay";
 
 const CustomizationPageClient = () => {
+  const t = useTranslations("home");
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
@@ -41,19 +43,21 @@ const CustomizationPageClient = () => {
 
   const watchedValues = formMethods.watch();
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
+
+  const roastOptions = useRoastOptions();
+  const grindOptions = useGrindOptions();
+  const surfaceOptions = useSurfaceOptions();
+  const surfaceDescriptions = useSurfaceDescriptions();
+
   const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
   const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
   const surfaceValue = watchedValues.surfaceLayout ?? defaultSurfaceValue;
   const surfacePreviewLabel = getOptionLabel(surfaceValue, surfaceOptions);
-  const surfacePreviewDetail = surfacePreviewDetails[surfaceValue];
+  const surfacePreviewDetail = surfaceDescriptions[surfaceValue];
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
-    setStatusMessage(
-      `Saved ${values.quantity} bag${values.quantity > 1 ? "s" : ""} for ${formatPreviewValue(
-        values.customerName,
-        "your blend"
-      )}.`
-    );
+    const name = formatPreviewValue(values.customerName, t("defaultBlendName"));
+    setStatusMessage(t("savedMessage", { count: values.quantity, name }));
   };
 
   const handleFormSubmit = formMethods.handleSubmit(onSubmit);
@@ -75,7 +79,7 @@ const CustomizationPageClient = () => {
             selectedArtworkFile={selectedArtworkFile}
             surfaceValue={surfaceValue}
             surfacePreviewLabel={surfacePreviewLabel}
-            surfacePreviewDescription={surfacePreviewDetail.description}
+            surfacePreviewDescription={surfacePreviewDetail}
           />
         </div>
       </div>

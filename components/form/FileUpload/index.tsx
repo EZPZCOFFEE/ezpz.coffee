@@ -3,6 +3,7 @@
 import { Field, FileUpload } from "@ark-ui/react";
 import type { FileUploadFileChangeDetails, FileUploadFileError, FileUploadFileMimeType } from "@ark-ui/react";
 import classNames from "classnames";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import type { FieldValues, Path, PathValue } from "react-hook-form";
 import { useController, useFormContext } from "react-hook-form";
@@ -29,35 +30,18 @@ const DEFAULT_ACCEPT: AcceptProp = {
   "image/*": [],
 };
 
-const DEFAULT_RECOMMENDATION = "Upload a square JPG or PNG (min 1800px)";
-
-const getRejectionMessage = (code?: FileUploadFileError): string | null => {
-  if (!code) return null;
-
-  switch (code) {
-    case "FILE_INVALID_TYPE":
-      return "Only PNG or JPG image files are allowed.";
-    case "FILE_TOO_LARGE":
-      return "Your file is too large. Keep it under 10MB.";
-    case "FILE_TOO_SMALL":
-      return "Your file is too small. Upload a higher resolution image.";
-    case "TOO_MANY_FILES":
-      return "Only one artwork file can be uploaded.";
-    default:
-      return "We couldn't upload that file. Check the requirements and try again.";
-  }
-};
-
 const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
   name,
   label,
   accept = DEFAULT_ACCEPT,
   maxFiles = 1,
-  recommendedSize = DEFAULT_RECOMMENDATION,
+  recommendedSize,
   disabled,
   required,
   className,
 }: FileUploadInputProps<TFieldValues>) => {
+  const t = useTranslations("fileUpload");
+
   const { control } = useFormContext<TFieldValues>();
   const {
     field: { value, onChange, onBlur, ref, name: fieldName },
@@ -67,6 +51,23 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
     control,
     defaultValue: [] as PathValue<TFieldValues, Path<TFieldValues>>,
   });
+
+  const getRejectionMessage = (code?: FileUploadFileError): string | null => {
+    if (!code) return null;
+
+    switch (code) {
+      case "FILE_INVALID_TYPE":
+        return t("errors.invalidType");
+      case "FILE_TOO_LARGE":
+        return t("errors.tooLarge");
+      case "FILE_TOO_SMALL":
+        return t("errors.tooSmall");
+      case "TOO_MANY_FILES":
+        return t("errors.tooMany");
+      default:
+        return t("errors.generic");
+    }
+  };
 
   const [rejectionMessage, setRejectionMessage] = useState<string | null>(null);
   const acceptedFiles = (Array.isArray(value) ? value : []).slice(0, maxFiles) as File[];
@@ -81,6 +82,7 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
   };
 
   const errorMessage = fieldState.error?.message ?? rejectionMessage ?? undefined;
+  const displayRecommendation = recommendedSize ?? t("defaultRecommendation");
 
   return (
     <Field.Root
@@ -110,11 +112,11 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
             </span>
           </div>
 
-          <span className={styles.triggerText}>Upload image</span>
+          <span className={styles.triggerText}>{t("uploadImage")}</span>
         </FileUpload.Trigger>
 
         <p className={styles.recommendation}>
-          recommended size: <span>{recommendedSize}</span>
+          {t("recommendedSize")} <span>{displayRecommendation}</span>
         </p>
 
         {hasFiles && (
@@ -140,7 +142,7 @@ const FileUploadInput = <TFieldValues extends FieldValues = FieldValues>({
                     </div>
                   </div>
                   <FileUpload.ItemDeleteTrigger className={styles.deleteTrigger} type="button">
-                    Remove
+                    {t("remove")}
                   </FileUpload.ItemDeleteTrigger>
                 </FileUpload.Item>
               );

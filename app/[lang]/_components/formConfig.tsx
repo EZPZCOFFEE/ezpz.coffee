@@ -1,4 +1,5 @@
-import { type ReactNode, type SVGProps } from "react";
+import { useTranslations } from "next-intl";
+import { type ReactNode, type SVGProps, useMemo } from "react";
 import { z } from "zod";
 
 import {
@@ -29,74 +30,96 @@ const createOptionIcon = (Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element,
   <Icon width={size} height={size} aria-hidden="true" focusable="false" />
 );
 
-export const roastOptions: readonly OptionDefinition<RoastValue>[] = [
-  {
-    value: "light",
-    label: "Light roast",
-    icon: createOptionIcon(LightRoastIcon),
-  },
-  {
-    value: "medium",
-    label: "Medium roast",
-    icon: createOptionIcon(MediumRoastIcon),
-  },
-  {
-    value: "dark",
-    label: "Dark roast",
-    icon: createOptionIcon(DarkRoastIcon),
-  },
-];
+export const useRoastOptions = (): readonly OptionDefinition<RoastValue>[] => {
+  const t = useTranslations("home.roastOptions");
 
-export const grindOptions: readonly OptionDefinition<GrindValue>[] = [
-  {
-    value: "fine",
-    label: "Fine grind",
-    icon: createOptionIcon(FineGrindIcon),
-  },
-  {
-    value: "coarse",
-    label: "Coarse grind",
-    icon: createOptionIcon(CoarseGrindIcon),
-  },
-  {
-    value: "bean",
-    label: "Whole bean",
-    icon: createOptionIcon(BeanGrindIcon),
-  },
-];
+  return useMemo(
+    () => [
+      {
+        value: "light" as const,
+        label: t("light"),
+        icon: createOptionIcon(LightRoastIcon),
+      },
+      {
+        value: "medium" as const,
+        label: t("medium"),
+        icon: createOptionIcon(MediumRoastIcon),
+      },
+      {
+        value: "dark" as const,
+        label: t("dark"),
+        icon: createOptionIcon(DarkRoastIcon),
+      },
+    ],
+    [t]
+  );
+};
+
+export const useGrindOptions = (): readonly OptionDefinition<GrindValue>[] => {
+  const t = useTranslations("home.grindOptions");
+
+  return useMemo(
+    () => [
+      {
+        value: "fine" as const,
+        label: t("fine"),
+        icon: createOptionIcon(FineGrindIcon),
+      },
+      {
+        value: "coarse" as const,
+        label: t("coarse"),
+        icon: createOptionIcon(CoarseGrindIcon),
+      },
+      {
+        value: "bean" as const,
+        label: t("bean"),
+        icon: createOptionIcon(BeanGrindIcon),
+      },
+    ],
+    [t]
+  );
+};
 
 export const surfaceValues = ["sandwich", "full", "bottom"] as const;
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
 
-export const surfaceOptions: readonly OptionDefinition<SurfaceValue>[] = [
-  {
-    value: "sandwich",
-    label: "Sandwich",
-    icon: createOptionIcon(PanelsSurfaceIcon, 30),
-  },
-  {
-    value: "full",
-    label: "Full",
-    icon: createOptionIcon(FullSurfaceIcon, 30),
-  },
-  {
-    value: "bottom",
-    label: "Bottom",
-    icon: createOptionIcon(BottomSurfaceIcon, 30),
-  },
-] as const;
+export const useSurfaceOptions = (): readonly OptionDefinition<SurfaceValue>[] => {
+  const t = useTranslations("home.surfaceOptions");
 
-export const surfacePreviewDetails: Record<SurfaceValue, { description: string }> = {
-  sandwich: {
-    description: "Sandwiched bands keep typography crisp and separated from the artwork.",
-  },
-  full: {
-    description: "Edge-to-edge coverage—best for bold photography or seamless patterns.",
-  },
-  bottom: {
-    description: "Bottom strip treatment works best for high-detail imagery or signatures.",
-  },
+  return useMemo(
+    () => [
+      {
+        value: "sandwich" as const,
+        label: t("sandwich"),
+        icon: createOptionIcon(PanelsSurfaceIcon, 30),
+      },
+      {
+        value: "full" as const,
+        label: t("full"),
+        icon: createOptionIcon(FullSurfaceIcon, 30),
+      },
+      {
+        value: "bottom" as const,
+        label: t("bottom"),
+        icon: createOptionIcon(BottomSurfaceIcon, 30),
+      },
+    ],
+    [t]
+  );
+};
+
+export const useSurfaceDescriptions = (): Record<SurfaceValue, string> => {
+  const t = useTranslations("home.surfaceDescriptions");
+
+  return useMemo(
+    () => ({
+      sandwich: t("sandwich"),
+      full: t("full"),
+      bottom: t("bottom"),
+    }),
+    [t]
+  );
 };
 
 export const getOptionLabel = <TValue extends string>(
@@ -131,6 +154,9 @@ const isFileLike = (value: unknown): value is File => {
   );
 };
 
+// Note: Zod validation messages are kept in English as they're runtime-validated
+// and would require a more complex setup to translate dynamically.
+// For full i18n of validation, consider using zod-i18n-map or similar.
 const fileSchema = z.custom<File>((value) => isFileLike(value), {
   message: "Upload a valid artwork file",
 });

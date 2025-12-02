@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { FormEvent } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -12,7 +13,7 @@ import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
 
-import { type CustomizationFormValues, grindOptions, roastOptions, surfaceOptions } from "./formConfig";
+import { type CustomizationFormValues, useRoastOptions, useGrindOptions, useSurfaceOptions } from "./formConfig";
 
 const BAG_PRICE_USD = 25;
 const currencyFormatter = new Intl.NumberFormat("en-US", {
@@ -28,64 +29,69 @@ interface CustomizationPanelProps {
 }
 
 const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps) => {
+  const t = useTranslations("home");
   const { watch } = useFormContext<CustomizationFormValues>();
   const watchedQuantity = watch("quantity");
   const quantity =
     typeof watchedQuantity === "number" && Number.isFinite(watchedQuantity) ? watchedQuantity : 0;
   const subtotal = quantity * BAG_PRICE_USD;
 
+  const roastOptions = useRoastOptions();
+  const grindOptions = useGrindOptions();
+  const surfaceOptions = useSurfaceOptions();
+
   return (
     <div className={styles.panel}>
-      <h1 className={styles.panelTitle}>Customize</h1>
+      <h1 className={styles.panelTitle}>{t("panelTitle")}</h1>
       <form className={styles.panelForm} onSubmit={(event) => void onSubmit(event)} noValidate>
         <div className={styles.formGroup}>
-          <Label>Label</Label>
-          <TextInput name="customerName" label="Name" helperText="Shown on the front label." />
-          <ColorPickerInput name="nameColor" label="Name color" required />
+          <Label>{t("labelSection")}</Label>
+          <TextInput name="customerName" label={t("nameLabel")} helperText={t("nameHelper")} />
+          <ColorPickerInput name="nameColor" label={t("nameColorLabel")} required />
         </div>
         <div className={styles.formGroup}>
-          <Label>Roast profile</Label>
-          <OptionsInput name="roastProfile" label="Roast profile" options={roastOptions} />
+          <Label>{t("roastSection")}</Label>
+          <OptionsInput name="roastProfile" label={t("roastLabel")} options={roastOptions} />
         </div>
         <div className={styles.formGroup}>
-          <Label>Grind setting</Label>
-          <OptionsInput name="grindSetting" label="Grind setting" options={grindOptions} />
+          <Label>{t("grindSection")}</Label>
+          <OptionsInput name="grindSetting" label={t("grindLabel")} options={grindOptions} />
         </div>
         <div className={styles.formGroup}>
-          <Label>Bag surface</Label>
-          <OptionsInput name="surfaceLayout" label="Bag surface" options={surfaceOptions} />
-          <ColorPickerInput name="panelColor" label="Panel color" required />
+          <Label>{t("surfaceSection")}</Label>
+          <OptionsInput name="surfaceLayout" label={t("surfaceLabel")} options={surfaceOptions} />
+          <ColorPickerInput name="panelColor" label={t("panelColorLabel")} required />
         </div>
 
         <div className={styles.formGroup}>
-          <Label>Upload artwork</Label>
+          <Label>{t("uploadSection")}</Label>
           <FileUploadInput
             name="artworkFile"
-            label="Upload artwork"
-            helperText="Upload one JPG or PNG (max 10MB). Drag to crop in the preview."
+            label={t("uploadLabel")}
+            helperText={t("uploadHelper")}
             required
           />
         </div>
         <div className={styles.formGroup}>
-          <Label>Quantity</Label>
-          <NumberInput name="quantity" label="Quantity" min={1} max={10} defaultValue={1} required />
+          <Label>{t("quantitySection")}</Label>
+          <NumberInput name="quantity" label={t("quantityLabel")} min={1} max={10} defaultValue={1} required />
         </div>
         <div className={styles.priceBreakdown} aria-live="polite">
           <div className={styles.priceRow}>
-            <span className={styles.priceLabel}>Price per bag</span>
+            <span className={styles.priceLabel}>{t("pricePerBag")}</span>
             <span className={styles.priceValue}>{formatCurrency(BAG_PRICE_USD)}</span>
           </div>
           <div className={styles.priceRow}>
-            <span className={styles.priceLabel}>Quantity</span>
-            <span className={styles.priceValue}>{quantity} bags</span>
+            <span className={styles.priceLabel}>{t("quantity")}</span>
+            <span className={styles.priceValue}>{quantity} {t("bags")}</span>
           </div>
           <div className={styles.priceRow}>
-            <span className={styles.priceLabel}>Subtotal</span>
+            <span className={styles.priceLabel}>{t("subtotal")}</span>
             <span className={styles.priceValue}>{formatCurrency(subtotal)}</span>
           </div>
         </div>
         <Button type="submit" variant="primary">
-          Add to cart
+          {t("addToCart")}
         </Button>
         {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
       </form>

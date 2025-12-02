@@ -4,6 +4,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
 import styles from "./styles.module.scss";
@@ -13,18 +14,18 @@ import styles from "./styles.module.scss";
 // ---------------------------------------------------------------------------
 
 interface NavItem {
-  label: string;
+  labelKey: string;
   href: string;
 }
 
-const LEFT_NAV_ITEMS: NavItem[] = [{ label: "Custom bag", href: "/" }];
+const LEFT_NAV_ITEMS: NavItem[] = [{ labelKey: "customBag", href: "/" }];
 
 const RIGHT_NAV_ITEMS: NavItem[] = [
-  { label: "About us", href: "/about" },
-  { label: "Our coffee", href: "/coffee" },
-  { label: "Sample bag", href: "/sample-bag" },
-  { label: "Corporate solutions", href: "/corporate" },
-  { label: "Large orders", href: "/large-orders" },
+  { labelKey: "aboutUs", href: "/about" },
+  { labelKey: "ourCoffee", href: "/coffee" },
+  { labelKey: "sampleBag", href: "/sample-bag" },
+  { labelKey: "corporateSolutions", href: "/corporate" },
+  { labelKey: "largeOrders", href: "/large-orders" },
 ];
 
 const isNavItemActive = (item: NavItem, pathname: string | null): boolean => {
@@ -50,16 +51,20 @@ interface NavbarVariantProps {
 // ---------------------------------------------------------------------------
 
 const Logo = () => {
+  const t = useTranslations("nav");
+
   return (
     <div className={styles.logo}>
-      <Image src="/logo.svg" alt="EZPZ logo" width={120} height={40} className={styles.logoImage} priority />
+      <Image src="/logo.svg" alt={t("logoAlt")} width={120} height={40} className={styles.logoImage} priority />
     </div>
   );
 };
 
 const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantProps) => {
+  const t = useTranslations("nav");
+
   return (
-    <nav className={styles.desktopNavbar} aria-label="Main navigation">
+    <nav className={styles.desktopNavbar} aria-label={t("mainNavigation")}>
       <div className={styles.desktopNavbarLeft}>
         <Logo />
         <ul className={styles.navList}>
@@ -70,7 +75,7 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
             return (
               <li key={item.href} className={itemClassName}>
                 <Link href={item.href} className={styles.navLink}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               </li>
             );
@@ -86,15 +91,15 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
             return (
               <li key={item.href} className={itemClassName}>
                 <Link href={item.href} className={styles.navLink}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               </li>
             );
           })}
         </ul>
 
-        <button className={styles.cartButton} type="button" aria-label="Open cart">
-          <Image src="/cart.svg" alt="Cart" width={28} height={28} />
+        <button className={styles.cartButton} type="button" aria-label={t("openCart")}>
+          <Image src="/cart.svg" alt={t("cartAlt")} width={28} height={28} />
         </button>
       </div>
     </nav>
@@ -102,6 +107,7 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
 };
 
 const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantProps) => {
+  const t = useTranslations("nav");
   const navItems = [...leftNavItems, ...rightNavItems];
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
@@ -115,7 +121,7 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
           <button
             className={styles.menuButton}
             type="button"
-            aria-label="Toggle navigation menu"
+            aria-label={t("toggleMenu")}
             aria-expanded={isOpen}
             aria-controls={menuId}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -125,8 +131,8 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarBottom}`} />
           </button>
 
-          <button className={styles.cartButton} type="button" aria-label="Open cart">
-            <Image src="/cart.svg" alt="Cart" width={24} height={24} />
+          <button className={styles.cartButton} type="button" aria-label={t("openCart")}>
+            <Image src="/cart.svg" alt={t("cartAlt")} width={24} height={24} />
           </button>
         </div>
       </div>
@@ -151,7 +157,7 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
                   className={styles.mobileMenuItemLabel}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </Link>
               </li>
             );

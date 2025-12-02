@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 import styles from "@/app/styles.module.scss";
 
 import { CustomizationFormValues, SurfaceValue } from "./formConfig";
@@ -21,10 +25,12 @@ const PreviewDisplay = ({
   surfacePreviewLabel,
   surfacePreviewDescription,
 }: PreviewDisplayProps) => {
+  const t = useTranslations("home.preview");
+
   return (
     <div className={styles.display}>
       <h2 className={styles.displayHeader}>
-        Preview <span className={styles.productTitle}>225g bag</span>
+        {t("title")} <span className={styles.productTitle}>{t("productTitle")}</span>
       </h2>
       <div className={styles.displayContent}>
         <PreviewCanvas
@@ -36,7 +42,9 @@ const PreviewDisplay = ({
         />
       </div>
       <div className={styles.displayFooter}>
-        <span>Selected surface: {surfacePreviewLabel ?? "Choose a surface"}</span>
+        <span>
+          {t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}
+        </span>
         <span>{surfacePreviewDescription}</span>
       </div>
     </div>

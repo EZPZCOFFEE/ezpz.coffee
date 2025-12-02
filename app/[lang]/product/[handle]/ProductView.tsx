@@ -8,8 +8,10 @@ import {
   flattenConnection,
   useProduct,
 } from "@shopify/hydrogen-react";
+import { useTranslations } from "next-intl";
 
 export const ProductView = () => {
+  const t = useTranslations("product");
   const { product, selectedVariant } = useProduct();
 
   if (!product) {
@@ -33,8 +35,8 @@ export const ProductView = () => {
       <ProductPrice data={product} />
       {selectedVariant?.id && (
         <>
-          <AddToCartButton variantId={selectedVariant.id}>Add to cart</AddToCartButton>
-          <BuyNowButton variantId={selectedVariant.id}>Buy now</BuyNowButton>
+          <AddToCartButton variantId={selectedVariant.id}>{t("addToCart")}</AddToCartButton>
+          <BuyNowButton variantId={selectedVariant.id}>{t("buyNow")}</BuyNowButton>
         </>
       )}
     </div>

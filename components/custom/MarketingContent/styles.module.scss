@@ -71,7 +71,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-street);
-  margin: 80px 0;
+  margin: auto 0;
 }
 
 .illustrationImage {
@@ -84,7 +84,7 @@
   font-size: var(--font-size-fluid-sm);
   color: var(--color-neutral);
   text-align: center;
-  margin: var(--spacing-none);
+  margin: var(--spacing-city) var(--spacing-none);
 }
 
 @media (max-width: 1024px) {
