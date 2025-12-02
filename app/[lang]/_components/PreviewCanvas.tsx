@@ -85,40 +85,47 @@ const PANEL_OVERLAY_ALPHA = 1;
 const DEFAULT_NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
 const NAME_FONT_MAX = 20 * CANVAS_SCALE;
 const NAME_FONT_MIN = 12 * CANVAS_SCALE;
-const NAME_PADDING_X = 24 * CANVAS_SCALE;
+const NAME_PADDING_X = 12 * CANVAS_SCALE;
+const NAME_VERTICAL_OFFSET = 2 * CANVAS_SCALE;
 const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
 
 const planNameRendering = (
   context: CanvasRenderingContext2D,
   rawName: string,
-  fontFamily: string
+  fontFamily: string,
+  fontWeight: string,
+  sizeMultiplier: number
 ): {
   text: string;
   fontSize: number;
   fontFamily: string;
+  fontWeight: string;
 } | null => {
   const sanitized = rawName.trim();
   if (!sanitized) {
     return null;
   }
 
+  const scaledFontMax = NAME_FONT_MAX * sizeMultiplier;
+  const scaledFontMin = NAME_FONT_MIN * sizeMultiplier;
+
   const hardLimit = Math.max(1, NAME_CHARACTER_LIMIT);
   let workingName = sanitized.length > hardLimit ? sanitized.slice(0, hardLimit) : sanitized;
-  let fontSize = NAME_FONT_MAX;
+  let fontSize = scaledFontMax;
 
   const setFont = (size: number) => {
-    context.font = `${size}px ${fontFamily}`;
+    context.font = `${fontWeight} ${size}px ${fontFamily}`;
   };
 
   setFont(fontSize);
   let measuredWidth = context.measureText(workingName).width;
 
-  while (measuredWidth > NAME_MAX_TEXT_WIDTH && fontSize > NAME_FONT_MIN) {
+  while (measuredWidth > NAME_MAX_TEXT_WIDTH && fontSize > scaledFontMin) {
     const scale = Math.max(0.5, NAME_MAX_TEXT_WIDTH / measuredWidth);
-    const nextFontSize = Math.max(NAME_FONT_MIN, Math.floor(fontSize * scale));
+    const nextFontSize = Math.max(scaledFontMin, Math.floor(fontSize * scale));
     if (nextFontSize === fontSize) {
-      fontSize = Math.max(NAME_FONT_MIN, fontSize - 1);
+      fontSize = Math.max(scaledFontMin, fontSize - 1);
     } else {
       fontSize = nextFontSize;
     }
@@ -136,7 +143,7 @@ const planNameRendering = (
       truncated = truncated.slice(0, -1);
     }
     workingName = `${truncated}${ellipsis}`;
-    fontSize = NAME_FONT_MIN;
+    fontSize = scaledFontMin;
     setFont(fontSize);
   }
 
@@ -144,6 +151,7 @@ const planNameRendering = (
     text: workingName,
     fontSize,
     fontFamily,
+    fontWeight,
   };
 };
 
@@ -154,6 +162,8 @@ interface PreviewCanvasProps {
   nameColor?: string;
   panelColor?: string;
   nameFontFamily?: string;
+  nameFontWeight?: string;
+  nameFontSizeMultiplier?: number;
 }
 
 const PreviewCanvas = ({
@@ -163,6 +173,8 @@ const PreviewCanvas = ({
   nameColor,
   panelColor,
   nameFontFamily,
+  nameFontWeight = "400",
+  nameFontSizeMultiplier = 1,
 }: PreviewCanvasProps) => {
   const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragStateRef = useRef<{
@@ -355,13 +367,19 @@ const PreviewCanvas = ({
     }
 
     if (sanitizedName) {
-      const namePlan = planNameRendering(context, sanitizedName, resolvedFontFamily);
+      const namePlan = planNameRendering(
+        context,
+        sanitizedName,
+        resolvedFontFamily,
+        nameFontWeight,
+        nameFontSizeMultiplier
+      );
       if (namePlan) {
         const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
         const textX = bottomPanelRect.x + NAME_PADDING_X;
-        const textY = bottomPanelRect.y + bottomPanelRect.height / 2;
+        const textY = bottomPanelRect.y + bottomPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
         context.save();
-        context.font = `${namePlan.fontSize}px ${namePlan.fontFamily}`;
+        context.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
         context.textAlign = "left";
         context.textBaseline = "middle";
         context.fillStyle = nameTextColor;
@@ -380,6 +398,8 @@ const PreviewCanvas = ({
     panelFillColor,
     bottomPanelRect,
     resolvedFontFamily,
+    nameFontWeight,
+    nameFontSizeMultiplier,
   ]);
 
   useEffect(() => {

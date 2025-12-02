@@ -10,6 +10,7 @@ import FileUploadInput from "@/components/form/FileUpload";
 import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
+import SelectInput from "@/components/form/SelectInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
@@ -20,6 +21,8 @@ import {
   useGrindOptions,
   useSurfaceOptions,
   useFontOptions,
+  useFontWeightOptions,
+  useFontSizeOptions,
 } from "./formConfig";
 
 const BAG_PRICE_USD = 25;
@@ -44,6 +47,8 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
   const subtotal = quantity * BAG_PRICE_USD;
 
   const fontOptions = useFontOptions();
+  const fontWeightOptions = useFontWeightOptions();
+  const fontSizeOptions = useFontSizeOptions();
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
   const surfaceOptions = useSurfaceOptions();
@@ -57,6 +62,8 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           <TextInput name="customerName" label={t("nameLabel")} helperText={t("nameHelper")} />
           <ColorPickerInput name="nameColor" label={t("nameColorLabel")} required />
           <FontSelectInput name="labelFont" label={t("fontLabel")} options={fontOptions} />
+          <SelectInput name="labelFontWeight" label={t("fontWeightLabel")} options={fontWeightOptions} />
+          <OptionsInput name="labelFontSize" label={t("fontSizeLabel")} options={fontSizeOptions} />
         </div>
         <div className={styles.formGroup}>
           <Label>{t("roastSection")}</Label>

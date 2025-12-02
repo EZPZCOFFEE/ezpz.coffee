@@ -16,6 +16,8 @@ interface PreviewDisplayProps {
   surfacePreviewLabel?: string;
   surfacePreviewDescription: string;
   labelFontFamily?: string;
+  labelFontWeight?: string;
+  labelFontSizeMultiplier?: number;
 }
 
 const PreviewDisplay = ({
@@ -26,6 +28,8 @@ const PreviewDisplay = ({
   surfacePreviewLabel,
   surfacePreviewDescription,
   labelFontFamily,
+  labelFontWeight,
+  labelFontSizeMultiplier,
 }: PreviewDisplayProps) => {
   const t = useTranslations("home.preview");
 
@@ -42,6 +46,8 @@ const PreviewDisplay = ({
           nameColor={formValues.nameColor}
           panelColor={formValues.panelColor}
           nameFontFamily={labelFontFamily}
+          nameFontWeight={labelFontWeight}
+          nameFontSizeMultiplier={labelFontSizeMultiplier}
         />
       </div>
       <div className={styles.displayFooter}>

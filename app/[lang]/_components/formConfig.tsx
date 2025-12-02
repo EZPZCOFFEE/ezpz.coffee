@@ -85,6 +85,20 @@ export const surfaceValues = ["sandwich", "full", "bottom"] as const;
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
 
+export const fontWeightValues = ["100", "200", "300", "400", "500", "600", "700", "800", "900"] as const;
+export type FontWeightValue = (typeof fontWeightValues)[number];
+export const defaultFontWeightValue: FontWeightValue = "400";
+
+export const fontSizeValues = ["s", "m", "l"] as const;
+export type FontSizeValue = (typeof fontSizeValues)[number];
+export const defaultFontSizeValue: FontSizeValue = "m";
+
+export const FONT_SIZE_MULTIPLIERS: Record<FontSizeValue, number> = {
+  s: 0.75,
+  m: 1,
+  l: 1.25,
+};
+
 export const fontValues = [
   // Sans-serif
   "dm-sans",
@@ -228,6 +242,49 @@ export const getFontFamily = (fontValue: FontValue | undefined): string => {
   return FONT_DEFINITIONS[fontValue].fontFamily;
 };
 
+export interface SelectOption {
+  value: string;
+  label: string;
+}
+
+export const useFontWeightOptions = (): readonly SelectOption[] => {
+  const t = useTranslations("home.fontWeightOptions");
+
+  return useMemo(
+    () =>
+      fontWeightValues.map((value) => ({
+        value,
+        label: t(value),
+      })),
+    [t]
+  );
+};
+
+export const useFontSizeOptions = (): readonly OptionDefinition<FontSizeValue>[] => {
+  const t = useTranslations("home.fontSizeOptions");
+
+  return useMemo(
+    () => [
+      {
+        value: "s" as const,
+        label: t("s"),
+        icon: <span style={{ fontSize: "0.75em", fontWeight: 600 }}>Aa</span>,
+      },
+      {
+        value: "m" as const,
+        label: t("m"),
+        icon: <span style={{ fontSize: "1em", fontWeight: 600 }}>Aa</span>,
+      },
+      {
+        value: "l" as const,
+        label: t("l"),
+        icon: <span style={{ fontSize: "1.25em", fontWeight: 600 }}>Aa</span>,
+      },
+    ],
+    [t]
+  );
+};
+
 export const useSurfaceOptions = (): readonly OptionDefinition<SurfaceValue>[] => {
   const t = useTranslations("home.surfaceOptions");
 
@@ -312,6 +369,8 @@ export const customizationFormSchema = z.object({
     .max(50, "Name must be 50 characters or fewer"),
   nameColor: z.string().regex(hexColorRegex, { message: "Enter a valid hex color (for example #111827)" }),
   labelFont: z.enum(fontValues, { message: "Select a font" }),
+  labelFontWeight: z.enum(fontWeightValues, { message: "Select a font weight" }),
+  labelFontSize: z.enum(fontSizeValues, { message: "Select a font size" }),
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
