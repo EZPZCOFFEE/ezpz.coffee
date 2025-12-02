@@ -80,7 +80,6 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
     },
   ],
 };
-const PANEL_OVERLAY_ALPHA = 1;
 
 const DEFAULT_NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
 const NAME_FONT_MAX = 20 * CANVAS_SCALE;
@@ -318,14 +317,25 @@ const PreviewCanvas = ({
     const bagOffsetX = (canvas.width - bagWidth) / 2;
     const bagOffsetY = (canvas.height - bagHeight) / 2;
 
+    // Draw bag as base layer
     context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
-    context.save();
-    context.beginPath();
-    context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
-    context.clip();
-    context.fillStyle = "rgba(255, 255, 255, 0.96)";
-    context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+    // Create offscreen canvas for artwork + panels layer
+    const offscreen = document.createElement("canvas");
+    offscreen.width = canvas.width;
+    offscreen.height = canvas.height;
+    const offCtx = offscreen.getContext("2d");
+    if (!offCtx) return;
+
+    // Fill offscreen with white (multiply with white = original)
+    offCtx.fillStyle = "#fff";
+    offCtx.fillRect(0, 0, offscreen.width, offscreen.height);
+
+    // Draw artwork clipped to label area on offscreen canvas
+    offCtx.save();
+    offCtx.beginPath();
+    offCtx.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+    offCtx.clip();
 
     if (artworkImage) {
       const baseScale = Math.max(
@@ -338,7 +348,7 @@ const PreviewCanvas = ({
       const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
       const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
 
-      context.drawImage(
+      offCtx.drawImage(
         artworkImage,
         centerX - drawWidth / 2,
         centerY - drawHeight / 2,
@@ -346,25 +356,20 @@ const PreviewCanvas = ({
         drawHeight
       );
     }
-    context.restore();
+    offCtx.restore();
 
+    // Draw panels on offscreen canvas
     if (activeWindows.length > 0) {
-      context.save();
-      context.fillStyle = panelFillColor;
-      context.globalAlpha = PANEL_OVERLAY_ALPHA;
+      offCtx.fillStyle = panelFillColor;
       activeWindows.forEach((windowRect) => {
-        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
-      });
-      context.restore();
-    }
-
-    if (activeWindows.length > 0) {
-      context.strokeStyle = "rgba(0, 0, 0, 0)";
-      context.lineWidth = 2;
-      activeWindows.forEach((windowRect) => {
-        context.strokeRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+        offCtx.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
       });
     }
+
+    // Multiply the offscreen layer onto the bag
+    context.globalCompositeOperation = "multiply";
+    context.drawImage(offscreen, 0, 0);
+    context.globalCompositeOperation = "source-over";
 
     if (sanitizedName) {
       const namePlan = planNameRendering(
