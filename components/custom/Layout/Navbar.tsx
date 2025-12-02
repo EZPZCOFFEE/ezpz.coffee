@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
+import { locales } from "@/i18n/types";
+
 import styles from "./styles.module.scss";
 
 // ---------------------------------------------------------------------------
@@ -28,16 +30,31 @@ const RIGHT_NAV_ITEMS: NavItem[] = [
   { labelKey: "largeOrders", href: "/large-orders" },
 ];
 
+/**
+ * Strips the locale prefix from the pathname.
+ * e.g., "/en/about" -> "/about", "/fr" -> "/"
+ */
+const stripLocalePrefix = (pathname: string): string => {
+  for (const locale of locales) {
+    const prefix = `/${locale}`;
+    if (pathname === prefix) return "/";
+    if (pathname.startsWith(`${prefix}/`)) return pathname.slice(prefix.length);
+  }
+  return pathname;
+};
+
 const isNavItemActive = (item: NavItem, pathname: string | null): boolean => {
   if (!pathname) {
     return item.href === "/";
   }
 
+  const normalizedPath = stripLocalePrefix(pathname);
+
   if (item.href === "/") {
-    return pathname === "/";
+    return normalizedPath === "/";
   }
 
-  return pathname.startsWith(item.href);
+  return normalizedPath.startsWith(item.href);
 };
 
 interface NavbarVariantProps {
