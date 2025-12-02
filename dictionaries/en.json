@@ -1,4 +1,83 @@
 {
+  "faq": {
+    "title": "FAQ",
+    "illustrationAlt": "Robot character with peace signs in the EZPZ illustration style",
+    "categories": {
+      "general": {
+        "title": "General",
+        "items": {
+          "specialty": {
+            "question": "Do you produce specialty coffee?",
+            "answer": "Specialty coffee is evaluated and regulated by the Specialty Coffee Association. A specialty coffee must score at least 80 on the cupping test and offer a certain level of traceability back to the washing station. At Ezpz, we only offer specialty coffees."
+          },
+          "wholeBeans": {
+            "question": "Are your coffees available only as whole beans?",
+            "answer": "Not at all — you can choose your grind size when creating your order."
+          },
+          "roastingLocation": {
+            "question": "Where do you roast your coffee?",
+            "answer": "We roast all our coffees in the southwest of Montréal, at the Canadian Roasting Society."
+          },
+          "thirdWave": {
+            "question": "What is third-wave coffee?",
+            "answer": "Third-wave coffee emerged on the West Coast of the United States in the early 2000s. This movement treats coffee as an artisanal, local product. It emphasizes farming practices, production methods, quality, and an understanding of every actor involved from farm to cup."
+          }
+        }
+      },
+      "preparation": {
+        "title": "Coffee Preparation Tips",
+        "items": {
+          "storage": {
+            "question": "How should I store my coffee?",
+            "answer": "Store your coffee in a cool, dry place, away from direct sunlight. Avoid refrigerating or freezing it, as this can alter the flavor."
+          },
+          "brewing": {
+            "question": "What is the best way to brew your coffee?",
+            "answer": "Our coffees work well with various brewing methods — pour-over, French press, espresso, and more."
+          },
+          "freshness": {
+            "question": "How does the coffee stay fresh?",
+            "answer": "All our bags are equipped with a one-way valve that prevents oxidation. Just reseal the bag after each use."
+          },
+          "duration": {
+            "question": "How long will my coffee stay fresh?",
+            "answer": "All our coffees are freshly roasted. We recommend grinding your coffee right before brewing to preserve its quality. With proper storage, your coffee will stay fresh for 5 to 6 weeks. After that, it may lose a bit of flavor (nothing dramatic), but nothing more."
+          }
+        }
+      },
+      "shipping": {
+        "title": "Shipping & Delivery",
+        "items": {
+          "regions": {
+            "question": "Where do you ship your products?",
+            "answer": "We currently ship across Canada and offer international shipping in select regions. Shipping options and rates are calculated at checkout."
+          },
+          "deliveryTime": {
+            "question": "What is the delivery time?",
+            "answer": "Orders are generally processed within 3–4 business days, with delivery times ranging from 3 to 5 days, depending on your location and the postal service."
+          }
+        }
+      },
+      "returns": {
+        "title": "Returns & Satisfaction",
+        "items": {
+          "policy": {
+            "question": "What is your return policy?",
+            "answer": "All our products are final sale."
+          }
+        }
+      },
+      "dietary": {
+        "title": "Allergies & Dietary Information",
+        "items": {
+          "allergens": {
+            "question": "Is your coffee allergen-free?",
+            "answer": "Yes — our coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan."
+          }
+        }
+      }
+    }
+  },
   "about": {
     "eyebrow": "About us",
     "illustrationAlt": "Heart character waving in the EZPZ illustration style",
@@ -138,6 +217,14 @@
       "title": "Our Coffee | Sourcing, roasting, and brewing the EZPZ way",
       "twitterDescription": "Producer partnerships, roast profiles, and brew specs—all in one place.",
       "twitterTitle": "How EZPZ sources and roasts"
+    },
+    "faq": {
+      "description": "Find answers to common questions about EZPZ specialty coffee, shipping, preparation tips, and dietary information.",
+      "ogDescription": "Everything you need to know about our specialty coffee, shipping options, storage tips, and more.",
+      "ogTitle": "FAQ | EZPZ Coffee",
+      "title": "FAQ | Frequently Asked Questions about EZPZ Coffee",
+      "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
+      "twitterTitle": "FAQ | EZPZ Coffee"
     },
     "home": {
       "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",

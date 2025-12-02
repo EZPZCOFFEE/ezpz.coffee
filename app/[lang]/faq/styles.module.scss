@@ -1,0 +1,111 @@
+.page {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-cluster);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--spacing-planet) var(--spacing-none) var(--spacing-cluster);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+  max-width: 620px;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: var(--spacing-none);
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-city);
+}
+
+.categoryTitle {
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin: var(--spacing-none);
+  padding-bottom: var(--spacing-house);
+  border-bottom: 1px solid var(--color-gray-300);
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-state);
+  margin: var(--spacing-none);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-room);
+}
+
+.question {
+  font-size: var(--font-size-fluid-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-snug);
+}
+
+.answer {
+  margin: var(--spacing-none);
+}
+
+.answerText {
+  font-size: var(--font-size-fluid-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.illustration {
+  flex: 0 0 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-street);
+  position: sticky;
+  top: var(--spacing-planet);
+}
+
+.illustrationImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-country) var(--spacing-none) var(--spacing-planet);
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .illustration {
+    width: min(320px, 70vw);
+    position: static;
+    align-self: center;
+  }
+}

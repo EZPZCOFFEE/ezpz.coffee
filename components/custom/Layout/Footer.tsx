@@ -1,11 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 
 import styles from "./styles.module.scss";
 
 const Footer = () => {
   const t = useTranslations("footer");
+  const locale = useLocale();
 
   return (
     <footer className={styles.footer}>
@@ -15,9 +17,9 @@ const Footer = () => {
           <button type="button" className={styles.footerLink}>
             {t("contactUs")}
           </button>
-          <button type="button" className={styles.footerLink}>
+          <Link href={`/${locale}/faq`} className={styles.footerLink}>
             {t("faq")}
-          </button>
+          </Link>
         </nav>
       </div>
     </footer>
