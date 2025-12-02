@@ -272,5 +272,24 @@
     "uploadArtwork": "Téléchargez un fichier visuel valide",
     "uploadMax": "Un seul fichier visuel est autorisé",
     "uploadRequired": "Téléchargez le visuel de votre sachet"
+  },
+  "cart": {
+    "title": "Votre panier",
+    "item": "article",
+    "items": "articles",
+    "openCart": "Ouvrir le panier",
+    "closeCart": "Fermer le panier",
+    "cartAlt": "Panier d'achat",
+    "emptyTitle": "Votre panier est vide",
+    "emptyDescription": "Ajoutez des sachets de café personnalisés pour commencer.",
+    "loading": "Chargement du panier...",
+    "updating": "Mise à jour...",
+    "removeItem": "Supprimer l'article",
+    "increaseQuantity": "Augmenter la quantité",
+    "decreaseQuantity": "Diminuer la quantité",
+    "subtotal": "Sous-total",
+    "taxNote": "Taxes et frais de livraison calculés au paiement",
+    "checkout": "Passer à la caisse",
+    "continueShopping": "Continuer mes achats"
   }
 }

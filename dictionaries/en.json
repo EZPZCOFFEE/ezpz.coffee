@@ -272,5 +272,24 @@
     "uploadArtwork": "Upload a valid artwork file",
     "uploadMax": "Only one artwork file is allowed",
     "uploadRequired": "Upload your bag artwork"
+  },
+  "cart": {
+    "title": "Your cart",
+    "item": "item",
+    "items": "items",
+    "openCart": "Open cart",
+    "closeCart": "Close cart",
+    "cartAlt": "Shopping cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyDescription": "Add some custom coffee bags to get started.",
+    "loading": "Loading cart...",
+    "updating": "Updating...",
+    "removeItem": "Remove item",
+    "increaseQuantity": "Increase quantity",
+    "decreaseQuantity": "Decrease quantity",
+    "subtotal": "Subtotal",
+    "taxNote": "Taxes and shipping calculated at checkout",
+    "checkout": "Checkout",
+    "continueShopping": "Continue shopping"
   }
 }

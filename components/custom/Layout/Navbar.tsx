@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 
+import Cart from "@/components/custom/Cart";
 import { locales } from "@/i18n/types";
 
 import styles from "./styles.module.scss";
@@ -115,9 +116,7 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
           })}
         </ul>
 
-        <button className={styles.cartButton} type="button" aria-label={t("openCart")}>
-          <Image src="/cart.svg" alt={t("cartAlt")} width={28} height={28} />
-        </button>
+        <Cart />
       </div>
     </nav>
   );
@@ -148,9 +147,7 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarBottom}`} />
           </button>
 
-          <button className={styles.cartButton} type="button" aria-label={t("openCart")}>
-            <Image src="/cart.svg" alt={t("cartAlt")} width={24} height={24} />
-          </button>
+          <Cart />
         </div>
       </div>
 
