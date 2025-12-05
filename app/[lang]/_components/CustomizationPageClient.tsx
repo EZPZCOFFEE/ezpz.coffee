@@ -1,9 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { flattenConnection, ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
+import { ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
 import { useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { SubmitHandler, FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
@@ -27,8 +27,24 @@ import {
   useRoastOptions,
   useSurfaceOptions,
   useSurfaceDescriptions,
+  type RoastValue,
+  type GrindValue,
 } from "./formConfig";
 import PreviewDisplay from "./PreviewDisplay";
+
+// Maps form values to Shopify option values
+// Update these if your Shopify variant option values differ
+const ROAST_OPTION_MAP: Record<RoastValue, string> = {
+  light: "Light",
+  medium: "Medium",
+  dark: "Dark",
+};
+
+const GRIND_OPTION_MAP: Record<GrindValue, string> = {
+  bean: "Bean",
+  coarse: "Coarse",
+  fine: "Fine",
+};
 
 interface CustomizationPageClientProps {
   product: NonNullable<GetProductQuery["product"]>;
@@ -36,19 +52,9 @@ interface CustomizationPageClientProps {
 
 const CustomizationContent: React.FC = () => {
   const t = useTranslations("home");
-  const { product, selectedVariant } = useProduct();
+  const { selectedVariant, setSelectedOption } = useProduct();
   const { linesAdd, status } = useCart();
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
-
-  // Get the first variant as fallback when no variant is explicitly selected
-  // (common for single-variant products with just "Default Title")
-  const firstVariant = useMemo(() => {
-    if (!product?.variants) return null;
-    const variants = flattenConnection(product.variants);
-    return variants[0] ?? null;
-  }, [product?.variants]);
-
-  const variantToAdd = selectedVariant ?? firstVariant;
 
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
@@ -71,6 +77,22 @@ const CustomizationContent: React.FC = () => {
   const watchedValues = useWatch({ control: formMethods.control });
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
 
+  // Sync form roast/grind selections to Shopify's ProductProvider
+  const roastValue = watchedValues.roastProfile;
+  const grindValue = watchedValues.grindSetting;
+
+  useEffect(() => {
+    if (roastValue) {
+      setSelectedOption("Roast", ROAST_OPTION_MAP[roastValue]);
+    }
+  }, [roastValue, setSelectedOption]);
+
+  useEffect(() => {
+    if (grindValue) {
+      setSelectedOption("Grind", GRIND_OPTION_MAP[grindValue]);
+    }
+  }, [grindValue, setSelectedOption]);
+
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
   const surfaceOptions = useSurfaceOptions();
@@ -88,14 +110,14 @@ const CustomizationContent: React.FC = () => {
   const isAddingToCart = status === "updating";
 
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
-    if (!variantToAdd?.id) {
+    if (!selectedVariant?.id) {
       setStatusMessage(t("noVariantError"));
       return;
     }
 
     linesAdd([
       {
-        merchandiseId: variantToAdd.id,
+        merchandiseId: selectedVariant.id,
         quantity: values.quantity,
       },
     ]);

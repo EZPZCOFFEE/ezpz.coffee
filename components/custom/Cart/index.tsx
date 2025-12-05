@@ -218,8 +218,6 @@ const Cart: React.FC<CartProps> = ({ children, className }) => {
   const hasItems = itemCount > 0;
   const isLoading = status === "fetching";
 
-  console.log(cartLines);
-
   return (
     <Popover.Root lazyMount unmountOnExit>
       <Popover.Trigger asChild>
