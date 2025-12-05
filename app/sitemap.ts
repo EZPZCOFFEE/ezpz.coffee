@@ -22,7 +22,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     const collection = data.collection;
-    console.log(collection);
     const products = collection?.products && flattenConnection(collection.products);
 
     productRoutes =
@@ -32,7 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       })) ?? [];
   } catch (error) {
     if (process.env.NODE_ENV !== "production") {
-       
       console.error("Failed to build Shopify sitemap entries", error);
     }
   }

@@ -25,26 +25,56 @@ import {
   useFontSizeOptions,
 } from "./formConfig";
 
-const BAG_PRICE_USD = 25;
-const currencyFormatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+// Tiered pricing: minimum quantity -> price per bag
+const PRICE_TIERS = [
+  { min: 500, price: 15.0 },
+  { min: 200, price: 17.5 },
+  { min: 100, price: 20.0 },
+  { min: 50, price: 22.5 },
+  { min: 25, price: 25.0 },
+  { min: 12, price: 27.5 },
+  { min: 5, price: 30.0 },
+  { min: 1, price: 32.5 },
+] as const;
 
-const formatCurrency = (value: number) => currencyFormatter.format(value);
+const BASE_PRICE = 32.5; // Price for 1 bag
+
+function formatMoney(amount: number, currencyCode = "CAD"): string {
+  return new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: currencyCode,
+  }).format(amount);
+}
+
+/**
+ * Get the unit price based on quantity using tiered pricing
+ */
+function getUnitPrice(quantity: number): number {
+  for (const tier of PRICE_TIERS) {
+    if (quantity >= tier.min) {
+      return tier.price;
+    }
+  }
+  return BASE_PRICE;
+}
 
 interface CustomizationPanelProps {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   statusMessage: string | null;
+  isAddingToCart?: boolean;
 }
 
-const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps) => {
+const CustomizationPanel = ({ onSubmit, statusMessage, isAddingToCart }: CustomizationPanelProps) => {
   const t = useTranslations("home");
   const { watch } = useFormContext<CustomizationFormValues>();
   const watchedQuantity = watch("quantity");
   const quantity =
-    typeof watchedQuantity === "number" && Number.isFinite(watchedQuantity) ? watchedQuantity : 0;
-  const subtotal = quantity * BAG_PRICE_USD;
+    typeof watchedQuantity === "number" && Number.isFinite(watchedQuantity) ? watchedQuantity : 1;
+
+  const unitPrice = getUnitPrice(quantity);
+  const subtotal = quantity * unitPrice;
+  const hasDiscount = unitPrice < BASE_PRICE;
+  const savings = hasDiscount ? (BASE_PRICE - unitPrice) * quantity : 0;
 
   const fontOptions = useFontOptions();
   const fontWeightOptions = useFontWeightOptions();
@@ -90,19 +120,28 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
         </div>
         <div className={styles.formGroup}>
           <Label>{t("quantitySection")}</Label>
-          <NumberInput
-            name="quantity"
-            label={t("quantityLabel")}
-            min={1}
-            max={10}
-            defaultValue={1}
-            required
-          />
+          <NumberInput name="quantity" label={t("quantityLabel")} min={1} defaultValue={1} required />
         </div>
         <div className={styles.priceBreakdown} aria-live="polite">
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>{t("pricePerBag")}</span>
-            <span className={styles.priceValue}>{formatCurrency(BAG_PRICE_USD)}</span>
+            <span className={styles.priceValue}>
+              {hasDiscount && <s className={styles.compareAtPrice}>{formatMoney(BASE_PRICE)}</s>}
+              {formatMoney(unitPrice)}
+            </span>
+          </div>
+          <div className={styles.priceBreaks}>
+            {PRICE_TIERS.slice()
+              .reverse()
+              .slice(1)
+              .map((tier) => (
+                <div
+                  key={tier.min}
+                  className={`${styles.priceBreak} ${quantity >= tier.min ? styles.priceBreakActive : ""}`}
+                >
+                  {t("buyXOrMore", { count: tier.min })}: {formatMoney(tier.price)}/bag
+                </div>
+              ))}
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>{t("quantity")}</span>
@@ -112,11 +151,17 @@ const CustomizationPanel = ({ onSubmit, statusMessage }: CustomizationPanelProps
           </div>
           <div className={styles.priceRow}>
             <span className={styles.priceLabel}>{t("subtotal")}</span>
-            <span className={styles.priceValue}>{formatCurrency(subtotal)}</span>
+            <span className={styles.priceValue}>{formatMoney(subtotal)}</span>
           </div>
+          {hasDiscount && (
+            <div className={styles.savingsRow}>
+              <span className={styles.savingsLabel}>{t("youSave")}</span>
+              <span className={styles.savingsValue}>{formatMoney(savings)}</span>
+            </div>
+          )}
         </div>
-        <Button type="submit" variant="primary">
-          {t("addToCart")}
+        <Button type="submit" variant="primary" disabled={isAddingToCart}>
+          {isAddingToCart ? t("addingToCart") : t("addToCart")}
         </Button>
         {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
       </form>

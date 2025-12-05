@@ -375,11 +375,7 @@ export const customizationFormSchema = z.object({
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
   surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
   panelColor: z.string().regex(hexColorRegex, { message: "Enter a valid panel color (for example #f3ebe1)" }),
-  quantity: z
-    .number()
-    .int({ message: "Quantity must be a whole number" })
-    .min(1, "Select at least 1 bag")
-    .max(10, "Limit 10 bags per order"),
+  quantity: z.number().int({ message: "Quantity must be a whole number" }).min(1, "Select at least 1 bag"),
   artworkFile: z
     .array(fileSchema)
     .min(1, "Upload your bag artwork")

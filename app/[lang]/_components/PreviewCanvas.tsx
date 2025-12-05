@@ -238,13 +238,17 @@ const PreviewCanvas = ({
 
   useEffect(() => {
     if (!selectedArtworkFile?.type?.startsWith("image/")) {
-      setArtworkImage(null);
-      setArtworkScale(ARTWORK_SCALE_MIN);
-      setArtworkOffset(createDefaultArtworkOffset());
+      // Clean up object URL synchronously
       if (artworkObjectUrlRef.current) {
         URL.revokeObjectURL(artworkObjectUrlRef.current);
         artworkObjectUrlRef.current = null;
       }
+      // Schedule state resets asynchronously to avoid cascading renders
+      queueMicrotask(() => {
+        setArtworkImage(null);
+        setArtworkScale(ARTWORK_SCALE_MIN);
+        setArtworkOffset(createDefaultArtworkOffset());
+      });
       return;
     }
 

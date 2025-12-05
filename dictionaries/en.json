@@ -1,83 +1,4 @@
 {
-  "faq": {
-    "title": "FAQ",
-    "illustrationAlt": "Robot character with peace signs in the EZPZ illustration style",
-    "categories": {
-      "general": {
-        "title": "General",
-        "items": {
-          "specialty": {
-            "question": "Do you produce specialty coffee?",
-            "answer": "Specialty coffee is evaluated and regulated by the Specialty Coffee Association. A specialty coffee must score at least 80 on the cupping test and offer a certain level of traceability back to the washing station. At Ezpz, we only offer specialty coffees."
-          },
-          "wholeBeans": {
-            "question": "Are your coffees available only as whole beans?",
-            "answer": "Not at all — you can choose your grind size when creating your order."
-          },
-          "roastingLocation": {
-            "question": "Where do you roast your coffee?",
-            "answer": "We roast all our coffees in the southwest of Montréal, at the Canadian Roasting Society."
-          },
-          "thirdWave": {
-            "question": "What is third-wave coffee?",
-            "answer": "Third-wave coffee emerged on the West Coast of the United States in the early 2000s. This movement treats coffee as an artisanal, local product. It emphasizes farming practices, production methods, quality, and an understanding of every actor involved from farm to cup."
-          }
-        }
-      },
-      "preparation": {
-        "title": "Coffee Preparation Tips",
-        "items": {
-          "storage": {
-            "question": "How should I store my coffee?",
-            "answer": "Store your coffee in a cool, dry place, away from direct sunlight. Avoid refrigerating or freezing it, as this can alter the flavor."
-          },
-          "brewing": {
-            "question": "What is the best way to brew your coffee?",
-            "answer": "Our coffees work well with various brewing methods — pour-over, French press, espresso, and more."
-          },
-          "freshness": {
-            "question": "How does the coffee stay fresh?",
-            "answer": "All our bags are equipped with a one-way valve that prevents oxidation. Just reseal the bag after each use."
-          },
-          "duration": {
-            "question": "How long will my coffee stay fresh?",
-            "answer": "All our coffees are freshly roasted. We recommend grinding your coffee right before brewing to preserve its quality. With proper storage, your coffee will stay fresh for 5 to 6 weeks. After that, it may lose a bit of flavor (nothing dramatic), but nothing more."
-          }
-        }
-      },
-      "shipping": {
-        "title": "Shipping & Delivery",
-        "items": {
-          "regions": {
-            "question": "Where do you ship your products?",
-            "answer": "We currently ship across Canada and offer international shipping in select regions. Shipping options and rates are calculated at checkout."
-          },
-          "deliveryTime": {
-            "question": "What is the delivery time?",
-            "answer": "Orders are generally processed within 3–4 business days, with delivery times ranging from 3 to 5 days, depending on your location and the postal service."
-          }
-        }
-      },
-      "returns": {
-        "title": "Returns & Satisfaction",
-        "items": {
-          "policy": {
-            "question": "What is your return policy?",
-            "answer": "All our products are final sale."
-          }
-        }
-      },
-      "dietary": {
-        "title": "Allergies & Dietary Information",
-        "items": {
-          "allergens": {
-            "question": "Is your coffee allergen-free?",
-            "answer": "Yes — our coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan."
-          }
-        }
-      }
-    }
-  },
   "about": {
     "eyebrow": "About us",
     "illustrationAlt": "Heart character waving in the EZPZ illustration style",
@@ -92,6 +13,26 @@
       }
     },
     "title": "About EZPZ"
+  },
+  "cart": {
+    "cartAlt": "Shopping cart",
+    "checkout": "Checkout",
+    "closeCart": "Close cart",
+    "continueShopping": "Continue shopping",
+    "decreaseQuantity": "Decrease quantity",
+    "emptyDescription": "Add some custom coffee bags to get started.",
+    "emptyTitle": "Your cart is empty",
+    "increaseQuantity": "Increase quantity",
+    "item": "item",
+    "items": "items",
+    "loading": "Loading cart...",
+    "openCart": "Open cart",
+    "removeItem": "Remove item",
+    "subtotal": "Subtotal",
+    "taxNote": "Taxes and shipping calculated at checkout",
+    "title": "Your cart",
+    "updating": "Updating...",
+    "youSave": "You save"
   },
   "coffee": {
     "eyebrow": "Our coffee",
@@ -110,6 +51,85 @@
   },
   "common": {
     "section": "Section {number}"
+  },
+  "faq": {
+    "categories": {
+      "dietary": {
+        "items": {
+          "allergens": {
+            "answer": "Yes — our coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan.",
+            "question": "Is your coffee allergen-free?"
+          }
+        },
+        "title": "Allergies & Dietary Information"
+      },
+      "general": {
+        "items": {
+          "roastingLocation": {
+            "answer": "We roast all our coffees in the southwest of Montréal, at the Canadian Roasting Society.",
+            "question": "Where do you roast your coffee?"
+          },
+          "specialty": {
+            "answer": "Specialty coffee is evaluated and regulated by the Specialty Coffee Association. A specialty coffee must score at least 80 on the cupping test and offer a certain level of traceability back to the washing station. At Ezpz, we only offer specialty coffees.",
+            "question": "Do you produce specialty coffee?"
+          },
+          "thirdWave": {
+            "answer": "Third-wave coffee emerged on the West Coast of the United States in the early 2000s. This movement treats coffee as an artisanal, local product. It emphasizes farming practices, production methods, quality, and an understanding of every actor involved from farm to cup.",
+            "question": "What is third-wave coffee?"
+          },
+          "wholeBeans": {
+            "answer": "Not at all — you can choose your grind size when creating your order.",
+            "question": "Are your coffees available only as whole beans?"
+          }
+        },
+        "title": "General"
+      },
+      "preparation": {
+        "items": {
+          "brewing": {
+            "answer": "Our coffees work well with various brewing methods — pour-over, French press, espresso, and more.",
+            "question": "What is the best way to brew your coffee?"
+          },
+          "duration": {
+            "answer": "All our coffees are freshly roasted. We recommend grinding your coffee right before brewing to preserve its quality. With proper storage, your coffee will stay fresh for 5 to 6 weeks. After that, it may lose a bit of flavor (nothing dramatic), but nothing more.",
+            "question": "How long will my coffee stay fresh?"
+          },
+          "freshness": {
+            "answer": "All our bags are equipped with a one-way valve that prevents oxidation. Just reseal the bag after each use.",
+            "question": "How does the coffee stay fresh?"
+          },
+          "storage": {
+            "answer": "Store your coffee in a cool, dry place, away from direct sunlight. Avoid refrigerating or freezing it, as this can alter the flavor.",
+            "question": "How should I store my coffee?"
+          }
+        },
+        "title": "Coffee Preparation Tips"
+      },
+      "returns": {
+        "items": {
+          "policy": {
+            "answer": "All our products are final sale.",
+            "question": "What is your return policy?"
+          }
+        },
+        "title": "Returns & Satisfaction"
+      },
+      "shipping": {
+        "items": {
+          "deliveryTime": {
+            "answer": "Orders are generally processed within 3–4 business days, with delivery times ranging from 3 to 5 days, depending on your location and the postal service.",
+            "question": "What is the delivery time?"
+          },
+          "regions": {
+            "answer": "We currently ship across Canada and offer international shipping in select regions. Shipping options and rates are calculated at checkout.",
+            "question": "Where do you ship your products?"
+          }
+        },
+        "title": "Shipping & Delivery"
+      }
+    },
+    "illustrationAlt": "Robot character with peace signs in the EZPZ illustration style",
+    "title": "FAQ"
   },
   "fileUpload": {
     "defaultRecommendation": "Upload a square JPG or PNG (min 1800px)",
@@ -132,7 +152,9 @@
   },
   "home": {
     "addToCart": "Add to cart",
+    "addingToCart": "Adding...",
     "bags": "bags",
+    "buyXOrMore": "Buy {count}+",
     "defaultBlendName": "your blend",
     "fontLabel": "Font",
     "fontSizeLabel": "Size",
@@ -164,6 +186,7 @@
     "nameColorLabel": "Name color",
     "nameHelper": "Shown on the front label.",
     "nameLabel": "Name",
+    "noVariantError": "Product variant not available",
     "panelColorLabel": "Panel color",
     "panelTitle": "Customize",
     "preview": {
@@ -199,7 +222,8 @@
     "surfaceSection": "Bag surface",
     "uploadHelper": "Upload one JPG or PNG (max 10MB). Drag to crop in the preview.",
     "uploadLabel": "Upload artwork",
-    "uploadSection": "Upload artwork"
+    "uploadSection": "Upload artwork",
+    "youSave": "You save"
   },
   "metadata": {
     "about": {
@@ -272,24 +296,5 @@
     "uploadArtwork": "Upload a valid artwork file",
     "uploadMax": "Only one artwork file is allowed",
     "uploadRequired": "Upload your bag artwork"
-  },
-  "cart": {
-    "title": "Your cart",
-    "item": "item",
-    "items": "items",
-    "openCart": "Open cart",
-    "closeCart": "Close cart",
-    "cartAlt": "Shopping cart",
-    "emptyTitle": "Your cart is empty",
-    "emptyDescription": "Add some custom coffee bags to get started.",
-    "loading": "Loading cart...",
-    "updating": "Updating...",
-    "removeItem": "Remove item",
-    "increaseQuantity": "Increase quantity",
-    "decreaseQuantity": "Decrease quantity",
-    "subtotal": "Subtotal",
-    "taxNote": "Taxes and shipping calculated at checkout",
-    "checkout": "Checkout",
-    "continueShopping": "Continue shopping"
   }
 }
