@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { SubmitHandler, FormProvider, useForm } from "react-hook-form";
+import { SubmitHandler, FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
 
@@ -49,7 +49,7 @@ const CustomizationPageClient = () => {
     mode: "onBlur",
   });
 
-  const watchedValues = formMethods.watch();
+  const watchedValues = useWatch({ control: formMethods.control });
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
 
   const roastOptions = useRoastOptions();
