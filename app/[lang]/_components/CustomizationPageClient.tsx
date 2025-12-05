@@ -1,11 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { flattenConnection, ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SubmitHandler, FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
+import type { GetProductQuery } from "@/gql/graphql";
 
 import CustomizationPanel from "./CustomizationPanel";
 import {
@@ -28,9 +30,26 @@ import {
 } from "./formConfig";
 import PreviewDisplay from "./PreviewDisplay";
 
-const CustomizationPageClient = () => {
+interface CustomizationPageClientProps {
+  product: NonNullable<GetProductQuery["product"]>;
+}
+
+const CustomizationContent: React.FC = () => {
   const t = useTranslations("home");
+  const { product, selectedVariant } = useProduct();
+  const { linesAdd, status } = useCart();
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  // Get the first variant as fallback when no variant is explicitly selected
+  // (common for single-variant products with just "Default Title")
+  const firstVariant = useMemo(() => {
+    if (!product?.variants) return null;
+    const variants = flattenConnection(product.variants);
+    return variants[0] ?? null;
+  }, [product?.variants]);
+
+  const variantToAdd = selectedVariant ?? firstVariant;
+
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
@@ -66,7 +85,21 @@ const CustomizationPageClient = () => {
   const labelFontWeight = watchedValues.labelFontWeight ?? defaultFontWeightValue;
   const labelFontSizeMultiplier = FONT_SIZE_MULTIPLIERS[watchedValues.labelFontSize ?? defaultFontSizeValue];
 
+  const isAddingToCart = status === "updating";
+
   const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
+    if (!variantToAdd?.id) {
+      setStatusMessage(t("noVariantError"));
+      return;
+    }
+
+    linesAdd([
+      {
+        merchandiseId: variantToAdd.id,
+        quantity: values.quantity,
+      },
+    ]);
+
     const name = formatPreviewValue(values.customerName, t("defaultBlendName"));
     setStatusMessage(t("savedMessage", { count: values.quantity, name }));
   };
@@ -80,6 +113,7 @@ const CustomizationPageClient = () => {
           <CustomizationPanel
             statusMessage={statusMessage}
             onSubmit={(event) => void handleFormSubmit(event)}
+            isAddingToCart={isAddingToCart}
           />
         </div>
         <div className={styles.previewColumn}>
@@ -98,6 +132,14 @@ const CustomizationPageClient = () => {
         </div>
       </div>
     </FormProvider>
+  );
+};
+
+const CustomizationPageClient: React.FC<CustomizationPageClientProps> = ({ product }) => {
+  return (
+    <ProductProvider data={product}>
+      <CustomizationContent />
+    </ProductProvider>
   );
 };
 

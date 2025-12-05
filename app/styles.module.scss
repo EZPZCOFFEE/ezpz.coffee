@@ -96,6 +96,60 @@
       color: var(--color-text-primary);
       font-weight: var(--font-weight-semibold);
       font-variant-numeric: tabular-nums;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-room);
+    }
+
+    .compareAtPrice {
+      color: var(--color-text-tertiary);
+      font-weight: var(--font-weight-normal);
+      text-decoration: line-through;
+    }
+
+    .priceBreaks {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-room);
+      padding: var(--spacing-street) 0;
+      border-top: 1px solid var(--color-gray-200);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    .priceBreak {
+      font-size: var(--font-size-fluid-xs);
+      color: var(--color-text-tertiary);
+      padding: var(--spacing-room) var(--spacing-street);
+      border-radius: var(--border-radius-sm);
+      background-color: transparent;
+      transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+    }
+
+    .priceBreakActive {
+      background-color: var(--color-success-bg, rgba(34, 197, 94, 0.1));
+      color: var(--color-success, #16a34a);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .savingsRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--font-size-fluid-sm);
+      padding-top: var(--spacing-street);
+      border-top: 1px solid var(--color-gray-200);
+    }
+
+    .savingsLabel {
+      color: var(--color-success, #16a34a);
+    }
+
+    .savingsValue {
+      color: var(--color-success, #16a34a);
+      font-weight: var(--font-weight-semibold);
+      font-variant-numeric: tabular-nums;
     }
 
     .priceDivider {

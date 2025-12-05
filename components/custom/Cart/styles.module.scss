@@ -80,7 +80,7 @@
   left: auto !important;
   width: 400px;
   max-width: 100vw;
-  z-index: var(--z-index-dialog);
+  z-index: var(--z-index-dialog) !important;
   transform: none !important;
 }
 
@@ -339,6 +339,19 @@
   color: var(--color-text-primary);
 }
 
+.lineItemPricing {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-house);
+}
+
+.lineItemCompareAtPrice {
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-gray-400);
+  text-decoration: line-through;
+}
+
 .lineItemPrice {
   font-size: var(--font-size-fluid-base);
   font-weight: var(--font-weight-semibold);
@@ -414,6 +427,28 @@
   margin: var(--spacing-room) 0 0;
   font-size: var(--font-size-fluid-xs);
   color: var(--color-gray-500);
+}
+
+.savingsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-house);
+  padding: var(--spacing-house) var(--spacing-street);
+  background-color: var(--color-success-extra-light, #dcfce7);
+  border-radius: var(--border-radius-sm);
+}
+
+.savingsLabel {
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-success, #16a34a);
+}
+
+.savingsValue {
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-success, #16a34a);
 }
 
 // ---------------------------------------------------------------------------

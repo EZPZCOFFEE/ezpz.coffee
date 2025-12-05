@@ -60,8 +60,6 @@ const OptionsInput: React.FC<OptionsInputProps> = ({ name, label, options, class
                   <div className={styles.track} style={trackStyle}>
                     {optionCount > 0 && (
                       <motion.span
-                        layout
-                        layoutId={`options-input-indicator-${name}`}
                         aria-hidden="true"
                         className={styles.indicator}
                         initial={false}

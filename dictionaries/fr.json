@@ -1,83 +1,4 @@
 {
-  "faq": {
-    "title": "FAQ",
-    "illustrationAlt": "Personnage robot avec signes de paix dans le style d'illustration EZPZ",
-    "categories": {
-      "general": {
-        "title": "Généralités",
-        "items": {
-          "specialty": {
-            "question": "Produisez-vous des cafés de spécialité ?",
-            "answer": "Le café de spécialité est évalué et réglementé par la Specialty Coffee Association. Un café de spécialité doit obtenir une note d'au moins 80 au test de dégustation et présenter un certain niveau de traçabilité jusqu'à la station de lavage. Chez Ezpz, nous ne proposons que des cafés de spécialité."
-          },
-          "wholeBeans": {
-            "question": "Vos cafés sont-ils uniquement disponibles en grains entiers ?",
-            "answer": "Non pas du tout, vous pouvez choisir votre mouture au moment de créer votre commande."
-          },
-          "roastingLocation": {
-            "question": "Où torréfiez-vous votre café ?",
-            "answer": "Nous torréfions tous nos cafés dans le sud-ouest de Montréal, à la Société canadienne de torréfaction."
-          },
-          "thirdWave": {
-            "question": "Qu'est-ce que le café de troisième vague ?",
-            "answer": "Le café de troisième vague est né sur la côte ouest des États-Unis au début des années 2000. Ce mouvement considère le café comme un produit local. L'accent est mis sur la culture, les méthodes de production et la qualité, ainsi que sur la compréhension de chaque acteur de la ferme à la tasse."
-          }
-        }
-      },
-      "preparation": {
-        "title": "Conseils pour la préparation du café",
-        "items": {
-          "storage": {
-            "question": "Comment dois-je conserver mon café ?",
-            "answer": "Conservez votre café dans un endroit frais et sec, à l'abri de la lumière directe du soleil. Évitez de le réfrigérer ou de le congeler, car cela pourrait en altérer la saveur."
-          },
-          "brewing": {
-            "question": "Quelle est la meilleure façon d'infuser votre café ?",
-            "answer": "Nos cafés s'accommodent bien de diverses méthodes d'infusion — pour-over, French press, espresso, etc."
-          },
-          "freshness": {
-            "question": "Comment le café reste-t-il frais ?",
-            "answer": "Tous nos sachets sont dotés d'une valve qui empêche l'oxydation du café. Il suffit de refermer le sachet après chaque utilisation."
-          },
-          "duration": {
-            "question": "Combien de temps mon café restera-t-il frais ?",
-            "answer": "Tous nos cafés sont fraîchement torréfiés. Nous vous recommandons de moudre votre café avant chaque préparation afin de préserver sa qualité. De cette manière, votre café peut rester frais entre 5 et 6 semaines. Par la suite, il perdra un peu de saveur (rien de bien dramatique), mais rien de plus."
-          }
-        }
-      },
-      "shipping": {
-        "title": "Expédition et livraison",
-        "items": {
-          "regions": {
-            "question": "Où expédiez-vous vos produits ?",
-            "answer": "Nous expédions actuellement dans tout le Canada et offrons des services d'expédition internationale dans certaines régions. Les options d'expédition et les tarifs sont calculés au moment du paiement."
-          },
-          "deliveryTime": {
-            "question": "Quel est le délai de livraison ?",
-            "answer": "Les commandes sont généralement traitées dans les 3-4 jours ouvrables, avec des délais de livraison allant de 3 à 5 jours en fonction de votre emplacement et des services postaux."
-          }
-        }
-      },
-      "returns": {
-        "title": "Retours et satisfaction",
-        "items": {
-          "policy": {
-            "question": "Quelle est votre politique de retour ?",
-            "answer": "Nos produits sont ventes finales."
-          }
-        }
-      },
-      "dietary": {
-        "title": "Allergies et informations diététiques",
-        "items": {
-          "allergens": {
-            "question": "Votre café est-il exempt d'allergènes ?",
-            "answer": "Oui, notre café ne contient aucun allergène, additif ou arôme. Il est naturellement sans gluten et végétalien."
-          }
-        }
-      }
-    }
-  },
   "about": {
     "eyebrow": "À propos",
     "illustrationAlt": "Personnage cœur faisant signe de la main dans le style d'illustration EZPZ",
@@ -92,6 +13,26 @@
       }
     },
     "title": "À propos d'EZPZ"
+  },
+  "cart": {
+    "cartAlt": "Panier d'achat",
+    "checkout": "Passer à la caisse",
+    "closeCart": "Fermer le panier",
+    "continueShopping": "Continuer mes achats",
+    "decreaseQuantity": "Diminuer la quantité",
+    "emptyDescription": "Ajoutez des sachets de café personnalisés pour commencer.",
+    "emptyTitle": "Votre panier est vide",
+    "increaseQuantity": "Augmenter la quantité",
+    "item": "article",
+    "items": "articles",
+    "loading": "Chargement du panier...",
+    "openCart": "Ouvrir le panier",
+    "removeItem": "Supprimer l'article",
+    "subtotal": "Sous-total",
+    "taxNote": "Taxes et frais de livraison calculés au paiement",
+    "title": "Votre panier",
+    "updating": "Mise à jour...",
+    "youSave": "Vous économisez"
   },
   "coffee": {
     "eyebrow": "Notre café",
@@ -110,6 +51,85 @@
   },
   "common": {
     "section": "Section {number}"
+  },
+  "faq": {
+    "categories": {
+      "dietary": {
+        "items": {
+          "allergens": {
+            "answer": "Oui, notre café ne contient aucun allergène, additif ou arôme. Il est naturellement sans gluten et végétalien.",
+            "question": "Votre café est-il exempt d'allergènes ?"
+          }
+        },
+        "title": "Allergies et informations diététiques"
+      },
+      "general": {
+        "items": {
+          "roastingLocation": {
+            "answer": "Nous torréfions tous nos cafés dans le sud-ouest de Montréal, à la Société canadienne de torréfaction.",
+            "question": "Où torréfiez-vous votre café ?"
+          },
+          "specialty": {
+            "answer": "Le café de spécialité est évalué et réglementé par la Specialty Coffee Association. Un café de spécialité doit obtenir une note d'au moins 80 au test de dégustation et présenter un certain niveau de traçabilité jusqu'à la station de lavage. Chez Ezpz, nous ne proposons que des cafés de spécialité.",
+            "question": "Produisez-vous des cafés de spécialité ?"
+          },
+          "thirdWave": {
+            "answer": "Le café de troisième vague est né sur la côte ouest des États-Unis au début des années 2000. Ce mouvement considère le café comme un produit local. L'accent est mis sur la culture, les méthodes de production et la qualité, ainsi que sur la compréhension de chaque acteur de la ferme à la tasse.",
+            "question": "Qu'est-ce que le café de troisième vague ?"
+          },
+          "wholeBeans": {
+            "answer": "Non pas du tout, vous pouvez choisir votre mouture au moment de créer votre commande.",
+            "question": "Vos cafés sont-ils uniquement disponibles en grains entiers ?"
+          }
+        },
+        "title": "Généralités"
+      },
+      "preparation": {
+        "items": {
+          "brewing": {
+            "answer": "Nos cafés s'accommodent bien de diverses méthodes d'infusion — pour-over, French press, espresso, etc.",
+            "question": "Quelle est la meilleure façon d'infuser votre café ?"
+          },
+          "duration": {
+            "answer": "Tous nos cafés sont fraîchement torréfiés. Nous vous recommandons de moudre votre café avant chaque préparation afin de préserver sa qualité. De cette manière, votre café peut rester frais entre 5 et 6 semaines. Par la suite, il perdra un peu de saveur (rien de bien dramatique), mais rien de plus.",
+            "question": "Combien de temps mon café restera-t-il frais ?"
+          },
+          "freshness": {
+            "answer": "Tous nos sachets sont dotés d'une valve qui empêche l'oxydation du café. Il suffit de refermer le sachet après chaque utilisation.",
+            "question": "Comment le café reste-t-il frais ?"
+          },
+          "storage": {
+            "answer": "Conservez votre café dans un endroit frais et sec, à l'abri de la lumière directe du soleil. Évitez de le réfrigérer ou de le congeler, car cela pourrait en altérer la saveur.",
+            "question": "Comment dois-je conserver mon café ?"
+          }
+        },
+        "title": "Conseils pour la préparation du café"
+      },
+      "returns": {
+        "items": {
+          "policy": {
+            "answer": "Nos produits sont ventes finales.",
+            "question": "Quelle est votre politique de retour ?"
+          }
+        },
+        "title": "Retours et satisfaction"
+      },
+      "shipping": {
+        "items": {
+          "deliveryTime": {
+            "answer": "Les commandes sont généralement traitées dans les 3-4 jours ouvrables, avec des délais de livraison allant de 3 à 5 jours en fonction de votre emplacement et des services postaux.",
+            "question": "Quel est le délai de livraison ?"
+          },
+          "regions": {
+            "answer": "Nous expédions actuellement dans tout le Canada et offrons des services d'expédition internationale dans certaines régions. Les options d'expédition et les tarifs sont calculés au moment du paiement.",
+            "question": "Où expédiez-vous vos produits ?"
+          }
+        },
+        "title": "Expédition et livraison"
+      }
+    },
+    "illustrationAlt": "Personnage robot avec signes de paix dans le style d'illustration EZPZ",
+    "title": "FAQ"
   },
   "fileUpload": {
     "defaultRecommendation": "Téléchargez un JPG ou PNG carré (min 1800px)",
@@ -132,7 +152,9 @@
   },
   "home": {
     "addToCart": "Ajouter au panier",
+    "addingToCart": "Ajout...",
     "bags": "sachets",
+    "buyXOrMore": "Achetez {count}+",
     "defaultBlendName": "votre mélange",
     "fontLabel": "Police",
     "fontSizeLabel": "Taille",
@@ -164,6 +186,7 @@
     "nameColorLabel": "Couleur du nom",
     "nameHelper": "Affiché sur l'étiquette avant.",
     "nameLabel": "Nom",
+    "noVariantError": "Variante du produit non disponible",
     "panelColorLabel": "Couleur du panneau",
     "panelTitle": "Personnaliser",
     "preview": {
@@ -199,7 +222,8 @@
     "surfaceSection": "Surface du sachet",
     "uploadHelper": "Téléchargez un JPG ou PNG (max 10Mo). Faites glisser pour recadrer dans l'aperçu.",
     "uploadLabel": "Télécharger le visuel",
-    "uploadSection": "Télécharger le visuel"
+    "uploadSection": "Télécharger le visuel",
+    "youSave": "Vous économisez"
   },
   "metadata": {
     "about": {
@@ -272,24 +296,5 @@
     "uploadArtwork": "Téléchargez un fichier visuel valide",
     "uploadMax": "Un seul fichier visuel est autorisé",
     "uploadRequired": "Téléchargez le visuel de votre sachet"
-  },
-  "cart": {
-    "title": "Votre panier",
-    "item": "article",
-    "items": "articles",
-    "openCart": "Ouvrir le panier",
-    "closeCart": "Fermer le panier",
-    "cartAlt": "Panier d'achat",
-    "emptyTitle": "Votre panier est vide",
-    "emptyDescription": "Ajoutez des sachets de café personnalisés pour commencer.",
-    "loading": "Chargement du panier...",
-    "updating": "Mise à jour...",
-    "removeItem": "Supprimer l'article",
-    "increaseQuantity": "Augmenter la quantité",
-    "decreaseQuantity": "Diminuer la quantité",
-    "subtotal": "Sous-total",
-    "taxNote": "Taxes et frais de livraison calculés au paiement",
-    "checkout": "Passer à la caisse",
-    "continueShopping": "Continuer mes achats"
   }
 }

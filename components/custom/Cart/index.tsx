@@ -97,7 +97,25 @@ const CartLineItem: React.FC<CartLineItemProps> = ({ line }) => {
             </button>
           </div>
 
-          {cost?.totalAmount && <Money data={cost.totalAmount} className={styles.lineItemPrice} />}
+          <div className={styles.lineItemPricing}>
+            {(() => {
+              const price = merchandise.price;
+              if (!price?.amount || !cost?.totalAmount?.amount || !quantity) return null;
+
+              const originalTotal = parseFloat(price.amount) * quantity;
+              const discountedTotal = parseFloat(cost.totalAmount.amount);
+
+              if (originalTotal <= discountedTotal) return null;
+
+              return (
+                <Money
+                  data={{ amount: String(originalTotal), currencyCode: price.currencyCode }}
+                  className={styles.lineItemCompareAtPrice}
+                />
+              );
+            })()}
+            {cost?.totalAmount && <Money data={cost.totalAmount} className={styles.lineItemPrice} />}
+          </div>
         </div>
       </div>
     </div>
@@ -127,12 +145,29 @@ const EmptyCart: React.FC = () => {
 // ---------------------------------------------------------------------------
 
 const CartFooter: React.FC = () => {
-  const { cost, checkoutUrl, status, totalQuantity } = useCart();
+  const { cost, checkoutUrl, status, totalQuantity, lines } = useCart();
   const t = useTranslations("cart");
   const isUpdating = status === "updating";
   const hasItems = (totalQuantity ?? 0) > 0;
 
   if (!hasItems) return null;
+
+  // Calculate total savings: original (unit price * qty) - discounted total
+  const totalSavings = (lines ?? []).reduce((acc, line) => {
+    const unitPrice = line?.merchandise?.price?.amount;
+    const currentTotal = line?.cost?.totalAmount?.amount;
+    const qty = line?.quantity;
+    if (!unitPrice || !currentTotal || !qty) return acc;
+
+    const originalTotal = parseFloat(unitPrice) * qty;
+    const discountedTotal = parseFloat(currentTotal);
+    const savings = originalTotal - discountedTotal;
+
+    return savings > 0 ? acc + savings : acc;
+  }, 0);
+
+  const hasSavings = totalSavings > 0;
+  const currencyCode = cost?.subtotalAmount?.currencyCode ?? "CAD";
 
   return (
     <div className={styles.cartFooter}>
@@ -141,6 +176,12 @@ const CartFooter: React.FC = () => {
           <span className={styles.summaryLabel}>{t("subtotal")}</span>
           {cost?.subtotalAmount && <Money data={cost.subtotalAmount} className={styles.summaryValue} />}
         </div>
+        {hasSavings && (
+          <div className={styles.savingsRow}>
+            <span className={styles.savingsLabel}>{t("youSave")}</span>
+            <Money data={{ amount: String(totalSavings), currencyCode }} className={styles.savingsValue} />
+          </div>
+        )}
         <p className={styles.taxNote}>{t("taxNote")}</p>
       </div>
 
@@ -176,6 +217,8 @@ const Cart: React.FC<CartProps> = ({ children, className }) => {
   const itemCount = totalQuantity ?? 0;
   const hasItems = itemCount > 0;
   const isLoading = status === "fetching";
+
+  console.log(cartLines);
 
   return (
     <Popover.Root lazyMount unmountOnExit>
