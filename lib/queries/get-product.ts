@@ -25,20 +25,6 @@ export const GET_PRODUCT = graphql(`
           }
         }
       }
-      variants(first: 100) {
-        edges {
-          node {
-            id
-            title
-            quantityAvailable
-            selectedOptions {
-              name
-              value
-            }
-          }
-        }
-      }
     }
   }
 `);
-
