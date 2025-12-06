@@ -31,14 +31,51 @@
   gap: var(--spacing-country);
 }
 
-.input {
+.inputWrapper {
   width: 100%;
   max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-town);
+}
+
+.input {
+  width: 100%;
   padding: var(--spacing-city) var(--spacing-state);
   border-radius: var(--border-radius-md);
-  border: none;
+  border: 2px solid transparent;
   background-color: var(--color-bg-secondary);
   font-size: var(--font-size-fluid-xl);
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.inputError {
+  border-color: var(--color-error, #dc2626);
+}
+
+.errorText {
+  color: var(--color-error, #dc2626);
+  font-size: var(--font-size-fluid-sm);
+  text-align: left;
+}
+
+.successMessage {
+  padding: var(--spacing-state) var(--spacing-country);
+  background-color: var(--color-success-bg, #dcfce7);
+  color: var(--color-success, #166534);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-fluid-lg);
+  font-weight: var(--font-weight-medium);
 }
 
 .visuallyHidden {

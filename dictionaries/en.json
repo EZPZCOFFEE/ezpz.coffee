@@ -275,6 +275,8 @@
     "emailLabel": "Email address",
     "emailPlaceholder": "Enter your email",
     "subscribe": "Subscribe",
+    "submitting": "Subscribing...",
+    "successMessage": "You're in! Check your inbox for your 5% discount code.",
     "title": "Get <highlight>5% off</highlight> when you join our email list."
   },
   "product": {

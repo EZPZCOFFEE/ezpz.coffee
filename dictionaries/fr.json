@@ -275,6 +275,8 @@
     "emailLabel": "Adresse email",
     "emailPlaceholder": "Entrez votre email",
     "subscribe": "S'abonner",
+    "submitting": "Inscription...",
+    "successMessage": "C'est fait! Vérifiez votre boîte de réception pour votre code de réduction de 5%.",
     "title": "Obtenez <highlight>5% de réduction</highlight> en rejoignant notre liste email."
   },
   "product": {
