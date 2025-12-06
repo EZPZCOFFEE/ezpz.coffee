@@ -11,18 +11,19 @@ import {
 } from "react";
 
 import styles from "@/app/styles.module.scss";
-import bagMockupBlank from "@/public/bags/mock-up-blank.jpg";
+import bagMockup from "@/public/bags/mockup.jpg";
 
 import { SurfaceValue, defaultPanelColor, sanitizeHexColor } from "./formConfig";
 
-const CANVAS_SCALE = 2.2;
+const CANVAS_SCALE = 2;
 const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
 const CANVAS_WIDTH = CANVAS_SIDE;
 const CANVAS_HEIGHT = CANVAS_SIDE;
-const LABEL_WIDTH_RATIO = 0.58;
-const LABEL_HEIGHT_RATIO = 0.44;
-const LABEL_VERTICAL_OFFSET_RATIO = 0.36;
-const LABEL_HORIZONTAL_SHIFT_RATIO = 0.008;
+// Target label dimensions: 6.5" (width) × 5.125" (height) — aspect ratio 1.2683:1
+const LABEL_WIDTH_RATIO = 0.95;
+const LABEL_HEIGHT_RATIO = 0.749; // 0.95 × (5.125 / 6.5) to maintain aspect ratio
+const LABEL_VERTICAL_OFFSET_RATIO = 0.23;
+const LABEL_HORIZONTAL_SHIFT_RATIO = 0.0;
 const PANEL_GAP_RATIO = 0.6;
 const BOTTOM_STRIP_HEIGHT_RATIO = 0.2;
 const LABEL_WIDTH = Math.round(CANVAS_SIDE * LABEL_WIDTH_RATIO);
@@ -226,7 +227,7 @@ const PreviewCanvas = ({
 
   useEffect(() => {
     const image = new Image();
-    image.src = bagMockupBlank.src;
+    image.src = bagMockup.src;
     image.onload = () => {
       setBagImage(image);
     };
@@ -321,27 +322,16 @@ const PreviewCanvas = ({
     const bagOffsetX = (canvas.width - bagWidth) / 2;
     const bagOffsetY = (canvas.height - bagHeight) / 2;
 
-    // Draw bag as base layer
+    // Draw bag
     context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
-    // Create offscreen canvas for artwork + panels layer
-    const offscreen = document.createElement("canvas");
-    offscreen.width = canvas.width;
-    offscreen.height = canvas.height;
-    const offCtx = offscreen.getContext("2d");
-    if (!offCtx) return;
-
-    // Fill offscreen with white (multiply with white = original)
-    offCtx.fillStyle = "#fff";
-    offCtx.fillRect(0, 0, offscreen.width, offscreen.height);
-
-    // Draw artwork clipped to label area on offscreen canvas
-    offCtx.save();
-    offCtx.beginPath();
-    offCtx.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
-    offCtx.clip();
-
+    // Draw artwork clipped to label area
     if (artworkImage) {
+      context.save();
+      context.beginPath();
+      context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+      context.clip();
+
       const baseScale = Math.max(
         LABEL_RECT.width / artworkImage.width,
         LABEL_RECT.height / artworkImage.height
@@ -352,29 +342,25 @@ const PreviewCanvas = ({
       const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
       const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
 
-      offCtx.drawImage(
+      context.drawImage(
         artworkImage,
         centerX - drawWidth / 2,
         centerY - drawHeight / 2,
         drawWidth,
         drawHeight
       );
+      context.restore();
     }
-    offCtx.restore();
 
-    // Draw panels on offscreen canvas
+    // Draw panels
     if (activeWindows.length > 0) {
-      offCtx.fillStyle = panelFillColor;
+      context.fillStyle = panelFillColor;
       activeWindows.forEach((windowRect) => {
-        offCtx.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
       });
     }
 
-    // Multiply the offscreen layer onto the bag
-    context.globalCompositeOperation = "multiply";
-    context.drawImage(offscreen, 0, 0);
-    context.globalCompositeOperation = "source-over";
-
+    // Draw name text
     if (sanitizedName) {
       const namePlan = planNameRendering(
         context,
@@ -387,13 +373,11 @@ const PreviewCanvas = ({
         const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
         const textX = bottomPanelRect.x + NAME_PADDING_X;
         const textY = bottomPanelRect.y + bottomPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
-        context.save();
         context.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
         context.textAlign = "left";
         context.textBaseline = "middle";
         context.fillStyle = nameTextColor;
         context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
-        context.restore();
       }
     }
   }, [

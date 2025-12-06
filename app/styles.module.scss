@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: var(--spacing-state);
   width: 100%;
   margin: 0;
@@ -16,13 +16,10 @@
 
 .previewColumn {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   padding: var(--spacing-state) 0 var(--spacing-state) var(--spacing-state);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .container {
     flex-direction: column;
     padding: 0 var(--spacing-city);
@@ -36,15 +33,19 @@
   }
 
   .previewColumn {
-    position: static;
-    height: auto;
     width: 100%;
     padding: 0 0 var(--spacing-city);
+  }
+
+  .displayHeader,
+  .displayFooter {
+    display: none;
   }
 }
 
 .panel {
   width: 100%;
+  padding-bottom: var(--spacing-planet);
 
   .panelTitle {
     font-size: var(--font-size-fluid-xl);
@@ -161,10 +162,22 @@
 }
 
 .display {
+  position: sticky;
+  top: var(--spacing-state);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-state);
-  height: 100%;
+  height: calc(100dvh - var(--spacing-state) * 2);
+  max-height: 1100px;
+
+  @media (max-width: 1100px) {
+    position: relative;
+    top: 0;
+    height: auto;
+    max-height: none;
+    aspect-ratio: 2 / 3;
+    max-width: 100%;
+  }
 
   .displayHeader {
     font-size: var(--font-size-fluid-xl);
@@ -187,10 +200,12 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 0;
     gap: var(--spacing-state);
     align-items: stretch;
     width: 100%;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   .canvasWrapper {
@@ -200,39 +215,26 @@
     align-items: center;
     gap: var(--spacing-city);
     background: var(--color-bg-secondary);
-    border-radius: var(--border-radius-xl);
     padding: var(--spacing-city);
-    width: 100%;
-    height: 100%;
-    align-self: stretch;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
 
     .canvasContainer {
-      width: 100%;
-      height: 100%;
       display: flex;
-      background: var(--color-bg-primary);
-      border-radius: var(--border-radius-lg);
       justify-content: center;
       align-items: center;
       flex: 1;
+      min-height: 0;
       overflow: hidden;
     }
   }
 
   .previewCanvas {
-    width: auto;
-    height: auto;
     max-width: 100%;
     max-height: 100%;
-    aspect-ratio: 1 / 1;
+    object-fit: contain;
     background: var(--color-white);
-    border-radius: var(--border-radius-lg);
-
-    @media (max-width: 1200px) {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
-    }
   }
 
   .canvasControls {
