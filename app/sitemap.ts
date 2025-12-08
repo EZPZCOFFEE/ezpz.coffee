@@ -2,7 +2,7 @@ import { flattenConnection } from "@shopify/hydrogen-react";
 import { MetadataRoute } from "next";
 
 import { ShopifyCollectionOperation, GET_COLLECTION } from "@/lib/queries/get-collection";
-import { shopifyQuery } from "@/lib/shopify";
+import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { baseUrl } from "@utils/base-url";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

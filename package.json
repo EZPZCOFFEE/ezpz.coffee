@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.29.1",
+    "@aws-sdk/client-s3": "^3.946.0",
+    "@aws-sdk/s3-request-presigner": "^3.946.0",
     "@hookform/resolvers": "^5.2.2",
     "@next/third-parties": "^16.0.7",
     "@phosphor-icons/react": "^2.1.10",

@@ -2,7 +2,7 @@ import { flattenConnection } from "@shopify/hydrogen-react";
 import classNames from "classnames";
 import Link from "next/link";
 
-import { shopifyQuery } from "@/lib/shopify";
+import { shopifyQuery } from "@/lib/interfaces/shopify";
 import Item from "@components/Item";
 import { GET_COLLECTION, type ShopifyCollectionOperation } from "@utils/queries/get-collection";
 

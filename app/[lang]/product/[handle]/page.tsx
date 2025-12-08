@@ -1,5 +1,5 @@
 import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
-import { shopifyQuery } from "@/lib/shopify";
+import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { GET_PRODUCT } from "@utils/queries/get-product";
 
 import { ProductPageClient } from "./ProductPageClient";

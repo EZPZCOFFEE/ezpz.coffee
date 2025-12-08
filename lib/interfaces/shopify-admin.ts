@@ -1,6 +1,6 @@
 import { createAdminApiClient } from "@shopify/admin-api-client";
 
-import { API_VERSION } from "./consts";
+import { API_VERSION } from "../consts";
 
 type ShopifyAdminClient = ReturnType<typeof createAdminApiClient>;
 

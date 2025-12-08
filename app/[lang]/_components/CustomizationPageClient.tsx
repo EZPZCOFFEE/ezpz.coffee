@@ -3,11 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
-import { SubmitHandler, FormProvider, useForm, useWatch } from "react-hook-form";
+import { useEffect, useRef, useState } from "react";
+import { FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
 import type { GetProductQuery } from "@/gql/graphql";
+import { uploadFile } from "@/lib/utils/files";
 
 import CustomizationPanel from "./CustomizationPanel";
 import {
@@ -30,6 +31,7 @@ import {
   type RoastValue,
   type GrindValue,
 } from "./formConfig";
+import type { PreviewCanvasHandle } from "./PreviewCanvas";
 import PreviewDisplay from "./PreviewDisplay";
 
 // Maps form values to Shopify option values
@@ -55,6 +57,7 @@ const CustomizationContent: React.FC = () => {
   const { selectedVariant, setSelectedOption } = useProduct();
   const { linesAdd, status } = useCart();
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const previewRef = useRef<PreviewCanvasHandle>(null);
 
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
@@ -109,24 +112,52 @@ const CustomizationContent: React.FC = () => {
 
   const isAddingToCart = status === "updating";
 
-  const onSubmit: SubmitHandler<CustomizationFormValues> = (values) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const isValid = await formMethods.trigger();
+    if (!isValid) return;
+
+    const values = formMethods.getValues();
+
     if (!selectedVariant?.id) {
       setStatusMessage(t("noVariantError"));
       return;
+    }
+
+    // Export and upload the label image before adding to cart
+    let labelUrl: string | null = null;
+    const labelBlob = await previewRef.current?.exportLabelImage();
+    if (labelBlob) {
+      try {
+        labelUrl = await uploadFile({
+          pathname: `labels/${crypto.randomUUID()}.png`,
+          file: labelBlob,
+        });
+      } catch (error) {
+        console.error("[Label upload failed]", error);
+      }
+    }
+
+    // Build cart line attributes
+    const attributes: { key: string; value: string }[] = [];
+    if (labelUrl) {
+      attributes.push({ key: "_labelImage", value: labelUrl });
+    }
+    if (values.customerName?.trim()) {
+      attributes.push({ key: "Name", value: values.customerName.trim() });
     }
 
     linesAdd([
       {
         merchandiseId: selectedVariant.id,
         quantity: values.quantity,
+        attributes,
       },
     ]);
 
     const name = formatPreviewValue(values.customerName, t("defaultBlendName"));
     setStatusMessage(t("savedMessage", { count: values.quantity, name }));
   };
-
-  const handleFormSubmit = formMethods.handleSubmit(onSubmit);
 
   return (
     <FormProvider {...formMethods}>
@@ -140,6 +171,7 @@ const CustomizationContent: React.FC = () => {
         </div>
         <div className={styles.previewColumn}>
           <PreviewDisplay
+            ref={previewRef}
             formValues={watchedValues}
             roastPreviewLabel={roastPreviewLabel}
             grindPreviewLabel={grindPreviewLabel}

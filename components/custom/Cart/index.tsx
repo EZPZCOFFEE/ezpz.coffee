@@ -27,9 +27,13 @@ const CartLineItem: React.FC<CartLineItemProps> = ({ line }) => {
 
   if (!line?.merchandise) return null;
 
-  const { merchandise, quantity, cost } = line;
+  const { merchandise, quantity, cost, attributes } = line;
   const product = merchandise.product;
-  const image = merchandise.image ?? product?.featuredImage;
+  const defaultImage = merchandise.image ?? product?.featuredImage;
+
+  // Check for custom label image in attributes
+  const labelImageUrl = attributes?.find((attr) => attr?.key === "_labelImage")?.value;
+  const customerName = attributes?.find((attr) => attr?.key === "Name")?.value;
 
   const handleQuantityChange = (delta: number) => {
     if (!line.id || quantity === undefined) return;
@@ -49,16 +53,25 @@ const CartLineItem: React.FC<CartLineItemProps> = ({ line }) => {
 
   return (
     <div className={styles.lineItem}>
-      {image?.url && (
-        <div className={styles.lineItemImage}>
-          <ShopifyImage data={image} sizes="80px" className={styles.lineItemImageInner} />
-        </div>
-      )}
+      <div className={styles.lineItemImage}>
+        {labelImageUrl ? (
+          <Image
+            src={labelImageUrl}
+            alt="Custom label"
+            width={80}
+            height={80}
+            className={styles.lineItemImageInner}
+            unoptimized
+          />
+        ) : defaultImage?.url ? (
+          <ShopifyImage data={defaultImage} sizes="80px" className={styles.lineItemImageInner} />
+        ) : null}
+      </div>
 
       <div className={styles.lineItemContent}>
         <div className={styles.lineItemHeader}>
           <div className={styles.lineItemInfo}>
-            <p className={styles.lineItemTitle}>{product?.title}</p>
+            <p className={styles.lineItemTitle}>{customerName ?? product?.title}</p>
             {merchandise.title !== "Default Title" && (
               <p className={styles.lineItemVariant}>{merchandise.title}</p>
             )}

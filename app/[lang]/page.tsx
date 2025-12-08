@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
+import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { GET_PRODUCT } from "@/lib/queries/get-product";
-import { shopifyQuery } from "@/lib/shopify";
 
 import CustomizationPageClient from "./_components/CustomizationPageClient";
 

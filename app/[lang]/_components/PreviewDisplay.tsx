@@ -1,11 +1,12 @@
 "use client";
 
+import { forwardRef } from "react";
 import { useTranslations } from "next-intl";
 
 import styles from "@/app/styles.module.scss";
 
 import { CustomizationFormValues, SurfaceValue } from "./formConfig";
-import PreviewCanvas from "./PreviewCanvas";
+import PreviewCanvas, { type PreviewCanvasHandle } from "./PreviewCanvas";
 
 interface PreviewDisplayProps {
   formValues: Partial<CustomizationFormValues>;
@@ -20,42 +21,49 @@ interface PreviewDisplayProps {
   labelFontSizeMultiplier?: number;
 }
 
-const PreviewDisplay = ({
-  formValues,
+const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
+  (
+    {
+      formValues,
+      selectedArtworkFile,
+      surfaceValue,
+      surfacePreviewLabel,
+      surfacePreviewDescription,
+      labelFontFamily,
+      labelFontWeight,
+      labelFontSizeMultiplier,
+    },
+    ref
+  ) => {
+    const t = useTranslations("home.preview");
 
-  selectedArtworkFile,
-  surfaceValue,
-  surfacePreviewLabel,
-  surfacePreviewDescription,
-  labelFontFamily,
-  labelFontWeight,
-  labelFontSizeMultiplier,
-}: PreviewDisplayProps) => {
-  const t = useTranslations("home.preview");
+    return (
+      <div className={styles.display}>
+        <h2 className={styles.displayHeader}>
+          {t("title")} <span className={styles.productTitle}>{t("productTitle")}</span>
+        </h2>
+        <div className={styles.displayContent}>
+          <PreviewCanvas
+            ref={ref}
+            selectedArtworkFile={selectedArtworkFile}
+            surfaceValue={surfaceValue}
+            customerName={formValues.customerName}
+            nameColor={formValues.nameColor}
+            panelColor={formValues.panelColor}
+            nameFontFamily={labelFontFamily}
+            nameFontWeight={labelFontWeight}
+            nameFontSizeMultiplier={labelFontSizeMultiplier}
+          />
+        </div>
+        <div className={styles.displayFooter}>
+          <span>{t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}</span>
+          <span>{surfacePreviewDescription}</span>
+        </div>
+      </div>
+    );
+  }
+);
 
-  return (
-    <div className={styles.display}>
-      <h2 className={styles.displayHeader}>
-        {t("title")} <span className={styles.productTitle}>{t("productTitle")}</span>
-      </h2>
-      <div className={styles.displayContent}>
-        <PreviewCanvas
-          selectedArtworkFile={selectedArtworkFile}
-          surfaceValue={surfaceValue}
-          customerName={formValues.customerName}
-          nameColor={formValues.nameColor}
-          panelColor={formValues.panelColor}
-          nameFontFamily={labelFontFamily}
-          nameFontWeight={labelFontWeight}
-          nameFontSizeMultiplier={labelFontSizeMultiplier}
-        />
-      </div>
-      <div className={styles.displayFooter}>
-        <span>{t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}</span>
-        <span>{surfacePreviewDescription}</span>
-      </div>
-    </div>
-  );
-};
+PreviewDisplay.displayName = "PreviewDisplay";
 
 export default PreviewDisplay;

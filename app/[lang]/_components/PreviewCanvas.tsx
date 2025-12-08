@@ -1,10 +1,12 @@
 "use client";
 
 import {
+  forwardRef,
   type ChangeEvent,
   type PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -14,6 +16,10 @@ import styles from "@/app/styles.module.scss";
 import bagMockup from "@/public/bags/mockup.jpg";
 
 import { SurfaceValue, defaultPanelColor, sanitizeHexColor } from "./formConfig";
+
+export interface PreviewCanvasHandle {
+  exportLabelImage: () => Promise<Blob | null>;
+}
 
 const CANVAS_SCALE = 2;
 const CANVAS_SIDE = Math.round(480 * CANVAS_SCALE);
@@ -166,389 +172,488 @@ interface PreviewCanvasProps {
   nameFontSizeMultiplier?: number;
 }
 
-const PreviewCanvas = ({
-  selectedArtworkFile,
-  surfaceValue,
-  customerName,
-  nameColor,
-  panelColor,
-  nameFontFamily,
-  nameFontWeight = "400",
-  nameFontSizeMultiplier = 1,
-}: PreviewCanvasProps) => {
-  const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
-  const dragStateRef = useRef<{
-    pointerId: number | null;
-    startPoint: { x: number; y: number } | null;
-    originOffset: ArtworkOffset;
-  }>({
-    pointerId: null,
-    startPoint: null,
-    originOffset: createDefaultArtworkOffset(),
-  });
-  const artworkObjectUrlRef = useRef<string | null>(null);
-  const [bagImage, setBagImage] = useState<HTMLImageElement | null>(null);
-  const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
-  const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
-  const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
-  const activeWindows = useMemo(
-    () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
-    [surfaceValue]
-  );
-  const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
-  const panelFillColor = useMemo<string>(() => sanitizeHexColor(panelColor, defaultPanelColor), [panelColor]);
+const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
+  (
+    {
+      selectedArtworkFile,
+      surfaceValue,
+      customerName,
+      nameColor,
+      panelColor,
+      nameFontFamily,
+      nameFontWeight = "400",
+      nameFontSizeMultiplier = 1,
+    },
+    ref
+  ) => {
+    const bagCanvasRef = useRef<HTMLCanvasElement | null>(null);
+    const dragStateRef = useRef<{
+      pointerId: number | null;
+      startPoint: { x: number; y: number } | null;
+      originOffset: ArtworkOffset;
+    }>({
+      pointerId: null,
+      startPoint: null,
+      originOffset: createDefaultArtworkOffset(),
+    });
+    const artworkObjectUrlRef = useRef<string | null>(null);
+    const [bagImage, setBagImage] = useState<HTMLImageElement | null>(null);
+    const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
+    const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
+    const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
+    const activeWindows = useMemo(
+      () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
+      [surfaceValue]
+    );
+    const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
+    const panelFillColor = useMemo<string>(
+      () => sanitizeHexColor(panelColor, defaultPanelColor),
+      [panelColor]
+    );
 
-  // Resolve CSS variable to actual font family for canvas rendering
-  // Next.js localFont sets CSS variables on <body>, not <html>
-  const resolvedFontFamily = useMemo<string>(() => {
-    if (!nameFontFamily) return DEFAULT_NAME_FONT_FAMILY;
-    if (!nameFontFamily.startsWith("var(")) return nameFontFamily;
+    // Resolve CSS variable to actual font family for canvas rendering
+    // Next.js localFont sets CSS variables on <body>, not <html>
+    const resolvedFontFamily = useMemo<string>(() => {
+      if (!nameFontFamily) return DEFAULT_NAME_FONT_FAMILY;
+      if (!nameFontFamily.startsWith("var(")) return nameFontFamily;
 
-    if (typeof document === "undefined") return DEFAULT_NAME_FONT_FAMILY;
+      if (typeof document === "undefined") return DEFAULT_NAME_FONT_FAMILY;
 
-    const varName = nameFontFamily.replace(/var\((--[^)]+)\)/, "$1").trim();
-    const computedValue = getComputedStyle(document.body).getPropertyValue(varName);
-    return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
-  }, [nameFontFamily]);
-  const bottomPanelRect = useMemo(() => {
-    if (surfaceValue === "sandwich") {
-      return SURFACE_WINDOWS.sandwich[1];
-    }
-    if (surfaceValue === "bottom") {
-      return SURFACE_WINDOWS.bottom[0];
-    }
-    return {
-      x: LABEL_RECT.x,
-      y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
-      width: LABEL_RECT.width,
-      height: BOTTOM_STRIP_HEIGHT,
-    };
-  }, [surfaceValue]);
-
-  useEffect(() => {
-    const image = new Image();
-    image.src = bagMockup.src;
-    image.onload = () => {
-      setBagImage(image);
-    };
-
-    return () => {
-      image.onload = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!selectedArtworkFile?.type?.startsWith("image/")) {
-      // Clean up object URL synchronously
-      if (artworkObjectUrlRef.current) {
-        URL.revokeObjectURL(artworkObjectUrlRef.current);
-        artworkObjectUrlRef.current = null;
+      const varName = nameFontFamily.replace(/var\((--[^)]+)\)/, "$1").trim();
+      const computedValue = getComputedStyle(document.body).getPropertyValue(varName);
+      return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
+    }, [nameFontFamily]);
+    const bottomPanelRect = useMemo(() => {
+      if (surfaceValue === "sandwich") {
+        return SURFACE_WINDOWS.sandwich[1];
       }
-      // Schedule state resets asynchronously to avoid cascading renders
-      queueMicrotask(() => {
-        setArtworkImage(null);
+      if (surfaceValue === "bottom") {
+        return SURFACE_WINDOWS.bottom[0];
+      }
+      return {
+        x: LABEL_RECT.x,
+        y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
+        width: LABEL_RECT.width,
+        height: BOTTOM_STRIP_HEIGHT,
+      };
+    }, [surfaceValue]);
+
+    useEffect(() => {
+      const image = new Image();
+      image.src = bagMockup.src;
+      image.onload = () => {
+        setBagImage(image);
+      };
+
+      return () => {
+        image.onload = null;
+      };
+    }, []);
+
+    useEffect(() => {
+      if (!selectedArtworkFile?.type?.startsWith("image/")) {
+        // Clean up object URL synchronously
+        if (artworkObjectUrlRef.current) {
+          URL.revokeObjectURL(artworkObjectUrlRef.current);
+          artworkObjectUrlRef.current = null;
+        }
+        // Schedule state resets asynchronously to avoid cascading renders
+        queueMicrotask(() => {
+          setArtworkImage(null);
+          setArtworkScale(ARTWORK_SCALE_MIN);
+          setArtworkOffset(createDefaultArtworkOffset());
+        });
+        return;
+      }
+
+      const nextUrl = URL.createObjectURL(selectedArtworkFile);
+      artworkObjectUrlRef.current = nextUrl;
+      const image = new Image();
+      image.src = nextUrl;
+      image.onload = () => {
+        if (artworkObjectUrlRef.current !== nextUrl) return;
+        setArtworkImage(image);
         setArtworkScale(ARTWORK_SCALE_MIN);
         setArtworkOffset(createDefaultArtworkOffset());
-      });
-      return;
-    }
+      };
+      image.onerror = () => {
+        if (artworkObjectUrlRef.current !== nextUrl) return;
+        setArtworkImage(null);
+      };
 
-    const nextUrl = URL.createObjectURL(selectedArtworkFile);
-    artworkObjectUrlRef.current = nextUrl;
-    const image = new Image();
-    image.src = nextUrl;
-    image.onload = () => {
-      if (artworkObjectUrlRef.current !== nextUrl) return;
-      setArtworkImage(image);
+      return () => {
+        image.onload = null;
+        image.onerror = null;
+        URL.revokeObjectURL(nextUrl);
+        if (artworkObjectUrlRef.current === nextUrl) {
+          artworkObjectUrlRef.current = null;
+        }
+      };
+    }, [selectedArtworkFile]);
+
+    const clampArtworkOffset = useCallback(
+      (offset: ArtworkOffset, scaleOverride?: number) => {
+        if (!artworkImage) {
+          return offset;
+        }
+
+        const baseScale = Math.max(
+          LABEL_RECT.width / artworkImage.width,
+          LABEL_RECT.height / artworkImage.height
+        );
+        const totalScale = baseScale * (scaleOverride ?? artworkScale);
+        const drawWidth = artworkImage.width * totalScale;
+        const drawHeight = artworkImage.height * totalScale;
+        const maxX = Math.max(0, (drawWidth - LABEL_RECT.width) / 2);
+        const maxY = Math.max(0, (drawHeight - LABEL_RECT.height) / 2);
+
+        return {
+          x: Math.min(maxX, Math.max(-maxX, offset.x)),
+          y: Math.min(maxY, Math.max(-maxY, offset.y)),
+        };
+      },
+      [artworkImage, artworkScale]
+    );
+
+    const sanitizedName = customerName?.trim() ?? "";
+
+    const drawCanvas = useCallback(() => {
+      const canvas = bagCanvasRef.current;
+      if (!canvas) return;
+
+      const context = canvas.getContext("2d");
+      if (!context) return;
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.fillStyle = "#fff";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      if (!bagImage) return;
+
+      const bagScale = Math.min(canvas.width / bagImage.width, canvas.height / bagImage.height);
+      const bagWidth = bagImage.width * bagScale;
+      const bagHeight = bagImage.height * bagScale;
+      const bagOffsetX = (canvas.width - bagWidth) / 2;
+      const bagOffsetY = (canvas.height - bagHeight) / 2;
+
+      // Draw bag
+      context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
+
+      // Draw artwork clipped to label area
+      if (artworkImage) {
+        context.save();
+        context.beginPath();
+        context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+        context.clip();
+
+        const baseScale = Math.max(
+          LABEL_RECT.width / artworkImage.width,
+          LABEL_RECT.height / artworkImage.height
+        );
+        const totalScale = baseScale * artworkScale;
+        const drawWidth = artworkImage.width * totalScale;
+        const drawHeight = artworkImage.height * totalScale;
+        const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
+        const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
+
+        context.drawImage(
+          artworkImage,
+          centerX - drawWidth / 2,
+          centerY - drawHeight / 2,
+          drawWidth,
+          drawHeight
+        );
+        context.restore();
+      }
+
+      // Draw panels
+      if (activeWindows.length > 0) {
+        context.fillStyle = panelFillColor;
+        activeWindows.forEach((windowRect) => {
+          context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
+        });
+      }
+
+      // Draw name text
+      if (sanitizedName) {
+        const namePlan = planNameRendering(
+          context,
+          sanitizedName,
+          resolvedFontFamily,
+          nameFontWeight,
+          nameFontSizeMultiplier
+        );
+        if (namePlan) {
+          const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
+          const textX = bottomPanelRect.x + NAME_PADDING_X;
+          const textY = bottomPanelRect.y + bottomPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
+          context.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
+          context.textAlign = "left";
+          context.textBaseline = "middle";
+          context.fillStyle = nameTextColor;
+          context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
+        }
+      }
+    }, [
+      activeWindows,
+      artworkImage,
+      artworkOffset,
+      artworkScale,
+      bagImage,
+      nameTextColor,
+      sanitizedName,
+      panelFillColor,
+      bottomPanelRect,
+      resolvedFontFamily,
+      nameFontWeight,
+      nameFontSizeMultiplier,
+    ]);
+
+    useEffect(() => {
+      drawCanvas();
+    }, [drawCanvas]);
+
+    const exportLabelImage = useCallback(async (): Promise<Blob | null> => {
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = LABEL_WIDTH;
+      exportCanvas.height = LABEL_HEIGHT;
+      const ctx = exportCanvas.getContext("2d");
+      if (!ctx) return null;
+
+      // Fill with panel color as background (or white if no artwork)
+      ctx.fillStyle = artworkImage ? panelFillColor : "#ffffff";
+      ctx.fillRect(0, 0, LABEL_WIDTH, LABEL_HEIGHT);
+
+      // Draw artwork (translated so label origin is at 0,0)
+      if (artworkImage) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 0, LABEL_WIDTH, LABEL_HEIGHT);
+        ctx.clip();
+
+        const baseScale = Math.max(LABEL_WIDTH / artworkImage.width, LABEL_HEIGHT / artworkImage.height);
+        const totalScale = baseScale * artworkScale;
+        const drawWidth = artworkImage.width * totalScale;
+        const drawHeight = artworkImage.height * totalScale;
+        const centerX = LABEL_WIDTH / 2 + artworkOffset.x;
+        const centerY = LABEL_HEIGHT / 2 + artworkOffset.y;
+
+        ctx.drawImage(artworkImage, centerX - drawWidth / 2, centerY - drawHeight / 2, drawWidth, drawHeight);
+        ctx.restore();
+      }
+
+      // Draw panels (translated to label-relative coordinates)
+      if (activeWindows.length > 0) {
+        ctx.fillStyle = panelFillColor;
+        activeWindows.forEach((windowRect) => {
+          ctx.fillRect(
+            windowRect.x - LABEL_RECT.x,
+            windowRect.y - LABEL_RECT.y,
+            windowRect.width,
+            windowRect.height
+          );
+        });
+      }
+
+      // Draw name text (translated to label-relative coordinates)
+      if (sanitizedName) {
+        const namePlan = planNameRendering(
+          ctx,
+          sanitizedName,
+          resolvedFontFamily,
+          nameFontWeight,
+          nameFontSizeMultiplier
+        );
+        if (namePlan) {
+          const translatedPanel = {
+            x: bottomPanelRect.x - LABEL_RECT.x,
+            y: bottomPanelRect.y - LABEL_RECT.y,
+            width: bottomPanelRect.width,
+            height: bottomPanelRect.height,
+          };
+          const panelTextMaxWidth = Math.max(40, translatedPanel.width - NAME_PADDING_X * 2);
+          const textX = translatedPanel.x + NAME_PADDING_X;
+          const textY = translatedPanel.y + translatedPanel.height / 2 + NAME_VERTICAL_OFFSET;
+
+          ctx.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
+          ctx.textAlign = "left";
+          ctx.textBaseline = "middle";
+          ctx.fillStyle = nameTextColor;
+          ctx.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
+        }
+      }
+
+      return new Promise((resolve) => {
+        exportCanvas.toBlob((blob) => resolve(blob), "image/png", 1.0);
+      });
+    }, [
+      activeWindows,
+      artworkImage,
+      artworkOffset,
+      artworkScale,
+      bottomPanelRect,
+      nameTextColor,
+      nameFontSizeMultiplier,
+      nameFontWeight,
+      panelFillColor,
+      resolvedFontFamily,
+      sanitizedName,
+    ]);
+
+    useImperativeHandle(ref, () => ({ exportLabelImage }), [exportLabelImage]);
+
+    const getCanvasPoint = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      const canvas = event.currentTarget;
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: ((event.clientX - rect.left) / rect.width) * canvas.width,
+        y: ((event.clientY - rect.top) / rect.height) * canvas.height,
+      };
+    };
+
+    const isPointInsideLabel = (point: { x: number; y: number }) =>
+      point.x >= LABEL_RECT.x &&
+      point.x <= LABEL_RECT.x + LABEL_RECT.width &&
+      point.y >= LABEL_RECT.y &&
+      point.y <= LABEL_RECT.y + LABEL_RECT.height;
+
+    const isPointInsidePanel = (point: { x: number; y: number }) =>
+      activeWindows.some(
+        (windowRect) =>
+          point.x >= windowRect.x &&
+          point.x <= windowRect.x + windowRect.width &&
+          point.y >= windowRect.y &&
+          point.y <= windowRect.y + windowRect.height
+      );
+
+    const isPointInsideArtworkRegion = (point: { x: number; y: number }) =>
+      isPointInsideLabel(point) && !isPointInsidePanel(point);
+
+    const handleCanvasPointerDown = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      if (!artworkImage) return;
+      const point = getCanvasPoint(event);
+      if (!isPointInsideArtworkRegion(point)) return;
+
+      event.preventDefault();
+      event.currentTarget.setPointerCapture(event.pointerId);
+      dragStateRef.current = {
+        pointerId: event.pointerId,
+        startPoint: point,
+        originOffset: artworkOffset,
+      };
+    };
+
+    const handleCanvasPointerMove = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      const dragState = dragStateRef.current;
+      if (!artworkImage || dragState.pointerId !== event.pointerId || !dragState.startPoint) {
+        return;
+      }
+
+      event.preventDefault();
+      const point = getCanvasPoint(event);
+      const delta = {
+        x: point.x - dragState.startPoint.x,
+        y: point.y - dragState.startPoint.y,
+      };
+      const nextOffset = {
+        x: dragState.originOffset.x + delta.x,
+        y: dragState.originOffset.y + delta.y,
+      };
+      setArtworkOffset(clampArtworkOffset(nextOffset));
+    };
+
+    const resetDragState = (canvas: HTMLCanvasElement, pointerId?: number) => {
+      const activePointerId = dragStateRef.current.pointerId;
+      if (activePointerId === null) return;
+      if (typeof pointerId === "number" && activePointerId !== pointerId) return;
+
+      if (canvas.hasPointerCapture(activePointerId)) {
+        canvas.releasePointerCapture(activePointerId);
+      }
+      dragStateRef.current.pointerId = null;
+      dragStateRef.current.startPoint = null;
+      dragStateRef.current.originOffset = artworkOffset;
+    };
+
+    const handleCanvasPointerUp = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      if (dragStateRef.current.pointerId !== event.pointerId) return;
+      event.preventDefault();
+      resetDragState(event.currentTarget, event.pointerId);
+    };
+
+    const handleCanvasPointerLeave = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      if (dragStateRef.current.pointerId === null) return;
+      resetDragState(event.currentTarget);
+    };
+
+    const handleCanvasPointerCancel = (event: ReactPointerEvent<HTMLCanvasElement>) => {
+      if (dragStateRef.current.pointerId === null) return;
+      resetDragState(event.currentTarget);
+    };
+
+    const handleScaleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const nextScale = Number(event.target.value);
+      setArtworkScale(nextScale);
+      setArtworkOffset((previous) => clampArtworkOffset(previous, nextScale));
+    };
+
+    const handleResetArtwork = () => {
       setArtworkScale(ARTWORK_SCALE_MIN);
       setArtworkOffset(createDefaultArtworkOffset());
     };
-    image.onerror = () => {
-      if (artworkObjectUrlRef.current !== nextUrl) return;
-      setArtworkImage(null);
-    };
 
-    return () => {
-      image.onload = null;
-      image.onerror = null;
-      URL.revokeObjectURL(nextUrl);
-      if (artworkObjectUrlRef.current === nextUrl) {
-        artworkObjectUrlRef.current = null;
-      }
-    };
-  }, [selectedArtworkFile]);
+    return (
+      <div className={styles.canvasWrapper}>
+        <div className={styles.canvasContainer}>
+          <canvas
+            ref={bagCanvasRef}
+            className={styles.previewCanvas}
+            width={CANVAS_WIDTH}
+            height={CANVAS_HEIGHT}
+            role="img"
+            aria-label="Bag mockup preview"
+            onPointerDown={handleCanvasPointerDown}
+            onPointerMove={handleCanvasPointerMove}
+            onPointerUp={handleCanvasPointerUp}
+            onPointerLeave={handleCanvasPointerLeave}
+            onPointerCancel={handleCanvasPointerCancel}
+          />
+        </div>
 
-  const clampArtworkOffset = useCallback(
-    (offset: ArtworkOffset, scaleOverride?: number) => {
-      if (!artworkImage) {
-        return offset;
-      }
-
-      const baseScale = Math.max(
-        LABEL_RECT.width / artworkImage.width,
-        LABEL_RECT.height / artworkImage.height
-      );
-      const totalScale = baseScale * (scaleOverride ?? artworkScale);
-      const drawWidth = artworkImage.width * totalScale;
-      const drawHeight = artworkImage.height * totalScale;
-      const maxX = Math.max(0, (drawWidth - LABEL_RECT.width) / 2);
-      const maxY = Math.max(0, (drawHeight - LABEL_RECT.height) / 2);
-
-      return {
-        x: Math.min(maxX, Math.max(-maxX, offset.x)),
-        y: Math.min(maxY, Math.max(-maxY, offset.y)),
-      };
-    },
-    [artworkImage, artworkScale]
-  );
-
-  const sanitizedName = customerName?.trim() ?? "";
-
-  const drawCanvas = useCallback(() => {
-    const canvas = bagCanvasRef.current;
-    if (!canvas) return;
-
-    const context = canvas.getContext("2d");
-    if (!context) return;
-
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = "#fff";
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    if (!bagImage) return;
-
-    const bagScale = Math.min(canvas.width / bagImage.width, canvas.height / bagImage.height);
-    const bagWidth = bagImage.width * bagScale;
-    const bagHeight = bagImage.height * bagScale;
-    const bagOffsetX = (canvas.width - bagWidth) / 2;
-    const bagOffsetY = (canvas.height - bagHeight) / 2;
-
-    // Draw bag
-    context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
-
-    // Draw artwork clipped to label area
-    if (artworkImage) {
-      context.save();
-      context.beginPath();
-      context.rect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
-      context.clip();
-
-      const baseScale = Math.max(
-        LABEL_RECT.width / artworkImage.width,
-        LABEL_RECT.height / artworkImage.height
-      );
-      const totalScale = baseScale * artworkScale;
-      const drawWidth = artworkImage.width * totalScale;
-      const drawHeight = artworkImage.height * totalScale;
-      const centerX = LABEL_RECT.x + LABEL_RECT.width / 2 + artworkOffset.x;
-      const centerY = LABEL_RECT.y + LABEL_RECT.height / 2 + artworkOffset.y;
-
-      context.drawImage(
-        artworkImage,
-        centerX - drawWidth / 2,
-        centerY - drawHeight / 2,
-        drawWidth,
-        drawHeight
-      );
-      context.restore();
-    }
-
-    // Draw panels
-    if (activeWindows.length > 0) {
-      context.fillStyle = panelFillColor;
-      activeWindows.forEach((windowRect) => {
-        context.fillRect(windowRect.x, windowRect.y, windowRect.width, windowRect.height);
-      });
-    }
-
-    // Draw name text
-    if (sanitizedName) {
-      const namePlan = planNameRendering(
-        context,
-        sanitizedName,
-        resolvedFontFamily,
-        nameFontWeight,
-        nameFontSizeMultiplier
-      );
-      if (namePlan) {
-        const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
-        const textX = bottomPanelRect.x + NAME_PADDING_X;
-        const textY = bottomPanelRect.y + bottomPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
-        context.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
-        context.textAlign = "left";
-        context.textBaseline = "middle";
-        context.fillStyle = nameTextColor;
-        context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
-      }
-    }
-  }, [
-    activeWindows,
-    artworkImage,
-    artworkOffset,
-    artworkScale,
-    bagImage,
-    nameTextColor,
-    sanitizedName,
-    panelFillColor,
-    bottomPanelRect,
-    resolvedFontFamily,
-    nameFontWeight,
-    nameFontSizeMultiplier,
-  ]);
-
-  useEffect(() => {
-    drawCanvas();
-  }, [drawCanvas]);
-
-  const getCanvasPoint = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    const canvas = event.currentTarget;
-    const rect = canvas.getBoundingClientRect();
-    return {
-      x: ((event.clientX - rect.left) / rect.width) * canvas.width,
-      y: ((event.clientY - rect.top) / rect.height) * canvas.height,
-    };
-  };
-
-  const isPointInsideLabel = (point: { x: number; y: number }) =>
-    point.x >= LABEL_RECT.x &&
-    point.x <= LABEL_RECT.x + LABEL_RECT.width &&
-    point.y >= LABEL_RECT.y &&
-    point.y <= LABEL_RECT.y + LABEL_RECT.height;
-
-  const isPointInsidePanel = (point: { x: number; y: number }) =>
-    activeWindows.some(
-      (windowRect) =>
-        point.x >= windowRect.x &&
-        point.x <= windowRect.x + windowRect.width &&
-        point.y >= windowRect.y &&
-        point.y <= windowRect.y + windowRect.height
+        <div className={styles.canvasControls}>
+          {artworkImage ? (
+            <>
+              <div className={styles.canvasControlRow}>
+                <label htmlFor="artwork-scale" className={styles.cropLabel}>
+                  Zoom
+                </label>
+                <input
+                  id="artwork-scale"
+                  className={styles.cropSlider}
+                  type="range"
+                  min={ARTWORK_SCALE_MIN}
+                  max={ARTWORK_SCALE_MAX}
+                  step={ARTWORK_SCALE_STEP}
+                  value={artworkScale}
+                  onChange={handleScaleChange}
+                  aria-label="Adjust artwork zoom"
+                />
+                <span className={styles.cropValue}>{Math.round(artworkScale * 100)}%</span>
+              </div>
+              <div className={styles.canvasControlButtons}>
+                <button type="button" className={styles.cropResetButton} onClick={handleResetArtwork}>
+                  Center image
+                </button>
+              </div>
+            </>
+          ) : (
+            <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>
+          )}
+        </div>
+      </div>
     );
+  }
+);
 
-  const isPointInsideArtworkRegion = (point: { x: number; y: number }) =>
-    isPointInsideLabel(point) && !isPointInsidePanel(point);
-
-  const handleCanvasPointerDown = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    if (!artworkImage) return;
-    const point = getCanvasPoint(event);
-    if (!isPointInsideArtworkRegion(point)) return;
-
-    event.preventDefault();
-    event.currentTarget.setPointerCapture(event.pointerId);
-    dragStateRef.current = {
-      pointerId: event.pointerId,
-      startPoint: point,
-      originOffset: artworkOffset,
-    };
-  };
-
-  const handleCanvasPointerMove = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    const dragState = dragStateRef.current;
-    if (!artworkImage || dragState.pointerId !== event.pointerId || !dragState.startPoint) {
-      return;
-    }
-
-    event.preventDefault();
-    const point = getCanvasPoint(event);
-    const delta = {
-      x: point.x - dragState.startPoint.x,
-      y: point.y - dragState.startPoint.y,
-    };
-    const nextOffset = {
-      x: dragState.originOffset.x + delta.x,
-      y: dragState.originOffset.y + delta.y,
-    };
-    setArtworkOffset(clampArtworkOffset(nextOffset));
-  };
-
-  const resetDragState = (canvas: HTMLCanvasElement, pointerId?: number) => {
-    const activePointerId = dragStateRef.current.pointerId;
-    if (activePointerId === null) return;
-    if (typeof pointerId === "number" && activePointerId !== pointerId) return;
-
-    if (canvas.hasPointerCapture(activePointerId)) {
-      canvas.releasePointerCapture(activePointerId);
-    }
-    dragStateRef.current.pointerId = null;
-    dragStateRef.current.startPoint = null;
-    dragStateRef.current.originOffset = artworkOffset;
-  };
-
-  const handleCanvasPointerUp = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    if (dragStateRef.current.pointerId !== event.pointerId) return;
-    event.preventDefault();
-    resetDragState(event.currentTarget, event.pointerId);
-  };
-
-  const handleCanvasPointerLeave = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    if (dragStateRef.current.pointerId === null) return;
-    resetDragState(event.currentTarget);
-  };
-
-  const handleCanvasPointerCancel = (event: ReactPointerEvent<HTMLCanvasElement>) => {
-    if (dragStateRef.current.pointerId === null) return;
-    resetDragState(event.currentTarget);
-  };
-
-  const handleScaleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const nextScale = Number(event.target.value);
-    setArtworkScale(nextScale);
-    setArtworkOffset((previous) => clampArtworkOffset(previous, nextScale));
-  };
-
-  const handleResetArtwork = () => {
-    setArtworkScale(ARTWORK_SCALE_MIN);
-    setArtworkOffset(createDefaultArtworkOffset());
-  };
-
-  return (
-    <div className={styles.canvasWrapper}>
-      <div className={styles.canvasContainer}>
-        <canvas
-          ref={bagCanvasRef}
-          className={styles.previewCanvas}
-          width={CANVAS_WIDTH}
-          height={CANVAS_HEIGHT}
-          role="img"
-          aria-label="Bag mockup preview"
-          onPointerDown={handleCanvasPointerDown}
-          onPointerMove={handleCanvasPointerMove}
-          onPointerUp={handleCanvasPointerUp}
-          onPointerLeave={handleCanvasPointerLeave}
-          onPointerCancel={handleCanvasPointerCancel}
-        />
-      </div>
-
-      <div className={styles.canvasControls}>
-        {artworkImage ? (
-          <>
-            <div className={styles.canvasControlRow}>
-              <label htmlFor="artwork-scale" className={styles.cropLabel}>
-                Zoom
-              </label>
-              <input
-                id="artwork-scale"
-                className={styles.cropSlider}
-                type="range"
-                min={ARTWORK_SCALE_MIN}
-                max={ARTWORK_SCALE_MAX}
-                step={ARTWORK_SCALE_STEP}
-                value={artworkScale}
-                onChange={handleScaleChange}
-                aria-label="Adjust artwork zoom"
-              />
-              <span className={styles.cropValue}>{Math.round(artworkScale * 100)}%</span>
-            </div>
-            <div className={styles.canvasControlButtons}>
-              <button type="button" className={styles.cropResetButton} onClick={handleResetArtwork}>
-                Center image
-              </button>
-            </div>
-          </>
-        ) : (
-          <p className={styles.cropHint}>Upload an image to unlock the cropper.</p>
-        )}
-      </div>
-    </div>
-  );
-};
+PreviewCanvas.displayName = "PreviewCanvas";
 
 export default PreviewCanvas;

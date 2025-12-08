@@ -3,7 +3,7 @@
 import { CREATE_CUSTOMER } from "@/lib/queries/admin/create-customer";
 import { GET_CUSTOMER } from "@/lib/queries/admin/get-customer";
 import { UPDATE_CUSTOMER_EMAIL_SUBSCRIPTION } from "@/lib/queries/admin/update-customer-subscription";
-import { shopifyAdmin } from "@/lib/shopify-admin";
+import { shopifyAdmin } from "@/lib/interfaces/shopify-admin";
 
 interface CustomerNode {
   id: string;
