@@ -29,6 +29,8 @@ const PasswordPage = () => {
   const t = useTranslations("passwordPage");
   const router = useRouter();
 
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+
   const [emailState, setEmailState] = useState<{
     status: "idle" | "success" | "error";
     message?: string;
@@ -141,56 +143,49 @@ const PasswordPage = () => {
               </form>
             )}
           </div>
-
-          <div className={styles.divider}>{t("or")}</div>
-
-          {/* Password unlock form */}
-          <div className={styles.formGroup}>
-            <span className={styles.formLabel}>{t("enterPasswordLabel")}</span>
-
-            <form
-              onSubmit={(e) => {
-                void passwordForm.handleSubmit(onPasswordSubmit)(e);
-              }}
-              noValidate
-            >
-              <div className={styles.inputWrapper}>
-                <label className={styles.visuallyHidden} htmlFor="site-password">
-                  {t("passwordLabel")}
-                </label>
-                <input
-                  id="site-password"
-                  type="password"
-                  className={`${styles.input} ${passwordForm.formState.errors.password || passwordState.status === "error" ? styles.inputError : ""}`}
-                  placeholder={t("passwordPlaceholder")}
-                  aria-invalid={passwordForm.formState.errors.password ? "true" : "false"}
-                  disabled={passwordForm.formState.isSubmitting}
-                  {...passwordForm.register("password")}
-                />
-                {passwordForm.formState.errors.password && (
-                  <span className={styles.errorText} role="alert">
-                    {passwordForm.formState.errors.password.message}
-                  </span>
-                )}
-                {passwordState.status === "error" && (
-                  <span className={styles.errorText} role="alert">
-                    {passwordState.message}
-                  </span>
-                )}
-              </div>
-              <Button
-                type="submit"
-                variant="secondary"
-                fullWidth
-                disabled={passwordForm.formState.isSubmitting}
-                style={{ marginTop: "var(--spacing-city)" }}
-              >
-                {passwordForm.formState.isSubmitting ? t("unlocking") : t("unlock")}
-              </Button>
-            </form>
-          </div>
         </div>
       </div>
+
+      {/* Subtle admin login at bottom */}
+      <footer className={styles.adminFooter}>
+        {showAdminLogin ? (
+          <form
+            className={styles.adminForm}
+            onSubmit={(e) => {
+              void passwordForm.handleSubmit(onPasswordSubmit)(e);
+            }}
+            noValidate
+          >
+            <input
+              id="site-password"
+              type="password"
+              className={`${styles.adminInput} ${passwordForm.formState.errors.password || passwordState.status === "error" ? styles.inputError : ""}`}
+              placeholder={t("passwordPlaceholder")}
+              aria-label={t("passwordLabel")}
+              aria-invalid={passwordForm.formState.errors.password ? "true" : "false"}
+              disabled={passwordForm.formState.isSubmitting}
+              autoFocus
+              {...passwordForm.register("password")}
+            />
+            <button
+              type="submit"
+              className={styles.adminSubmit}
+              disabled={passwordForm.formState.isSubmitting}
+            >
+              {passwordForm.formState.isSubmitting ? "..." : "→"}
+            </button>
+            {(Boolean(passwordForm.formState.errors.password) || passwordState.status === "error") && (
+              <span className={styles.adminError} role="alert">
+                {passwordForm.formState.errors.password?.message ?? passwordState.message}
+              </span>
+            )}
+          </form>
+        ) : (
+          <button type="button" className={styles.adminLink} onClick={() => setShowAdminLogin(true)}>
+            {t("adminLink")}
+          </button>
+        )}
+      </footer>
     </main>
   );
 };

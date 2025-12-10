@@ -8,12 +8,9 @@
     "subscribe": "Me notifier",
     "subscribing": "Inscription...",
     "emailSuccess": "Vous êtes sur la liste! Nous vous informerons du lancement.",
-    "or": "ou",
-    "enterPasswordLabel": "Vous avez un mot de passe?",
     "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "Entrez le mot de passe",
-    "unlock": "Entrer",
-    "unlocking": "Entrée..."
+    "passwordPlaceholder": "Mot de passe",
+    "adminLink": "Accès admin"
   },
   "about": {
     "eyebrow": "À propos",

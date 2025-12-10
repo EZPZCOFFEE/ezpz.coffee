@@ -8,12 +8,9 @@
     "subscribe": "Notify me",
     "subscribing": "Subscribing...",
     "emailSuccess": "You're on the list! We'll let you know when we launch.",
-    "or": "or",
-    "enterPasswordLabel": "Have a password?",
     "passwordLabel": "Password",
-    "passwordPlaceholder": "Enter password",
-    "unlock": "Enter",
-    "unlocking": "Entering..."
+    "passwordPlaceholder": "Password",
+    "adminLink": "Enter as admin"
   },
   "about": {
     "eyebrow": "About us",
