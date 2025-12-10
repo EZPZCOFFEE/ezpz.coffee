@@ -41,11 +41,20 @@ const PasswordPage = () => {
     message?: string;
   }>({ status: "idle" });
 
-  const emailForm = useForm<EmailFormData>({
+  const {
+    register: registerEmail,
+    handleSubmit: handleEmailSubmit,
+    reset: resetEmail,
+    formState: { errors: emailErrors, isSubmitting: isEmailSubmitting },
+  } = useForm<EmailFormData>({
     resolver: zodResolver(emailSchema),
   });
 
-  const passwordForm = useForm<PasswordFormData>({
+  const {
+    register: registerPassword,
+    handleSubmit: handlePasswordSubmit,
+    formState: { errors: passwordErrors, isSubmitting: isPasswordSubmitting },
+  } = useForm<PasswordFormData>({
     resolver: zodResolver(passwordSchema),
   });
 
@@ -59,7 +68,7 @@ const PasswordPage = () => {
 
     if (result.success) {
       setEmailState({ status: "success", message: t("emailSuccess") });
-      emailForm.reset();
+      resetEmail();
     } else {
       setEmailState({ status: "error", message: result.error });
     }
@@ -97,13 +106,13 @@ const PasswordPage = () => {
             <span className={styles.formLabel}>{t("notifyLabel")}</span>
 
             {emailState.status === "success" ? (
-              <div className={styles.successMessage} role="status">
+              <div className={styles.successMessage} role="status" aria-live="polite">
                 {emailState.message}
               </div>
             ) : (
               <form
                 onSubmit={(e) => {
-                  void emailForm.handleSubmit(onEmailSubmit)(e);
+                  void handleEmailSubmit(onEmailSubmit)(e);
                 }}
                 noValidate
               >
@@ -114,15 +123,16 @@ const PasswordPage = () => {
                   <input
                     id="notify-email"
                     type="email"
-                    className={`${styles.input} ${emailForm.formState.errors.email ? styles.inputError : ""}`}
+                    className={`${styles.input} ${emailErrors.email ? styles.inputError : ""}`}
                     placeholder={t("emailPlaceholder")}
-                    aria-invalid={emailForm.formState.errors.email ? "true" : "false"}
-                    disabled={emailForm.formState.isSubmitting}
-                    {...emailForm.register("email")}
+                    aria-invalid={emailErrors.email ? "true" : "false"}
+                    aria-describedby={emailErrors.email ? "email-error" : undefined}
+                    disabled={isEmailSubmitting}
+                    {...registerEmail("email")}
                   />
-                  {emailForm.formState.errors.email && (
-                    <span className={styles.errorText} role="alert">
-                      {emailForm.formState.errors.email.message}
+                  {emailErrors.email && (
+                    <span id="email-error" className={styles.errorText} role="alert">
+                      {emailErrors.email.message}
                     </span>
                   )}
                   {emailState.status === "error" && (
@@ -135,10 +145,10 @@ const PasswordPage = () => {
                   type="submit"
                   variant="primary"
                   fullWidth
-                  disabled={emailForm.formState.isSubmitting}
+                  disabled={isEmailSubmitting}
                   style={{ marginTop: "var(--spacing-city)" }}
                 >
-                  {emailForm.formState.isSubmitting ? t("subscribing") : t("subscribe")}
+                  {isEmailSubmitting ? t("subscribing") : t("subscribe")}
                 </Button>
               </form>
             )}
@@ -152,31 +162,28 @@ const PasswordPage = () => {
           <form
             className={styles.adminForm}
             onSubmit={(e) => {
-              void passwordForm.handleSubmit(onPasswordSubmit)(e);
+              void handlePasswordSubmit(onPasswordSubmit)(e);
             }}
             noValidate
           >
             <input
               id="site-password"
               type="password"
-              className={`${styles.adminInput} ${passwordForm.formState.errors.password || passwordState.status === "error" ? styles.inputError : ""}`}
+              className={`${styles.adminInput} ${passwordErrors.password || passwordState.status === "error" ? styles.inputError : ""}`}
               placeholder={t("passwordPlaceholder")}
               aria-label={t("passwordLabel")}
-              aria-invalid={passwordForm.formState.errors.password ? "true" : "false"}
-              disabled={passwordForm.formState.isSubmitting}
+              aria-invalid={passwordErrors.password ? "true" : "false"}
+              aria-describedby={passwordErrors.password ? "password-error" : undefined}
+              disabled={isPasswordSubmitting}
               autoFocus
-              {...passwordForm.register("password")}
+              {...registerPassword("password")}
             />
-            <button
-              type="submit"
-              className={styles.adminSubmit}
-              disabled={passwordForm.formState.isSubmitting}
-            >
-              {passwordForm.formState.isSubmitting ? "..." : "→"}
+            <button type="submit" className={styles.adminSubmit} disabled={isPasswordSubmitting}>
+              {isPasswordSubmitting ? "..." : "→"}
             </button>
-            {(Boolean(passwordForm.formState.errors.password) || passwordState.status === "error") && (
-              <span className={styles.adminError} role="alert">
-                {passwordForm.formState.errors.password?.message ?? passwordState.message}
+            {(Boolean(passwordErrors.password) || passwordState.status === "error") && (
+              <span id="password-error" className={styles.adminError} role="alert">
+                {passwordErrors.password?.message ?? passwordState.message}
               </span>
             )}
           </form>

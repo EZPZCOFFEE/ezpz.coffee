@@ -1,9 +1,20 @@
 "use server";
 
+import { headers } from "next/headers";
+
 import { CREATE_CUSTOMER } from "@/lib/queries/admin/create-customer";
 import { GET_CUSTOMER } from "@/lib/queries/admin/get-customer";
 import { UPDATE_CUSTOMER_EMAIL_SUBSCRIPTION } from "@/lib/queries/admin/update-customer-subscription";
 import { shopifyAdmin } from "@/lib/interfaces/shopify-admin";
+
+/**
+ * Extracts ISO 3166-1 alpha-2 country code from Vercel headers.
+ * Returns null in local dev (no geo headers).
+ */
+async function getCountryFromHeaders(): Promise<string | null> {
+  const headersList = await headers();
+  return headersList.get("x-vercel-ip-country");
+}
 
 interface CustomerNode {
   id: string;
@@ -40,6 +51,8 @@ export async function subscribe(
     return { success: false, error: "Email is required." };
   }
 
+  const country = await getCountryFromHeaders();
+
   try {
     const getCustomerResponse = await shopifyAdmin.request(GET_CUSTOMER, {
       variables: { query: email },
@@ -60,12 +73,16 @@ export async function subscribe(
         console.error("[subscribe] Update failed - no customer ID returned");
         return { success: false, error: "Failed to update subscription." };
       }
+      console.log(`[subscribe] Updated: ${email} | country: ${country ?? "unknown"}`);
       return { success: true, id };
     }
 
-    // Create new customer
+    // Create new customer (only include addresses if country is available)
     const createResponse = await shopifyAdmin.request(CREATE_CUSTOMER, {
-      variables: { email },
+      variables: {
+        email,
+        addresses: country ? [{ countryCode: country }] : undefined,
+      },
     });
 
     const createCustomerData = (createResponse as { data: CreateCustomerData | undefined }).data;
@@ -74,6 +91,7 @@ export async function subscribe(
       console.error("[subscribe] Create failed - no customer ID returned");
       return { success: false, error: "Failed to subscribe." };
     }
+    console.log(`[subscribe] Created: ${email} | country: ${country ?? "unknown"}`);
     return { success: true, id };
   } catch (error) {
     console.error("[subscribe] Exception:", error);

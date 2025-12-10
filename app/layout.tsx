@@ -13,9 +13,8 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Garment System [Platform]",
-  description:
-    "Garment System [Platform] is a platform for managing manufacturing and production services. Based in Montreal, Canada.",
+  title: "EZPZ Coffee",
+  description: "EZPZ Coffee is a platform for creating and producing custom coffee bags.",
   metadataBase: new URL(baseUrl),
 };
 // Since we have a `not-found.tsx` page on the root, a layout file
