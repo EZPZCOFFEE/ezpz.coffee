@@ -1,4 +1,20 @@
 {
+  "passwordPage": {
+    "title": "Coming Soon",
+    "subtitle": "We're brewing something special. Sign up to be the first to know when we launch.",
+    "notifyLabel": "Get notified",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Notify me",
+    "subscribing": "Subscribing...",
+    "emailSuccess": "You're on the list! We'll let you know when we launch.",
+    "or": "or",
+    "enterPasswordLabel": "Have a password?",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter password",
+    "unlock": "Enter",
+    "unlocking": "Entering..."
+  },
   "about": {
     "eyebrow": "About us",
     "illustrationAlt": "Heart character waving in the EZPZ illustration style",

@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { PropsWithChildren } from "react";
 
-import Layout from "@/components/custom/Layout";
 import { Locale, locales } from "@/i18n/types";
 import { baseUrl } from "@/lib/base-url";
 
@@ -312,9 +311,7 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
   return (
     <html lang={lang}>
       <body className={fontVariables}>
-        <NextIntlClientProvider messages={messages}>
-          <Layout>{children}</Layout>
-        </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

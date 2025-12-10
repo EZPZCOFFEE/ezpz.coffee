@@ -1,0 +1,151 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: var(--spacing-state);
+  background-color: var(--color-bg-primary);
+}
+
+.content {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-planet);
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-city);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-fluid-lg);
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+.formSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+}
+
+.formGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-city);
+}
+
+.formLabel {
+  font-size: var(--font-size-fluid-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-street);
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-city) var(--spacing-state);
+  border-radius: var(--border-radius-md);
+  border: 2px solid transparent;
+  background-color: var(--color-bg-secondary);
+  font-size: var(--font-size-fluid-lg);
+  transition: border-color 0.2s ease;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: var(--color-gray-500);
+  }
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.errorText {
+  color: var(--color-error);
+  font-size: var(--font-size-fluid-sm);
+}
+
+.successMessage {
+  padding: var(--spacing-city) var(--spacing-state);
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-fluid-base);
+  font-weight: var(--font-weight-medium);
+}
+
+.divider {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-city);
+  color: var(--color-gray-500);
+  font-size: var(--font-size-fluid-sm);
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-gray-300);
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 32px;
+  }
+}
