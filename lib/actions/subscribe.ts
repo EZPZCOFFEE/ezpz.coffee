@@ -2,10 +2,10 @@
 
 import { headers } from "next/headers";
 
+import { shopifyAdmin } from "@/lib/interfaces/shopify-admin";
 import { CREATE_CUSTOMER } from "@/lib/queries/admin/create-customer";
 import { GET_CUSTOMER } from "@/lib/queries/admin/get-customer";
 import { UPDATE_CUSTOMER_EMAIL_SUBSCRIPTION } from "@/lib/queries/admin/update-customer-subscription";
-import { shopifyAdmin } from "@/lib/interfaces/shopify-admin";
 
 /**
  * Extracts ISO 3166-1 alpha-2 country code from Vercel headers.

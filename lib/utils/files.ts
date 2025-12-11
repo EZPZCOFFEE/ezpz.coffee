@@ -27,6 +27,14 @@ export interface FileUpload {
   file: File | Blob;
 }
 
+interface UploadErrorResponse {
+  error?: string;
+}
+
+interface UploadSuccessResponse {
+  url: string;
+}
+
 /**
  * Uploads a file to R2 storage via the server API.
  * @returns The public URL of the uploaded file
@@ -45,11 +53,13 @@ export async function uploadFile(upload: FileUpload): Promise<string> {
   });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ error: "Upload failed" }));
-    throw new Error(error.error || `Upload failed: ${response.status}`);
+    const error = (await response.json().catch(() => ({
+      error: "Upload failed",
+    }))) as UploadErrorResponse;
+    throw new Error(error.error ?? `Upload failed: ${response.status}`);
   }
 
-  const { url } = await response.json();
+  const { url } = (await response.json()) as UploadSuccessResponse;
   return url;
 }
 

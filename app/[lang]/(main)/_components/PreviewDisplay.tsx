@@ -1,7 +1,7 @@
 "use client";
 
-import { forwardRef } from "react";
 import { useTranslations } from "next-intl";
+import { forwardRef } from "react";
 
 import styles from "@/app/styles.module.scss";
 
