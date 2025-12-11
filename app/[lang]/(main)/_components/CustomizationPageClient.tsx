@@ -2,11 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
-import { useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
+import { useCartUI } from "@/components/custom/Cart/CartContext";
 import type { GetProductQuery } from "@/gql/graphql";
 import { uploadFile } from "@/lib/utils/files";
 
@@ -21,7 +21,6 @@ import {
   defaultFontWeightValue,
   defaultFontSizeValue,
   FONT_SIZE_MULTIPLIERS,
-  formatPreviewValue,
   getOptionLabel,
   getFontFamily,
   useGrindOptions,
@@ -53,10 +52,9 @@ interface CustomizationPageClientProps {
 }
 
 const CustomizationContent: React.FC = () => {
-  const t = useTranslations("home");
   const { selectedVariant, setSelectedOption } = useProduct();
   const { linesAdd, status } = useCart();
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const { openCart } = useCartUI();
   const previewRef = useRef<PreviewCanvasHandle>(null);
 
   const formMethods = useForm<CustomizationFormValues>({
@@ -119,11 +117,6 @@ const CustomizationContent: React.FC = () => {
 
     const values = formMethods.getValues();
 
-    if (!selectedVariant?.id) {
-      setStatusMessage(t("noVariantError"));
-      return;
-    }
-
     // Export and upload the label image before adding to cart
     let labelUrl: string | null = null;
     const labelBlob = await previewRef.current?.exportLabelImage();
@@ -147,6 +140,7 @@ const CustomizationContent: React.FC = () => {
       attributes.push({ key: "Name", value: values.customerName.trim() });
     }
 
+    if (!selectedVariant?.id) return;
     linesAdd([
       {
         merchandiseId: selectedVariant.id,
@@ -155,8 +149,9 @@ const CustomizationContent: React.FC = () => {
       },
     ]);
 
-    const name = formatPreviewValue(values.customerName, t("defaultBlendName"));
-    setStatusMessage(t("savedMessage", { count: values.quantity, name }));
+    // Reset form and open cart
+    formMethods.reset();
+    openCart();
   };
 
   return (
@@ -164,7 +159,6 @@ const CustomizationContent: React.FC = () => {
       <div className={styles.container}>
         <div className={styles.panelColumn}>
           <CustomizationPanel
-            statusMessage={statusMessage}
             onSubmit={(event) => void handleFormSubmit(event)}
             isAddingToCart={isAddingToCart}
           />

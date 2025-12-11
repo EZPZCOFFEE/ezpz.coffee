@@ -2,6 +2,7 @@
 
 import { PropsWithChildren } from "react";
 
+import { CartProvider } from "@/components/custom/Cart/CartContext";
 import NewsletterSignup from "@/components/custom/NewsletterSignup";
 import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 
@@ -12,12 +13,14 @@ import styles from "./styles.module.scss";
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
-      <div className={styles.container}>
-        <Navbar />
-        <main className={styles.main}>{children}</main>
-        <NewsletterSignup />
-        <Footer />
-      </div>
+      <CartProvider>
+        <div className={styles.container}>
+          <Navbar />
+          <main className={styles.main}>{children}</main>
+          <NewsletterSignup />
+          <Footer />
+        </div>
+      </CartProvider>
     </WhiteeeShopifyProvider>
   );
 };

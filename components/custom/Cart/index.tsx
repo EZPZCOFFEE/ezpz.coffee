@@ -6,11 +6,109 @@ import { Money, Image as ShopifyImage, useCart } from "@shopify/hydrogen-react";
 import classNames from "classnames";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import type { PropsWithChildren } from "react";
+import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import Button from "@/components/shared/Button";
 
+import { useCartUI } from "./CartContext";
 import styles from "./styles.module.scss";
+
+// ---------------------------------------------------------------------------
+// Bag Preview Canvas Component
+// ---------------------------------------------------------------------------
+
+const BAG_PREVIEW_DISPLAY_SIZE = 72;
+const BAG_PREVIEW_SCALE = 2;
+const BAG_PREVIEW_SIZE = BAG_PREVIEW_DISPLAY_SIZE * BAG_PREVIEW_SCALE;
+const BAG_PREVIEW_PADDING = 6 * BAG_PREVIEW_SCALE;
+const BAG_PREVIEW_INNER = BAG_PREVIEW_SIZE - BAG_PREVIEW_PADDING * 2;
+const BAG_MOCKUP_SRC = "/bags/mockup.jpg";
+
+// Label positioning ratios (matching PreviewCanvas.tsx)
+const LABEL_WIDTH_RATIO = 0.95;
+const LABEL_HEIGHT_RATIO = 0.749;
+const LABEL_VERTICAL_OFFSET_RATIO = 0.23;
+
+interface BagPreviewProps {
+  labelImageUrl: string;
+  className?: string;
+}
+
+const BagPreview: React.FC<BagPreviewProps> = ({ labelImageUrl, className }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const bagImage = new window.Image();
+    const labelImage = new window.Image();
+
+    let loadedCount = 0;
+    const onLoad = () => {
+      loadedCount++;
+      if (loadedCount < 2) return;
+
+      // Clear and draw bag
+      ctx.clearRect(0, 0, BAG_PREVIEW_SIZE, BAG_PREVIEW_SIZE);
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, BAG_PREVIEW_SIZE, BAG_PREVIEW_SIZE);
+
+      // Scale bag to fit inner area (with padding)
+      const bagScale = Math.min(BAG_PREVIEW_INNER / bagImage.width, BAG_PREVIEW_INNER / bagImage.height);
+      const bagWidth = bagImage.width * bagScale;
+      const bagHeight = bagImage.height * bagScale;
+      const bagX = BAG_PREVIEW_PADDING + (BAG_PREVIEW_INNER - bagWidth) / 2;
+      const bagY = BAG_PREVIEW_PADDING + (BAG_PREVIEW_INNER - bagHeight) / 2;
+
+      ctx.drawImage(bagImage, bagX, bagY, bagWidth, bagHeight);
+
+      // Calculate label position and size (relative to inner area)
+      const labelWidth = BAG_PREVIEW_INNER * LABEL_WIDTH_RATIO;
+      const labelHeight = BAG_PREVIEW_INNER * LABEL_HEIGHT_RATIO;
+      const labelX = BAG_PREVIEW_PADDING + (BAG_PREVIEW_INNER - labelWidth) / 2;
+      const labelY = BAG_PREVIEW_PADDING + BAG_PREVIEW_INNER * LABEL_VERTICAL_OFFSET_RATIO;
+
+      // Draw label on top
+      ctx.drawImage(labelImage, labelX, labelY, labelWidth, labelHeight);
+
+      setIsLoaded(true);
+    };
+
+    bagImage.crossOrigin = "anonymous";
+    labelImage.crossOrigin = "anonymous";
+
+    bagImage.onload = onLoad;
+    labelImage.onload = onLoad;
+
+    bagImage.src = BAG_MOCKUP_SRC;
+    labelImage.src = labelImageUrl;
+
+    return () => {
+      bagImage.onload = null;
+      labelImage.onload = null;
+    };
+  }, [labelImageUrl]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={BAG_PREVIEW_SIZE}
+      height={BAG_PREVIEW_SIZE}
+      className={className}
+      style={{
+        width: BAG_PREVIEW_DISPLAY_SIZE,
+        height: BAG_PREVIEW_DISPLAY_SIZE,
+        opacity: isLoaded ? 1 : 0,
+        transition: "opacity 0.2s ease",
+      }}
+    />
+  );
+};
 
 // ---------------------------------------------------------------------------
 // Cart Item Component
@@ -55,14 +153,7 @@ const CartLineItem: React.FC<CartLineItemProps> = ({ line }) => {
     <div className={styles.lineItem}>
       <div className={styles.lineItemImage}>
         {labelImageUrl ? (
-          <Image
-            src={labelImageUrl}
-            alt="Custom label"
-            width={80}
-            height={80}
-            className={styles.lineItemImageInner}
-            unoptimized
-          />
+          <BagPreview labelImageUrl={labelImageUrl} className={styles.lineItemImageInner} />
         ) : defaultImage?.url ? (
           <ShopifyImage data={defaultImage} sizes="80px" className={styles.lineItemImageInner} />
         ) : null}
@@ -224,6 +315,7 @@ interface CartProps extends PropsWithChildren {
 
 const Cart: React.FC<CartProps> = ({ children, className }) => {
   const { lines, totalQuantity, status } = useCart();
+  const { isOpen, setIsOpen } = useCartUI();
   const t = useTranslations("cart");
 
   const cartLines = lines ?? [];
@@ -232,7 +324,7 @@ const Cart: React.FC<CartProps> = ({ children, className }) => {
   const isLoading = status === "fetching";
 
   return (
-    <Popover.Root lazyMount unmountOnExit>
+    <Popover.Root lazyMount unmountOnExit open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
       <Popover.Trigger asChild>
         {children ?? (
           <button

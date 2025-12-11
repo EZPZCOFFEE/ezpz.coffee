@@ -1,17 +1,4 @@
 {
-  "passwordPage": {
-    "title": "Bientôt disponible",
-    "subtitle": "Nous préparons quelque chose de spécial. Inscrivez-vous pour être informé en premier lors du lancement.",
-    "notifyLabel": "Être notifié",
-    "emailLabel": "Adresse email",
-    "emailPlaceholder": "Entrez votre email",
-    "subscribe": "Me notifier",
-    "subscribing": "Inscription...",
-    "emailSuccess": "Vous êtes sur la liste! Nous vous informerons du lancement.",
-    "passwordLabel": "Mot de passe",
-    "passwordPlaceholder": "Mot de passe",
-    "adminLink": "Accès admin"
-  },
   "about": {
     "eyebrow": "À propos",
     "illustrationAlt": "Personnage cœur faisant signe de la main dans le style d'illustration EZPZ",
@@ -219,7 +206,6 @@
       "medium": "Torréfaction moyenne"
     },
     "roastSection": "Profil de torréfaction",
-    "savedMessage": "{count, plural, one {# sachet enregistré} other {# sachets enregistrés}} pour {name}.",
     "subtotal": "Sous-total",
     "surfaceDescriptions": {
       "bottom": "Le traitement en bande inférieure convient mieux aux images détaillées ou aux signatures.",
@@ -287,10 +273,23 @@
   "newsletter": {
     "emailLabel": "Adresse email",
     "emailPlaceholder": "Entrez votre email",
-    "subscribe": "S'abonner",
     "submitting": "Inscription...",
+    "subscribe": "S'abonner",
     "successMessage": "C'est fait! Vérifiez votre boîte de réception pour votre code de réduction de 5%.",
     "title": "Obtenez <highlight>5% de réduction</highlight> en rejoignant notre liste email."
+  },
+  "passwordPage": {
+    "adminLink": "Accès admin",
+    "emailLabel": "Adresse email",
+    "emailPlaceholder": "Entrez votre email",
+    "emailSuccess": "Vous êtes sur la liste! Nous vous informerons du lancement.",
+    "notifyLabel": "Être notifié",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Mot de passe",
+    "subscribe": "Me notifier",
+    "subscribing": "Inscription...",
+    "subtitle": "Nous préparons quelque chose de spécial. Inscrivez-vous pour être informé en premier lors du lancement.",
+    "title": "Bientôt disponible"
   },
   "product": {
     "addToCart": "Ajouter au panier",

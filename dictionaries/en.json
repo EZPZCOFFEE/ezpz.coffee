@@ -1,17 +1,4 @@
 {
-  "passwordPage": {
-    "title": "Coming Soon",
-    "subtitle": "We're brewing something special. Sign up to be the first to know when we launch.",
-    "notifyLabel": "Get notified",
-    "emailLabel": "Email address",
-    "emailPlaceholder": "Enter your email",
-    "subscribe": "Notify me",
-    "subscribing": "Subscribing...",
-    "emailSuccess": "You're on the list! We'll let you know when we launch.",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Password",
-    "adminLink": "Enter as admin"
-  },
   "about": {
     "eyebrow": "About us",
     "illustrationAlt": "Heart character waving in the EZPZ illustration style",
@@ -219,7 +206,6 @@
       "medium": "Medium roast"
     },
     "roastSection": "Roast profile",
-    "savedMessage": "Saved {count, plural, one {# bag} other {# bags}} for {name}.",
     "subtotal": "Subtotal",
     "surfaceDescriptions": {
       "bottom": "Bottom strip treatment works best for high-detail imagery or signatures.",
@@ -287,10 +273,23 @@
   "newsletter": {
     "emailLabel": "Email address",
     "emailPlaceholder": "Enter your email",
-    "subscribe": "Subscribe",
     "submitting": "Subscribing...",
+    "subscribe": "Subscribe",
     "successMessage": "You're in! Check your inbox for your 5% discount code.",
     "title": "Get <highlight>5% off</highlight> when you join our email list."
+  },
+  "passwordPage": {
+    "adminLink": "Enter as admin",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email",
+    "emailSuccess": "You're on the list! We'll let you know when we launch.",
+    "notifyLabel": "Get notified",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Password",
+    "subscribe": "Notify me",
+    "subscribing": "Subscribing...",
+    "subtitle": "We're brewing something special. Sign up to be the first to know when we launch.",
+    "title": "Coming Soon"
   },
   "product": {
     "addToCart": "Add to cart",

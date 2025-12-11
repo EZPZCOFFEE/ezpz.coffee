@@ -89,8 +89,8 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
 };
 
 const DEFAULT_NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
-const NAME_FONT_MAX = 20 * CANVAS_SCALE;
-const NAME_FONT_MIN = 12 * CANVAS_SCALE;
+const NAME_FONT_MAX = 27 * CANVAS_SCALE;
+const NAME_FONT_MIN = 18 * CANVAS_SCALE;
 const NAME_PADDING_X = 12 * CANVAS_SCALE;
 const NAME_VERTICAL_OFFSET = 2 * CANVAS_SCALE;
 const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;

@@ -60,11 +60,10 @@ function getUnitPrice(quantity: number): number {
 
 interface CustomizationPanelProps {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-  statusMessage: string | null;
   isAddingToCart?: boolean;
 }
 
-const CustomizationPanel = ({ onSubmit, statusMessage, isAddingToCart }: CustomizationPanelProps) => {
+const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProps) => {
   const t = useTranslations("home");
   const { watch } = useFormContext<CustomizationFormValues>();
   const watchedQuantity = watch("quantity");
@@ -163,7 +162,6 @@ const CustomizationPanel = ({ onSubmit, statusMessage, isAddingToCart }: Customi
         <Button type="submit" variant="primary" disabled={isAddingToCart}>
           {isAddingToCart ? t("addingToCart") : t("addToCart")}
         </Button>
-        {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
       </form>
     </div>
   );
