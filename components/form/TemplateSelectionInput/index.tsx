@@ -5,9 +5,7 @@ import type { RadioGroupValueChangeDetails, UseFieldContext } from "@ark-ui/reac
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { Controller, useFormContext, useWatch } from "react-hook-form";
-
-import type { RoastValue } from "@/app/[lang]/(main)/_components/formConfig";
+import { Controller, useFormContext } from "react-hook-form";
 
 import styles from "./styles.module.scss";
 
@@ -22,8 +20,6 @@ interface TemplateSelectionInputProps {
   options: readonly TemplateOption[];
   label?: string;
   className?: string;
-  roastLabels: Record<RoastValue, string>;
-  weightLabel?: string;
 }
 
 const TemplateSelectionInput: React.FC<TemplateSelectionInputProps> = ({
@@ -31,13 +27,8 @@ const TemplateSelectionInput: React.FC<TemplateSelectionInputProps> = ({
   label,
   options,
   className,
-  roastLabels,
-  weightLabel = "225g",
 }) => {
   const { control } = useFormContext();
-  const roastProfile = useWatch({ control, name: "roastProfile" }) as RoastValue | undefined;
-  const roastLabel = roastProfile ? roastLabels[roastProfile] : roastLabels.medium;
-
   if (!options.length) return null;
 
   return (
@@ -85,10 +76,6 @@ const TemplateSelectionInput: React.FC<TemplateSelectionInputProps> = ({
                             transition={{ duration: 0.2, ease: "easeOut" }}
                           >
                             <span className={styles.templateNumber}>{templateNumber}</span>
-                            <div className={styles.templateMeta}>
-                              <span className={styles.roastLabel}>{roastLabel}</span>
-                              <span className={styles.weightLabel}>{weightLabel}</span>
-                            </div>
                           </motion.div>
                           <RadioGroup.ItemText className={styles.visuallyHidden}>
                             {option.label}

@@ -160,9 +160,9 @@
     "fontLabel": "Police",
     "fontSizeLabel": "Taille",
     "fontSizeOptions": {
-      "l": "Grand",
-      "m": "Moyen",
-      "s": "Petit"
+      "l": "G",
+      "m": "M",
+      "s": "P"
     },
     "fontWeightLabel": "Graisse",
     "fontWeightOptions": {

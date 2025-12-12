@@ -25,6 +25,7 @@ const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
   (
     {
       formValues,
+      roastPreviewLabel,
       selectedArtworkFile,
       surfaceValue,
       surfacePreviewLabel,
@@ -53,6 +54,7 @@ const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
             nameFontFamily={labelFontFamily}
             nameFontWeight={labelFontWeight}
             nameFontSizeMultiplier={labelFontSizeMultiplier}
+            roastLabel={roastPreviewLabel}
           />
         </div>
         <div className={styles.displayFooter}>
