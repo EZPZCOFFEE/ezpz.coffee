@@ -26,9 +26,9 @@ const LEFT_NAV_ITEMS: NavItem[] = [{ labelKey: "customBag", href: "/" }];
 const RIGHT_NAV_ITEMS: NavItem[] = [
   { labelKey: "aboutUs", href: "/about" },
   { labelKey: "ourCoffee", href: "/coffee" },
-  { labelKey: "sampleBag", href: "/sample-bag" },
-  { labelKey: "corporateSolutions", href: "/corporate" },
-  { labelKey: "largeOrders", href: "/large-orders" },
+  // { labelKey: "sampleBag", href: "/sample-bag" },
+  // { labelKey: "corporateSolutions", href: "/corporate" },
+  // { labelKey: "largeOrders", href: "/large-orders" },
 ];
 
 /**
@@ -73,7 +73,14 @@ const Logo = () => {
 
   return (
     <div className={styles.logo}>
-      <Image src="/logo.svg" alt={t("logoAlt")} width={120} height={40} className={styles.logoImage} priority />
+      <Image
+        src="/logo.svg"
+        alt={t("logoAlt")}
+        width={120}
+        height={40}
+        className={styles.logoImage}
+        priority
+      />
     </div>
   );
 };

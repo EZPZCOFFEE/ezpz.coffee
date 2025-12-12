@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { StaticImageData } from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import MarketingContent from "@/components/custom/MarketingContent";
-import coffeeIllustration from "@/public/arts/our-coffee.svg";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.coffee");
@@ -41,11 +39,6 @@ const CoffeePage = async () => {
           copy: [t("sections.main.paragraphs.0"), t("sections.main.paragraphs.1")],
         },
       ]}
-      illustration={{
-        image: coffeeIllustration as StaticImageData,
-        alt: t("illustrationAlt"),
-        caption: t("illustrationCaption"),
-      }}
     />
   );
 };

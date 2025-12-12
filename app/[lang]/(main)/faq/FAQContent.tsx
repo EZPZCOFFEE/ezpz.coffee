@@ -1,7 +1,5 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
-
 import styles from "./styles.module.scss";
 
 interface FAQItem {
@@ -17,13 +15,9 @@ interface FAQCategory {
 interface FAQContentProps {
   title: string;
   categories: FAQCategory[];
-  illustration: {
-    image: StaticImageData | string;
-    alt: string;
-  };
 }
 
-const FAQContent = ({ title, categories, illustration }: FAQContentProps) => {
+const FAQContent = ({ title, categories }: FAQContentProps) => {
   return (
     <article className={styles.page} aria-labelledby="faq-page-title">
       <div className={styles.content}>
@@ -53,16 +47,6 @@ const FAQContent = ({ title, categories, illustration }: FAQContentProps) => {
           ))}
         </div>
       </div>
-
-      <figure className={styles.illustration}>
-        <Image
-          className={styles.illustrationImage}
-          src={illustration.image}
-          alt={illustration.alt}
-          priority
-          sizes="(min-width: 1024px) 380px, 70vw"
-        />
-      </figure>
     </article>
   );
 };
