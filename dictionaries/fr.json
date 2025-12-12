@@ -148,7 +148,8 @@
     "brand": "EZPZ 2025",
     "contactUs": "Nous contacter",
     "faq": "FAQ",
-    "navigation": "Navigation du pied de page"
+    "navigation": "Navigation du pied de page",
+    "termsOfUse": "Conditions d'utilisation"
   },
   "home": {
     "addToCart": "Ajouter au panier",
@@ -249,6 +250,14 @@
       "twitterDescription": "Obtenez des réponses à vos questions sur le café de spécialité EZPZ.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
+    "termsOfUse": {
+      "description": "Consultez les conditions générales d'utilisation d'EZPZ.coffee, y compris les politiques de commande, la propriété intellectuelle et les informations de responsabilité.",
+      "ogDescription": "Conditions d'utilisation d'EZPZ.coffee — comprenez nos politiques sur les commandes, les paiements, l'expédition et le contenu utilisateur.",
+      "ogTitle": "Conditions d'utilisation | EZPZ Coffee",
+      "title": "Conditions d'utilisation | EZPZ Coffee",
+      "twitterDescription": "Consultez les conditions générales d'utilisation d'EZPZ.coffee.",
+      "twitterTitle": "Conditions d'utilisation | EZPZ Coffee"
+    },
     "home": {
       "description": "Téléchargez votre visuel, choisissez vos options de torréfaction et de mouture, et prévisualisez vos sachets de café EZPZ de 225g avant de les ajouter au panier.",
       "ogDescription": "Personnalisez l'étiquette, la mouture et le profil de torréfaction—prévisualisez en direct avant de commander.",
@@ -294,6 +303,58 @@
   "product": {
     "addToCart": "Ajouter au panier",
     "buyNow": "Acheter maintenant"
+  },
+  "termsOfUse": {
+    "title": "EZPZ – Conditions d'utilisation",
+    "lastUpdated": "Dernière mise à jour : 09/12/25",
+    "intro": "Bienvenue sur EZPZ.coffee. En accédant ou en utilisant notre site web, nos services, ou en passant une commande via EZPZ, vous reconnaissez avoir lu, compris et accepté d'être lié par les présentes Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre plateforme.",
+    "sections": {
+      "useOfWebsite": {
+        "title": "Utilisation du site web",
+        "content": "Vous acceptez d'utiliser EZPZ conformément aux lois et réglementations applicables. Vous ne pouvez pas utiliser la plateforme à des fins illégales ou non autorisées."
+      },
+      "productsOrders": {
+        "title": "Produits et commandes",
+        "content": [
+          "EZPZ permet aux utilisateurs de personnaliser et de produire des sachets de café sans quantité minimale.",
+          "Une fois qu'une commande est soumise et confirmée, elle entre automatiquement en production.",
+          "Toutes les ventes sont finales. Aucun remboursement ni échange n'est autorisé, y compris pour les produits personnalisés, sur mesure ou standards.",
+          "Les clients sont responsables de vérifier les détails de personnalisation (design, texte, couleur, quantité, etc.) avant le paiement."
+        ]
+      },
+      "productionShipping": {
+        "title": "Production et expédition",
+        "content": [
+          "Le délai de production standard est de 3 à 4 jours ouvrables après la confirmation de la commande.",
+          "Les délais de livraison peuvent varier en fonction du transporteur, de la localisation ou de facteurs externes hors du contrôle d'EZPZ.",
+          "EZPZ n'est pas responsable des retards causés par les transporteurs, les douanes ou les cas de force majeure."
+        ]
+      },
+      "payments": {
+        "title": "Paiements",
+        "content": "Les paiements doivent être effectués au moment du paiement. Les commandes ne sont pas traitées sans paiement réussi. Les prix peuvent changer sans préavis."
+      },
+      "intellectualProperty": {
+        "title": "Propriété intellectuelle",
+        "content": "Tout le contenu, l'image de marque, les designs, textes, graphiques et matériaux de la plateforme sont la propriété d'EZPZ et ne peuvent être utilisés sans consentement écrit. Les clients confirment détenir les droits ou l'autorisation d'utiliser tout design ou matériel téléchargé."
+      },
+      "userContent": {
+        "title": "Contenu utilisateur et designs personnalisés",
+        "content": "En téléchargeant des visuels ou du texte, vous accordez à EZPZ le droit de les reproduire et de les imprimer dans le but d'exécuter votre commande. Vous êtes entièrement responsable de vous assurer que votre contenu ne viole pas les droits d'auteur, les marques déposées ou les droits de tiers."
+      },
+      "limitationLiability": {
+        "title": "Limitation de responsabilité",
+        "content": "EZPZ n'est pas responsable des dommages indirects, accessoires ou consécutifs résultant de l'utilisation du site ou des produits. Notre responsabilité se limite à la production et à la livraison de la commande telle que spécifiée au moment de l'achat."
+      },
+      "modifications": {
+        "title": "Modifications des conditions",
+        "content": "EZPZ peut mettre à jour ces Conditions d'utilisation à tout moment. L'utilisation continue du service après les mises à jour constitue une acceptation des conditions révisées."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Pour toute question, veuillez nous contacter à help@ezpz.coffee."
+      }
+    }
   },
   "validation": {
     "chooseSurface": "Choisissez une surface de sachet",

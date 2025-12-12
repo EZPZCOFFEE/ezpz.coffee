@@ -20,6 +20,9 @@ const Footer = () => {
           <Link href={`/${locale}/faq`} className={styles.footerLink}>
             {t("faq")}
           </Link>
+          <Link href={`/${locale}/terms-of-use`} className={styles.footerLink}>
+            {t("termsOfUse")}
+          </Link>
         </nav>
       </div>
     </footer>
