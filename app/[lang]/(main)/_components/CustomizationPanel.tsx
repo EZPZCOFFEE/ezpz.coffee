@@ -11,6 +11,7 @@ import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
 import SelectInput from "@/components/form/SelectInput";
+import TemplateSelectionInput from "@/components/form/TemplateSelectionInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
@@ -18,6 +19,7 @@ import Label from "@/components/shared/Label";
 import {
   type CustomizationFormValues,
   useRoastOptions,
+  useRoastLabels,
   useGrindOptions,
   useSurfaceOptions,
   useFontOptions,
@@ -79,6 +81,7 @@ const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProp
   const fontWeightOptions = useFontWeightOptions();
   const fontSizeOptions = useFontSizeOptions();
   const roastOptions = useRoastOptions();
+  const roastLabels = useRoastLabels();
   const grindOptions = useGrindOptions();
   const surfaceOptions = useSurfaceOptions();
 
@@ -104,7 +107,12 @@ const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProp
         </div>
         <div className={styles.formGroup}>
           <Label>{t("surfaceSection")}</Label>
-          <OptionsInput name="surfaceLayout" label={t("surfaceLabel")} options={surfaceOptions} />
+          <TemplateSelectionInput
+            name="surfaceLayout"
+            label={t("surfaceLabel")}
+            options={surfaceOptions}
+            roastLabels={roastLabels}
+          />
           <ColorPickerInput name="panelColor" label={t("panelColorLabel")} required />
         </div>
 
