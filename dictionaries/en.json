@@ -148,7 +148,8 @@
     "brand": "EZPZ 2025",
     "contactUs": "Contact us",
     "faq": "FAQ",
-    "navigation": "Footer navigation"
+    "navigation": "Footer navigation",
+    "termsOfUse": "Terms of use"
   },
   "home": {
     "addToCart": "Add to cart",
@@ -249,6 +250,14 @@
       "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
+    "termsOfUse": {
+      "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
+      "ogDescription": "Terms of Use for EZPZ.coffee — understand our policies on orders, payments, shipping, and user content.",
+      "ogTitle": "Terms of Use | EZPZ Coffee",
+      "title": "Terms of Use | EZPZ Coffee",
+      "twitterDescription": "Read the terms and conditions for using EZPZ.coffee.",
+      "twitterTitle": "Terms of Use | EZPZ Coffee"
+    },
     "home": {
       "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
       "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
@@ -294,6 +303,58 @@
   "product": {
     "addToCart": "Add to cart",
     "buyNow": "Buy now"
+  },
+  "termsOfUse": {
+    "title": "EZPZ – Terms of Use",
+    "lastUpdated": "Last updated: 09/12/25",
+    "intro": "Welcome to EZPZ.coffee. By accessing or using our website, services, or placing an order through EZPZ, you acknowledge that you have read, understood, and agreed to be bound by the following Terms of Use. If you do not agree with these terms, please do not use our platform.",
+    "sections": {
+      "useOfWebsite": {
+        "title": "Use of the Website",
+        "content": "You agree to use EZPZ in compliance with applicable laws and regulations. You may not use the platform for any unlawful or unauthorized purpose."
+      },
+      "productsOrders": {
+        "title": "Products & Orders",
+        "content": [
+          "EZPZ allows users to customize and produce coffee bags with no minimum quantity.",
+          "Once an order is submitted and confirmed, it enters production automatically.",
+          "All sales are final. No refunds or exchanges are permitted, including but not limited to personalized, custom or standard products.",
+          "Customers are responsible for verifying customization details (design, text, color, quantity, etc.) before checkout."
+        ]
+      },
+      "productionShipping": {
+        "title": "Production & Shipping",
+        "content": [
+          "Standard production time is 3–4 business days (open days) after the order is confirmed.",
+          "Shipping times may vary depending on carrier, location, or external factors outside of EZPZ's control.",
+          "EZPZ is not responsible for delays caused by carriers, customs, or force majeure."
+        ]
+      },
+      "payments": {
+        "title": "Payments",
+        "content": "Payments must be completed at checkout. Orders are not processed without successful payment. Pricing may change without prior notice."
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "content": "All content, branding, designs, text, graphics, and platform materials are the property of EZPZ and may not be used without written consent. Customers confirm they hold rights or permission to use any uploaded design or material."
+      },
+      "userContent": {
+        "title": "User Content & Custom Designs",
+        "content": "By uploading artwork or text, you grant EZPZ the right to reproduce and print it for the purpose of fulfilling your order. You are fully responsible for ensuring your content does not infringe on copyright, trademark, or third-party rights."
+      },
+      "limitationLiability": {
+        "title": "Limitation of Liability",
+        "content": "EZPZ is not liable for any indirect, incidental, or consequential damages resulting from the use of the site or products. Our responsibility is limited to producing and delivering the order as specified at the time of purchase."
+      },
+      "modifications": {
+        "title": "Modifications to Terms",
+        "content": "EZPZ may update these Terms of Use at any time. Continued use of the service after updates constitutes acceptance of the revised terms."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For any questions, please contact us at help@ezpz.coffee."
+      }
+    }
   },
   "validation": {
     "chooseSurface": "Choose a bag surface",

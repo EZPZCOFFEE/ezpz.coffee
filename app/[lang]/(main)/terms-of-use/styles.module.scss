@@ -1,16 +1,23 @@
 .page {
   display: flex;
   justify-content: center;
-  max-width: 720px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: var(--spacing-planet) var(--spacing-none) var(--spacing-cluster);
 }
 
 .content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-country);
-  width: 100%;
+  max-width: 720px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-house);
 }
 
 .title {
@@ -22,60 +29,59 @@
   letter-spacing: -0.02em;
 }
 
-.categories {
+.lastUpdated {
+  font-size: var(--font-size-fluid-sm);
+  color: var(--color-neutral);
+  margin: var(--spacing-none);
+}
+
+.intro {
+  font-size: var(--font-size-fluid-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: var(--spacing-none);
+}
+
+.sections {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-country);
 }
 
-.category {
+.section {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-city);
 }
 
-.categoryTitle {
-  font-size: var(--font-size-fluid-sm);
+.sectionTitle {
+  font-size: var(--font-size-fluid-xl);
   font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-accent);
+  color: var(--color-text-primary);
   margin: var(--spacing-none);
   padding-bottom: var(--spacing-house);
   border-bottom: 1px solid var(--color-gray-300);
 }
 
-.itemList {
+.sectionContent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-state);
-  margin: var(--spacing-none);
+  gap: var(--spacing-city);
 }
 
-.item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-room);
-}
-
-.question {
-  font-size: var(--font-size-fluid-base);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  line-height: var(--line-height-snug);
-}
-
-.answer {
-  margin: var(--spacing-none);
-}
-
-.answerText {
+.paragraph {
   font-size: var(--font-size-fluid-base);
   line-height: var(--line-height-relaxed);
+  color: var(--color-text-primary);
+  margin: var(--spacing-none);
 }
 
 @media (max-width: 1024px) {
   .page {
     padding: var(--spacing-country) var(--spacing-none) var(--spacing-planet);
+  }
+
+  .content {
+    max-width: 100%;
   }
 }

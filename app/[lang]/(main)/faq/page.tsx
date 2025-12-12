@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { StaticImageData } from "next/image";
 import { getTranslations } from "next-intl/server";
-
-import faqIllustration from "@/public/arts/faq.svg";
 
 import FAQContent from "./FAQContent";
 
@@ -112,10 +109,6 @@ const FAQPage = async () => {
     <FAQContent
       title={t("title")}
       categories={categories}
-      illustration={{
-        image: faqIllustration as StaticImageData,
-        alt: t("illustrationAlt"),
-      }}
     />
   );
 };

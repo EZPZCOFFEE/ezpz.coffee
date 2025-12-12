@@ -1,5 +1,3 @@
-import Image, { type StaticImageData } from "next/image";
-
 import styles from "./styles.module.scss";
 
 export interface MarketingSection {
@@ -12,15 +10,9 @@ export interface MarketingPageProps {
   title: string;
   intro?: string;
   sections: MarketingSection[];
-  illustration: {
-    image: StaticImageData | string;
-    alt: string;
-    caption?: string;
-    priority?: boolean;
-  };
 }
 
-const MarketingContent = ({ eyebrow, title, intro, sections, illustration }: MarketingPageProps) => {
+const MarketingContent = ({ eyebrow, title, intro, sections }: MarketingPageProps) => {
   return (
     <article className={styles.page} aria-labelledby="marketing-page-title">
       <div className={styles.copyColumn}>
@@ -47,17 +39,6 @@ const MarketingContent = ({ eyebrow, title, intro, sections, illustration }: Mar
           ))}
         </div>
       </div>
-
-      <figure className={styles.illustration}>
-        <Image
-          className={styles.illustrationImage}
-          src={illustration.image}
-          alt={illustration.alt}
-          priority={illustration.priority}
-          sizes="(min-width: 1024px) 420px, 70vw"
-        />
-        {illustration.caption && <figcaption className={styles.caption}>{illustration.caption}</figcaption>}
-      </figure>
     </article>
   );
 };

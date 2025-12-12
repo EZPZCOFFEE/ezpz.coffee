@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import { StaticImageData } from "next/image";
 import { getTranslations } from "next-intl/server";
 
 import MarketingContent from "@/components/custom/MarketingContent";
-import aboutIllustration from "@/public/arts/about-us.svg";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.about");
@@ -41,12 +39,6 @@ const AboutPage = async () => {
           copy: [t("sections.main.paragraphs.0"), t("sections.main.paragraphs.1")],
         },
       ]}
-      illustration={{
-        image: aboutIllustration as StaticImageData,
-        alt: t("illustrationAlt"),
-        caption: t("illustrationCaption"),
-        priority: true,
-      }}
     />
   );
 };
