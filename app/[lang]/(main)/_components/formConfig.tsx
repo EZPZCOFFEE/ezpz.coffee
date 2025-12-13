@@ -56,6 +56,19 @@ export const useRoastOptions = (): readonly OptionDefinition<RoastValue>[] => {
   );
 };
 
+export const useRoastLabels = (): Record<RoastValue, string> => {
+  const t = useTranslations("home.roastOptions");
+
+  return useMemo(
+    () => ({
+      light: t("light"),
+      medium: t("medium"),
+      dark: t("dark"),
+    }),
+    [t]
+  );
+};
+
 export const useGrindOptions = (): readonly OptionDefinition<GrindValue>[] => {
   const t = useTranslations("home.grindOptions");
 

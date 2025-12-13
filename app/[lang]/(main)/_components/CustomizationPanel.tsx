@@ -11,6 +11,7 @@ import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
 import OptionsInput from "@/components/form/OptionsInput";
 import SelectInput from "@/components/form/SelectInput";
+import TemplateSelectionInput from "@/components/form/TemplateSelectionInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
@@ -104,7 +105,7 @@ const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProp
         </div>
         <div className={styles.formGroup}>
           <Label>{t("surfaceSection")}</Label>
-          <OptionsInput name="surfaceLayout" label={t("surfaceLabel")} options={surfaceOptions} />
+          <TemplateSelectionInput name="surfaceLayout" label={t("surfaceLabel")} options={surfaceOptions} />
           <ColorPickerInput name="panelColor" label={t("panelColorLabel")} required />
         </div>
 

@@ -95,6 +95,9 @@ const NAME_PADDING_X = 12 * CANVAS_SCALE;
 const NAME_VERTICAL_OFFSET = 2 * CANVAS_SCALE;
 const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
+const ROAST_INFO_FONT_SIZE = 16 * CANVAS_SCALE;
+const WEIGHT_TEXT = "225g";
+const DEFAULT_LABEL_NAME = "Coffee Name";
 
 const planNameRendering = (
   context: CanvasRenderingContext2D,
@@ -170,6 +173,7 @@ interface PreviewCanvasProps {
   nameFontFamily?: string;
   nameFontWeight?: string;
   nameFontSizeMultiplier?: number;
+  roastLabel?: string;
 }
 
 const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
@@ -183,6 +187,7 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       nameFontFamily,
       nameFontWeight = "400",
       nameFontSizeMultiplier = 1,
+      roastLabel,
     },
     ref
   ) => {
@@ -233,6 +238,19 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       return {
         x: LABEL_RECT.x,
         y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
+        width: LABEL_RECT.width,
+        height: BOTTOM_STRIP_HEIGHT,
+      };
+    }, [surfaceValue]);
+
+    const topPanelRect = useMemo(() => {
+      if (surfaceValue === "sandwich") {
+        return SURFACE_WINDOWS.sandwich[0];
+      }
+      // For bottom and full layouts, use a virtual top panel area
+      return {
+        x: LABEL_RECT.x,
+        y: LABEL_RECT.y,
         width: LABEL_RECT.width,
         height: BOTTOM_STRIP_HEIGHT,
       };
@@ -315,7 +333,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       [artworkImage, artworkScale]
     );
 
-    const sanitizedName = customerName?.trim() ?? "";
+    const trimmedName = customerName?.trim() ?? "";
+    const sanitizedName = trimmedName.length > 0 ? trimmedName : DEFAULT_LABEL_NAME;
 
     const drawCanvas = useCallback(() => {
       const canvas = bagCanvasRef.current;
@@ -393,6 +412,19 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
           context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
         }
       }
+
+      // Draw roast label and weight on top panel
+      if (roastLabel) {
+        const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
+        const roastInfoX = topPanelRect.x + NAME_PADDING_X;
+        const roastInfoY = topPanelRect.y + topPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
+        context.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
+        context.textAlign = "left";
+        context.textBaseline = "middle";
+        context.fillStyle = nameTextColor;
+        context.fillText(roastInfoText, roastInfoX, roastInfoY);
+      }
     }, [
       activeWindows,
       artworkImage,
@@ -403,9 +435,11 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       sanitizedName,
       panelFillColor,
       bottomPanelRect,
+      topPanelRect,
       resolvedFontFamily,
       nameFontWeight,
       nameFontSizeMultiplier,
+      roastLabel,
     ]);
 
     useEffect(() => {
@@ -482,6 +516,25 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
         }
       }
 
+      // Draw roast label and weight (translated to label-relative coordinates)
+      if (roastLabel) {
+        const translatedTopPanel = {
+          x: topPanelRect.x - LABEL_RECT.x,
+          y: topPanelRect.y - LABEL_RECT.y,
+          width: topPanelRect.width,
+          height: topPanelRect.height,
+        };
+        const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
+        const roastInfoX = translatedTopPanel.x + NAME_PADDING_X;
+        const roastInfoY = translatedTopPanel.y + translatedTopPanel.height / 2 + NAME_VERTICAL_OFFSET;
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
+        ctx.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = nameTextColor;
+        ctx.fillText(roastInfoText, roastInfoX, roastInfoY);
+      }
+
       return new Promise((resolve) => {
         exportCanvas.toBlob((blob) => resolve(blob), "image/png", 1.0);
       });
@@ -491,12 +544,14 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       artworkOffset,
       artworkScale,
       bottomPanelRect,
+      topPanelRect,
       nameTextColor,
       nameFontSizeMultiplier,
       nameFontWeight,
       panelFillColor,
       resolvedFontFamily,
       sanitizedName,
+      roastLabel,
     ]);
 
     useImperativeHandle(ref, () => ({ exportLabelImage }), [exportLabelImage]);
