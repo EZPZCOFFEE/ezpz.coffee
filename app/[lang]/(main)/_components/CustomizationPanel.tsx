@@ -6,7 +6,6 @@ import { useFormContext } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
 import ColorPickerInput from "@/components/form/ColorPickerInput";
-import DefaultTemplateSelector from "@/components/form/DefaultTemplateSelector";
 import FileUploadInput from "@/components/form/FileUpload";
 import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
@@ -16,13 +15,12 @@ import TemplateSelectionInput from "@/components/form/TemplateSelectionInput";
 import TextInput from "@/components/form/TextInput";
 import Button from "@/components/shared/Button";
 import Label from "@/components/shared/Label";
-import { DEFAULT_TEMPLATES, type DefaultTemplate } from "@/lib/defaultTemplates";
 
 import {
   type CustomizationFormValues,
   useRoastOptions,
   useGrindOptions,
-  useSurfaceOptions,
+  useTemplateOptions,
   useFontOptions,
   useFontWeightOptions,
   useFontSizeOptions,
@@ -64,16 +62,9 @@ function getUnitPrice(quantity: number): number {
 interface CustomizationPanelProps {
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   isAddingToCart?: boolean;
-  selectedTemplateId: string | null;
-  onTemplateSelect: (template: DefaultTemplate) => void;
 }
 
-const CustomizationPanel = ({
-  onSubmit,
-  isAddingToCart,
-  selectedTemplateId,
-  onTemplateSelect,
-}: CustomizationPanelProps) => {
+const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProps) => {
   const t = useTranslations("home");
   const { watch } = useFormContext<CustomizationFormValues>();
   const watchedQuantity = watch("quantity");
@@ -90,20 +81,12 @@ const CustomizationPanel = ({
   const fontSizeOptions = useFontSizeOptions();
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
-  const surfaceOptions = useSurfaceOptions();
+  const templateOptions = useTemplateOptions();
 
   return (
     <div className={styles.panel}>
       <h1 className={styles.panelTitle}>{t("panelTitle")}</h1>
       <form className={styles.panelForm} onSubmit={(event) => void onSubmit(event)} noValidate>
-        <div className={styles.formGroup}>
-          <Label>{t("templateSection")}</Label>
-          <DefaultTemplateSelector
-            templates={DEFAULT_TEMPLATES}
-            selectedTemplateId={selectedTemplateId}
-            onTemplateSelect={onTemplateSelect}
-          />
-        </div>
         <div className={styles.formGroup}>
           <Label>{t("labelSection")}</Label>
           <TextInput name="customerName" label={t("nameLabel")} helperText={t("nameHelper")} />
@@ -122,7 +105,7 @@ const CustomizationPanel = ({
         </div>
         <div className={styles.formGroup}>
           <Label>{t("surfaceSection")}</Label>
-          <TemplateSelectionInput name="surfaceLayout" label={t("surfaceLabel")} options={surfaceOptions} />
+          <TemplateSelectionInput name="template" label={t("surfaceLabel")} options={templateOptions} />
           <ColorPickerInput name="panelColor" label={t("panelColorLabel")} required />
         </div>
 

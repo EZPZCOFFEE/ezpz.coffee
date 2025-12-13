@@ -208,7 +208,6 @@
     },
     "roastSection": "Roast profile",
     "subtotal": "Subtotal",
-    "templateSection": "Choose a template",
     "surfaceDescriptions": {
       "bottom": "Bottom strip treatment works best for high-detail imagery or signatures.",
       "full": "Edge-to-edge coverage—best for bold photography or seamless patterns.",
@@ -219,6 +218,13 @@
       "bottom": "Bottom",
       "full": "Full",
       "sandwich": "Sandwich"
+    },
+    "templateOptions": {
+      "brutalist": "Brutalist",
+      "minimal": "Minimal",
+      "modern": "Modern",
+      "classic": "Classic",
+      "playful": "Playful"
     },
     "surfaceSection": "Bag surface",
     "uploadHelper": "Upload one JPG or PNG (max 10MB). Drag to crop in the preview.",

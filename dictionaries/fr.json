@@ -208,7 +208,6 @@
     },
     "roastSection": "Profil de torréfaction",
     "subtotal": "Sous-total",
-    "templateSection": "Choisir un modèle",
     "surfaceDescriptions": {
       "bottom": "Le traitement en bande inférieure convient mieux aux images détaillées ou aux signatures.",
       "full": "Couverture bord à bord—idéale pour les photos audacieuses ou les motifs continus.",
@@ -219,6 +218,13 @@
       "bottom": "Bas",
       "full": "Intégrale",
       "sandwich": "Sandwich"
+    },
+    "templateOptions": {
+      "brutalist": "Brutaliste",
+      "minimal": "Minimaliste",
+      "modern": "Moderne",
+      "classic": "Classique",
+      "playful": "Ludique"
     },
     "surfaceSection": "Surface du sachet",
     "uploadHelper": "Téléchargez un JPG ou PNG (max 10Mo). Faites glisser pour recadrer dans l'aperçu.",

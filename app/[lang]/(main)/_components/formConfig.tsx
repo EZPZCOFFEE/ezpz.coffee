@@ -98,6 +98,75 @@ export const surfaceValues = ["sandwich", "full", "bottom"] as const;
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
 
+// Template values - each template maps to a surface layout and preset styles
+export const templateValues = ["brutalist", "minimal", "modern", "classic", "playful"] as const;
+export type TemplateValue = (typeof templateValues)[number];
+export const defaultTemplateValue: TemplateValue = "brutalist";
+
+/**
+ * Template preset configurations.
+ * Each template defines a surface layout and default style values.
+ */
+export interface TemplatePreset {
+  surfaceLayout: SurfaceValue;
+  panelColor: string;
+  nameColor: string;
+  labelFont: FontValue;
+  labelFontWeight: FontWeightValue;
+}
+
+export const TEMPLATE_PRESETS: Record<TemplateValue, TemplatePreset> = {
+  brutalist: {
+    surfaceLayout: "sandwich",
+    panelColor: "#000000",
+    nameColor: "#FFFFFF",
+    labelFont: "source-serif",
+    labelFontWeight: "500",
+  },
+  minimal: {
+    surfaceLayout: "full",
+    panelColor: "#0052CC",
+    nameColor: "#FFFFFF",
+    labelFont: "pt-sans",
+    labelFontWeight: "700",
+  },
+  modern: {
+    surfaceLayout: "bottom",
+    panelColor: "#FF5500",
+    nameColor: "#008B8B",
+    labelFont: "space-mono",
+    labelFontWeight: "700",
+  },
+  classic: {
+    surfaceLayout: "sandwich",
+    panelColor: "#000000",
+    nameColor: "#FFFFFF",
+    labelFont: "space-mono",
+    labelFontWeight: "700",
+  },
+  playful: {
+    surfaceLayout: "sandwich",
+    panelColor: "#FF1493",
+    nameColor: "#8B0000",
+    labelFont: "inknut-antiqua",
+    labelFontWeight: "900",
+  },
+};
+
+/**
+ * Get the surface layout for a template value.
+ */
+export const getTemplateSurfaceLayout = (template: TemplateValue): SurfaceValue => {
+  return TEMPLATE_PRESETS[template]?.surfaceLayout ?? defaultSurfaceValue;
+};
+
+/**
+ * Get the full preset for a template.
+ */
+export const getTemplatePreset = (template: TemplateValue): TemplatePreset => {
+  return TEMPLATE_PRESETS[template] ?? TEMPLATE_PRESETS[defaultTemplateValue];
+};
+
 export const fontWeightValues = ["100", "200", "300", "400", "500", "600", "700", "800", "900"] as const;
 export type FontWeightValue = (typeof fontWeightValues)[number];
 export const defaultFontWeightValue: FontWeightValue = "400";
@@ -323,6 +392,41 @@ export const useSurfaceOptions = (): readonly OptionDefinition<SurfaceValue>[] =
   );
 };
 
+export const useTemplateOptions = (): readonly OptionDefinition<TemplateValue>[] => {
+  const t = useTranslations("home.templateOptions");
+
+  return useMemo(
+    () => [
+      {
+        value: "brutalist" as const,
+        label: t("brutalist"),
+        icon: createOptionIcon(PanelsSurfaceIcon, 30),
+      },
+      {
+        value: "minimal" as const,
+        label: t("minimal"),
+        icon: createOptionIcon(FullSurfaceIcon, 30),
+      },
+      {
+        value: "modern" as const,
+        label: t("modern"),
+        icon: createOptionIcon(BottomSurfaceIcon, 30),
+      },
+      {
+        value: "classic" as const,
+        label: t("classic"),
+        icon: createOptionIcon(PanelsSurfaceIcon, 30),
+      },
+      {
+        value: "playful" as const,
+        label: t("playful"),
+        icon: createOptionIcon(PanelsSurfaceIcon, 30),
+      },
+    ],
+    [t]
+  );
+};
+
 export const useSurfaceDescriptions = (): Record<SurfaceValue, string> => {
   const t = useTranslations("home.surfaceDescriptions");
 
@@ -386,7 +490,7 @@ export const customizationFormSchema = z.object({
   labelFontSize: z.enum(fontSizeValues, { message: "Select a font size" }),
   roastProfile: z.enum(roastValues, { message: "Select a roast profile" }),
   grindSetting: z.enum(grindValues, { message: "Select a grind setting" }),
-  surfaceLayout: z.enum(surfaceValues, { message: "Choose a bag surface" }),
+  template: z.enum(templateValues, { message: "Choose a template" }),
   panelColor: z.string().regex(hexColorRegex, { message: "Enter a valid panel color (for example #f3ebe1)" }),
   quantity: z.number().int({ message: "Quantity must be a whole number" }).min(1, "Select at least 1 bag"),
   artworkFile: z

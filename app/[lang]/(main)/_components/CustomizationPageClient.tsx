@@ -2,36 +2,30 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
 import { useCartUI } from "@/components/custom/Cart/CartContext";
 import type { GetProductQuery } from "@/gql/graphql";
-import {
-  DEFAULT_TEMPLATES,
-  getTemplateFormValues,
-  type DefaultTemplate,
-} from "@/lib/defaultTemplates";
 import { uploadFile } from "@/lib/utils/files";
 
 import CustomizationPanel from "./CustomizationPanel";
 import {
   CustomizationFormValues,
   customizationFormSchema,
-  defaultNameColor,
-  defaultPanelColor,
-  defaultSurfaceValue,
-  defaultFontValue,
-  defaultFontWeightValue,
   defaultFontSizeValue,
+  defaultFontWeightValue,
+  defaultTemplateValue,
   FONT_SIZE_MULTIPLIERS,
   getOptionLabel,
   getFontFamily,
+  getTemplatePreset,
+  getTemplateSurfaceLayout,
   useGrindOptions,
   useRoastOptions,
-  useSurfaceOptions,
   useSurfaceDescriptions,
+  useTemplateOptions,
   type RoastValue,
   type GrindValue,
 } from "./formConfig";
@@ -62,59 +56,41 @@ const CustomizationContent: React.FC = () => {
   const { openCart } = useCartUI();
   const previewRef = useRef<PreviewCanvasHandle>(null);
 
-  // Track selected template (defaults to first template)
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
-    DEFAULT_TEMPLATES[0]?.id ?? null
-  );
-
-  // Get initial values from the first template
-  const initialTemplate = DEFAULT_TEMPLATES[0];
-  const initialTemplateValues = initialTemplate
-    ? getTemplateFormValues(initialTemplate)
-    : {
-        surfaceLayout: defaultSurfaceValue,
-        panelColor: defaultPanelColor,
-        nameColor: defaultNameColor,
-        labelFont: defaultFontValue,
-        labelFontWeight: defaultFontWeightValue,
-      };
+  // Get initial values from the default template
+  const initialPreset = getTemplatePreset(defaultTemplateValue);
 
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
       customerName: "",
-      nameColor: initialTemplateValues.nameColor,
-      labelFont: initialTemplateValues.labelFont,
-      labelFontWeight: initialTemplateValues.labelFontWeight,
+      nameColor: initialPreset.nameColor,
+      labelFont: initialPreset.labelFont,
+      labelFontWeight: initialPreset.labelFontWeight,
       labelFontSize: defaultFontSizeValue,
       roastProfile: "medium",
       grindSetting: "bean",
-      surfaceLayout: initialTemplateValues.surfaceLayout,
-      panelColor: initialTemplateValues.panelColor,
+      template: defaultTemplateValue,
+      panelColor: initialPreset.panelColor,
       quantity: 1,
       artworkFile: [],
     },
     mode: "onBlur",
   });
 
-  // Handle template selection - apply template values to form
-  const handleTemplateSelect = useCallback(
-    (template: DefaultTemplate) => {
-      setSelectedTemplateId(template.id);
-      const templateValues = getTemplateFormValues(template);
-
-      // Apply template values to form
-      formMethods.setValue("surfaceLayout", templateValues.surfaceLayout);
-      formMethods.setValue("panelColor", templateValues.panelColor);
-      formMethods.setValue("nameColor", templateValues.nameColor);
-      formMethods.setValue("labelFont", templateValues.labelFont);
-      formMethods.setValue("labelFontWeight", templateValues.labelFontWeight);
-    },
-    [formMethods]
-  );
-
   const watchedValues = useWatch({ control: formMethods.control });
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
+
+  // Apply template preset values when template changes
+  const templateValue = watchedValues.template;
+  useEffect(() => {
+    if (templateValue) {
+      const preset = getTemplatePreset(templateValue);
+      formMethods.setValue("panelColor", preset.panelColor);
+      formMethods.setValue("nameColor", preset.nameColor);
+      formMethods.setValue("labelFont", preset.labelFont);
+      formMethods.setValue("labelFontWeight", preset.labelFontWeight);
+    }
+  }, [templateValue, formMethods]);
 
   // Sync form roast/grind selections to Shopify's ProductProvider
   const roastValue = watchedValues.roastProfile;
@@ -134,13 +110,15 @@ const CustomizationContent: React.FC = () => {
 
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
-  const surfaceOptions = useSurfaceOptions();
   const surfaceDescriptions = useSurfaceDescriptions();
+  const templateOptions = useTemplateOptions();
 
   const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
   const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
-  const surfaceValue = watchedValues.surfaceLayout ?? defaultSurfaceValue;
-  const surfacePreviewLabel = getOptionLabel(surfaceValue, surfaceOptions);
+  // Derive surface layout from the selected template
+  const currentTemplate = watchedValues.template ?? defaultTemplateValue;
+  const surfaceValue = getTemplateSurfaceLayout(currentTemplate);
+  const surfacePreviewLabel = getOptionLabel(currentTemplate, templateOptions);
   const surfacePreviewDetail = surfaceDescriptions[surfaceValue];
   const labelFontFamily = getFontFamily(watchedValues.labelFont);
   const labelFontWeight = watchedValues.labelFontWeight ?? defaultFontWeightValue;
@@ -199,8 +177,6 @@ const CustomizationContent: React.FC = () => {
           <CustomizationPanel
             onSubmit={(event) => void handleFormSubmit(event)}
             isAddingToCart={isAddingToCart}
-            selectedTemplateId={selectedTemplateId}
-            onTemplateSelect={handleTemplateSelect}
           />
         </div>
         <div className={styles.previewColumn}>
