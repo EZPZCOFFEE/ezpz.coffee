@@ -87,31 +87,19 @@
 }
 
 .roastLabel {
-  font-size: 0.625rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-gray-400);
-  transition: color 0.2s ease;
+  /* Base styles - font properties applied via inline styles for dynamic updates */
+  transition: color 0.2s ease, font-size 0.2s ease;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-}
-
-.card[data-active="true"] .roastLabel {
-  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.2;
 }
 
 .weightLabel {
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: var(--color-gray-400);
-  transition: color 0.2s ease;
-}
-
-.card[data-active="true"] .weightLabel {
-  color: rgba(255, 255, 255, 0.8);
+  /* Base styles - font properties applied via inline styles for dynamic updates */
+  transition: color 0.2s ease, font-size 0.2s ease;
+  line-height: 1.2;
 }
 
 .optionLabels {
