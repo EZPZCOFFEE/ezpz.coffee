@@ -160,9 +160,9 @@
     "fontLabel": "Font",
     "fontSizeLabel": "Size",
     "fontSizeOptions": {
-      "l": "L",
-      "m": "M",
-      "s": "S"
+      "l": "Large",
+      "m": "Medium",
+      "s": "Small"
     },
     "fontWeightLabel": "Weight",
     "fontWeightOptions": {

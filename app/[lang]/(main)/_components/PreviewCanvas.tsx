@@ -97,6 +97,7 @@ const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
 const ROAST_INFO_FONT_SIZE = 16 * CANVAS_SCALE;
 const WEIGHT_TEXT = "225g";
+const DEFAULT_LABEL_NAME = "Coffee Name";
 
 const planNameRendering = (
   context: CanvasRenderingContext2D,
@@ -332,7 +333,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       [artworkImage, artworkScale]
     );
 
-    const sanitizedName = customerName?.trim() ?? "";
+    const trimmedName = customerName?.trim() ?? "";
+    const sanitizedName = trimmedName.length > 0 ? trimmedName : DEFAULT_LABEL_NAME;
 
     const drawCanvas = useCallback(() => {
       const canvas = bagCanvasRef.current;
@@ -416,7 +418,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
         const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
         const roastInfoX = topPanelRect.x + NAME_PADDING_X;
         const roastInfoY = topPanelRect.y + topPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
-        context.font = `500 ${ROAST_INFO_FONT_SIZE}px ${DEFAULT_NAME_FONT_FAMILY}`;
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
+        context.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
         context.textAlign = "left";
         context.textBaseline = "middle";
         context.fillStyle = nameTextColor;
@@ -524,7 +527,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
         const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
         const roastInfoX = translatedTopPanel.x + NAME_PADDING_X;
         const roastInfoY = translatedTopPanel.y + translatedTopPanel.height / 2 + NAME_VERTICAL_OFFSET;
-        ctx.font = `500 ${ROAST_INFO_FONT_SIZE}px ${DEFAULT_NAME_FONT_FAMILY}`;
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
+        ctx.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         ctx.fillStyle = nameTextColor;

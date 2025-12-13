@@ -51,9 +51,9 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-room);
-  padding: var(--spacing-city) var(--spacing-street);
+  padding: var(--spacing-street) var(--spacing-street);
   border-radius: var(--border-radius-full);
-  min-height: 56px;
+  min-height: 32px;
   transition: box-shadow 0.2s ease;
 }
 
@@ -77,50 +77,6 @@
 
 .card[data-active="true"] .templateNumber {
   color: var(--color-white);
-}
-
-.templateMeta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.roastLabel {
-  /* Base styles - font properties applied via inline styles for dynamic updates */
-  transition: color 0.2s ease, font-size 0.2s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  line-height: 1.2;
-}
-
-.weightLabel {
-  /* Base styles - font properties applied via inline styles for dynamic updates */
-  transition: color 0.2s ease, font-size 0.2s ease;
-  line-height: 1.2;
-}
-
-.optionLabels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-street);
-  margin-top: var(--spacing-house);
-}
-
-.optionLabel {
-  text-align: center;
-  text-transform: lowercase;
-  letter-spacing: 0.04em;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--color-gray-500);
-  transition: color 0.2s ease;
-}
-
-.optionLabelActive {
-  color: var(--color-accent);
 }
 
 .error {
