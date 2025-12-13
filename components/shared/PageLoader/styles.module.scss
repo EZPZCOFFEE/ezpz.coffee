@@ -6,38 +6,18 @@
   width: 100%;
 }
 
-.logoWrapper {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .logo {
   display: block;
-  width: 120px;
+  width: 80px;
   height: auto;
-  opacity: 0.15;
+  animation: pulse 0.6s ease-in-out infinite;
 }
 
-.shimmer {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 66, 0, 0.4) 50%,
-    transparent 100%
-  );
-  animation: shimmer 1.5s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.15;
   }
-  100% {
-    transform: translateX(100%);
+  50% {
+    opacity: 0.5;
   }
 }
