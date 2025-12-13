@@ -2,12 +2,17 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ProductProvider, useCart, useProduct } from "@shopify/hydrogen-react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FormProvider, useForm, useWatch } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
 import { useCartUI } from "@/components/custom/Cart/CartContext";
 import type { GetProductQuery } from "@/gql/graphql";
+import {
+  DEFAULT_TEMPLATES,
+  getTemplateFormValues,
+  type DefaultTemplate,
+} from "@/lib/defaultTemplates";
 import { uploadFile } from "@/lib/utils/files";
 
 import CustomizationPanel from "./CustomizationPanel";
@@ -57,23 +62,56 @@ const CustomizationContent: React.FC = () => {
   const { openCart } = useCartUI();
   const previewRef = useRef<PreviewCanvasHandle>(null);
 
+  // Track selected template (defaults to first template)
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(
+    DEFAULT_TEMPLATES[0]?.id ?? null
+  );
+
+  // Get initial values from the first template
+  const initialTemplate = DEFAULT_TEMPLATES[0];
+  const initialTemplateValues = initialTemplate
+    ? getTemplateFormValues(initialTemplate)
+    : {
+        surfaceLayout: defaultSurfaceValue,
+        panelColor: defaultPanelColor,
+        nameColor: defaultNameColor,
+        labelFont: defaultFontValue,
+        labelFontWeight: defaultFontWeightValue,
+      };
+
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
       customerName: "",
-      nameColor: defaultNameColor,
-      labelFont: defaultFontValue,
-      labelFontWeight: defaultFontWeightValue,
+      nameColor: initialTemplateValues.nameColor,
+      labelFont: initialTemplateValues.labelFont,
+      labelFontWeight: initialTemplateValues.labelFontWeight,
       labelFontSize: defaultFontSizeValue,
       roastProfile: "medium",
       grindSetting: "bean",
-      surfaceLayout: defaultSurfaceValue,
-      panelColor: defaultPanelColor,
+      surfaceLayout: initialTemplateValues.surfaceLayout,
+      panelColor: initialTemplateValues.panelColor,
       quantity: 1,
       artworkFile: [],
     },
     mode: "onBlur",
   });
+
+  // Handle template selection - apply template values to form
+  const handleTemplateSelect = useCallback(
+    (template: DefaultTemplate) => {
+      setSelectedTemplateId(template.id);
+      const templateValues = getTemplateFormValues(template);
+
+      // Apply template values to form
+      formMethods.setValue("surfaceLayout", templateValues.surfaceLayout);
+      formMethods.setValue("panelColor", templateValues.panelColor);
+      formMethods.setValue("nameColor", templateValues.nameColor);
+      formMethods.setValue("labelFont", templateValues.labelFont);
+      formMethods.setValue("labelFontWeight", templateValues.labelFontWeight);
+    },
+    [formMethods]
+  );
 
   const watchedValues = useWatch({ control: formMethods.control });
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
@@ -161,6 +199,8 @@ const CustomizationContent: React.FC = () => {
           <CustomizationPanel
             onSubmit={(event) => void handleFormSubmit(event)}
             isAddingToCart={isAddingToCart}
+            selectedTemplateId={selectedTemplateId}
+            onTemplateSelect={handleTemplateSelect}
           />
         </div>
         <div className={styles.previewColumn}>

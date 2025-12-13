@@ -1,0 +1,273 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-street);
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-city);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-street);
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.templateCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-room);
+  padding: 0;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-gray-300);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  &.selected {
+    border-color: var(--color-accent);
+  }
+}
+
+.cardPreview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.3 / 1;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sandwich layout styles */
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  min-height: 28px;
+}
+
+.body {
+  flex: 1;
+  position: relative;
+}
+
+.bottomBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  min-height: 24px;
+}
+
+.bottomContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Corner accents for Brutalist template */
+.cornerAccent {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-style: solid;
+  border-width: 0;
+
+  &.topLeft {
+    top: 4px;
+    left: 4px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+  }
+
+  &.topRight {
+    top: 4px;
+    right: 4px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+  }
+
+  &.bottomLeft {
+    bottom: 4px;
+    left: 4px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+  }
+
+  &.bottomRight {
+    bottom: 4px;
+    right: 4px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+  }
+}
+
+.accentLine {
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+}
+
+.coffeeName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-left: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.italic {
+    font-style: italic;
+  }
+}
+
+.roastText {
+  font-size: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.weightText {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.separator {
+  width: 2px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Grid pattern overlay */
+.gridPattern {
+  position: absolute;
+  inset: 0;
+  background-size: 12px 12px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Full layout styles */
+.fullLayout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 12px;
+}
+
+.fullHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.verticalLine {
+  width: 1px;
+  height: 40px;
+  opacity: 0.5;
+}
+
+.fullFooter {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Bottom layout styles */
+.bottomBody {
+  flex: 1;
+}
+
+.bottomWhiteBar {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  gap: 6px;
+  min-height: 24px;
+}
+
+.bottomLayoutName {
+  margin-left: 0;
+  font-size: 0.6rem;
+}
+
+/* Icons */
+.starIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.75rem;
+}
+
+.coffeeIcon {
+  font-size: 0.5rem;
+  margin-left: 2px;
+}
+
+.squaresIcon {
+  display: flex;
+  gap: 2px;
+}
+
+.square {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+}
+
+/* Template name and font indicator */
+.templateName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+  padding: 4px 0 0;
+}
+
+.fontIndicator {
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding-bottom: 8px;
+}
