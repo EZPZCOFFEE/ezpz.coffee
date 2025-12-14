@@ -94,70 +94,401 @@ export const useGrindOptions = (): readonly OptionDefinition<GrindValue>[] => {
   );
 };
 
+/**
+ * @deprecated Use LayoutType instead. Kept for backward compatibility.
+ */
 export const surfaceValues = ["sandwich", "full", "bottom"] as const;
+/**
+ * @deprecated Use LayoutType instead. Kept for backward compatibility.
+ */
 export type SurfaceValue = (typeof surfaceValues)[number];
 export const defaultSurfaceValue: SurfaceValue = "bottom";
 
-// Template values - each template maps to a surface layout and preset styles
+/**
+ * Layout type defines how panels are arranged on the label.
+ * - "none": No panels, just body color
+ * - "full": Entire label is panel color
+ * - "top": Top panel only
+ * - "bottom": Bottom panel only
+ * - "border": Border/frame around the label (formerly called "around")
+ */
+export const layoutTypeValues = ["none", "full", "top", "bottom", "border"] as const;
+export type LayoutType = (typeof layoutTypeValues)[number];
+export const defaultLayoutType: LayoutType = "bottom";
+
+// Template values - each template defines a complete visual layout
 export const templateValues = ["brutalist", "minimal", "modern", "classic", "playful"] as const;
 export type TemplateValue = (typeof templateValues)[number];
 export const defaultTemplateValue: TemplateValue = "brutalist";
 
 /**
- * Template preset configurations.
- * Each template defines a surface layout and default style values.
+ * Text transform options for template styling.
  */
-export interface TemplatePreset {
-  surfaceLayout: SurfaceValue;
-  panelColor: string;
-  nameColor: string;
-  labelFont: FontValue;
-  labelFontWeight: FontWeightValue;
+export type TextTransform = "none" | "uppercase" | "lowercase" | "capitalize";
+
+/**
+ * Horizontal anchor point for text positioning.
+ */
+export type AnchorX = "left" | "center" | "right";
+
+/**
+ * Vertical anchor point for text positioning.
+ */
+export type AnchorY = "top" | "middle" | "bottom";
+
+/**
+ * Icon types available for templates.
+ */
+export type IconType = "none" | "star" | "bean" | "squares";
+
+/**
+ * Coordinate-based position for elements on the label.
+ * Uses ratios (0.0 to 1.0) relative to label dimensions.
+ *
+ * Example:
+ * - x: 0.5, y: 0.1 = center horizontally, 10% from top
+ * - x: 0.0, y: 1.0 = left edge, bottom edge
+ */
+export interface ElementPosition {
+  /** X position as ratio of label width (0.0 = left, 1.0 = right) */
+  x: number;
+  /** Y position as ratio of label height (0.0 = top, 1.0 = bottom) */
+  y: number;
+  /** Horizontal anchor point - where the text anchors from */
+  anchorX: AnchorX;
+  /** Vertical anchor point - where the text anchors from */
+  anchorY: AnchorY;
 }
 
+/**
+ * @deprecated Use ElementPosition instead. Kept for backward compatibility.
+ */
+export type HorizontalAlign = "left" | "center" | "right";
+/**
+ * @deprecated Use ElementPosition instead. Kept for backward compatibility.
+ */
+export type VerticalAlign = "top" | "center" | "bottom";
+/**
+ * @deprecated Use LayoutType instead. Kept for backward compatibility.
+ */
+export type PanelLocation = "top" | "bottom" | "header" | "body";
+
+/**
+ * @deprecated Use ElementPosition instead. Kept for backward compatibility.
+ */
+export interface TextPosition {
+  /** Which panel/area the text appears in */
+  panel: PanelLocation;
+  /** Horizontal alignment within the panel */
+  horizontalAlign: HorizontalAlign;
+  /** Vertical alignment within the panel */
+  verticalAlign: VerticalAlign;
+}
+
+/**
+ * Accent line configuration.
+ */
+export interface AccentLineConfig {
+  /** Whether the accent line is visible */
+  visible: boolean;
+  /** Position as ratio (0.0 = left, 1.0 = right) */
+  x: number;
+  /** Color of the accent line */
+  color: string;
+  /** Height as ratio of label height (0.0 to 1.0) */
+  heightRatio?: number;
+}
+
+/**
+ * Icon configuration for templates.
+ */
+export interface IconConfig {
+  /** Type of icon to display */
+  type: IconType;
+  /** Position using coordinate-based system */
+  position: ElementPosition;
+  /** Icon size as ratio of label width (default ~0.05) */
+  sizeRatio?: number;
+}
+
+/**
+ * Panel configuration for a single panel.
+ */
+export interface PanelConfig {
+  /** Whether this panel is visible */
+  visible: boolean;
+  /** Height as a ratio of label height (0.0 to 1.0) */
+  heightRatio: number;
+}
+
+/**
+ * Border panel configuration - draws a frame around the entire label.
+ */
+export interface BorderPanelConfig {
+  /** Whether the border is visible */
+  visible: boolean;
+  /** Thickness of left/right sides as ratio of label width (0.0 to 1.0) */
+  sideThicknessRatio: number;
+  /** Thickness of top/bottom edges as ratio of label height (0.0 to 1.0). Defaults to sideThicknessRatio if not specified. */
+  edgeThicknessRatio?: number;
+}
+
+/**
+ * Template preset configurations.
+ * Each template defines a complete visual layout including:
+ * - Layout type and panel configurations
+ * - Color scheme (panel, text, body, accent)
+ * - Typography (font, weight, transform)
+ * - Element positions (coordinate-based)
+ * - Decorative elements (accent lines, icons)
+ */
+export interface TemplatePreset {
+  // Layout type - primary way to define panel arrangement
+  /** How panels are arranged: "none" | "full" | "top" | "bottom" | "border" */
+  layoutType: LayoutType;
+
+  // Panel configurations - fine-grained control over panel dimensions
+  /** Top panel configuration */
+  topPanel: PanelConfig;
+  /** Bottom panel configuration */
+  bottomPanel: PanelConfig;
+  /** Border panel - draws a frame around the entire label */
+  borderPanel?: BorderPanelConfig;
+
+  // Colors
+  panelColor: string;
+  nameColor: string;
+  /** Secondary text color (e.g., for roast/weight if different from name) */
+  secondaryTextColor?: string;
+  /** Body/background color for split-panel designs */
+  bodyColor?: string;
+  /** Accent color (for lines, highlights) */
+  accentColor?: string;
+
+  // Typography
+  labelFont: FontValue;
+  /** Font weight for the name text */
+  nameFontWeight: FontWeightValue;
+  /** Font weight for secondary text (roast/weight). Defaults to nameFontWeight if not specified. */
+  secondaryFontWeight?: FontWeightValue;
+  /** Text transform for all label text */
+  textTransform: TextTransform;
+  /** Whether name should be italic */
+  nameItalic?: boolean;
+  /** Font size multiplier for the name (1.0 = default, larger = bigger) */
+  nameFontSizeMultiplier?: number;
+  /** Font size multiplier for roast/weight text (1.0 = default) */
+  secondaryFontSizeMultiplier?: number;
+
+  // Element positions - coordinate-based (x, y as ratios 0.0-1.0)
+  /** Position of the name text */
+  namePosition: ElementPosition;
+  /** Position of the roast text */
+  roastPosition: ElementPosition;
+  /** Position of the weight text */
+  weightPosition: ElementPosition;
+
+  // Accent line
+  accentLine: AccentLineConfig;
+
+  // Icon
+  icon: IconConfig;
+
+  /**
+   * @deprecated Use layoutType instead. Kept for backward compatibility.
+   */
+}
+
+/**
+ * Template presets matching the 5 design mockups.
+ * All positions use coordinate-based system (x, y as ratios 0.0-1.0).
+ */
 export const TEMPLATE_PRESETS: Record<TemplateValue, TemplatePreset> = {
+  /**
+   * Brutalist: High-contrast black & white with italic serif typography.
+   * - Border frame around entire label (hollow square)
+   * - Name centered at top of frame
+   * - Roast + weight centered at bottom of frame
+   */
   brutalist: {
-    surfaceLayout: "sandwich",
+    layoutType: "border",
+    topPanel: { visible: false, heightRatio: 0 },
+    bottomPanel: { visible: false, heightRatio: 0 },
+    // Left/right sides thicker than top/bottom
+    borderPanel: { visible: true, sideThicknessRatio: 0.14, edgeThicknessRatio: 0.12 },
     panelColor: "#000000",
     nameColor: "#FFFFFF",
+    bodyColor: "#696969",
     labelFont: "source-serif",
-    labelFontWeight: "500",
+    nameFontWeight: "500",
+    secondaryFontWeight: "400",
+    textTransform: "capitalize",
+    nameFontSizeMultiplier: 2.8,
+    secondaryFontSizeMultiplier: 1,
+    // Name at top-center of border frame
+    namePosition: { x: 0.5, y: 0.125, anchorX: "center", anchorY: "middle" },
+    // Roast centered at bottom of border frame
+    roastPosition: { x: 0.35, y: 0.94, anchorX: "center", anchorY: "middle" },
+    // Weight next to roast (slightly offset)
+    weightPosition: { x: 0.7, y: 0.94, anchorX: "center", anchorY: "middle" },
+    accentLine: { visible: false, x: 0.5, color: "#000000" },
+    icon: { type: "none", position: { x: 0.9, y: 0.06, anchorX: "center", anchorY: "middle" } },
   },
+
+  /**
+   * Minimal: Clean blue background with lowercase sans-serif.
+   * - Full panel (entire label is the panel color)
+   * - Name at top-left
+   * - Roast + weight stacked at bottom-right
+   * - Squares icon near bottom-right
+   */
   minimal: {
-    surfaceLayout: "full",
-    panelColor: "#0052CC",
-    nameColor: "#FFFFFF",
+    layoutType: "full",
+    topPanel: { visible: false, heightRatio: 0 },
+    bottomPanel: { visible: false, heightRatio: 0 },
+    panelColor: "#1565C0",
+    bodyColor: "#1565C0",
+    nameColor: "#000000",
     labelFont: "pt-sans",
-    labelFontWeight: "700",
+    nameFontWeight: "700",
+    secondaryFontWeight: "700",
+    textTransform: "lowercase",
+    nameItalic: false,
+    nameFontSizeMultiplier: 0.7,
+    secondaryFontSizeMultiplier: 0.7,
+    // Name at top-left with padding
+    namePosition: { x: 0.01, y: 0.25, anchorX: "left", anchorY: "top" },
+    // Roast at bottom-right
+    roastPosition: { x: 0.99, y: 0.8, anchorX: "right", anchorY: "bottom" },
+    // Weight stacked below roast
+    weightPosition: { x: 0.99, y: 0.9, anchorX: "right", anchorY: "bottom" },
+    accentLine: { visible: false, x: 0.5, color: "#000000" },
+    icon: {
+      type: "none",
+      position: { x: 0.95, y: 0.72, anchorX: "right", anchorY: "bottom" },
+    },
   },
+
+  /**
+   * Modern: Bold orange with white bottom info bar.
+   * - Thin bottom bar (white) for all text
+   * - Body fills with orange
+   * - Star icon at top-right of body
+   */
   modern: {
-    surfaceLayout: "bottom",
-    panelColor: "#FF5500",
-    nameColor: "#008B8B",
+    layoutType: "bottom",
+    topPanel: { visible: false, heightRatio: 0 },
+    bottomPanel: { visible: true, heightRatio: 0.08 },
+    panelColor: "#FFFFFF",
+    nameColor: "#FF5500",
+    bodyColor: "#FF5500",
     labelFont: "space-mono",
-    labelFontWeight: "700",
+    nameFontWeight: "700", // Space Mono only has 400 and 700
+    secondaryFontWeight: "700",
+    textTransform: "uppercase",
+    nameItalic: false,
+    nameFontSizeMultiplier: 0.5,
+    secondaryFontSizeMultiplier: 0.5,
+    // Name at left of bottom panel
+    namePosition: { x: 0.02, y: 0.95, anchorX: "left", anchorY: "middle" },
+    // Roast centered in bottom panel
+    roastPosition: { x: 0.7, y: 0.95, anchorX: "center", anchorY: "middle" },
+    // Weight at right of bottom panel
+    weightPosition: { x: 0.95, y: 0.95, anchorX: "right", anchorY: "middle" },
+    accentLine: { visible: false, x: 0.5, color: "#FFFFFF" },
+    icon: {
+      type: "none",
+      position: { x: 0.9, y: 0.1, anchorX: "right", anchorY: "top" },
+    },
   },
+
+  /**
+   * Classic: Elegant black header bar on clean white.
+   * - Thin top bar (black header) with all info
+   * - Body fills with white
+   */
   classic: {
-    surfaceLayout: "sandwich",
+    layoutType: "top",
+    topPanel: { visible: true, heightRatio: 0.12 },
+    bottomPanel: { visible: false, heightRatio: 0 },
     panelColor: "#000000",
     nameColor: "#FFFFFF",
+    bodyColor: "#FFFFFF",
     labelFont: "space-mono",
-    labelFontWeight: "700",
+    nameFontWeight: "700", // Space Mono only has 400 and 700
+    secondaryFontWeight: "700",
+    textTransform: "capitalize",
+    nameItalic: false,
+    nameFontSizeMultiplier: 0.8,
+    secondaryFontSizeMultiplier: 0.4,
+    // Name at left of top panel
+    namePosition: { x: 0.025, y: 0.065, anchorX: "left", anchorY: "middle" },
+    // Roast at right of top panel
+    roastPosition: { x: 0.85, y: 0.065, anchorX: "right", anchorY: "middle" },
+    // Weight at far right
+    weightPosition: { x: 0.95, y: 0.065, anchorX: "right", anchorY: "middle" },
+    accentLine: { visible: false, x: 0.5, color: "#000000" },
+    icon: { type: "none", position: { x: 0.5, y: 0.05, anchorX: "center", anchorY: "middle" } },
   },
+
+  /**
+   * Playful: Vibrant pink header on warm beige body.
+   * - Thicker top band (pink) with name
+   * - Roast/weight in body below the band
+   */
   playful: {
-    surfaceLayout: "sandwich",
-    panelColor: "#FF1493",
-    nameColor: "#8B0000",
+    layoutType: "top",
+    topPanel: { visible: true, heightRatio: 0.28 },
+    bottomPanel: { visible: false, heightRatio: 0 },
+    panelColor: "#ff7cc2",
+    nameColor: "#CECCA5",
+    bodyColor: "#CECCA5",
+    secondaryTextColor: "#CECCA5",
     labelFont: "inknut-antiqua",
-    labelFontWeight: "900",
+    nameFontWeight: "700",
+    secondaryFontWeight: "400",
+    textTransform: "capitalize",
+    nameItalic: false,
+    nameFontSizeMultiplier: 1.3,
+    secondaryFontSizeMultiplier: 0.5,
+    // Name at top-left within the pink panel
+    namePosition: { x: 0.02, y: 0.1, anchorX: "left", anchorY: "middle" },
+    // Roast below the panel, in body area
+    roastPosition: { x: 0.03, y: 0.17, anchorX: "left", anchorY: "top" },
+    // Weight on right side of body
+    weightPosition: { x: 0.97, y: 0.17, anchorX: "right", anchorY: "top" },
+    accentLine: { visible: false, x: 0.5, color: "#000000" },
+    icon: { type: "none", position: { x: 0.05, y: 0.22, anchorX: "left", anchorY: "bottom" } },
   },
 };
 
 /**
- * Get the surface layout for a template value.
+ * Get the layout type for a template.
+ */
+export const getTemplateLayoutType = (template: TemplateValue): LayoutType => {
+  return TEMPLATE_PRESETS[template]?.layoutType ?? defaultLayoutType;
+};
+
+/**
+ * @deprecated Use getTemplateLayoutType instead.
+ * Maps layoutType to legacy surfaceValue for backward compatibility.
  */
 export const getTemplateSurfaceLayout = (template: TemplateValue): SurfaceValue => {
-  return TEMPLATE_PRESETS[template]?.surfaceLayout ?? defaultSurfaceValue;
+  const layoutType = getTemplateLayoutType(template);
+  // Map new layoutType to legacy surfaceValue
+  switch (layoutType) {
+    case "border":
+      return "sandwich"; // Border frames were rendered like sandwich
+    case "full":
+      return "full";
+    case "top":
+      return "sandwich"; // Top-only uses sandwich logic
+    case "bottom":
+      return "bottom";
+    case "none":
+    default:
+      return defaultSurfaceValue;
+  }
 };
 
 /**
@@ -367,6 +698,9 @@ export const useFontSizeOptions = (): readonly OptionDefinition<FontSizeValue>[]
   );
 };
 
+/**
+ * @deprecated Use useTemplateOptions instead. Surface options are no longer used.
+ */
 export const useSurfaceOptions = (): readonly OptionDefinition<SurfaceValue>[] => {
   const t = useTranslations("home.surfaceOptions");
 
@@ -427,6 +761,9 @@ export const useTemplateOptions = (): readonly OptionDefinition<TemplateValue>[]
   );
 };
 
+/**
+ * @deprecated Surface descriptions are no longer used. Templates provide their own styling.
+ */
 export const useSurfaceDescriptions = (): Record<SurfaceValue, string> => {
   const t = useTranslations("home.surfaceDescriptions");
 

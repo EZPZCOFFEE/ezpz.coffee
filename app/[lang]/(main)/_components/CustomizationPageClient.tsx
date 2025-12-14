@@ -21,10 +21,8 @@ import {
   getOptionLabel,
   getFontFamily,
   getTemplatePreset,
-  getTemplateSurfaceLayout,
   useGrindOptions,
   useRoastOptions,
-  useSurfaceDescriptions,
   useTemplateOptions,
   type RoastValue,
   type GrindValue,
@@ -65,7 +63,7 @@ const CustomizationContent: React.FC = () => {
       customerName: "",
       nameColor: initialPreset.nameColor,
       labelFont: initialPreset.labelFont,
-      labelFontWeight: initialPreset.labelFontWeight,
+      labelFontWeight: initialPreset.nameFontWeight,
       labelFontSize: defaultFontSizeValue,
       roastProfile: "medium",
       grindSetting: "bean",
@@ -88,7 +86,7 @@ const CustomizationContent: React.FC = () => {
       formMethods.setValue("panelColor", preset.panelColor);
       formMethods.setValue("nameColor", preset.nameColor);
       formMethods.setValue("labelFont", preset.labelFont);
-      formMethods.setValue("labelFontWeight", preset.labelFontWeight);
+      formMethods.setValue("labelFontWeight", preset.nameFontWeight);
     }
   }, [templateValue, formMethods]);
 
@@ -110,16 +108,14 @@ const CustomizationContent: React.FC = () => {
 
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
-  const surfaceDescriptions = useSurfaceDescriptions();
   const templateOptions = useTemplateOptions();
 
   const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
   const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
-  // Derive surface layout from the selected template
+  // Get template preset and label
   const currentTemplate = watchedValues.template ?? defaultTemplateValue;
-  const surfaceValue = getTemplateSurfaceLayout(currentTemplate);
-  const surfacePreviewLabel = getOptionLabel(currentTemplate, templateOptions);
-  const surfacePreviewDetail = surfaceDescriptions[surfaceValue];
+  const currentTemplatePreset = getTemplatePreset(currentTemplate);
+  const templateLabel = getOptionLabel(currentTemplate, templateOptions);
   const labelFontFamily = getFontFamily(watchedValues.labelFont);
   const labelFontWeight = watchedValues.labelFontWeight ?? defaultFontWeightValue;
   const labelFontSizeMultiplier = FONT_SIZE_MULTIPLIERS[watchedValues.labelFontSize ?? defaultFontSizeValue];
@@ -186,12 +182,11 @@ const CustomizationContent: React.FC = () => {
             roastPreviewLabel={roastPreviewLabel}
             grindPreviewLabel={grindPreviewLabel}
             selectedArtworkFile={selectedArtworkFile}
-            surfaceValue={surfaceValue}
-            surfacePreviewLabel={surfacePreviewLabel}
-            surfacePreviewDescription={surfacePreviewDetail}
+            templateLabel={templateLabel}
             labelFontFamily={labelFontFamily}
             labelFontWeight={labelFontWeight}
             labelFontSizeMultiplier={labelFontSizeMultiplier}
+            templatePreset={currentTemplatePreset}
           />
         </div>
       </div>

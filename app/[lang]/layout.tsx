@@ -23,7 +23,26 @@ const inter = localFont({
 });
 
 const poppins = localFont({
-  src: "./_fonts/poppins/Poppins-Regular.ttf",
+  src: [
+    { path: "./_fonts/poppins/Poppins-Thin.ttf", weight: "100", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-ThinItalic.ttf", weight: "100", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-ExtraLightItalic.ttf", weight: "200", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-LightItalic.ttf", weight: "300", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-ExtraBoldItalic.ttf", weight: "800", style: "italic" },
+    { path: "./_fonts/poppins/Poppins-Black.ttf", weight: "900", style: "normal" },
+    { path: "./_fonts/poppins/Poppins-BlackItalic.ttf", weight: "900", style: "italic" },
+  ],
   variable: "--font-poppins",
   display: "swap",
 });
@@ -35,7 +54,22 @@ const manrope = localFont({
 });
 
 const alegreyaSans = localFont({
-  src: "./_fonts/alegreyasans/AlegreyaSans-Regular.ttf",
+  src: [
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Thin.ttf", weight: "100", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-ThinItalic.ttf", weight: "100", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-LightItalic.ttf", weight: "300", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-ExtraBoldItalic.ttf", weight: "800", style: "italic" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-Black.ttf", weight: "900", style: "normal" },
+    { path: "./_fonts/alegreyasans/AlegreyaSans-BlackItalic.ttf", weight: "900", style: "italic" },
+  ],
   variable: "--font-alegreya-sans",
   display: "swap",
 });
@@ -53,13 +87,47 @@ const chivo = localFont({
 });
 
 const firaSans = localFont({
-  src: "./_fonts/firasans/FiraSans-Regular.ttf",
+  src: [
+    { path: "./_fonts/firasans/FiraSans-Thin.ttf", weight: "100", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-ThinItalic.ttf", weight: "100", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-ExtraLightItalic.ttf", weight: "200", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-LightItalic.ttf", weight: "300", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-ExtraBoldItalic.ttf", weight: "800", style: "italic" },
+    { path: "./_fonts/firasans/FiraSans-Black.ttf", weight: "900", style: "normal" },
+    { path: "./_fonts/firasans/FiraSans-BlackItalic.ttf", weight: "900", style: "italic" },
+  ],
   variable: "--font-fira-sans",
   display: "swap",
 });
 
 const ibmPlexSans = localFont({
-  src: "./_fonts/ibmplexsans/IBMPlexSans-Regular.ttf",
+  src: [
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Thin.ttf", weight: "100", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-ThinItalic.ttf", weight: "100", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-ExtraLightItalic.ttf", weight: "200", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-LightItalic.ttf", weight: "300", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/ibmplexsans/IBMPlexSans-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
   variable: "--font-ibm-plex-sans",
   display: "swap",
 });
@@ -89,13 +157,29 @@ const openSans = localFont({
 });
 
 const prozaLibre = localFont({
-  src: "./_fonts/prozalibre/ProzaLibre-Regular.ttf",
+  src: [
+    { path: "./_fonts/prozalibre/ProzaLibre-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/prozalibre/ProzaLibre-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/prozalibre/ProzaLibre-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/prozalibre/ProzaLibre-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/prozalibre/ProzaLibre-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/prozalibre/ProzaLibre-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+    { path: "./_fonts/prozalibre/ProzaLibre-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/prozalibre/ProzaLibre-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./_fonts/prozalibre/ProzaLibre-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/prozalibre/ProzaLibre-ExtraBoldItalic.ttf", weight: "800", style: "italic" },
+  ],
   variable: "--font-proza-libre",
   display: "swap",
 });
 
 const ptSans = localFont({
-  src: "./_fonts/ptsans/PTSans-Regular.ttf",
+  src: [
+    { path: "./_fonts/ptsans/PTSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/ptsans/PTSans-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/ptsans/PTSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/ptsans/PTSans-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
   variable: "--font-pt-sans",
   display: "swap",
 });
@@ -144,7 +228,11 @@ const lora = localFont({
 });
 
 const libreBaskerville = localFont({
-  src: "./_fonts/librebaskerville/LibreBaskerville-Regular.ttf",
+  src: [
+    { path: "./_fonts/librebaskerville/LibreBaskerville-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/librebaskerville/LibreBaskerville-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/librebaskerville/LibreBaskerville-Bold.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-libre-baskerville",
   display: "swap",
 });
@@ -156,7 +244,11 @@ const alegreya = localFont({
 });
 
 const cardo = localFont({
-  src: "./_fonts/cardo/Cardo-Regular.ttf",
+  src: [
+    { path: "./_fonts/cardo/Cardo-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/cardo/Cardo-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/cardo/Cardo-Bold.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-cardo",
   display: "swap",
 });
@@ -174,13 +266,25 @@ const eczar = localFont({
 });
 
 const neuton = localFont({
-  src: "./_fonts/neuton/Neuton-Regular.ttf",
+  src: [
+    { path: "./_fonts/neuton/Neuton-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "./_fonts/neuton/Neuton-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/neuton/Neuton-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/neuton/Neuton-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/neuton/Neuton-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/neuton/Neuton-ExtraBold.ttf", weight: "800", style: "normal" },
+  ],
   variable: "--font-neuton",
   display: "swap",
 });
 
 const ptSerif = localFont({
-  src: "./_fonts/ptserif/PTSerif-Regular.ttf",
+  src: [
+    { path: "./_fonts/ptserif/PTSerif-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/ptserif/PTSerif-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/ptserif/PTSerif-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/ptserif/PTSerif-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
   variable: "--font-pt-serif",
   display: "swap",
 });
@@ -192,7 +296,22 @@ const sourceSerif = localFont({
 });
 
 const spectral = localFont({
-  src: "./_fonts/spectral/Spectral-Regular.ttf",
+  src: [
+    { path: "./_fonts/spectral/Spectral-ExtraLight.ttf", weight: "200", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-ExtraLightItalic.ttf", weight: "200", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-LightItalic.ttf", weight: "300", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-SemiBoldItalic.ttf", weight: "600", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./_fonts/spectral/Spectral-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/spectral/Spectral-ExtraBoldItalic.ttf", weight: "800", style: "italic" },
+  ],
   variable: "--font-spectral",
   display: "swap",
 });
@@ -217,7 +336,15 @@ const bioRhyme = localFont({
 });
 
 const inknutAntiqua = localFont({
-  src: "./_fonts/inknutantiqua/InknutAntiqua-Regular.ttf",
+  src: [
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-Light.ttf", weight: "300", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-SemiBold.ttf", weight: "600", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-ExtraBold.ttf", weight: "800", style: "normal" },
+    { path: "./_fonts/inknutantiqua/InknutAntiqua-Black.ttf", weight: "900", style: "normal" },
+  ],
   variable: "--font-inknut-antiqua",
   display: "swap",
 });
@@ -236,7 +363,12 @@ const inconsolata = localFont({
 });
 
 const spaceMono = localFont({
-  src: "./_fonts/spacemono/SpaceMono-Regular.ttf",
+  src: [
+    { path: "./_fonts/spacemono/SpaceMono-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./_fonts/spacemono/SpaceMono-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./_fonts/spacemono/SpaceMono-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./_fonts/spacemono/SpaceMono-BoldItalic.ttf", weight: "700", style: "italic" },
+  ],
   variable: "--font-space-mono",
   display: "swap",
 });
