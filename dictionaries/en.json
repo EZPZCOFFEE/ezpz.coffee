@@ -219,6 +219,13 @@
       "full": "Full",
       "sandwich": "Sandwich"
     },
+    "templateOptions": {
+      "brutalist": "Brutalist",
+      "minimal": "Minimal",
+      "modern": "Modern",
+      "classic": "Classic",
+      "playful": "Playful"
+    },
     "surfaceSection": "Bag surface",
     "uploadHelper": "Upload one JPG or PNG (max 10MB). Drag to crop in the preview.",
     "uploadLabel": "Upload artwork",

@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 
 import styles from "@/app/styles.module.scss";
 
-import { CustomizationFormValues, SurfaceValue } from "./formConfig";
+import { CustomizationFormValues, TemplatePreset } from "./formConfig";
 import PreviewCanvas, { type PreviewCanvasHandle } from "./PreviewCanvas";
 
 interface PreviewDisplayProps {
@@ -13,12 +13,14 @@ interface PreviewDisplayProps {
   roastPreviewLabel?: string;
   grindPreviewLabel?: string;
   selectedArtworkFile?: File;
-  surfaceValue: SurfaceValue;
-  surfacePreviewLabel?: string;
-  surfacePreviewDescription: string;
+  /** The template name for display in footer */
+  templateLabel?: string;
+  /** Description text for the footer */
+  templateDescription?: string;
   labelFontFamily?: string;
   labelFontWeight?: string;
   labelFontSizeMultiplier?: number;
+  templatePreset?: TemplatePreset;
 }
 
 const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
@@ -27,12 +29,12 @@ const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
       formValues,
       roastPreviewLabel,
       selectedArtworkFile,
-      surfaceValue,
-      surfacePreviewLabel,
-      surfacePreviewDescription,
+      templateLabel,
+      templateDescription,
       labelFontFamily,
       labelFontWeight,
       labelFontSizeMultiplier,
+      templatePreset,
     },
     ref
   ) => {
@@ -47,7 +49,6 @@ const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
           <PreviewCanvas
             ref={ref}
             selectedArtworkFile={selectedArtworkFile}
-            surfaceValue={surfaceValue}
             customerName={formValues.customerName}
             nameColor={formValues.nameColor}
             panelColor={formValues.panelColor}
@@ -55,11 +56,12 @@ const PreviewDisplay = forwardRef<PreviewCanvasHandle, PreviewDisplayProps>(
             nameFontWeight={labelFontWeight}
             nameFontSizeMultiplier={labelFontSizeMultiplier}
             roastLabel={roastPreviewLabel}
+            templatePreset={templatePreset}
           />
         </div>
         <div className={styles.displayFooter}>
-          <span>{t("selectedSurface", { surface: surfacePreviewLabel ?? t("chooseSurface") })}</span>
-          <span>{surfacePreviewDescription}</span>
+          <span>{t("selectedSurface", { surface: templateLabel ?? t("chooseSurface") })}</span>
+          {templateDescription && <span>{templateDescription}</span>}
         </div>
       </div>
     );

@@ -219,6 +219,13 @@
       "full": "Intégrale",
       "sandwich": "Sandwich"
     },
+    "templateOptions": {
+      "brutalist": "Brutaliste",
+      "minimal": "Minimaliste",
+      "modern": "Moderne",
+      "classic": "Classique",
+      "playful": "Ludique"
+    },
     "surfaceSection": "Surface du sachet",
     "uploadHelper": "Téléchargez un JPG ou PNG (max 10Mo). Faites glisser pour recadrer dans l'aperçu.",
     "uploadLabel": "Télécharger le visuel",

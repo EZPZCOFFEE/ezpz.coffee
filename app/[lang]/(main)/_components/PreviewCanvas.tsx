@@ -15,7 +15,14 @@ import {
 import styles from "@/app/styles.module.scss";
 import bagMockup from "@/public/bags/mockup.jpg";
 
-import { SurfaceValue, defaultPanelColor, sanitizeHexColor } from "./formConfig";
+import {
+  type ElementPosition,
+  type SurfaceValue,
+  type TemplatePreset,
+  type TextTransform,
+  defaultPanelColor,
+  sanitizeHexColor,
+} from "./formConfig";
 
 export interface PreviewCanvasHandle {
   exportLabelImage: () => Promise<Blob | null>;
@@ -89,15 +96,57 @@ const SURFACE_WINDOWS: Record<SurfaceValue, readonly SurfaceWindow[]> = {
 };
 
 const DEFAULT_NAME_FONT_FAMILY = 'Helvetica, "Helvetica Neue", Arial, sans-serif';
-const NAME_FONT_MAX = 27 * CANVAS_SCALE;
+const NAME_FONT_MAX = 24 * CANVAS_SCALE;
 const NAME_FONT_MIN = 18 * CANVAS_SCALE;
 const NAME_PADDING_X = 12 * CANVAS_SCALE;
-const NAME_VERTICAL_OFFSET = 2 * CANVAS_SCALE;
 const NAME_MAX_TEXT_WIDTH = LABEL_RECT.width - NAME_PADDING_X * 2;
 const NAME_CHARACTER_LIMIT = Math.max(8, Math.floor(NAME_MAX_TEXT_WIDTH / (NAME_FONT_MIN * 0.55)));
-const ROAST_INFO_FONT_SIZE = 16 * CANVAS_SCALE;
+const ROAST_INFO_FONT_SIZE = 24 * CANVAS_SCALE;
 const WEIGHT_TEXT = "225g";
 const DEFAULT_LABEL_NAME = "Coffee Name";
+
+/**
+ * Convert ElementPosition (ratios 0-1) to canvas coordinates.
+ * Also returns the appropriate canvas text alignment.
+ */
+const positionToCanvasCoords = (
+  position: ElementPosition,
+  labelRect: typeof LABEL_RECT
+): { x: number; y: number; textAlign: CanvasTextAlign; textBaseline: CanvasTextBaseline } => {
+  // Convert ratio to absolute canvas coordinates
+  const x = labelRect.x + position.x * labelRect.width;
+  const y = labelRect.y + position.y * labelRect.height;
+
+  // Map anchorX to canvas textAlign
+  const textAlign: CanvasTextAlign =
+    position.anchorX === "left" ? "left" : position.anchorX === "right" ? "right" : "center";
+
+  // Map anchorY to canvas textBaseline
+  const textBaseline: CanvasTextBaseline =
+    position.anchorY === "top" ? "top" : position.anchorY === "bottom" ? "bottom" : "middle";
+
+  return { x, y, textAlign, textBaseline };
+};
+
+/**
+ * Convert ElementPosition to label-relative coordinates (for export).
+ */
+const positionToLabelCoords = (
+  position: ElementPosition,
+  labelWidth: number,
+  labelHeight: number
+): { x: number; y: number; textAlign: CanvasTextAlign; textBaseline: CanvasTextBaseline } => {
+  const x = position.x * labelWidth;
+  const y = position.y * labelHeight;
+
+  const textAlign: CanvasTextAlign =
+    position.anchorX === "left" ? "left" : position.anchorX === "right" ? "right" : "center";
+
+  const textBaseline: CanvasTextBaseline =
+    position.anchorY === "top" ? "top" : position.anchorY === "bottom" ? "bottom" : "middle";
+
+  return { x, y, textAlign, textBaseline };
+};
 
 const planNameRendering = (
   context: CanvasRenderingContext2D,
@@ -166,7 +215,6 @@ const planNameRendering = (
 
 interface PreviewCanvasProps {
   selectedArtworkFile: File | undefined;
-  surfaceValue: SurfaceValue;
   customerName?: string;
   nameColor?: string;
   panelColor?: string;
@@ -174,13 +222,38 @@ interface PreviewCanvasProps {
   nameFontWeight?: string;
   nameFontSizeMultiplier?: number;
   roastLabel?: string;
+  /** Full template preset for advanced rendering */
+  templatePreset?: TemplatePreset;
+  /**
+   * @deprecated Use templatePreset instead. Kept for backward compatibility.
+   * Only used as fallback when templatePreset is not provided.
+   */
+  surfaceValue?: SurfaceValue;
 }
+
+/**
+ * Apply text transform to a string.
+ */
+const applyTextTransform = (text: string, transform: TextTransform): string => {
+  switch (transform) {
+    case "uppercase":
+      return text.toUpperCase();
+    case "lowercase":
+      return text.toLowerCase();
+    case "capitalize":
+      return text
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(" ");
+    default:
+      return text;
+  }
+};
 
 const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
   (
     {
       selectedArtworkFile,
-      surfaceValue,
       customerName,
       nameColor,
       panelColor,
@@ -188,6 +261,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       nameFontWeight = "400",
       nameFontSizeMultiplier = 1,
       roastLabel,
+      templatePreset,
+      surfaceValue = "bottom",
     },
     ref
   ) => {
@@ -206,10 +281,75 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
     const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
     const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
     const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
-    const activeWindows = useMemo(
-      () => SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom,
-      [surfaceValue]
-    );
+    // Compute panel windows from template preset if available, otherwise use surface windows
+    const activeWindows = useMemo(() => {
+      // Border panel creates a frame (4 edge rectangles)
+      if (templatePreset?.borderPanel?.visible && templatePreset.borderPanel.sideThicknessRatio > 0) {
+        // Side thickness (left/right) - relative to label width
+        const sideThickness = Math.round(LABEL_RECT.width * templatePreset.borderPanel.sideThicknessRatio);
+        // Edge thickness (top/bottom) - relative to label height, defaults to sideThicknessRatio if not specified
+        const edgeThickness = Math.round(
+          LABEL_RECT.height *
+            (templatePreset.borderPanel.edgeThicknessRatio ?? templatePreset.borderPanel.sideThicknessRatio)
+        );
+        const windows: SurfaceWindow[] = [
+          // Top edge
+          { x: LABEL_RECT.x, y: LABEL_RECT.y, width: LABEL_RECT.width, height: edgeThickness },
+          // Bottom edge
+          {
+            x: LABEL_RECT.x,
+            y: LABEL_RECT.y + LABEL_RECT.height - edgeThickness,
+            width: LABEL_RECT.width,
+            height: edgeThickness,
+          },
+          // Left edge (between top and bottom)
+          {
+            x: LABEL_RECT.x,
+            y: LABEL_RECT.y + edgeThickness,
+            width: sideThickness,
+            height: LABEL_RECT.height - edgeThickness * 2,
+          },
+          // Right edge (between top and bottom)
+          {
+            x: LABEL_RECT.x + LABEL_RECT.width - sideThickness,
+            y: LABEL_RECT.y + edgeThickness,
+            width: sideThickness,
+            height: LABEL_RECT.height - edgeThickness * 2,
+          },
+        ];
+        return windows;
+      }
+
+      if (templatePreset?.topPanel || templatePreset?.bottomPanel) {
+        const windows: SurfaceWindow[] = [];
+
+        // Top panel
+        if (templatePreset.topPanel?.visible && templatePreset.topPanel.heightRatio > 0) {
+          const height = Math.round(LABEL_RECT.height * templatePreset.topPanel.heightRatio);
+          windows.push({
+            x: LABEL_RECT.x,
+            y: LABEL_RECT.y,
+            width: LABEL_RECT.width,
+            height,
+          });
+        }
+
+        // Bottom panel
+        if (templatePreset.bottomPanel?.visible && templatePreset.bottomPanel.heightRatio > 0) {
+          const height = Math.round(LABEL_RECT.height * templatePreset.bottomPanel.heightRatio);
+          windows.push({
+            x: LABEL_RECT.x,
+            y: LABEL_RECT.y + LABEL_RECT.height - height,
+            width: LABEL_RECT.width,
+            height,
+          });
+        }
+
+        return windows;
+      }
+
+      return SURFACE_WINDOWS[surfaceValue] ?? SURFACE_WINDOWS.bottom;
+    }, [surfaceValue, templatePreset]);
     const nameTextColor = useMemo<string>(() => sanitizeHexColor(nameColor), [nameColor]);
     const panelFillColor = useMemo<string>(
       () => sanitizeHexColor(panelColor, defaultPanelColor),
@@ -228,33 +368,6 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       const computedValue = getComputedStyle(document.body).getPropertyValue(varName);
       return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
     }, [nameFontFamily]);
-    const bottomPanelRect = useMemo(() => {
-      if (surfaceValue === "sandwich") {
-        return SURFACE_WINDOWS.sandwich[1];
-      }
-      if (surfaceValue === "bottom") {
-        return SURFACE_WINDOWS.bottom[0];
-      }
-      return {
-        x: LABEL_RECT.x,
-        y: LABEL_RECT.y + LABEL_RECT.height - BOTTOM_STRIP_HEIGHT,
-        width: LABEL_RECT.width,
-        height: BOTTOM_STRIP_HEIGHT,
-      };
-    }, [surfaceValue]);
-
-    const topPanelRect = useMemo(() => {
-      if (surfaceValue === "sandwich") {
-        return SURFACE_WINDOWS.sandwich[0];
-      }
-      // For bottom and full layouts, use a virtual top panel area
-      return {
-        x: LABEL_RECT.x,
-        y: LABEL_RECT.y,
-        width: LABEL_RECT.width,
-        height: BOTTOM_STRIP_HEIGHT,
-      };
-    }, [surfaceValue]);
 
     useEffect(() => {
       const image = new Image();
@@ -357,6 +470,12 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       // Draw bag
       context.drawImage(bagImage, bagOffsetX, bagOffsetY, bagWidth, bagHeight);
 
+      // Draw body color if template has one (for split-panel designs)
+      if (templatePreset?.bodyColor) {
+        context.fillStyle = templatePreset.bodyColor;
+        context.fillRect(LABEL_RECT.x, LABEL_RECT.y, LABEL_RECT.width, LABEL_RECT.height);
+      }
+
       // Draw artwork clipped to label area
       if (artworkImage) {
         context.save();
@@ -392,38 +511,152 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
         });
       }
 
-      // Draw name text
+      // Get text transform from template preset
+      const textTransform = templatePreset?.textTransform ?? "capitalize";
+      const isNameItalic = templatePreset?.nameItalic ?? false;
+
+      // Compute effective font weights (template preset overrides prop)
+      const effectiveNameFontWeight = templatePreset?.nameFontWeight ?? nameFontWeight;
+      const effectiveSecondaryFontWeight =
+        templatePreset?.secondaryFontWeight ?? templatePreset?.nameFontWeight ?? nameFontWeight;
+
+      // Compute effective font size multipliers (template preset overrides prop)
+      const effectiveNameFontMultiplier = templatePreset?.nameFontSizeMultiplier ?? nameFontSizeMultiplier;
+      const effectiveSecondaryFontMultiplier =
+        templatePreset?.secondaryFontSizeMultiplier ?? nameFontSizeMultiplier;
+
+      // Default positions if not specified in template
+      const defaultNamePosition: ElementPosition = { x: 0.05, y: 0.5, anchorX: "left", anchorY: "middle" };
+      const defaultRoastPosition: ElementPosition = { x: 0.05, y: 0.9, anchorX: "left", anchorY: "middle" };
+      const defaultWeightPosition: ElementPosition = { x: 0.95, y: 0.9, anchorX: "right", anchorY: "middle" };
+
+      // Draw name text using coordinate-based positioning
       if (sanitizedName) {
+        const transformedName = applyTextTransform(sanitizedName, textTransform);
+        const italicPrefix = isNameItalic ? "italic " : "";
         const namePlan = planNameRendering(
           context,
-          sanitizedName,
+          transformedName,
           resolvedFontFamily,
-          nameFontWeight,
-          nameFontSizeMultiplier
+          `${italicPrefix}${effectiveNameFontWeight}`,
+          effectiveNameFontMultiplier
         );
         if (namePlan) {
-          const panelTextMaxWidth = Math.max(40, bottomPanelRect.width - NAME_PADDING_X * 2);
-          const textX = bottomPanelRect.x + NAME_PADDING_X;
-          const textY = bottomPanelRect.y + bottomPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
-          context.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
-          context.textAlign = "left";
-          context.textBaseline = "middle";
+          // Use coordinate-based positioning
+          const namePos = templatePreset?.namePosition ?? defaultNamePosition;
+          const { x: textX, y: textY, textAlign, textBaseline } = positionToCanvasCoords(namePos, LABEL_RECT);
+
+          context.font = `${italicPrefix}${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
+          context.textAlign = textAlign;
+          context.textBaseline = textBaseline;
           context.fillStyle = nameTextColor;
-          context.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
+          context.fillText(namePlan.text, textX, textY, NAME_MAX_TEXT_WIDTH);
         }
       }
 
-      // Draw roast label and weight on top panel
+      // Draw roast and weight using coordinate-based positioning
       if (roastLabel) {
-        const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
-        const roastInfoX = topPanelRect.x + NAME_PADDING_X;
-        const roastInfoY = topPanelRect.y + topPanelRect.height / 2 + NAME_VERTICAL_OFFSET;
-        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
-        context.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
-        context.textAlign = "left";
-        context.textBaseline = "middle";
-        context.fillStyle = nameTextColor;
-        context.fillText(roastInfoText, roastInfoX, roastInfoY);
+        const transformedRoast = applyTextTransform(roastLabel, textTransform);
+        const transformedWeight = applyTextTransform(WEIGHT_TEXT, textTransform);
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * effectiveSecondaryFontMultiplier;
+        context.font = `${effectiveSecondaryFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
+        context.fillStyle = templatePreset?.secondaryTextColor ?? nameTextColor;
+
+        // Draw roast at specified coordinates
+        const roastPos = templatePreset?.roastPosition ?? defaultRoastPosition;
+        const {
+          x: roastX,
+          y: roastY,
+          textAlign: roastAlign,
+          textBaseline: roastBaseline,
+        } = positionToCanvasCoords(roastPos, LABEL_RECT);
+
+        context.textAlign = roastAlign;
+        context.textBaseline = roastBaseline;
+        context.fillText(transformedRoast, roastX, roastY);
+
+        // Draw weight at specified coordinates
+        const weightPos = templatePreset?.weightPosition ?? defaultWeightPosition;
+        const {
+          x: weightX,
+          y: weightY,
+          textAlign: weightAlign,
+          textBaseline: weightBaseline,
+        } = positionToCanvasCoords(weightPos, LABEL_RECT);
+
+        context.textAlign = weightAlign;
+        context.textBaseline = weightBaseline;
+        context.fillText(transformedWeight, weightX, weightY);
+      }
+
+      // Draw accent line if configured (using coordinate-based x position)
+      if (templatePreset?.accentLine?.visible) {
+        const lineColor = templatePreset.accentLine.color;
+        const lineXRatio = templatePreset.accentLine.x;
+        const lineWidth = 3 * CANVAS_SCALE;
+        const lineHeightRatio = templatePreset.accentLine.heightRatio ?? 0.15;
+        const lineHeight = LABEL_RECT.height * lineHeightRatio;
+
+        // Convert x ratio to canvas coordinate
+        const lineX = LABEL_RECT.x + lineXRatio * LABEL_RECT.width;
+        const lineY = LABEL_RECT.y + (LABEL_RECT.height - lineHeight) / 2;
+
+        context.fillStyle = lineColor;
+        context.fillRect(lineX - lineWidth / 2, lineY, lineWidth, lineHeight);
+      }
+
+      // Draw icon if configured (using coordinate-based positioning)
+      if (templatePreset?.icon?.type && templatePreset.icon.type !== "none") {
+        const iconSizeRatio = templatePreset.icon.sizeRatio ?? 0.05;
+        const iconSize = LABEL_RECT.width * iconSizeRatio;
+
+        // Use coordinate-based positioning
+        const iconPos = templatePreset.icon.position;
+        const { x: iconX, y: iconY } = positionToCanvasCoords(iconPos, LABEL_RECT);
+
+        context.fillStyle = templatePreset.secondaryTextColor ?? nameTextColor;
+
+        if (templatePreset.icon.type === "star") {
+          // Draw 6-point star
+          context.beginPath();
+          const spikes = 6;
+          const outerRadius = iconSize / 2;
+          const innerRadius = outerRadius * 0.5;
+          for (let i = 0; i < spikes * 2; i++) {
+            const radius = i % 2 === 0 ? outerRadius : innerRadius;
+            const angle = (Math.PI * i) / spikes - Math.PI / 2;
+            const x = iconX + Math.cos(angle) * radius;
+            const y = iconY + Math.sin(angle) * radius;
+            if (i === 0) context.moveTo(x, y);
+            else context.lineTo(x, y);
+          }
+          context.closePath();
+          context.fill();
+        } else if (templatePreset.icon.type === "bean") {
+          // Draw coffee bean shape (simplified oval)
+          context.beginPath();
+          context.ellipse(iconX, iconY, iconSize / 3, iconSize / 2, 0, 0, Math.PI * 2);
+          context.fill();
+          // Draw center line
+          context.strokeStyle = panelFillColor;
+          context.lineWidth = 2 * CANVAS_SCALE;
+          context.beginPath();
+          context.moveTo(iconX, iconY - iconSize / 3);
+          context.quadraticCurveTo(iconX + iconSize / 6, iconY, iconX, iconY + iconSize / 3);
+          context.stroke();
+        } else if (templatePreset.icon.type === "squares") {
+          // Draw 3 squares in a row
+          const squareSize = iconSize / 4;
+          const gap = squareSize / 2;
+          for (let i = 0; i < 3; i++) {
+            context.fillRect(
+              iconX - (squareSize * 1.5 + gap) + i * (squareSize + gap),
+              iconY - squareSize / 2,
+              squareSize,
+              squareSize
+            );
+          }
+        }
       }
     }, [
       activeWindows,
@@ -434,12 +667,11 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       nameTextColor,
       sanitizedName,
       panelFillColor,
-      bottomPanelRect,
-      topPanelRect,
       resolvedFontFamily,
       nameFontWeight,
       nameFontSizeMultiplier,
       roastLabel,
+      templatePreset,
     ]);
 
     useEffect(() => {
@@ -453,8 +685,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       const ctx = exportCanvas.getContext("2d");
       if (!ctx) return null;
 
-      // Fill with panel color as background (or white if no artwork)
-      ctx.fillStyle = artworkImage ? panelFillColor : "#ffffff";
+      // Fill with body color or panel color as background
+      ctx.fillStyle = templatePreset?.bodyColor ?? (artworkImage ? panelFillColor : "#ffffff");
       ctx.fillRect(0, 0, LABEL_WIDTH, LABEL_HEIGHT);
 
       // Draw artwork (translated so label origin is at 0,0)
@@ -488,51 +720,155 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
         });
       }
 
-      // Draw name text (translated to label-relative coordinates)
+      // Get text transform from template preset
+      const textTransform = templatePreset?.textTransform ?? "capitalize";
+      const isNameItalic = templatePreset?.nameItalic ?? false;
+
+      // Compute effective font weights (template preset overrides prop)
+      const effectiveNameFontWeight = templatePreset?.nameFontWeight ?? nameFontWeight;
+      const effectiveSecondaryFontWeight =
+        templatePreset?.secondaryFontWeight ?? templatePreset?.nameFontWeight ?? nameFontWeight;
+
+      // Compute effective font size multipliers (template preset overrides prop)
+      const effectiveNameFontMultiplier = templatePreset?.nameFontSizeMultiplier ?? nameFontSizeMultiplier;
+      const effectiveSecondaryFontMultiplier =
+        templatePreset?.secondaryFontSizeMultiplier ?? nameFontSizeMultiplier;
+
+      // Default positions if not specified in template
+      const defaultNamePosition: ElementPosition = { x: 0.05, y: 0.5, anchorX: "left", anchorY: "middle" };
+      const defaultRoastPosition: ElementPosition = { x: 0.05, y: 0.9, anchorX: "left", anchorY: "middle" };
+      const defaultWeightPosition: ElementPosition = { x: 0.95, y: 0.9, anchorX: "right", anchorY: "middle" };
+
+      // Draw name text using coordinate-based positioning
       if (sanitizedName) {
+        const transformedName = applyTextTransform(sanitizedName, textTransform);
+        const italicPrefix = isNameItalic ? "italic " : "";
         const namePlan = planNameRendering(
           ctx,
-          sanitizedName,
+          transformedName,
           resolvedFontFamily,
-          nameFontWeight,
-          nameFontSizeMultiplier
+          `${italicPrefix}${effectiveNameFontWeight}`,
+          effectiveNameFontMultiplier
         );
         if (namePlan) {
-          const translatedPanel = {
-            x: bottomPanelRect.x - LABEL_RECT.x,
-            y: bottomPanelRect.y - LABEL_RECT.y,
-            width: bottomPanelRect.width,
-            height: bottomPanelRect.height,
-          };
-          const panelTextMaxWidth = Math.max(40, translatedPanel.width - NAME_PADDING_X * 2);
-          const textX = translatedPanel.x + NAME_PADDING_X;
-          const textY = translatedPanel.y + translatedPanel.height / 2 + NAME_VERTICAL_OFFSET;
+          // Use coordinate-based positioning (label-relative)
+          const namePos = templatePreset?.namePosition ?? defaultNamePosition;
+          const {
+            x: textX,
+            y: textY,
+            textAlign,
+            textBaseline,
+          } = positionToLabelCoords(namePos, LABEL_WIDTH, LABEL_HEIGHT);
 
-          ctx.font = `${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
-          ctx.textAlign = "left";
-          ctx.textBaseline = "middle";
+          ctx.font = `${italicPrefix}${namePlan.fontWeight} ${namePlan.fontSize}px ${namePlan.fontFamily}`;
+          ctx.textAlign = textAlign;
+          ctx.textBaseline = textBaseline;
           ctx.fillStyle = nameTextColor;
-          ctx.fillText(namePlan.text, textX, textY, panelTextMaxWidth);
+          ctx.fillText(namePlan.text, textX, textY, LABEL_WIDTH - NAME_PADDING_X * 2);
         }
       }
 
-      // Draw roast label and weight (translated to label-relative coordinates)
+      // Draw roast and weight using coordinate-based positioning
       if (roastLabel) {
-        const translatedTopPanel = {
-          x: topPanelRect.x - LABEL_RECT.x,
-          y: topPanelRect.y - LABEL_RECT.y,
-          width: topPanelRect.width,
-          height: topPanelRect.height,
-        };
-        const roastInfoText = `${roastLabel} · ${WEIGHT_TEXT}`;
-        const roastInfoX = translatedTopPanel.x + NAME_PADDING_X;
-        const roastInfoY = translatedTopPanel.y + translatedTopPanel.height / 2 + NAME_VERTICAL_OFFSET;
-        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * nameFontSizeMultiplier;
-        ctx.font = `${nameFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
-        ctx.textAlign = "left";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = nameTextColor;
-        ctx.fillText(roastInfoText, roastInfoX, roastInfoY);
+        const transformedRoast = applyTextTransform(roastLabel, textTransform);
+        const transformedWeight = applyTextTransform(WEIGHT_TEXT, textTransform);
+        const scaledRoastFontSize = ROAST_INFO_FONT_SIZE * effectiveSecondaryFontMultiplier;
+        ctx.font = `${effectiveSecondaryFontWeight} ${scaledRoastFontSize}px ${resolvedFontFamily}`;
+        ctx.fillStyle = templatePreset?.secondaryTextColor ?? nameTextColor;
+
+        // Draw roast at specified coordinates
+        const roastPos = templatePreset?.roastPosition ?? defaultRoastPosition;
+        const {
+          x: roastX,
+          y: roastY,
+          textAlign: roastAlign,
+          textBaseline: roastBaseline,
+        } = positionToLabelCoords(roastPos, LABEL_WIDTH, LABEL_HEIGHT);
+
+        ctx.textAlign = roastAlign;
+        ctx.textBaseline = roastBaseline;
+        ctx.fillText(transformedRoast, roastX, roastY);
+
+        // Draw weight at specified coordinates
+        const weightPos = templatePreset?.weightPosition ?? defaultWeightPosition;
+        const {
+          x: weightX,
+          y: weightY,
+          textAlign: weightAlign,
+          textBaseline: weightBaseline,
+        } = positionToLabelCoords(weightPos, LABEL_WIDTH, LABEL_HEIGHT);
+
+        ctx.textAlign = weightAlign;
+        ctx.textBaseline = weightBaseline;
+        ctx.fillText(transformedWeight, weightX, weightY);
+      }
+
+      // Draw accent line if configured (using coordinate-based x position)
+      if (templatePreset?.accentLine?.visible) {
+        const lineColor = templatePreset.accentLine.color;
+        const lineXRatio = templatePreset.accentLine.x;
+        const lineWidth = 3 * CANVAS_SCALE;
+        const lineHeightRatio = templatePreset.accentLine.heightRatio ?? 0.15;
+        const lineHeight = LABEL_HEIGHT * lineHeightRatio;
+
+        // Convert x ratio to label-relative coordinate
+        const lineX = lineXRatio * LABEL_WIDTH;
+        const lineY = (LABEL_HEIGHT - lineHeight) / 2;
+
+        ctx.fillStyle = lineColor;
+        ctx.fillRect(lineX - lineWidth / 2, lineY, lineWidth, lineHeight);
+      }
+
+      // Draw icon if configured (using coordinate-based positioning)
+      if (templatePreset?.icon?.type && templatePreset.icon.type !== "none") {
+        const iconSizeRatio = templatePreset.icon.sizeRatio ?? 0.05;
+        const iconSize = LABEL_WIDTH * iconSizeRatio;
+
+        // Use coordinate-based positioning (label-relative)
+        const iconPos = templatePreset.icon.position;
+        const { x: iconX, y: iconY } = positionToLabelCoords(iconPos, LABEL_WIDTH, LABEL_HEIGHT);
+
+        ctx.fillStyle = templatePreset.secondaryTextColor ?? nameTextColor;
+
+        if (templatePreset.icon.type === "star") {
+          // Draw 6-point star
+          ctx.beginPath();
+          const spikes = 6;
+          const outerRadius = iconSize / 2;
+          const innerRadius = outerRadius * 0.5;
+          for (let i = 0; i < spikes * 2; i++) {
+            const radius = i % 2 === 0 ? outerRadius : innerRadius;
+            const angle = (Math.PI * i) / spikes - Math.PI / 2;
+            const x = iconX + Math.cos(angle) * radius;
+            const y = iconY + Math.sin(angle) * radius;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.fill();
+        } else if (templatePreset.icon.type === "bean") {
+          // Draw coffee bean shape
+          ctx.beginPath();
+          ctx.ellipse(iconX, iconY, iconSize / 3, iconSize / 2, 0, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = panelFillColor;
+          ctx.lineWidth = 2 * CANVAS_SCALE;
+          ctx.beginPath();
+          ctx.moveTo(iconX, iconY - iconSize / 3);
+          ctx.quadraticCurveTo(iconX + iconSize / 6, iconY, iconX, iconY + iconSize / 3);
+          ctx.stroke();
+        } else if (templatePreset.icon.type === "squares") {
+          const squareSize = iconSize / 4;
+          const gap = squareSize / 2;
+          for (let i = 0; i < 3; i++) {
+            ctx.fillRect(
+              iconX - (squareSize * 1.5 + gap) + i * (squareSize + gap),
+              iconY - squareSize / 2,
+              squareSize,
+              squareSize
+            );
+          }
+        }
       }
 
       return new Promise((resolve) => {
@@ -543,8 +879,6 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       artworkImage,
       artworkOffset,
       artworkScale,
-      bottomPanelRect,
-      topPanelRect,
       nameTextColor,
       nameFontSizeMultiplier,
       nameFontWeight,
@@ -552,6 +886,7 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       resolvedFontFamily,
       sanitizedName,
       roastLabel,
+      templatePreset,
     ]);
 
     useImperativeHandle(ref, () => ({ exportLabelImage }), [exportLabelImage]);

@@ -14,19 +14,16 @@ import CustomizationPanel from "./CustomizationPanel";
 import {
   CustomizationFormValues,
   customizationFormSchema,
-  defaultNameColor,
-  defaultPanelColor,
-  defaultSurfaceValue,
-  defaultFontValue,
-  defaultFontWeightValue,
   defaultFontSizeValue,
+  defaultFontWeightValue,
+  defaultTemplateValue,
   FONT_SIZE_MULTIPLIERS,
   getOptionLabel,
   getFontFamily,
+  getTemplatePreset,
   useGrindOptions,
   useRoastOptions,
-  useSurfaceOptions,
-  useSurfaceDescriptions,
+  useTemplateOptions,
   type RoastValue,
   type GrindValue,
 } from "./formConfig";
@@ -57,18 +54,21 @@ const CustomizationContent: React.FC = () => {
   const { openCart } = useCartUI();
   const previewRef = useRef<PreviewCanvasHandle>(null);
 
+  // Get initial values from the default template
+  const initialPreset = getTemplatePreset(defaultTemplateValue);
+
   const formMethods = useForm<CustomizationFormValues>({
     resolver: zodResolver(customizationFormSchema),
     defaultValues: {
       customerName: "",
-      nameColor: defaultNameColor,
-      labelFont: defaultFontValue,
-      labelFontWeight: defaultFontWeightValue,
+      nameColor: initialPreset.nameColor,
+      labelFont: initialPreset.labelFont,
+      labelFontWeight: initialPreset.nameFontWeight,
       labelFontSize: defaultFontSizeValue,
       roastProfile: "medium",
       grindSetting: "bean",
-      surfaceLayout: defaultSurfaceValue,
-      panelColor: defaultPanelColor,
+      template: defaultTemplateValue,
+      panelColor: initialPreset.panelColor,
       quantity: 1,
       artworkFile: [],
     },
@@ -77,6 +77,18 @@ const CustomizationContent: React.FC = () => {
 
   const watchedValues = useWatch({ control: formMethods.control });
   const selectedArtworkFile = watchedValues.artworkFile?.[0];
+
+  // Apply template preset values when template changes
+  const templateValue = watchedValues.template;
+  useEffect(() => {
+    if (templateValue) {
+      const preset = getTemplatePreset(templateValue);
+      formMethods.setValue("panelColor", preset.panelColor);
+      formMethods.setValue("nameColor", preset.nameColor);
+      formMethods.setValue("labelFont", preset.labelFont);
+      formMethods.setValue("labelFontWeight", preset.nameFontWeight);
+    }
+  }, [templateValue, formMethods]);
 
   // Sync form roast/grind selections to Shopify's ProductProvider
   const roastValue = watchedValues.roastProfile;
@@ -96,14 +108,14 @@ const CustomizationContent: React.FC = () => {
 
   const roastOptions = useRoastOptions();
   const grindOptions = useGrindOptions();
-  const surfaceOptions = useSurfaceOptions();
-  const surfaceDescriptions = useSurfaceDescriptions();
+  const templateOptions = useTemplateOptions();
 
   const roastPreviewLabel = getOptionLabel(watchedValues.roastProfile, roastOptions);
   const grindPreviewLabel = getOptionLabel(watchedValues.grindSetting, grindOptions);
-  const surfaceValue = watchedValues.surfaceLayout ?? defaultSurfaceValue;
-  const surfacePreviewLabel = getOptionLabel(surfaceValue, surfaceOptions);
-  const surfacePreviewDetail = surfaceDescriptions[surfaceValue];
+  // Get template preset and label
+  const currentTemplate = watchedValues.template ?? defaultTemplateValue;
+  const currentTemplatePreset = getTemplatePreset(currentTemplate);
+  const templateLabel = getOptionLabel(currentTemplate, templateOptions);
   const labelFontFamily = getFontFamily(watchedValues.labelFont);
   const labelFontWeight = watchedValues.labelFontWeight ?? defaultFontWeightValue;
   const labelFontSizeMultiplier = FONT_SIZE_MULTIPLIERS[watchedValues.labelFontSize ?? defaultFontSizeValue];
@@ -170,12 +182,11 @@ const CustomizationContent: React.FC = () => {
             roastPreviewLabel={roastPreviewLabel}
             grindPreviewLabel={grindPreviewLabel}
             selectedArtworkFile={selectedArtworkFile}
-            surfaceValue={surfaceValue}
-            surfacePreviewLabel={surfacePreviewLabel}
-            surfacePreviewDescription={surfacePreviewDetail}
+            templateLabel={templateLabel}
             labelFontFamily={labelFontFamily}
             labelFontWeight={labelFontWeight}
             labelFontSizeMultiplier={labelFontSizeMultiplier}
+            templatePreset={currentTemplatePreset}
           />
         </div>
       </div>
