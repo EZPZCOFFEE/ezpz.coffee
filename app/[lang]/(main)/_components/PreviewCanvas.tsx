@@ -281,6 +281,7 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
     const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
     const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
     const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
+    const [fontsReady, setFontsReady] = useState(false);
     // Compute panel windows from template preset if available, otherwise use surface windows
     const activeWindows = useMemo(() => {
       // Border panel creates a frame (4 edge rectangles)
@@ -356,9 +357,8 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       [panelColor]
     );
 
-    // Resolve CSS variable to actual font family for canvas rendering
-    // Next.js localFont sets CSS variables on <body>, not <html>
-    const resolvedFontFamily = useMemo<string>(() => {
+    // Helper to resolve CSS variable to actual font family
+    const resolveFontFamily = useCallback((): string => {
       if (!nameFontFamily) return DEFAULT_NAME_FONT_FAMILY;
       if (!nameFontFamily.startsWith("var(")) return nameFontFamily;
 
@@ -368,6 +368,53 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       const computedValue = getComputedStyle(document.body).getPropertyValue(varName);
       return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
     }, [nameFontFamily]);
+
+    // Resolved font family - depends on fontsReady to re-resolve after fonts load
+    const resolvedFontFamily = useMemo<string>(() => {
+      // Force re-computation when fonts are ready
+      void fontsReady;
+      return resolveFontFamily();
+    }, [resolveFontFamily, fontsReady]);
+
+    // Explicitly load the font and trigger re-render when ready
+    // document.fonts.load() forces the browser to load the font even if no DOM element uses it
+    useEffect(() => {
+      if (typeof document === "undefined") return;
+
+      // Reset fontsReady when font family changes
+      setFontsReady(false);
+
+      let cancelled = false;
+
+      // Wait for document.fonts.ready first (ensures @font-face rules are parsed and CSS vars available)
+      document.fonts.ready
+        .then(() => {
+          if (cancelled) return;
+
+          // Re-resolve font family after document.fonts.ready (CSS vars now guaranteed available)
+          const fontFamily = resolveFontFamily();
+
+          if (fontFamily === DEFAULT_NAME_FONT_FAMILY) {
+            setFontsReady(true);
+            return;
+          }
+
+          // Explicitly load our specific font
+          const fontString = `${NAME_FONT_MAX}px ${fontFamily}`;
+          return document.fonts.load(fontString);
+        })
+        .then(() => {
+          if (!cancelled) setFontsReady(true);
+        })
+        .catch(() => {
+          // Font failed to load, proceed with fallback
+          if (!cancelled) setFontsReady(true);
+        });
+
+      return () => {
+        cancelled = true;
+      };
+    }, [resolveFontFamily]);
 
     useEffect(() => {
       const image = new Image();
@@ -664,6 +711,7 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       artworkOffset,
       artworkScale,
       bagImage,
+      fontsReady,
       nameTextColor,
       sanitizedName,
       panelFillColor,
