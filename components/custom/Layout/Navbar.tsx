@@ -72,7 +72,7 @@ const Logo = () => {
   const t = useTranslations("nav");
 
   return (
-    <div className={styles.logo}>
+    <Link href="/" className={styles.logo}>
       <Image
         src="/logo.svg"
         alt={t("logoAlt")}
@@ -81,7 +81,7 @@ const Logo = () => {
         className={styles.logoImage}
         priority
       />
-    </div>
+    </Link>
   );
 };
 

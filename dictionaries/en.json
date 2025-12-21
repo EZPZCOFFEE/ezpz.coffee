@@ -52,6 +52,18 @@
   "common": {
     "section": "Section {number}"
   },
+  "contact": {
+    "eyebrow": "Contact us",
+    "intro": "Have questions about your order, custom bags, or anything else? We're here to help.",
+    "sections": {
+      "main": {
+        "paragraphs": [
+          "For any inquiries, please reach out to us at help@ezpz.coffee. We typically respond within 24–48 hours. You can also visit us at our location: 3780 Rue Saint-Patrick, Montréal QC H4E 1A2."
+        ]
+      }
+    },
+    "title": "Get in touch"
+  },
   "faq": {
     "categories": {
       "dietary": {
@@ -145,6 +157,7 @@
     "uploadImage": "Upload image"
   },
   "footer": {
+    "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
     "brand": "EZPZ 2025",
     "contactUs": "Contact us",
     "faq": "FAQ",
@@ -219,14 +232,14 @@
       "full": "Full",
       "sandwich": "Sandwich"
     },
+    "surfaceSection": "Bag surface",
     "templateOptions": {
       "brutalist": "Brutalist",
+      "classic": "Classic",
       "minimal": "Minimal",
       "modern": "Modern",
-      "classic": "Classic",
       "playful": "Playful"
     },
-    "surfaceSection": "Bag surface",
     "uploadHelper": "Upload one JPG or PNG (max 10MB). Drag to crop in the preview.",
     "uploadLabel": "Upload artwork",
     "uploadSection": "Upload artwork",
@@ -249,6 +262,14 @@
       "twitterDescription": "Producer partnerships, roast profiles, and brew specs—all in one place.",
       "twitterTitle": "How EZPZ sources and roasts"
     },
+    "contact": {
+      "description": "Get in touch with EZPZ Coffee. Contact us for questions about orders, custom bags, or anything else.",
+      "ogDescription": "Have questions about your order or custom coffee bags? Reach out to the EZPZ team.",
+      "ogTitle": "Contact Us | EZPZ Coffee",
+      "title": "Contact Us | EZPZ Coffee",
+      "twitterDescription": "Get in touch with EZPZ Coffee for any inquiries.",
+      "twitterTitle": "Contact Us | EZPZ Coffee"
+    },
     "faq": {
       "description": "Find answers to common questions about EZPZ specialty coffee, shipping, preparation tips, and dietary information.",
       "ogDescription": "Everything you need to know about our specialty coffee, shipping options, storage tips, and more.",
@@ -257,6 +278,13 @@
       "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
+    "home": {
+      "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
+      "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
+      "ogTitle": "Design a custom EZPZ coffee bag",
+      "title": "Customize your EZPZ coffee bags",
+      "twitterDescription": "Personalize every detail and see the preview instantly."
+    },
     "termsOfUse": {
       "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
       "ogDescription": "Terms of Use for EZPZ.coffee — understand our policies on orders, payments, shipping, and user content.",
@@ -264,13 +292,6 @@
       "title": "Terms of Use | EZPZ Coffee",
       "twitterDescription": "Read the terms and conditions for using EZPZ.coffee.",
       "twitterTitle": "Terms of Use | EZPZ Coffee"
-    },
-    "home": {
-      "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
-      "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
-      "ogTitle": "Design a custom EZPZ coffee bag",
-      "title": "Customize your EZPZ coffee bags",
-      "twitterDescription": "Personalize every detail and see the preview instantly."
     }
   },
   "nav": {
@@ -291,8 +312,8 @@
     "emailPlaceholder": "Enter your email",
     "submitting": "Subscribing...",
     "subscribe": "Subscribe",
-    "successMessage": "You're in! Check your inbox for your 5% discount code.",
-    "title": "Get <highlight>5% off</highlight> when you join our email list."
+    "successMessage": "You're in! Check your inbox for your 15% discount code.",
+    "title": "Get <highlight>15% off</highlight> when you join our email list."
   },
   "passwordPage": {
     "adminLink": "Enter as admin",
@@ -312,56 +333,56 @@
     "buyNow": "Buy now"
   },
   "termsOfUse": {
-    "title": "EZPZ – Terms of Use",
-    "lastUpdated": "Last updated: 09/12/25",
     "intro": "Welcome to EZPZ.coffee. By accessing or using our website, services, or placing an order through EZPZ, you acknowledge that you have read, understood, and agreed to be bound by the following Terms of Use. If you do not agree with these terms, please do not use our platform.",
+    "lastUpdated": "Last updated: 09/12/25",
     "sections": {
-      "useOfWebsite": {
-        "title": "Use of the Website",
-        "content": "You agree to use EZPZ in compliance with applicable laws and regulations. You may not use the platform for any unlawful or unauthorized purpose."
+      "contact": {
+        "content": "For any questions, please contact us at help@ezpz.coffee.",
+        "title": "Contact"
+      },
+      "intellectualProperty": {
+        "content": "All content, branding, designs, text, graphics, and platform materials are the property of EZPZ and may not be used without written consent. Customers confirm they hold rights or permission to use any uploaded design or material.",
+        "title": "Intellectual Property"
+      },
+      "limitationLiability": {
+        "content": "EZPZ is not liable for any indirect, incidental, or consequential damages resulting from the use of the site or products. Our responsibility is limited to producing and delivering the order as specified at the time of purchase.",
+        "title": "Limitation of Liability"
+      },
+      "modifications": {
+        "content": "EZPZ may update these Terms of Use at any time. Continued use of the service after updates constitutes acceptance of the revised terms.",
+        "title": "Modifications to Terms"
+      },
+      "payments": {
+        "content": "Payments must be completed at checkout. Orders are not processed without successful payment. Pricing may change without prior notice.",
+        "title": "Payments"
+      },
+      "productionShipping": {
+        "content": [
+          "Standard production time is 3–4 business days (open days) after the order is confirmed.",
+          "Shipping times may vary depending on carrier, location, or external factors outside of EZPZ's control.",
+          "EZPZ is not responsible for delays caused by carriers, customs, or force majeure."
+        ],
+        "title": "Production & Shipping"
       },
       "productsOrders": {
-        "title": "Products & Orders",
         "content": [
           "EZPZ allows users to customize and produce coffee bags with no minimum quantity.",
           "Once an order is submitted and confirmed, it enters production automatically.",
           "All sales are final. No refunds or exchanges are permitted, including but not limited to personalized, custom or standard products.",
           "Customers are responsible for verifying customization details (design, text, color, quantity, etc.) before checkout."
-        ]
+        ],
+        "title": "Products & Orders"
       },
-      "productionShipping": {
-        "title": "Production & Shipping",
-        "content": [
-          "Standard production time is 3–4 business days (open days) after the order is confirmed.",
-          "Shipping times may vary depending on carrier, location, or external factors outside of EZPZ's control.",
-          "EZPZ is not responsible for delays caused by carriers, customs, or force majeure."
-        ]
-      },
-      "payments": {
-        "title": "Payments",
-        "content": "Payments must be completed at checkout. Orders are not processed without successful payment. Pricing may change without prior notice."
-      },
-      "intellectualProperty": {
-        "title": "Intellectual Property",
-        "content": "All content, branding, designs, text, graphics, and platform materials are the property of EZPZ and may not be used without written consent. Customers confirm they hold rights or permission to use any uploaded design or material."
+      "useOfWebsite": {
+        "content": "You agree to use EZPZ in compliance with applicable laws and regulations. You may not use the platform for any unlawful or unauthorized purpose.",
+        "title": "Use of the Website"
       },
       "userContent": {
-        "title": "User Content & Custom Designs",
-        "content": "By uploading artwork or text, you grant EZPZ the right to reproduce and print it for the purpose of fulfilling your order. You are fully responsible for ensuring your content does not infringe on copyright, trademark, or third-party rights."
-      },
-      "limitationLiability": {
-        "title": "Limitation of Liability",
-        "content": "EZPZ is not liable for any indirect, incidental, or consequential damages resulting from the use of the site or products. Our responsibility is limited to producing and delivering the order as specified at the time of purchase."
-      },
-      "modifications": {
-        "title": "Modifications to Terms",
-        "content": "EZPZ may update these Terms of Use at any time. Continued use of the service after updates constitutes acceptance of the revised terms."
-      },
-      "contact": {
-        "title": "Contact",
-        "content": "For any questions, please contact us at help@ezpz.coffee."
+        "content": "By uploading artwork or text, you grant EZPZ the right to reproduce and print it for the purpose of fulfilling your order. You are fully responsible for ensuring your content does not infringe on copyright, trademark, or third-party rights.",
+        "title": "User Content & Custom Designs"
       }
-    }
+    },
+    "title": "EZPZ – Terms of Use"
   },
   "validation": {
     "chooseSurface": "Choose a bag surface",

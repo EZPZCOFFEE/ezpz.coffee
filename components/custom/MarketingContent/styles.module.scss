@@ -15,7 +15,6 @@
 
 .eyebrow {
   font-size: var(--font-size-fluid-sm);
-  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
   font-weight: var(--font-weight-semibold);
@@ -23,7 +22,7 @@
 }
 
 .title {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: var(--font-size-fluid-lg);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   margin: var(--spacing-none);
