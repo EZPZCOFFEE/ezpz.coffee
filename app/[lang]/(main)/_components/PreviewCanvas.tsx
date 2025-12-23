@@ -281,7 +281,7 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
     const [artworkImage, setArtworkImage] = useState<HTMLImageElement | null>(null);
     const [artworkScale, setArtworkScale] = useState(ARTWORK_SCALE_MIN);
     const [artworkOffset, setArtworkOffset] = useState<ArtworkOffset>(createDefaultArtworkOffset);
-    const [fontsReady, setFontsReady] = useState(false);
+    const [loadedFontFamily, setLoadedFontFamily] = useState<string | null>(null);
     // Compute panel windows from template preset if available, otherwise use surface windows
     const activeWindows = useMemo(() => {
       // Border panel creates a frame (4 edge rectangles)
@@ -369,20 +369,22 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       return computedValue.trim() || DEFAULT_NAME_FONT_FAMILY;
     }, [nameFontFamily]);
 
-    // Resolved font family - depends on fontsReady to re-resolve after fonts load
+    // Resolved font family - re-resolves when fonts load
     const resolvedFontFamily = useMemo<string>(() => {
-      // Force re-computation when fonts are ready
-      void fontsReady;
+      // Force re-computation when loaded font changes
+      void loadedFontFamily;
       return resolveFontFamily();
-    }, [resolveFontFamily, fontsReady]);
+    }, [resolveFontFamily, loadedFontFamily]);
 
     // Explicitly load the font and trigger re-render when ready
     // document.fonts.load() forces the browser to load the font even if no DOM element uses it
     useEffect(() => {
       if (typeof document === "undefined") return;
 
-      // Reset fontsReady when font family changes
-      setFontsReady(false);
+      const targetFontFamily = resolveFontFamily();
+
+      // Already loaded this font
+      if (loadedFontFamily === targetFontFamily) return;
 
       let cancelled = false;
 
@@ -395,26 +397,26 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
           const fontFamily = resolveFontFamily();
 
           if (fontFamily === DEFAULT_NAME_FONT_FAMILY) {
-            setFontsReady(true);
+            if (!cancelled) setLoadedFontFamily(fontFamily);
             return;
           }
 
           // Explicitly load our specific font
           const fontString = `${NAME_FONT_MAX}px ${fontFamily}`;
-          return document.fonts.load(fontString);
+          return document.fonts.load(fontString).then(() => fontFamily);
         })
-        .then(() => {
-          if (!cancelled) setFontsReady(true);
+        .then((fontFamily) => {
+          if (!cancelled && fontFamily) setLoadedFontFamily(fontFamily);
         })
         .catch(() => {
-          // Font failed to load, proceed with fallback
-          if (!cancelled) setFontsReady(true);
+          // Font failed to load, mark as loaded anyway to proceed with fallback
+          if (!cancelled) setLoadedFontFamily(resolveFontFamily());
         });
 
       return () => {
         cancelled = true;
       };
-    }, [resolveFontFamily]);
+    }, [loadedFontFamily, resolveFontFamily]);
 
     useEffect(() => {
       const image = new Image();
@@ -562,15 +564,16 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       const textTransform = templatePreset?.textTransform ?? "capitalize";
       const isNameItalic = templatePreset?.nameItalic ?? false;
 
-      // Compute effective font weights (template preset overrides prop)
-      const effectiveNameFontWeight = templatePreset?.nameFontWeight ?? nameFontWeight;
-      const effectiveSecondaryFontWeight =
-        templatePreset?.secondaryFontWeight ?? templatePreset?.nameFontWeight ?? nameFontWeight;
+      // Compute effective font weights (user input overrides template preset)
+      const effectiveNameFontWeight = nameFontWeight;
+      const effectiveSecondaryFontWeight = nameFontWeight;
 
-      // Compute effective font size multipliers (template preset overrides prop)
-      const effectiveNameFontMultiplier = templatePreset?.nameFontSizeMultiplier ?? nameFontSizeMultiplier;
-      const effectiveSecondaryFontMultiplier =
-        templatePreset?.secondaryFontSizeMultiplier ?? nameFontSizeMultiplier;
+      // Compute effective font size multipliers (template preset base × user adjustment)
+      // Template sets the design-specific base scale, user's s/m/l adjusts on top of that
+      const templateNameMultiplier = templatePreset?.nameFontSizeMultiplier ?? 1;
+      const templateSecondaryMultiplier = templatePreset?.secondaryFontSizeMultiplier ?? 1;
+      const effectiveNameFontMultiplier = templateNameMultiplier * nameFontSizeMultiplier;
+      const effectiveSecondaryFontMultiplier = templateSecondaryMultiplier * nameFontSizeMultiplier;
 
       // Default positions if not specified in template
       const defaultNamePosition: ElementPosition = { x: 0.05, y: 0.5, anchorX: "left", anchorY: "middle" };
@@ -711,7 +714,6 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       artworkOffset,
       artworkScale,
       bagImage,
-      fontsReady,
       nameTextColor,
       sanitizedName,
       panelFillColor,
@@ -772,15 +774,16 @@ const PreviewCanvas = forwardRef<PreviewCanvasHandle, PreviewCanvasProps>(
       const textTransform = templatePreset?.textTransform ?? "capitalize";
       const isNameItalic = templatePreset?.nameItalic ?? false;
 
-      // Compute effective font weights (template preset overrides prop)
-      const effectiveNameFontWeight = templatePreset?.nameFontWeight ?? nameFontWeight;
-      const effectiveSecondaryFontWeight =
-        templatePreset?.secondaryFontWeight ?? templatePreset?.nameFontWeight ?? nameFontWeight;
+      // Compute effective font weights (user input overrides template preset)
+      const effectiveNameFontWeight = nameFontWeight;
+      const effectiveSecondaryFontWeight = nameFontWeight;
 
-      // Compute effective font size multipliers (template preset overrides prop)
-      const effectiveNameFontMultiplier = templatePreset?.nameFontSizeMultiplier ?? nameFontSizeMultiplier;
-      const effectiveSecondaryFontMultiplier =
-        templatePreset?.secondaryFontSizeMultiplier ?? nameFontSizeMultiplier;
+      // Compute effective font size multipliers (template preset base × user adjustment)
+      // Template sets the design-specific base scale, user's s/m/l adjusts on top of that
+      const templateNameMultiplier = templatePreset?.nameFontSizeMultiplier ?? 1;
+      const templateSecondaryMultiplier = templatePreset?.secondaryFontSizeMultiplier ?? 1;
+      const effectiveNameFontMultiplier = templateNameMultiplier * nameFontSizeMultiplier;
+      const effectiveSecondaryFontMultiplier = templateSecondaryMultiplier * nameFontSizeMultiplier;
 
       // Default positions if not specified in template
       const defaultNamePosition: ElementPosition = { x: 0.05, y: 0.5, anchorX: "left", anchorY: "middle" };
