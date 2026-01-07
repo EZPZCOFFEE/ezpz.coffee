@@ -93,7 +93,7 @@ const PasswordPage = () => {
   return (
     <main className={styles.container}>
       <div className={styles.content}>
-        <Image src="/logo.svg" alt="EZPZ" width={120} height={40} className={styles.logo} priority />
+        <Image src="/logo.svg" alt="EZPZ" width={80} height={26} className={styles.logo} priority />
 
         <header className={styles.header}>
           <h1 className={styles.title}>{t("title")}</h1>

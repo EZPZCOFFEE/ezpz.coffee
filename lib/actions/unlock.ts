@@ -19,13 +19,26 @@ export async function unlockSite(formData: FormData): Promise<UnlockResult> {
     return { success: false, error: "Password is required" };
   }
 
+  console.log("[unlockSite] Fetching site password from Shopify...");
   const sitePassword = await getSitePassword();
+  console.log("[unlockSite] Site password fetched:", {
+    exists: !!sitePassword,
+    length: sitePassword?.length ?? 0,
+  });
 
   if (!sitePassword) {
+    console.error("[unlockSite] Site password not configured in Shopify");
     return { success: false, error: "Site password not configured" };
   }
 
-  if (password !== sitePassword) {
+  const passwordMatch = password === sitePassword;
+  console.log("[unlockSite] Password validation:", {
+    match: passwordMatch,
+    providedLength: password.length,
+    expectedLength: sitePassword.length,
+  });
+
+  if (!passwordMatch) {
     return { success: false, error: "Incorrect password" };
   }
 

@@ -249,32 +249,32 @@
     "about": {
       "description": "EZPZ Coffee exists to spotlight the farmers and producers behind every bag. Learn how we keep sourcing transparent and give customers a direct line to origin stories.",
       "ogDescription": "We are the transmission belt between microlot producers and the people who drink their coffee. Get to know the team and the promises that guide our work.",
-      "ogTitle": "About EZPZ Coffee",
-      "title": "About EZPZ Coffee | Producer-first custom roastery",
+      "ogTitle": "EZPZ Coffee | About Us",
+      "title": "EZPZ Coffee | About Us",
       "twitterDescription": "Transparency, traceability, and respect for the producers behind every custom bag. Learn what drives us.",
       "twitterTitle": "About EZPZ Coffee"
     },
     "coffee": {
       "description": "See how EZPZ curates microlots, profiles each roast, and recommends brew parameters so your custom bags stay true to origin.",
       "ogDescription": "From selective harvest calendars to deliberately gentle roast curves, here is every lever we pull to keep flavor honest.",
-      "ogTitle": "Our Coffee",
-      "title": "Our Coffee | Sourcing, roasting, and brewing the EZPZ way",
+      "ogTitle": "EZPZ Coffee | Our Coffee",
+      "title": "EZPZ Coffee | Our Coffee",
       "twitterDescription": "Producer partnerships, roast profiles, and brew specs—all in one place.",
       "twitterTitle": "How EZPZ sources and roasts"
     },
     "contact": {
       "description": "Get in touch with EZPZ Coffee. Contact us for questions about orders, custom bags, or anything else.",
       "ogDescription": "Have questions about your order or custom coffee bags? Reach out to the EZPZ team.",
-      "ogTitle": "Contact Us | EZPZ Coffee",
-      "title": "Contact Us | EZPZ Coffee",
+      "ogTitle": "EZPZ Coffee | Contact Us",
+      "title": "EZPZ Coffee | Contact Us",
       "twitterDescription": "Get in touch with EZPZ Coffee for any inquiries.",
       "twitterTitle": "Contact Us | EZPZ Coffee"
     },
     "faq": {
       "description": "Find answers to common questions about EZPZ specialty coffee, shipping, preparation tips, and dietary information.",
       "ogDescription": "Everything you need to know about our specialty coffee, shipping options, storage tips, and more.",
-      "ogTitle": "FAQ | EZPZ Coffee",
-      "title": "FAQ | Frequently Asked Questions about EZPZ Coffee",
+      "ogTitle": "EZPZ Coffee | FAQ",
+      "title": "EZPZ Coffee | FAQ",
       "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
@@ -282,14 +282,14 @@
       "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
       "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
       "ogTitle": "Design a custom EZPZ coffee bag",
-      "title": "Customize your EZPZ coffee bags",
+      "title": "EZPZ Coffee | Design your own coffee bags",
       "twitterDescription": "Personalize every detail and see the preview instantly."
     },
     "termsOfUse": {
       "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
       "ogDescription": "Terms of Use for EZPZ.coffee — understand our policies on orders, payments, shipping, and user content.",
-      "ogTitle": "Terms of Use | EZPZ Coffee",
-      "title": "Terms of Use | EZPZ Coffee",
+      "ogTitle": "EZPZ Coffee | Terms of Use",
+      "title": "EZPZ Coffee | Terms of Use",
       "twitterDescription": "Read the terms and conditions for using EZPZ.coffee.",
       "twitterTitle": "Terms of Use | EZPZ Coffee"
     }

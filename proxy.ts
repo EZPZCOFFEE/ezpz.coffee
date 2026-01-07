@@ -30,8 +30,12 @@ export default async function middleware(request: NextRequest): Promise<NextResp
     (locale) => pathname === `/${locale}/password` || pathname === "/password"
   );
 
+  console.log("[middleware] Processing request:", { pathname, isPasswordPage });
+
   // Fetch password wall setting from Shopify (cached for 60s)
+  console.log("[middleware] Fetching password wall enabled setting...");
   const siteLocked = await getPasswordWallEnabled();
+  console.log("[middleware] Password wall enabled:", siteLocked);
 
   // Site lock logic
   if (siteLocked && !isPasswordPage) {
