@@ -22,19 +22,22 @@
 @media (max-width: 1100px) {
   .container {
     flex-direction: column;
-    padding: 0 var(--spacing-city);
+    padding: 0;
+    gap: var(--spacing-city);
   }
 
   .panelColumn {
     flex: 1;
     max-width: none;
     height: auto;
-    padding: var(--spacing-city) 0;
+    padding: var(--spacing-city) var(--spacing-city);
+    order: 2;
   }
 
   .previewColumn {
     width: 100%;
-    padding: 0 0 var(--spacing-city);
+    padding: 0;
+    order: 1;
   }
 
   .displayHeader,
@@ -165,12 +168,32 @@
   max-height: 1100px;
 
   @media (max-width: 1100px) {
-    position: relative;
+    position: sticky;
     top: 0;
     height: auto;
-    max-height: none;
+    max-height: 70vh;
     aspect-ratio: 2 / 3;
+    width: 100%;
     max-width: 100%;
+    z-index: 10;
+    background: var(--color-bg-primary);
+    padding-top: var(--spacing-city);
+    margin-bottom: var(--spacing-city);
+    gap: var(--spacing-street);
+  }
+
+  @media (max-width: 768px) {
+    max-height: 65vh;
+    padding-top: var(--spacing-street);
+    margin-bottom: var(--spacing-street);
+    gap: var(--spacing-street);
+  }
+
+  @media (max-width: 480px) {
+    max-height: 60vh;
+    padding-top: var(--spacing-street);
+    margin-bottom: var(--spacing-street);
+    gap: var(--spacing-street);
   }
 
   .displayHeader {
@@ -200,6 +223,17 @@
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
+
+    @media (max-width: 1100px) {
+      padding: var(--spacing-street);
+      gap: var(--spacing-street);
+    }
+
+    @media (max-width: 480px) {
+      padding: var(--spacing-street);
+      border-radius: var(--border-radius-md);
+      gap: var(--spacing-street);
+    }
   }
 
   .canvasWrapper {
@@ -213,6 +247,16 @@
     flex: 1;
     min-height: 0;
     overflow: hidden;
+
+    @media (max-width: 1100px) {
+      gap: var(--spacing-room);
+      padding: var(--spacing-room);
+    }
+
+    @media (max-width: 480px) {
+      gap: var(--spacing-room);
+      padding: var(--spacing-room);
+    }
 
     .canvasContainer {
       display: flex;
@@ -235,6 +279,15 @@
     width: 100%;
     display: flex;
     gap: var(--spacing-street);
+
+    @media (max-width: 1100px) {
+      gap: var(--spacing-room);
+    }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: var(--spacing-room);
+    }
   }
 
   .canvasControlRow {

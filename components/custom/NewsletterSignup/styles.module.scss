@@ -1,6 +1,6 @@
 .newsletterSection {
   width: 100%;
-  padding: var(--spacing-planet) var(--spacing-continent) var(--spacing-planet);
+  padding: var(--spacing-house) var(--spacing-continent) var(--spacing-planet);
   background-color: var(--color-bg-primary);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .newsletterTitle {
-  font-size: 24px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
