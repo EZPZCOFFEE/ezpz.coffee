@@ -172,10 +172,10 @@
 }
 
 .adminInput {
-  width: 160px;
-  padding: var(--spacing-house) var(--spacing-street);
+  width: 200px;
+  padding: 10px var(--spacing-street);
   border-radius: var(--border-radius-sm);
-  border: 1px solid var(--color-gray-300);
+  border: 1px solid var(--color-gray-400);
   background-color: var(--color-bg-primary);
   font-size: var(--font-size-fluid-sm);
   transition: border-color 0.2s ease;
@@ -186,7 +186,7 @@
   }
 
   &::placeholder {
-    color: var(--color-gray-400);
+    color: var(--color-gray-500);
   }
 }
 
@@ -194,7 +194,7 @@
   background: none;
   border: none;
   color: var(--color-gray-500);
-  font-size: var(--font-size-fluid-base);
+  font-size: var(--font-size-fluid-xl);
   cursor: pointer;
   padding: var(--spacing-house);
   transition: color 0.2s ease;
