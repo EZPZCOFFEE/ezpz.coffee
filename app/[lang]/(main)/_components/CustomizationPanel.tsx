@@ -5,7 +5,7 @@ import type { FormEvent } from "react";
 import { useFormContext } from "react-hook-form";
 
 import styles from "@/app/styles.module.scss";
-import ColorPickerInput from "@/components/form/ColorPickerInput";
+import ColorPaletteInput from "@/components/form/ColorPaletteInput";
 import FileUploadInput from "@/components/form/FileUpload";
 import FontSelectInput from "@/components/form/FontSelectInput";
 import NumberInput from "@/components/form/NumberInput";
@@ -89,8 +89,8 @@ const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProp
       <form className={styles.panelForm} onSubmit={(event) => void onSubmit(event)} noValidate>
         <div className={styles.formGroup}>
           <Label>{t("labelSection")}</Label>
+          <ColorPaletteInput name="nameColor" required />
           <TextInput name="customerName" label={t("nameLabel")} helperText={t("nameHelper")} />
-          <ColorPickerInput name="nameColor" label={t("nameColorLabel")} required />
           <FontSelectInput name="labelFont" label={t("fontLabel")} options={fontOptions} />
           <SelectInput name="labelFontWeight" label={t("fontWeightLabel")} options={fontWeightOptions} />
           <OptionsInput name="labelFontSize" label={t("fontSizeLabel")} options={fontSizeOptions} />
@@ -105,8 +105,8 @@ const CustomizationPanel = ({ onSubmit, isAddingToCart }: CustomizationPanelProp
         </div>
         <div className={styles.formGroup}>
           <Label>{t("surfaceSection")}</Label>
+          <ColorPaletteInput name="panelColor" required />
           <TemplateSelectionInput name="template" label={t("surfaceLabel")} options={templateOptions} />
-          <ColorPickerInput name="panelColor" label={t("panelColorLabel")} required />
         </div>
 
         <div className={styles.formGroup}>

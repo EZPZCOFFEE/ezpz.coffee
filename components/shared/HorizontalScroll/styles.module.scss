@@ -1,0 +1,119 @@
+@mixin horizontal-scroll-container {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    height: calc(100% + 2px);
+    width: 60px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: var(--z-index-above-base);
+  }
+
+  &::before {
+    left: -1px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), var(--color-bg-primary) 70%);
+
+    @container container (width <= 660px) {
+      width: 30px;
+    }
+  }
+
+  &::after {
+    right: -1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--color-bg-primary) 70%);
+
+    @container container (width <= 660px) {
+      width: 30px;
+    }
+  }
+
+  &.hasLeftOverflow::before {
+    opacity: 1;
+  }
+
+  &.hasRightOverflow::after {
+    opacity: 1;
+  }
+
+  // Hide gradients when content is not scrollable
+  &:not(.hasLeftOverflow):not(.hasRightOverflow) {
+    &::before,
+    &::after {
+      opacity: 0 !important;
+    }
+  }
+}
+
+@mixin horizontal-scroll-content {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  gap: var(--spacing-house);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; // momentum scroll on iOS
+  overscroll-behavior-x: contain; // contain only horizontal chaining
+  overscroll-behavior-y: auto; // allow vertical scroll to bubble to parent
+  touch-action: pan-x pan-y; // allow vertical panning while still supporting horizontal
+  pointer-events: all;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin scroll-caret {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-index-caret);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+
+  &.left {
+    left: 4px;
+
+    @container container (width <= 660px) {
+      left: -4px;
+    }
+  }
+
+  &.right {
+    right: 4px;
+
+    @container container (width <= 660px) {
+      right: -4px;
+    }
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+.container {
+  container: container / inline-size;
+  @include horizontal-scroll-container;
+}
+
+.content {
+  @include horizontal-scroll-content;
+}
+
+.caret {
+  @include scroll-caret;
+}

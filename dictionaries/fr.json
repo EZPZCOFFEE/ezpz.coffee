@@ -144,7 +144,7 @@
     "title": "FAQ"
   },
   "fileUpload": {
-    "defaultRecommendation": "Téléchargez un JPG ou PNG carré (min 1800px)",
+    "defaultRecommendation": "Téléchargez un JPG ou PNG.",
     "errors": {
       "generic": "Impossible de télécharger ce fichier. Vérifiez les exigences et réessayez.",
       "invalidType": "Seuls les fichiers PNG ou JPG sont autorisés.",

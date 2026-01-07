@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 import { defaultLocale, locales } from "@/i18n/types";
-import { SITE_LOCKED } from "@/lib/consts";
+import { getPasswordWallEnabled } from "@/lib/data/get-site-settings";
 
 const UNLOCK_COOKIE_NAME = "site-unlocked";
 
@@ -11,7 +11,7 @@ const intlMiddleware = createMiddleware({
   defaultLocale,
 });
 
-export default function middleware(request: NextRequest): NextResponse {
+export default async function middleware(request: NextRequest): Promise<NextResponse> {
   const { pathname } = request.nextUrl;
 
   // Skip static assets
@@ -30,8 +30,11 @@ export default function middleware(request: NextRequest): NextResponse {
     (locale) => pathname === `/${locale}/password` || pathname === "/password"
   );
 
+  // Fetch password wall setting from Shopify (cached for 60s)
+  const siteLocked = await getPasswordWallEnabled();
+
   // Site lock logic
-  if (SITE_LOCKED && !isPasswordPage) {
+  if (siteLocked && !isPasswordPage) {
     const isUnlocked = request.cookies.get(UNLOCK_COOKIE_NAME)?.value === "true";
 
     if (!isUnlocked) {
@@ -47,7 +50,7 @@ export default function middleware(request: NextRequest): NextResponse {
   }
 
   // If on password page but site is unlocked, redirect to home
-  if (!SITE_LOCKED && isPasswordPage) {
+  if (!siteLocked && isPasswordPage) {
     const pathnameLocale = locales.find(
       (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
     );

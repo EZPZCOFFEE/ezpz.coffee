@@ -144,7 +144,7 @@
     "title": "FAQ"
   },
   "fileUpload": {
-    "defaultRecommendation": "Upload a square JPG or PNG (min 1800px)",
+    "defaultRecommendation": "Upload a square JPG or PNG.",
     "errors": {
       "generic": "We couldn't upload that file. Check the requirements and try again.",
       "invalidType": "Only PNG or JPG image files are allowed.",

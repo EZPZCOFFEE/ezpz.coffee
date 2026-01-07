@@ -15,14 +15,13 @@
 
 .eyebrow {
   font-size: var(--font-size-fluid-sm);
-  text-transform: uppercase;
   color: var(--color-accent);
   font-weight: var(--font-weight-semibold);
   margin: var(--spacing-none);
 }
 
 .title {
-  font-size: var(--font-size-fluid-lg);
+  font-size: var(--font-size-fluid-xxl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   margin: var(--spacing-none);
@@ -31,7 +30,7 @@
 }
 
 .intro {
-  font-size: var(--font-size-fluid-lg);
+  font-size: var(--font-size-fluid-base);
   color: var(--color-text-secondary);
   margin: var(--spacing-none);
   line-height: var(--line-height-relaxed);

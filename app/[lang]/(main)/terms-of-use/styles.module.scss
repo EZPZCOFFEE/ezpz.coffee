@@ -21,7 +21,7 @@
 }
 
 .title {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: var(--font-size-fluid-xxl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   margin: var(--spacing-none);
@@ -36,7 +36,7 @@
 }
 
 .intro {
-  font-size: var(--font-size-fluid-lg);
+  font-size: var(--font-size-fluid-base);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-secondary);
   margin: var(--spacing-none);

@@ -270,8 +270,9 @@
 
     .footerAddress {
       font-style: normal;
-      font-size: 13px;
-      color: var(--color-neutral);
+      font-size: 12px;
+      font-weight: var(--font-weight-normal);
+      color: var(--color-gray-500);
     }
   }
 }

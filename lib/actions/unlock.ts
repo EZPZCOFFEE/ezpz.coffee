@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-import { SITE_PASSWORD } from "@/lib/consts";
+import { getSitePassword } from "@/lib/data/get-site-settings";
 
 const UNLOCK_COOKIE_NAME = "site-unlocked";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
@@ -19,7 +19,13 @@ export async function unlockSite(formData: FormData): Promise<UnlockResult> {
     return { success: false, error: "Password is required" };
   }
 
-  if (password !== SITE_PASSWORD) {
+  const sitePassword = await getSitePassword();
+
+  if (!sitePassword) {
+    return { success: false, error: "Site password not configured" };
+  }
+
+  if (password !== sitePassword) {
     return { success: false, error: "Incorrect password" };
   }
 

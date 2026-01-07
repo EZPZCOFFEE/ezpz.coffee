@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: var(--font-size-fluid-xxl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   margin: var(--spacing-none);
@@ -35,10 +35,8 @@
 }
 
 .categoryTitle {
-  font-size: var(--font-size-fluid-sm);
+  font-size: var(--font-size-fluid-xl);
   font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   color: var(--color-accent);
   margin: var(--spacing-none);
   padding-bottom: var(--spacing-house);
@@ -59,7 +57,7 @@
 }
 
 .question {
-  font-size: var(--font-size-fluid-base);
+  font-size: var(--font-size-fluid-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
   line-height: var(--line-height-snug);
