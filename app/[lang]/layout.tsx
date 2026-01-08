@@ -10,16 +10,19 @@ import { baseUrl } from "@/lib/base-url";
 import "../global.scss";
 
 // Sans-serif fonts
+// DM Sans is the default font - optimize it for immediate rendering
 const dmSans = localFont({
   src: "./_fonts/dmsans/DMSans-VariableFont_opsz,wght.ttf",
   variable: "--font-dm-sans",
   display: "swap",
+  adjustFontFallback: "Arial",
 });
 
 const inter = localFont({
   src: "./_fonts/inter/Inter-VariableFont_opsz,wght.ttf",
   variable: "--font-inter",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const poppins = localFont({
@@ -44,7 +47,8 @@ const poppins = localFont({
     { path: "./_fonts/poppins/Poppins-BlackItalic.ttf", weight: "900", style: "italic" },
   ],
   variable: "--font-poppins",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const manrope = localFont({
@@ -181,7 +185,8 @@ const ptSans = localFont({
     { path: "./_fonts/ptsans/PTSans-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
   variable: "--font-pt-sans",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const raleway = localFont({
@@ -292,7 +297,8 @@ const ptSerif = localFont({
 const sourceSerif = localFont({
   src: "./_fonts/sourceserifpro/SourceSerif4-VariableFont_opsz,wght.ttf",
   variable: "--font-source-serif",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const spectral = localFont({
@@ -346,7 +352,8 @@ const inknutAntiqua = localFont({
     { path: "./_fonts/inknutantiqua/InknutAntiqua-Black.ttf", weight: "900", style: "normal" },
   ],
   variable: "--font-inknut-antiqua",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const syne = localFont({
@@ -370,7 +377,8 @@ const spaceMono = localFont({
     { path: "./_fonts/spacemono/SpaceMono-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
   variable: "--font-space-mono",
-  display: "swap",
+  display: "optional",
+  adjustFontFallback: false,
 });
 
 const fontVariables = [

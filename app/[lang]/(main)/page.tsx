@@ -6,6 +6,7 @@ import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { GET_PRODUCT } from "@/lib/queries/get-product";
 
 import CustomizationPageClient from "./_components/CustomizationPageClient";
+import FontPreloader from "./_components/FontPreloader";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.home");
@@ -36,7 +37,12 @@ const HomePage = async () => {
     return <div>Product not found</div>;
   }
 
-  return <CustomizationPageClient product={product} />;
+  return (
+    <>
+      <FontPreloader />
+      <CustomizationPageClient product={product} />
+    </>
+  );
 };
 
 export default HomePage;
