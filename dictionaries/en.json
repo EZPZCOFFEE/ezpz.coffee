@@ -158,7 +158,7 @@
   },
   "footer": {
     "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
-    "brand": "EZPZ 2025",
+    "brand": "EZPZ {year}",
     "contactUs": "Contact us",
     "faq": "FAQ",
     "navigation": "Footer navigation",
