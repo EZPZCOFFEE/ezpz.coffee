@@ -4,8 +4,8 @@ import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { useId, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useId, useState, useSyncExternalStore } from "react";
 
 import Cart from "@/components/custom/Cart";
 import { locales } from "@/i18n/types";
@@ -18,23 +18,42 @@ import styles from "./styles.module.scss";
 
 interface NavItem {
   labelKey: string;
-  href: string;
+  /** Path after locale, e.g. "/design". Use "/" for the home page. */
+  pathSuffix: string;
+  hash?: string;
 }
 
-const LEFT_NAV_ITEMS: NavItem[] = [{ labelKey: "customBag", href: "/" }];
+const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
+  left: [
+    { labelKey: "customBag", pathSuffix: "/design" },
+    { labelKey: "shop", pathSuffix: "/shop" },
+  ],
+  right: [
+    { labelKey: "whiteLabel", pathSuffix: "/", hash: "white-label" },
+    { labelKey: "aboutUs", pathSuffix: "/about" },
+    { labelKey: "ourCoffee", pathSuffix: "/coffee" },
+    { labelKey: "contactUs", pathSuffix: "/contact" },
+  ],
+};
 
-const RIGHT_NAV_ITEMS: NavItem[] = [
-  { labelKey: "aboutUs", href: "/about" },
-  { labelKey: "ourCoffee", href: "/coffee" },
-  // { labelKey: "sampleBag", href: "/sample-bag" },
-  // { labelKey: "corporateSolutions", href: "/corporate" },
-  // { labelKey: "largeOrders", href: "/large-orders" },
-];
+const getNavHref = (locale: string, item: NavItem): string => {
+  const path = item.pathSuffix === "/" ? `/${locale}` : `/${locale}${item.pathSuffix}`;
+  return item.hash ? `${path}#${item.hash}` : path;
+};
 
 /**
  * Strips the locale prefix from the pathname.
  * e.g., "/en/about" -> "/about", "/fr" -> "/"
  */
+const HERO_SCROLL_THRESHOLD_PX = 24;
+
+const subscribeWindowScroll = (onChange: () => void) => {
+  window.addEventListener("scroll", onChange, { passive: true });
+  return () => window.removeEventListener("scroll", onChange);
+};
+
+const getScrolledPastHero = () => window.scrollY > HERO_SCROLL_THRESHOLD_PX;
+
 const stripLocalePrefix = (pathname: string): string => {
   for (const locale of locales) {
     const prefix = `/${locale}`;
@@ -45,61 +64,72 @@ const stripLocalePrefix = (pathname: string): string => {
 };
 
 const isNavItemActive = (item: NavItem, pathname: string | null): boolean => {
-  if (!pathname) {
-    return item.href === "/";
+  if (!pathname || item.hash) {
+    return false;
   }
 
   const normalizedPath = stripLocalePrefix(pathname);
+  const suffix = item.pathSuffix.replace(/\/$/, "") || "/";
 
-  if (item.href === "/") {
+  if (suffix === "/") {
     return normalizedPath === "/";
   }
 
-  return normalizedPath.startsWith(item.href);
+  return normalizedPath === suffix || normalizedPath.startsWith(`${suffix}/`);
 };
 
 interface NavbarVariantProps {
   leftNavItems: NavItem[];
   rightNavItems: NavItem[];
   pathname: string | null;
+  locale: string;
 }
 
 // ---------------------------------------------------------------------------
 // Presentational components
 // ---------------------------------------------------------------------------
 
-const Logo = () => {
+const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
   const t = useTranslations("nav");
+  const locale = useLocale();
 
   return (
-    <Link href="/" className={styles.logo}>
+    <Link href={`/${locale}`} className={styles.logo}>
       <Image
         src="/logo.svg"
         alt={t("logoAlt")}
         width={120}
         height={40}
-        className={styles.logoImage}
+        className={classNames(styles.logoImage, {
+          [styles.logoImageOverlay]: variant === "overlay",
+        })}
         priority
       />
     </Link>
   );
 };
 
-const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantProps) => {
+const DesktopNavbar = ({
+  leftNavItems,
+  rightNavItems,
+  pathname,
+  locale,
+  logoVariant,
+}: NavbarVariantProps & { logoVariant: "default" | "overlay" }) => {
   const t = useTranslations("nav");
 
   return (
     <nav className={styles.desktopNavbar} aria-label={t("mainNavigation")}>
       <div className={styles.desktopNavbarLeft}>
-        <Logo />
+        <Logo variant={logoVariant} />
         <ul className={styles.navList}>
           {leftNavItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
             const itemClassName = classNames(styles.navItem, { [styles.navItem__active]: isActive });
 
             return (
-              <li key={item.href} className={itemClassName}>
-                <Link href={item.href} className={styles.navLink}>
+              <li key={`${item.labelKey}-${item.pathSuffix}`} className={itemClassName}>
+                <Link href={getNavHref(locale, item)} className={styles.navLink}>
                   {t(item.labelKey)}
                 </Link>
               </li>
@@ -114,8 +144,8 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
             const itemClassName = classNames(styles.navItem, { [styles.navItem__active]: isActive });
 
             return (
-              <li key={item.href} className={itemClassName}>
-                <Link href={item.href} className={styles.navLink}>
+              <li key={`${item.labelKey}-${item.pathSuffix}`} className={itemClassName}>
+                <Link href={getNavHref(locale, item)} className={styles.navLink}>
                   {t(item.labelKey)}
                 </Link>
               </li>
@@ -123,13 +153,19 @@ const DesktopNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantP
           })}
         </ul>
 
-        <Cart />
+        <Cart className={logoVariant === "overlay" ? styles.cartTriggerLight : undefined} />
       </div>
     </nav>
   );
 };
 
-const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantProps) => {
+const MobileNavbar = ({
+  leftNavItems,
+  rightNavItems,
+  pathname,
+  locale,
+  logoVariant,
+}: NavbarVariantProps & { logoVariant: "default" | "overlay" }) => {
   const t = useTranslations("nav");
   const navItems = [...leftNavItems, ...rightNavItems];
   const [isOpen, setIsOpen] = useState(false);
@@ -138,7 +174,7 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
   return (
     <div className={styles.mobileNavbar} data-state={isOpen ? "open" : "closed"}>
       <div className={styles.mobileHeader}>
-        <Logo />
+        <Logo variant={logoVariant} />
 
         <div className={styles.mobileHeaderActions}>
           <button
@@ -154,7 +190,7 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarBottom}`} />
           </button>
 
-          <Cart />
+          <Cart className={logoVariant === "overlay" ? styles.cartTriggerLight : undefined} />
         </div>
       </div>
 
@@ -172,9 +208,9 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
             });
 
             return (
-              <li key={item.href} className={itemClassName}>
+              <li key={`${item.labelKey}-${item.pathSuffix}`} className={itemClassName}>
                 <Link
-                  href={item.href}
+                  href={getNavHref(locale, item)}
                   className={styles.mobileMenuItemLabel}
                   onClick={() => setIsOpen(false)}
                 >
@@ -195,12 +231,45 @@ const MobileNavbar = ({ leftNavItems, rightNavItems, pathname }: NavbarVariantPr
 
 const Navbar = () => {
   const pathname = usePathname();
+  const locale = useLocale();
+
+  const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
+  const isHome = normalizedPath === "/";
+
+  const scrolledPastHero = useSyncExternalStore(
+    subscribeWindowScroll,
+    getScrolledPastHero,
+    () => false
+  );
+
+  const leftNavItems = NAV_GROUPS.left;
+  const rightNavItems = NAV_GROUPS.right;
+  const useOverlay = isHome && !scrolledPastHero;
+  const logoVariant: "default" | "overlay" = useOverlay ? "overlay" : "default";
 
   return (
-    <header className={styles.navbarRoot}>
+    <header
+      className={classNames(styles.navbarRoot, {
+        [styles.navbarRootOverlay]: useOverlay,
+        [styles.navbarRootSolid]: isHome && scrolledPastHero,
+      })}
+      data-variant={useOverlay ? "overlay" : "solid"}
+    >
       <div className={styles.navbarInner}>
-        <DesktopNavbar leftNavItems={LEFT_NAV_ITEMS} rightNavItems={RIGHT_NAV_ITEMS} pathname={pathname} />
-        <MobileNavbar leftNavItems={LEFT_NAV_ITEMS} rightNavItems={RIGHT_NAV_ITEMS} pathname={pathname} />
+        <DesktopNavbar
+          leftNavItems={leftNavItems}
+          rightNavItems={rightNavItems}
+          pathname={pathname}
+          locale={locale}
+          logoVariant={logoVariant}
+        />
+        <MobileNavbar
+          leftNavItems={leftNavItems}
+          rightNavItems={rightNavItems}
+          pathname={pathname}
+          locale={locale}
+          logoVariant={logoVariant}
+        />
       </div>
     </header>
   );

@@ -9,10 +9,16 @@
   padding: var(--spacing-state);
 }
 
+.mainHome {
+  flex: 1;
+  padding: 0;
+}
+
 .navbarRoot {
   width: 100%;
   background-color: var(--color-bg-secondary);
   padding-top: env(safe-area-inset-top);
+  transition: background-color 0.2s ease;
 
   .navbarInner {
     margin: var(--spacing-none) auto;
@@ -21,6 +27,21 @@
     flex-direction: column;
     gap: var(--spacing-house);
   }
+}
+
+.navbarRootOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: transparent;
+}
+
+.navbarRootSolid {
+  position: relative;
+  z-index: 40;
+  background-color: var(--color-bg-secondary);
 }
 
 .logo {
@@ -33,6 +54,10 @@
     height: var(--spacing-continent);
     width: auto;
   }
+}
+
+.logoImageOverlay {
+  filter: brightness(0) invert(1);
 }
 
 .desktopNavbar {
@@ -206,6 +231,23 @@
 
 .mobileMenuItemActive .mobileMenuItemLabel {
   color: var(--color-accent-light);
+}
+
+.navbarRootOverlay .desktopNavbar .navItem,
+.navbarRootOverlay .desktopNavbar .navLink {
+  color: var(--color-white);
+}
+
+.navbarRootOverlay .desktopNavbar .navItem__active {
+  color: var(--color-accent-extra-light);
+}
+
+.cartTriggerLight img {
+  filter: brightness(0) invert(1);
+}
+
+.navbarRootOverlay .menuButtonBar {
+  background-color: var(--color-white);
 }
 
 @media (min-width: 1024px) {
