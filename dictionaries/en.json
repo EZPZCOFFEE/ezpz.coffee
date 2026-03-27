@@ -31,6 +31,7 @@
     "subtotal": "Subtotal",
     "taxNote": "Taxes and shipping calculated at checkout",
     "title": "Your cart",
+    "triggerWithCount": "Cart ({count})",
     "updating": "Updating...",
     "youSave": "You save"
   },
@@ -161,6 +162,7 @@
     "brand": "EZPZ {year}",
     "contactUs": "Contact us",
     "faq": "FAQ",
+    "fairTrade": "Fair trade",
     "navigation": "Footer navigation",
     "termsOfUse": "Terms of use"
   },
@@ -278,12 +280,19 @@
       "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
-    "home": {
+    "design": {
       "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
       "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
       "ogTitle": "Design a custom EZPZ coffee bag",
       "title": "EZPZ Coffee | Design your own coffee bags",
       "twitterDescription": "Personalize every detail and see the preview instantly."
+    },
+    "home": {
+      "description": "Custom coffee bags with no minimum. EZPZ makes personalization simple—design your bag, explore our coffee, or build a white-label brand.",
+      "ogDescription": "Fun, youthful custom coffee bags. No minimum orders. Design online, subscribe for deals, and learn about white-label solutions.",
+      "ogTitle": "EZPZ Coffee | Custom coffee bags, no minimum",
+      "title": "EZPZ Coffee | Custom coffee bags, no minimum",
+      "twitterDescription": "Custom coffee bags with no minimum. Design online or explore white-label and our specialty coffee."
     },
     "termsOfUse": {
       "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
@@ -294,9 +303,39 @@
       "twitterTitle": "Terms of Use | EZPZ Coffee"
     }
   },
+  "landing": {
+    "carousel": {
+      "next": "Next slide",
+      "placeholderName": "Coffee name {n}",
+      "prev": "Previous slide",
+      "roleDescription": "carousel",
+      "sectionTitle": "Featured coffees"
+    },
+    "hero": {
+      "designCta": "Design bag",
+      "subtitle": "EZPZ is a fun, youthful custom coffee bag company that makes personalization easy.",
+      "titleLine1": "Custom coffee bags",
+      "titleLine2": "No minimum"
+    },
+    "heroPhoto": {
+      "ariaLabel": "EZPZ lifestyle hero",
+      "scroll": "Scroll",
+      "scrollHint": "Scroll down to main content"
+    },
+    "whiteLabel": {
+      "bodyLine1": "EZPZ is a fun, youthful custom coffee bag",
+      "bodyLine2": "company that makes personalization",
+      "bodyLine3": "simple—from one-off gifts to full white-label",
+      "bodyLine4": "programs for cafés and retailers.",
+      "learnMore": "Learn more",
+      "titleLine1": "White label",
+      "titleLine2": "Brand building"
+    }
+  },
   "nav": {
     "aboutUs": "About us",
     "cartAlt": "Cart",
+    "contactUs": "Contact us",
     "corporateSolutions": "Corporate solutions",
     "customBag": "Custom bag",
     "largeOrders": "Large orders",
@@ -305,7 +344,8 @@
     "openCart": "Open cart",
     "ourCoffee": "Our coffee",
     "sampleBag": "Sample bag",
-    "toggleMenu": "Toggle navigation menu"
+    "toggleMenu": "Toggle navigation menu",
+    "whiteLabel": "White label solutions"
   },
   "newsletter": {
     "emailLabel": "Email address",

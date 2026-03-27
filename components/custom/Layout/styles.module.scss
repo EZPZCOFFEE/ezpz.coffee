@@ -4,23 +4,70 @@
   flex-direction: column;
 }
 
+/* Home: positioning context for desktop-only overlay nav (mobile stays in flow). */
+.containerHome {
+  position: relative;
+
+  @media (min-width: 1024px) {
+    --layout-home-navbar-offset: calc(
+      env(safe-area-inset-top) + var(--spacing-continent) + var(--spacing-city)
+    );
+  }
+}
+
 .main {
   flex: 1;
   padding: var(--spacing-state);
+  /* Fixed navbar — `--layout-navbar-height` is set on :root in Navbar. */
+  padding-top: calc(var(--spacing-state) + var(--layout-navbar-height, 56px));
+}
+
+.mainHome {
+  flex: 1;
+  padding: 0;
 }
 
 .navbarRoot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
   width: 100%;
-  background-color: var(--color-bg-secondary);
+  box-sizing: border-box;
+  background-color: transparent;
   padding-top: env(safe-area-inset-top);
+  transform: translateY(0);
+  transition:
+    transform 0.28s ease,
+    background-color 0.2s ease;
 
   .navbarInner {
     margin: var(--spacing-none) auto;
     padding: var(--spacing-city) var(--spacing-state);
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: var(--spacing-house);
+
+    @media (max-width: 1023px) {
+      padding: var(--spacing-street) var(--spacing-state);
+    }
   }
+}
+
+.navbarRootHidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.navbarSolid {
+  background-color: var(--color-white);
+}
+
+// Home at scroll top: light nav over hero (desktop + mobile).
+.navbarHome {
+  background-color: transparent;
 }
 
 .logo {
@@ -32,7 +79,15 @@
     display: block;
     height: var(--spacing-continent);
     width: auto;
+
+    @media (max-width: 1023px) {
+      height: var(--spacing-country);
+    }
   }
+}
+
+.logoImageOverlay {
+  filter: brightness(0) invert(1);
 }
 
 .desktopNavbar {
@@ -47,12 +102,12 @@
   .desktopNavbarRight {
     display: flex;
     align-items: center;
-    gap: var(--spacing-continent);
+    gap: var(--spacing-country);
 
     .navList {
       display: flex;
       align-items: center;
-      gap: var(--spacing-continent);
+      gap: var(--spacing-country);
       list-style: none;
       margin: var(--spacing-none);
       padding: var(--spacing-none);
@@ -75,6 +130,11 @@
         display: inline-flex;
         align-items: center;
         gap: var(--spacing-room);
+        transition: color 0.15s ease;
+
+        &:hover {
+          color: var(--color-accent);
+        }
       }
     }
   }
@@ -95,7 +155,6 @@
 .mobileNavbar {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-house);
 
   .mobileHeader {
     display: flex;
@@ -115,8 +174,8 @@
   background: transparent;
   padding: var(--spacing-house);
   position: relative;
-  width: 28px;
-  height: 22px;
+  width: 18px;
+  height: 20px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -128,12 +187,17 @@
   left: var(--spacing-room);
   right: var(--spacing-room);
   margin: var(--spacing-none) auto;
-  width: var(--spacing-state);
-  height: var(--spacing-dot);
+  width: 18px;
+  height: 2px;
   background-color: var(--color-text-primary);
   transition:
     transform 0.2s ease,
-    opacity 0.2s ease;
+    opacity 0.2s ease,
+    background-color 0.15s ease;
+}
+
+.menuButton:hover .menuButtonBar {
+  background-color: var(--color-accent);
 }
 
 .menuButtonBarTop {
@@ -192,7 +256,7 @@
 
 .mobileMenuItem {
   font-size: var(--font-size-fluid-xxl);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
 }
 
 .mobileMenuItemLabel {
@@ -202,10 +266,62 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
 }
 
 .mobileMenuItemActive .mobileMenuItemLabel {
   color: var(--color-accent-light);
+}
+
+// Match specificity of nested `.desktopNavbar … .navList .navItem` (4 classes).
+.navbarHome .desktopNavbar .desktopNavbarLeft .navList .navItem,
+.navbarHome .desktopNavbar .desktopNavbarRight .navList .navItem,
+.navbarHome .desktopNavbar .desktopNavbarLeft .navList .navLink,
+.navbarHome .desktopNavbar .desktopNavbarRight .navList .navLink {
+  color: var(--color-white);
+}
+
+.navbarHome .desktopNavbar .desktopNavbarLeft .navList .navItem__active,
+.navbarHome .desktopNavbar .desktopNavbarRight .navList .navItem__active {
+  color: var(--color-accent-extra-light);
+}
+
+.navbarHome .desktopNavbar .desktopNavbarLeft .navList .navLink:hover,
+.navbarHome .desktopNavbar .desktopNavbarRight .navList .navLink:hover {
+  color: var(--color-accent);
+}
+
+.navbarHome .mobileMenuItemLabel {
+  color: var(--color-white);
+}
+
+.navbarHome .mobileMenuItemLabel:hover {
+  color: var(--color-accent);
+}
+
+.navbarHome .mobileMenuItemActive .mobileMenuItemLabel {
+  color: var(--color-accent-extra-light);
+}
+
+.navbarHome .mobileMenuItemActive .mobileMenuItemLabel:hover {
+  color: var(--color-accent);
+}
+
+/* Home hero: cart text inherits white (Cart module uses color: inherit on trigger). */
+.navCartHome {
+  color: var(--color-white);
+}
+
+.navbarHome .menuButtonBar {
+  background-color: var(--color-white);
+}
+
+.navbarHome .menuButton:hover .menuButtonBar {
+  background-color: var(--color-accent);
 }
 
 @media (min-width: 1024px) {
@@ -273,6 +389,20 @@
       font-size: 12px;
       font-weight: var(--font-weight-normal);
       color: var(--color-gray-500);
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer .footerInner {
+    font-size: 12px;
+
+    .footerLink {
+      font-size: 12px;
+    }
+
+    .footerAddress {
+      font-size: 11px;
     }
   }
 }

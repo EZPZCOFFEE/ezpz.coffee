@@ -31,6 +31,7 @@
     "subtotal": "Sous-total",
     "taxNote": "Taxes et frais de livraison calculés au paiement",
     "title": "Votre panier",
+    "triggerWithCount": "Panier ({count})",
     "updating": "Mise à jour...",
     "youSave": "Vous économisez"
   },
@@ -161,6 +162,7 @@
     "brand": "EZPZ {year}",
     "contactUs": "Nous contacter",
     "faq": "FAQ",
+    "fairTrade": "Commerce équitable",
     "navigation": "Navigation du pied de page",
     "termsOfUse": "Conditions d'utilisation"
   },
@@ -278,12 +280,19 @@
       "twitterDescription": "Obtenez des réponses à vos questions sur le café de spécialité EZPZ.",
       "twitterTitle": "FAQ | EZPZ Coffee"
     },
-    "home": {
+    "design": {
       "description": "Téléchargez votre visuel, choisissez vos options de torréfaction et de mouture, et prévisualisez vos sachets de café EZPZ de 225g avant de les ajouter au panier.",
       "ogDescription": "Personnalisez l'étiquette, la mouture et le profil de torréfaction—prévisualisez en direct avant de commander.",
       "ogTitle": "Créez un sachet de café EZPZ personnalisé",
       "title": "Personnalisez vos sachets de café EZPZ",
       "twitterDescription": "Personnalisez chaque détail et visualisez instantanément le résultat."
+    },
+    "home": {
+      "description": "Sachets de café personnalisés sans minimum. EZPZ simplifie la personnalisation : créez votre sachet, découvrez nos cafés ou lancez une marque en marque blanche.",
+      "ogDescription": "Sachets de café personnalisés, esprit jeune et fun. Sans minimum. Créez en ligne, inscrivez-vous aux offres et découvrez le white label.",
+      "ogTitle": "EZPZ Coffee | Sachets personnalisés sans minimum",
+      "title": "EZPZ Coffee | Sachets personnalisés sans minimum",
+      "twitterDescription": "Sachets personnalisés sans minimum. Création en ligne, white label et café de spécialité."
     },
     "termsOfUse": {
       "description": "Consultez les conditions générales d'utilisation d'EZPZ.coffee, y compris les politiques de commande, la propriété intellectuelle et les informations de responsabilité.",
@@ -294,9 +303,39 @@
       "twitterTitle": "Conditions d'utilisation | EZPZ Coffee"
     }
   },
+  "landing": {
+    "carousel": {
+      "next": "Diapositive suivante",
+      "placeholderName": "Café {n}",
+      "prev": "Diapositive précédente",
+      "roleDescription": "carrousel",
+      "sectionTitle": "Cafés en vedette"
+    },
+    "hero": {
+      "designCta": "Créer un sachet",
+      "subtitle": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple.",
+      "titleLine1": "Sachets de café personnalisés",
+      "titleLine2": "Sans minimum"
+    },
+    "heroPhoto": {
+      "ariaLabel": "Visuel principal EZPZ",
+      "scroll": "Défiler",
+      "scrollHint": "Faire défiler vers le contenu principal"
+    },
+    "whiteLabel": {
+      "bodyLine1": "EZPZ est une entreprise de sachets de café personnalisés,",
+      "bodyLine2": "fun et jeune, qui rend la personnalisation simple—",
+      "bodyLine3": "des cadeaux uniques aux programmes white label",
+      "bodyLine4": "pour cafés et détaillants.",
+      "learnMore": "En savoir plus",
+      "titleLine1": "Marque blanche",
+      "titleLine2": "Construire la marque"
+    }
+  },
   "nav": {
     "aboutUs": "À propos",
     "cartAlt": "Panier",
+    "contactUs": "Nous contacter",
     "corporateSolutions": "Solutions entreprises",
     "customBag": "Sachet personnalisé",
     "largeOrders": "Grandes commandes",
@@ -305,7 +344,8 @@
     "openCart": "Ouvrir le panier",
     "ourCoffee": "Notre café",
     "sampleBag": "Sachet échantillon",
-    "toggleMenu": "Ouvrir/fermer le menu de navigation"
+    "toggleMenu": "Ouvrir/fermer le menu de navigation",
+    "whiteLabel": "Solutions en marque blanche"
   },
   "newsletter": {
     "emailLabel": "Adresse email",

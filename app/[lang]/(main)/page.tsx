@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
-import { shopifyQuery } from "@/lib/interfaces/shopify";
-import { GET_PRODUCT } from "@/lib/queries/get-product";
-
-import CustomizationPageClient from "./_components/CustomizationPageClient";
-import FontPreloader from "./_components/FontPreloader";
+import HomeLanding from "./_components/HomeLanding";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.home");
@@ -26,23 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const HomePage = async () => {
-  const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, {
-    handle: "custom-coffee",
-  });
-
-  const product = data.product;
-
-  if (!product) {
-    return <div>Product not found</div>;
-  }
-
-  return (
-    <>
-      <FontPreloader />
-      <CustomizationPageClient product={product} />
-    </>
-  );
+const HomePage = () => {
+  return <HomeLanding />;
 };
 
 export default HomePage;

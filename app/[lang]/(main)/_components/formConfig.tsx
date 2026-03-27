@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { type ReactNode, type SVGProps, useMemo } from "react";
+import { type ReactElement, type ReactNode, type SVGProps, useMemo } from "react";
 import { z } from "zod";
 
 import type { FontOption } from "@/components/form/FontSelectInput";
@@ -27,7 +27,7 @@ export interface OptionDefinition<TValue extends string> {
   icon: ReactNode;
 }
 
-const createOptionIcon = (Icon: (props: SVGProps<SVGSVGElement>) => JSX.Element, size = 28) => (
+const createOptionIcon = (Icon: (props: SVGProps<SVGSVGElement>) => ReactElement, size = 28) => (
   <Icon width={size} height={size} aria-hidden="true" focusable="false" />
 );
 

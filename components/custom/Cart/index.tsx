@@ -332,12 +332,7 @@ const Cart: React.FC<CartProps> = ({ children, className }) => {
             className={classNames(styles.cartButton, className)}
             aria-label={t("openCart")}
           >
-            <Image src="/cart.svg" alt={t("cartAlt")} width={28} height={28} />
-            {hasItems && (
-              <span className={styles.cartBadge} aria-hidden="true">
-                {itemCount > 99 ? "99+" : itemCount}
-              </span>
-            )}
+            <span className={styles.cartTriggerLabel}>{t("triggerWithCount", { count: itemCount })}</span>
           </button>
         )}
       </Popover.Trigger>
