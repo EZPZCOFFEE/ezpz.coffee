@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { useId, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 
 import Cart from "@/components/custom/Cart";
 import { locales } from "@/i18n/types";
@@ -24,15 +24,11 @@ interface NavItem {
 }
 
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
-  left: [
-    { labelKey: "customBag", pathSuffix: "/design" },
-    { labelKey: "shop", pathSuffix: "/shop" },
-  ],
+  left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
     { labelKey: "whiteLabel", pathSuffix: "/", hash: "white-label" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "ourCoffee", pathSuffix: "/coffee" },
-    { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
 };
 
@@ -40,19 +36,6 @@ const getNavHref = (locale: string, item: NavItem): string => {
   const path = item.pathSuffix === "/" ? `/${locale}` : `/${locale}${item.pathSuffix}`;
   return item.hash ? `${path}#${item.hash}` : path;
 };
-
-/**
- * Strips the locale prefix from the pathname.
- * e.g., "/en/about" -> "/about", "/fr" -> "/"
- */
-const HERO_SCROLL_THRESHOLD_PX = 24;
-
-const subscribeWindowScroll = (onChange: () => void) => {
-  window.addEventListener("scroll", onChange, { passive: true });
-  return () => window.removeEventListener("scroll", onChange);
-};
-
-const getScrolledPastHero = () => window.scrollY > HERO_SCROLL_THRESHOLD_PX;
 
 const stripLocalePrefix = (pathname: string): string => {
   for (const locale of locales) {
@@ -62,6 +45,11 @@ const stripLocalePrefix = (pathname: string): string => {
   }
   return pathname;
 };
+
+const NAV_TOP_THRESHOLD_PX = 8;
+const NAV_SCROLL_DELTA_PX = 6;
+
+type NavScrollPhase = "top" | "hidden" | "solid";
 
 const isNavItemActive = (item: NavItem, pathname: string | null): boolean => {
   if (!pathname || item.hash) {
@@ -103,6 +91,7 @@ const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
         className={classNames(styles.logoImage, {
           [styles.logoImageOverlay]: variant === "overlay",
         })}
+        style={{ width: "auto" }}
         priority
       />
     </Link>
@@ -153,7 +142,9 @@ const DesktopNavbar = ({
           })}
         </ul>
 
-        <Cart className={logoVariant === "overlay" ? styles.cartTriggerLight : undefined} />
+        <span className={logoVariant === "overlay" ? styles.navCartHome : undefined}>
+          <Cart />
+        </span>
       </div>
     </nav>
   );
@@ -165,14 +156,19 @@ const MobileNavbar = ({
   pathname,
   locale,
   logoVariant,
-}: NavbarVariantProps & { logoVariant: "default" | "overlay" }) => {
+  mobileMenuOpen,
+  onMobileMenuOpenChange,
+}: NavbarVariantProps & {
+  logoVariant: "default" | "overlay";
+  mobileMenuOpen: boolean;
+  onMobileMenuOpenChange: (open: boolean) => void;
+}) => {
   const t = useTranslations("nav");
   const navItems = [...leftNavItems, ...rightNavItems];
-  const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
 
   return (
-    <div className={styles.mobileNavbar} data-state={isOpen ? "open" : "closed"}>
+    <div className={styles.mobileNavbar} data-state={mobileMenuOpen ? "open" : "closed"}>
       <div className={styles.mobileHeader}>
         <Logo variant={logoVariant} />
 
@@ -181,24 +177,26 @@ const MobileNavbar = ({
             className={styles.menuButton}
             type="button"
             aria-label={t("toggleMenu")}
-            aria-expanded={isOpen}
+            aria-expanded={mobileMenuOpen}
             aria-controls={menuId}
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={() => onMobileMenuOpenChange(!mobileMenuOpen)}
           >
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarTop}`} />
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarMiddle}`} />
             <span className={`${styles.menuButtonBar} ${styles.menuButtonBarBottom}`} />
           </button>
 
-          <Cart className={logoVariant === "overlay" ? styles.cartTriggerLight : undefined} />
+          <span className={logoVariant === "overlay" ? styles.navCartHome : undefined}>
+            <Cart />
+          </span>
         </div>
       </div>
 
       <div
         id={menuId}
         className={styles.mobileMenuContent}
-        data-state={isOpen ? "open" : "closed"}
-        aria-hidden={!isOpen}
+        data-state={mobileMenuOpen ? "open" : "closed"}
+        aria-hidden={!mobileMenuOpen}
       >
         <ul className={styles.mobileMenuList}>
           {navItems.map((item) => {
@@ -212,7 +210,7 @@ const MobileNavbar = ({
                 <Link
                   href={getNavHref(locale, item)}
                   className={styles.mobileMenuItemLabel}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => onMobileMenuOpenChange(false)}
                 >
                   {t(item.labelKey)}
                 </Link>
@@ -232,28 +230,92 @@ const MobileNavbar = ({
 const Navbar = () => {
   const pathname = usePathname();
   const locale = useLocale();
+  const headerRef = useRef<HTMLElement>(null);
+  const lastScrollYRef = useRef(0);
+  const [navPhase, setNavPhase] = useState<NavScrollPhase>("top");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
   const isHome = normalizedPath === "/";
 
-  const scrolledPastHero = useSyncExternalStore(
-    subscribeWindowScroll,
-    getScrolledPastHero,
-    () => false
-  );
-
   const leftNavItems = NAV_GROUPS.left;
   const rightNavItems = NAV_GROUPS.right;
-  const useOverlay = isHome && !scrolledPastHero;
-  const logoVariant: "default" | "overlay" = useOverlay ? "overlay" : "default";
+  const homeTopOverlay = isHome && navPhase === "top";
+  const logoVariant: "default" | "overlay" = homeTopOverlay ? "overlay" : "default";
+
+  useLayoutEffect(() => {
+    const y = Math.max(0, window.scrollY);
+    lastScrollYRef.current = y;
+    const phase = y <= NAV_TOP_THRESHOLD_PX ? "top" : "solid";
+    requestAnimationFrame(() => {
+      setNavPhase(phase);
+    });
+  }, [pathname]);
+
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el || mobileMenuOpen) return;
+
+    const setHeight = () => {
+      const h = Math.round(el.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--layout-navbar-height", `${h}px`);
+    };
+
+    setHeight();
+    const ro = new ResizeObserver(setHeight);
+    ro.observe(el);
+    window.addEventListener("resize", setHeight);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", setHeight);
+    };
+  }, [mobileMenuOpen, navPhase, pathname]);
+
+  useEffect(() => {
+    const y0 = Math.max(0, window.scrollY);
+    lastScrollYRef.current = y0;
+    requestAnimationFrame(() => {
+      if (y0 > NAV_TOP_THRESHOLD_PX) {
+        setNavPhase("solid");
+      }
+    });
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = Math.max(0, window.scrollY);
+        const last = lastScrollYRef.current;
+        const delta = y - last;
+
+        if (y <= NAV_TOP_THRESHOLD_PX) {
+          setNavPhase("top");
+        } else if (delta > NAV_SCROLL_DELTA_PX) {
+          setNavPhase("hidden");
+        } else if (delta < -NAV_SCROLL_DELTA_PX) {
+          setNavPhase("solid");
+        }
+
+        lastScrollYRef.current = y;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
+      ref={headerRef}
       className={classNames(styles.navbarRoot, {
-        [styles.navbarRootOverlay]: useOverlay,
-        [styles.navbarRootSolid]: isHome && scrolledPastHero,
+        [styles.navbarRootHidden]: navPhase === "hidden" && !mobileMenuOpen,
+        [styles.navbarSolid]: navPhase === "solid",
+        [styles.navbarHome]: homeTopOverlay,
       })}
-      data-variant={useOverlay ? "overlay" : "solid"}
+      data-variant={isHome ? "home" : "default"}
+      data-scroll={navPhase}
     >
       <div className={styles.navbarInner}>
         <DesktopNavbar
@@ -269,6 +331,8 @@ const Navbar = () => {
           pathname={pathname}
           locale={locale}
           logoVariant={logoVariant}
+          mobileMenuOpen={mobileMenuOpen}
+          onMobileMenuOpenChange={setMobileMenuOpen}
         />
       </div>
     </header>

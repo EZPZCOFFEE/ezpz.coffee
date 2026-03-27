@@ -31,6 +31,7 @@
     "subtotal": "Subtotal",
     "taxNote": "Taxes and shipping calculated at checkout",
     "title": "Your cart",
+    "triggerWithCount": "Cart ({count})",
     "updating": "Updating...",
     "youSave": "You save"
   },
@@ -307,8 +308,8 @@
       "next": "Next slide",
       "placeholderName": "Coffee name {n}",
       "prev": "Previous slide",
-      "sectionTitle": "Featured coffees",
-      "selectItem": "Show {name}"
+      "roleDescription": "carousel",
+      "sectionTitle": "Featured coffees"
     },
     "hero": {
       "designCta": "Design bag",
@@ -318,18 +319,17 @@
     },
     "heroPhoto": {
       "ariaLabel": "EZPZ lifestyle hero",
-      "cta": "Shop now"
-    },
-    "midCta": {
-      "body": "Join our list for product drops, tips, and 15% off your first order.",
-      "button": "Get started",
-      "title": "Stay in the loop"
+      "scroll": "Scroll",
+      "scrollHint": "Scroll down to main content"
     },
     "whiteLabel": {
-      "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—from one-off gifts to full white-label programs for cafés and retailers.",
+      "bodyLine1": "EZPZ is a fun, youthful custom coffee bag",
+      "bodyLine2": "company that makes personalization",
+      "bodyLine3": "simple—from one-off gifts to full white-label",
+      "bodyLine4": "programs for cafés and retailers.",
       "learnMore": "Learn more",
-      "productPlaceholder": "Product preview",
-      "title": "White label brand building"
+      "titleLine1": "White label",
+      "titleLine2": "Brand building"
     }
   },
   "nav": {
@@ -344,9 +344,8 @@
     "openCart": "Open cart",
     "ourCoffee": "Our coffee",
     "sampleBag": "Sample bag",
-    "shop": "Shop",
     "toggleMenu": "Toggle navigation menu",
-    "whiteLabel": "White label"
+    "whiteLabel": "White label solutions"
   },
   "newsletter": {
     "emailLabel": "Email address",

@@ -16,14 +16,6 @@ const Footer = () => {
         <div className={styles.footerTop}>
           <span className={styles.footerBrand}>{t("brand", { year })}</span>
           <nav className={styles.footerNav} aria-label={t("navigation")}>
-            <a
-              href="https://www.fairtradecanada.ca/"
-              className={styles.footerLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("fairTrade")}
-            </a>
             <Link href={`/${locale}/contact`} className={styles.footerLink}>
               {t("contactUs")}
             </Link>

@@ -31,6 +31,7 @@
     "subtotal": "Sous-total",
     "taxNote": "Taxes et frais de livraison calculés au paiement",
     "title": "Votre panier",
+    "triggerWithCount": "Panier ({count})",
     "updating": "Mise à jour...",
     "youSave": "Vous économisez"
   },
@@ -307,8 +308,8 @@
       "next": "Diapositive suivante",
       "placeholderName": "Café {n}",
       "prev": "Diapositive précédente",
-      "sectionTitle": "Cafés en vedette",
-      "selectItem": "Afficher {name}"
+      "roleDescription": "carrousel",
+      "sectionTitle": "Cafés en vedette"
     },
     "hero": {
       "designCta": "Créer un sachet",
@@ -318,18 +319,17 @@
     },
     "heroPhoto": {
       "ariaLabel": "Visuel principal EZPZ",
-      "cta": "Magasiner"
-    },
-    "midCta": {
-      "body": "Inscrivez-vous pour les nouveautés, des conseils et 15 % sur votre première commande.",
-      "button": "Commencer",
-      "title": "Restez informé"
+      "scroll": "Défiler",
+      "scrollHint": "Faire défiler vers le contenu principal"
     },
     "whiteLabel": {
-      "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—des cadeaux uniques aux programmes white label pour cafés et détaillants.",
+      "bodyLine1": "EZPZ est une entreprise de sachets de café personnalisés,",
+      "bodyLine2": "fun et jeune, qui rend la personnalisation simple—",
+      "bodyLine3": "des cadeaux uniques aux programmes white label",
+      "bodyLine4": "pour cafés et détaillants.",
       "learnMore": "En savoir plus",
-      "productPlaceholder": "Aperçu produit",
-      "title": "Construire une marque en marque blanche"
+      "titleLine1": "Marque blanche",
+      "titleLine2": "Construire la marque"
     }
   },
   "nav": {
@@ -344,9 +344,8 @@
     "openCart": "Ouvrir le panier",
     "ourCoffee": "Notre café",
     "sampleBag": "Sachet échantillon",
-    "shop": "Boutique",
     "toggleMenu": "Ouvrir/fermer le menu de navigation",
-    "whiteLabel": "Marque blanche"
+    "whiteLabel": "Solutions en marque blanche"
   },
   "newsletter": {
     "emailLabel": "Adresse email",

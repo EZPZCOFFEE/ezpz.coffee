@@ -1,153 +1,228 @@
 "use client";
 
-import { Globe } from "@phosphor-icons/react";
+import { GlobeHemisphereEastIcon } from "@phosphor-icons/react";
+import { CaretDoubleDownIcon } from "@phosphor-icons/react/dist/ssr";
 import classNames from "classnames";
+import useEmblaCarousel from "embla-carousel-react";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
+import banner01 from "@/public/assets/banner-01.jpg";
+import bannerBase from "@/public/assets/banner-base.jpg";
+
 import styles from "./homeLanding.module.scss";
 
-const CAROUSEL_PLACEHOLDER_COUNT = 5;
+const WHITE_LABEL_BODY_KEYS = ["bodyLine1", "bodyLine2", "bodyLine3", "bodyLine4"] as const;
+
+const CAROUSEL_PLACEHOLDER_SLIDES = 5;
+
+const LandingFeaturedCarousel = () => {
+  const t = useTranslations("landing");
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    // Exact viewport center (same math as align: "center" but works reliably with slide spacing).
+    align: (viewSize, snapSize) => (viewSize - snapSize) / 2,
+    dragFree: false,
+    slidesToScroll: 1,
+    skipSnaps: false,
+  });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const sync = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", sync);
+    emblaApi.on("reInit", sync);
+    sync();
+    return () => {
+      emblaApi.off("select", sync);
+      emblaApi.off("reInit", sync);
+    };
+  }, [emblaApi]);
+
+  return (
+    <div
+      className={styles.carouselEmblaRow}
+      role="region"
+      aria-label={t("carousel.sectionTitle")}
+      aria-roledescription={t("carousel.roleDescription")}
+    >
+      <div className={styles.carouselEmblaViewport} ref={emblaRef}>
+        <div className={styles.carouselEmblaContainer}>
+          {Array.from({ length: CAROUSEL_PLACEHOLDER_SLIDES }, (_, i) => (
+            <div
+              key={i}
+              className={classNames(styles.carouselEmblaSlide, {
+                [styles.carouselEmblaSlideActive]: i === selectedIndex,
+              })}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={t("carousel.placeholderName", { n: i + 1 })}
+              aria-current={i === selectedIndex ? "true" : undefined}
+            >
+              <div className={styles.carouselEmblaSlideInner}>
+                <span className={styles.carouselPlaceholder} aria-hidden />
+                <span className={styles.carouselSlideLabel}>
+                  {t("carousel.placeholderName", { n: i + 1 })}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const LANDING_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const HomeLanding = () => {
   const t = useTranslations("landing");
   const locale = useLocale();
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  const nextSlide = useCallback(() => {
-    setActiveSlide((i) => (i + 1) % CAROUSEL_PLACEHOLDER_COUNT);
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setActiveSlide((i) => (i - 1 + CAROUSEL_PLACEHOLDER_COUNT) % CAROUSEL_PLACEHOLDER_COUNT);
-  }, []);
-
-  useEffect(() => {
-    const id = window.setInterval(nextSlide, 5000);
-    return () => window.clearInterval(id);
-  }, [nextSlide]);
+  const reduceMotion = useReducedMotion();
+  const motionOff = !!reduceMotion;
 
   const designHref = `/${locale}/design`;
-  const shopHref = `/${locale}/shop`;
+
+  const scrollToHeroCopy = useCallback(() => {
+    document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
+  const heroHintMotion = motionOff
+    ? {}
+    : {
+        initial: { opacity: 0, y: 14 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.75, delay: 0.45, ease: LANDING_EASE },
+      };
+
+  const sectionFade = motionOff
+    ? {}
+    : {
+        initial: { opacity: 0, y: 28 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-48px 0px", amount: 0.12 },
+        transition: { duration: 0.65, ease: LANDING_EASE },
+      };
+
+  const staggerParent = {
+    initial: "hidden" as const,
+    whileInView: "visible" as const,
+    viewport: { once: true, amount: 0.18 },
+    variants: {
+      hidden: {},
+      visible: {
+        transition: motionOff
+          ? { staggerChildren: 0, delayChildren: 0 }
+          : { staggerChildren: 0.11, delayChildren: 0.06 },
+      },
+    },
+  };
+
+  const fadeUpChild = {
+    variants: {
+      hidden: motionOff ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: motionOff ? 0 : 0.52, ease: LANDING_EASE },
+      },
+    },
+  };
 
   return (
     <div className={styles.landing}>
-      <section className={styles.heroPhoto} aria-labelledby="hero-photo-heading">
-        <div className={styles.heroPhotoInner}>
-          <p id="hero-photo-heading" className={styles.visuallyHidden}>
-            {t("heroPhoto.ariaLabel")}
-          </p>
-          <Link href={designHref} className={styles.heroPhotoCta}>
-            {t("heroPhoto.cta")}
-          </Link>
-        </div>
+      <section className={styles.heroPhoto} aria-label={t("heroPhoto.ariaLabel")}>
+        <Image
+          src={banner01}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          quality={100}
+          sizes="100vw"
+          className={styles.heroPhotoImage}
+        />
+        <motion.div className={styles.heroPhotoInner} {...heroHintMotion}>
+          <button
+            type="button"
+            className={styles.heroScrollHint}
+            onClick={scrollToHeroCopy}
+            aria-label={t("heroPhoto.scrollHint")}
+          >
+            <span className={styles.heroScrollLabel} aria-hidden>
+              {t("heroPhoto.scroll")}
+            </span>
+            <CaretDoubleDownIcon
+              className={styles.heroScrollDoubleCaret}
+              weight="bold"
+              size={22}
+              aria-hidden
+            />
+          </button>
+        </motion.div>
       </section>
 
-      <section className={styles.heroCopy} aria-labelledby="hero-copy-heading">
-        <div className={styles.sectionInnerNarrow}>
-          <h1 id="hero-copy-heading" className={styles.heroTitle}>
+      <section id="hero-copy" className={styles.heroCopy} aria-labelledby="hero-copy-heading">
+        <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
+          <motion.h1 id="hero-copy-heading" className={styles.heroTitle} {...fadeUpChild}>
             {t("hero.titleLine1")}
             <br />
             {t("hero.titleLine2")}
-          </h1>
-          <p className={styles.heroSubtitle}>{t("hero.subtitle")}</p>
-          <Link href={designHref} className={styles.btnOutline}>
-            {t("hero.designCta")}
-          </Link>
-        </div>
+          </motion.h1>
+          <motion.p className={styles.heroSubtitle} {...fadeUpChild}>
+            {t("hero.subtitle")}
+          </motion.p>
+          <motion.div {...fadeUpChild} className={styles.landingMotionInline}>
+            <Link href={designHref} className={styles.btnOutline}>
+              {t("hero.designCta")}
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
 
-      <section className={styles.midCta} aria-labelledby="mid-cta-heading">
-        <div className={styles.sectionInnerNarrow}>
-          <h2 id="mid-cta-heading" className={styles.midCtaTitle}>
-            {t("midCta.title")}
-          </h2>
-          <p className={styles.midCtaText}>{t("midCta.body")}</p>
-          <Link href={shopHref} className={styles.btnSolid}>
-            {t("midCta.button")}
-          </Link>
-        </div>
-      </section>
+      <motion.section className={styles.carouselSection} {...sectionFade}>
+        <LandingFeaturedCarousel />
+      </motion.section>
 
-      <section className={styles.carouselSection} aria-labelledby="carousel-heading">
-        <div className={styles.sectionInnerWide}>
-          <h2 id="carousel-heading" className={styles.carouselSectionTitle}>
-            {t("carousel.sectionTitle")}
-          </h2>
-          <div className={styles.carousel}>
-            <button
-              type="button"
-              className={styles.carouselNav}
-              aria-label={t("carousel.prev")}
-              onClick={prevSlide}
-            >
-              ‹
-            </button>
-            <div className={styles.carouselTrack} role="list">
-              {Array.from({ length: CAROUSEL_PLACEHOLDER_COUNT }, (_, i) => {
-                const offset = i - activeSlide;
-                const isActive = i === activeSlide;
-                return (
-                  <button
-                    key={i}
-                    type="button"
-                    role="listitem"
-                    className={classNames(styles.carouselCard, {
-                      [styles.carouselCardActive]: isActive,
-                      [styles.carouselCardSide]: !isActive && Math.abs(offset) === 1,
-                      [styles.carouselCardFar]: !isActive && Math.abs(offset) > 1,
-                    })}
-                    onClick={() => setActiveSlide(i)}
-                    aria-current={isActive ? "true" : undefined}
-                    aria-label={t("carousel.selectItem", { name: t("carousel.placeholderName", { n: i + 1 }) })}
-                  >
-                    <span className={styles.carouselPlaceholder} aria-hidden />
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              type="button"
-              className={styles.carouselNav}
-              aria-label={t("carousel.next")}
-              onClick={nextSlide}
-            >
-              ›
-            </button>
-          </div>
-          <p className={styles.carouselCaption} aria-live="polite">
-            {t("carousel.placeholderName", { n: activeSlide + 1 })}
-          </p>
-        </div>
-      </section>
-
-      <section className={styles.whiteLabel} id="white-label" aria-labelledby="white-label-heading">
-        <div className={styles.sectionInnerNarrow}>
-          <h2 id="white-label-heading" className={styles.whiteLabelTitle}>
-            {t("whiteLabel.title")}
-          </h2>
-          <p className={styles.whiteLabelBody}>{t("whiteLabel.body")}</p>
-          <Globe className={styles.whiteLabelIcon} weight="regular" aria-hidden />
-          <div className={styles.whiteLabelShowcase} role="presentation">
-            {[0, 1, 2].map((i) => (
-              <div key={i} className={styles.whiteLabelProduct}>
-                <Image
-                  src="/logo.svg"
-                  alt=""
-                  width={80}
-                  height={64}
-                  className={styles.whiteLabelProductLogo}
-                />
-                <span className={styles.whiteLabelProductLabel}>{t("whiteLabel.productPlaceholder")}</span>
-              </div>
+      <section className={styles.whiteLabelBanner} id="white-label" aria-labelledby="white-label-heading">
+        <motion.div className={styles.whiteLabelBannerInner} {...staggerParent}>
+          <motion.h2 id="white-label-heading" className={styles.heroTitle} {...fadeUpChild}>
+            {t("whiteLabel.titleLine1")}
+            <br />
+            {t("whiteLabel.titleLine2")}
+          </motion.h2>
+          <motion.div className={styles.whiteLabelBannerBody} {...fadeUpChild}>
+            {WHITE_LABEL_BODY_KEYS.map((key) => (
+              <p key={key} className={styles.heroSubtitle}>
+                {t(`whiteLabel.${key}`)}
+              </p>
             ))}
-          </div>
-          <Link href={`/${locale}/about`} className={styles.btnOutline}>
-            {t("whiteLabel.learnMore")}
-          </Link>
-        </div>
+          </motion.div>
+          <motion.div {...fadeUpChild} className={styles.whiteLabelGlobeMotion}>
+            <GlobeHemisphereEastIcon className={styles.whiteLabelBannerGlobe} weight="regular" aria-hidden />
+          </motion.div>
+          <motion.div {...fadeUpChild} className={styles.whiteLabelPhotoMotion}>
+            <Image
+              src={bannerBase}
+              alt=""
+              width={bannerBase.width}
+              height={bannerBase.height}
+              placeholder="blur"
+              quality={85}
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              className={styles.whiteLabelBannerPhoto}
+            />
+          </motion.div>
+          <motion.div {...fadeUpChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/about`} className={styles.btnOutline}>
+              {t("whiteLabel.learnMore")}
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

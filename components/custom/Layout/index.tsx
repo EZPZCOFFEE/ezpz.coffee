@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { usePathname } from "next/navigation";
 import { PropsWithChildren } from "react";
 
@@ -29,7 +30,7 @@ const Layout = ({ children }: PropsWithChildren) => {
   return (
     <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
       <CartProvider>
-        <div className={styles.container}>
+        <div className={classNames(styles.container, isHome && styles.containerHome)}>
           <Navbar />
           <main className={isHome ? styles.mainHome : styles.main}>{children}</main>
           <NewsletterSignup />

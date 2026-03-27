@@ -6,6 +6,23 @@
   font-family: var(--font-montserrat), var(--font-family);
 }
 
+.landingMotionInline {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.whiteLabelGlobeMotion {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.whiteLabelPhotoMotion {
+  width: 100%;
+  margin: 0 0 var(--spacing-country);
+}
+
 .visuallyHidden {
   position: absolute;
   width: 1px;
@@ -31,63 +48,105 @@
   padding: 0 var(--spacing-state);
 }
 
-/* Full-bleed hero — gradient stands in for a lifestyle photo when no raster asset is in /public */
+/* Full-viewport hero — lifestyle photo + light overlay */
 .heroPhoto {
   position: relative;
-  min-height: 72vh;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: var(--spacing-galaxy) var(--spacing-state) var(--spacing-country);
-  background:
-    linear-gradient(165deg, rgba(255, 255, 255, 0.12) 0%, transparent 45%),
-    radial-gradient(ellipse 90% 60% at 50% 100%, rgba(255, 180, 120, 0.35), transparent 55%),
-    linear-gradient(180deg, #38bdf8 0%, #7dd3fc 40%, #bae6fd 100%);
-  background-size: cover;
-  background-position: center;
+  background-color: #7dd3fc;
+
+  @media (min-width: 1024px) {
+    padding: calc(var(--layout-home-navbar-offset, 0px) + var(--spacing-galaxy)) var(--spacing-state)
+      var(--spacing-country);
+  }
+}
+
+.heroPhotoImage {
+  object-fit: cover;
+  /* Horizontal center; vertical ~35% (above 50% “dead center”) to keep subject higher in frame */
+  object-position: center 35%;
+  z-index: 0;
 }
 
 .heroPhotoInner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-city);
 }
 
-.heroPhotoCta {
-  display: inline-flex;
+.heroScrollHint {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: var(--spacing-city) var(--spacing-country);
-  font-size: var(--font-size-fluid-xl);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-white);
-  background-color: var(--landing-orange);
+  gap: var(--spacing-room);
+  margin: 0;
+  padding: var(--spacing-house);
   border: none;
-  border-radius: 999px;
-  text-decoration: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-
-  &:hover {
-    filter: brightness(1.05);
-  }
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-white);
+  font: inherit;
+  transition: color 0.15s ease;
 
   &:focus-visible {
     outline: 3px solid var(--color-white);
     outline-offset: 3px;
+    border-radius: var(--spacing-room);
+  }
+
+  &:hover {
+    color: var(--color-accent);
+
+    .heroScrollLabel {
+      opacity: 1;
+    }
+  }
+}
+
+.heroScrollLabel {
+  font-size: var(--font-size-fluid-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.heroScrollDoubleCaret {
+  display: block;
+  flex-shrink: 0;
+  animation: heroScrollNudge 1.2s ease-in-out infinite;
+}
+
+@keyframes heroScrollNudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroScrollDoubleCaret {
+    animation: none;
   }
 }
 
 .heroCopy {
-  padding: var(--spacing-cluster) var(--spacing-none);
+  padding: calc(var(--spacing-cluster) + 2 * var(--spacing-country)) var(--spacing-none);
   background: var(--color-white);
 }
 
 .heroTitle {
-  margin: 0 0 var(--spacing-state);
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  margin: 0 0 var(--spacing-country);
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   text-transform: uppercase;
@@ -97,12 +156,19 @@
 
 .heroSubtitle {
   margin: 0 0 var(--spacing-country);
-  font-size: var(--font-size-fluid-xxl);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(1rem, 2.85vw, 1.5rem);
   line-height: var(--line-height-relaxed);
   color: var(--landing-black);
-  max-width: 36rem;
+  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.heroCopy .btnOutline,
+.whiteLabelBannerInner .btnOutline {
+  padding: calc(var(--spacing-house)) calc(var(--spacing-country));
+  font-size: clamp(2rem, 3vw, 2.5rem);
 }
 
 .btnOutline {
@@ -113,7 +179,6 @@
   font-size: var(--font-size-fluid-lg);
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--landing-orange);
   background: transparent;
   border: 2px solid var(--landing-orange);
@@ -134,234 +199,123 @@
   }
 }
 
-.btnSolid {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-city) var(--spacing-continent);
-  font-size: var(--font-size-fluid-lg);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-white);
-  background: var(--landing-orange);
-  border: none;
-  border-radius: 999px;
-  text-decoration: none;
-
-  &:hover {
-    filter: brightness(1.06);
-  }
-
-  &:focus-visible {
-    outline: 3px solid var(--landing-orange);
-    outline-offset: 3px;
-  }
-}
-
-.midCta {
-  padding: var(--spacing-cluster) var(--spacing-none);
-  background: var(--color-beige);
-}
-
-.midCtaTitle {
-  margin: 0 0 var(--spacing-city);
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  font-weight: var(--font-weight-bold);
-  color: var(--landing-black);
-}
-
-.midCtaText {
-  margin: 0 0 var(--spacing-country);
-  font-size: var(--font-size-fluid-xl);
-  line-height: var(--line-height-relaxed);
-  color: var(--landing-gray);
-  max-width: 32rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .carouselSection {
   padding: var(--spacing-cluster) var(--spacing-none) var(--spacing-galaxy);
   background: var(--color-black);
 }
 
-.carouselSectionTitle {
-  margin: 0 0 var(--spacing-country);
-  font-size: var(--font-size-fluid-xxl);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-white);
-  text-align: center;
+.carouselEmblaRow {
+  width: 100%;
 }
 
-.carousel {
+.carouselEmblaViewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carouselEmblaContainer {
   display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Spacing on slides (not flex gap) so Embla snap + center align match measured slide boxes. */
+.carouselEmblaSlide {
+  flex: 0 0 min(42vw, 440px);
+  min-width: 0;
+  box-sizing: border-box;
+  padding-left: calc(var(--spacing-country) / 2);
+  padding-right: calc(var(--spacing-country) / 2);
+}
+
+.carouselEmblaSlideInner {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: var(--spacing-city);
 }
 
-.carouselNav {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 50%;
-  background: transparent;
+.carouselSlideLabel {
+  font-size: var(--font-size-fluid-xl);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.carouselEmblaSlideActive .carouselSlideLabel {
   color: var(--color-white);
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-white);
-    outline-offset: 2px;
-  }
-}
-
-.carouselTrack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-street);
-  flex: 1;
-  min-height: 200px;
-  overflow: hidden;
-}
-
-.carouselCard {
-  flex: 0 0 auto;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
 }
 
 .carouselPlaceholder {
   display: block;
-  width: 120px;
-  height: 120px;
-  border-radius: 4px;
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.carouselCardActive .carouselPlaceholder {
-  background: var(--color-white);
-  transform: scale(1.08);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-}
-
-.carouselCardSide .carouselPlaceholder {
+  width: 100%;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
   background: #9ca3af;
-  opacity: 0.85;
-  transform: scale(0.92);
+  transition: background-color 0.2s ease;
 }
 
-.carouselCardFar .carouselPlaceholder {
-  background: #6b7280;
-  opacity: 0.5;
-  transform: scale(0.82);
+.carouselEmblaSlideActive .carouselPlaceholder {
+  background: var(--color-white);
 }
 
 @media (max-width: 639px) {
-  .carouselPlaceholder {
-    width: 72px;
-    height: 72px;
-  }
-
-  .carouselTrack {
-    min-height: 140px;
-    gap: var(--spacing-room);
-  }
-
-  .carouselNav {
-    width: 36px;
-    height: 36px;
-    font-size: 1.25rem;
+  .carouselEmblaSlide {
+    flex: 0 0 min(78vw, 340px);
+    padding-left: calc(var(--spacing-state) / 2);
+    padding-right: calc(var(--spacing-state) / 2);
   }
 }
 
-.carouselCaption {
-  margin: var(--spacing-country) 0 0;
-  text-align: center;
-  font-size: var(--font-size-fluid-xxl);
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-white);
-}
-
-.whiteLabel {
-  padding: var(--spacing-galaxy) var(--spacing-none);
+.whiteLabelBanner {
+  width: 100%;
   background: var(--color-white);
+  padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state) var(--spacing-galaxy);
 }
 
-.whiteLabelTitle {
-  margin: 0 0 var(--spacing-state);
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-  font-weight: var(--font-weight-extrabold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--landing-orange);
-}
-
-.whiteLabelBody {
-  margin: 0 0 var(--spacing-country);
-  font-size: var(--font-size-fluid-xl);
-  line-height: var(--line-height-loose);
-  color: var(--landing-black);
-}
-
-.whiteLabelIcon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto var(--spacing-country);
-  color: var(--landing-orange);
-}
-
-.whiteLabelShowcase {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: center;
-  gap: var(--spacing-country);
-  margin: 0 0 var(--spacing-country);
-}
-
-.whiteLabelProduct {
+.whiteLabelBannerInner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-street);
-  padding: var(--spacing-state);
-  min-width: 140px;
-  min-height: 160px;
-  border: 1px dashed var(--color-gray-300);
-  border-radius: 8px;
-  background: var(--color-gray-100);
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+
+  .heroTitle {
+    max-width: 40rem;
+    width: 100%;
+  }
 }
 
-.whiteLabelProductLogo {
-  opacity: 0.35;
-  filter: grayscale(1);
+.whiteLabelBannerBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 0 var(--spacing-country);
+
+  .heroSubtitle {
+    margin: 0;
+    text-align: center;
+  }
 }
 
-.whiteLabelProductLabel {
-  font-size: var(--font-size-fluid-sm);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--landing-gray);
+.whiteLabelBannerGlobe {
+  width: 56px;
+  height: 56px;
+  margin: 0 0 var(--spacing-country);
+  flex-shrink: 0;
+  color: var(--landing-orange);
+}
+
+.whiteLabelBannerPhoto {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
 }

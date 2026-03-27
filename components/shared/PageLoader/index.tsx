@@ -5,7 +5,15 @@ import styles from "./styles.module.scss";
 const PageLoader = () => {
   return (
     <div className={styles.container}>
-      <Image src="/logo.svg" alt="EZPZ Coffee" width={80} height={65} priority className={styles.logo} />
+      <Image
+        src="/logo.svg"
+        alt="EZPZ Coffee"
+        width={80}
+        height={65}
+        priority
+        className={styles.logo}
+        style={{ height: "auto" }}
+      />
     </div>
   );
 };
