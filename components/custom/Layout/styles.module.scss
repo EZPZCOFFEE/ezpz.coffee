@@ -32,7 +32,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: var(--z-index-navbar);
   width: 100%;
   box-sizing: border-box;
   background-color: transparent;
@@ -322,6 +322,45 @@
 
 .navbarHome .menuButton:hover .menuButtonBar {
   background-color: var(--color-accent);
+}
+
+/* Mobile: open menu → full navbar white (any scroll / hero state); readable logo, links, cart, hamburger. */
+@media (max-width: 1023px) {
+  .navbarRoot[data-menu-open="true"] {
+    background-color: var(--color-white);
+  }
+
+  .navbarRoot[data-menu-open="true"] .logoImageOverlay {
+    filter: none;
+  }
+
+  .navbarRoot[data-menu-open="true"] .mobileMenuItemLabel {
+    color: var(--color-text-primary);
+  }
+
+  .navbarRoot[data-menu-open="true"] .mobileMenuItemLabel:hover {
+    color: var(--color-accent);
+  }
+
+  .navbarRoot[data-menu-open="true"] .mobileMenuItemActive .mobileMenuItemLabel {
+    color: var(--color-accent);
+  }
+
+  .navbarRoot[data-menu-open="true"] .mobileMenuItemActive .mobileMenuItemLabel:hover {
+    color: var(--color-accent);
+  }
+
+  .navbarRoot[data-menu-open="true"] .navCartHome {
+    color: var(--color-text-primary);
+  }
+
+  .navbarRoot[data-menu-open="true"] .menuButtonBar {
+    background-color: var(--color-text-primary);
+  }
+
+  .navbarRoot[data-menu-open="true"] .menuButton:hover .menuButtonBar {
+    background-color: var(--color-accent);
+  }
 }
 
 @media (min-width: 1024px) {

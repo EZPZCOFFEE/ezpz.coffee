@@ -26,7 +26,7 @@ interface NavItem {
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
-    { labelKey: "whiteLabel", pathSuffix: "/", hash: "white-label" },
+    { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "ourCoffee", pathSuffix: "/coffee" },
   ],
@@ -236,11 +236,12 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
-  const isHome = normalizedPath === "/";
+  const isHeroLanding =
+    normalizedPath === "/" || normalizedPath === "/white-label" || normalizedPath.startsWith("/white-label/");
 
   const leftNavItems = NAV_GROUPS.left;
   const rightNavItems = NAV_GROUPS.right;
-  const homeTopOverlay = isHome && navPhase === "top";
+  const homeTopOverlay = isHeroLanding && navPhase === "top";
   const logoVariant: "default" | "overlay" = homeTopOverlay ? "overlay" : "default";
 
   useLayoutEffect(() => {
@@ -314,8 +315,9 @@ const Navbar = () => {
         [styles.navbarSolid]: navPhase === "solid",
         [styles.navbarHome]: homeTopOverlay,
       })}
-      data-variant={isHome ? "home" : "default"}
+      data-variant={isHeroLanding ? "home" : "default"}
       data-scroll={navPhase}
+      data-menu-open={mobileMenuOpen ? "true" : "false"}
     >
       <div className={styles.navbarInner}>
         <DesktopNavbar

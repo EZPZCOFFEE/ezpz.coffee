@@ -123,6 +123,9 @@
   --z-index-dropdown-menu: 6;
   --z-index-toast: 7;
   --z-index-overlay: 8;
+  /* Fixed chrome: keep drawers/modals above the main nav (see Layout navbar). */
+  --z-index-navbar: 50;
+  --z-index-cart-drawer: 60;
 }
 
 .theme-dark {

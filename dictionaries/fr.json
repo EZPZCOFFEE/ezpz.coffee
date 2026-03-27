@@ -301,6 +301,14 @@
       "title": "Conditions d'utilisation | EZPZ Coffee",
       "twitterDescription": "Consultez les conditions générales d'utilisation d'EZPZ.coffee.",
       "twitterTitle": "Conditions d'utilisation | EZPZ Coffee"
+    },
+    "whiteLabelPage": {
+      "description": "Programmes de sachets de café en marque blanche pour cafés et détaillants. EZPZ simplifie l'image de marque et la personnalisation—du cadeau unique à la production à l'échelle.",
+      "ogDescription": "Lancez un programme café en marque blanche avec EZPZ : sachets personnalisés, café de spécialité et production flexible.",
+      "ogTitle": "EZPZ Coffee | Solutions en marque blanche",
+      "title": "EZPZ Coffee | Solutions en marque blanche",
+      "twitterDescription": "Sachets et programmes café en marque blanche—personnalisation simple pour votre marque.",
+      "twitterTitle": "Solutions en marque blanche | EZPZ Coffee"
     }
   },
   "landing": {
@@ -330,6 +338,30 @@
       "learnMore": "En savoir plus",
       "titleLine1": "Marque blanche",
       "titleLine2": "Construire la marque"
+    }
+  },
+  "whiteLabelPage": {
+    "hero": {
+      "subtitle": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple.",
+      "titleLine1": "Marque blanche",
+      "titleLine2": "Solutions"
+    },
+    "sections": {
+      "coffeeBags": {
+        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—des emballages qui accrochent en rayon aux programmes entièrement en marque blanche autour de votre image.",
+        "imageAlt": "Sachet café EZPZ personnalisé avec visuel vert édition limitée",
+        "title": "Sachets de café"
+      },
+      "cannedDrinks": {
+        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—la même identité sur des canettes prêtes à boire pour emporter.",
+        "imageAlt": "Canette café glacé EZPZ avec condensation et ombre portée",
+        "title": "Boissons en canette"
+      },
+      "coffeePods": {
+        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—capsules et dosettes qui restent cohérentes avec votre marque jusqu’à l’extraction.",
+        "imageAlt": "Boîte distributrice de capsules EZPZ avec dosettes visibles",
+        "title": "Dosettes café"
+      }
     }
   },
   "nav": {

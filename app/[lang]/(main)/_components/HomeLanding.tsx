@@ -218,7 +218,7 @@ const HomeLanding = () => {
             />
           </motion.div>
           <motion.div {...fadeUpChild} className={styles.landingMotionInline}>
-            <Link href={`/${locale}/about`} className={styles.btnOutline}>
+            <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
             </Link>
           </motion.div>
