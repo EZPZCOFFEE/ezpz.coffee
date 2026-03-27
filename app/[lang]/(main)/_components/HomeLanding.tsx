@@ -94,16 +94,16 @@ const HomeLanding = () => {
   const heroHintMotion = motionOff
     ? {}
     : {
-        initial: { opacity: 0, y: 14 },
-        animate: { opacity: 1, y: 0 },
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
         transition: { duration: 0.75, delay: 0.45, ease: LANDING_EASE },
       };
 
   const sectionFade = motionOff
     ? {}
     : {
-        initial: { opacity: 0, y: 28 },
-        whileInView: { opacity: 1, y: 0 },
+        initial: { opacity: 0 },
+        whileInView: { opacity: 1 },
         viewport: { once: true, margin: "-48px 0px", amount: 0.12 },
         transition: { duration: 0.65, ease: LANDING_EASE },
       };
@@ -122,12 +122,11 @@ const HomeLanding = () => {
     },
   };
 
-  const fadeUpChild = {
+  const fadeChild = {
     variants: {
-      hidden: motionOff ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+      hidden: motionOff ? { opacity: 1 } : { opacity: 0 },
       visible: {
         opacity: 1,
-        y: 0,
         transition: { duration: motionOff ? 0 : 0.52, ease: LANDING_EASE },
       },
     },
@@ -168,15 +167,15 @@ const HomeLanding = () => {
 
       <section id="hero-copy" className={styles.heroCopy} aria-labelledby="hero-copy-heading">
         <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
-          <motion.h1 id="hero-copy-heading" className={styles.heroTitle} {...fadeUpChild}>
+          <motion.h1 id="hero-copy-heading" className={styles.heroTitle} {...fadeChild}>
             {t("hero.titleLine1")}
             <br />
             {t("hero.titleLine2")}
           </motion.h1>
-          <motion.p className={styles.heroSubtitle} {...fadeUpChild}>
+          <motion.p className={styles.heroSubtitle} {...fadeChild}>
             {t("hero.subtitle")}
           </motion.p>
-          <motion.div {...fadeUpChild} className={styles.landingMotionInline}>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={designHref} className={styles.btnOutline}>
               {t("hero.designCta")}
             </Link>
@@ -190,22 +189,22 @@ const HomeLanding = () => {
 
       <section className={styles.whiteLabelBanner} id="white-label" aria-labelledby="white-label-heading">
         <motion.div className={styles.whiteLabelBannerInner} {...staggerParent}>
-          <motion.h2 id="white-label-heading" className={styles.heroTitle} {...fadeUpChild}>
+          <motion.h2 id="white-label-heading" className={styles.heroTitle} {...fadeChild}>
             {t("whiteLabel.titleLine1")}
             <br />
             {t("whiteLabel.titleLine2")}
           </motion.h2>
-          <motion.div className={styles.whiteLabelBannerBody} {...fadeUpChild}>
+          <motion.div className={styles.whiteLabelBannerBody} {...fadeChild}>
             {WHITE_LABEL_BODY_KEYS.map((key) => (
               <p key={key} className={styles.heroSubtitle}>
                 {t(`whiteLabel.${key}`)}
               </p>
             ))}
           </motion.div>
-          <motion.div {...fadeUpChild} className={styles.whiteLabelGlobeMotion}>
+          <motion.div {...fadeChild} className={styles.whiteLabelGlobeMotion}>
             <GlobeHemisphereEastIcon className={styles.whiteLabelBannerGlobe} weight="regular" aria-hidden />
           </motion.div>
-          <motion.div {...fadeUpChild} className={styles.whiteLabelPhotoMotion}>
+          <motion.div {...fadeChild} className={styles.whiteLabelPhotoMotion}>
             <Image
               src={bannerBase}
               alt=""
@@ -217,7 +216,7 @@ const HomeLanding = () => {
               className={styles.whiteLabelBannerPhoto}
             />
           </motion.div>
-          <motion.div {...fadeUpChild} className={styles.landingMotionInline}>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
             </Link>

@@ -36,8 +36,8 @@ const WhiteLabelSolutionsPage = () => {
   const heroHintMotion = motionOff
     ? {}
     : {
-        initial: { opacity: 0, y: 14 },
-        animate: { opacity: 1, y: 0 },
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
         transition: { duration: 0.75, delay: 0.45, ease: LANDING_EASE },
       };
 
@@ -55,12 +55,11 @@ const WhiteLabelSolutionsPage = () => {
     },
   };
 
-  const fadeUpChild = {
+  const fadeChild = {
     variants: {
-      hidden: motionOff ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
+      hidden: motionOff ? { opacity: 1 } : { opacity: 0 },
       visible: {
         opacity: 1,
-        y: 0,
         transition: { duration: motionOff ? 0 : 0.52, ease: LANDING_EASE },
       },
     },
@@ -69,8 +68,8 @@ const WhiteLabelSolutionsPage = () => {
   const sectionFade = motionOff
     ? {}
     : {
-        initial: { opacity: 0, y: 28 },
-        whileInView: { opacity: 1, y: 0 },
+        initial: { opacity: 0 },
+        whileInView: { opacity: 1 },
         viewport: { once: true, margin: "-48px 0px", amount: 0.12 },
         transition: { duration: 0.65, ease: LANDING_EASE },
       };
@@ -138,15 +137,15 @@ const WhiteLabelSolutionsPage = () => {
 
       <section id="hero-copy" className={styles.heroCopy} aria-labelledby="white-label-page-heading">
         <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
-          <motion.h1 id="white-label-page-heading" className={styles.heroTitle} {...fadeUpChild}>
+          <motion.h1 id="white-label-page-heading" className={styles.heroTitle} {...fadeChild}>
             {t("hero.titleLine1")}
             <br />
             {t("hero.titleLine2")}
           </motion.h1>
-          <motion.p className={styles.heroSubtitle} {...fadeUpChild}>
+          <motion.p className={styles.heroSubtitle} {...fadeChild}>
             {t("hero.subtitle")}
           </motion.p>
-          <motion.div {...fadeUpChild} className={styles.whiteLabelGlobeMotion}>
+          <motion.div {...fadeChild} className={styles.whiteLabelGlobeMotion}>
             <GlobeHemisphereEastIcon className={styles.whiteLabelBannerGlobe} weight="regular" aria-hidden />
           </motion.div>
         </motion.div>
