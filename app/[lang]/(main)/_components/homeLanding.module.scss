@@ -6,6 +6,12 @@
   font-family: var(--font-montserrat), var(--font-family);
 }
 
+.whiteLabelSolutions {
+  @media (max-width: 1023px) {
+    padding-bottom: calc(var(--spacing-cluster) + var(--spacing-country));
+  }
+}
+
 .landingMotionInline {
   display: flex;
   justify-content: center;
@@ -71,6 +77,10 @@
   /* Horizontal center; vertical ~35% (above 50% “dead center”) to keep subject higher in frame */
   object-position: center 35%;
   z-index: 0;
+}
+
+.heroPhotoImageCenter {
+  object-position: center 65%;
 }
 
 .heroPhotoInner {
@@ -318,4 +328,91 @@
   width: 100%;
   height: auto;
   margin: 0;
+}
+
+/* White-label: alternating image / copy bands */
+.whiteLabelSplitSection {
+  padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
+}
+
+.whiteLabelSplitSection_dark {
+  background: var(--color-black);
+}
+
+.whiteLabelSplitSection_light {
+  background: var(--color-white);
+}
+
+.whiteLabelSplitInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-galaxy);
+  }
+}
+
+.whiteLabelSplitMedia {
+  flex: 1 1 45%;
+  min-width: 0;
+  width: 100%;
+  max-width: min(420px, 100%);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .whiteLabelSplitMedia_padLeftMobile {
+    padding-left: var(--spacing-country);
+    justify-content: flex-start;
+  }
+}
+
+.whiteLabelSplitImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.whiteLabelSplitCopy {
+  flex: 1 1 50%;
+  min-width: 0;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: start;
+  }
+
+  .heroTitle {
+    margin: 0 0 var(--spacing-city);
+  }
+}
+
+.whiteLabelSplitBody {
+  margin: 0;
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  line-height: var(--line-height-relaxed);
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.whiteLabelSplitSection_dark .whiteLabelSplitBody {
+  color: var(--color-white);
+}
+
+.whiteLabelSplitSection_light .whiteLabelSplitBody {
+  color: var(--landing-black);
 }

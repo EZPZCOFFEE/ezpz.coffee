@@ -25,14 +25,15 @@ const stripLocalePrefix = (pathname: string): string => {
 const Layout = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
   const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
-  const isHome = normalizedPath === "/";
+  const isHeroLanding =
+    normalizedPath === "/" || normalizedPath === "/white-label" || normalizedPath.startsWith("/white-label/");
 
   return (
     <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
       <CartProvider>
-        <div className={classNames(styles.container, isHome && styles.containerHome)}>
+        <div className={classNames(styles.container, isHeroLanding && styles.containerHome)}>
           <Navbar />
-          <main className={isHome ? styles.mainHome : styles.main}>{children}</main>
+          <main className={isHeroLanding ? styles.mainHome : styles.main}>{children}</main>
           <NewsletterSignup />
           <Footer />
         </div>

@@ -301,6 +301,14 @@
       "title": "EZPZ Coffee | Terms of Use",
       "twitterDescription": "Read the terms and conditions for using EZPZ.coffee.",
       "twitterTitle": "Terms of Use | EZPZ Coffee"
+    },
+    "whiteLabelPage": {
+      "description": "White-label coffee bag programs for cafés and retailers. EZPZ makes custom branding and personalization simple—from one-off gifts to scale.",
+      "ogDescription": "Build a white-label coffee program with EZPZ: custom bags, specialty coffee, and flexible production.",
+      "ogTitle": "EZPZ Coffee | White label solutions",
+      "title": "EZPZ Coffee | White label solutions",
+      "twitterDescription": "White-label coffee bags and programs—personalization made simple for your brand.",
+      "twitterTitle": "White label solutions | EZPZ Coffee"
     }
   },
   "landing": {
@@ -330,6 +338,30 @@
       "learnMore": "Learn more",
       "titleLine1": "White label",
       "titleLine2": "Brand building"
+    }
+  },
+  "whiteLabelPage": {
+    "hero": {
+      "subtitle": "EZPZ is a fun, youthful custom coffee bag company that makes personalization easy.",
+      "titleLine1": "White label",
+      "titleLine2": "Solutions"
+    },
+    "sections": {
+      "coffeeBags": {
+        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—from eye-catching retail bags to full white-label programs built around your brand.",
+        "imageAlt": "Custom EZPZ stand-up coffee bag with green limited-edition artwork",
+        "title": "Coffee bags"
+      },
+      "cannedDrinks": {
+        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—extend the same look and feel to ready-to-drink cans your customers can grab on the go.",
+        "imageAlt": "Branded EZPZ iced coffee can with condensation and soft shadow",
+        "title": "Canned drinks"
+      },
+      "coffeePods": {
+        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—capsules and compatible pods that stay on-brand from the box to the brew.",
+        "imageAlt": "EZPZ coffee capsule dispenser box with pods visible",
+        "title": "Coffee pods"
+      }
     }
   },
   "nav": {
