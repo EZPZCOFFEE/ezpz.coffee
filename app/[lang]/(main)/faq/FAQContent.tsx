@@ -1,5 +1,9 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
+import { getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
+
 import styles from "./styles.module.scss";
 
 interface FAQItem {
@@ -18,19 +22,25 @@ interface FAQContentProps {
 }
 
 const FAQContent = ({ title, categories }: FAQContentProps) => {
+  const reduceMotion = useReducedMotion();
+  const motionOff = !!reduceMotion;
+  const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
+  const categoriesStagger = getNestedSectionListStagger(motionOff);
+
   return (
     <article className={styles.page} aria-labelledby="faq-page-title">
-      <div className={styles.content}>
-        <h1 id="faq-page-title" className={styles.title}>
+      <motion.div className={styles.content} {...staggerParent}>
+        <motion.h1 id="faq-page-title" className={styles.title} {...fadeChild}>
           {title}
-        </h1>
+        </motion.h1>
 
-        <div className={styles.categories}>
+        <motion.div className={styles.categories} {...categoriesStagger}>
           {categories.map((category) => (
-            <section
+            <motion.section
               key={category.title}
               className={styles.category}
               aria-label={category.title}
+              {...fadeChild}
             >
               <h2 className={styles.categoryTitle}>{category.title}</h2>
               <dl className={styles.itemList}>
@@ -43,10 +53,10 @@ const FAQContent = ({ title, categories }: FAQContentProps) => {
                   </div>
                 ))}
               </dl>
-            </section>
+            </motion.section>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </article>
   );
 };

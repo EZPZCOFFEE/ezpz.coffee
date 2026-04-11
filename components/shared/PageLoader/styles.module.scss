@@ -1,20 +1,30 @@
 .container {
+  position: fixed;
+  inset: 0;
+  /* Below navbar (50) and cart (60); covers main + newsletter + footer */
+  z-index: 40;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
-  width: 100%;
+  background-color: var(--color-bg-primary);
 }
 
+/* Slightly larger than nav logo (continent / country) for the loading state */
 .logo {
   display: block;
-  width: 80px;
-  height: auto;
+  height: var(--spacing-cluster);
+  width: auto;
+  object-fit: contain;
   animation: pulse 0.6s ease-in-out infinite;
+
+  @media (max-width: 1023px) {
+    height: var(--spacing-cluster);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.15;
   }
   50% {

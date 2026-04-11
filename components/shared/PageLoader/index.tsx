@@ -8,11 +8,12 @@ const PageLoader = () => {
       <Image
         src="/logo.svg"
         alt="EZPZ Coffee"
-        width={80}
-        height={65}
+        width={1518}
+        height={1227}
+        unoptimized
         priority
         className={styles.logo}
-        style={{ height: "auto" }}
+        style={{ width: "auto" }}
       />
     </div>
   );

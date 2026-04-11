@@ -1,5 +1,9 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
+
+import { getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
+
 import styles from "./styles.module.scss";
 
 interface TermsSection {
@@ -16,24 +20,32 @@ interface TermsContentProps {
 }
 
 const TermsContent = ({ title, lastUpdated, intro, sections }: TermsContentProps) => {
+  const reduceMotion = useReducedMotion();
+  const motionOff = !!reduceMotion;
+  const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
+  const sectionsStagger = getNestedSectionListStagger(motionOff);
+
   return (
     <article className={styles.page} aria-labelledby="terms-page-title">
-      <div className={styles.content}>
-        <header className={styles.header}>
+      <motion.div className={styles.content} {...staggerParent}>
+        <motion.header className={styles.header} {...fadeChild}>
           <h1 id="terms-page-title" className={styles.title}>
             {title}
           </h1>
           <p className={styles.lastUpdated}>{lastUpdated}</p>
-        </header>
+        </motion.header>
 
-        <p className={styles.intro}>{intro}</p>
+        <motion.p className={styles.intro} {...fadeChild}>
+          {intro}
+        </motion.p>
 
-        <div className={styles.sections}>
+        <motion.div className={styles.sections} {...sectionsStagger}>
           {sections.map((section, index) => (
-            <section
+            <motion.section
               key={section.id}
               className={styles.section}
               aria-labelledby={`section-${section.id}`}
+              {...fadeChild}
             >
               <h2 id={`section-${section.id}`} className={styles.sectionTitle}>
                 {index + 1}. {section.title}
@@ -45,10 +57,10 @@ const TermsContent = ({ title, lastUpdated, intro, sections }: TermsContentProps
                   </p>
                 ))}
               </div>
-            </section>
+            </motion.section>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </article>
   );
 };

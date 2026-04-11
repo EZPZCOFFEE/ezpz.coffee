@@ -31,7 +31,6 @@ const AboutPage = async () => {
 
   return (
     <MarketingContent
-      eyebrow={t("eyebrow")}
       title={t("title")}
       intro={t("intro")}
       sections={[

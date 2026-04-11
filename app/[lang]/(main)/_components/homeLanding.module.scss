@@ -136,10 +136,12 @@
   0%,
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 
   50% {
     opacity: 0.55;
+    transform: translateY(5px);
   }
 }
 
@@ -176,7 +178,8 @@
 }
 
 .heroCopy .btnOutline,
-.whiteLabelBannerInner .btnOutline {
+.whiteLabelBannerInner .btnOutline,
+.whiteLabelContactCtaInner .btnOutline {
   padding: calc(var(--spacing-house)) calc(var(--spacing-country));
   font-size: clamp(2rem, 3vw, 2.5rem);
 }
@@ -415,4 +418,17 @@
 
 .whiteLabelSplitSection_light .whiteLabelSplitBody {
   color: var(--landing-black);
+}
+
+.whiteLabelContactCta {
+  padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state)
+    calc(var(--spacing-cluster) + 2 * var(--spacing-country));
+  background: var(--color-white);
+}
+
+.whiteLabelContactCtaInner {
+  display: flex;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }

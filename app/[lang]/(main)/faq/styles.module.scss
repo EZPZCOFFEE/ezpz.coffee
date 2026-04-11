@@ -1,9 +1,13 @@
+/* Typography aligned with home landing (homeLanding.module.scss) */
 .page {
+  --landing-black: #111111;
+
   display: flex;
   justify-content: center;
   max-width: 720px;
   margin: 0 auto;
   padding: var(--spacing-planet) var(--spacing-none) var(--spacing-cluster);
+  font-family: var(--font-montserrat), var(--font-family);
 }
 
 .content {
@@ -14,12 +18,13 @@
 }
 
 .title {
-  font-size: var(--font-size-fluid-xxl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
   margin: var(--spacing-none);
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
 }
 
 .categories {
@@ -35,12 +40,15 @@
 }
 
 .categoryTitle {
-  font-size: var(--font-size-fluid-xl);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
   margin: var(--spacing-none);
   padding-bottom: var(--spacing-house);
   border-bottom: 1px solid var(--color-gray-300);
+  font-size: clamp(1.125rem, 2.75vw, 1.5rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
 }
 
 .itemList {
@@ -57,10 +65,10 @@
 }
 
 .question {
-  font-size: var(--font-size-fluid-lg);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.9375rem, 2.35vw, 1.15rem);
   line-height: var(--line-height-snug);
+  color: var(--landing-black);
 }
 
 .answer {
@@ -68,12 +76,27 @@
 }
 
 .answerText {
-  font-size: var(--font-size-fluid-base);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.875rem, 2.25vw, 1.22rem);
   line-height: var(--line-height-relaxed);
+  color: var(--landing-black);
 }
 
 @media (max-width: 1024px) {
   .page {
     padding: var(--spacing-country) var(--spacing-none) var(--spacing-planet);
+  }
+
+  /* Match home landing typography on small viewports */
+  .categoryTitle {
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+  }
+
+  .question {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  .answerText {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
   }
 }

@@ -86,8 +86,9 @@ const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
       <Image
         src="/logo.svg"
         alt={t("logoAlt")}
-        width={120}
-        height={40}
+        width={1518}
+        height={1227}
+        unoptimized
         className={classNames(styles.logoImage, {
           [styles.logoImageOverlay]: variant === "overlay",
         })}

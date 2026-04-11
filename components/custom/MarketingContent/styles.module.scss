@@ -1,9 +1,13 @@
+/* Typography aligned with home landing (homeLanding.module.scss .landing / .heroTitle / .whiteLabelSplitBody) */
 .page {
+  --landing-black: #111111;
+
   display: flex;
   justify-content: center;
   max-width: 720px;
   margin: 0 auto;
   padding: var(--spacing-planet) var(--spacing-none) var(--spacing-cluster);
+  font-family: var(--font-montserrat), var(--font-family);
 }
 
 .copyColumn {
@@ -13,27 +17,14 @@
   width: 100%;
 }
 
-.eyebrow {
-  font-size: var(--font-size-fluid-sm);
-  color: var(--color-accent);
-  font-weight: var(--font-weight-semibold);
-  margin: var(--spacing-none);
-}
-
 .title {
-  font-size: var(--font-size-fluid-xxl);
-  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-none);
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
+  font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
-  margin: var(--spacing-none);
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
-}
-
-.intro {
-  font-size: var(--font-size-fluid-base);
-  color: var(--color-text-secondary);
-  margin: var(--spacing-none);
-  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
 }
 
 .sectionList {
@@ -49,22 +40,38 @@
 }
 
 .sectionHeading {
-  font-size: var(--font-size-fluid-xl);
-  font-weight: var(--font-weight-semibold);
   margin: var(--spacing-none);
   padding-bottom: var(--spacing-house);
   border-bottom: 1px solid var(--color-gray-300);
+  font-size: clamp(1.125rem, 2.75vw, 1.5rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
 }
 
+.intro,
 .paragraph {
-  font-size: var(--font-size-fluid-base);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-primary);
   margin: var(--spacing-none);
+  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.875rem, 2.25vw, 1.22rem);
+  line-height: var(--line-height-relaxed);
+  color: var(--landing-black);
 }
 
 @media (max-width: 1024px) {
   .page {
     padding: var(--spacing-country) var(--spacing-none) var(--spacing-planet);
+  }
+
+  /* Match home landing on small viewports (whiteLabelSplitBody / section scale) */
+  .sectionHeading {
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+  }
+
+  .intro,
+  .paragraph {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
   }
 }

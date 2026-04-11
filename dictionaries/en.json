@@ -1,6 +1,5 @@
 {
   "about": {
-    "eyebrow": "About us",
     "illustrationAlt": "Heart character waving in the EZPZ illustration style",
     "illustrationCaption": "Illustration pulled from the EZPZ arts library.",
     "intro": "EZPZ is a project created by entrepreneurs who have been working in the coffee industry for many years. This platform was designed to simplify production, no matter what your needs are.",
@@ -36,7 +35,6 @@
     "youSave": "You save"
   },
   "coffee": {
-    "eyebrow": "Our coffee",
     "illustrationAlt": "Coffee cup mascot flashing a peace sign",
     "illustrationCaption": "Our coffee mascot, pulled from the EZPZ arts pack.",
     "intro": "At EZPZ, we source our beans from passionate producers who cultivate exceptional coffee with rich, balanced aromas.",
@@ -54,7 +52,6 @@
     "section": "Section {number}"
   },
   "contact": {
-    "eyebrow": "Contact us",
     "intro": "Have questions about your order, custom bags, or anything else? We're here to help.",
     "sections": {
       "main": {

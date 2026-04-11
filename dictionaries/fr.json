@@ -1,6 +1,5 @@
 {
   "about": {
-    "eyebrow": "À propos",
     "illustrationAlt": "Personnage cœur faisant signe de la main dans le style d'illustration EZPZ",
     "illustrationCaption": "Illustration tirée de la bibliothèque artistique EZPZ.",
     "intro": "EZPZ est le projet d'entrepreneurs œuvrant dans le domaine du café depuis plusieurs années. Cette plateforme a été créée pour simplifier la production, peu importe les besoins.",
@@ -36,7 +35,6 @@
     "youSave": "Vous économisez"
   },
   "coffee": {
-    "eyebrow": "Notre café",
     "illustrationAlt": "Mascotte tasse de café faisant le signe de la paix",
     "illustrationCaption": "Notre mascotte café, tirée du pack artistique EZPZ.",
     "intro": "Chez EZPZ, nous sélectionnons nos grains auprès de producteurs passionnés qui cultivent un café d'exception aux arômes riches et équilibrés.",
@@ -54,7 +52,6 @@
     "section": "Section {number}"
   },
   "contact": {
-    "eyebrow": "Nous contacter",
     "intro": "Vous avez des questions sur votre commande, vos sachets personnalisés ou autre chose ? Nous sommes là pour vous aider.",
     "sections": {
       "main": {

@@ -2,14 +2,13 @@
 
 import { GlobeHemisphereEastIcon } from "@phosphor-icons/react";
 import { CaretDoubleDownIcon } from "@phosphor-icons/react/dist/ssr";
-import classNames from "classnames";
-import useEmblaCarousel from "embla-carousel-react";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 
+import { getHeroHintFade, getStaggerReveal } from "@/lib/motion/landingReveal";
 import banner01 from "@/public/assets/banner-01.jpg";
 import bannerBase from "@/public/assets/banner-base.jpg";
 
@@ -17,6 +16,10 @@ import styles from "./homeLanding.module.scss";
 
 const WHITE_LABEL_BODY_KEYS = ["bodyLine1", "bodyLine2", "bodyLine3", "bodyLine4"] as const;
 
+/* Featured coffees carousel — restore when product imagery is ready.
+ * Also re-add in HomeLanding: sectionFade (see git history), imports
+ * (classNames, embla-carousel-react, useEffect, useState), and the
+ * motion.section with LandingFeaturedCarousel below hero-copy.
 const CAROUSEL_PLACEHOLDER_SLIDES = 5;
 
 const LandingFeaturedCarousel = () => {
@@ -76,8 +79,7 @@ const LandingFeaturedCarousel = () => {
     </div>
   );
 };
-
-const LANDING_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+*/
 
 const HomeLanding = () => {
   const t = useTranslations("landing");
@@ -86,51 +88,12 @@ const HomeLanding = () => {
   const motionOff = !!reduceMotion;
 
   const designHref = `/${locale}/design`;
+  const heroHintMotion = getHeroHintFade(motionOff);
+  const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
 
   const scrollToHeroCopy = useCallback(() => {
     document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
-
-  const heroHintMotion = motionOff
-    ? {}
-    : {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        transition: { duration: 0.75, delay: 0.45, ease: LANDING_EASE },
-      };
-
-  const sectionFade = motionOff
-    ? {}
-    : {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: { once: true, margin: "-48px 0px", amount: 0.12 },
-        transition: { duration: 0.65, ease: LANDING_EASE },
-      };
-
-  const staggerParent = {
-    initial: "hidden" as const,
-    whileInView: "visible" as const,
-    viewport: { once: true, amount: 0.18 },
-    variants: {
-      hidden: {},
-      visible: {
-        transition: motionOff
-          ? { staggerChildren: 0, delayChildren: 0 }
-          : { staggerChildren: 0.11, delayChildren: 0.06 },
-      },
-    },
-  };
-
-  const fadeChild = {
-    variants: {
-      hidden: motionOff ? { opacity: 1 } : { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: { duration: motionOff ? 0 : 0.52, ease: LANDING_EASE },
-      },
-    },
-  };
 
   return (
     <div className={styles.landing}>
@@ -141,7 +104,7 @@ const HomeLanding = () => {
           fill
           priority
           placeholder="blur"
-          quality={100}
+          quality={80}
           sizes="100vw"
           className={styles.heroPhotoImage}
         />
@@ -183,9 +146,7 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <motion.section className={styles.carouselSection} {...sectionFade}>
-        <LandingFeaturedCarousel />
-      </motion.section>
+      {/* Featured coffees carousel — uncomment block above (LandingFeaturedCarousel), re-add sectionFade + imports (classNames, embla, useEffect, useState), then restore this section. */}
 
       <section className={styles.whiteLabelBanner} id="white-label" aria-labelledby="white-label-heading">
         <motion.div className={styles.whiteLabelBannerInner} {...staggerParent}>
@@ -211,8 +172,9 @@ const HomeLanding = () => {
               width={bannerBase.width}
               height={bannerBase.height}
               placeholder="blur"
-              quality={85}
+              quality={75}
               sizes="(max-width: 1100px) 100vw, 1100px"
+              loading="lazy"
               className={styles.whiteLabelBannerPhoto}
             />
           </motion.div>

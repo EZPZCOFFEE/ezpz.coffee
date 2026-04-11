@@ -96,11 +96,12 @@ const PasswordPage = () => {
         <Image
           src="/logo.svg"
           alt="EZPZ"
-          width={80}
-          height={26}
+          width={1518}
+          height={1227}
+          unoptimized
           className={styles.logo}
           priority
-          style={{ height: "auto" }}
+          style={{ width: "auto" }}
         />
 
         <header className={styles.header}>

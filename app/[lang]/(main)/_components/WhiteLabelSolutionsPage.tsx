@@ -5,17 +5,17 @@ import { CaretDoubleDownIcon } from "@phosphor-icons/react/dist/ssr";
 import classNames from "classnames";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { useCallback } from "react";
 
+import { getHeroHintFade, getSectionFadeInView, getStaggerReveal } from "@/lib/motion/landingReveal";
 import bagPng from "@/public/assets/bag.png";
 import banner02 from "@/public/assets/banner-02.jpg";
 import canShadowPng from "@/public/assets/can-shadow.png";
 import capsulePng from "@/public/assets/capsule.png";
 
 import styles from "./homeLanding.module.scss";
-
-const LANDING_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const SPLIT_SECTIONS = [
   { theme: "dark" as const, imageFirst: true, image: bagPng, sectionKey: "coffeeBags" as const },
@@ -25,7 +25,9 @@ const SPLIT_SECTIONS = [
 
 const WhiteLabelSolutionsPage = () => {
   const t = useTranslations("whiteLabelPage");
+  const tNav = useTranslations("nav");
   const tLanding = useTranslations("landing.heroPhoto");
+  const locale = useLocale();
   const reduceMotion = useReducedMotion();
   const motionOff = !!reduceMotion;
 
@@ -33,46 +35,9 @@ const WhiteLabelSolutionsPage = () => {
     document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  const heroHintMotion = motionOff
-    ? {}
-    : {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        transition: { duration: 0.75, delay: 0.45, ease: LANDING_EASE },
-      };
-
-  const staggerParent = {
-    initial: "hidden" as const,
-    whileInView: "visible" as const,
-    viewport: { once: true, amount: 0.18 },
-    variants: {
-      hidden: {},
-      visible: {
-        transition: motionOff
-          ? { staggerChildren: 0, delayChildren: 0 }
-          : { staggerChildren: 0.11, delayChildren: 0.06 },
-      },
-    },
-  };
-
-  const fadeChild = {
-    variants: {
-      hidden: motionOff ? { opacity: 1 } : { opacity: 0 },
-      visible: {
-        opacity: 1,
-        transition: { duration: motionOff ? 0 : 0.52, ease: LANDING_EASE },
-      },
-    },
-  };
-
-  const sectionFade = motionOff
-    ? {}
-    : {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: { once: true, margin: "-48px 0px", amount: 0.12 },
-        transition: { duration: 0.65, ease: LANDING_EASE },
-      };
+  const heroHintMotion = getHeroHintFade(motionOff);
+  const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
+  const sectionFade = getSectionFadeInView(motionOff);
 
   const splitCopy = (sectionKey: (typeof SPLIT_SECTIONS)[number]["sectionKey"]) => (
     <div className={styles.whiteLabelSplitCopy}>
@@ -111,7 +76,7 @@ const WhiteLabelSolutionsPage = () => {
           fill
           priority
           placeholder="blur"
-          quality={100}
+          quality={80}
           sizes="100vw"
           className={classNames(styles.heroPhotoImage, styles.heroPhotoImageCenter)}
         />
@@ -176,6 +141,14 @@ const WhiteLabelSolutionsPage = () => {
           </div>
         </motion.section>
       ))}
+
+      <section className={styles.whiteLabelContactCta} aria-label={tNav("contactUs")}>
+        <motion.div className={styles.whiteLabelContactCtaInner} {...sectionFade}>
+          <Link href={`/${locale}/contact`} className={styles.btnOutline}>
+            {tNav("contactUs")}
+          </Link>
+        </motion.div>
+      </section>
     </div>
   );
 };
