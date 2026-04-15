@@ -16,6 +16,15 @@ import styles from "./homeLanding.module.scss";
 
 const WHITE_LABEL_BODY_KEYS = ["bodyLine1", "bodyLine2", "bodyLine3", "bodyLine4"] as const;
 
+const TRUST_LOGOS = [
+  { file: "avenue", name: "Avenue" },
+  { file: "cowork", name: "Cowork" },
+  { file: "fairmont", name: "Fairmont" },
+  { file: "janine", name: "Janine" },
+  { file: "regine", name: "Regine" },
+  { file: "stephen", name: "Stephen" },
+] as const;
+
 /* Featured coffees carousel — restore when product imagery is ready.
  * Also re-add in HomeLanding: sectionFade (see git history), imports
  * (classNames, embla-carousel-react, useEffect, useState), and the
@@ -142,6 +151,28 @@ const HomeLanding = () => {
             <Link href={designHref} className={styles.btnOutline}>
               {t("hero.designCta")}
             </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.trustedBy} aria-labelledby="trusted-by-heading">
+        <motion.div className={styles.trustedByInner} {...staggerParent}>
+          <motion.h2 id="trusted-by-heading" className={styles.heroTitle} {...fadeChild}>
+            {t("trustedBy.title")}
+          </motion.h2>
+          <motion.div className={styles.trustedByGrid} role="list" {...fadeChild}>
+            {TRUST_LOGOS.map(({ file, name }) => (
+              <div key={file} className={styles.trustedByLogoWrap} role="listitem">
+                <Image
+                  src={`/logos/${file}.png`}
+                  alt={t("trustedBy.logoAlt", { name })}
+                  width={360}
+                  height={140}
+                  sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
+                  className={styles.trustedByLogo}
+                />
+              </div>
+            ))}
           </motion.div>
         </motion.div>
       </section>

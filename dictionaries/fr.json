@@ -327,6 +327,10 @@
       "scroll": "Défiler",
       "scrollHint": "Faire défiler vers le contenu principal"
     },
+    "trustedBy": {
+      "logoAlt": "Logo {name}",
+      "title": "Ils nous font confiance"
+    },
     "whiteLabel": {
       "bodyLine1": "EZPZ est une entreprise de sachets de café personnalisés,",
       "bodyLine2": "fun et jeune, qui rend la personnalisation simple—",

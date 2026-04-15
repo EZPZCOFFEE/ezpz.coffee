@@ -327,6 +327,10 @@
       "scroll": "Scroll",
       "scrollHint": "Scroll down to main content"
     },
+    "trustedBy": {
+      "logoAlt": "{name} logo",
+      "title": "They trust us"
+    },
     "whiteLabel": {
       "bodyLine1": "EZPZ is a fun, youthful custom coffee bag",
       "bodyLine2": "company that makes personalization",
