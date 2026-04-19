@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback } from "react";
 
-import { getHeroHintFade, getStaggerReveal } from "@/lib/motion/landingReveal";
+import { getHeroHintFade, getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
 import banner01 from "@/public/assets/banner-01.jpg";
 import bannerBase from "@/public/assets/banner-base.jpg";
 import iconAdvantage1 from "@/public/assets/icon-01.png";
@@ -117,6 +117,9 @@ const HomeLanding = () => {
   const designHref = `/${locale}/design`;
   const heroHintMotion = getHeroHintFade(motionOff);
   const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
+  const advantagesListStagger = getNestedSectionListStagger(motionOff);
+  const trustedByListStagger = getNestedSectionListStagger(motionOff);
+  const whiteLabelBodyStagger = getNestedSectionListStagger(motionOff);
 
   const scrollToHeroCopy = useCallback(() => {
     document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -178,9 +181,9 @@ const HomeLanding = () => {
           <motion.h2 id="advantages-heading" className={styles.advantagesTitle} {...fadeChild}>
             {t("advantages.title")}
           </motion.h2>
-          <motion.div className={styles.advantagesGrid} {...fadeChild}>
+          <motion.div className={styles.advantagesGrid} {...advantagesListStagger}>
             {ADVANTAGE_ITEMS.map(({ key, icon }) => (
-              <article key={key} className={styles.advantagesCard}>
+              <motion.article key={key} className={styles.advantagesCard} {...fadeChild}>
                 <div className={styles.advantagesIconWrap}>
                   <Image
                     src={icon}
@@ -197,7 +200,7 @@ const HomeLanding = () => {
                     orange: (chunks) => <span className={styles.advantagesHighlight}>{chunks}</span>,
                   })}
                 </p>
-              </article>
+              </motion.article>
             ))}
           </motion.div>
         </motion.div>
@@ -210,11 +213,11 @@ const HomeLanding = () => {
             <br />
             {t("whiteLabel.titleLine2")}
           </motion.h2>
-          <motion.div className={styles.whiteLabelBannerBody} {...fadeChild}>
+          <motion.div className={styles.whiteLabelBannerBody} {...whiteLabelBodyStagger}>
             {WHITE_LABEL_BODY_KEYS.map((key) => (
-              <p key={key} className={styles.heroSubtitle}>
+              <motion.p key={key} className={styles.heroSubtitle} {...fadeChild}>
                 {t(`whiteLabel.${key}`)}
-              </p>
+              </motion.p>
             ))}
           </motion.div>
           <motion.div {...fadeChild} className={styles.whiteLabelGlobeMotion}>
@@ -246,9 +249,9 @@ const HomeLanding = () => {
           <motion.h2 id="trusted-by-heading" className={styles.trustedByTitle} {...fadeChild}>
             {t("trustedBy.title")}
           </motion.h2>
-          <motion.div className={styles.trustedByGrid} role="list" {...fadeChild}>
+          <motion.div className={styles.trustedByGrid} role="list" {...trustedByListStagger}>
             {TRUST_LOGOS.map(({ file, name }) => (
-              <div key={file} className={styles.trustedByLogoWrap} role="listitem">
+              <motion.div key={file} className={styles.trustedByLogoWrap} role="listitem" {...fadeChild}>
                 <Image
                   src={`/logos/${file}.png`}
                   alt={t("trustedBy.logoAlt", { name })}
@@ -257,7 +260,7 @@ const HomeLanding = () => {
                   sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
                   className={styles.trustedByLogo}
                 />
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>

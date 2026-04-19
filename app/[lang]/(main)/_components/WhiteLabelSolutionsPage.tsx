@@ -9,7 +9,13 @@ import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback } from "react";
 
-import { getHeroHintFade, getSectionFadeInView, getStaggerReveal } from "@/lib/motion/landingReveal";
+import {
+  getHeroHintFade,
+  getNestedSectionListStagger,
+  getSectionFadeInView,
+  getSectionVariantInView,
+  getStaggerReveal,
+} from "@/lib/motion/landingReveal";
 import bagPng from "@/public/assets/bag.png";
 import banner02 from "@/public/assets/banner-02.jpg";
 import canShadowPng from "@/public/assets/can-shadow.png";
@@ -38,34 +44,14 @@ const WhiteLabelSolutionsPage = () => {
   const heroHintMotion = getHeroHintFade(motionOff);
   const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
   const sectionFade = getSectionFadeInView(motionOff);
+  const sectionVariantInView = getSectionVariantInView(motionOff);
+  const splitSectionStagger = getNestedSectionListStagger(motionOff);
 
-  const splitCopy = (sectionKey: (typeof SPLIT_SECTIONS)[number]["sectionKey"]) => (
-    <div className={styles.whiteLabelSplitCopy}>
-      <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
-        {t(`sections.${sectionKey}.title`)}
-      </h2>
-      <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
-    </div>
-  );
-
-  const splitMedia = (sectionKey: (typeof SPLIT_SECTIONS)[number]["sectionKey"], image: typeof bagPng) => (
-    <div
-      className={classNames(
-        styles.whiteLabelSplitMedia,
-        (sectionKey === "cannedDrinks" || sectionKey === "coffeePods") && styles.whiteLabelSplitMedia_padLeftMobile,
-      )}
-    >
-      <Image
-        src={image}
-        alt={t(`sections.${sectionKey}.imageAlt`)}
-        width={image.width}
-        height={image.height}
-        sizes="(max-width: 768px) 100vw, 420px"
-        placeholder="blur"
-        className={styles.whiteLabelSplitImage}
-      />
-    </div>
-  );
+  const splitMediaClassName = (sectionKey: (typeof SPLIT_SECTIONS)[number]["sectionKey"]) =>
+    classNames(
+      styles.whiteLabelSplitMedia,
+      (sectionKey === "cannedDrinks" || sectionKey === "coffeePods") && styles.whiteLabelSplitMedia_padLeftMobile,
+    );
 
   return (
     <div className={classNames(styles.landing, styles.whiteLabelSolutions)}>
@@ -124,21 +110,51 @@ const WhiteLabelSolutionsPage = () => {
             theme === "dark" ? styles.whiteLabelSplitSection_dark : styles.whiteLabelSplitSection_light,
           )}
           aria-labelledby={`wlp-${sectionKey}`}
-          {...sectionFade}
+          {...sectionVariantInView}
         >
-          <div className={styles.whiteLabelSplitInner}>
+          <motion.div className={styles.whiteLabelSplitInner} {...splitSectionStagger}>
             {imageFirst ? (
               <>
-                {splitMedia(sectionKey, image)}
-                {splitCopy(sectionKey)}
+                <motion.div className={splitMediaClassName(sectionKey)} {...fadeChild}>
+                  <Image
+                    src={image}
+                    alt={t(`sections.${sectionKey}.imageAlt`)}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(max-width: 768px) 100vw, 420px"
+                    placeholder="blur"
+                    className={styles.whiteLabelSplitImage}
+                  />
+                </motion.div>
+                <motion.div className={styles.whiteLabelSplitCopy} {...fadeChild}>
+                  <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
+                    {t(`sections.${sectionKey}.title`)}
+                  </h2>
+                  <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
+                </motion.div>
               </>
             ) : (
               <>
-                {splitCopy(sectionKey)}
-                {splitMedia(sectionKey, image)}
+                <motion.div className={styles.whiteLabelSplitCopy} {...fadeChild}>
+                  <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
+                    {t(`sections.${sectionKey}.title`)}
+                  </h2>
+                  <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
+                </motion.div>
+                <motion.div className={splitMediaClassName(sectionKey)} {...fadeChild}>
+                  <Image
+                    src={image}
+                    alt={t(`sections.${sectionKey}.imageAlt`)}
+                    width={image.width}
+                    height={image.height}
+                    sizes="(max-width: 768px) 100vw, 420px"
+                    placeholder="blur"
+                    className={styles.whiteLabelSplitImage}
+                  />
+                </motion.div>
               </>
             )}
-          </div>
+          </motion.div>
         </motion.section>
       ))}
 
