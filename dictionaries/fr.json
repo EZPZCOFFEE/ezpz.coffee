@@ -318,7 +318,7 @@
     },
     "hero": {
       "designCta": "Créer un sachet",
-      "subtitle": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple.",
+      "subtitle": "Enfin une entreprise qui simplifie la production et la vente de produits à base de café. Simple et fluide, de A à Z.",
       "titleLine1": "Sachets de café personnalisés",
       "titleLine2": "Sans minimum"
     },
@@ -331,11 +331,38 @@
       "logoAlt": "Logo {name}",
       "title": "Ils nous font confiance"
     },
+    "advantages": {
+      "title": "Avantages",
+      "items": {
+        "traceable": {
+          "iconAlt": "Traçabilité",
+          "title": "Café 100 % traçable",
+          "body": "Nous pouvons vous dire précisément <orange>où</orange>, <orange>quand</orange> et <orange>par qui</orange> votre café a été produit."
+        },
+        "customize": {
+          "iconAlt": "Personnalisation",
+          "title": "Personnalisation et volumes",
+          "body": "Nous pouvons <orange>tout personnaliser</orange> pour vous afin d’obtenir la production la mieux adaptée à votre activité et à vos besoins."
+        },
+        "production": {
+          "iconAlt": "Production",
+          "title": "Production",
+          "body": "<orange>Nous gérons tout</orange> en partenariat avec vous. Nous maîtrisons 100 % de la production, ce qui nous permet d’offrir les <orange>meilleurs prix possibles</orange>."
+        },
+        "distribution": {
+          "iconAlt": "Distribution",
+          "title": "Distribution",
+          "body": "Grâce à notre réseau et à notre solide réputation dans le secteur, nous pouvons aussi vous accompagner pour la distribution <orange>là où vous souhaitez vendre votre produit</orange>."
+        }
+      }
+    },
     "whiteLabel": {
-      "bodyLine1": "EZPZ est une entreprise de sachets de café personnalisés,",
-      "bodyLine2": "fun et jeune, qui rend la personnalisation simple—",
-      "bodyLine3": "des cadeaux uniques aux programmes white label",
-      "bodyLine4": "pour cafés et détaillants.",
+      "bodyLine1": "Qualité, fraîcheur et traçabilité.",
+      "bodyLine2": "Le café bon marché est la norme.",
+      "bodyLine3": "Un bon café exige une vraie démarche.",
+      "bodyLine4": "Nous aidons les marques à vendre du café de spécialité entièrement personnalisé.",
+      "bodyLine5": "Sachets, prêt à boire ou capsules compatibles Nespresso.",
+      "bodyLine6": "Votre marque. Votre café.",
       "learnMore": "En savoir plus",
       "titleLine1": "Marque blanche",
       "titleLine2": "Construire la marque"
@@ -349,19 +376,19 @@
     },
     "sections": {
       "coffeeBags": {
-        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—des emballages qui accrochent en rayon aux programmes entièrement en marque blanche autour de votre image.",
+        "body": "Aucun minimum de quantité.\n\nNous sélectionnons les meilleurs grains pour répondre à vos besoins et à votre réalité, puis ajustons la torréfaction pour livrer le meilleur produit possible.\n\nDesign et personnalisation complète du sachet inclus dans le prix à la pièce, sans frais cachés.",
         "imageAlt": "Sachet café EZPZ personnalisé avec visuel vert édition limitée",
         "title": "Sachets de café"
       },
       "cannedDrinks": {
-        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—la même identité sur des canettes prêtes à boire pour emporter.",
+        "body": "Vous voulez une production complète\nde boissons à base de café prêtes à boire ?\n\nNous créons vos recettes et prenons en charge toute la production.\n\nUn minimum de 8 000 unités s’applique ; là encore, le design et la personnalisation sont inclus dans le prix, sans frais cachés.",
         "imageAlt": "Canette café glacé EZPZ avec condensation et ombre portée",
-        "title": "Boissons en canette"
+        "title": "Prêt à boire"
       },
       "coffeePods": {
-        "body": "EZPZ est une entreprise de sachets de café personnalisés, fun et jeune, qui rend la personnalisation simple—capsules et dosettes qui restent cohérentes avec votre marque jusqu’à l’extraction.",
+        "body": "Nous sélectionnons les meilleurs grains pour répondre à vos besoins et à votre réalité, puis affinons la torréfaction pour livrer le meilleur produit possible.\n\nVotre café est conditionné en capsules compatibles avec les systèmes Nespresso ; capsule, boîte et personnalisation complète sont incluses dans le prix, sans frais cachés.",
         "imageAlt": "Boîte distributrice de capsules EZPZ avec dosettes visibles",
-        "title": "Dosettes café"
+        "title": "Nespresso classique"
       }
     }
   },

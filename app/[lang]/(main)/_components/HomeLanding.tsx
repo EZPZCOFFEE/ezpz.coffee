@@ -11,10 +11,28 @@ import { useCallback } from "react";
 import { getHeroHintFade, getStaggerReveal } from "@/lib/motion/landingReveal";
 import banner01 from "@/public/assets/banner-01.jpg";
 import bannerBase from "@/public/assets/banner-base.jpg";
+import iconAdvantage1 from "@/public/assets/icon-01.png";
+import iconAdvantage2 from "@/public/assets/icon-02.png";
+import iconAdvantage3 from "@/public/assets/icon-03.png";
+import iconAdvantage4 from "@/public/assets/icon-04.png";
 
 import styles from "./homeLanding.module.scss";
 
-const WHITE_LABEL_BODY_KEYS = ["bodyLine1", "bodyLine2", "bodyLine3", "bodyLine4"] as const;
+const WHITE_LABEL_BODY_KEYS = [
+  "bodyLine1",
+  "bodyLine2",
+  "bodyLine3",
+  "bodyLine4",
+  "bodyLine5",
+  "bodyLine6",
+] as const;
+
+const ADVANTAGE_ITEMS = [
+  { key: "traceable" as const, icon: iconAdvantage1 },
+  { key: "customize" as const, icon: iconAdvantage2 },
+  { key: "production" as const, icon: iconAdvantage3 },
+  { key: "distribution" as const, icon: iconAdvantage4 },
+];
 
 const TRUST_LOGOS = [
   { file: "avenue", name: "Avenue" },
@@ -155,29 +173,35 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <section className={styles.trustedBy} aria-labelledby="trusted-by-heading">
-        <motion.div className={styles.trustedByInner} {...staggerParent}>
-          <motion.h2 id="trusted-by-heading" className={styles.heroTitle} {...fadeChild}>
-            {t("trustedBy.title")}
+      <section className={styles.advantages} id="advantages" aria-labelledby="advantages-heading">
+        <motion.div className={styles.advantagesInner} {...staggerParent}>
+          <motion.h2 id="advantages-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("advantages.title")}
           </motion.h2>
-          <motion.div className={styles.trustedByGrid} role="list" {...fadeChild}>
-            {TRUST_LOGOS.map(({ file, name }) => (
-              <div key={file} className={styles.trustedByLogoWrap} role="listitem">
-                <Image
-                  src={`/logos/${file}.png`}
-                  alt={t("trustedBy.logoAlt", { name })}
-                  width={360}
-                  height={140}
-                  sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
-                  className={styles.trustedByLogo}
-                />
-              </div>
+          <motion.div className={styles.advantagesGrid} {...fadeChild}>
+            {ADVANTAGE_ITEMS.map(({ key, icon }) => (
+              <article key={key} className={styles.advantagesCard}>
+                <div className={styles.advantagesIconWrap}>
+                  <Image
+                    src={icon}
+                    alt={t(`advantages.items.${key}.iconAlt`)}
+                    width={160}
+                    height={160}
+                    sizes="80px"
+                    className={styles.advantagesIcon}
+                  />
+                </div>
+                <h3 className={styles.advantagesCardTitle}>{t(`advantages.items.${key}.title`)}</h3>
+                <p className={styles.advantagesBody}>
+                  {t.rich(`advantages.items.${key}.body`, {
+                    orange: (chunks) => <span className={styles.advantagesHighlight}>{chunks}</span>,
+                  })}
+                </p>
+              </article>
             ))}
           </motion.div>
         </motion.div>
       </section>
-
-      {/* Featured coffees carousel — uncomment block above (LandingFeaturedCarousel), re-add sectionFade + imports (classNames, embla, useEffect, useState), then restore this section. */}
 
       <section className={styles.whiteLabelBanner} id="white-label" aria-labelledby="white-label-heading">
         <motion.div className={styles.whiteLabelBannerInner} {...staggerParent}>
@@ -213,6 +237,28 @@ const HomeLanding = () => {
             <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
             </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.trustedBy} aria-labelledby="trusted-by-heading">
+        <motion.div className={styles.advantagesInner} {...staggerParent}>
+          <motion.h2 id="trusted-by-heading" className={styles.trustedByTitle} {...fadeChild}>
+            {t("trustedBy.title")}
+          </motion.h2>
+          <motion.div className={styles.trustedByGrid} role="list" {...fadeChild}>
+            {TRUST_LOGOS.map(({ file, name }) => (
+              <div key={file} className={styles.trustedByLogoWrap} role="listitem">
+                <Image
+                  src={`/logos/${file}.png`}
+                  alt={t("trustedBy.logoAlt", { name })}
+                  width={360}
+                  height={140}
+                  sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
+                  className={styles.trustedByLogo}
+                />
+              </div>
+            ))}
           </motion.div>
         </motion.div>
       </section>

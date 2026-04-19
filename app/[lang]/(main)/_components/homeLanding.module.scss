@@ -157,36 +157,25 @@
 }
 
 .trustedBy {
-  padding: var(--spacing-state) var(--spacing-state);
-  background: var(--color-white);
+  padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-cluster);
+  background-color: var(--color-white);
 }
 
-.trustedByInner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-
-  .heroTitle {
-    max-width: 40rem;
-    width: 100%;
-    margin-bottom: var(--spacing-galaxy);
-  }
-}
-
-/* Narrow: 2×3; from sm: 3×2 (two rows) */
+/* Narrow: 2×3; from sm: 3×2 (two rows) — spacing matches advantagesGrid */
 .trustedByGrid {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--spacing-state) var(--spacing-city);
+  gap: var(--spacing-galaxy) var(--spacing-state);
   align-items: center;
   justify-items: center;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    gap: var(--spacing-galaxy);
   }
 }
 
@@ -274,6 +263,111 @@
 .carouselSection {
   padding: var(--spacing-cluster) var(--spacing-none) var(--spacing-galaxy);
   background: var(--color-black);
+}
+
+/* Advantages — dark band (former featured-coffee carousel slot) */
+.advantages {
+  padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-cluster);
+  background-color: var(--color-black);
+}
+
+.advantagesInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantagesTitle {
+  margin: 0 0 var(--spacing-galaxy);
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--color-white);
+}
+
+/* Same scale as .advantagesTitle; accent color for white band */
+.trustedByTitle {
+  margin: 0 0 var(--spacing-galaxy);
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--landing-orange);
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-galaxy) var(--spacing-state);
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-galaxy);
+  }
+}
+
+.advantagesCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    align-items: stretch;
+    text-align: left;
+  }
+}
+
+.advantagesIconWrap {
+  display: flex;
+  width: 100%;
+  margin: 0 0 var(--spacing-planet);
+}
+
+.advantagesIcon {
+  width: 72px;
+  height: auto;
+  object-fit: contain;
+
+  @media (min-width: 1024px) {
+    width: 80px;
+  }
+}
+
+.advantagesCardTitle {
+  margin: 0 0 var(--spacing-city);
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  color: var(--color-white);
+  width: 100%;
+}
+
+.advantagesBody {
+  margin: 0;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-relaxed);
+  color: rgba(255, 255, 255, 0.92);
+  width: 100%;
+  max-width: 22rem;
+
+  @media (min-width: 1024px) {
+    max-width: none;
+  }
+}
+
+.advantagesHighlight {
+  color: var(--landing-orange);
+  font-weight: var(--font-weight-bold);
 }
 
 .carouselEmblaRow {
@@ -461,6 +555,7 @@
   font-weight: var(--font-weight-semibold);
   font-size: clamp(1rem, 2.5vw, 1.35rem);
   line-height: var(--line-height-relaxed);
+  white-space: pre-line;
   max-width: 36rem;
   margin-left: auto;
   margin-right: auto;

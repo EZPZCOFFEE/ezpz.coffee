@@ -318,7 +318,7 @@
     },
     "hero": {
       "designCta": "Design bag",
-      "subtitle": "EZPZ is a fun, youthful custom coffee bag company that makes personalization easy.",
+      "subtitle": "Finally, a business that makes it easy to produce and sell coffee-based products. Simple and seamless, from A to Z.",
       "titleLine1": "Custom coffee bags",
       "titleLine2": "No minimum"
     },
@@ -331,11 +331,38 @@
       "logoAlt": "{name} logo",
       "title": "They trust us"
     },
+    "advantages": {
+      "title": "Advantages",
+      "items": {
+        "traceable": {
+          "iconAlt": "Traceability",
+          "title": "100% traceable coffee",
+          "body": "We can tell you exactly <orange>where</orange>, <orange>when</orange>, and <orange>by whom</orange> your coffee was produced."
+        },
+        "customize": {
+          "iconAlt": "Customization",
+          "title": "Customization and quantities",
+          "body": "We can <orange>customize everything</orange> for you so you get the best production that fits your business and needs."
+        },
+        "production": {
+          "iconAlt": "Production",
+          "title": "Production",
+          "body": "<orange>We take care of everything</orange> in partnership with you. We control 100% of the production, which allows us to offer the <orange>best possible pricing</orange>."
+        },
+        "distribution": {
+          "iconAlt": "Distribution",
+          "title": "Distribution",
+          "body": "Thanks to our contacts and strong reputation in the industry, we can also support you with distribution <orange>wherever you want to sell your product</orange>."
+        }
+      }
+    },
     "whiteLabel": {
-      "bodyLine1": "EZPZ is a fun, youthful custom coffee bag",
-      "bodyLine2": "company that makes personalization",
-      "bodyLine3": "simple—from one-off gifts to full white-label",
-      "bodyLine4": "programs for cafés and retailers.",
+      "bodyLine1": "Quality, freshness, and traceability.",
+      "bodyLine2": "Cheap coffee exists by default.",
+      "bodyLine3": "Good coffee requires intent.",
+      "bodyLine4": "We help brands sell fully custom specialty coffee.",
+      "bodyLine5": "Bags, ready-to-drink, or Nespresso-compatible capsules.",
+      "bodyLine6": "Your brand. Your coffee.",
       "learnMore": "Learn more",
       "titleLine1": "White label",
       "titleLine2": "Brand building"
@@ -349,19 +376,19 @@
     },
     "sections": {
       "coffeeBags": {
-        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—from eye-catching retail bags to full white-label programs built around your brand.",
+        "body": "No minimum quantities\n\nWe select the best grains to fit your needs and your reality, then adjust the roast to deliver the best possible product.\n\nFull bag design and customization are included in the price per bag, with no hidden fees.",
         "imageAlt": "Custom EZPZ stand-up coffee bag with green limited-edition artwork",
         "title": "Coffee bags"
       },
       "cannedDrinks": {
-        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—extend the same look and feel to ready-to-drink cans your customers can grab on the go.",
+        "body": "You want a full production\nof ready-to-drink coffee-based drinks?\n\nLet us create your recipes and take care of the entire production.\n\nMinimum quantities of 8,000 apply, and once again, design and customization are included in the price, with no hidden fees.",
         "imageAlt": "Branded EZPZ iced coffee can with condensation and soft shadow",
-        "title": "Canned drinks"
+        "title": "Ready-to-drink"
       },
       "coffeePods": {
-        "body": "EZPZ is a fun, youthful custom coffee bag company that makes personalization simple—capsules and compatible pods that stay on-brand from the box to the brew.",
+        "body": "We select the best grains to match your needs and your reality, then fine-tune the roast to deliver the best possible product.\n\nYour coffee is packaged in capsules compatible with Nespresso systems, and full capsule, box design, and customization are included in the price, with no hidden fees.",
         "imageAlt": "EZPZ coffee capsule dispenser box with pods visible",
-        "title": "Coffee pods"
+        "title": "Nespresso classic"
       }
     }
   },
