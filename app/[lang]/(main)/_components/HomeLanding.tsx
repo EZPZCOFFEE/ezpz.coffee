@@ -253,6 +253,9 @@ const HomeLanding = () => {
                 <div className={styles.testimonialAvatar} aria-hidden>
                   {item.author.charAt(0)}
                 </div>
+                <div className={styles.testimonialStars} aria-label="5 out of 5 stars">
+                  {"★★★★★"}
+                </div>
                 <p className={styles.testimonialQuote}>&ldquo;{item.quote}&rdquo;</p>
                 <footer className={styles.testimonialAuthor}>
                   <strong>{item.author}</strong>

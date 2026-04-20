@@ -745,6 +745,12 @@
   gap: var(--spacing-state);
 }
 
+.testimonialStars {
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  color: #f5c518;
+}
+
 .testimonialQuote {
   margin: 0;
   font-size: clamp(0.95rem, 1.8vw, 1.05rem);
