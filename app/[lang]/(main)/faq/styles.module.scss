@@ -6,7 +6,7 @@
   justify-content: center;
   max-width: 720px;
   margin: 0 auto;
-  padding: var(--spacing-planet) var(--spacing-none) var(--spacing-cluster);
+  padding: var(--spacing-planet) var(--spacing-state) var(--spacing-cluster);
   font-family: var(--font-montserrat), var(--font-family);
 }
 
@@ -42,7 +42,7 @@
 .categoryTitle {
   margin: var(--spacing-none);
   padding-bottom: var(--spacing-house);
-  border-bottom: 1px solid var(--color-gray-300);
+  border-bottom: 2px solid var(--color-accent);
   font-size: clamp(1.125rem, 2.75vw, 1.5rem);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
@@ -54,21 +54,54 @@
 .itemList {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-state);
   margin: var(--spacing-none);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* ── Accordion item ──────────────────────────────────────── */
 .item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-room);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-state);
+  padding: var(--spacing-state) 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
   font-weight: var(--font-weight-semibold);
-  font-size: clamp(0.9375rem, 2.35vw, 1.15rem);
+  font-size: clamp(0.9375rem, 2.35vw, 1.05rem);
   line-height: var(--line-height-snug);
   color: var(--landing-black);
+  font-family: inherit;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.itemOpen .question {
+  color: var(--color-accent);
+}
+
+.caret {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: var(--color-accent);
+}
+
+.itemOpen .caret {
+  transform: rotate(180deg);
+}
+
+.answerWrap {
+  padding-bottom: var(--spacing-state);
 }
 
 .answer {
@@ -77,26 +110,17 @@
 
 .answerText {
   font-weight: var(--font-weight-semibold);
-  font-size: clamp(0.875rem, 2.25vw, 1.22rem);
+  font-size: clamp(0.875rem, 2.25vw, 1rem);
   line-height: var(--line-height-relaxed);
-  color: var(--landing-black);
+  color: var(--color-neutral);
 }
 
 @media (max-width: 1024px) {
   .page {
-    padding: var(--spacing-country) var(--spacing-none) var(--spacing-planet);
+    padding: var(--spacing-country) var(--spacing-state) var(--spacing-planet);
   }
 
-  /* Match home landing typography on small viewports */
   .categoryTitle {
     font-size: clamp(1.25rem, 3vw, 1.65rem);
-  }
-
-  .question {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-  }
-
-  .answerText {
-    font-size: clamp(1rem, 2.5vw, 1.35rem);
   }
 }

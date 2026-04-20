@@ -1,8 +1,10 @@
 "use client";
 
+import { CaretDown } from "@phosphor-icons/react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
 
-import { getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
+import { getStaggerReveal } from "@/lib/motion/landingReveal";
 
 import styles from "./styles.module.scss";
 
@@ -21,11 +23,41 @@ interface FAQContentProps {
   categories: FAQCategory[];
 }
 
+const FAQAccordionItem = ({ question, answer }: FAQItem) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className={`${styles.item} ${open ? styles.itemOpen : ""}`}>
+      <button
+        className={styles.question}
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        type="button"
+      >
+        <span>{question}</span>
+        <CaretDown
+          size={18}
+          weight="bold"
+          className={styles.caret}
+          aria-hidden
+        />
+      </button>
+      <div
+        className={styles.answerWrap}
+        style={{ display: open ? "block" : "none" }}
+      >
+        <dd className={styles.answer}>
+          <span className={styles.answerText}>{answer}</span>
+        </dd>
+      </div>
+    </div>
+  );
+};
+
 const FAQContent = ({ title, categories }: FAQContentProps) => {
   const reduceMotion = useReducedMotion();
   const motionOff = !!reduceMotion;
   const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
-  const categoriesStagger = getNestedSectionListStagger(motionOff);
 
   return (
     <article className={styles.page} aria-labelledby="faq-page-title">
@@ -34,7 +66,7 @@ const FAQContent = ({ title, categories }: FAQContentProps) => {
           {title}
         </motion.h1>
 
-        <motion.div className={styles.categories} {...categoriesStagger}>
+        <div className={styles.categories}>
           {categories.map((category) => (
             <motion.section
               key={category.title}
@@ -45,21 +77,15 @@ const FAQContent = ({ title, categories }: FAQContentProps) => {
               <h2 className={styles.categoryTitle}>{category.title}</h2>
               <dl className={styles.itemList}>
                 {category.items.map((item) => (
-                  <div key={item.question} className={styles.item}>
-                    <dt className={styles.question}>{item.question}</dt>
-                    <dd className={styles.answer}>
-                      <span className={styles.answerText}>{item.answer}</span>
-                    </dd>
-                  </div>
+                  <FAQAccordionItem key={item.question} {...item} />
                 ))}
               </dl>
             </motion.section>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </article>
   );
 };
 
 export default FAQContent;
-
