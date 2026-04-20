@@ -30,7 +30,7 @@ export async function contact(
   const { error } = await resend.emails.send({
     from: "EZPZ Contact <onboarding@resend.dev>",
     to: "help@ezpz.coffee",
-    reply_to: email,
+    replyTo: email,
     subject: `[Contact] ${subject}`,
     html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p><br/><p>${message.replace(/\n/g, "<br/>")}</p>`,
   });
