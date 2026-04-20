@@ -56,6 +56,36 @@
   color: inherit;
 }
 
+.cartIconWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  color: inherit;
+  transition: color 0.15s ease;
+
+  &Active {
+    color: var(--color-accent);
+  }
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 3px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  line-height: 16px;
+  text-align: center;
+}
+
 // ---------------------------------------------------------------------------
 // Drawer Container
 // ---------------------------------------------------------------------------

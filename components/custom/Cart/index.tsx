@@ -1,7 +1,7 @@
 "use client";
 
 import { Popover, Portal } from "@ark-ui/react";
-import { MinusIcon, PlusIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
+import { MinusIcon, PlusIcon, ShoppingBagIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
 import { Money, Image as ShopifyImage, useCart } from "@shopify/hydrogen-react";
 import classNames from "classnames";
 import Image from "next/image";
@@ -332,7 +332,10 @@ const Cart: React.FC<CartProps> = ({ children, className }) => {
             className={classNames(styles.cartButton, className)}
             aria-label={t("openCart")}
           >
-            <span className={styles.cartTriggerLabel}>{t("triggerWithCount", { count: itemCount })}</span>
+            <span className={classNames(styles.cartIconWrap, { [styles.cartIconWrapActive]: hasItems })}>
+              <ShoppingBagIcon size={30} weight={hasItems ? "fill" : "regular"} aria-hidden />
+              {hasItems && <span className={styles.cartBadge}>{itemCount}</span>}
+            </span>
           </button>
         )}
       </Popover.Trigger>
