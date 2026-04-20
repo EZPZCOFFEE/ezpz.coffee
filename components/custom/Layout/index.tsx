@@ -9,6 +9,7 @@ import NewsletterSignup from "@/components/custom/NewsletterSignup";
 import { WhiteeeShopifyProvider } from "@/components/custom/ShopifyProvider";
 import { locales } from "@/i18n/types";
 
+import NewsletterPopup from "@/components/custom/NewsletterPopup";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import styles from "./styles.module.scss";
@@ -35,6 +36,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           <Navbar />
           <main className={isHeroLanding ? styles.mainHome : styles.main}>{children}</main>
           <NewsletterSignup />
+          <NewsletterPopup />
           <Footer />
         </div>
       </CartProvider>
