@@ -144,14 +144,6 @@ const DesktopNavbar = ({
           })}
         </ul>
 
-        <div className={styles.localeSwitcher}>
-          {locale === "fr" ? (
-            <Link href={pathname?.replace(/^\/fr/, "/en") ?? "/en"} className={styles.localeSwitcherLink}>EN</Link>
-          ) : (
-            <Link href={pathname?.replace(/^\/en/, "/fr") ?? "/fr"} className={styles.localeSwitcherLink}>FR</Link>
-          )}
-        </div>
-
         <span className={logoVariant === "overlay" ? styles.navCartHome : undefined}>
           <Cart />
         </span>
@@ -183,13 +175,6 @@ const MobileNavbar = ({
         <Logo variant={logoVariant} />
 
         <div className={styles.mobileHeaderActions}>
-          <div className={styles.localeSwitcher}>
-            {locale === "fr" ? (
-              <Link href={pathname?.replace(/^\/fr/, "/en") ?? "/en"} className={styles.localeSwitcherLink}>EN</Link>
-            ) : (
-              <Link href={pathname?.replace(/^\/en/, "/fr") ?? "/fr"} className={styles.localeSwitcherLink}>FR</Link>
-            )}
-          </div>
           <button
             className={styles.menuButton}
             type="button"
