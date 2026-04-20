@@ -291,29 +291,8 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <section className={styles.blog} aria-labelledby="blog-heading">
-        <motion.div className={styles.advantagesInner} {...staggerParent}>
-          <motion.h2 id="blog-heading" className={styles.advantagesTitle} {...fadeChild}>
-            {t("blog.title")}
-          </motion.h2>
-          <motion.div className={styles.blogGrid} {...getNestedSectionListStagger(motionOff)}>
-            {(t.raw("blog.articles") as Array<{ slug: string; title: string; description: string; date: string }>).map((article) => (
-              <motion.article key={article.slug} className={styles.blogCard} {...fadeChild}>
-                <time className={styles.blogDate} dateTime={article.date}>
-                  {new Date(article.date).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}
-                </time>
-                <h3 className={styles.blogTitle}>{article.title}</h3>
-                <p className={styles.blogDescription}>{article.description}</p>
-                <Link href={`/${locale}/blog/${article.slug}`} className={styles.blogReadMore}>
-                  {t("blog.readMore")} →
-                </Link>
-              </motion.article>
-            ))}
-          </motion.div>
-        </motion.div>
-      </section>
 
-      <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
+<section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
           <motion.h2 id="faq-preview-heading" className={styles.advantagesTitle} {...fadeChild}>
             {t("faqPreview.title")}
