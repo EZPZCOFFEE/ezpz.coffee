@@ -26,9 +26,10 @@ interface NavItem {
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
+    { labelKey: "shop", pathSuffix: "/shop" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
-    { labelKey: "ourCoffee", pathSuffix: "/coffee" },
+    { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
 };
 
@@ -119,7 +120,7 @@ const DesktopNavbar = ({
 
             return (
               <li key={`${item.labelKey}-${item.pathSuffix}`} className={itemClassName}>
-                <Link href={getNavHref(locale, item)} className={styles.navLink}>
+                <Link href={getNavHref(locale, item)} className={styles.navLinkButton}>
                   {t(item.labelKey)}
                 </Link>
               </li>
@@ -142,6 +143,14 @@ const DesktopNavbar = ({
             );
           })}
         </ul>
+
+        <div className={styles.localeSwitcher}>
+          {locale === "fr" ? (
+            <Link href={pathname?.replace(/^\/fr/, "/en") ?? "/en"} className={styles.localeSwitcherLink}>EN</Link>
+          ) : (
+            <Link href={pathname?.replace(/^\/en/, "/fr") ?? "/fr"} className={styles.localeSwitcherLink}>FR</Link>
+          )}
+        </div>
 
         <span className={logoVariant === "overlay" ? styles.navCartHome : undefined}>
           <Cart />
@@ -174,6 +183,13 @@ const MobileNavbar = ({
         <Logo variant={logoVariant} />
 
         <div className={styles.mobileHeaderActions}>
+          <div className={styles.localeSwitcher}>
+            {locale === "fr" ? (
+              <Link href={pathname?.replace(/^\/fr/, "/en") ?? "/en"} className={styles.localeSwitcherLink}>EN</Link>
+            ) : (
+              <Link href={pathname?.replace(/^\/en/, "/fr") ?? "/fr"} className={styles.localeSwitcherLink}>FR</Link>
+            )}
+          </div>
           <button
             className={styles.menuButton}
             type="button"
