@@ -121,8 +121,8 @@ const HomeLanding = () => {
   const trustedByListStagger = getNestedSectionListStagger(motionOff);
   const whiteLabelBodyStagger = getNestedSectionListStagger(motionOff);
 
-  const scrollToHeroCopy = useCallback(() => {
-    document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const scrollToAdvantages = useCallback(() => {
+    document.getElementById("advantages")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
   return (
@@ -130,7 +130,7 @@ const HomeLanding = () => {
       <section className={styles.heroPhoto} aria-label={t("heroPhoto.ariaLabel")}>
         <Image
           src={banner01}
-          alt=""
+          alt="Custom branded coffee bags with no minimum order in Canada"
           fill
           priority
           placeholder="blur"
@@ -138,11 +138,27 @@ const HomeLanding = () => {
           sizes="100vw"
           className={styles.heroPhotoImage}
         />
+        <div className={styles.heroGradient} aria-hidden />
+
+        <motion.div className={styles.heroOverlay} {...staggerParent}>
+          <motion.h1 className={styles.heroOverlayTitle} {...fadeChild}>
+            {t("hero.headline")}
+          </motion.h1>
+          <motion.p className={styles.heroOverlaySubtitle} {...fadeChild}>
+            {t("hero.subtitle")}
+          </motion.p>
+          <motion.div {...fadeChild}>
+            <Link href={designHref} className={styles.heroOverlayBtn}>
+              {t("hero.designCta")}
+            </Link>
+          </motion.div>
+        </motion.div>
+
         <motion.div className={styles.heroPhotoInner} {...heroHintMotion}>
           <button
             type="button"
             className={styles.heroScrollHint}
-            onClick={scrollToHeroCopy}
+            onClick={scrollToAdvantages}
             aria-label={t("heroPhoto.scrollHint")}
           >
             <span className={styles.heroScrollLabel} aria-hidden>
@@ -155,24 +171,6 @@ const HomeLanding = () => {
               aria-hidden
             />
           </button>
-        </motion.div>
-      </section>
-
-      <section id="hero-copy" className={styles.heroCopy} aria-labelledby="hero-copy-heading">
-        <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
-          <motion.h1 id="hero-copy-heading" className={styles.heroTitle} {...fadeChild}>
-            {t("hero.titleLine1")}
-            <br />
-            {t("hero.titleLine2")}
-          </motion.h1>
-          <motion.p className={styles.heroSubtitle} {...fadeChild}>
-            {t("hero.subtitle")}
-          </motion.p>
-          <motion.div {...fadeChild} className={styles.landingMotionInline}>
-            <Link href={designHref} className={styles.btnOutline}>
-              {t("hero.designCta")}
-            </Link>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -226,7 +224,7 @@ const HomeLanding = () => {
           <motion.div {...fadeChild} className={styles.whiteLabelPhotoMotion}>
             <Image
               src={bannerBase}
-              alt=""
+              alt="White label coffee bags and Nespresso capsules for brands"
               width={bannerBase.width}
               height={bannerBase.height}
               placeholder="blur"
@@ -239,6 +237,98 @@ const HomeLanding = () => {
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.testimonials} aria-labelledby="testimonials-heading">
+        <motion.div className={styles.advantagesInner} {...staggerParent}>
+          <motion.h2 id="testimonials-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("testimonials.title")}
+          </motion.h2>
+          <motion.div className={styles.testimonialsGrid} {...getNestedSectionListStagger(motionOff)}>
+            {(t.raw("testimonials.items") as Array<{ quote: string; author: string; role: string }>).map((item, i) => (
+              <motion.blockquote key={i} className={styles.testimonialCard} {...fadeChild}>
+                <div className={styles.testimonialAvatar} aria-hidden>
+                  {item.author.charAt(0)}
+                </div>
+                <p className={styles.testimonialQuote}>&ldquo;{item.quote}&rdquo;</p>
+                <footer className={styles.testimonialAuthor}>
+                  <strong>{item.author}</strong>
+                  <span>{item.role}</span>
+                </footer>
+              </motion.blockquote>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.howItWorks} aria-labelledby="how-it-works-heading">
+        <motion.div className={styles.advantagesInner} {...staggerParent}>
+          <motion.h2 id="how-it-works-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("howItWorks.title")}
+          </motion.h2>
+          <motion.div className={styles.howItWorksGrid} {...getNestedSectionListStagger(motionOff)}>
+            {(t.raw("howItWorks.steps") as Array<{ number: string; title: string; body: string }>).map((step) => (
+              <motion.div key={step.number} className={styles.howItWorksStep} {...fadeChild}>
+                <span className={styles.howItWorksNumber}>{step.number}</span>
+                <h3 className={styles.howItWorksTitle}>{step.title}</h3>
+                <p className={styles.howItWorksBody}>{step.body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.geo} aria-labelledby="geo-heading">
+        <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
+          <motion.h2 id="geo-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("geo.title")}
+          </motion.h2>
+          <motion.p className={styles.geoBody} {...fadeChild}>{t("geo.body")}</motion.p>
+          <motion.p className={styles.geoCities} {...fadeChild}>{t("geo.cities")}</motion.p>
+        </motion.div>
+      </section>
+
+      <section className={styles.blog} aria-labelledby="blog-heading">
+        <motion.div className={styles.advantagesInner} {...staggerParent}>
+          <motion.h2 id="blog-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("blog.title")}
+          </motion.h2>
+          <motion.div className={styles.blogGrid} {...getNestedSectionListStagger(motionOff)}>
+            {(t.raw("blog.articles") as Array<{ slug: string; title: string; description: string; date: string }>).map((article) => (
+              <motion.article key={article.slug} className={styles.blogCard} {...fadeChild}>
+                <time className={styles.blogDate} dateTime={article.date}>
+                  {new Date(article.date).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}
+                </time>
+                <h3 className={styles.blogTitle}>{article.title}</h3>
+                <p className={styles.blogDescription}>{article.description}</p>
+                <Link href={`/${locale}/blog/${article.slug}`} className={styles.blogReadMore}>
+                  {t("blog.readMore")} →
+                </Link>
+              </motion.article>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
+        <motion.div className={styles.faqPreviewInner} {...staggerParent}>
+          <motion.h2 id="faq-preview-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("faqPreview.title")}
+          </motion.h2>
+          <motion.dl className={styles.faqList} {...getNestedSectionListStagger(motionOff)}>
+            {(t.raw("faqPreview.items") as Array<{ question: string; answer: string }>).map((item, i) => (
+              <motion.div key={i} className={styles.faqItem} {...fadeChild}>
+                <dt className={styles.faqQuestion}>{item.question}</dt>
+                <dd className={styles.faqAnswer}>{item.answer}</dd>
+              </motion.div>
+            ))}
+          </motion.dl>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/faq`} className={styles.btnOutline}>
+              {t("faqPreview.seeAll")}
             </Link>
           </motion.div>
         </motion.div>

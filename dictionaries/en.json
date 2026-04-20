@@ -42,7 +42,7 @@
       "main": {
         "paragraphs": [
           "Our roasting, carried out in Montréal at Canadian Roasting Company, highlights the full complexity of each origin.",
-          "Every bag is roasted with precision to guarantee an optimal experience — a cup worthy of the finest baristas, sure to delight your clients, your employees, or anyone who has the pleasure of enjoying your coffee."
+          "Every bag is roasted with precision to guarantee an optimal experience, a cup worthy of the finest baristas, sure to delight your clients, your employees, or anyone who has the pleasure of enjoying your coffee."
         ]
       }
     },
@@ -52,22 +52,39 @@
     "section": "Section {number}"
   },
   "contact": {
+    "title": "Get in touch",
     "intro": "Have questions about your order, custom bags, or anything else? We're here to help.",
-    "sections": {
-      "main": {
-        "paragraphs": [
-          "For any inquiries, please reach out to us at help@ezpz.coffee. We typically respond within 24–48 hours. You can also visit us at our location: 3780 Rue Saint-Patrick, Montréal QC H4E 1A2."
-        ]
-      }
+    "form": {
+      "name": "Your name",
+      "namePlaceholder": "John Smith",
+      "email": "Email address",
+      "emailPlaceholder": "you@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What's this about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help...",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "successTitle": "Message sent!",
+      "successBody": "Thanks for reaching out. We typically respond within 24–48 hours.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "required": "This field is required."
     },
-    "title": "Get in touch"
+    "info": {
+      "emailLabel": "Email",
+      "email": "help@ezpz.coffee",
+      "addressLabel": "Address",
+      "address": "3780 Rue Saint-Patrick\nMontréal QC H4E 1A2",
+      "responseLabel": "Response time",
+      "response": "We typically respond within 24–48 hours."
+    }
   },
   "faq": {
     "categories": {
       "dietary": {
         "items": {
           "allergens": {
-            "answer": "Yes — our coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan.",
+            "answer": "Yes, our coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan.",
             "question": "Is your coffee allergen-free?"
           }
         },
@@ -88,7 +105,7 @@
             "question": "What is third-wave coffee?"
           },
           "wholeBeans": {
-            "answer": "Not at all — you can choose your grind size when creating your order.",
+            "answer": "Not at all, you can choose your grind size when creating your order.",
             "question": "Are your coffees available only as whole beans?"
           }
         },
@@ -97,7 +114,7 @@
       "preparation": {
         "items": {
           "brewing": {
-            "answer": "Our coffees work well with various brewing methods — pour-over, French press, espresso, and more.",
+            "answer": "Our coffees work well with various brewing methods, pour-over, French press, espresso, and more.",
             "question": "What is the best way to brew your coffee?"
           },
           "duration": {
@@ -156,11 +173,14 @@
   },
   "footer": {
     "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
+    "blog": "Blog",
     "brand": "EZPZ {year}",
     "contactUs": "Contact us",
     "faq": "FAQ",
     "fairTrade": "Fair trade",
     "navigation": "Footer navigation",
+    "ourCoffee": "Our coffee",
+    "shop": "Shop",
     "termsOfUse": "Terms of use"
   },
   "home": {
@@ -222,7 +242,7 @@
     "subtotal": "Subtotal",
     "surfaceDescriptions": {
       "bottom": "Bottom strip treatment works best for high-detail imagery or signatures.",
-      "full": "Edge-to-edge coverage—best for bold photography or seamless patterns.",
+      "full": "Edge-to-edge coverage,best for bold photography or seamless patterns.",
       "sandwich": "Sandwiched bands keep typography crisp and separated from the artwork."
     },
     "surfaceLabel": "Bag surface",
@@ -246,20 +266,20 @@
   },
   "metadata": {
     "about": {
-      "description": "EZPZ Coffee exists to spotlight the farmers and producers behind every bag. Learn how we keep sourcing transparent and give customers a direct line to origin stories.",
-      "ogDescription": "We are the transmission belt between microlot producers and the people who drink their coffee. Get to know the team and the promises that guide our work.",
-      "ogTitle": "EZPZ Coffee | About Us",
-      "title": "EZPZ Coffee | About Us",
-      "twitterDescription": "Transparency, traceability, and respect for the producers behind every custom bag. Learn what drives us.",
-      "twitterTitle": "About EZPZ Coffee"
+      "description": "EZPZ Coffee is a Montreal-based specialty coffee company helping brands across Canada create and sell their own custom coffee products.",
+      "ogDescription": "EZPZ Coffee is a Montreal-based specialty coffee company helping brands across Canada create and sell their own custom coffee products.",
+      "ogTitle": "About EZPZ Coffee | Montreal-Based Custom Coffee Roaster",
+      "title": "About EZPZ Coffee | Montreal-Based Custom Coffee Roaster",
+      "twitterDescription": "EZPZ Coffee is a Montreal-based specialty coffee company helping brands across Canada create and sell their own custom coffee products.",
+      "twitterTitle": "About EZPZ Coffee | Montreal-Based Custom Coffee Roaster"
     },
     "coffee": {
-      "description": "See how EZPZ curates microlots, profiles each roast, and recommends brew parameters so your custom bags stay true to origin.",
-      "ogDescription": "From selective harvest calendars to deliberately gentle roast curves, here is every lever we pull to keep flavor honest.",
-      "ogTitle": "EZPZ Coffee | Our Coffee",
-      "title": "EZPZ Coffee | Our Coffee",
-      "twitterDescription": "Producer partnerships, roast profiles, and brew specs—all in one place.",
-      "twitterTitle": "How EZPZ sources and roasts"
+      "description": "Explore our selection of 100% traceable specialty coffees. Choose your origin, roast level, and grind, fully customized for your brand.",
+      "ogDescription": "Explore our selection of 100% traceable specialty coffees. Choose your origin, roast level, and grind, fully customized for your brand.",
+      "ogTitle": "Our Specialty Coffees | Traceable Single Origins | EZPZ Coffee",
+      "title": "Our Specialty Coffees | Traceable Single Origins | EZPZ Coffee",
+      "twitterDescription": "Explore our selection of 100% traceable specialty coffees. Choose your origin, roast level, and grind, fully customized for your brand.",
+      "twitterTitle": "Our Specialty Coffees | Traceable Single Origins | EZPZ Coffee"
     },
     "contact": {
       "description": "Get in touch with EZPZ Coffee. Contact us for questions about orders, custom bags, or anything else.",
@@ -270,42 +290,42 @@
       "twitterTitle": "Contact Us | EZPZ Coffee"
     },
     "faq": {
-      "description": "Find answers to common questions about EZPZ specialty coffee, shipping, preparation tips, and dietary information.",
-      "ogDescription": "Everything you need to know about our specialty coffee, shipping options, storage tips, and more.",
-      "ogTitle": "EZPZ Coffee | FAQ",
-      "title": "EZPZ Coffee | FAQ",
-      "twitterDescription": "Get answers to your questions about EZPZ specialty coffee.",
-      "twitterTitle": "FAQ | EZPZ Coffee"
+      "description": "Got questions about custom coffee bags, minimum orders, or production timelines? Find all your answers here.",
+      "ogDescription": "Got questions about custom coffee bags, minimum orders, or production timelines? Find all your answers here.",
+      "ogTitle": "Frequently Asked Questions | EZPZ Coffee",
+      "title": "Frequently Asked Questions | EZPZ Coffee",
+      "twitterDescription": "Got questions about custom coffee bags, minimum orders, or production timelines? Find all your answers here.",
+      "twitterTitle": "Frequently Asked Questions | EZPZ Coffee"
     },
     "design": {
       "description": "Upload artwork, pick roast and grind options, and preview your 225g EZPZ coffee bags before adding them to the cart.",
-      "ogDescription": "Personalize the label, grind, and roast profile—preview it live before you checkout.",
+      "ogDescription": "Personalize the label, grind, and roast profile,preview it live before you checkout.",
       "ogTitle": "Design a custom EZPZ coffee bag",
       "title": "EZPZ Coffee | Design your own coffee bags",
       "twitterDescription": "Personalize every detail and see the preview instantly."
     },
     "home": {
-      "description": "Custom coffee bags with no minimum. EZPZ makes personalization simple—design your bag, explore our coffee, or build a white-label brand.",
-      "ogDescription": "Fun, youthful custom coffee bags. No minimum orders. Design online, subscribe for deals, and learn about white-label solutions.",
-      "ogTitle": "EZPZ Coffee | Custom coffee bags, no minimum",
-      "title": "EZPZ Coffee | Custom coffee bags, no minimum",
-      "twitterDescription": "Custom coffee bags with no minimum. Design online or explore white-label and our specialty coffee."
+      "description": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada.",
+      "ogDescription": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada.",
+      "ogTitle": "Custom Coffee Bags Canada | No Minimum Order | EZPZ Coffee",
+      "title": "Custom Coffee Bags Canada | No Minimum Order | EZPZ Coffee",
+      "twitterDescription": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada."
     },
     "termsOfUse": {
       "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
-      "ogDescription": "Terms of Use for EZPZ.coffee — understand our policies on orders, payments, shipping, and user content.",
+      "ogDescription": "Terms of Use for EZPZ.coffee, understand our policies on orders, payments, shipping, and user content.",
       "ogTitle": "EZPZ Coffee | Terms of Use",
       "title": "EZPZ Coffee | Terms of Use",
       "twitterDescription": "Read the terms and conditions for using EZPZ.coffee.",
       "twitterTitle": "Terms of Use | EZPZ Coffee"
     },
     "whiteLabelPage": {
-      "description": "White-label coffee bag programs for cafés and retailers. EZPZ makes custom branding and personalization simple—from one-off gifts to scale.",
-      "ogDescription": "Build a white-label coffee program with EZPZ: custom bags, specialty coffee, and flexible production.",
-      "ogTitle": "EZPZ Coffee | White label solutions",
-      "title": "EZPZ Coffee | White label solutions",
-      "twitterDescription": "White-label coffee bags and programs—personalization made simple for your brand.",
-      "twitterTitle": "White label solutions | EZPZ Coffee"
+      "description": "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
+      "ogDescription": "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
+      "ogTitle": "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
+      "title": "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
+      "twitterDescription": "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
+      "twitterTitle": "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee"
     }
   },
   "landing": {
@@ -317,10 +337,9 @@
       "sectionTitle": "Featured coffees"
     },
     "hero": {
-      "designCta": "Design bag",
-      "subtitle": "Finally, a business that makes it easy to produce and sell coffee-based products. Simple and seamless, from A to Z.",
-      "titleLine1": "Custom coffee bags",
-      "titleLine2": "No minimum"
+      "designCta": "Design your bag",
+      "headline": "Your brand. Your coffee.",
+      "subtitle": "Custom coffee bags with no minimum order, designed, roasted, and delivered across Canada."
     },
     "heroPhoto": {
       "ariaLabel": "EZPZ lifestyle hero",
@@ -328,33 +347,129 @@
       "scrollHint": "Scroll down to main content"
     },
     "trustedBy": {
-      "logoAlt": "{name} logo",
+      "logoAlt": "{name}, client of EZPZ Coffee",
       "title": "They trust us"
     },
     "advantages": {
       "title": "Advantages",
       "items": {
         "traceable": {
-          "iconAlt": "Traceability",
+          "iconAlt": "100% traceable specialty coffee from farm to bag",
           "title": "100% traceable coffee",
-          "body": "We can tell you exactly <orange>where</orange>, <orange>when</orange>, and <orange>by whom</orange> your coffee was produced."
+          "body": "We can tell you exactly which <orange>farm</orange>, <orange>harvest date</orange>, and <orange>farmer</orange> produced your coffee. Full transparency, always."
         },
         "customize": {
-          "iconAlt": "Customization",
+          "iconAlt": "Custom coffee bag design and packaging options",
           "title": "Customization and quantities",
-          "body": "We can <orange>customize everything</orange> for you so you get the best production that fits your business and needs."
+          "body": "From bag design to grind size and roast level, we customize <orange>every detail</orange>, with <orange>no minimum order</orange> required."
         },
         "production": {
-          "iconAlt": "Production",
+          "iconAlt": "In-house coffee roasting and production facility",
           "title": "Production",
-          "body": "<orange>We take care of everything</orange> in partnership with you. We control 100% of the production, which allows us to offer the <orange>best possible pricing</orange>."
+          "body": "We control <orange>100% of the production process</orange> in-house, which means faster turnaround, better quality, and the <orange>best pricing possible</orange>."
         },
         "distribution": {
-          "iconAlt": "Distribution",
+          "iconAlt": "Coffee distribution support across Canada",
           "title": "Distribution",
-          "body": "Thanks to our contacts and strong reputation in the industry, we can also support you with distribution <orange>wherever you want to sell your product</orange>."
+          "body": "We've built strong relationships across the industry and can help you get your product on shelves <orange>wherever you want to sell</orange>."
         }
       }
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Design your bag",
+          "body": "Use our online tool to create your custom bag with your logo, colors, and style."
+        },
+        {
+          "number": "02",
+          "title": "Choose your coffee",
+          "body": "Pick from our selection of specialty coffees. We'll help you find the perfect match for your brand."
+        },
+        {
+          "number": "03",
+          "title": "We handle production",
+          "body": "We roast, package, and quality-check everything in-house. No stress, no guessing."
+        },
+        {
+          "number": "04",
+          "title": "Deliver to your door",
+          "body": "Your branded coffee bags arrive ready to sell. We can also help with distribution if needed."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What our customers say",
+      "items": [
+        {
+          "quote": "Working with EZPZ was seamless from start to finish. Our branded coffee became one of our best-selling products.",
+          "author": "Sarah L.",
+          "role": "Boutique Owner"
+        },
+        {
+          "quote": "The quality is outstanding and the process was so simple. We had our custom bags in hand within weeks.",
+          "author": "Marc T.",
+          "role": "Restaurant Manager"
+        },
+        {
+          "quote": "EZPZ helped us launch our coffee brand with zero headaches. Highly recommend to any business looking to add coffee to their lineup.",
+          "author": "Julie R.",
+          "role": "Retail Brand"
+        }
+      ]
+    },
+    "blog": {
+      "title": "From the blog",
+      "readMore": "Read more",
+      "articles": [
+        {
+          "slug": "how-to-launch-your-own-coffee-brand-in-canada-2026",
+          "title": "How to Launch Your Own Coffee Brand in Canada in 2026",
+          "description": "A step-by-step guide to creating a white label coffee product with no minimum order.",
+          "date": "2026-04-01"
+        },
+        {
+          "slug": "what-makes-specialty-coffee-traceable",
+          "title": "What Makes Specialty Coffee Traceable?",
+          "description": "Learn what farm-to-bag traceability means and why it matters for your brand and your customers.",
+          "date": "2026-03-15"
+        },
+        {
+          "slug": "custom-coffee-bags-vs-pre-packaged-coffee",
+          "title": "Custom Coffee Bags vs. Pre-Packaged Coffee: What's Right for Your Business?",
+          "description": "We break down the pros and cons to help you make the best decision for your brand.",
+          "date": "2026-03-01"
+        }
+      ]
+    },
+    "geo": {
+      "title": "Serving businesses across Canada",
+      "body": "From Montreal to Vancouver, EZPZ Coffee works with restaurants, hotels, retailers, and brands across Canada. Whether you're launching a new coffee product or scaling an existing one, we make it simple, no matter where you are.",
+      "cities": "Currently serving: Montreal, Toronto, Vancouver, Calgary, Ottawa, and beyond."
+    },
+    "faqPreview": {
+      "title": "Frequently asked questions",
+      "seeAll": "See all FAQs",
+      "items": [
+        {
+          "question": "Is there a minimum order?",
+          "answer": "No! We are the only supplier in Canada with absolutely no minimum order requirement."
+        },
+        {
+          "question": "Can I choose my coffee origin?",
+          "answer": "Yes, we offer a selection of traceable specialty coffees from around the world."
+        },
+        {
+          "question": "How long does production take?",
+          "answer": "Most orders are ready within 2 to 3 weeks from the time your design is approved."
+        },
+        {
+          "question": "Do you offer distribution support?",
+          "answer": "Yes, we have industry contacts and can help you get your product distributed across Canada."
+        }
+      ]
     },
     "whiteLabel": {
       "bodyLine1": "Quality, freshness, and traceability.",
@@ -404,8 +519,24 @@
     "openCart": "Open cart",
     "ourCoffee": "Our coffee",
     "sampleBag": "Sample bag",
+    "shop": "Shop",
     "toggleMenu": "Toggle navigation menu",
     "whiteLabel": "White label solutions"
+  },
+  "newsletterPopup": {
+    "ariaLabel": "Newsletter signup",
+    "close": "Close",
+    "eyebrow": "Limited time offer",
+    "title": "Get <highlight>15% off</highlight> your first order",
+    "subtitle": "Join our list for exclusive offers, new origin announcements, and tips on building a coffee brand.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "Enter your email",
+    "submitting": "Subscribing...",
+    "subscribe": "Claim my 15% off",
+    "noThanks": "No thanks",
+    "successMessage": "You're in! Check your inbox for your 15% discount code.",
+    "emailRequired": "Please enter your email address.",
+    "genericError": "Something went wrong. Please try again."
   },
   "newsletter": {
     "emailLabel": "Email address",
@@ -413,7 +544,7 @@
     "submitting": "Subscribing...",
     "subscribe": "Subscribe",
     "successMessage": "You're in! Check your inbox for your 15% discount code.",
-    "title": "Get <highlight>15% off</highlight> when you join our email list."
+    "title": "Join our list and get <highlight>15% off</highlight> your first order, plus tips on building a coffee brand, new origin announcements, and exclusive offers."
   },
   "passwordPage": {
     "adminLink": "Enter early access",
@@ -430,7 +561,8 @@
   },
   "product": {
     "addToCart": "Add to cart",
-    "buyNow": "Buy now"
+    "buyNow": "Buy now",
+    "soldOut": "Sold out"
   },
   "termsOfUse": {
     "intro": "Welcome to EZPZ.coffee. By accessing or using our website, services, or placing an order through EZPZ, you acknowledge that you have read, understood, and agreed to be bound by the following Terms of Use. If you do not agree with these terms, please do not use our platform.",

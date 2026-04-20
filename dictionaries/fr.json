@@ -42,7 +42,7 @@
       "main": {
         "paragraphs": [
           "Notre torréfaction, réalisée à Montréal chez Canadian Roasting Company, met en valeur toute la complexité de chaque origine.",
-          "Chaque sac est torréfié avec précision pour garantir une expérience optimale — une tasse à la hauteur des plus grands baristas, qui saura plaire à vos clients, à vos employés ou à toute personne qui aura le plaisir de déguster votre café."
+          "Chaque sac est torréfié avec précision pour garantir une expérience optimale, une tasse à la hauteur des plus grands baristas, qui saura plaire à vos clients, à vos employés ou à toute personne qui aura le plaisir de déguster votre café."
         ]
       }
     },
@@ -52,15 +52,32 @@
     "section": "Section {number}"
   },
   "contact": {
+    "title": "Contactez-nous",
     "intro": "Vous avez des questions sur votre commande, vos sachets personnalisés ou autre chose ? Nous sommes là pour vous aider.",
-    "sections": {
-      "main": {
-        "paragraphs": [
-          "Pour toute demande, veuillez nous contacter à help@ezpz.coffee. Nous répondons généralement dans les 24 à 48 heures. Vous pouvez également nous rendre visite à notre adresse : 3780 Rue Saint-Patrick, Montréal QC H4E 1A2."
-        ]
-      }
+    "form": {
+      "name": "Votre nom",
+      "namePlaceholder": "Jean Tremblay",
+      "email": "Adresse courriel",
+      "emailPlaceholder": "vous@exemple.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "De quoi s'agit-il ?",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous comment nous pouvons vous aider...",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "successTitle": "Message envoyé !",
+      "successBody": "Merci de nous avoir contactés. Nous répondons généralement dans les 24 à 48 heures.",
+      "errorGeneric": "Une erreur est survenue. Veuillez réessayer.",
+      "required": "Ce champ est obligatoire."
     },
-    "title": "Contactez-nous"
+    "info": {
+      "emailLabel": "Courriel",
+      "email": "help@ezpz.coffee",
+      "addressLabel": "Adresse",
+      "address": "3780 Rue Saint-Patrick\nMontréal QC H4E 1A2",
+      "responseLabel": "Délai de réponse",
+      "response": "Nous répondons généralement dans les 24 à 48 heures."
+    }
   },
   "faq": {
     "categories": {
@@ -97,7 +114,7 @@
       "preparation": {
         "items": {
           "brewing": {
-            "answer": "Nos cafés s'accommodent bien de diverses méthodes d'infusion — pour-over, French press, espresso, etc.",
+            "answer": "Nos cafés s'accommodent bien de diverses méthodes d'infusion, pour-over, French press, espresso, etc.",
             "question": "Quelle est la meilleure façon d'infuser votre café ?"
           },
           "duration": {
@@ -156,11 +173,14 @@
   },
   "footer": {
     "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
+    "blog": "Blogue",
     "brand": "EZPZ {year}",
     "contactUs": "Nous contacter",
     "faq": "FAQ",
     "fairTrade": "Commerce équitable",
     "navigation": "Navigation du pied de page",
+    "ourCoffee": "Notre café",
+    "shop": "Boutique",
     "termsOfUse": "Conditions d'utilisation"
   },
   "home": {
@@ -222,7 +242,7 @@
     "subtotal": "Sous-total",
     "surfaceDescriptions": {
       "bottom": "Le traitement en bande inférieure convient mieux aux images détaillées ou aux signatures.",
-      "full": "Couverture bord à bord—idéale pour les photos audacieuses ou les motifs continus.",
+      "full": "Couverture bord à bord,idéale pour les photos audacieuses ou les motifs continus.",
       "sandwich": "Les bandes en sandwich gardent la typographie nette et séparée du visuel."
     },
     "surfaceLabel": "Surface du sachet",
@@ -246,20 +266,20 @@
   },
   "metadata": {
     "about": {
-      "description": "EZPZ Coffee met en lumière les agriculteurs et producteurs derrière chaque sachet. Découvrez comment nous garantissons une traçabilité transparente et offrons un lien direct avec l'origine.",
-      "ogDescription": "Nous sommes le pont entre les producteurs de micro-lots et les amateurs de café. Découvrez notre équipe et les valeurs qui guident notre travail.",
-      "ogTitle": "À propos d'EZPZ Coffee",
-      "title": "À propos d'EZPZ Coffee | Torréfaction artisanale axée sur les producteurs",
-      "twitterDescription": "Transparence, traçabilité et respect des producteurs derrière chaque sachet personnalisé. Découvrez ce qui nous anime.",
-      "twitterTitle": "À propos d'EZPZ Coffee"
+      "description": "EZPZ Coffee est une entreprise de café de spécialité basée à Montréal qui aide les marques à travers le Canada à créer et vendre leurs propres produits café personnalisés.",
+      "ogDescription": "EZPZ Coffee est une entreprise de café de spécialité basée à Montréal qui aide les marques à travers le Canada à créer et vendre leurs propres produits café personnalisés.",
+      "ogTitle": "À propos d'EZPZ Coffee | Torréfacteur personnalisé basé à Montréal",
+      "title": "À propos d'EZPZ Coffee | Torréfacteur personnalisé basé à Montréal",
+      "twitterDescription": "EZPZ Coffee est une entreprise de café de spécialité basée à Montréal qui aide les marques à travers le Canada.",
+      "twitterTitle": "À propos d'EZPZ Coffee | Torréfacteur personnalisé basé à Montréal"
     },
     "coffee": {
-      "description": "Découvrez comment EZPZ sélectionne ses micro-lots, profile chaque torréfaction et recommande les paramètres d'infusion pour que vos sachets personnalisés restent fidèles à leur origine.",
-      "ogDescription": "Des calendriers de récolte sélectifs aux courbes de torréfaction délicates, voici chaque levier que nous actionnons pour préserver l'authenticité des saveurs.",
-      "ogTitle": "Notre café",
-      "title": "Notre café | Approvisionnement, torréfaction et préparation à la manière EZPZ",
-      "twitterDescription": "Partenariats avec les producteurs, profils de torréfaction et paramètres d'infusion—tout en un seul endroit.",
-      "twitterTitle": "Comment EZPZ s'approvisionne et torréfie"
+      "description": "Explorez notre sélection de cafés de spécialité 100 % traçables. Choisissez votre origine, votre niveau de torréfaction et votre mouture, entièrement personnalisé pour votre marque.",
+      "ogDescription": "Explorez notre sélection de cafés de spécialité 100 % traçables. Choisissez votre origine, votre niveau de torréfaction et votre mouture, entièrement personnalisé pour votre marque.",
+      "ogTitle": "Nos cafés de spécialité | Origines traçables | EZPZ Coffee",
+      "title": "Nos cafés de spécialité | Origines traçables | EZPZ Coffee",
+      "twitterDescription": "Explorez notre sélection de cafés de spécialité 100 % traçables. Entièrement personnalisé pour votre marque.",
+      "twitterTitle": "Nos cafés de spécialité | Origines traçables | EZPZ Coffee"
     },
     "contact": {
       "description": "Contactez EZPZ Coffee. Posez vos questions sur les commandes, les sachets personnalisés ou autre chose.",
@@ -270,42 +290,42 @@
       "twitterTitle": "Nous contacter | EZPZ Coffee"
     },
     "faq": {
-      "description": "Trouvez des réponses aux questions courantes sur le café de spécialité EZPZ, l'expédition, les conseils de préparation et les informations diététiques.",
-      "ogDescription": "Tout ce que vous devez savoir sur notre café de spécialité, les options d'expédition, les conseils de conservation et plus encore.",
-      "ogTitle": "FAQ | EZPZ Coffee",
-      "title": "FAQ | Questions fréquentes sur EZPZ Coffee",
-      "twitterDescription": "Obtenez des réponses à vos questions sur le café de spécialité EZPZ.",
-      "twitterTitle": "FAQ | EZPZ Coffee"
+      "description": "Des questions sur les sachets de café personnalisés, les minimums de commande ou les délais de production ? Trouvez toutes vos réponses ici.",
+      "ogDescription": "Des questions sur les sachets de café personnalisés, les minimums de commande ou les délais de production ? Trouvez toutes vos réponses ici.",
+      "ogTitle": "Questions fréquentes | EZPZ Coffee",
+      "title": "Questions fréquentes | EZPZ Coffee",
+      "twitterDescription": "Des questions sur les sachets de café personnalisés ? Trouvez toutes vos réponses ici.",
+      "twitterTitle": "Questions fréquentes | EZPZ Coffee"
     },
     "design": {
       "description": "Téléchargez votre visuel, choisissez vos options de torréfaction et de mouture, et prévisualisez vos sachets de café EZPZ de 225g avant de les ajouter au panier.",
-      "ogDescription": "Personnalisez l'étiquette, la mouture et le profil de torréfaction—prévisualisez en direct avant de commander.",
+      "ogDescription": "Personnalisez l'étiquette, la mouture et le profil de torréfaction,prévisualisez en direct avant de commander.",
       "ogTitle": "Créez un sachet de café EZPZ personnalisé",
       "title": "Personnalisez vos sachets de café EZPZ",
       "twitterDescription": "Personnalisez chaque détail et visualisez instantanément le résultat."
     },
     "home": {
-      "description": "Sachets de café personnalisés sans minimum. EZPZ simplifie la personnalisation : créez votre sachet, découvrez nos cafés ou lancez une marque en marque blanche.",
-      "ogDescription": "Sachets de café personnalisés, esprit jeune et fun. Sans minimum. Créez en ligne, inscrivez-vous aux offres et découvrez le white label.",
-      "ogTitle": "EZPZ Coffee | Sachets personnalisés sans minimum",
-      "title": "EZPZ Coffee | Sachets personnalisés sans minimum",
-      "twitterDescription": "Sachets personnalisés sans minimum. Création en ligne, white label et café de spécialité."
+      "description": "Créez et vendez vos propres sachets de café à votre image sans minimum de commande. EZPZ Coffee offre du café de spécialité en marque blanche, des emballages personnalisés et un soutien complet à la production partout au Canada.",
+      "ogDescription": "Créez et vendez vos propres sachets de café à votre image sans minimum de commande. EZPZ Coffee offre du café de spécialité en marque blanche, des emballages personnalisés et un soutien complet à la production partout au Canada.",
+      "ogTitle": "Sachets de café personnalisés Canada | Sans minimum | EZPZ Coffee",
+      "title": "Sachets de café personnalisés Canada | Sans minimum | EZPZ Coffee",
+      "twitterDescription": "Créez et vendez vos propres sachets de café à votre image sans minimum de commande. EZPZ Coffee, partout au Canada."
     },
     "termsOfUse": {
       "description": "Consultez les conditions générales d'utilisation d'EZPZ.coffee, y compris les politiques de commande, la propriété intellectuelle et les informations de responsabilité.",
-      "ogDescription": "Conditions d'utilisation d'EZPZ.coffee — comprenez nos politiques sur les commandes, les paiements, l'expédition et le contenu utilisateur.",
+      "ogDescription": "Conditions d'utilisation d'EZPZ.coffee, comprenez nos politiques sur les commandes, les paiements, l'expédition et le contenu utilisateur.",
       "ogTitle": "Conditions d'utilisation | EZPZ Coffee",
       "title": "Conditions d'utilisation | EZPZ Coffee",
       "twitterDescription": "Consultez les conditions générales d'utilisation d'EZPZ.coffee.",
       "twitterTitle": "Conditions d'utilisation | EZPZ Coffee"
     },
     "whiteLabelPage": {
-      "description": "Programmes de sachets de café en marque blanche pour cafés et détaillants. EZPZ simplifie l'image de marque et la personnalisation—du cadeau unique à la production à l'échelle.",
-      "ogDescription": "Lancez un programme café en marque blanche avec EZPZ : sachets personnalisés, café de spécialité et production flexible.",
-      "ogTitle": "EZPZ Coffee | Solutions en marque blanche",
-      "title": "EZPZ Coffee | Solutions en marque blanche",
-      "twitterDescription": "Sachets et programmes café en marque blanche—personnalisation simple pour votre marque.",
-      "twitterTitle": "Solutions en marque blanche | EZPZ Coffee"
+      "description": "Lancez votre propre marque de café avec EZPZ. Nous gérons tout, torréfaction, emballage et distribution. Café de spécialité, votre marque, sans minimum.",
+      "ogDescription": "Lancez votre propre marque de café avec EZPZ. Nous gérons tout, torréfaction, emballage et distribution. Café de spécialité, votre marque, sans minimum.",
+      "ogTitle": "Café en marque blanche Canada | Café personnalisé | EZPZ Coffee",
+      "title": "Café en marque blanche Canada | Café personnalisé | EZPZ Coffee",
+      "twitterDescription": "Lancez votre propre marque de café avec EZPZ. Nous gérons tout, torréfaction, emballage et distribution.",
+      "twitterTitle": "Café en marque blanche Canada | Café personnalisé | EZPZ Coffee"
     }
   },
   "landing": {
@@ -317,10 +337,9 @@
       "sectionTitle": "Cafés en vedette"
     },
     "hero": {
-      "designCta": "Créer un sachet",
-      "subtitle": "Enfin une entreprise qui simplifie la production et la vente de produits à base de café. Simple et fluide, de A à Z.",
-      "titleLine1": "Sachets de café personnalisés",
-      "titleLine2": "Sans minimum"
+      "designCta": "Créer votre sachet",
+      "headline": "Votre marque. Votre café.",
+      "subtitle": "Sachets de café personnalisés sans minimum de commande, conçus, torréfiés et livrés partout au Canada."
     },
     "heroPhoto": {
       "ariaLabel": "Visuel principal EZPZ",
@@ -328,33 +347,129 @@
       "scrollHint": "Faire défiler vers le contenu principal"
     },
     "trustedBy": {
-      "logoAlt": "Logo {name}",
+      "logoAlt": "{name}, client d’EZPZ Coffee",
       "title": "Ils nous font confiance"
     },
     "advantages": {
       "title": "Avantages",
       "items": {
         "traceable": {
-          "iconAlt": "Traçabilité",
+          "iconAlt": "Café de spécialité 100 % traçable de la ferme au sachet",
           "title": "Café 100 % traçable",
-          "body": "Nous pouvons vous dire précisément <orange>où</orange>, <orange>quand</orange> et <orange>par qui</orange> votre café a été produit."
+          "body": "Nous pouvons vous indiquer exactement quelle <orange>ferme</orange>, quelle <orange>date de récolte</orange> et quel <orange>producteur</orange> ont produit votre café. Transparence totale, toujours."
         },
         "customize": {
-          "iconAlt": "Personnalisation",
+          "iconAlt": "Options de design et d’emballage de sachets de café personnalisés",
           "title": "Personnalisation et volumes",
-          "body": "Nous pouvons <orange>tout personnaliser</orange> pour vous afin d’obtenir la production la mieux adaptée à votre activité et à vos besoins."
+          "body": "Du design du sachet à la mouture et au niveau de torréfaction, nous personnalisons <orange>chaque détail</orange>, sans <orange>minimum de commande</orange>."
         },
         "production": {
-          "iconAlt": "Production",
+          "iconAlt": "Installation de torréfaction et de production de café en interne",
           "title": "Production",
-          "body": "<orange>Nous gérons tout</orange> en partenariat avec vous. Nous maîtrisons 100 % de la production, ce qui nous permet d’offrir les <orange>meilleurs prix possibles</orange>."
+          "body": "Nous contrôlons <orange>100 % du processus de production</orange> en interne, ce qui signifie des délais plus courts, une meilleure qualité et <orange>les meilleurs prix possibles</orange>."
         },
         "distribution": {
-          "iconAlt": "Distribution",
+          "iconAlt": "Soutien à la distribution de café partout au Canada",
           "title": "Distribution",
-          "body": "Grâce à notre réseau et à notre solide réputation dans le secteur, nous pouvons aussi vous accompagner pour la distribution <orange>là où vous souhaitez vendre votre produit</orange>."
+          "body": "Nous avons développé de solides relations dans l’industrie et pouvons vous aider à mettre votre produit en rayon <orange>partout où vous souhaitez vendre</orange>."
         }
       }
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "steps": [
+        {
+          "number": "01",
+          "title": "Créez votre sachet",
+          "body": "Utilisez notre outil en ligne pour créer votre sachet personnalisé avec votre logo, vos couleurs et votre style."
+        },
+        {
+          "number": "02",
+          "title": "Choisissez votre café",
+          "body": "Sélectionnez parmi notre gamme de cafés de spécialité. Nous vous aiderons à trouver le parfait accord pour votre marque."
+        },
+        {
+          "number": "03",
+          "title": "On s’occupe de la production",
+          "body": "Nous torréfions, emballons et contrôlons la qualité en interne. Zéro stress, zéro surprise."
+        },
+        {
+          "number": "04",
+          "title": "Livraison à votre porte",
+          "body": "Vos sachets de café à votre image arrivent prêts à la vente. Nous pouvons aussi vous aider pour la distribution si nécessaire."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Ce que disent nos clients",
+      "items": [
+        {
+          "quote": "Travailler avec EZPZ a été fluide du début à la fin. Notre café à notre image est devenu l’un de nos produits les plus vendus.",
+          "author": "Sarah L.",
+          "role": "Propriétaire de boutique"
+        },
+        {
+          "quote": "La qualité est exceptionnelle et le processus était tellement simple. Nous avons reçu nos sachets personnalisés en quelques semaines.",
+          "author": "Marc T.",
+          "role": "Directeur de restaurant"
+        },
+        {
+          "quote": "EZPZ nous a aidés à lancer notre marque de café sans aucune prise de tête. Je recommande vivement à toute entreprise souhaitant ajouter du café à son offre.",
+          "author": "Julie R.",
+          "role": "Marque de détail"
+        }
+      ]
+    },
+    "faqPreview": {
+      "title": "Questions fréquentes",
+      "seeAll": "Voir toutes les FAQ",
+      "items": [
+        {
+          "question": "Y a-t-il un minimum de commande ?",
+          "answer": "Non ! Nous sommes le seul fournisseur au Canada sans aucun minimum de commande."
+        },
+        {
+          "question": "Puis-je choisir l’origine de mon café ?",
+          "answer": "Oui, nous proposons une sélection de cafés de spécialité traçables provenant du monde entier."
+        },
+        {
+          "question": "Combien de temps prend la production ?",
+          "answer": "La plupart des commandes sont prêtes dans les 2 à 3 semaines suivant l’approbation du design."
+        },
+        {
+          "question": "Offrez-vous un soutien à la distribution ?",
+          "answer": "Oui, nous avons des contacts dans l’industrie et pouvons vous aider à distribuer votre produit partout au Canada."
+        }
+      ]
+    },
+    "blog": {
+      "title": "Du blogue",
+      "readMore": "Lire la suite",
+      "articles": [
+        {
+          "slug": "how-to-launch-your-own-coffee-brand-in-canada-2026",
+          "title": "Comment lancer sa propre marque de café au Canada en 2026",
+          "description": "Un guide étape par étape pour créer un produit café en marque blanche sans minimum de commande.",
+          "date": "2026-04-01"
+        },
+        {
+          "slug": "what-makes-specialty-coffee-traceable",
+          "title": "Qu’est-ce qui rend un café de spécialité traçable ?",
+          "description": "Découvrez ce que signifie la traçabilité de la ferme au sachet et pourquoi c’est important pour votre marque et vos clients.",
+          "date": "2026-03-15"
+        },
+        {
+          "slug": "custom-coffee-bags-vs-pre-packaged-coffee",
+          "title": "Sachets de café personnalisés vs café préemballé : qu’est-ce qui convient à votre entreprise ?",
+          "description": "Nous analysons les avantages et inconvénients pour vous aider à prendre la meilleure décision pour votre marque.",
+          "date": "2026-03-01"
+        }
+      ]
+    },
+    "geo": {
+      "title": "Au service des entreprises partout au Canada",
+      "body": "De Montréal à Vancouver, EZPZ Coffee travaille avec des restaurants, hôtels, détaillants et marques partout au Canada. Que vous lanciez un nouveau produit café ou que vous en développiez un existant, nous vous simplifions la vie, peu importe où vous êtes.",
+      "cities": "Nous desservons actuellement : Montréal, Toronto, Vancouver, Calgary, Ottawa et bien plus."
     },
     "whiteLabel": {
       "bodyLine1": "Qualité, fraîcheur et traçabilité.",
@@ -404,8 +519,24 @@
     "openCart": "Ouvrir le panier",
     "ourCoffee": "Notre café",
     "sampleBag": "Sachet échantillon",
+    "shop": "Boutique",
     "toggleMenu": "Ouvrir/fermer le menu de navigation",
     "whiteLabel": "Solutions en marque blanche"
+  },
+  "newsletterPopup": {
+    "ariaLabel": "Inscription à l'infolettre",
+    "close": "Fermer",
+    "eyebrow": "Offre limitée",
+    "title": "Obtenez <highlight>15 % de réduction</highlight> sur votre première commande",
+    "subtitle": "Rejoignez notre liste pour des offres exclusives, des annonces de nouvelles origines et des conseils pour bâtir une marque de café.",
+    "emailLabel": "Adresse courriel",
+    "emailPlaceholder": "Entrez votre courriel",
+    "submitting": "Inscription...",
+    "subscribe": "Réclamer mon 15 % de rabais",
+    "noThanks": "Non merci",
+    "successMessage": "C'est fait! Vérifiez votre boîte de réception pour votre code de réduction de 15%.",
+    "emailRequired": "Veuillez entrer votre adresse courriel.",
+    "genericError": "Une erreur est survenue. Veuillez réessayer."
   },
   "newsletter": {
     "emailLabel": "Adresse email",
@@ -413,7 +544,7 @@
     "submitting": "Inscription...",
     "subscribe": "S'abonner",
     "successMessage": "C'est fait! Vérifiez votre boîte de réception pour votre code de réduction de 15%.",
-    "title": "Obtenez <highlight>15% de réduction</highlight> en rejoignant notre liste email."
+    "title": "Rejoignez notre liste et obtenez <highlight>15 % de réduction</highlight> sur votre première commande, plus des conseils pour bâtir une marque de café, des annonces de nouvelles origines et des offres exclusives."
   },
   "passwordPage": {
     "adminLink": "Entrer en bêta-test",
@@ -430,7 +561,8 @@
   },
   "product": {
     "addToCart": "Ajouter au panier",
-    "buyNow": "Acheter maintenant"
+    "buyNow": "Acheter maintenant",
+    "soldOut": "Épuisé"
   },
   "termsOfUse": {
     "intro": "Bienvenue sur EZPZ.coffee. En accédant ou en utilisant notre site web, nos services, ou en passant une commande via EZPZ, vous reconnaissez avoir lu, compris et accepté d'être lié par les présentes Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre plateforme.",
