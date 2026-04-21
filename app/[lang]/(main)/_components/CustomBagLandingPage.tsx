@@ -7,7 +7,7 @@ import { useLocale } from "next-intl";
 import { useRef, useState, useEffect } from "react";
 
 import bagPng from "@/public/assets/bag.png";
-import bagProductWebp from "@/public/assets/bag-product.webp";
+import bagShadowPng from "@/public/assets/bag-shadow.png";
 import mockupBlank from "@/public/bags/mock-up-blank.jpg";
 import mockupLabel from "@/public/bags/mock-up-label.jpg";
 
@@ -45,7 +45,7 @@ const SLIDES = [
   { src: mockupLabel, alt: "Custom branded coffee bag example" },
   { src: mockupBlank, alt: "Blank coffee bag ready for your design" },
   { src: bagPng, alt: "EZPZ custom bag front view" },
-  { src: bagProductWebp, alt: "Coffee bag product view" },
+  { src: bagShadowPng, alt: "Coffee bag product view" },
 ];
 
 const Slider = () => {
