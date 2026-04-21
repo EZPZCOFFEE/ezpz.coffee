@@ -33,9 +33,9 @@ const FEATURES = [
 
 const PERKS = [
   "Upload your own logo and artwork",
-  "Multiple bag sizes available",
+  "Choose your roast profile",
   "Specialty coffee sourced from around the world",
-  "Ships anywhere in Canada",
+  "Ships anywhere worldwide",
   "No minimum order, ever",
   "Ready in as little as 2–3 weeks",
 ];
