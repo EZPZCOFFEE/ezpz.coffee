@@ -172,15 +172,18 @@
     "uploadImage": "Upload image"
   },
   "footer": {
-    "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
-    "blog": "Blog",
-    "brand": "EZPZ {year}",
-    "contactUs": "Contact us",
-    "faq": "FAQ",
-    "fairTrade": "Fair trade",
+    "address": "3780 Rue Saint-Patrick\nMontréal QC H4E 1A2",
+    "email": "help@ezpz.coffee",
+    "copyright": "© EZPZ {year} — All rights reserved",
     "navigation": "Footer navigation",
+    "shopHeading": "Shop",
+    "companyHeading": "Company",
+    "design": "Design your bag",
     "ourCoffee": "Our coffee",
-    "shop": "Shop",
+    "aboutUs": "About",
+    "whiteLabel": "White label",
+    "contactUs": "Contact",
+    "faq": "FAQ",
     "termsOfUse": "Terms of use"
   },
   "home": {
