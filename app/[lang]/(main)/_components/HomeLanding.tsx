@@ -269,7 +269,7 @@ const HomeLanding = () => {
 
       <section className={styles.howItWorks} aria-labelledby="how-it-works-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
-          <motion.h2 id="how-it-works-heading" className={styles.advantagesTitle} {...fadeChild}>
+          <motion.h2 id="how-it-works-heading" className={styles.lightSectionTitle} {...fadeChild}>
             {t("howItWorks.title")}
           </motion.h2>
           <motion.div className={styles.howItWorksGrid} {...getNestedSectionListStagger(motionOff)}>
@@ -297,7 +297,7 @@ const HomeLanding = () => {
 
 <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
-          <motion.h2 id="faq-preview-heading" className={styles.advantagesTitle} {...fadeChild}>
+          <motion.h2 id="faq-preview-heading" className={styles.lightSectionTitle} {...fadeChild}>
             {t("faqPreview.title")}
           </motion.h2>
           <motion.dl className={styles.faqList} {...getNestedSectionListStagger(motionOff)}>

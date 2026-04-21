@@ -393,6 +393,18 @@
   color: var(--color-white);
 }
 
+/* Same scale as .advantagesTitle; dark text for white-background sections */
+.lightSectionTitle {
+  margin: 0 0 var(--spacing-galaxy);
+  font-size: clamp(2rem, 6.5vw, 3.85rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
 /* Same scale as .advantagesTitle; accent color for white band */
 .trustedByTitle {
   margin: 0 0 var(--spacing-galaxy);
