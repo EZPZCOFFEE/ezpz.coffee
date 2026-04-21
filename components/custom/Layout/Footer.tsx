@@ -54,6 +54,7 @@ const Footer = () => {
             <span className={styles.footerNavHeading}>{t("companyHeading")}</span>
             <Link href={`/${locale}/about`} className={styles.footerLink}>{t("aboutUs")}</Link>
             <Link href={`/${locale}/white-label`} className={styles.footerLink}>{t("whiteLabel")}</Link>
+            <Link href={`/${locale}/portfolio`} className={styles.footerLink}>Our Portfolio</Link>
             <Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
           </nav>
         </div>

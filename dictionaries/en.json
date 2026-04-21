@@ -548,7 +548,8 @@
     "sampleBag": "Sample bag",
     "shop": "Shop",
     "toggleMenu": "Toggle navigation menu",
-    "whiteLabel": "White label solutions"
+    "whiteLabel": "White label solutions",
+    "portfolio": "Portfolio"
   },
   "newsletterPopup": {
     "ariaLabel": "Newsletter signup",
