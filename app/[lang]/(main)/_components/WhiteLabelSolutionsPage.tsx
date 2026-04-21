@@ -66,6 +66,19 @@ const WhiteLabelSolutionsPage = () => {
           sizes="100vw"
           className={classNames(styles.heroPhotoImage, styles.heroPhotoImageCenter)}
         />
+        <div className={styles.heroGradient} />
+        <div className={styles.heroOverlay}>
+          <h1 className={styles.heroOverlayTitle}>
+            Your brand.<br />Our coffee.<br />Zero complications.
+          </h1>
+          <p className={styles.heroOverlaySubtitle}>
+            We help restaurants, hotels, retailers, and brands across Canada sell their own fully
+            custom coffee products, bags, ready-to-drink, and Nespresso capsules.
+          </p>
+          <Link href={`/${locale}/contact`} className={styles.heroOverlayBtn}>
+            Get a quote
+          </Link>
+        </div>
         <motion.div className={styles.heroPhotoInner} {...heroHintMotion}>
           <button
             type="button"
@@ -86,83 +99,146 @@ const WhiteLabelSolutionsPage = () => {
         </motion.div>
       </section>
 
-      <section id="hero-copy" className={styles.heroCopy} aria-labelledby="white-label-page-heading">
-        <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
-          <motion.h1 id="white-label-page-heading" className={styles.heroTitle} {...fadeChild}>
-            {t("hero.titleLine1")}
-            <br />
-            {t("hero.titleLine2")}
-          </motion.h1>
-          <motion.p className={styles.heroSubtitle} {...fadeChild}>
-            {t("hero.subtitle")}
-          </motion.p>
-          <motion.div {...fadeChild} className={styles.whiteLabelGlobeMotion}>
-            <GlobeHemisphereEastIcon className={styles.whiteLabelBannerGlobe} weight="regular" aria-hidden />
-          </motion.div>
-        </motion.div>
+      <section className={styles.wlForSection}>
+        <div className={styles.wlForInner}>
+          <span className={styles.wlForEyebrow}>Who is this for?</span>
+          <div className={styles.wlForGrid}>
+            {[
+              { emoji: "🍽️", title: "Restaurants & Cafés", body: "Offer your customers a branded coffee experience they'll remember and come back for." },
+              { emoji: "🏨", title: "Hotels & Hospitality", body: "Elevate your guest experience with a custom coffee product that carries your brand in every room and restaurant." },
+              { emoji: "🛍️", title: "Retailers & Boutiques", body: "Add a high-margin, private label product to your shelves with zero production headaches." },
+              { emoji: "💪", title: "Gyms & Wellness Brands", body: "Fuel your community with a branded coffee or ready-to-drink product that fits your lifestyle brand." },
+            ].map((card) => (
+              <div key={card.title} className={styles.wlForCard}>
+                <span className={styles.wlForEmoji}>{card.emoji}</span>
+                <h3 className={styles.wlForCardTitle}>{card.title}</h3>
+                <p className={styles.wlForCardBody}>{card.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {SPLIT_SECTIONS.map(({ theme, imageFirst, image, sectionKey }) => (
-        <motion.section
-          key={sectionKey}
-          className={classNames(
-            styles.whiteLabelSplitSection,
-            theme === "dark" ? styles.whiteLabelSplitSection_dark : styles.whiteLabelSplitSection_light,
-          )}
-          aria-labelledby={`wlp-${sectionKey}`}
-          {...sectionVariantInView}
-        >
-          <motion.div className={styles.whiteLabelSplitInner} {...splitSectionStagger}>
-            {imageFirst ? (
-              <>
-                <motion.div className={splitMediaClassName(sectionKey)} {...fadeChild}>
-                  <Image
-                    src={image}
-                    alt={t(`sections.${sectionKey}.imageAlt`)}
-                    width={image.width}
-                    height={image.height}
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    placeholder="blur"
-                    className={styles.whiteLabelSplitImage}
-                  />
-                </motion.div>
-                <motion.div className={styles.whiteLabelSplitCopy} {...fadeChild}>
-                  <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
-                    {t(`sections.${sectionKey}.title`)}
-                  </h2>
-                  <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
-                </motion.div>
-              </>
-            ) : (
-              <>
-                <motion.div className={styles.whiteLabelSplitCopy} {...fadeChild}>
-                  <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
-                    {t(`sections.${sectionKey}.title`)}
-                  </h2>
-                  <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
-                </motion.div>
-                <motion.div className={splitMediaClassName(sectionKey)} {...fadeChild}>
-                  <Image
-                    src={image}
-                    alt={t(`sections.${sectionKey}.imageAlt`)}
-                    width={image.width}
-                    height={image.height}
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    placeholder="blur"
-                    className={styles.whiteLabelSplitImage}
-                  />
-                </motion.div>
-              </>
-            )}
-          </motion.div>
-        </motion.section>
-      ))}
+      <div id="hero-copy" />
 
-      <section className={styles.whiteLabelContactCta} aria-label={tNav("contactUs")}>
-        <motion.div className={styles.whiteLabelContactCtaInner} {...sectionFade}>
-          <Link href={`/${locale}/contact`} className={styles.btnOutline}>
-            {tNav("contactUs")}
-          </Link>
+      {SPLIT_SECTIONS.map(({ theme, imageFirst, image, sectionKey }) => {
+        const hasNoMOQ = sectionKey === "coffeeBags";
+        const hasExtra = sectionKey === "coffeeBags" || sectionKey === "coffeePods";
+
+        const copyBlock = (
+          <motion.div className={styles.whiteLabelSplitCopy} {...fadeChild}>
+            {hasNoMOQ && (
+              <p className={styles.whiteLabelNoMOQ}>{t(`sections.${sectionKey}.noMOQ`)}</p>
+            )}
+            <h2 id={`wlp-${sectionKey}`} className={styles.heroTitle}>
+              {t(`sections.${sectionKey}.title`)}
+            </h2>
+            <p className={styles.whiteLabelSplitBody}>{t(`sections.${sectionKey}.body`)}</p>
+            {hasExtra && (
+              <p className={styles.whiteLabelSplitExtra}>{t(`sections.${sectionKey}.extra`)}</p>
+            )}
+            <Link href={`/${locale}/contact`} className={styles.whiteLabelSplitCta}>
+              Get a quote
+            </Link>
+          </motion.div>
+        );
+
+        const imageBlock = (
+          <motion.div className={splitMediaClassName(sectionKey)} {...fadeChild}>
+            <Image
+              src={image}
+              alt={t(`sections.${sectionKey}.imageAlt`)}
+              width={image.width}
+              height={image.height}
+              sizes="(max-width: 768px) 100vw, 420px"
+              placeholder="blur"
+              className={styles.whiteLabelSplitImage}
+            />
+          </motion.div>
+        );
+
+        return (
+          <motion.section
+            key={sectionKey}
+            className={classNames(
+              styles.whiteLabelSplitSection,
+              theme === "dark" ? styles.whiteLabelSplitSection_dark : styles.whiteLabelSplitSection_light,
+            )}
+            aria-labelledby={`wlp-${sectionKey}`}
+            {...sectionVariantInView}
+          >
+            <motion.div className={styles.whiteLabelSplitInner} {...splitSectionStagger}>
+              {imageFirst ? <>{imageBlock}{copyBlock}</> : <>{copyBlock}{imageBlock}</>}
+            </motion.div>
+          </motion.section>
+        );
+      })}
+
+      {/* ── How it works ──────────────────────────────────────── */}
+      <section className={styles.wlHowItWorks}>
+        <div className={styles.wlHowInner}>
+          <span className={styles.wlForEyebrow}>How it works</span>
+          <div className={styles.wlHowGrid}>
+            {[
+              { n: "01", title: "Tell us about your brand", body: "We learn about your business, your audience, and your goals." },
+              { n: "02", title: "Choose your product", body: "Bags, ready-to-drink, or capsules, we help you pick the right format." },
+              { n: "03", title: "We design & produce", body: "Our team handles everything from design to roasting to packaging." },
+              { n: "04", title: "You sell & grow", body: "Receive your branded product ready to sell, with distribution support available." },
+            ].map((step, i, arr) => (
+              <div key={step.n} className={styles.wlHowStep}>
+                <span className={styles.wlHowNumber}>{step.n}</span>
+                <h3 className={styles.wlHowTitle}>{step.title}</h3>
+                <p className={styles.wlHowBody}>{step.body}</p>
+                {i < arr.length - 1 && <span className={styles.wlHowArrow} aria-hidden>→</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ──────────────────────────────────────── */}
+      <section className={styles.wlTestimonials}>
+        <div className={styles.wlTestimonialsInner}>
+          <span className={styles.wlForEyebrow}>What our clients say</span>
+          <div className={styles.wlTestimonialsGrid}>
+            {[
+              { quote: "EZPZ handled everything from design to delivery. We launched our hotel coffee brand in under 3 weeks.", name: "Philippe M.", role: "Hotel Director" },
+              { quote: "We added branded coffee to our boutique and it became our top-selling product within a month.", name: "Sarah L.", role: "Boutique Owner" },
+              { quote: "The process was incredibly smooth. Zero minimums meant we could test before scaling up.", name: "Marc T.", role: "Restaurant Manager" },
+            ].map((t) => (
+              <div key={t.name} className={styles.wlTestimonialCard}>
+                <div className={styles.wlTestimonialStars}>{"★★★★★"}</div>
+                <p className={styles.wlTestimonialQuote}>&ldquo;{t.quote}&rdquo;</p>
+                <div className={styles.wlTestimonialAuthor}>
+                  <span className={styles.wlTestimonialName}>{t.name}</span>
+                  <span className={styles.wlTestimonialRole}>{t.role}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.whiteLabelFinalCta}>
+        <motion.div className={styles.whiteLabelFinalCtaInner} {...sectionFade}>
+          <h2 className={styles.whiteLabelFinalCtaTitle}>
+            Ready to put your brand on coffee?
+          </h2>
+          <p className={styles.whiteLabelFinalCtaSubtext}>
+            Join hundreds of Canadian businesses who trust EZPZ to bring their coffee brand to life.
+          </p>
+          <div className={styles.whiteLabelFinalCtaButtons}>
+            <Link href={`/${locale}/contact`} className={styles.whiteLabelFinalCtaPrimary}>
+              Get a quote
+            </Link>
+            <button
+              type="button"
+              className={styles.whiteLabelFinalCtaSecondary}
+              onClick={() => document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            >
+              See how it works
+            </button>
+          </div>
         </motion.div>
       </section>
     </div>

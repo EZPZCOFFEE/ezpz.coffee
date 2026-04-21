@@ -494,17 +494,20 @@
     },
     "sections": {
       "coffeeBags": {
-        "body": "No minimum quantities\n\nWe select the best grains to fit your needs and your reality, then adjust the roast to deliver the best possible product.\n\nFull bag design and customization are included in the price per bag, with no hidden fees.",
+        "noMOQ": "No minimum quantities",
+        "body": "We select the best grains to fit your needs and your reality, then adjust the roast to deliver the best possible product.\n\nFull bag design and customization are included in the price per bag, with no hidden fees.",
+        "extra": "Bags start at competitive per-unit pricing, contact us for a custom quote based on your needs.",
         "imageAlt": "Custom EZPZ stand-up coffee bag with green limited-edition artwork",
         "title": "Coffee bags"
       },
       "cannedDrinks": {
-        "body": "You want a full production\nof ready-to-drink coffee-based drinks?\n\nLet us create your recipes and take care of the entire production.\n\nMinimum quantities of 8,000 apply, and once again, design and customization are included in the price, with no hidden fees.",
+        "body": "Want to offer your customers a fully branded ready-to-drink coffee experience? We develop your recipes from scratch and handle the entire production, cans, bottles, or cartons. Full design and customization included, no hidden fees. Minimum order of 8,000 units applies.",
         "imageAlt": "Branded EZPZ iced coffee can with condensation and soft shadow",
         "title": "Ready-to-drink"
       },
       "coffeePods": {
         "body": "We select the best grains to match your needs and your reality, then fine-tune the roast to deliver the best possible product.\n\nYour coffee is packaged in capsules compatible with Nespresso systems, and full capsule, box design, and customization are included in the price, with no hidden fees.",
+        "extra": "Compatible with all Nespresso Classic machines. Perfect for hotel rooms, offices, and premium retail.",
         "imageAlt": "EZPZ coffee capsule dispenser box with pods visible",
         "title": "Nespresso classic"
       }
