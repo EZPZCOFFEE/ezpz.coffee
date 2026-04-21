@@ -18,12 +18,14 @@ export async function generateMetadata(): Promise<Metadata> {
       title: t("ogTitle"),
       description: t("ogDescription"),
       type: "website",
-      url: "/faq",
+      url: "https://www.ezpz.coffee/en/faq",
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "FAQ | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("twitterTitle"),
       description: t("twitterDescription"),
+      images: ["/assets/banner-01.jpg"],
     },
   };
 }

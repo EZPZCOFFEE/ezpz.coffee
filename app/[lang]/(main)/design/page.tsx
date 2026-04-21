@@ -13,14 +13,19 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("title"),
     description: t("description"),
+    alternates: { canonical: "/design" },
     openGraph: {
       title: t("ogTitle"),
       description: t("ogDescription"),
+      type: "website",
+      url: "https://www.ezpz.coffee/en/design",
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Design Your Custom Coffee Bag | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("ogTitle"),
       description: t("twitterDescription"),
+      images: ["/assets/banner-01.jpg"],
     },
   };
 }

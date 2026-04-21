@@ -13,7 +13,14 @@ export const metadata: Metadata = {
     title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
     description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
     type: "website",
-    url: "/contact",
+    url: "https://www.ezpz.coffee/en/contact",
+    images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Contact EZPZ Coffee" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
+    description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
+    images: ["/assets/banner-01.jpg"],
   },
 };
 

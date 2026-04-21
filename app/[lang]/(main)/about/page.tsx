@@ -12,7 +12,14 @@ export const metadata: Metadata = {
     description:
       "Founded in Montreal by coffee industry veterans. EZPZ helps hundreds of brands create custom coffee bags with no minimum order.",
     type: "website",
-    url: "/about",
+    url: "https://www.ezpz.coffee/en/about",
+    images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "About EZPZ Coffee" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | EZPZ Coffee",
+    description: "Founded in Montreal by coffee industry veterans. EZPZ helps hundreds of brands create custom coffee bags with no minimum order.",
+    images: ["/assets/banner-01.jpg"],
   },
 };
 
