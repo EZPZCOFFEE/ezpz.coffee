@@ -3,7 +3,7 @@
 import { DeleteObjectCommand, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-import { r2 } from "@/lib/interfaces/r2";
+import { getR2 } from "@/lib/interfaces/r2";
 
 const MAX_FILE_SIZE = 125 * 1024 * 1024; // 125MB
 
@@ -27,7 +27,7 @@ export async function generatePutSignedUrl({
   }
 
   const signedUrl = await getSignedUrl(
-    r2,
+    getR2(),
     new PutObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME,
       Key: filename,
@@ -48,7 +48,7 @@ export async function deleteR2Files(keys: string[]): Promise<void> {
   if (keys.length === 0) return;
 
   const results = await Promise.allSettled(
-    keys.map((key) => r2.send(new DeleteObjectCommand({ Bucket: process.env.R2_BUCKET_NAME, Key: key })))
+    keys.map((key) => getR2().send(new DeleteObjectCommand({ Bucket: process.env.R2_BUCKET_NAME, Key: key })))
   );
 
   const failed = results.filter((r) => r.status === "rejected");
@@ -62,7 +62,7 @@ export async function deleteR2Files(keys: string[]): Promise<void> {
  * @throws Error if file retrieval fails
  */
 export async function getR2File(key: string): Promise<ReadableStream<Uint8Array>> {
-  const response = await r2.send(new GetObjectCommand({ Bucket: process.env.R2_BUCKET_NAME, Key: key }));
+  const response = await getR2().send(new GetObjectCommand({ Bucket: process.env.R2_BUCKET_NAME, Key: key }));
 
   const bytes = await response.Body?.transformToByteArray();
   if (!bytes) {

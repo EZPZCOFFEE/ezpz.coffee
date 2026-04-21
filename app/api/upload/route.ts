@@ -1,7 +1,7 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { NextRequest, NextResponse } from "next/server";
 
-import { r2 } from "@/lib/interfaces/r2";
+import { getR2 } from "@/lib/interfaces/r2";
 
 const FILES_DOMAIN = process.env.NEXT_PUBLIC_FILES_DOMAIN;
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB for label images
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    await r2.send(
+    await getR2().send(
       new PutObjectCommand({
         Bucket: process.env.R2_BUCKET_NAME,
         Key: pathname,

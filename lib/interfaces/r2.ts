@@ -18,9 +18,12 @@ const r2ClientSingleton = () => {
 };
 
 declare const globalThis: {
-  r2Global: ReturnType<typeof r2ClientSingleton>;
+  r2Global: ReturnType<typeof r2ClientSingleton> | undefined;
 } & typeof global;
 
-export const r2 = globalThis.r2Global ?? r2ClientSingleton();
-
-if (process.env.VERCEL_ENV !== "production") globalThis.r2Global = r2;
+export const getR2 = (): ReturnType<typeof r2ClientSingleton> => {
+  if (globalThis.r2Global) return globalThis.r2Global;
+  const client = r2ClientSingleton();
+  if (process.env.VERCEL_ENV !== "production") globalThis.r2Global = client;
+  return client;
+};
