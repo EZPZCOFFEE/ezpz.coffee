@@ -101,6 +101,18 @@
 }
 
 .answerWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+  overflow: hidden;
+}
+
+.answerWrapOpen {
+  grid-template-rows: 1fr;
+}
+
+.answerWrapInner {
+  overflow: hidden;
   padding-bottom: var(--spacing-state);
 }
 
@@ -113,6 +125,59 @@
   font-size: clamp(0.875rem, 2.25vw, 1rem);
   line-height: var(--line-height-relaxed);
   color: var(--color-neutral);
+}
+
+/* ── CTA ────────────────────────────────────────────────────── */
+.ctaSection {
+  background: var(--color-accent);
+  padding: var(--spacing-galaxy) var(--spacing-state);
+  margin-top: var(--spacing-galaxy);
+}
+
+.ctaInner {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-country);
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.ctaBody {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: var(--color-white);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 0.85em 2em;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: #111111;
+    color: var(--color-white);
+  }
 }
 
 @media (max-width: 1024px) {

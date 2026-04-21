@@ -127,6 +127,7 @@ const DesktopNavbar = ({
           })}
         </ul>
       </div>
+
       <div className={styles.desktopNavbarRight}>
         <ul className={styles.navList}>
           {rightNavItems.map((item) => {

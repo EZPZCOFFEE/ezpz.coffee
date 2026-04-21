@@ -42,13 +42,12 @@ const FAQAccordionItem = ({ question, answer }: FAQItem) => {
           aria-hidden
         />
       </button>
-      <div
-        className={styles.answerWrap}
-        style={{ display: open ? "block" : "none" }}
-      >
-        <dd className={styles.answer}>
-          <span className={styles.answerText}>{answer}</span>
-        </dd>
+      <div className={`${styles.answerWrap} ${open ? styles.answerWrapOpen : ""}`}>
+        <div className={styles.answerWrapInner}>
+          <dd className={styles.answer}>
+            <span className={styles.answerText}>{answer}</span>
+          </dd>
+        </div>
       </div>
     </div>
   );

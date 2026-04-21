@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 import FAQContent from "./FAQContent";
+import styles from "./styles.module.scss";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata.faq");
@@ -27,6 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const FAQPage = async () => {
   const t = await getTranslations("faq");
+  const locale = "en";
 
   const categories = [
     {
@@ -66,6 +70,15 @@ const FAQPage = async () => {
         { question: t("categories.dietary.items.allergens.question"), answer: t("categories.dietary.items.allergens.answer") },
       ],
     },
+    {
+      title: t("categories.b2b.title"),
+      items: [
+        { question: t("categories.b2b.items.samples.question"), answer: t("categories.b2b.items.samples.answer") },
+        { question: t("categories.b2b.items.recipes.question"), answer: t("categories.b2b.items.recipes.answer") },
+        { question: t("categories.b2b.items.distribution.question"), answer: t("categories.b2b.items.distribution.answer") },
+        { question: t("categories.b2b.items.turnaround.question"), answer: t("categories.b2b.items.turnaround.answer") },
+      ],
+    },
   ];
 
   const allItems = categories.flatMap((c) => c.items);
@@ -91,6 +104,15 @@ const FAQPage = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <FAQContent title={t("title")} categories={categories} />
+      <div className={styles.ctaSection}>
+        <div className={styles.ctaInner}>
+          <h2 className={styles.ctaTitle}>Still have questions?</h2>
+          <p className={styles.ctaBody}>Our team is happy to help. Reach out and we&apos;ll get back to you within 24 hours.</p>
+          <Link href={`/${locale}/contact`} className={styles.ctaButton}>
+            Contact us <ArrowRight size={16} weight="bold" />
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

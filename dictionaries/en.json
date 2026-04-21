@@ -81,6 +81,27 @@
   },
   "faq": {
     "categories": {
+      "b2b": {
+        "title": "White Label & B2B",
+        "items": {
+          "samples": {
+            "question": "Can I order samples before committing?",
+            "answer": "Yes! We encourage it. Contact us and we'll send you a sample kit so you can taste and feel the quality before placing your first order."
+          },
+          "recipes": {
+            "question": "Do you offer custom recipes for ready-to-drink?",
+            "answer": "Absolutely. Our team works with you to develop recipes that match your brand's taste profile and target audience."
+          },
+          "distribution": {
+            "question": "Can you help distribute my product?",
+            "answer": "Yes, we have strong industry relationships and can help you get your branded coffee into retail locations, hotels, and more across Canada."
+          },
+          "turnaround": {
+            "question": "What's the turnaround time for white label orders?",
+            "answer": "Most white label bag orders are ready within 2–3 weeks from design approval. Ready-to-drink and capsule orders may take 4–6 weeks depending on volume."
+          }
+        }
+      },
       "dietary": {
         "items": {
           "allergens": {
