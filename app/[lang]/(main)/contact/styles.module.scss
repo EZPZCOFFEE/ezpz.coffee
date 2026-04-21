@@ -42,6 +42,23 @@
   }
 }
 
+/* ── Form wrap ─────────────────────────────────────────────── */
+.formWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+}
+
+.formNote {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-neutral);
+  padding: var(--spacing-country) var(--spacing-continent);
+  border-left: 3px solid var(--color-accent);
+  background: #fdf7f4;
+}
+
 /* ── Form ──────────────────────────────────────────────────── */
 .form {
   display: flex;
@@ -98,6 +115,32 @@
 .textarea {
   resize: vertical;
   min-height: 160px;
+}
+
+.select {
+  width: 100%;
+  padding: 0.75em 1em;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--color-text-primary);
+  background: var(--color-white);
+  outline: none;
+  transition: border-color 0.15s ease;
+  box-sizing: border-box;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1em center;
+  cursor: pointer;
+
+  &:focus {
+    border-color: var(--color-accent);
+  }
+
+  &.inputError {
+    border-color: #e53e3e;
+  }
 }
 
 .errorText {
@@ -182,5 +225,44 @@
 
   &:is(a):hover {
     color: var(--color-accent);
+  }
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-state);
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+.directEmail {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-neutral);
+  padding-top: var(--spacing-country);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.directEmailLink {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+
+  &:hover {
+    text-decoration: underline;
   }
 }

@@ -1,29 +1,21 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { InstagramLogo, LinkedinLogo } from "@phosphor-icons/react/dist/ssr";
 
 import { ContactForm } from "./ContactForm";
 import styles from "./styles.module.scss";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("metadata.contact");
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    alternates: { canonical: "/contact" },
-    openGraph: {
-      title: t("ogTitle"),
-      description: t("ogDescription"),
-      type: "website",
-      url: "/contact",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
-    },
-  };
-}
+export const metadata: Metadata = {
+  title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
+  description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
+    description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
+    type: "website",
+    url: "/contact",
+  },
+};
 
 const ContactPage = async () => {
   const t = await getTranslations("contact");
@@ -36,7 +28,14 @@ const ContactPage = async () => {
       </div>
 
       <div className={styles.body}>
-        <ContactForm />
+        <div className={styles.formWrap}>
+          <p className={styles.formNote}>
+            Whether you&apos;re looking for a single custom bag or launching a full white label brand,
+            we&apos;d love to hear from you. Fill out the form and we&apos;ll get back to you within
+            24 hours with a personalized quote.
+          </p>
+          <ContactForm />
+        </div>
 
         <aside className={styles.info}>
           <div className={styles.infoItem}>
@@ -52,6 +51,40 @@ const ContactPage = async () => {
           <div className={styles.infoItem}>
             <span className={styles.infoLabel}>{t("info.responseLabel")}</span>
             <span className={styles.infoValue}>{t("info.response")}</span>
+          </div>
+
+          <div className={styles.infoItem}>
+            <span className={styles.infoLabel}>Follow us</span>
+            <div className={styles.socialLinks}>
+              <a
+                href="https://www.instagram.com/ezpz.coffee/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Instagram"
+              >
+                <InstagramLogo size={22} />
+                Instagram
+              </a>
+              <a
+                href="https://www.linkedin.com/company/ezpz-coffee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="LinkedIn"
+              >
+                <LinkedinLogo size={22} />
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.directEmail}>
+            Prefer to chat? Email us directly at{" "}
+            <a href="mailto:help@ezpz.coffee" className={styles.directEmailLink}>
+              help@ezpz.coffee
+            </a>{" "}
+            and we&apos;ll respond within 24 hours.
           </div>
         </aside>
       </div>

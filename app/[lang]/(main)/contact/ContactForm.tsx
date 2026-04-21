@@ -5,10 +5,18 @@ import { useState } from "react";
 import { contact } from "@/lib/actions/contact";
 import styles from "./styles.module.scss";
 
+const INQUIRY_OPTIONS = [
+  { value: "", label: "Select an option..." },
+  { value: "custom-bag", label: "I want to design a custom bag" },
+  { value: "white-label", label: "I'm interested in white label solutions" },
+  { value: "order-question", label: "I have a question about my order" },
+  { value: "other", label: "Other" },
+];
+
 export const ContactForm = () => {
   const t = useTranslations("contact");
 
-  const [fields, setFields] = useState({ name: "", email: "", subject: "", message: "" });
+  const [fields, setFields] = useState({ name: "", email: "", inquiry: "", subject: "", message: "" });
   const [errors, setErrors] = useState<Partial<typeof fields>>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -18,6 +26,7 @@ export const ContactForm = () => {
     const next: Partial<typeof fields> = {};
     if (!fields.name.trim()) next.name = t("form.required");
     if (!fields.email.trim()) next.email = t("form.required");
+    if (!fields.inquiry) next.inquiry = t("form.required");
     if (!fields.subject.trim()) next.subject = t("form.required");
     if (!fields.message.trim()) next.message = t("form.required");
     return next;
@@ -30,7 +39,7 @@ export const ContactForm = () => {
     setErrors({});
     setServerError("");
     setSubmitting(true);
-    const result = await contact(fields);
+    const result = await contact({ ...fields, subject: `[${fields.inquiry}] ${fields.subject}` });
     setSubmitting(false);
     if (result.success) {
       setSuccess(true);
@@ -39,7 +48,7 @@ export const ContactForm = () => {
     }
   };
 
-  const set = (key: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const set = (key: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFields((f) => ({ ...f, [key]: e.target.value }));
     setErrors((err) => ({ ...err, [key]: undefined }));
   };
@@ -82,6 +91,21 @@ export const ContactForm = () => {
           />
           {errors.email && <span className={styles.errorText}>{errors.email}</span>}
         </div>
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label} htmlFor="contact-inquiry">What type of inquiry is this?</label>
+        <select
+          id="contact-inquiry"
+          className={`${styles.select}${errors.inquiry ? ` ${styles.inputError}` : ""}`}
+          value={fields.inquiry}
+          onChange={set("inquiry")}
+        >
+          {INQUIRY_OPTIONS.map((o) => (
+            <option key={o.value} value={o.value} disabled={o.value === ""}>{o.label}</option>
+          ))}
+        </select>
+        {errors.inquiry && <span className={styles.errorText}>{errors.inquiry}</span>}
       </div>
 
       <div className={styles.field}>
