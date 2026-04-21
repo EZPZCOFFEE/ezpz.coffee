@@ -17,12 +17,6 @@ const Footer = () => {
         <div className={styles.footerTop}>
           <span className={styles.footerBrand}>{t("brand", { year })}</span>
           <nav className={styles.footerNav} aria-label={t("navigation")}>
-            <Link href={`/${locale}/shop`} className={styles.footerLink}>
-              {t("shop")}
-            </Link>
-            <Link href={`/${locale}/blog`} className={styles.footerLink}>
-              {t("blog")}
-            </Link>
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>
               {t("ourCoffee")}
             </Link>
