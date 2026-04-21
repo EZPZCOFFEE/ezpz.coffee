@@ -37,7 +37,7 @@ const PERKS = [
   "Specialty coffee sourced from around the world",
   "Ships anywhere worldwide",
   "No minimum order, ever",
-  "Ready in as little as 2–3 weeks",
+  "Ready in as little as 1 week",
 ];
 
 // Slider images - swap these out once real examples are provided
