@@ -1,8 +1,10 @@
 import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
 import { shopifyQuery } from "@/lib/interfaces/shopify";
+import { getDemoProduct } from "@/lib/data/demo-products";
 import { GET_PRODUCT } from "@utils/queries/get-product";
 
 import { ProductPageClient } from "./ProductPageClient";
+import { DemoProductView } from "./DemoProductView";
 
 interface ProductPageProps {
   params: Promise<{
@@ -13,17 +15,25 @@ interface ProductPageProps {
 const ProductPage = async ({ params }: ProductPageProps) => {
   const { handle } = await params;
 
-  const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, {
-    handle,
-  });
+  let product: GetProductQuery["product"] | null = null;
 
-  const product = data.product;
-
-  if (!product) {
-    return <></>;
+  try {
+    const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, { handle });
+    product = data.product ?? null;
+  } catch {
+    // Shopify unavailable — fall through to demo
   }
 
-  return <ProductPageClient product={product} />;
+  if (product) {
+    return <ProductPageClient product={product} />;
+  }
+
+  const demoProduct = getDemoProduct(handle);
+  if (demoProduct) {
+    return <DemoProductView product={demoProduct} />;
+  }
+
+  return <></>;
 };
 
 export default ProductPage;
