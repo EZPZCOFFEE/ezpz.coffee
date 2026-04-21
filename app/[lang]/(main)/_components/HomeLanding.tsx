@@ -11,10 +11,6 @@ import { useCallback } from "react";
 import { getHeroHintFade, getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
 import banner01 from "@/public/assets/banner-01.jpg";
 import bannerBase from "@/public/assets/banner-base.jpg";
-import iconAdvantage1 from "@/public/assets/icon-01.png";
-import iconAdvantage2 from "@/public/assets/icon-02.png";
-import iconAdvantage3 from "@/public/assets/icon-03.png";
-import iconAdvantage4 from "@/public/assets/icon-04.png";
 
 import styles from "./homeLanding.module.scss";
 
@@ -28,10 +24,10 @@ const WHITE_LABEL_BODY_KEYS = [
 ] as const;
 
 const ADVANTAGE_ITEMS = [
-  { key: "traceable" as const, icon: iconAdvantage1 },
-  { key: "customize" as const, icon: iconAdvantage2 },
-  { key: "production" as const, icon: iconAdvantage3 },
-  { key: "distribution" as const, icon: iconAdvantage4 },
+  { key: "traceable" as const, n: "01" },
+  { key: "customize" as const, n: "02" },
+  { key: "production" as const, n: "03" },
+  { key: "distribution" as const, n: "04" },
 ];
 
 const TRUST_LOGOS = [
@@ -180,18 +176,9 @@ const HomeLanding = () => {
             {t("advantages.title")}
           </motion.h2>
           <motion.div className={styles.advantagesGrid} {...advantagesListStagger}>
-            {ADVANTAGE_ITEMS.map(({ key, icon }) => (
+            {ADVANTAGE_ITEMS.map(({ key, n }) => (
               <motion.article key={key} className={styles.advantagesCard} {...fadeChild}>
-                <div className={styles.advantagesIconWrap}>
-                  <Image
-                    src={icon}
-                    alt={t(`advantages.items.${key}.iconAlt`)}
-                    width={160}
-                    height={160}
-                    sizes="80px"
-                    className={styles.advantagesIcon}
-                  />
-                </div>
+                <span className={styles.advantagesNumber} aria-hidden>{n}</span>
                 <h3 className={styles.advantagesCardTitle}>{t(`advantages.items.${key}.title`)}</h3>
                 <p className={styles.advantagesBody}>
                   {t.rich(`advantages.items.${key}.body`, {

@@ -107,7 +107,7 @@ const WhiteLabelSolutionsPage = () => {
               { emoji: "🍽️", title: "Restaurants & Cafés", body: "Offer your customers a branded coffee experience they'll remember and come back for." },
               { emoji: "🏨", title: "Hotels & Hospitality", body: "Elevate your guest experience with a custom coffee product that carries your brand in every room and restaurant." },
               { emoji: "🛍️", title: "Retailers & Boutiques", body: "Add a high-margin, private label product to your shelves with zero production headaches." },
-              { emoji: "💪", title: "Gyms & Wellness Brands", body: "Fuel your community with a branded coffee or ready-to-drink product that fits your lifestyle brand." },
+              { emoji: "⭐", title: "Celebrities & Influencers", body: "Turn your audience into customers with a signature coffee brand that's as recognizable as you are." },
             ].map((card) => (
               <div key={card.title} className={styles.wlForCard}>
                 <span className={styles.wlForEmoji}>{card.emoji}</span>

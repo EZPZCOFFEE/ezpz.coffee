@@ -420,7 +420,10 @@
 .advantagesGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-galaxy) var(--spacing-state);
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -428,60 +431,70 @@
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--spacing-galaxy);
   }
 }
 
 .advantagesCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  align-items: flex-start;
+  text-align: left;
+  padding: var(--spacing-planet) var(--spacing-state);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 
-.advantagesIconWrap {
-  display: flex;
-  justify-content: center;
-  align-self: stretch;
-  margin: 0 0 var(--spacing-planet);
-}
-
-.advantagesIcon {
-  width: 72px;
-  height: auto;
-  object-fit: contain;
+  @media (min-width: 640px) {
+    &:nth-child(odd) {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    &:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
 
   @media (min-width: 1024px) {
-    width: 80px;
+    padding: var(--spacing-cluster) var(--spacing-planet);
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    &:last-child {
+      border-right: none;
+    }
+    &:nth-child(odd) {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
   }
+}
+
+.advantagesNumber {
+  display: block;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1;
+  color: var(--landing-orange);
+  margin: 0 0 var(--spacing-planet);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
 }
 
 .advantagesCardTitle {
   margin: 0 0 var(--spacing-city);
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
   color: var(--color-white);
-  width: 100%;
 }
 
 .advantagesBody {
   margin: 0;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  font-weight: var(--font-weight-semibold);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.92);
-  width: 100%;
-  max-width: 22rem;
-
-  @media (min-width: 1024px) {
-    max-width: none;
-  }
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .advantagesHighlight {
-  color: var(--landing-orange);
-  font-weight: var(--font-weight-bold);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: var(--font-weight-semibold);
 }
 
 .carouselEmblaRow {
