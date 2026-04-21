@@ -27,6 +27,9 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
+    { labelKey: "portfolio", pathSuffix: "/portfolio" },
+    { labelKey: "pricing", pathSuffix: "/pricing" },
+    { labelKey: "blog", pathSuffix: "/blog" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "contactUs", pathSuffix: "/contact" },
   ],

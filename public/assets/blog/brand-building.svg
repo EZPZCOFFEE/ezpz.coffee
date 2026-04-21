@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2540"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a5080"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="140" x2="800" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <!-- Coffee bag shape - left -->
+  <rect x="155" y="80" width="120" height="180" rx="6" fill="url(#bagGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <rect x="165" y="90" width="100" height="160" rx="4" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <!-- Bag top fold -->
+  <path d="M155 110 Q215 100 275 110" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="none"/>
+  <!-- Bag label area -->
+  <rect x="172" y="118" width="86" height="72" rx="3" fill="rgba(232,82,26,0.25)" stroke="rgba(232,82,26,0.5)" stroke-width="1"/>
+  <rect x="180" y="126" width="70" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="186" y="135" width="58" height="3" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+  <rect x="183" y="143" width="64" height="3" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+  <!-- Valve dot -->
+  <circle cx="215" cy="218" r="6" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Weight label -->
+  <rect x="183" y="228" width="54" height="12" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <rect x="191" y="232" width="38" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Coffee bag shape - right (slightly rotated feel) -->
+  <rect x="305" y="95" width="110" height="165" rx="6" fill="#243d58" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+  <rect x="314" y="104" width="92" height="147" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <path d="M305 118 Q360 108 415 118" stroke="rgba(255,255,255,0.12)" stroke-width="2" fill="none"/>
+  <rect x="320" y="124" width="78" height="66" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <rect x="328" y="132" width="62" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
+  <rect x="334" y="141" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.25)"/>
+  <rect x="331" y="149" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.25)"/>
+  <circle cx="360" cy="206" r="5" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- Orange accent line/arrow suggesting flow -->
+  <path d="M430 200 L530 200" stroke="#e8521a" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.7"/>
+  <polygon points="530,194 542,200 530,206" fill="#e8521a" opacity="0.7"/>
+
+  <!-- Brand identity icon group - right side -->
+  <!-- Hexagon / logo shape -->
+  <polygon points="590,148 618,133 646,148 646,178 618,193 590,178" fill="none" stroke="rgba(232,82,26,0.6)" stroke-width="2"/>
+  <polygon points="598,153 618,142 638,153 638,173 618,184 598,173" fill="rgba(232,82,26,0.15)"/>
+  <text x="618" y="166" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="rgba(255,255,255,0.8)">B</text>
+
+  <!-- Small decorative elements -->
+  <circle cx="560" cy="120" r="3" fill="rgba(232,82,26,0.4)"/>
+  <circle cx="660" cy="220" r="3" fill="rgba(232,82,26,0.4)"/>
+  <circle cx="620" cy="230" r="2" fill="rgba(255,255,255,0.2)"/>
+
+  <!-- Category label -->
+  <rect x="50" y="350" width="130" height="24" rx="3" fill="rgba(232,82,26,0.2)"/>
+  <text x="115" y="366" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="1.5" fill="#e8521a">BRAND BUILDING</text>
+
+  <!-- Title text -->
+  <text x="50" y="400" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="rgba(255,255,255,0.5)" letter-spacing="0.5">HOW TO LAUNCH YOUR COFFEE BRAND</text>
+</svg>

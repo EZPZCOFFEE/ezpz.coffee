@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e0f00"/>
+      <stop offset="100%" style="stop-color:#3d2a1a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgba(232,82,26,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(0,0,0,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg2)"/>
+  <rect width="800" height="420" fill="url(#glow)"/>
+
+  <!-- Topographic / origin map lines -->
+  <ellipse cx="400" cy="210" rx="260" ry="160" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <ellipse cx="400" cy="210" rx="200" ry="120" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <ellipse cx="400" cy="210" rx="140" ry="80" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <ellipse cx="400" cy="210" rx="80" ry="45" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+  <!-- Journey path line -->
+  <path d="M160 280 C200 240 260 200 320 190 C380 180 420 185 480 175 C540 165 590 150 640 140"
+        stroke="rgba(232,82,26,0.5)" stroke-width="2" fill="none" stroke-dasharray="8,5"/>
+
+  <!-- Farm origin point -->
+  <circle cx="160" cy="280" r="10" fill="rgba(232,82,26,0.2)" stroke="#e8521a" stroke-width="2"/>
+  <circle cx="160" cy="280" r="4" fill="#e8521a"/>
+  <circle cx="160" cy="280" r="18" fill="none" stroke="rgba(232,82,26,0.3)" stroke-width="1"/>
+  <!-- Farm label -->
+  <rect x="120" y="300" width="80" height="18" rx="3" fill="rgba(0,0,0,0.4)"/>
+  <text x="160" y="313" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">ETHIOPIA</text>
+
+  <!-- Intermediate point - processing -->
+  <circle cx="400" cy="182" r="7" fill="rgba(232,82,26,0.15)" stroke="rgba(232,82,26,0.5)" stroke-width="1.5"/>
+  <circle cx="400" cy="182" r="3" fill="rgba(232,82,26,0.7)"/>
+  <rect x="360" y="162" width="80" height="16" rx="3" fill="rgba(0,0,0,0.4)"/>
+  <text x="400" y="174" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.6)" letter-spacing="0.5">PROCESSING</text>
+
+  <!-- Destination - bag/brand point -->
+  <circle cx="640" cy="140" r="10" fill="rgba(232,82,26,0.2)" stroke="#e8521a" stroke-width="2"/>
+  <circle cx="640" cy="140" r="4" fill="#e8521a"/>
+  <circle cx="640" cy="140" r="20" fill="none" stroke="rgba(232,82,26,0.2)" stroke-width="1.5"/>
+  <rect x="600" y="118" width="80" height="16" rx="3" fill="rgba(0,0,0,0.4)"/>
+  <text x="640" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" letter-spacing="0.5">YOUR BRAND</text>
+
+  <!-- Large coffee bean illustration - center left -->
+  <ellipse cx="300" cy="215" rx="38" ry="52" fill="rgba(60,35,10,0.7)" stroke="rgba(139,90,43,0.4)" stroke-width="1.5" transform="rotate(-15,300,215)"/>
+  <path d="M300 163 Q285 215 300 267" stroke="rgba(139,90,43,0.5)" stroke-width="2" fill="none" transform="rotate(-15,300,215)"/>
+
+  <!-- SCA score badge -->
+  <circle cx="520" cy="250" r="40" fill="rgba(0,0,0,0.4)" stroke="rgba(232,82,26,0.4)" stroke-width="1.5"/>
+  <text x="520" y="243" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="rgba(255,255,255,0.9)">86</text>
+  <text x="520" y="258" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.4)" letter-spacing="1">SCA SCORE</text>
+  <path d="M490 265 A30 30 0 0 1 550 265" stroke="rgba(232,82,26,0.5)" stroke-width="2" fill="none"/>
+
+  <!-- Stars under score -->
+  <text x="520" y="278" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#e8521a">★★★★★</text>
+
+  <!-- Category label -->
+  <rect x="50" y="350" width="140" height="24" rx="3" fill="rgba(139,90,43,0.2)"/>
+  <text x="120" y="366" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="1.5" fill="#c87941">COFFEE EDUCATION</text>
+
+  <!-- Bottom text -->
+  <text x="50" y="400" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="rgba(255,255,255,0.4)" letter-spacing="0.5">WHAT MAKES SPECIALTY COFFEE TRACEABLE?</text>
+</svg>

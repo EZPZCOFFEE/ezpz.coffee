@@ -8,6 +8,7 @@ export interface BlogPost {
   readTime: string;
   color: string;
   initials: string;
+  image: string;
   published: boolean;
 }
 
@@ -23,7 +24,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "6 min read",
     color: "#1a3a5c",
     initials: "BB",
-    published: true,
+    image: "/assets/blog/brand-building.svg",
+    published: false,
   },
   {
     slug: "what-makes-specialty-coffee-traceable",
@@ -36,7 +38,8 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     color: "#3d2a1a",
     initials: "CE",
-    published: true,
+    image: "/assets/blog/coffee-traceable.svg",
+    published: false,
   },
   {
     slug: "custom-coffee-bags-vs-pre-packaged-coffee",
@@ -49,6 +52,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     color: "#4a1a2d",
     initials: "BT",
-    published: true,
+    image: "/assets/blog/custom-vs-prepackaged.svg",
+    published: false,
   },
 ];

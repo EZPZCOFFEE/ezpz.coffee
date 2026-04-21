@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0810"/>
+      <stop offset="100%" style="stop-color:#4a1a2d"/>
+    </linearGradient>
+    <linearGradient id="leftBag" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5a2a3a"/>
+      <stop offset="100%" style="stop-color:#3a1520"/>
+    </linearGradient>
+    <linearGradient id="rightBag" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8521a"/>
+      <stop offset="100%" style="stop-color:#c03a0a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg3)"/>
+
+  <!-- Subtle horizontal lines -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- VS divider line -->
+  <line x1="400" y1="40" x2="400" y2="340" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="6,4"/>
+  <circle cx="400" cy="190" r="22" fill="rgba(0,0,0,0.5)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <text x="400" y="196" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="rgba(255,255,255,0.7)" letter-spacing="1">VS</text>
+
+  <!-- LEFT: Pre-packaged bag (generic, muted) -->
+  <rect x="110" y="75" width="105" height="160" rx="6" fill="url(#leftBag)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+  <rect x="120" y="85" width="85" height="140" rx="4" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <path d="M110 100 Q162 90 215 100" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" fill="none"/>
+  <!-- Generic label -->
+  <rect x="127" y="112" width="72" height="60" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="135" y="120" width="56" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+  <rect x="140" y="129" width="46" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+  <rect x="138" y="137" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+  <rect x="142" y="145" width="42" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+  <rect x="140" y="153" width="46" height="3" rx="1.5" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="162" cy="195" r="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+
+  <!-- Left label: Generic Brand -->
+  <rect x="105" y="250" width="116" height="20" rx="3" fill="rgba(255,255,255,0.06)"/>
+  <text x="163" y="264" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="rgba(255,255,255,0.45)" letter-spacing="1">GENERIC BRAND</text>
+
+  <!-- Left cons -->
+  <text x="115" y="296" font-family="Arial, sans-serif" font-size="10" fill="rgba(192,57,43,0.8)">✕  Low margins</text>
+  <text x="115" y="312" font-family="Arial, sans-serif" font-size="10" fill="rgba(192,57,43,0.8)">✕  Not your brand</text>
+  <text x="115" y="328" font-family="Arial, sans-serif" font-size="10" fill="rgba(192,57,43,0.8)">✕  No story</text>
+
+  <!-- RIGHT: Custom branded bag (vibrant, orange) -->
+  <rect x="490" y="60" width="115" height="175" rx="6" fill="url(#rightBag)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+  <rect x="500" y="70" width="95" height="155" rx="4" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <path d="M490 82 Q547 70 605 82" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+  <!-- Custom label -->
+  <rect x="506" y="95" width="84" height="72" rx="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <!-- Brand mark -->
+  <circle cx="548" cy="118" r="14" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  <text x="548" y="123" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="rgba(255,255,255,0.9)">B</text>
+  <rect x="514" y="138" width="68" height="4" rx="2" fill="rgba(255,255,255,0.7)"/>
+  <rect x="520" y="147" width="56" height="3" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+  <rect x="517" y="155" width="62" height="3" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="548" cy="196" r="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+  <!-- Weight -->
+  <rect x="518" y="213" width="60" height="10" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <rect x="526" y="216" width="44" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
+
+  <!-- Right label: Your Brand -->
+  <rect x="490" y="250" width="116" height="20" rx="3" fill="rgba(232,82,26,0.3)"/>
+  <text x="548" y="264" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="rgba(255,255,255,0.9)" letter-spacing="1">YOUR BRAND</text>
+
+  <!-- Right pros -->
+  <text x="490" y="296" font-family="Arial, sans-serif" font-size="10" fill="rgba(100,200,100,0.85)">✓  2–3× higher margins</text>
+  <text x="490" y="312" font-family="Arial, sans-serif" font-size="10" fill="rgba(100,200,100,0.85)">✓  100% your brand</text>
+  <text x="490" y="328" font-family="Arial, sans-serif" font-size="10" fill="rgba(100,200,100,0.85)">✓  No minimums</text>
+
+  <!-- Category label -->
+  <rect x="50" y="350" width="120" height="24" rx="3" fill="rgba(74,26,45,0.5)"/>
+  <text x="110" y="366" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" letter-spacing="1.5" fill="#c87090">BUSINESS TIPS</text>
+
+  <!-- Bottom text -->
+  <text x="50" y="400" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="rgba(255,255,255,0.4)" letter-spacing="0.5">CUSTOM BAGS VS. PRE-PACKAGED COFFEE</text>
+</svg>
