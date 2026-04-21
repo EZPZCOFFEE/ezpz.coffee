@@ -1,5 +1,6 @@
 "use client";
 
+import { InstagramLogo } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
@@ -61,6 +62,15 @@ const Footer = () => {
         <div className={styles.footerBottom}>
           <span className={styles.footerCopyright}>{t("copyright", { year })}</span>
           <div className={styles.footerBottomLinks}>
+            <a
+              href="https://www.instagram.com/ezpz.coffee/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerSmallLink}
+              aria-label="Instagram"
+            >
+              <InstagramLogo size={20} />
+            </a>
             <Link href={`/${locale}/faq`} className={styles.footerSmallLink}>{t("faq")}</Link>
             <Link href={`/${locale}/terms-of-use`} className={styles.footerSmallLink}>{t("termsOfUse")}</Link>
           </div>
