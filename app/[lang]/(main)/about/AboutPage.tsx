@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 
 const STATS = [
   { number: "500+", label: "Brands served" },
-  { number: "0", label: "Minimum order" },
+  { number: "1", label: "Minimum order" },
   { number: "100%", label: "Specialty grade" },
 ];
 
@@ -39,7 +39,6 @@ const AboutPage = () => {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <span className={styles.eyebrow}>About EZPZ Coffee</span>
           <h1 className={styles.heroTitle}>
             We make coffee<br />
             branding <span className={styles.heroAccent}>easy.</span>

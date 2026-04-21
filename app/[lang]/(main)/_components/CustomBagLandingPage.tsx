@@ -107,7 +107,6 @@ const CustomBagLandingPage = () => {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
-            <span className={styles.eyebrow}>Custom Coffee Bags</span>
             <h1 className={styles.heroTitle}>
               Your brand.<br />Your coffee.<br />
               <span className={styles.heroAccent}>No minimums.</span>
@@ -174,7 +173,6 @@ const CustomBagLandingPage = () => {
       <section className={styles.perks}>
         <div className={styles.perksInner}>
           <div className={styles.perksCopy}>
-            <span className={styles.eyebrow}>Why EZPZ</span>
             <h2 className={styles.perksTitle}>
               Great packaging shouldn&apos;t require a<span className={styles.perksAccent}> warehouse order.</span>
             </h2>
