@@ -1,45 +1,21 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
 
-import MarketingContent from "@/components/custom/MarketingContent";
+import CoffeePage from "./CoffeePage";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("metadata.coffee");
-
-  return {
-    title: t("title"),
-    description: t("description"),
-    alternates: {
-      canonical: "/coffee",
-    },
-    openGraph: {
-      title: t("ogTitle"),
-      description: t("ogDescription"),
-      type: "website",
-      url: "/coffee",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("twitterTitle"),
-      description: t("twitterDescription"),
-    },
-  };
-}
-
-const CoffeePage = async () => {
-  const t = await getTranslations("coffee");
-
-  return (
-    <MarketingContent
-      title={t("title")}
-      intro={t("intro")}
-      sections={[
-        {
-          copy: [t("sections.main.paragraphs.0"), t("sections.main.paragraphs.1")],
-        },
-      ]}
-    />
-  );
+export const metadata: Metadata = {
+  title: "Our Coffee | Specialty-Grade Origins | EZPZ Coffee",
+  description:
+    "We source exclusively from specialty-grade farms scoring 80+ on the SCA scale. Ethiopia, Colombia, Guatemala, Brazil, and more — all roasted in Montreal.",
+  alternates: { canonical: "/coffee" },
+  openGraph: {
+    title: "Our Coffee | Specialty-Grade Origins | EZPZ Coffee",
+    description:
+      "We source exclusively from specialty-grade farms scoring 80+ on the SCA scale. Roasted in Montreal at Canadian Roasting Society.",
+    type: "website",
+    url: "/coffee",
+  },
 };
 
-export default CoffeePage;
+const CoffeeRoutePage = () => <CoffeePage />;
+
+export default CoffeeRoutePage;

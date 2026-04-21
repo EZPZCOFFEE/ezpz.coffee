@@ -231,13 +231,6 @@ const WhiteLabelSolutionsPage = () => {
             <Link href={`/${locale}/contact`} className={styles.whiteLabelFinalCtaPrimary}>
               Get a quote
             </Link>
-            <button
-              type="button"
-              className={styles.whiteLabelFinalCtaSecondary}
-              onClick={() => document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            >
-              See how it works
-            </button>
           </div>
         </motion.div>
       </section>
