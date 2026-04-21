@@ -13,21 +13,27 @@ import mockupLabel from "@/public/bags/mock-up-label.jpg";
 
 import styles from "./customBagLanding.module.scss";
 
+const STATS = [
+  { number: "1", label: "Minimum order" },
+  { number: "5 min", label: "To design your bag" },
+  { number: "1 week", label: "Turnaround time" },
+];
+
 const FEATURES = [
   {
-    icon: <Sliders size={32} weight="duotone" />,
+    icon: <Sliders size={28} weight="duotone" />,
     title: "Design Online, Instantly",
     body: "Our drag-and-drop builder lets you upload your logo, choose colors, pick your bag style, and preview the result in real time, no design experience needed.",
   },
   {
-    icon: <Package size={32} weight="duotone" />,
+    icon: <Package size={28} weight="duotone" />,
     title: "No Minimum Order",
     body: "Order just one bag or one thousand. EZPZ is the only Canadian supplier with zero MOQ, so you can test before you scale.",
   },
   {
-    icon: <Palette size={32} weight="duotone" />,
+    icon: <Palette size={28} weight="duotone" />,
     title: "Endless Customization",
-    body: "Your brand colors, your fonts, your artwork. Choose from multiple bag sizes and finishes to match your exact product vision.",
+    body: "Your brand colors, your fonts, your artwork. Choose your roast profile and bag style to match your exact product vision.",
   },
 ];
 
@@ -52,13 +58,9 @@ const Slider = () => {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const go = (index: number) => {
-    setCurrent((index + SLIDES.length) % SLIDES.length);
-  };
-
   const restart = (index: number) => {
     if (timerRef.current) clearInterval(timerRef.current);
-    go(index);
+    setCurrent((index + SLIDES.length) % SLIDES.length);
     timerRef.current = setInterval(() => {
       setCurrent((c) => (c + 1) % SLIDES.length);
     }, 4000);
@@ -68,9 +70,7 @@ const Slider = () => {
     timerRef.current = setInterval(() => {
       setCurrent((c) => (c + 1) % SLIDES.length);
     }, 4000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
   return (
@@ -82,43 +82,15 @@ const Slider = () => {
             className={`${styles.slide} ${i === current ? styles.slideActive : ""}`}
             aria-hidden={i !== current}
           >
-            <Image
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 800px"
-              className={styles.slideImage}
-              priority={i === 0}
-            />
+            <Image src={slide.src} alt={slide.alt} fill sizes="(max-width: 768px) 100vw, 860px" className={styles.slideImage} priority={i === 0} />
           </div>
         ))}
       </div>
-
-      {/* Prev / Next */}
-      <button
-        className={`${styles.sliderArrow} ${styles.sliderArrowPrev}`}
-        onClick={() => restart(current - 1)}
-        aria-label="Previous slide"
-      >
-        ‹
-      </button>
-      <button
-        className={`${styles.sliderArrow} ${styles.sliderArrowNext}`}
-        onClick={() => restart(current + 1)}
-        aria-label="Next slide"
-      >
-        ›
-      </button>
-
-      {/* Dots */}
+      <button className={`${styles.sliderArrow} ${styles.sliderArrowPrev}`} onClick={() => restart(current - 1)} aria-label="Previous slide">‹</button>
+      <button className={`${styles.sliderArrow} ${styles.sliderArrowNext}`} onClick={() => restart(current + 1)} aria-label="Next slide">›</button>
       <div className={styles.sliderDots}>
         {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
-            onClick={() => restart(i)}
-            aria-label={`Go to slide ${i + 1}`}
-          />
+          <button key={i} className={`${styles.dot} ${i === current ? styles.dotActive : ""}`} onClick={() => restart(i)} aria-label={`Go to slide ${i + 1}`} />
         ))}
       </div>
     </div>
@@ -135,10 +107,10 @@ const CustomBagLandingPage = () => {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroText}>
-            <span className={styles.heroEyebrow}>Custom Coffee Bags</span>
+            <span className={styles.eyebrow}>Custom Coffee Bags</span>
             <h1 className={styles.heroTitle}>
               Your brand.<br />Your coffee.<br />
-              <span className={styles.heroAccent}>No minimum order.</span>
+              <span className={styles.heroAccent}>No minimums.</span>
             </h1>
             <p className={styles.heroSubtitle}>
               Design your own custom coffee bags online in minutes. Upload your logo,
@@ -150,25 +122,33 @@ const CustomBagLandingPage = () => {
             </Link>
           </div>
           <div className={styles.heroImageWrap}>
-            <Image
-              src={bagPng}
-              alt="Custom EZPZ coffee bag"
-              width={420}
-              height={520}
-              className={styles.heroImage}
-              priority
-            />
+            <Image src={bagPng} alt="Custom EZPZ coffee bag" width={420} height={520} className={styles.heroImage} priority />
           </div>
+        </div>
+        <div className={styles.heroAngle} />
+      </section>
+
+      {/* ── Stats ────────────────────────────────────────────── */}
+      <section className={styles.stats}>
+        <div className={styles.statsInner}>
+          {STATS.map((s) => (
+            <div key={s.label} className={styles.statItem}>
+              <span className={styles.statNumber}>{s.number}</span>
+              <span className={styles.statLabel}>{s.label}</span>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ── Features ─────────────────────────────────────────── */}
       <section className={styles.features}>
         <div className={styles.sectionInner}>
+          <span className={styles.eyebrowDark}>How it works</span>
           <h2 className={styles.sectionTitle}>Everything you need to stand out</h2>
           <div className={styles.featureGrid}>
-            {FEATURES.map((f) => (
+            {FEATURES.map((f, i) => (
               <div key={f.title} className={styles.featureCard}>
+                <span className={styles.featureNumber}>0{i + 1}</span>
                 <span className={styles.featureIcon}>{f.icon}</span>
                 <h3 className={styles.featureTitle}>{f.title}</h3>
                 <p className={styles.featureBody}>{f.body}</p>
@@ -181,8 +161,9 @@ const CustomBagLandingPage = () => {
       {/* ── Slider ───────────────────────────────────────────── */}
       <section className={styles.gallery}>
         <div className={styles.sectionInner}>
-          <h2 className={styles.sectionTitle}>See what's possible</h2>
-          <p className={styles.sectionSubtitle}>
+          <span className={styles.eyebrowDark}>Examples</span>
+          <h2 className={styles.sectionTitle}>See what&apos;s possible</h2>
+          <p className={styles.gallerySubtitle}>
             Real bags, real brands, all designed through the EZPZ online tool.
           </p>
           <Slider />
@@ -193,13 +174,16 @@ const CustomBagLandingPage = () => {
       <section className={styles.perks}>
         <div className={styles.perksInner}>
           <div className={styles.perksCopy}>
-            <h2 className={styles.sectionTitle}>Why EZPZ?</h2>
+            <span className={styles.eyebrow}>Why EZPZ</span>
+            <h2 className={styles.perksTitle}>
+              Great packaging shouldn&apos;t require a<span className={styles.perksAccent}> warehouse order.</span>
+            </h2>
             <p className={styles.perksBody}>
               We built EZPZ because great coffee deserves great packaging, and great
-              packaging shouldn't require a warehouse order. From independent roasters
+              packaging shouldn&apos;t require a warehouse order. From independent roasters
               to national brands, we make custom bags accessible to everyone.
             </p>
-            <Link href={`/${locale}/design`} className={styles.heroCta}>
+            <Link href={`/${locale}/design`} className={styles.perksBtn}>
               Design your bag now <ArrowRight size={18} weight="bold" />
             </Link>
           </div>
@@ -215,12 +199,10 @@ const CustomBagLandingPage = () => {
       </section>
 
       {/* ── Final CTA ────────────────────────────────────────── */}
-      <section className={styles.ctaBanner}>
-        <div className={styles.ctaBannerInner}>
-          <h2 className={styles.ctaTitle}>Ready to create your custom bag?</h2>
-          <p className={styles.ctaSubtitle}>
-            It takes less than 5 minutes. No account required to start.
-          </p>
+      <section className={styles.cta}>
+        <div className={styles.ctaInner}>
+          <h2 className={styles.ctaTitle}>Ready to create your<br />custom bag?</h2>
+          <p className={styles.ctaSubtitle}>It takes less than 5 minutes. No account required to start.</p>
           <Link href={`/${locale}/design`} className={styles.ctaButton}>
             Start designing, it&apos;s free <ArrowRight size={20} weight="bold" />
           </Link>
