@@ -46,6 +46,7 @@ const Footer = () => {
             <span className={styles.footerNavHeading}>{t("shopHeading")}</span>
             <Link href={`/${locale}/design`} className={styles.footerLink}>{t("design")}</Link>
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>{t("ourCoffee")}</Link>
+            <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>Custom Coffee Bags</Link>
           </nav>
 
           {/* Company column */}
