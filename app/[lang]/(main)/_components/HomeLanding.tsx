@@ -1,6 +1,5 @@
 "use client";
 
-import { GlobeHemisphereEastIcon } from "@phosphor-icons/react";
 import { CaretDoubleDownIcon } from "@phosphor-icons/react/dist/ssr";
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
@@ -204,9 +203,6 @@ const HomeLanding = () => {
                 {t(`whiteLabel.${key}`)}
               </motion.p>
             ))}
-          </motion.div>
-          <motion.div {...fadeChild} className={styles.whiteLabelGlobeMotion}>
-            <GlobeHemisphereEastIcon className={styles.whiteLabelBannerGlobe} weight="regular" aria-hidden />
           </motion.div>
           <motion.div {...fadeChild} className={styles.whiteLabelPhotoMotion}>
             <Image
