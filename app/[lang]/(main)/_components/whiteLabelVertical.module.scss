@@ -10,6 +10,8 @@
   background: #111111;
   padding: var(--spacing-galaxy) var(--spacing-state) calc(var(--spacing-galaxy) + 60px);
   overflow: hidden;
+  margin: calc(-1 * var(--spacing-state));
+  margin-bottom: 0;
 }
 
 .heroAngle {

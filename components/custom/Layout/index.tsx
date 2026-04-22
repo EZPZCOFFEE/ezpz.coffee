@@ -29,7 +29,13 @@ const Layout = ({ children }: PropsWithChildren) => {
   const pathname = usePathname();
   const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
   const isHeroLanding =
-    normalizedPath === "/" || normalizedPath === "/white-label" || normalizedPath.startsWith("/white-label/");
+    normalizedPath === "/" ||
+    normalizedPath === "/white-label" ||
+    (normalizedPath.startsWith("/white-label/") &&
+      !normalizedPath.startsWith("/white-label/restaurants") &&
+      !normalizedPath.startsWith("/white-label/hotels") &&
+      !normalizedPath.startsWith("/white-label/retailers") &&
+      !normalizedPath.startsWith("/white-label/influencers"));
 
   return (
     <WhiteeeShopifyProvider countryCode="CA" languageCode="EN">
