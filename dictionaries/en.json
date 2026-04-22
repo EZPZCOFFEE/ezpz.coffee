@@ -66,8 +66,8 @@
       "submit": "Send message",
       "submitting": "Sending...",
       "successTitle": "Message sent!",
-      "successBody": "Thanks for reaching out. We typically respond within 24–48 hours.",
-      "errorGeneric": "Something went wrong. Please try again.",
+      "successBody": "Your message has been sent! We'll get back to you within 24 hours.",
+      "errorGeneric": "Something went wrong. Please email us directly at help@ezpz.coffee",
       "required": "This field is required."
     },
     "info": {
