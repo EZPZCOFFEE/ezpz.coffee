@@ -28,7 +28,6 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   right: [
     { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
-    { labelKey: "blog", pathSuffix: "/blog" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
