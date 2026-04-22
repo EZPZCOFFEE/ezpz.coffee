@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e1a0e"/>
+      <stop offset="100%" style="stop-color:#1a2d1a"/>
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a3d2a"/>
+      <stop offset="100%" style="stop-color:#1a2d1a"/>
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="140" x2="800" y2="140" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- Coffee bag body -->
+  <rect x="280" y="60" width="150" height="230" rx="7" fill="url(#bagGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <!-- Top seal -->
+  <rect x="288" y="60" width="134" height="26" rx="4" fill="rgba(0,0,0,0.25)"/>
+  <line x1="288" y1="73" x2="422" y2="73" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="346" y="60" width="5" height="14" rx="1" fill="rgba(255,255,255,0.1)"/>
+  <rect x="359" y="60" width="5" height="14" rx="1" fill="rgba(255,255,255,0.1)"/>
+  <!-- Bottom gusset -->
+  <rect x="288" y="265" width="134" height="25" rx="4" fill="rgba(0,0,0,0.2)"/>
+  <!-- Side seams -->
+  <rect x="280" y="86" width="10" height="179" fill="rgba(0,0,0,0.2)"/>
+  <rect x="420" y="86" width="10" height="179" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Label panel on bag -->
+  <rect x="298" y="102" width="114" height="140" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="355" y="148" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="3">YOUR</text>
+  <text x="355" y="168" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="3">BRAND</text>
+  <line x1="318" y1="180" x2="392" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="0.75"/>
+  <text x="355" y="198" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.45)" text-anchor="middle" font-style="italic">Specialty Coffee</text>
+  <text x="355" y="214" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1.5">CANADA</text>
+  <!-- Valve -->
+  <circle cx="355" cy="237" r="5.5" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <circle cx="355" cy="237" r="2" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Gift ribbon — horizontal band across bag -->
+  <rect x="280" y="165" width="150" height="18" fill="url(#ribbonGrad)" opacity="0.85"/>
+  <!-- Gift ribbon — vertical band -->
+  <rect x="346" y="60" width="18" height="230" fill="url(#ribbonGrad)" opacity="0.85"/>
+
+  <!-- Bow on top center of ribbon intersection -->
+  <!-- Left bow loop -->
+  <path d="M355 60 Q328 30 314 42 Q308 55 355 60" fill="#e8521a" opacity="0.9"/>
+  <!-- Right bow loop -->
+  <path d="M355 60 Q382 30 396 42 Q402 55 355 60" fill="#c43e14" opacity="0.9"/>
+  <!-- Bow knot circle -->
+  <circle cx="355" cy="60" r="7" fill="#e8521a"/>
+  <circle cx="355" cy="60" r="3.5" fill="#c43e14"/>
+
+  <!-- Left side: envelope / card element -->
+  <rect x="100" y="155" width="130" height="90" rx="4" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <!-- Envelope flap -->
+  <path d="M100 155 L165 200 L230 155" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <!-- Envelope lines (letter) -->
+  <line x1="116" y1="195" x2="214" y2="195" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <line x1="116" y1="208" x2="192" y2="208" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <line x1="116" y1="221" x2="204" y2="221" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <!-- Accent seal -->
+  <circle cx="214" cy="174" r="12" fill="rgba(232,82,26,0.2)" stroke="rgba(232,82,26,0.5)" stroke-width="1.5"/>
+  <text x="214" y="179" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#e8521a" text-anchor="middle">E</text>
+
+  <!-- Right side: stats / ROI panel -->
+  <rect x="480" y="130" width="180" height="160" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <!-- Panel header -->
+  <rect x="480" y="130" width="180" height="28" rx="4" fill="rgba(232,82,26,0.15)"/>
+  <rect x="480" y="146" width="180" height="12" fill="rgba(232,82,26,0.15)"/>
+  <text x="570" y="149" font-family="Arial, sans-serif" font-size="7.5" font-weight="700" fill="#e8521a" text-anchor="middle" letter-spacing="2">ROI OF GIFTING</text>
+
+  <!-- Stat rows -->
+  <line x1="494" y1="176" x2="646" y2="176" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="494" y="172" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">RETENTION</text>
+  <rect x="494" y="180" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="494" y="180" width="98" height="5" rx="2" fill="rgba(232,82,26,0.6)"/>
+
+  <line x1="494" y1="206" x2="646" y2="206" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="494" y="202" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">WORD OF MOUTH</text>
+  <rect x="494" y="210" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="494" y="210" width="82" height="5" rx="2" fill="rgba(232,82,26,0.5)"/>
+
+  <line x1="494" y1="236" x2="646" y2="236" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="494" y="232" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">BRAND VISIBILITY</text>
+  <rect x="494" y="240" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="494" y="240" width="106" height="5" rx="2" fill="rgba(232,82,26,0.7)"/>
+
+  <line x1="494" y1="266" x2="646" y2="266" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="494" y="262" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">MORALE</text>
+  <rect x="494" y="270" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="494" y="270" width="90" height="5" rx="2" fill="rgba(232,82,26,0.55)"/>
+
+  <!-- Footer label -->
+  <text x="400" y="398" font-family="Arial, sans-serif" font-size="8.5" fill="rgba(255,255,255,0.2)" text-anchor="middle" letter-spacing="3">CORPORATE GIFTING · CUSTOM BRANDED COFFEE · CANADA</text>
+</svg>

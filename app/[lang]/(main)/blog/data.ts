@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "custom-coffee-bags-corporate-gifts-canada",
+    category: "Business Tips",
+    categoryColor: "#e8521a",
+    title: "Custom Coffee Bags: The Best Corporate Gift for Canadian Businesses in 2026",
+    excerpt:
+      "Forget generic gifts. Here's why custom branded coffee bags are what your clients will actually remember — and exactly how to do it right.",
+    date: "April 2026",
+    readTime: "6 min read",
+    color: "#1a2a1a",
+    initials: "CG",
+    image: "/assets/blog/corporate-gifts.svg",
+    published: true,
+  },
+  {
     slug: "how-to-launch-coffee-brand-canada-2026",
     category: "Brand Building",
     categoryColor: "#e8521a",
