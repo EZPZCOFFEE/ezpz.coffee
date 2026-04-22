@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import CustomBagLandingPage from "../_components/CustomBagLandingPage";
 
 export const metadata: Metadata = {
-  title: "Custom Coffee Bags | Design Your Own — No Minimum Order | EZPZ Coffee",
+  title: "Custom Coffee Bags | Design Your Own | No Minimum Order | EZPZ Coffee",
   description:
     "Design your own custom coffee bags online in minutes. No minimum order quantity. Upload your logo, pick your style, and get branded bags shipped to you.",
   alternates: { canonical: "/custom-bag" },
   openGraph: {
-    title: "Custom Coffee Bags | Design Your Own — No Minimum Order | EZPZ Coffee",
+    title: "Custom Coffee Bags | Design Your Own | No Minimum Order | EZPZ Coffee",
     description: "Design your own custom coffee bags online in minutes. No minimum order quantity. Upload your logo, pick your style, and get branded bags shipped to you.",
     type: "website",
     url: "https://www.ezpz.coffee/en/custom-bag",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Custom Coffee Bags | Design Your Own — No Minimum Order | EZPZ Coffee",
+    title: "Custom Coffee Bags | Design Your Own | No Minimum Order | EZPZ Coffee",
     description: "Design your own custom coffee bags online in minutes. No minimum order quantity.",
     images: ["/assets/banner-01.jpg"],
   },

@@ -68,8 +68,8 @@ const Page = () => (
 
         <h2 className={styles.h2}>She Drinks Coffee Every Single Day</h2>
         <p className={styles.p}>
-          Let&apos;s start with the obvious. If your mom drinks coffee — and statistically, there
-          is a very good chance she does — then coffee is not just a gift. It is a daily ritual. And
+          Let&apos;s start with the obvious. If your mom drinks coffee, and statistically there
+          is a very good chance she does, then coffee is not just a gift. It is a daily ritual. And
           when her morning ritual involves opening a bag with her name on it, a message from you, and
           specialty coffee you chose just for her: that hits differently than anything you could buy
           off a shelf.
@@ -97,20 +97,20 @@ const Page = () => (
         <p className={styles.p}>Some ideas for making it personal:</p>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <strong>Her name in big letters on the front</strong> — &ldquo;Mom&rdquo;,
+            <strong>Her name in big letters on the front</strong>: &ldquo;Mom&rdquo;,
             &ldquo;Maman&rdquo;, her first name, or a nickname only your family uses.
           </li>
           <li className={styles.li}>
-            <strong>A message that means something</strong> — &ldquo;To the woman who made every
+            <strong>A message that means something</strong>: &ldquo;To the woman who made every
             morning better&rdquo; or &ldquo;You always made time for a good cup. This one is for
             you.&rdquo;
           </li>
           <li className={styles.li}>
-            <strong>Her favorite roast</strong> — if she loves a bold dark roast with her morning
+            <strong>Her favorite roast</strong>: if she loves a bold dark roast with her morning
             news, give her that. If she prefers something light and floral, we have that too.
           </li>
           <li className={styles.li}>
-            <strong>A QR code</strong> linking to a personal video message from you — this one
+            <strong>A QR code</strong> linking to a personal video message from you, this one
             genuinely makes people cry (in the best way).
           </li>
         </ul>
@@ -118,7 +118,7 @@ const Page = () => (
         <h2 className={styles.h2}>The Coffee Is Actually Incredible</h2>
         <p className={styles.p}>
           A personalized gift is only as good as the product inside it. This is where a lot of
-          corporate gifting falls flat — beautiful packaging, mediocre product.
+          corporate gifting falls flat: beautiful packaging, mediocre product.
         </p>
         <p className={styles.p}>
           At EZPZ, we source exclusively specialty grade coffees. That means every bean in her bag
@@ -179,7 +179,7 @@ const Page = () => (
           ready to give. You can even include a personal note with the order.
         </p>
         <p className={styles.p}>
-          If you want to add a physical card on your end, pair it with something simple — a nice
+          If you want to add a physical card on your end, pair it with something simple: a nice
           mug, a small plant, a handwritten letter. But honestly, the coffee bag stands perfectly
           on its own.
         </p>

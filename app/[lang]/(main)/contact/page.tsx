@@ -53,7 +53,7 @@ const ContactPage = async () => {
             <div className={styles.formHeader}>
               <h2 className={styles.formTitle}>Let us build your coffee brand together.</h2>
               <p className={styles.formSubtext}>
-                Whether you need 1 bag or 10,000 — we are here to help. Fill out the form and we will get back to you within 24 hours with a personalized quote.
+                Whether you need 1 bag or 10,000, we are here to help. Fill out the form and we will get back to you within 24 hours with a personalized quote.
               </p>
             </div>
             <Suspense>
