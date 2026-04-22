@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: var(--color-bg-primary, #f5f4f2);
+  background: #ffffff;
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
@@ -105,7 +105,7 @@
 
 // ── Pain points ───────────────────────────────────────────────────────
 .pain {
-  background-color: #f8f7f5;
+  background-color: #ffffff;
   padding: var(--spacing-galaxy) var(--spacing-state);
 }
 
@@ -128,8 +128,8 @@
   display: flex;
   gap: var(--spacing-country);
   align-items: flex-start;
-  background-color: #ffffff;
-  border: 1px solid #e8e8e8;
+  background-color: #f8f7f5;
+  border: 1px solid #ebebeb;
   border-radius: 8px;
   padding: var(--spacing-state);
 }
