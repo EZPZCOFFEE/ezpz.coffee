@@ -18,8 +18,8 @@
 .main {
   flex: 1;
   padding: var(--spacing-state);
-  /* Fixed navbar — `--layout-navbar-height` is set on :root in Navbar. */
-  padding-top: calc(var(--spacing-state) + var(--layout-navbar-height, 56px));
+  /* Fixed navbar + optional announcement banner */
+  padding-top: calc(var(--spacing-state) + var(--layout-navbar-height, 56px) + var(--announcement-banner-height, 0px));
 }
 
 .mainHome {
@@ -29,7 +29,7 @@
 
 .navbarRoot {
   position: fixed;
-  top: 0;
+  top: var(--announcement-banner-height, 0px);
   left: 0;
   right: 0;
   z-index: var(--z-index-navbar);

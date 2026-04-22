@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#f5f5f3"/>
+
+  <!-- Bag shadow -->
+  <ellipse cx="400" cy="555" rx="165" ry="22" fill="rgba(0,0,0,0.12)"/>
+
+  <!-- Bag body -->
+  <rect x="240" y="72" width="320" height="468" rx="8" fill="#111111"/>
+
+  <!-- Top seal fold -->
+  <rect x="248" y="72" width="304" height="28" rx="4" fill="#1a1a1a"/>
+  <line x1="248" y1="86" x2="552" y2="86" stroke="#2a2a2a" stroke-width="1"/>
+  <!-- Notch marks -->
+  <rect x="368" y="72" width="4" height="14" rx="1" fill="#333"/>
+  <rect x="428" y="72" width="4" height="14" rx="1" fill="#333"/>
+
+  <!-- Bottom gusset -->
+  <rect x="248" y="508" width="304" height="32" rx="4" fill="#1a1a1a"/>
+  <line x1="248" y1="518" x2="552" y2="518" stroke="#2a2a2a" stroke-width="1"/>
+
+  <!-- Side seams -->
+  <rect x="240" y="100" width="14" height="408" fill="#0a0a0a"/>
+  <rect x="546" y="100" width="14" height="408" fill="#0a0a0a"/>
+
+  <!-- Label panel -->
+  <rect x="272" y="140" width="256" height="312" rx="2" fill="#ffffff" opacity="0.05"/>
+  <rect x="272" y="140" width="256" height="312" rx="2" fill="none" stroke="#ffffff" stroke-width="0.75" opacity="0.3"/>
+
+  <!-- Brand name -->
+  <text x="400" y="222" font-family="Georgia, serif" font-size="42" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="8">NOIR</text>
+
+  <!-- Divider line -->
+  <line x1="312" y1="238" x2="488" y2="238" stroke="#ffffff" stroke-width="0.75" opacity="0.5"/>
+
+  <!-- Subtitle -->
+  <text x="400" y="266" font-family="Arial, sans-serif" font-size="9" fill="#ffffff" text-anchor="middle" letter-spacing="4" opacity="0.7">SPECIALTY COFFEE</text>
+
+  <!-- Coffee origin text -->
+  <text x="400" y="320" font-family="Georgia, serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.9" font-style="italic">Ethiopia Yirgacheffe</text>
+  <text x="400" y="342" font-family="Arial, sans-serif" font-size="8.5" fill="#ffffff" text-anchor="middle" letter-spacing="2" opacity="0.55">NATURAL PROCESS</text>
+
+  <!-- Tasting notes block -->
+  <line x1="340" y1="362" x2="460" y2="362" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+  <text x="400" y="382" font-family="Arial, sans-serif" font-size="7.5" fill="#ffffff" text-anchor="middle" letter-spacing="1.5" opacity="0.5">TASTING NOTES</text>
+  <text x="400" y="400" font-family="Georgia, serif" font-size="10" fill="#ffffff" text-anchor="middle" opacity="0.7" font-style="italic">Blueberry · Jasmine · Dark Chocolate</text>
+
+  <!-- Weight badge -->
+  <rect x="356" y="420" width="88" height="22" rx="11" fill="none" stroke="#ffffff" stroke-width="0.75" opacity="0.35"/>
+  <text x="400" y="435" font-family="Arial, sans-serif" font-size="8" fill="#ffffff" text-anchor="middle" letter-spacing="2" opacity="0.6">250 g · LIGHT</text>
+</svg>

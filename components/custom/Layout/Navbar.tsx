@@ -26,6 +26,7 @@ interface NavItem {
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
+    { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     { labelKey: "blog", pathSuffix: "/blog" },
     { labelKey: "aboutUs", pathSuffix: "/about" },

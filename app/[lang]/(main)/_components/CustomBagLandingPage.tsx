@@ -7,9 +7,9 @@ import { useLocale } from "next-intl";
 import { useRef, useState, useEffect } from "react";
 
 import bagPng from "@/public/assets/bag.png";
-import bagShadowPng from "@/public/assets/bag-shadow.png";
-import mockupBlank from "@/public/bags/mock-up-blank.jpg";
-import mockupLabel from "@/public/bags/mock-up-label.jpg";
+import bagBloom from "@/public/bags/bag-bloom.svg";
+import bagNoir from "@/public/bags/bag-noir.svg";
+import bagTerra from "@/public/bags/bag-terra.svg";
 
 import styles from "./customBagLanding.module.scss";
 
@@ -46,12 +46,10 @@ const PERKS = [
   "Ready in as little as 1 week",
 ];
 
-// Slider images - swap these out once real examples are provided
 const SLIDES = [
-  { src: mockupLabel, alt: "Custom branded coffee bag example" },
-  { src: mockupBlank, alt: "Blank coffee bag ready for your design" },
-  { src: bagPng, alt: "EZPZ custom bag front view" },
-  { src: bagShadowPng, alt: "Coffee bag product view" },
+  { src: bagNoir, alt: "Noir — minimalist black coffee bag design" },
+  { src: bagTerra, alt: "Terra — earthy terracotta coffee bag design" },
+  { src: bagBloom, alt: "Bloom — botanical sage green coffee bag design" },
 ];
 
 const Slider = () => {

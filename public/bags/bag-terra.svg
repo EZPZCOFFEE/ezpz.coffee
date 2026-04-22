@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#f5f5f3"/>
+
+  <!-- Bag shadow -->
+  <ellipse cx="400" cy="555" rx="165" ry="22" fill="rgba(0,0,0,0.10)"/>
+
+  <!-- Bag body -->
+  <rect x="240" y="72" width="320" height="468" rx="8" fill="#c4622d"/>
+
+  <!-- Top seal fold -->
+  <rect x="248" y="72" width="304" height="28" rx="4" fill="#b3581f"/>
+  <line x1="248" y1="86" x2="552" y2="86" stroke="#a34e1a" stroke-width="1"/>
+  <rect x="368" y="72" width="4" height="14" rx="1" fill="#9a4817"/>
+  <rect x="428" y="72" width="4" height="14" rx="1" fill="#9a4817"/>
+
+  <!-- Bottom gusset -->
+  <rect x="248" y="508" width="304" height="32" rx="4" fill="#b3581f"/>
+  <line x1="248" y1="518" x2="552" y2="518" stroke="#a34e1a" stroke-width="1"/>
+
+  <!-- Side seams -->
+  <rect x="240" y="100" width="14" height="408" fill="#a34e1a"/>
+  <rect x="546" y="100" width="14" height="408" fill="#a34e1a"/>
+
+  <!-- Label panel - kraft paper style -->
+  <rect x="268" y="138" width="264" height="320" rx="3" fill="#f2e8d9"/>
+
+  <!-- Decorative border inside label -->
+  <rect x="276" y="146" width="248" height="304" rx="2" fill="none" stroke="#c4622d" stroke-width="1.5"/>
+  <rect x="282" y="152" width="236" height="292" rx="1" fill="none" stroke="#c4622d" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Brand name -->
+  <text x="400" y="218" font-family="Georgia, serif" font-size="40" font-weight="700" fill="#2c1a0e" text-anchor="middle" letter-spacing="6">TERRA</text>
+
+  <!-- Stamp circle decoration -->
+  <circle cx="400" cy="260" r="28" fill="none" stroke="#c4622d" stroke-width="1.5"/>
+  <circle cx="400" cy="260" r="22" fill="none" stroke="#c4622d" stroke-width="0.75"/>
+  <!-- Coffee bean inside stamp -->
+  <ellipse cx="400" cy="260" rx="10" ry="14" fill="none" stroke="#c4622d" stroke-width="1.5"/>
+  <line x1="400" y1="246" x2="400" y2="274" stroke="#c4622d" stroke-width="1" opacity="0.6"/>
+
+  <!-- Subtitle -->
+  <text x="400" y="308" font-family="Arial, sans-serif" font-size="7.5" fill="#2c1a0e" text-anchor="middle" letter-spacing="3.5" opacity="0.7">SINGLE ORIGIN</text>
+
+  <!-- Divider -->
+  <line x1="320" y1="318" x2="480" y2="318" stroke="#c4622d" stroke-width="0.75" opacity="0.5"/>
+
+  <!-- Origin -->
+  <text x="400" y="340" font-family="Georgia, serif" font-size="13" fill="#2c1a0e" text-anchor="middle" font-style="italic">Colombia Huila</text>
+  <text x="400" y="358" font-family="Arial, sans-serif" font-size="7.5" fill="#2c1a0e" text-anchor="middle" letter-spacing="2" opacity="0.55">WASHED · MEDIUM ROAST</text>
+
+  <!-- Tasting notes -->
+  <text x="400" y="390" font-family="Georgia, serif" font-size="9.5" fill="#2c1a0e" text-anchor="middle" font-style="italic" opacity="0.7">Caramel · Red Apple · Brown Sugar</text>
+
+  <!-- Weight -->
+  <text x="400" y="426" font-family="Arial, sans-serif" font-size="8" fill="#2c1a0e" text-anchor="middle" letter-spacing="2" opacity="0.55">NET 250 g</text>
+</svg>

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#f5f5f3"/>
+
+  <!-- Bag shadow -->
+  <ellipse cx="400" cy="555" rx="165" ry="22" fill="rgba(0,0,0,0.10)"/>
+
+  <!-- Bag body -->
+  <rect x="240" y="72" width="320" height="468" rx="8" fill="#e8ede8"/>
+
+  <!-- Subtle texture overlay -->
+  <rect x="240" y="72" width="320" height="468" rx="8" fill="url(#bggrad)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="bggrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c8d8c8"/>
+      <stop offset="100%" stop-color="#e8ede8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top seal fold -->
+  <rect x="248" y="72" width="304" height="28" rx="4" fill="#d4ddd4"/>
+  <line x1="248" y1="86" x2="552" y2="86" stroke="#c0cec0" stroke-width="1"/>
+  <rect x="368" y="72" width="4" height="14" rx="1" fill="#b8c8b8"/>
+  <rect x="428" y="72" width="4" height="14" rx="1" fill="#b8c8b8"/>
+
+  <!-- Bottom gusset -->
+  <rect x="248" y="508" width="304" height="32" rx="4" fill="#d4ddd4"/>
+  <line x1="248" y1="518" x2="552" y2="518" stroke="#c0cec0" stroke-width="1"/>
+
+  <!-- Side seams -->
+  <rect x="240" y="100" width="14" height="408" fill="#cad5ca"/>
+  <rect x="546" y="100" width="14" height="408" fill="#cad5ca"/>
+
+  <!-- Label panel - white -->
+  <rect x="268" y="138" width="264" height="320" rx="3" fill="#ffffff" opacity="0.88"/>
+
+  <!-- Decorative botanical line art -->
+  <!-- Left stem -->
+  <path d="M310 290 Q308 260 316 230" stroke="#4a6741" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M316 230 Q322 210 310 195" stroke="#4a6741" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <!-- Left leaves -->
+  <path d="M316 250 Q298 242 296 228" stroke="#4a6741" stroke-width="1" fill="#7a9e75" opacity="0.35"/>
+  <path d="M312 268 Q294 264 292 252" stroke="#4a6741" stroke-width="1" fill="#7a9e75" opacity="0.35"/>
+
+  <!-- Right stem -->
+  <path d="M490 290 Q492 260 484 230" stroke="#4a6741" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M484 230 Q478 210 490 195" stroke="#4a6741" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <!-- Right leaves -->
+  <path d="M484 250 Q502 242 504 228" stroke="#4a6741" stroke-width="1" fill="#7a9e75" opacity="0.35"/>
+  <path d="M488 268 Q506 264 508 252" stroke="#4a6741" stroke-width="1" fill="#7a9e75" opacity="0.35"/>
+
+  <!-- Small flower motifs -->
+  <circle cx="310" cy="192" r="5" fill="#d4b896" opacity="0.7"/>
+  <circle cx="490" cy="192" r="5" fill="#d4b896" opacity="0.7"/>
+
+  <!-- Brand name -->
+  <text x="400" y="230" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#2d3d2d" text-anchor="middle" letter-spacing="4">BLOOM</text>
+
+  <!-- Thin underline -->
+  <line x1="330" y1="242" x2="470" y2="242" stroke="#4a6741" stroke-width="0.75" opacity="0.4"/>
+
+  <!-- Subtitle -->
+  <text x="400" y="262" font-family="Arial, sans-serif" font-size="7.5" fill="#4a6741" text-anchor="middle" letter-spacing="3.5" opacity="0.8">ORGANIC · SPECIALTY</text>
+
+  <!-- Origin -->
+  <text x="400" y="308" font-family="Georgia, serif" font-size="13" fill="#2d3d2d" text-anchor="middle" font-style="italic">Guatemala Antigua</text>
+  <text x="400" y="328" font-family="Arial, sans-serif" font-size="7.5" fill="#2d3d2d" text-anchor="middle" letter-spacing="2" opacity="0.55">HONEY PROCESS · LIGHT-MEDIUM</text>
+
+  <!-- Divider dots -->
+  <circle cx="385" cy="348" r="1.5" fill="#4a6741" opacity="0.35"/>
+  <circle cx="400" cy="348" r="1.5" fill="#4a6741" opacity="0.35"/>
+  <circle cx="415" cy="348" r="1.5" fill="#4a6741" opacity="0.35"/>
+
+  <!-- Tasting notes -->
+  <text x="400" y="372" font-family="Georgia, serif" font-size="9.5" fill="#2d3d2d" text-anchor="middle" font-style="italic" opacity="0.7">Peach · Hibiscus · Honey</text>
+
+  <!-- Weight -->
+  <rect x="356" y="408" width="88" height="20" rx="10" fill="none" stroke="#4a6741" stroke-width="0.75" opacity="0.4"/>
+  <text x="400" y="422" font-family="Arial, sans-serif" font-size="7.5" fill="#2d3d2d" text-anchor="middle" letter-spacing="2" opacity="0.6">250 g · LIGHT</text>
+</svg>
