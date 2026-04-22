@@ -11,6 +11,7 @@ import { locales } from "@/i18n/types";
 
 import NewsletterPopup from "@/components/custom/NewsletterPopup";
 import AnnouncementBanner from "./AnnouncementBanner";
+import CookieConsent from "./CookieConsent";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import styles from "./styles.module.scss";
@@ -40,6 +41,7 @@ const Layout = ({ children }: PropsWithChildren) => {
           <NewsletterSignup />
           <NewsletterPopup />
           <Footer />
+          <CookieConsent />
         </div>
       </CartProvider>
     </WhiteeeShopifyProvider>
