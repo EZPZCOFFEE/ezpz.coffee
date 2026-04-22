@@ -99,6 +99,17 @@ const WhiteLabelSolutionsPage = () => {
         </motion.div>
       </section>
 
+      <div className={styles.wlUrgency}>
+        <div className={styles.wlUrgencyInner}>
+          <p className={styles.wlUrgencyText}>
+            ⚡ Currently accepting new white label partners. Limited onboarding spots available, contact us to reserve yours.
+          </p>
+          <Link href={`/${locale}/contact?subject=White Label Inquiry`} className={styles.wlUrgencyBtn}>
+            Reserve your spot
+          </Link>
+        </div>
+      </div>
+
       <section className={styles.wlForSection}>
         <div className={styles.wlForInner}>
           <span className={styles.wlForEyebrow}>Who is this for?</span>
