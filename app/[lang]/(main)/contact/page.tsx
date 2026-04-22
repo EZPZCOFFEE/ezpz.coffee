@@ -118,22 +118,6 @@ const ContactPage = async () => {
         </div>
       </section>
 
-      {/* ── Map ─────────────────────────────────────────────────── */}
-      <section className={styles.mapSection}>
-        <div className={styles.mapLabel}>
-          <MapPin size={16} weight="bold" className={styles.mapLabelIcon} />
-          3780 Rue Saint-Patrick, Montreal, QC
-        </div>
-        <div className={styles.mapEmbedWrap}>
-          <iframe
-            className={styles.mapEmbed}
-            src="https://maps.google.com/maps?q=3780+Rue+Saint-Patrick,+Montreal,+QC&output=embed&z=15"
-            title="EZPZ Coffee location"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </section>
     </div>
   );
 };
