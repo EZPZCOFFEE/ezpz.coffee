@@ -6,12 +6,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Custom Coffee Brand for Creators & Influencers | EZPZ Coffee",
     description:
-      "Launch your own coffee brand and turn your audience into daily customers. Custom blends, stunning packaging, direct-to-fan fulfillment. Your name on every bag.",
+      "Launch your own coffee brand and turn your audience into daily customers. Custom blends, stunning packaging, direct to fan fulfillment. Your name on every bag.",
     alternates: { canonical: "/white-label/influencers" },
     openGraph: {
       title: "Custom Coffee Brand for Creators & Influencers | EZPZ Coffee",
       description:
-        "Launch your own coffee brand. Custom blends, stunning packaging, direct-to-fan fulfillment. Turn your daily content into a daily product your audience buys.",
+        "Launch your own coffee brand. Custom blends, stunning packaging, direct to fan fulfillment. Turn your daily content into a daily product your audience buys.",
       type: "website",
       url: "https://www.ezpz.coffee/en/white-label/influencers",
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Brand for Creators" }],
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Custom Coffee Brand for Creators & Influencers | EZPZ Coffee",
       description:
-        "Launch your own coffee brand. Custom blends, stunning packaging, direct-to-fan fulfillment.",
+        "Launch your own coffee brand. Custom blends, stunning packaging, direct to fan fulfillment.",
       images: ["/assets/banner-01.jpg"],
     },
   };
@@ -116,7 +116,7 @@ const data: VerticalPageData = {
     {
       tag: "Premium tier",
       title: "Branded Nespresso Capsules",
-      body: "A premium product format for a premium audience. Branded capsule boxes positioned as the high-tier SKU in your coffee line. Great for drops, gifting, and subscribers who want the full experience.",
+      body: "A premium product format for a premium audience. Branded capsule boxes positioned as the high tier SKU in your coffee line. Great for drops, gifting, and subscribers who want the full experience.",
       bullets: [
         "Nespresso Original Line compatible",
         "Custom packaging — boxes of 10 with your full branding",
@@ -132,29 +132,29 @@ const data: VerticalPageData = {
       theme: "light",
     },
     {
-      tag: "Content-ready",
-      title: "Ready-to-Drink Branded Cans",
-      body: "Cold coffee in a can that your audience can carry, photograph, and post. Perfect for events, meet-and-greets, pop-ups, and merch table moments. A format that creates content opportunities beyond the morning routine.",
+      tag: "Content ready",
+      title: "Ready to Drink Branded Cans",
+      body: "Cold coffee in a can that your audience can carry, photograph, and post. Perfect for events, meet and greets, pop ups, and merch table moments. A format that creates content opportunities beyond the morning routine.",
       bullets: [
         "Cold brew and iced latte formats",
         "Full custom label — designed for maximum visual impact",
-        "Perfect for events, pop-ups, and limited drops",
+        "Perfect for events, pop ups, and limited drops",
         "Carry the brand to places a bag never goes",
         "Available by the case for event fulfillment",
       ],
       ctaText: "Ask about RTD cans",
       contactSubject: "Custom RTD Cans — Creator Brand",
       imageKey: "can",
-      imageAlt: "Branded ready-to-drink coffee cans for influencer brand",
+      imageAlt: "Branded ready to drink coffee cans for influencer brand",
       imageFirst: true,
       theme: "dark",
     },
   ],
   stats: [
     { value: "60%+", label: "Average repeat purchase rate on coffee products" },
-    { value: "48h", label: "Fastest first-drop sellout by a creator client" },
-    { value: "3–4 wks", label: "From brief to launch-ready product" },
-    { value: "100%", label: "Canadian-roasted specialty coffee" },
+    { value: "48h", label: "Fastest first drop sellout by a creator client" },
+    { value: "3–4 wks", label: "From brief to launch ready product" },
+    { value: "100%", label: "Canadian roasted specialty coffee" },
   ],
   howItWorks: [
     {
@@ -165,7 +165,7 @@ const data: VerticalPageData = {
     {
       n: "02",
       title: "Blend selection",
-      body: "Work with our roasters to choose or develop a signature profile. Bold, smooth, single-origin, or a custom blend — it's your call.",
+      body: "Work with our roasters to choose or develop a signature profile. Bold, smooth, single origin, or a custom blend — it's your call.",
     },
     {
       n: "03",

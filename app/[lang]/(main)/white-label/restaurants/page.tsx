@@ -101,8 +101,8 @@ const data: VerticalPageData = {
       body: "Your signature blend in a beautifully branded bag. Available in 250g and 340g formats, whole bean or ground. Designed to sit on your front counter and sell itself.",
       bullets: [
         "Full custom label design included",
-        "Choice of single-origin or custom house blend",
-        "Whole bean or pre-ground to your specification",
+        "Choice of single origin or custom house blend",
+        "Whole bean or preground to your specification",
         "Kraft or matte finish packaging options",
         "No minimum order quantity",
       ],
@@ -115,11 +115,11 @@ const data: VerticalPageData = {
     },
     {
       tag: "Premium service",
-      title: "Nespresso-Compatible Capsules",
+      title: "Nespresso Compatible Capsules",
       body: "Elevate your table coffee service with capsules that carry your brand. Perfect for upscale restaurants, private dining rooms, or any venue with Nespresso machines.",
       bullets: [
         "Compatible with all Nespresso Original Line machines",
-        "Custom-blended and freshness-sealed",
+        "Custom blended and freshness sealed",
         "Individually branded outer packaging",
         "Great for table service, bar menus, or retail upsell",
         "Available in multiple intensity levels",
@@ -133,8 +133,8 @@ const data: VerticalPageData = {
     },
     {
       tag: "New format",
-      title: "Ready-to-Drink Branded Cans",
-      body: "Cold coffee in a branded can. Perfect for bar service, summer terraces, event catering, or as a retail add-on at the counter. A conversation starter in every format.",
+      title: "Ready to Drink Branded Cans",
+      body: "Cold coffee in a branded can. Perfect for bar service, summer terraces, event catering, or as a retail add on at the counter. A conversation starter in every format.",
       bullets: [
         "Cold brew and iced latte formats available",
         "Full custom label on every can",
@@ -145,7 +145,7 @@ const data: VerticalPageData = {
       ctaText: "Ask about cans",
       contactSubject: "White Label RTD Cans — Restaurant",
       imageKey: "can",
-      imageAlt: "Branded ready-to-drink coffee cans",
+      imageAlt: "Branded ready to drink coffee cans",
       imageFirst: true,
       theme: "dark",
     },
@@ -154,7 +154,7 @@ const data: VerticalPageData = {
     { value: "3–4 wks", label: "Average time from brief to first delivery" },
     { value: "0", label: "Minimum order quantity on coffee bags" },
     { value: "60%+", label: "Repeat order rate across restaurant clients" },
-    { value: "100%", label: "Canadian-roasted specialty coffee" },
+    { value: "100%", label: "Canadian roasted specialty coffee" },
   ],
   howItWorks: [
     {
@@ -183,7 +183,7 @@ const data: VerticalPageData = {
       quote:
         "We launched our house blend six months ago. It's now on every table and guests constantly ask to buy a bag to take home. It's become one of our best retail items.",
       name: "Antoine D.",
-      role: "Chef-Owner, Montreal",
+      role: "Chef and Owner, Montreal",
     },
     {
       quote:
@@ -205,7 +205,7 @@ const data: VerticalPageData = {
     },
     {
       q: "Can I choose my own blend or roast profile?",
-      a: "Yes. You can select from our existing single-origin and blend profiles, or work with our team to develop a completely custom house blend tailored to your guests' palate and your menu.",
+      a: "Yes. You can select from our existing single origin and blend profiles, or work with our team to develop a completely custom house blend tailored to your guests' palate and your menu.",
     },
     {
       q: "How long does it take from first contact to first delivery?",
@@ -217,7 +217,7 @@ const data: VerticalPageData = {
     },
     {
       q: "Do you handle the design for our packaging?",
-      a: "Yes. Packaging design is included at no extra cost. Our design team will work with your existing branding guidelines — or help you develop something new — to create packaging that looks professional and on-brand.",
+      a: "Yes. Packaging design is included at no extra cost. Our design team will work with your existing branding guidelines — or help you develop something new — to create packaging that looks professional and on brand.",
     },
   ],
   cta: {

@@ -6,12 +6,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "White Label Coffee for Hotels & Hospitality | EZPZ Coffee",
     description:
-      "Custom branded coffee for hotels, resorts, and hospitality venues. In-room capsules, restaurant bags, and minibar cans — all under your brand. No minimums.",
+      "Custom branded coffee for hotels, resorts, and hospitality venues. In room capsules, restaurant bags, and minibar cans — all under your brand. No minimums.",
     alternates: { canonical: "/white-label/hotels" },
     openGraph: {
       title: "White Label Coffee for Hotels & Hospitality | EZPZ Coffee",
       description:
-        "Custom branded coffee for hotels, resorts, and hospitality venues. In-room capsules, restaurant bags, and minibar cans — all under your brand.",
+        "Custom branded coffee for hotels, resorts, and hospitality venues. In room capsules, restaurant bags, and minibar cans — all under your brand.",
       type: "website",
       url: "https://www.ezpz.coffee/en/white-label/hotels",
       images: [{ url: "/assets/banner-02.jpg", width: 1200, height: 630, alt: "White Label Coffee for Hotels" }],
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "White Label Coffee for Hotels & Hospitality | EZPZ Coffee",
       description:
-        "Custom branded coffee for hotels, resorts, and hospitality venues. In-room capsules, restaurant bags, and minibar cans.",
+        "Custom branded coffee for hotels, resorts, and hospitality venues. In room capsules, restaurant bags, and minibar cans.",
       images: ["/assets/banner-02.jpg"],
     },
   };
@@ -42,7 +42,7 @@ const data: VerticalPageData = {
     items: [
       {
         icon: "🏨",
-        text: "Your in-room coffee station features a national brand with no connection to your property's identity.",
+        text: "Your in room coffee station features a national brand with no connection to your property's identity.",
       },
       {
         icon: "⭐",
@@ -50,7 +50,7 @@ const data: VerticalPageData = {
       },
       {
         icon: "🎁",
-        text: "Your gift shop sells third-party products when it could be selling your own branded coffee for premium margins.",
+        text: "Your gift shop sells third party products when it could be selling your own branded coffee for premium margins.",
       },
       {
         icon: "🍽️",
@@ -64,8 +64,8 @@ const data: VerticalPageData = {
     items: [
       {
         icon: "🛏️",
-        title: "In-room capsules",
-        body: "Nespresso-compatible capsules with your hotel's branding. A small detail that guests notice and mention in reviews.",
+        title: "In room capsules",
+        body: "Nespresso compatible capsules with your hotel's branding. A small detail that guests notice and mention in reviews.",
       },
       {
         icon: "🍳",
@@ -80,12 +80,12 @@ const data: VerticalPageData = {
       {
         icon: "🥤",
         title: "Minibar & room service",
-        body: "Ready-to-drink branded cans for minibar placement or room service delivery — a premium perceived product.",
+        body: "Ready to drink branded cans for minibar placement or room service delivery — a premium perceived product.",
       },
       {
         icon: "🔄",
         title: "Ongoing replenishment",
-        body: "We coordinate supply on your schedule. Never run out of in-room stock or branded product at peak season.",
+        body: "We coordinate supply on your schedule. Never run out of in room stock or branded product at peak season.",
       },
       {
         icon: "📊",
@@ -96,18 +96,18 @@ const data: VerticalPageData = {
   },
   products: [
     {
-      tag: "In-room essential",
+      tag: "In room essential",
       title: "Branded Nespresso Capsules",
-      body: "The most commented-on in-room detail. Custom-blended capsules in packaging that carries your hotel's logo, colour palette, and brand voice. Compatible with every Nespresso Original Line machine.",
+      body: "The most most noticed in room detail. Custom blended capsules in packaging that carries your hotel's logo, colour palette, and brand voice. Compatible with every Nespresso Original Line machine.",
       bullets: [
         "Custom blend development available — light to intense profiles",
         "Individually packaged with your hotel's branding",
         "Compatible with all Nespresso Original Line machines",
-        "Available in single-serve boxes for retail or gift shop sale",
-        "Fast reorder turnaround to keep rooms stocked year-round",
+        "Available in single serve boxes for retail or gift shop sale",
+        "Fast reorder turnaround to keep rooms stocked year round",
       ],
-      ctaText: "Ask about in-room capsules",
-      contactSubject: "White Label Capsules — Hotel In-Room",
+      ctaText: "Ask about in room capsules",
+      contactSubject: "White Label Capsules — Hotel In Room",
       imageKey: "capsule",
       imageAlt: "Branded hotel coffee capsules",
       imageFirst: true,
@@ -121,7 +121,7 @@ const data: VerticalPageData = {
         "250g and 340g formats, whole bean or ground",
         "Custom label design matched to your property's identity",
         "Available as retail bags at reception or gift shop",
-        "Single-origin or custom house blend options",
+        "Single origin or custom house blend options",
         "No minimum order — restock exactly what you need",
       ],
       ctaText: "Get a quote on coffee bags",
@@ -133,7 +133,7 @@ const data: VerticalPageData = {
     },
     {
       tag: "Minibar & events",
-      title: "Ready-to-Drink Branded Cans",
+      title: "Ready to Drink Branded Cans",
       body: "Cold coffee in a branded can for minibar placement, room service, event catering, and poolside service. A product that photographs well, tastes exceptional, and carries your brand everywhere it goes.",
       bullets: [
         "Cold brew and iced latte formats",
@@ -145,16 +145,16 @@ const data: VerticalPageData = {
       ctaText: "Ask about RTD cans",
       contactSubject: "White Label RTD Cans — Hotel",
       imageKey: "can",
-      imageAlt: "Branded ready-to-drink coffee cans for hotels",
+      imageAlt: "Branded ready to drink coffee cans for hotels",
       imageFirst: true,
       theme: "dark",
     },
   ],
   stats: [
-    { value: "3–4 wks", label: "From brief to first in-room delivery" },
+    { value: "3–4 wks", label: "From brief to first in room delivery" },
     { value: "3", label: "Formats: bags, capsules, and RTD cans" },
-    { value: "100%", label: "Canadian-roasted specialty coffee" },
-    { value: "65%+", label: "Hotel clients who add retail at check-in" },
+    { value: "100%", label: "Canadian roasted specialty coffee" },
+    { value: "65%+", label: "Hotel clients who add retail at check in" },
   ],
   howItWorks: [
     {
@@ -205,11 +205,11 @@ const data: VerticalPageData = {
     },
     {
       q: "What Nespresso machines are the capsules compatible with?",
-      a: "Our capsules are compatible with all Nespresso Original Line machines, which are the standard format in most hotel in-room setups. If you use a different machine format, let us know and we'll confirm compatibility.",
+      a: "Our capsules are compatible with all Nespresso Original Line machines, which are the standard format in most hotel in room setups. If you use a different machine format, let us know and we'll confirm compatibility.",
     },
     {
-      q: "Can we have different blends for the restaurant versus in-room?",
-      a: "Absolutely. A lighter, brighter blend is often preferred for in-room morning use, while a bolder espresso-forward blend suits restaurant and bar service. We'll help you define the right profiles.",
+      q: "Can we have different blends for the restaurant versus in room?",
+      a: "Absolutely. A lighter, brighter blend is often preferred for in room morning use, while a bolder espresso-forward blend suits restaurant and bar service. We'll help you define the right profiles.",
     },
     {
       q: "Do you offer volume pricing for large properties?",
@@ -223,7 +223,7 @@ const data: VerticalPageData = {
   cta: {
     title: "Ready to make coffee part of your guest experience?",
     subtitle:
-      "From in-room capsules to gift shop bags, EZPZ gives you a complete branded coffee program with one point of contact and zero production headaches.",
+      "From in room capsules to gift shop bags, EZPZ gives you a complete branded coffee program with one point of contact and zero production headaches.",
     ctaText: "Talk to our team",
     contactSubject: "White Label Coffee — Hotels & Hospitality",
   },

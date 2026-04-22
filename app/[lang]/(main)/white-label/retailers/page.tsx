@@ -6,12 +6,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Private Label Coffee for Retailers & Boutiques | EZPZ Coffee",
     description:
-      "Add a high-margin private label coffee to your shelves with zero production headaches. Custom blends, branded packaging, no minimums. Exclusive to your store.",
+      "Add a high margin private label coffee to your shelves with zero production headaches. Custom blends, branded packaging, no minimums. Exclusive to your store.",
     alternates: { canonical: "/white-label/retailers" },
     openGraph: {
       title: "Private Label Coffee for Retailers & Boutiques | EZPZ Coffee",
       description:
-        "Add a high-margin private label coffee to your shelves. Custom blends, branded packaging, no minimum orders. Exclusive to your store.",
+        "Add a high margin private label coffee to your shelves. Custom blends, branded packaging, no minimum orders. Exclusive to your store.",
       type: "website",
       url: "https://www.ezpz.coffee/en/white-label/retailers",
       images: [{ url: "/assets/banner-base.jpg", width: 1200, height: 630, alt: "Private Label Coffee for Retailers" }],
@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Private Label Coffee for Retailers & Boutiques | EZPZ Coffee",
       description:
-        "Add a high-margin private label coffee to your shelves. Custom blends, branded packaging, no minimum orders.",
+        "Add a high margin private label coffee to your shelves. Custom blends, branded packaging, no minimum orders.",
       images: ["/assets/banner-base.jpg"],
     },
   };
@@ -46,7 +46,7 @@ const data: VerticalPageData = {
       },
       {
         icon: "📉",
-        text: "National brand margins are thin, fixed, and non-negotiable. You're doing the work; they're capturing the value.",
+        text: "National brand margins are thin, fixed, and not negotiable. You're doing the work; they're capturing the value.",
       },
       {
         icon: "🔄",
@@ -65,7 +65,7 @@ const data: VerticalPageData = {
       {
         icon: "🔒",
         title: "Exclusive to your store",
-        body: "Your private label blend is yours alone. Customers can only get it from you — online, in-store, or through subscription.",
+        body: "Your private label blend is yours alone. Customers can only get it from you — online, in store, or through subscription.",
       },
       {
         icon: "💰",
@@ -80,11 +80,11 @@ const data: VerticalPageData = {
       {
         icon: "📦",
         title: "No inventory risk",
-        body: "No minimum orders mean you can start small, test sell-through, and scale confidently without overstocking.",
+        body: "No minimum orders mean you can start small, test sell through, and scale confidently without overstocking.",
       },
       {
         icon: "🔁",
-        title: "Built-in repeat purchases",
+        title: "Built in repeat purchases",
         body: "Coffee is a habit. Customers who love your blend come back to you — not a national brand's website — to reorder.",
       },
       {
@@ -102,7 +102,7 @@ const data: VerticalPageData = {
       bullets: [
         "250g and 340g formats, whole bean or ground",
         "Full label design included — matched to your brand",
-        "Single-origin or custom blended options",
+        "Single origin or custom blended options",
         "Kraft, matte, or gloss finish packaging available",
         "No minimum — test before you scale",
       ],
@@ -133,19 +133,19 @@ const data: VerticalPageData = {
     },
     {
       tag: "Impulse buy",
-      title: "Ready-to-Drink Branded Cans",
+      title: "Ready to Drink Branded Cans",
       body: "Cold coffee in a can next to your checkout or in a display fridge. Premium perceived value, impulse purchase price point, and your brand on every can customers carry out the door.",
       bullets: [
         "Cold brew and iced latte formats",
         "Full custom label design",
         "Perfect at checkout, fridge display, or seasonal feature",
-        "Great for pop-up events and markets",
+        "Great for pop up events and markets",
         "Available by the case for easy restocking",
       ],
       ctaText: "Ask about cans",
       contactSubject: "Private Label RTD Cans — Retailer",
       imageKey: "can",
-      imageAlt: "Branded ready-to-drink coffee cans for retail",
+      imageAlt: "Branded ready to drink coffee cans for retail",
       imageFirst: true,
       theme: "dark",
     },
@@ -175,7 +175,7 @@ const data: VerticalPageData = {
     {
       n: "04",
       title: "Delivered and reordered on your schedule",
-      body: "First order ships in 3 to 4 weeks. Ongoing restocking ships in 5 to 7 business days — timed to your sell-through rate.",
+      body: "First order ships in 3 to 4 weeks. Ongoing restocking ships in 5 to 7 business days — timed to your sell through rate.",
     },
   ],
   testimonials: [
@@ -201,7 +201,7 @@ const data: VerticalPageData = {
   faq: [
     {
       q: "What's the shelf life of the coffee?",
-      a: "Our roasted coffee has a shelf life of 9 to 12 months when stored properly and sealed. We include a best-before date on every bag and recommend a first-in, first-out rotation policy for retail display.",
+      a: "Our roasted coffee has a shelf life of 9 to 12 months when stored properly and sealed. We include a best before date on every bag and recommend a first in, first out rotation policy for retail display.",
     },
     {
       q: "Is my product exclusive to my store?",
@@ -209,21 +209,21 @@ const data: VerticalPageData = {
     },
     {
       q: "Can I offer more than one blend or SKU?",
-      a: "Absolutely. Many retailers carry two to three SKUs — for example, a light roast, a medium house blend, and a single-origin. We can develop a full line strategy with you from the start.",
+      a: "Absolutely. Many retailers carry two to three SKUs — for example, a light roast, a medium house blend, and a single origin. We can develop a full line strategy with you from the start.",
     },
     {
       q: "Do you handle restocking and replenishment?",
-      a: "Yes. We can set up a recurring replenishment schedule based on your sell-through rate, or you can place orders as needed. Reorders ship within 5 to 7 business days.",
+      a: "Yes. We can set up a recurring replenishment schedule based on your sell through rate, or you can place orders as needed. Reorders ship within 5 to 7 business days.",
     },
     {
-      q: "Can I sell online as well as in-store?",
-      a: "Yes — many of our retail clients sell their private label coffee both in-store and through their own e-commerce store. We can discuss fulfillment options depending on your volume.",
+      q: "Can I sell online as well as in store?",
+      a: "Yes — many of our retail clients sell their private label coffee both in store and through their own ecommerce store. We can discuss fulfillment options depending on your volume.",
     },
   ],
   cta: {
     title: "Ready to put your brand on the shelf?",
     subtitle:
-      "Private label coffee is one of the highest-margin, lowest-risk additions you can make to your retail lineup. Let's build yours.",
+      "Private label coffee is one of the highest margin, lowest risk additions you can make to your retail lineup. Let's build yours.",
     ctaText: "Get a free quote",
     contactSubject: "Private Label Coffee — Retailers & Boutiques",
   },
