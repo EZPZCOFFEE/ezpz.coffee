@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "mothers-day-coffee-gift-ideas-canada",
+    category: "Gift Ideas",
+    categoryColor: "#c43e14",
+    title: "Why a Custom Coffee Bag Is the Best Mother's Day Gift You Can Give",
+    excerpt:
+      "Skip the flowers that wilt and the chocolates that disappear. Give her something she will use every morning and smile every time she does.",
+    date: "April 2026",
+    readTime: "5 min read",
+    color: "#2a0d0a",
+    initials: "GI",
+    image: "/assets/blog/mothers-day-coffee.svg",
+    published: true,
+  },
+  {
     slug: "custom-coffee-bags-corporate-gifts-canada",
     category: "Business Tips",
     categoryColor: "#e8521a",
