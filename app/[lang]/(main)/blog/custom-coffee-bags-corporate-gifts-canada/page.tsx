@@ -41,7 +41,7 @@ const Page = () => (
         </h1>
         <p className={styles.heroSubtitle}>
           Forget the generic gift baskets and branded pens. Here&apos;s why custom coffee bags are
-          the corporate gift your clients will actually remember — and talk about.
+          the corporate gift your clients will actually remember and talk about.
         </p>
         <div className={styles.heroMeta}>
           <span>April 22, 2026</span>
@@ -56,18 +56,18 @@ const Page = () => (
       <article className={styles.article}>
 
         <p className={styles.intro}>
-          Corporate gifting is a billion-dollar industry in Canada — and most of it is forgettable.
+          Corporate gifting is a billion-dollar industry in Canada, and most of it is forgettable.
           Branded mugs that end up in a drawer. Generic wine that gets re-gifted. Chocolate boxes that
           disappear in 10 minutes. The best corporate gifts are ones that tell a story, feel premium,
           and keep your brand in front of the recipient long after the moment of giving. Custom coffee
-          bags check every single one of those boxes. Here&apos;s why — and exactly how to do it right.
+          bags check every single one of those boxes. Here&apos;s why, and exactly how to do it right.
         </p>
 
         <h2 className={styles.h2}>Why Coffee Is the Perfect Corporate Gift</h2>
         <p className={styles.p}>
           Coffee is consumed by over 70% of Canadian adults every single day. It&apos;s not a seasonal
           product, it&apos;s not dietary-restricted for most people, and it&apos;s one of the few gifts
-          that gets used repeatedly — meaning your brand stays visible every single morning on
+          that gets used repeatedly, meaning your brand stays visible every single morning on
           someone&apos;s kitchen counter.
         </p>
         <p className={styles.p}>
@@ -86,11 +86,11 @@ const Page = () => (
           <li className={styles.li}>
             <strong>Quality of the coffee:</strong> This is non-negotiable. If the coffee tastes bad,
             it reflects on your brand. At EZPZ, we exclusively use specialty-grade beans scoring 80+
-            on the SCA cupping scale — so the coffee inside is as impressive as the packaging outside.
+            on the SCA cupping scale, so the coffee inside is as impressive as the packaging outside.
           </li>
           <li className={styles.li}>
             <strong>The design:</strong> Your bag should look like it belongs in a high-end café, not
-            a dollar store. Full custom design is included with every EZPZ order — your logo, your
+            a dollar store. Full custom design is included with every EZPZ order: your logo, your
             colors, your brand story on the bag.
           </li>
           <li className={styles.li}>
@@ -99,7 +99,7 @@ const Page = () => (
             makes it extraordinary.
           </li>
           <li className={styles.li}>
-            <strong>The story:</strong> Include a card that tells the origin story of the coffee —
+            <strong>The story:</strong> Include a card that tells the origin story of the coffee:
             where it was grown, who grew it, what it tastes like. People love knowing the story behind
             what they&apos;re consuming.
           </li>
@@ -131,7 +131,7 @@ const Page = () => (
         <p className={styles.p}>
           Instead of cheap branded swag that ends up in the trash, hand out custom coffee bags at your
           next trade show, conference, or corporate event. People will actually take them home and use
-          them — and your brand travels with them.
+          them, and your brand travels with them.
         </p>
 
         <h3 className={styles.h3}>5. Holiday Gift Boxes</h3>
@@ -143,7 +143,7 @@ const Page = () => (
 
         <h3 className={styles.h3}>6. Seasonal Limited Editions</h3>
         <p className={styles.p}>
-          Create a limited edition seasonal bag — a winter blend for the holidays, a light summer
+          Create a limited edition seasonal bag: a winter blend for the holidays, a light summer
           roast for Q3, a special harvest edition in the fall. Limited editions create urgency, feel
           exclusive, and give you a reason to reach out to clients multiple times per year.
         </p>
@@ -180,7 +180,7 @@ const Page = () => (
             <span className={styles.stepNum}>2</span>
             <p className={styles.stepBody}>
               <strong>Design your bag.</strong> Use our online design tool or share your brand assets
-              and we&apos;ll handle the design. Full customization included — your logo, colors, and
+              and we&apos;ll handle the design. Full customization included: your logo, colors, and
               any custom text or messaging.
             </p>
           </div>
@@ -235,8 +235,7 @@ const Page = () => (
 
         <h2 className={styles.h2}>The ROI of a Great Corporate Gift</h2>
         <p className={styles.p}>
-          A great corporate gift isn&apos;t a cost — it&apos;s an investment. Here&apos;s how to
-          think about the return:
+          A great corporate gift is not a cost. It&apos;s an investment. Here&apos;s how to think about the return:
         </p>
         <ul className={styles.ul}>
           <li className={styles.li}>
@@ -251,8 +250,7 @@ const Page = () => (
           </li>
           <li className={styles.li}>
             <strong>Brand visibility:</strong> Every morning your client makes a coffee from your
-            branded bag, your name is in front of them. That&apos;s daily brand exposure for weeks —
-            no ad budget required.
+            branded bag, your name is in front of them. That&apos;s daily brand exposure for weeks, no ad budget required.
           </li>
           <li className={styles.li}>
             <strong>Employee morale:</strong> Teams that feel recognized perform better. The cost of a
@@ -264,8 +262,7 @@ const Page = () => (
         <p className={styles.p}>
           Custom coffee bags are one of the most effective, most memorable, and most on-brand corporate
           gifts available to Canadian businesses right now. With no minimums, full design included, and
-          specialty coffee that actually tastes incredible — there&apos;s no reason to settle for
-          generic.
+          specialty coffee that actually tastes incredible. There&apos;s no reason to settle for generic.
         </p>
 
       </article>
