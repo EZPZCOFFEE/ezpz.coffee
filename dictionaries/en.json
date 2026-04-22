@@ -571,11 +571,13 @@
   },
   "newsletter": {
     "emailLabel": "Email address",
-    "emailPlaceholder": "Enter your email",
-    "submitting": "Subscribing...",
-    "subscribe": "Subscribe",
+    "emailPlaceholder": "Your email address",
+    "submitting": "Joining...",
+    "subscribe": "Join the list",
     "successMessage": "You're in! Check your inbox for your 15% discount code.",
-    "title": "Join our list and get <highlight>15% off</highlight> your first order, plus tips on building a coffee brand, new origin announcements, and exclusive offers."
+    "title": "Join <highlight>2,000+</highlight> coffee brand builders",
+    "subtext": "Get 15% off your first order plus our monthly newsletter with new coffee origins, brand building tips, exclusive offers, and behind-the-scenes from our Montreal roastery.",
+    "reassurance": "No spam. Unsubscribe anytime."
   },
   "passwordPage": {
     "adminLink": "Enter early access",

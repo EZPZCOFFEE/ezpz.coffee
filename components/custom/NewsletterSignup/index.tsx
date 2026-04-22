@@ -61,6 +61,7 @@ const NewsletterSignup = () => {
           {titleParts[1] && <span className={styles.highlight}>{titleParts[1]}</span>}
           {titleParts[2]}
         </h2>
+        <p className={styles.newsletterSubtext}>{t("subtext")}</p>
 
         {submitState.status === "success" ? (
           <div className={styles.successMessage} role="status" aria-live="polite">
@@ -102,6 +103,7 @@ const NewsletterSignup = () => {
             <Button type="submit" variant="primary" disabled={isSubmitting}>
               {isSubmitting ? t("submitting") : t("subscribe")}
             </Button>
+            <p className={styles.reassurance}>{t("reassurance")}</p>
           </form>
         )}
       </div>
