@@ -78,7 +78,6 @@ const WhiteLabelVerticalPage = ({ data }: Props) => {
       <section className={styles.hero}>
         <div className={styles.heroAngle} />
         <div className={styles.heroInner}>
-          <span className={styles.heroEyebrow}>{data.hero.eyebrow}</span>
           <h1 className={styles.heroTitle}>{data.hero.title}</h1>
           <p className={styles.heroSubtitle}>{data.hero.subtitle}</p>
           <Link
