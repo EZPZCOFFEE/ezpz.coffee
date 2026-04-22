@@ -28,6 +28,8 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   right: [
     { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
+    { labelKey: "portfolio", pathSuffix: "/portfolio" },
+    { labelKey: "pricing", pathSuffix: "/pricing" },
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
@@ -240,7 +242,13 @@ const Navbar = () => {
 
   const normalizedPath = pathname ? stripLocalePrefix(pathname) : "/";
   const isHeroLanding =
-    normalizedPath === "/" || normalizedPath === "/white-label" || normalizedPath.startsWith("/white-label/");
+    normalizedPath === "/" ||
+    normalizedPath === "/white-label" ||
+    (normalizedPath.startsWith("/white-label/") &&
+      !normalizedPath.startsWith("/white-label/restaurants") &&
+      !normalizedPath.startsWith("/white-label/hotels") &&
+      !normalizedPath.startsWith("/white-label/retailers") &&
+      !normalizedPath.startsWith("/white-label/influencers"));
 
   const leftNavItems = NAV_GROUPS.left;
   const rightNavItems = NAV_GROUPS.right;
