@@ -23,11 +23,17 @@ interface NavItem {
   hash?: string;
 }
 
+const showDevNav = process.env.NEXT_PUBLIC_SHOW_DEV_NAV === "true";
+
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
     { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
+    ...(showDevNav ? [
+      { labelKey: "portfolio", pathSuffix: "/portfolio" },
+      { labelKey: "pricing", pathSuffix: "/pricing" },
+    ] : []),
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
