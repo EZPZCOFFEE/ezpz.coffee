@@ -28,8 +28,8 @@ const showDevNav = process.env.NEXT_PUBLIC_SHOW_DEV_NAV === "true";
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
-    { labelKey: "ourCoffee", pathSuffix: "/coffee" },
     { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
+    { labelKey: "ourCoffee", pathSuffix: "/coffee" },
     { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     ...(showDevNav ? [
       { labelKey: "portfolio", pathSuffix: "/portfolio" },
