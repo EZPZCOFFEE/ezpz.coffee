@@ -178,6 +178,33 @@
   }
 }
 
+.heroOverlayBtnGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-state);
+
+  @media (max-width: 767px) {
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.heroSampleLink {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-white);
+    text-decoration-color: rgba(255, 255, 255, 0.8);
+  }
+}
+
 .heroPhotoImageCenter {
   object-position: center 65%;
 }
@@ -806,6 +833,66 @@
 }
 
 /* ── FAQ preview ───────────────────────────────────────────── */
+/* ── Free Sample ────────────────────────────────────────────── */
+
+.freeSample {
+  background: #fdf5f0;
+  padding: var(--spacing-cluster) var(--spacing-state);
+  border-top: 1px solid #f0d8cc;
+  border-bottom: 1px solid #f0d8cc;
+}
+
+.freeSampleInner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-country);
+  text-align: center;
+}
+
+.freeSampleTitle {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.freeSampleBody {
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  line-height: var(--line-height-relaxed);
+  color: #6b5a52;
+  margin: 0;
+  max-width: 520px;
+}
+
+.freeSampleBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85em 2.2em;
+  background: #c43e14;
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: #a33010;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .faqPreview {
   width: 100%;
   background: var(--color-white);

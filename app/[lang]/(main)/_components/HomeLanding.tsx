@@ -142,9 +142,12 @@ const HomeLanding = () => {
           <motion.p className={styles.heroOverlaySubtitle} {...fadeChild}>
             {t("hero.subtitle")}
           </motion.p>
-          <motion.div {...fadeChild}>
+          <motion.div {...fadeChild} className={styles.heroOverlayBtnGroup}>
             <Link href={designHref} className={styles.heroOverlayBtn}>
               {t("hero.designCta")}
+            </Link>
+            <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.heroSampleLink}>
+              Request a free sample
             </Link>
           </motion.div>
         </motion.div>
@@ -277,6 +280,22 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
+
+      <section className={styles.freeSample}>
+        <motion.div className={styles.freeSampleInner} {...staggerParent}>
+          <motion.h2 className={styles.freeSampleTitle} {...fadeChild}>
+            Not sure yet? Try before you commit.
+          </motion.h2>
+          <motion.p className={styles.freeSampleBody} {...fadeChild}>
+            We will send you a sample kit with our most popular coffee origins so you can taste the quality before placing your first order. No strings attached.
+          </motion.p>
+          <motion.div {...fadeChild}>
+            <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.freeSampleBtn}>
+              Request a free sample
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
 
 <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
