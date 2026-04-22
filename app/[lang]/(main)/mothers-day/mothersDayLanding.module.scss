@@ -8,7 +8,7 @@
 
 .hero {
   background: #fdf5f0;
-  padding: var(--spacing-cluster) var(--spacing-state) var(--spacing-galaxy);
+  padding: calc(var(--layout-navbar-height, 80px) + var(--spacing-cluster)) var(--spacing-state) var(--spacing-galaxy);
   text-align: center;
   border-bottom: 1px solid #f0d8cc;
 }

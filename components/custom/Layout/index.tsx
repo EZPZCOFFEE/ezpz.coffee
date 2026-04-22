@@ -31,6 +31,7 @@ const Layout = ({ children }: PropsWithChildren) => {
   const isHeroLanding =
     normalizedPath === "/" ||
     normalizedPath === "/white-label" ||
+    normalizedPath === "/mothers-day" ||
     (normalizedPath.startsWith("/white-label/") &&
       !normalizedPath.startsWith("/white-label/restaurants") &&
       !normalizedPath.startsWith("/white-label/hotels") &&

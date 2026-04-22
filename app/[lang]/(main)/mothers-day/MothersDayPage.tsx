@@ -225,7 +225,6 @@ const MothersDayPage = () => {
       {/* ── Hero ────────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <span className={styles.heroEyebrow}>Mother&apos;s Day Gift Idea</span>
           <h1 className={styles.heroTitle}>
             The most thoughtful gift you can give mom this year.
           </h1>
