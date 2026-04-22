@@ -1,22 +1,45 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { contact } from "@/lib/actions/contact";
 import styles from "./styles.module.scss";
 
 const INQUIRY_OPTIONS = [
   { value: "", label: "Select an option..." },
   { value: "custom-bag", label: "I want to design a custom bag" },
-  { value: "white-label", label: "I'm interested in white label solutions" },
+  { value: "white-label", label: "I am interested in white label solutions" },
+  { value: "free-sample", label: "I want to request a free sample" },
   { value: "order-question", label: "I have a question about my order" },
+  { value: "corporate-gifting", label: "Corporate gifting inquiry" },
   { value: "other", label: "Other" },
 ];
 
+const SUBJECT_TO_INQUIRY: Record<string, string> = {
+  "free sample request": "free-sample",
+  "corporate gifting": "corporate-gifting",
+  "custom bag": "custom-bag",
+  "white label": "white-label",
+};
+
 export const ContactForm = () => {
   const t = useTranslations("contact");
+  const searchParams = useSearchParams();
 
   const [fields, setFields] = useState({ name: "", email: "", inquiry: "", subject: "", message: "" });
+
+  useEffect(() => {
+    const subject = searchParams.get("subject") ?? "";
+    if (!subject) return;
+    const key = subject.toLowerCase();
+    const matched = Object.entries(SUBJECT_TO_INQUIRY).find(([k]) => key.includes(k));
+    setFields((f) => ({
+      ...f,
+      subject,
+      inquiry: matched ? matched[1] : f.inquiry,
+    }));
+  }, [searchParams]);
   const [errors, setErrors] = useState<Partial<typeof fields>>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
