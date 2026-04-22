@@ -115,16 +115,16 @@ const WhiteLabelSolutionsPage = () => {
           <span className={styles.wlForEyebrow}>Who is this for?</span>
           <div className={styles.wlForGrid}>
             {[
-              { emoji: "🍽️", title: "Restaurants & Cafés", body: "Offer your customers a branded coffee experience they'll remember and come back for." },
-              { emoji: "🏨", title: "Hotels & Hospitality", body: "Elevate your guest experience with a custom coffee product that carries your brand in every room and restaurant." },
-              { emoji: "🛍️", title: "Retailers & Boutiques", body: "Add a high-margin, private label product to your shelves with zero production headaches." },
-              { emoji: "⭐", title: "Celebrities & Influencers", body: "Turn your audience into customers with a signature coffee brand that's as recognizable as you are." },
+              { emoji: "🍽️", title: "Restaurants & Cafés", body: "Offer your customers a branded coffee experience they'll remember and come back for.", href: `/${locale}/white-label/restaurants` },
+              { emoji: "🏨", title: "Hotels & Hospitality", body: "Elevate your guest experience with a custom coffee product that carries your brand in every room and restaurant.", href: `/${locale}/white-label/hotels` },
+              { emoji: "🛍️", title: "Retailers & Boutiques", body: "Add a high-margin, private label product to your shelves with zero production headaches.", href: `/${locale}/white-label/retailers` },
+              { emoji: "⭐", title: "Celebrities & Influencers", body: "Turn your audience into customers with a signature coffee brand that's as recognizable as you are.", href: `/${locale}/white-label/influencers` },
             ].map((card) => (
-              <div key={card.title} className={styles.wlForCard}>
+              <Link key={card.title} href={card.href} className={styles.wlForCard}>
                 <span className={styles.wlForEmoji}>{card.emoji}</span>
                 <h3 className={styles.wlForCardTitle}>{card.title}</h3>
                 <p className={styles.wlForCardBody}>{card.body}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

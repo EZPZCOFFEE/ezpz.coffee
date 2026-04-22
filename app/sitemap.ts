@@ -20,6 +20,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/mothers-day",
     "/en/blog/mothers-day-coffee-gift-ideas-canada",
     "/en/coffee-week",
+    "/en/white-label/restaurants",
+    "/en/white-label/hotels",
+    "/en/white-label/retailers",
+    "/en/white-label/influencers",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
