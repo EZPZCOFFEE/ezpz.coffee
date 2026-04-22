@@ -215,7 +215,7 @@ const Page = () => (
       <div className={styles.ctaInner}>
         <h2 className={styles.ctaTitle}>Design mom&apos;s bag before May 3rd.</h2>
         <div className={styles.ctaButtons}>
-          <Link href="/en/mothers-day" className={styles.ctaPrimary}>Design her bag now</Link>
+          <Link href="/en/design" className={styles.ctaPrimary}>Design her bag now</Link>
           <Link href="/en/mothers-day" className={styles.ctaSecondary}>Learn more</Link>
         </div>
       </div>
