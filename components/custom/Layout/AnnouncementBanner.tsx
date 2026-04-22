@@ -33,7 +33,7 @@ const AnnouncementBanner = () => {
   return (
     <div ref={ref} className={styles.banner}>
       <p className={styles.text}>
-        🌸 Mother&apos;s Day is May 11th &mdash; Design a custom coffee bag for mom! Order by May 4th.{" "}
+        🌸 Mother&apos;s Day is May 10th | Design a custom coffee bag for mom! Order by May 3rd.{" "}
         <Link href="/en/mothers-day" className={styles.link}>Shop now</Link>
       </p>
       <button

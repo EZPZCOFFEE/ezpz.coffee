@@ -10,8 +10,8 @@ import styles from "./mothersDayLanding.module.scss";
 const getTargetDate = (): Date => {
   const now = new Date();
   const year = now.getFullYear();
-  const target = new Date(year, 4, 4, 23, 59, 59); // May 4th 23:59:59
-  return target <= now ? new Date(year + 1, 4, 4, 23, 59, 59) : target;
+  const target = new Date(year, 4, 3, 23, 59, 59); // May 3rd 23:59:59
+  return target <= now ? new Date(year + 1, 4, 3, 23, 59, 59) : target;
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -57,19 +57,19 @@ const CountdownTimer = () => {
 const FAQ_ITEMS = [
   {
     q: "How long does delivery take?",
-    a: "Orders are processed within 2–3 business days and ship across Canada. Standard delivery takes 3–5 business days depending on your location. Order before May 4th to guarantee delivery before Mother's Day.",
+    a: "Orders are processed within 2–3 business days and ship across Canada. Standard delivery takes 3–5 business days depending on your location. Order before May 3rd to guarantee delivery before Mother's Day.",
   },
   {
     q: "Can I ship directly to my mom?",
-    a: "Absolutely! At checkout, simply enter her address as the shipping address. We'll deliver straight to her door — no assembly required.",
+    a: "Absolutely! At checkout, simply enter her address as the shipping address. We'll deliver straight to her door, no assembly required.",
   },
   {
     q: "Can I add a personal message?",
-    a: "Yes! You can add a custom message directly on the bag during the design process. You can also include a printed card with your order — just mention it when you place your order.",
+    a: "Yes! You can add a custom message directly on the bag during the design process. You can also include a printed card with your order, just mention it when you place your order.",
   },
   {
     q: "What if I don't know what coffee she likes?",
-    a: "No problem. Our Colombia Huila medium roast is our most crowd-pleasing option — smooth, balanced, and universally loved. You really can't go wrong.",
+    a: "No problem. Our Colombia Huila medium roast is our most crowd-pleasing option: smooth, balanced, and universally loved. You really can't go wrong.",
   },
   {
     q: "Is there a minimum order?",
@@ -120,7 +120,7 @@ const WHY_CARDS = [
   {
     emoji: "🌍",
     title: "Specialty coffee she'll love",
-    body: "We source only the finest specialty-grade coffees from around the world — light, medium, or dark roast, whatever she prefers.",
+    body: "We source only the finest specialty-grade coffees from around the world: light, medium, or dark roast, whatever she prefers.",
   },
   {
     emoji: "🎁",
@@ -133,7 +133,7 @@ const HOW_STEPS = [
   {
     n: "1",
     title: "Design her bag",
-    body: "Use our online tool to add her name, a personal message, and choose the colors and style. No design skills needed — it takes less than 10 minutes.",
+    body: "Use our online tool to add her name, a personal message, and choose the colors and style. No design skills needed. It takes less than 10 minutes.",
   },
   {
     n: "2",
@@ -143,7 +143,7 @@ const HOW_STEPS = [
   {
     n: "3",
     title: "We roast, pack, and deliver",
-    body: "We roast fresh in Montreal and ship directly to your door — or straight to mom's if you want to surprise her.",
+    body: "We roast fresh in Montreal and ship directly to your door, or straight to mom's if you want to surprise her.",
   },
 ];
 
@@ -239,7 +239,7 @@ const MothersDayPage = () => {
               See how it works
             </button>
           </div>
-          <p className={styles.heroUrgency}>🚚 Order by May 4th to receive before Mother&apos;s Day.</p>
+          <p className={styles.heroUrgency}>🚚 Order by May 3rd to receive before Mother&apos;s Day.</p>
         </div>
       </section>
 
@@ -336,7 +336,7 @@ const MothersDayPage = () => {
         <div className={styles.urgencyInner}>
           <h2 className={styles.urgencyTitle}>Don&apos;t wait until it&apos;s too late 🌸</h2>
           <p className={styles.urgencyText}>
-            Mother&apos;s Day is May 11th. Orders placed before May 4th are guaranteed to arrive
+            Mother&apos;s Day is May 10th. Orders placed before May 3rd are guaranteed to arrive
             in time. After that, we can&apos;t promise delivery before the big day.
           </p>
           <CountdownTimer />
