@@ -36,6 +36,7 @@ const TRUST_LOGOS = [
   { file: "janine", name: "Janine" },
   { file: "regine", name: "Regine" },
   { file: "stephen", name: "Stephen" },
+  { file: "tunnel", name: "Tunnel Espresso" },
 ] as const;
 
 /* Featured coffees carousel — restore when product imagery is ready.
