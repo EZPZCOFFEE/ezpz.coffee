@@ -8,7 +8,7 @@
 .hero {
   position: relative;
   background: #111111;
-  padding: var(--spacing-galaxy) var(--spacing-state) calc(var(--spacing-galaxy) + 60px);
+  padding: calc(var(--layout-home-navbar-offset, 80px) + var(--spacing-galaxy)) var(--spacing-state) calc(var(--spacing-galaxy) + 60px);
   overflow: hidden;
 }
 
