@@ -19,6 +19,12 @@ export async function contact(
     return { success: false, error: "All fields are required." };
   }
 
+  // Temporary: email sending is disabled — direct users to email instead
+  return {
+    success: false,
+    error: "Our contact form is temporarily unavailable. Please email us directly at help@ezpz.coffee and we'll get back to you within 24 hours.",
+  };
+
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
