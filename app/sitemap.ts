@@ -24,6 +24,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/white-label/hotels",
     "/en/white-label/retailers",
     "/en/white-label/influencers",
+    "/en/compare",
+    "/en/compare/rogue-wave-coffee-alternative",
+    "/en/compare/canterbury-coffee-alternative",
+    "/en/compare/black-stripe-coffee-alternative",
+    "/en/compare/virgin-hill-coffee-alternative",
+    "/en/compare/hutsul-coffee-alternative",
+    "/en/compare/roasters-pack-alternative",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
