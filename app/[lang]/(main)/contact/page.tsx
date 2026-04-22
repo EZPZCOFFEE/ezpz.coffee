@@ -64,21 +64,6 @@ const ContactPage = async () => {
           {/* Sidebar */}
           <aside className={styles.sidebar}>
 
-            <div className={styles.trustCard}>
-              <div className={styles.trustItem}>
-                <span className={styles.trustCheck}>✓</span>
-                <span className={styles.trustText}>We respond within 24 hours</span>
-              </div>
-              <div className={styles.trustItem}>
-                <span className={styles.trustCheck}>✓</span>
-                <span className={styles.trustText}>Free design consultation included</span>
-              </div>
-              <div className={styles.trustItem}>
-                <span className={styles.trustCheck}>✓</span>
-                <span className={styles.trustText}>No minimum order required</span>
-              </div>
-            </div>
-
             <div className={styles.sidebarCard}>
               <div className={styles.sidebarItem}>
                 <span className={styles.sidebarIcon}><EnvelopeSimple size={18} weight="bold" /></span>
@@ -139,13 +124,15 @@ const ContactPage = async () => {
           <MapPin size={16} weight="bold" className={styles.mapLabelIcon} />
           3780 Rue Saint-Patrick, Montreal, QC
         </div>
-        <iframe
-          className={styles.mapEmbed}
-          src="https://maps.google.com/maps?q=3780+Rue+Saint-Patrick,+Montreal,+QC&output=embed&z=15"
-          title="EZPZ Coffee location"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+        <div className={styles.mapEmbedWrap}>
+          <iframe
+            className={styles.mapEmbed}
+            src="https://maps.google.com/maps?q=3780+Rue+Saint-Patrick,+Montreal,+QC&output=embed&z=15"
+            title="EZPZ Coffee location"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </section>
     </div>
   );
