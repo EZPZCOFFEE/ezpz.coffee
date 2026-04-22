@@ -162,6 +162,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-country);
   text-align: center;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+  }
 }
 
 .statItem {

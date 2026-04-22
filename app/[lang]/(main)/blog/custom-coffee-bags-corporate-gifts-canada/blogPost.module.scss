@@ -210,11 +210,17 @@
   gap: var(--spacing-country);
   flex-wrap: wrap;
   justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .ctaPrimary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 48px;
   padding: 0 var(--spacing-planet);
   background: var(--color-accent);
@@ -233,6 +239,7 @@
 .ctaSecondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 48px;
   padding: 0 var(--spacing-planet);
   background: transparent;

@@ -130,7 +130,7 @@ const HomeLanding = () => {
           priority
           placeholder="blur"
           quality={80}
-          sizes="100vw"
+          sizes="(max-width: 767px) 828px, 100vw"
           className={styles.heroPhotoImage}
         />
         <div className={styles.heroGradient} aria-hidden />

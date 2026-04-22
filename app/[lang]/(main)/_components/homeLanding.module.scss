@@ -171,6 +171,11 @@
     background: var(--color-accent);
     color: var(--color-white);
   }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    white-space: normal;
+  }
 }
 
 .heroPhotoImageCenter {
@@ -442,6 +447,10 @@
   padding: var(--spacing-planet) var(--spacing-state);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   @media (min-width: 640px) {
     &:nth-child(odd) {

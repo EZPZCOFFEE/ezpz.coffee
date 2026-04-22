@@ -52,11 +52,17 @@
   gap: var(--spacing-country);
   flex-wrap: wrap;
   justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .heroPrimary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 52px;
   padding: 0 var(--spacing-planet);
   background: #c43e14;
@@ -75,6 +81,7 @@
 .heroSecondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 52px;
   padding: 0 var(--spacing-planet);
   background: transparent;

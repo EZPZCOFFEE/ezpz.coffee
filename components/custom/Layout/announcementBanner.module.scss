@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-state);
-  padding: var(--spacing-house) var(--spacing-state);
+  padding: var(--spacing-house) calc(var(--spacing-state) + 28px) var(--spacing-house) var(--spacing-state);
   border-bottom: 1px solid rgba(232, 82, 26, 0.2);
 }
 
@@ -20,6 +20,10 @@
   color: #7a2e00;
   text-align: center;
   line-height: 1.5;
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+  }
 }
 
 .link {
