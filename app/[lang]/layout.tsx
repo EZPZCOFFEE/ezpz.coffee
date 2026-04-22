@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { PropsWithChildren } from "react";
@@ -452,6 +453,15 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
     <html lang={lang}>
       <body className={fontVariables}>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2R52RRKHM3" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2R52RRKHM3');
+          `}
+        </Script>
       </body>
     </html>
   );
