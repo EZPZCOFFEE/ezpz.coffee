@@ -9,20 +9,10 @@ import { useState } from "react";
 import bagPng from "@/public/assets/bag.png";
 import canShadowPng from "@/public/assets/can-shadow.png";
 import capsulePng from "@/public/assets/capsule.png";
-import banner01 from "@/public/assets/banner-01.jpg";
-import banner02 from "@/public/assets/banner-02.jpg";
-import bannerBase from "@/public/assets/banner-base.jpg";
 
 import styles from "./whiteLabelVertical.module.scss";
 
-export type HeroImageKey = "banner01" | "banner02" | "bannerBase";
 export type ProductImageKey = "bag" | "can" | "capsule";
-
-const HERO_IMAGES = {
-  banner01,
-  banner02,
-  bannerBase,
-};
 
 const PRODUCT_IMAGES = {
   bag: bagPng,
@@ -50,7 +40,6 @@ export interface VerticalPageData {
     subtitle: string;
     ctaText: string;
     contactSubject: string;
-    heroImageKey: HeroImageKey;
   };
   pain: {
     eyebrow: string;
@@ -83,24 +72,12 @@ const WhiteLabelVerticalPage = ({ data }: Props) => {
   const locale = useLocale();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const heroImage = HERO_IMAGES[data.hero.heroImageKey];
-
   return (
     <div className={styles.page}>
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <Image
-          src={heroImage}
-          alt=""
-          fill
-          priority
-          placeholder="blur"
-          quality={80}
-          sizes="100vw"
-          className={styles.heroImage}
-        />
-        <div className={styles.heroGradient} />
-        <div className={styles.heroContent}>
+        <div className={styles.heroAngle} />
+        <div className={styles.heroInner}>
           <span className={styles.heroEyebrow}>{data.hero.eyebrow}</span>
           <h1 className={styles.heroTitle}>{data.hero.title}</h1>
           <p className={styles.heroSubtitle}>{data.hero.subtitle}</p>
@@ -117,7 +94,7 @@ const WhiteLabelVerticalPage = ({ data }: Props) => {
       <section className={styles.pain}>
         <div className={styles.painInner}>
           <span className={styles.eyebrow}>{data.pain.eyebrow}</span>
-          <h2 className={styles.sectionTitleDark}>{data.pain.title}</h2>
+          <h2 className={styles.sectionTitleLight}>{data.pain.title}</h2>
           <div className={styles.painGrid}>
             {data.pain.items.map((item, i) => (
               <div key={i} className={styles.painItem}>

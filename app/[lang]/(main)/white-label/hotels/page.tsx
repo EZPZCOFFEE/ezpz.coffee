@@ -34,7 +34,7 @@ const data: VerticalPageData = {
       "Every touchpoint in your property is an opportunity to reinforce who you are. The coffee in your rooms, your restaurant, and your gift shop should carry your name — not a generic supplier's.",
     ctaText: "Upgrade your guest experience",
     contactSubject: "White Label Coffee — Hotels & Hospitality",
-    heroImageKey: "banner02",
+
   },
   pain: {
     eyebrow: "Sound familiar?",

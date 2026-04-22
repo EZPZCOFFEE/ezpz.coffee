@@ -34,7 +34,7 @@ const data: VerticalPageData = {
       "Coffee is consumed daily by over 70% of adults. Your signature blend is a brand extension that pays you back every single morning — every cup, every reorder, every new follower who becomes a customer.",
     ctaText: "Build your coffee brand",
     contactSubject: "Custom Coffee Brand — Creator / Influencer",
-    heroImageKey: "banner01",
+
   },
   pain: {
     eyebrow: "Sound familiar?",

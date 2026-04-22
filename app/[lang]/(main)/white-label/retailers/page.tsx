@@ -34,7 +34,7 @@ const data: VerticalPageData = {
       "Stop competing on price with national brands your customers can find anywhere. Your own private label coffee gives you exclusivity, better margins, and a story worth telling at the point of sale.",
     ctaText: "Launch your private label",
     contactSubject: "Private Label Coffee — Retailers & Boutiques",
-    heroImageKey: "bannerBase",
+
   },
   pain: {
     eyebrow: "Sound familiar?",

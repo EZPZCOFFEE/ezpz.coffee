@@ -34,7 +34,7 @@ const data: VerticalPageData = {
       "Stop serving coffee under someone else's name. Every cup you pour is an opportunity to reinforce your identity, build loyalty, and create a product your guests want to take home.",
     ctaText: "Get a free quote",
     contactSubject: "White Label Coffee — Restaurants & Cafés",
-    heroImageKey: "banner01",
+
   },
   pain: {
     eyebrow: "Sound familiar?",
