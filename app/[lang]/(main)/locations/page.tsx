@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Coffee Bags — Markets We Serve | EZPZ",
+      title: "Custom Coffee Bags — Canadian Markets | EZPZ",
       description: "EZPZ ships custom branded coffee to 40+ cities across Canada. No minimum order.",
       images: ["/assets/banner-01.jpg"],
     },
@@ -28,140 +28,118 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const BREADCRUMB_BASE = "https://www.ezpz.coffee/en";
 
-const PROVINCES = [
+type City = { name: string; province: string; href: string; dedicated?: boolean };
+
+const PROVINCES: { name: string; cities: City[] }[] = [
   {
     name: "Quebec",
     cities: [
-      { name: "Montreal", href: "/en/custom-coffee-bags-montreal" },
-      { name: "Quebec City", href: null },
-      { name: "Laval", href: null },
-      { name: "Longueuil", href: null },
-      { name: "Gatineau", href: null },
-      { name: "Sherbrooke", href: null },
-      { name: "Saguenay", href: null },
-      { name: "Trois-Rivières", href: null },
+      { name: "Montreal", province: "QC", href: "/en/custom-coffee-bags-montreal", dedicated: true },
+      { name: "Quebec City", province: "QC", href: "/en/contact?subject=Custom Coffee Quebec City" },
+      { name: "Laval", province: "QC", href: "/en/contact?subject=Custom Coffee Laval" },
+      { name: "Longueuil", province: "QC", href: "/en/contact?subject=Custom Coffee Longueuil" },
+      { name: "Gatineau", province: "QC", href: "/en/contact?subject=Custom Coffee Gatineau" },
+      { name: "Sherbrooke", province: "QC", href: "/en/contact?subject=Custom Coffee Sherbrooke" },
+      { name: "Saguenay", province: "QC", href: "/en/contact?subject=Custom Coffee Saguenay" },
+      { name: "Trois-Rivières", province: "QC", href: "/en/contact?subject=Custom Coffee Trois-Rivières" },
     ],
   },
   {
     name: "Ontario",
     cities: [
-      { name: "Toronto", href: "/en/custom-coffee-bags-toronto" },
-      { name: "Ottawa", href: null },
-      { name: "Mississauga", href: null },
-      { name: "Brampton", href: null },
-      { name: "Hamilton", href: null },
-      { name: "London", href: null },
-      { name: "Markham", href: null },
-      { name: "Vaughan", href: null },
-      { name: "Kitchener", href: null },
-      { name: "Windsor", href: null },
+      { name: "Toronto", province: "ON", href: "/en/custom-coffee-bags-toronto", dedicated: true },
+      { name: "Ottawa", province: "ON", href: "/en/contact?subject=Custom Coffee Ottawa" },
+      { name: "Mississauga", province: "ON", href: "/en/contact?subject=Custom Coffee Mississauga" },
+      { name: "Brampton", province: "ON", href: "/en/contact?subject=Custom Coffee Brampton" },
+      { name: "Hamilton", province: "ON", href: "/en/contact?subject=Custom Coffee Hamilton" },
+      { name: "London", province: "ON", href: "/en/contact?subject=Custom Coffee London" },
+      { name: "Markham", province: "ON", href: "/en/contact?subject=Custom Coffee Markham" },
+      { name: "Vaughan", province: "ON", href: "/en/contact?subject=Custom Coffee Vaughan" },
+      { name: "Kitchener", province: "ON", href: "/en/contact?subject=Custom Coffee Kitchener" },
+      { name: "Windsor", province: "ON", href: "/en/contact?subject=Custom Coffee Windsor" },
     ],
   },
   {
     name: "British Columbia",
     cities: [
-      { name: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
-      { name: "Surrey", href: null },
-      { name: "Burnaby", href: null },
-      { name: "Richmond", href: null },
-      { name: "Kelowna", href: null },
-      { name: "Abbotsford", href: null },
-      { name: "Victoria", href: null },
+      { name: "Vancouver", province: "BC", href: "/en/custom-coffee-bags-vancouver", dedicated: true },
+      { name: "Surrey", province: "BC", href: "/en/contact?subject=Custom Coffee Surrey" },
+      { name: "Burnaby", province: "BC", href: "/en/contact?subject=Custom Coffee Burnaby" },
+      { name: "Richmond", province: "BC", href: "/en/contact?subject=Custom Coffee Richmond" },
+      { name: "Kelowna", province: "BC", href: "/en/contact?subject=Custom Coffee Kelowna" },
+      { name: "Abbotsford", province: "BC", href: "/en/contact?subject=Custom Coffee Abbotsford" },
+      { name: "Victoria", province: "BC", href: "/en/contact?subject=Custom Coffee Victoria" },
     ],
   },
   {
     name: "Alberta",
     cities: [
-      { name: "Calgary", href: null },
-      { name: "Edmonton", href: null },
-      { name: "Red Deer", href: null },
-      { name: "Lethbridge", href: null },
-      { name: "St. Albert", href: null },
+      { name: "Calgary", province: "AB", href: "/en/contact?subject=Custom Coffee Calgary" },
+      { name: "Edmonton", province: "AB", href: "/en/contact?subject=Custom Coffee Edmonton" },
+      { name: "Red Deer", province: "AB", href: "/en/contact?subject=Custom Coffee Red Deer" },
+      { name: "Lethbridge", province: "AB", href: "/en/contact?subject=Custom Coffee Lethbridge" },
+      { name: "St. Albert", province: "AB", href: "/en/contact?subject=Custom Coffee St. Albert" },
     ],
   },
   {
     name: "Manitoba",
     cities: [
-      { name: "Winnipeg", href: null },
-      { name: "Brandon", href: null },
+      { name: "Winnipeg", province: "MB", href: "/en/contact?subject=Custom Coffee Winnipeg" },
+      { name: "Brandon", province: "MB", href: "/en/contact?subject=Custom Coffee Brandon" },
     ],
   },
   {
     name: "Saskatchewan",
     cities: [
-      { name: "Saskatoon", href: null },
-      { name: "Regina", href: null },
+      { name: "Saskatoon", province: "SK", href: "/en/contact?subject=Custom Coffee Saskatoon" },
+      { name: "Regina", province: "SK", href: "/en/contact?subject=Custom Coffee Regina" },
     ],
   },
   {
     name: "Nova Scotia",
     cities: [
-      { name: "Halifax", href: null },
-      { name: "Dartmouth", href: null },
+      { name: "Halifax", province: "NS", href: "/en/contact?subject=Custom Coffee Halifax" },
+      { name: "Dartmouth", province: "NS", href: "/en/contact?subject=Custom Coffee Dartmouth" },
     ],
   },
   {
     name: "New Brunswick",
     cities: [
-      { name: "Moncton", href: null },
-      { name: "Fredericton", href: null },
-      { name: "Saint John", href: null },
+      { name: "Moncton", province: "NB", href: "/en/contact?subject=Custom Coffee Moncton" },
+      { name: "Fredericton", province: "NB", href: "/en/contact?subject=Custom Coffee Fredericton" },
+      { name: "Saint John", province: "NB", href: "/en/contact?subject=Custom Coffee Saint John" },
     ],
   },
   {
     name: "Prince Edward Island",
-    cities: [{ name: "Charlottetown", href: null }],
+    cities: [
+      { name: "Charlottetown", province: "PE", href: "/en/contact?subject=Custom Coffee Charlottetown" },
+    ],
   },
   {
     name: "Newfoundland & Labrador",
-    cities: [{ name: "St. John's", href: null }],
+    cities: [
+      { name: "St. John's", province: "NL", href: "/en/contact?subject=Custom Coffee St. Johns" },
+    ],
   },
 ];
 
-const HOW = [
+const WHY_CARDS = [
   {
-    n: "01",
-    title: "Design online, ship anywhere",
-    body: "Use our online design tool from any city in Canada. Upload your logo, choose your coffee, and configure your bag in under 10 minutes.",
+    title: "The only zero minimum in Canada",
+    body: "No other custom coffee supplier in Canada offers a true zero minimum order. Order 1 bag to test your concept, or 10,000 to fill a retail rollout. EZPZ scales with you either way.",
   },
   {
-    n: "02",
-    title: "Roasted in Montreal",
-    body: "Every order is roasted fresh at Canadian Roasting Society in Montreal — not pre-packaged or pulled from a warehouse. Quality is consistent everywhere.",
+    title: "Roasted fresh in Montreal",
+    body: "Every order is roasted to order at Canadian Roasting Society in Montreal — never pre-packaged or sitting in a warehouse. Your customers get coffee at peak freshness every time.",
   },
   {
-    n: "03",
-    title: "Delivered coast to coast",
-    body: "We ship via tracked carriers to all provinces and territories. Typical delivery: 2 to 3 days to Ontario and Quebec, 5 to 10 days to Western Canada.",
+    title: "Full design included, always",
+    body: "Custom bag design is included in every order at no extra cost. Bring your logo and brand colors — our team handles the rest. No designer fees, no print-ready files required.",
   },
 ];
 
-const SEO_LINKS = [
-  {
-    category: "City pages",
-    links: [
-      { label: "Custom coffee bags Montreal", href: "/en/custom-coffee-bags-montreal" },
-      { label: "Custom coffee bags Toronto", href: "/en/custom-coffee-bags-toronto" },
-      { label: "Custom coffee bags Vancouver", href: "/en/custom-coffee-bags-vancouver" },
-    ],
-  },
-  {
-    category: "White label",
-    links: [
-      { label: "White label coffee Canada", href: "/en/white-label-coffee-canada" },
-      { label: "Private label coffee Canada", href: "/en/private-label-coffee-canada" },
-      { label: "White label solutions", href: "/en/white-label" },
-    ],
-  },
-  {
-    category: "Compare",
-    links: [
-      { label: "EZPZ vs competitors", href: "/en/compare" },
-      { label: "Rogue Wave alternative", href: "/en/compare/rogue-wave-coffee-alternative" },
-      { label: "Canterbury alternative", href: "/en/compare/canterbury-coffee-alternative" },
-    ],
-  },
-];
+const ALL_CITIES = PROVINCES.flatMap((p) => p.cities);
 
 const LocationsPage = () => {
   const breadcrumbSchema = {
@@ -169,7 +147,7 @@ const LocationsPage = () => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${BREADCRUMB_BASE}` },
-      { "@type": "ListItem", position: 2, name: "Markets", item: `${BREADCRUMB_BASE}/locations` },
+      { "@type": "ListItem", position: 2, name: "Canadian Markets", item: `${BREADCRUMB_BASE}/locations` },
     ],
   };
 
@@ -185,110 +163,91 @@ const LocationsPage = () => {
         <div className={styles.breadcrumbInner}>
           <Link href="/en" className={styles.breadcrumbLink}>Home</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <span className={styles.breadcrumbCurrent}>Markets we serve</span>
+          <span className={styles.breadcrumbCurrent}>Canadian Markets</span>
         </div>
       </nav>
-
-      {/* ── USA toggle ── */}
-      <div style={{ background: "#1a1a1a", borderBottom: "1px solid #2a2a2a", padding: "12px var(--spacing-state)", textAlign: "center" }}>
-        <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", margin: 0 }}>
-          Looking for US cities?{" "}
-          <Link href="/en/locations/usa" style={{ color: "var(--color-accent)", textDecoration: "none", fontWeight: 600 }}>See our US locations page →</Link>
-        </p>
-      </div>
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <span className={styles.eyebrow}>Where we ship</span>
+          <span className={styles.badge}>Roasted in Montreal. Delivered across Canada.</span>
+          <span className={styles.eyebrow}>We ship across Canada</span>
           <h1 className={styles.heroTitle}>Custom coffee bags delivered anywhere in Canada.</h1>
           <p className={styles.heroSubtitle}>
-            EZPZ ships custom branded coffee to businesses in every province and territory. Montreal, Toronto, Vancouver, Calgary, and 40+ more cities — all with no minimum order.
+            EZPZ ships your branded specialty coffee bags directly to your door — anywhere in Canada. No minimum order. Full design included. Find your city below.
           </p>
           <div className={styles.heroButtons}>
             <Link href="/en/design" className={styles.heroPrimary}>Design your bag</Link>
+            <Link href="/en/contact" className={styles.heroSecondary}>Get a free quote</Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── US toggle ── */}
+      <div className={styles.usaToggle}>
+        <p className={styles.usaToggleText}>
+          Looking for US cities?{" "}
+          <Link href="/en/locations/usa" className={styles.usaToggleLink}>See our US locations page →</Link>
+        </p>
+      </div>
+
+      {/* ── City grid ── */}
+      <section className={styles.cities}>
+        <div className={styles.citiesInner}>
+          <span className={styles.eyebrow}>All Canadian markets</span>
+          <h2 className={styles.sectionTitle}>Find your market.</h2>
+          <p className={styles.sectionSubtitle}>Click your city to see how EZPZ serves businesses in your area.</p>
+
+          {PROVINCES.map((provinceGroup) => (
+            <div key={provinceGroup.name} className={styles.provinceBlock}>
+              <p className={styles.provinceName}>{provinceGroup.name}</p>
+              <div className={styles.cityGrid}>
+                {provinceGroup.cities.map((city) => (
+                  <Link key={city.name} href={city.href} className={styles.cityCard}>
+                    {city.dedicated && (
+                      <span className={styles.dedicatedBadge}>Dedicated page</span>
+                    )}
+                    <div className={styles.cityCardContent}>
+                      <span className={styles.cityCardName}>{city.name}</span>
+                      <span className={styles.cityCardProvince}>{city.province}</span>
+                    </div>
+                    <span className={styles.cityCardArrow}>→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* ── Stats ── */}
       <div className={styles.stats}>
         <div className={styles.statsInner}>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>40+</span>
-            <span className={styles.statLabel}>Cities served</span>
-          </div>
-          <div className={styles.statItem}>
+          <div>
             <span className={styles.statNumber}>10</span>
             <span className={styles.statLabel}>Provinces & territories</span>
           </div>
-          <div className={styles.statItem}>
+          <div>
+            <span className={styles.statNumber}>40+</span>
+            <span className={styles.statLabel}>Cities we ship to</span>
+          </div>
+          <div>
             <span className={styles.statNumber}>0</span>
             <span className={styles.statLabel}>Minimum order</span>
-          </div>
-          <div className={styles.statItem}>
-            <span className={styles.statNumber}>5–10</span>
-            <span className={styles.statLabel}>Business days to West</span>
           </div>
         </div>
       </div>
 
-      {/* ── Province grid ── */}
-      <section className={styles.provinces}>
-        <div className={styles.provincesInner}>
-          <span className={styles.eyebrow}>All markets</span>
-          <h2 className={styles.sectionTitle}>We deliver to businesses across all of Canada.</h2>
-          {PROVINCES.map((province) => (
-            <div key={province.name} className={styles.provinceBlock}>
-              <h3 className={styles.provinceName}>{province.name}</h3>
-              <ul className={styles.cityList}>
-                {province.cities.map((city) => (
-                  <li key={city.name} className={styles.cityItem}>
-                    {city.href ? (
-                      <Link href={city.href} className={styles.cityLink}>{city.name}</Link>
-                    ) : (
-                      <span className={styles.cityText}>{city.name}</span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── How it works ── */}
-      <section className={styles.how}>
-        <div className={styles.howInner}>
-          <span className={styles.eyebrow}>How it works</span>
-          <h2 className={styles.sectionTitleLight}>Same great product, wherever you are in Canada.</h2>
-          <div className={styles.howGrid}>
-            {HOW.map((card) => (
-              <div key={card.n} className={styles.howCard}>
-                <span className={styles.howNumber}>{card.n}</span>
-                <h3 className={styles.howCardTitle}>{card.title}</h3>
-                <p className={styles.howCardBody}>{card.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── SEO links ── */}
-      <section className={styles.seoLinks}>
-        <div className={styles.seoLinksInner}>
-          <h2 className={styles.seoLinksTitle}>Explore more from EZPZ.</h2>
-          <div className={styles.seoLinksGrid}>
-            {SEO_LINKS.map((group) => (
-              <div key={group.category} className={styles.seoLinkCard}>
-                <p className={styles.seoLinkCardTitle}>{group.category}</p>
-                <ul className={styles.seoLinkList}>
-                  {group.links.map((link) => (
-                    <li key={link.href} className={styles.seoLinkItem}>
-                      <Link href={link.href} className={styles.seoLink}>{link.label}</Link>
-                    </li>
-                  ))}
-                </ul>
+      {/* ── Why EZPZ ── */}
+      <section className={styles.why}>
+        <div className={styles.whyInner}>
+          <span className={styles.eyebrow}>Why EZPZ</span>
+          <h2 className={styles.sectionTitleLight}>Why Canadian businesses choose EZPZ.</h2>
+          <div className={styles.whyGrid}>
+            {WHY_CARDS.map((card) => (
+              <div key={card.title} className={styles.whyCard}>
+                <h3 className={styles.whyCardTitle}>{card.title}</h3>
+                <p className={styles.whyCardBody}>{card.body}</p>
               </div>
             ))}
           </div>
@@ -298,13 +257,27 @@ const LocationsPage = () => {
       {/* ── CTA ── */}
       <section className={styles.cta}>
         <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>Ready to get started?</h2>
+          <h2 className={styles.ctaTitle}>Don't see your city? We still ship there.</h2>
           <p className={styles.ctaSubtext}>
-            No minimums. Full design included. Shipped to your door anywhere in Canada.
+            EZPZ ships custom branded coffee bags to every province and territory in Canada. If your city is not listed, contact us and we will make it happen.
           </p>
           <div className={styles.ctaButtons}>
-            <Link href="/en/design" className={styles.ctaPrimary}>Design your bag</Link>
-            <Link href="/en/contact" className={styles.ctaSecondary}>Get a free quote</Link>
+            <Link href="/en/contact" className={styles.ctaPrimary}>Contact us</Link>
+            <Link href="/en/design" className={styles.ctaSecondary}>Design your bag</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SEO text links ── */}
+      <section className={styles.seoSection}>
+        <div className={styles.seoInner}>
+          <h2 className={styles.seoTitle}>Custom coffee bags by Canadian city</h2>
+          <div className={styles.seoGrid}>
+            {ALL_CITIES.map((city) => (
+              <Link key={`${city.name}-${city.province}`} href={city.href} className={styles.seoLink}>
+                Custom coffee bags — {city.name}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
