@@ -232,7 +232,7 @@ const LocationsPage = () => {
             <span className={styles.statLabel}>Cities we ship to</span>
           </div>
           <div>
-            <span className={styles.statNumber}>0</span>
+            <span className={styles.statNumber}>1</span>
             <span className={styles.statLabel}>Minimum order</span>
           </div>
         </div>

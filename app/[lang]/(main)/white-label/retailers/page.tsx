@@ -152,7 +152,7 @@ const data: VerticalPageData = {
   ],
   stats: [
     { value: "40–60%", label: "Higher margin vs. reselling national brands" },
-    { value: "0", label: "Minimum order on coffee bags" },
+    { value: "1", label: "Minimum order on coffee bags" },
     { value: "3–4 wks", label: "From brief to product on your shelf" },
     { value: "100%", label: "Exclusive to your store" },
   ],

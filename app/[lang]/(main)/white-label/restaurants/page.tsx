@@ -152,7 +152,7 @@ const data: VerticalPageData = {
   ],
   stats: [
     { value: "3–4 wks", label: "Average time from brief to first delivery" },
-    { value: "0", label: "Minimum order quantity on coffee bags" },
+    { value: "1", label: "Minimum order quantity on coffee bags" },
     { value: "60%+", label: "Repeat order rate across restaurant clients" },
     { value: "100%", label: "Canadian roasted specialty coffee" },
   ],
