@@ -47,6 +47,8 @@ const Footer = () => {
             <Link href={`/${locale}/design`} className={styles.footerLink}>{t("design")}</Link>
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>{t("ourCoffee")}</Link>
             <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>Custom Coffee Bags</Link>
+            <Link href={`/${locale}/locations`} className={styles.footerLink}>Canadian Markets</Link>
+            <Link href={`/${locale}/locations/usa`} className={styles.footerLink}>US Markets</Link>
           </nav>
 
           {/* Company column */}
