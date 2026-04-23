@@ -272,6 +272,12 @@
   .sectionTitle {
     text-align: center;
   }
+
+  .sectionInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .gallerySubtitle {
