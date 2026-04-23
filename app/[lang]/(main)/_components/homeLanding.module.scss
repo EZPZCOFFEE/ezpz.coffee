@@ -399,10 +399,10 @@
   background: var(--color-black);
 }
 
-/* Advantages — dark band (former featured-coffee carousel slot) */
+/* Advantages — light band */
 .advantages {
   padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
-  background-color: var(--color-black);
+  background-color: var(--color-white);
 
   @media (min-width: 1024px) {
     padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-cluster);
@@ -422,7 +422,7 @@
   text-transform: uppercase;
   letter-spacing: 0.02em;
   text-align: center;
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 /* Same scale as .advantagesTitle; dark text for white-background sections */
@@ -517,7 +517,7 @@
   font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
-  color: var(--color-white);
+  color: var(--color-text-primary);
 }
 
 .advantagesBody {
@@ -525,11 +525,11 @@
   font-size: clamp(0.9rem, 1.8vw, 1rem);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-neutral);
 }
 
 .advantagesHighlight {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--color-text-primary);
   font-weight: var(--font-weight-semibold);
 }
 
@@ -724,8 +724,10 @@
 /* ── How it works ──────────────────────────────────────────── */
 .howItWorks {
   width: 100%;
-  background: var(--color-white);
+  background: var(--color-black);
   padding: var(--spacing-galaxy) var(--spacing-state);
+
+  .lightSectionTitle { color: var(--color-white); }
 }
 
 .howItWorksGrid {
@@ -760,14 +762,14 @@
   margin: 0;
   font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  color: var(--color-white);
 }
 
 .howItWorksBody {
   margin: 0;
   font-size: clamp(0.9rem, 1.8vw, 1rem);
   line-height: var(--line-height-relaxed);
-  color: var(--color-neutral);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* ── Testimonials ──────────────────────────────────────────── */
@@ -775,6 +777,8 @@
   width: 100%;
   background: var(--color-black);
   padding: var(--spacing-galaxy) var(--spacing-state);
+
+  .advantagesTitle { color: var(--color-white); }
 
   @media (min-width: 768px) {
     padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
@@ -1406,6 +1410,8 @@
   background: var(--color-black);
   padding: var(--spacing-galaxy) var(--spacing-state);
   text-align: center;
+
+  .advantagesTitle { color: var(--color-white); }
 }
 
 .geoBody {
