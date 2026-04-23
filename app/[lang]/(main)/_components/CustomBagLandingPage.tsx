@@ -7,9 +7,12 @@ import { useLocale } from "next-intl";
 import { useRef, useState, useEffect } from "react";
 
 import bagPng from "@/public/assets/bag.png";
-import bagBloom from "@/public/bags/bag-bloom.svg";
-import bagNoir from "@/public/bags/bag-noir.svg";
-import bagTerra from "@/public/bags/bag-terra.svg";
+import bag01 from "@/public/bags/bag-01.png";
+import bag02 from "@/public/bags/bag-02.png";
+import bag03 from "@/public/bags/bag-03.png";
+import bag04 from "@/public/bags/bag-04.png";
+import bag05 from "@/public/bags/bag-05.png";
+import bag06 from "@/public/bags/bag-06.png";
 
 import styles from "./customBagLanding.module.scss";
 
@@ -47,9 +50,12 @@ const PERKS = [
 ];
 
 const SLIDES = [
-  { src: bagNoir, alt: "Noir — minimalist black coffee bag design" },
-  { src: bagTerra, alt: "Terra — earthy terracotta coffee bag design" },
-  { src: bagBloom, alt: "Bloom — botanical sage green coffee bag design" },
+  { src: bag01, alt: "EZPZ Coffee — light roast custom bag design" },
+  { src: bag02, alt: "EZPZ Coffee — Joyful 1st Edition white bag design" },
+  { src: bag03, alt: "EZPZ Coffee — dark roast lime green bag design" },
+  { src: bag04, alt: "EZPZ Coffee — medium roast cloud bag design" },
+  { src: bag05, alt: "EZPZ Coffee — ABC light roast blue bag design" },
+  { src: bag06, alt: "EZPZ Coffee — Joyful 1st Edition green bag design" },
 ];
 
 const Slider = () => {
