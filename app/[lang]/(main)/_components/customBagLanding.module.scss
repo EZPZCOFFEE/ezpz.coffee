@@ -272,12 +272,6 @@
   .sectionTitle {
     text-align: center;
   }
-
-  .sectionInner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
 .gallerySubtitle {
@@ -292,12 +286,14 @@
 
 .slider {
   position: relative;
+  width: 100%;
   max-width: 860px;
   aspect-ratio: 4 / 3;
   background: #f4f4f4;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   margin: 0 auto;
+  display: block;
 }
 
 .sliderTrack {
