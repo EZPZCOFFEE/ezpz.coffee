@@ -173,22 +173,18 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <section className={styles.advantages} id="advantages" aria-labelledby="advantages-heading">
+      <section className={styles.howItWorks} aria-labelledby="how-it-works-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
-          <motion.h2 id="advantages-heading" className={styles.advantagesTitle} {...fadeChild}>
-            {t("advantages.title")}
+          <motion.h2 id="how-it-works-heading" className={styles.lightSectionTitle} {...fadeChild}>
+            {t("howItWorks.title")}
           </motion.h2>
-          <motion.div className={styles.advantagesGrid} {...advantagesListStagger}>
-            {ADVANTAGE_ITEMS.map(({ key, n }) => (
-              <motion.article key={key} className={styles.advantagesCard} {...fadeChild}>
-                <span className={styles.advantagesNumber} aria-hidden>{n}</span>
-                <h3 className={styles.advantagesCardTitle}>{t(`advantages.items.${key}.title`)}</h3>
-                <p className={styles.advantagesBody}>
-                  {t.rich(`advantages.items.${key}.body`, {
-                    orange: (chunks) => <span className={styles.advantagesHighlight}>{chunks}</span>,
-                  })}
-                </p>
-              </motion.article>
+          <motion.div className={styles.howItWorksGrid} {...getNestedSectionListStagger(motionOff)}>
+            {(t.raw("howItWorks.steps") as Array<{ number: string; title: string; body: string }>).map((step) => (
+              <motion.div key={step.number} className={styles.howItWorksStep} {...fadeChild}>
+                <span className={styles.howItWorksNumber}>{step.number}</span>
+                <h3 className={styles.howItWorksTitle}>{step.title}</h3>
+                <p className={styles.howItWorksBody}>{step.body}</p>
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
@@ -254,18 +250,22 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <section className={styles.howItWorks} aria-labelledby="how-it-works-heading">
+      <section className={styles.advantages} id="advantages" aria-labelledby="advantages-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
-          <motion.h2 id="how-it-works-heading" className={styles.lightSectionTitle} {...fadeChild}>
-            {t("howItWorks.title")}
+          <motion.h2 id="advantages-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("advantages.title")}
           </motion.h2>
-          <motion.div className={styles.howItWorksGrid} {...getNestedSectionListStagger(motionOff)}>
-            {(t.raw("howItWorks.steps") as Array<{ number: string; title: string; body: string }>).map((step) => (
-              <motion.div key={step.number} className={styles.howItWorksStep} {...fadeChild}>
-                <span className={styles.howItWorksNumber}>{step.number}</span>
-                <h3 className={styles.howItWorksTitle}>{step.title}</h3>
-                <p className={styles.howItWorksBody}>{step.body}</p>
-              </motion.div>
+          <motion.div className={styles.advantagesGrid} {...advantagesListStagger}>
+            {ADVANTAGE_ITEMS.map(({ key, n }) => (
+              <motion.article key={key} className={styles.advantagesCard} {...fadeChild}>
+                <span className={styles.advantagesNumber} aria-hidden>{n}</span>
+                <h3 className={styles.advantagesCardTitle}>{t(`advantages.items.${key}.title`)}</h3>
+                <p className={styles.advantagesBody}>
+                  {t.rich(`advantages.items.${key}.body`, {
+                    orange: (chunks) => <span className={styles.advantagesHighlight}>{chunks}</span>,
+                  })}
+                </p>
+              </motion.article>
             ))}
           </motion.div>
         </motion.div>
