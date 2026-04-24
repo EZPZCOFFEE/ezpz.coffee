@@ -98,7 +98,7 @@ const CoffeePage = () => {
           </div>
           <div className={styles.selectionStats}>
             <div className={styles.selectionStat}>
-              <span className={styles.selectionStatNumber}>80+</span>
+              <span className={styles.selectionStatNumber}>84+</span>
               <span className={styles.selectionStatLabel}>SCA cupping score</span>
             </div>
             <div className={styles.selectionStat}>
