@@ -1,6 +1,6 @@
 "use client";
 
-import { GlobeHemisphereEastIcon } from "@phosphor-icons/react";
+import { GlobeHemisphereEastIcon, Coffee } from "@phosphor-icons/react";
 import { CaretDoubleDownIcon } from "@phosphor-icons/react/dist/ssr";
 import classNames from "classnames";
 import { motion, useReducedMotion } from "framer-motion";
@@ -200,7 +200,10 @@ const WhiteLabelSolutionsPage = () => {
                 <span className={styles.wlHowNumber}>{step.n}</span>
                 <h3 className={styles.wlHowTitle}>{step.title}</h3>
                 <p className={styles.wlHowBody}>{step.body}</p>
-                {i < arr.length - 1 && <span className={styles.wlHowArrow} aria-hidden>→</span>}
+                {i < arr.length - 1
+                  ? <span className={styles.wlHowArrow} aria-hidden>→</span>
+                  : <Coffee size={16} weight="bold" className={styles.wlHowArrow} aria-hidden />
+                }
               </div>
             ))}
           </div>
