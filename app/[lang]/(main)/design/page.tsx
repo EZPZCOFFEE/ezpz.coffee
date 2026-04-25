@@ -31,14 +31,24 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const DesignPage = async () => {
-  const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, {
-    handle: "custom-coffee",
-  });
+  let product: GetProductQuery["product"] | null = null;
 
-  const product = data.product;
+  try {
+    const data = await shopifyQuery<GetProductQuery, GetProductQueryVariables>(GET_PRODUCT, {
+      handle: "custom-coffee",
+    });
+    product = data.product ?? null;
+  } catch (err) {
+    console.error("[DesignPage] Shopify fetch failed:", err);
+  }
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <div style={{ padding: "120px 24px", textAlign: "center", fontFamily: "sans-serif" }}>
+        <h1 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Our designer is temporarily unavailable.</h1>
+        <p style={{ color: "#666" }}>Please try again in a few minutes or <a href="/en/contact" style={{ color: "#c0392b" }}>contact us</a> for help.</p>
+      </div>
+    );
   }
 
   return <CustomizationPageClient product={product} />;
