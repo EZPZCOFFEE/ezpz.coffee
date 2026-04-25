@@ -6,7 +6,7 @@ import { headers as nextHeaders } from "next/headers";
 import { API_VERSION } from "@utils/consts";
 
 const shopifyDomain = process.env.NEXT_PUBLIC_STOREFRONT_ID
-  ? `https://${process.env.NEXT_PUBLIC_STOREFRONT_ID}`
+  ? `https://${process.env.NEXT_PUBLIC_STOREFRONT_ID}.myshopify.com`
   : undefined;
 
 const privateToken = process.env.SHOPIFY_PRIVATE_API_TOKEN;

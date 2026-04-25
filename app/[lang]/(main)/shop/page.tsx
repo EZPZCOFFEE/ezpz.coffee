@@ -72,7 +72,7 @@ async function fetchProducts(): Promise<ShopProduct[]> {
   const token = process.env.NEXT_PUBLIC_STOREFRONT_API_TOKEN;
   if (!domain || !token) return [];
 
-  const res = await fetch(`https://${domain}/api/2026-01/graphql.json`, {
+  const res = await fetch(`https://${domain}.myshopify.com/api/2026-01/graphql.json`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
