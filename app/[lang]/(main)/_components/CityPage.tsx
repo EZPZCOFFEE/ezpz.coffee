@@ -12,6 +12,8 @@ export interface CityPageData {
   deliveryTime: string;
   howItWorks: { n: string; title: string; body: string }[];
   whyPoints: { n: string; title: string; body: string }[];
+  whoWeServe?: { title: string; body: string }[];
+  deliveryBody?: string;
   canonicalPath: string;
   allMarketsHref?: string;
   allMarketsLabel?: string;
@@ -130,13 +132,44 @@ const CityPage = ({ data }: { data: CityPageData }) => {
         </div>
       </section>
 
+      {/* ── Who We Serve ── */}
+      {data.whoWeServe && data.whoWeServe.length > 0 && (
+        <section className={styles.why}>
+          <div className={styles.whyInner}>
+            <span className={styles.eyebrow}>Who we serve</span>
+            <h2 className={styles.sectionTitleLight}>Who we serve in {data.city}.</h2>
+            <div className={styles.whyGrid}>
+              {data.whoWeServe.map((item) => (
+                <div key={item.title} className={styles.whyCard}>
+                  <h3 className={styles.whyCardTitle}>{item.title}</h3>
+                  <p className={styles.whyCardBody}>{item.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Delivery ── */}
+      {data.deliveryBody && (
+        <section className={styles.intro}>
+          <div className={styles.introInner}>
+            <span className={styles.eyebrow}>Delivery to {data.city}</span>
+            <h2 style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)", fontWeight: 700, color: "#111", marginBottom: "1rem" }}>
+              Delivered to your {data.city} door.
+            </h2>
+            <p className={styles.introText}>{data.deliveryBody}</p>
+          </div>
+        </section>
+      )}
+
       {/* ── Related Pages ── */}
       {data.relatedCities && data.relatedCities.length > 0 && (
         <section className={styles.relatedPages} aria-labelledby="related-pages-heading">
           <div className={styles.relatedPagesInner}>
             <span id="related-pages-heading" className={styles.relatedPagesTitle}>Related Markets</span>
             <div className={styles.relatedPagesGrid}>
-              <Link href="/en/locations" className={styles.relatedPageCard}>← All Canadian Markets</Link>
+              <Link href={data.allMarketsHref ?? "/en/locations"} className={styles.relatedPageCard}>← {data.allMarketsLabel ?? "All Canadian Markets"}</Link>
               {data.relatedCities.map(({ city, href }) => (
                 <Link key={city} href={href} className={styles.relatedPageCard}>
                   Custom Coffee Bags {city} →

@@ -35,7 +35,7 @@ const STATES: { name: string; cities: City[] }[] = [
     name: "New York",
     cities: [
       { name: "New York City", state: "NY", href: "/en/custom-coffee-bags-new-york", dedicated: true },
-      { name: "Brooklyn", state: "NY", href: "/en/contact?subject=Custom Coffee Brooklyn" },
+      { name: "Brooklyn", state: "NY", href: "/en/custom-coffee-bags-brooklyn", dedicated: true },
       { name: "Buffalo", state: "NY", href: "/en/contact?subject=Custom Coffee Buffalo" },
       { name: "Albany", state: "NY", href: "/en/contact?subject=Custom Coffee Albany" },
       { name: "Rochester", state: "NY", href: "/en/contact?subject=Custom Coffee Rochester" },
@@ -45,8 +45,8 @@ const STATES: { name: string; cities: City[] }[] = [
     name: "California",
     cities: [
       { name: "Los Angeles", state: "CA", href: "/en/custom-coffee-bags-los-angeles", dedicated: true },
-      { name: "San Francisco", state: "CA", href: "/en/contact?subject=Custom Coffee San Francisco" },
-      { name: "San Diego", state: "CA", href: "/en/contact?subject=Custom Coffee San Diego" },
+      { name: "San Francisco", state: "CA", href: "/en/custom-coffee-bags-san-francisco", dedicated: true },
+      { name: "San Diego", state: "CA", href: "/en/custom-coffee-bags-san-diego", dedicated: true },
       { name: "Sacramento", state: "CA", href: "/en/contact?subject=Custom Coffee Sacramento" },
       { name: "Oakland", state: "CA", href: "/en/contact?subject=Custom Coffee Oakland" },
       { name: "San Jose", state: "CA", href: "/en/contact?subject=Custom Coffee San Jose" },
@@ -67,7 +67,7 @@ const STATES: { name: string; cities: City[] }[] = [
     cities: [
       { name: "Miami", state: "FL", href: "/en/custom-coffee-bags-miami", dedicated: true },
       { name: "Orlando", state: "FL", href: "/en/contact?subject=Custom Coffee Orlando" },
-      { name: "Tampa", state: "FL", href: "/en/contact?subject=Custom Coffee Tampa" },
+      { name: "Tampa", state: "FL", href: "/en/custom-coffee-bags-tampa", dedicated: true },
       { name: "Fort Lauderdale", state: "FL", href: "/en/contact?subject=Custom Coffee Fort Lauderdale" },
       { name: "Jacksonville", state: "FL", href: "/en/contact?subject=Custom Coffee Jacksonville" },
       { name: "Naples", state: "FL", href: "/en/contact?subject=Custom Coffee Naples" },
@@ -76,9 +76,9 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Texas",
     cities: [
-      { name: "Houston", state: "TX", href: "/en/contact?subject=Custom Coffee Houston" },
-      { name: "Dallas", state: "TX", href: "/en/contact?subject=Custom Coffee Dallas" },
-      { name: "Austin", state: "TX", href: "/en/contact?subject=Custom Coffee Austin" },
+      { name: "Houston", state: "TX", href: "/en/custom-coffee-bags-houston", dedicated: true },
+      { name: "Dallas", state: "TX", href: "/en/custom-coffee-bags-dallas", dedicated: true },
+      { name: "Austin", state: "TX", href: "/en/custom-coffee-bags-austin", dedicated: true },
       { name: "San Antonio", state: "TX", href: "/en/contact?subject=Custom Coffee San Antonio" },
       { name: "Fort Worth", state: "TX", href: "/en/contact?subject=Custom Coffee Fort Worth" },
     ],
@@ -86,7 +86,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Washington",
     cities: [
-      { name: "Seattle", state: "WA", href: "/en/contact?subject=Custom Coffee Seattle" },
+      { name: "Seattle", state: "WA", href: "/en/custom-coffee-bags-seattle", dedicated: true },
       { name: "Bellevue", state: "WA", href: "/en/contact?subject=Custom Coffee Bellevue" },
       { name: "Tacoma", state: "WA", href: "/en/contact?subject=Custom Coffee Tacoma" },
       { name: "Spokane", state: "WA", href: "/en/contact?subject=Custom Coffee Spokane" },
@@ -95,7 +95,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Massachusetts",
     cities: [
-      { name: "Boston", state: "MA", href: "/en/contact?subject=Custom Coffee Boston" },
+      { name: "Boston", state: "MA", href: "/en/custom-coffee-bags-boston", dedicated: true },
       { name: "Cambridge", state: "MA", href: "/en/contact?subject=Custom Coffee Cambridge" },
       { name: "Worcester", state: "MA", href: "/en/contact?subject=Custom Coffee Worcester" },
       { name: "Somerville", state: "MA", href: "/en/contact?subject=Custom Coffee Somerville" },
@@ -104,7 +104,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Colorado",
     cities: [
-      { name: "Denver", state: "CO", href: "/en/contact?subject=Custom Coffee Denver" },
+      { name: "Denver", state: "CO", href: "/en/custom-coffee-bags-denver", dedicated: true },
       { name: "Boulder", state: "CO", href: "/en/contact?subject=Custom Coffee Boulder" },
       { name: "Colorado Springs", state: "CO", href: "/en/contact?subject=Custom Coffee Colorado Springs" },
       { name: "Fort Collins", state: "CO", href: "/en/contact?subject=Custom Coffee Fort Collins" },
@@ -113,7 +113,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Georgia",
     cities: [
-      { name: "Atlanta", state: "GA", href: "/en/contact?subject=Custom Coffee Atlanta" },
+      { name: "Atlanta", state: "GA", href: "/en/custom-coffee-bags-atlanta", dedicated: true },
       { name: "Savannah", state: "GA", href: "/en/contact?subject=Custom Coffee Savannah" },
       { name: "Augusta", state: "GA", href: "/en/contact?subject=Custom Coffee Augusta" },
     ],
@@ -121,7 +121,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Nevada",
     cities: [
-      { name: "Las Vegas", state: "NV", href: "/en/contact?subject=Custom Coffee Las Vegas" },
+      { name: "Las Vegas", state: "NV", href: "/en/custom-coffee-bags-las-vegas", dedicated: true },
       { name: "Reno", state: "NV", href: "/en/contact?subject=Custom Coffee Reno" },
       { name: "Henderson", state: "NV", href: "/en/contact?subject=Custom Coffee Henderson" },
     ],
@@ -129,7 +129,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Arizona",
     cities: [
-      { name: "Phoenix", state: "AZ", href: "/en/contact?subject=Custom Coffee Phoenix" },
+      { name: "Phoenix", state: "AZ", href: "/en/custom-coffee-bags-phoenix", dedicated: true },
       { name: "Scottsdale", state: "AZ", href: "/en/contact?subject=Custom Coffee Scottsdale" },
       { name: "Tucson", state: "AZ", href: "/en/contact?subject=Custom Coffee Tucson" },
       { name: "Tempe", state: "AZ", href: "/en/contact?subject=Custom Coffee Tempe" },
@@ -138,7 +138,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Oregon",
     cities: [
-      { name: "Portland", state: "OR", href: "/en/contact?subject=Custom Coffee Portland" },
+      { name: "Portland", state: "OR", href: "/en/custom-coffee-bags-portland", dedicated: true },
       { name: "Eugene", state: "OR", href: "/en/contact?subject=Custom Coffee Eugene" },
       { name: "Salem", state: "OR", href: "/en/contact?subject=Custom Coffee Salem" },
       { name: "Bend", state: "OR", href: "/en/contact?subject=Custom Coffee Bend" },
@@ -147,14 +147,14 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Minnesota",
     cities: [
-      { name: "Minneapolis", state: "MN", href: "/en/contact?subject=Custom Coffee Minneapolis" },
+      { name: "Minneapolis", state: "MN", href: "/en/custom-coffee-bags-minneapolis", dedicated: true },
       { name: "Saint Paul", state: "MN", href: "/en/contact?subject=Custom Coffee Saint Paul" },
     ],
   },
   {
     name: "Michigan",
     cities: [
-      { name: "Detroit", state: "MI", href: "/en/contact?subject=Custom Coffee Detroit" },
+      { name: "Detroit", state: "MI", href: "/en/custom-coffee-bags-detroit", dedicated: true },
       { name: "Grand Rapids", state: "MI", href: "/en/contact?subject=Custom Coffee Grand Rapids" },
       { name: "Ann Arbor", state: "MI", href: "/en/contact?subject=Custom Coffee Ann Arbor" },
     ],
@@ -162,16 +162,16 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Pennsylvania",
     cities: [
-      { name: "Philadelphia", state: "PA", href: "/en/contact?subject=Custom Coffee Philadelphia" },
-      { name: "Pittsburgh", state: "PA", href: "/en/contact?subject=Custom Coffee Pittsburgh" },
+      { name: "Philadelphia", state: "PA", href: "/en/custom-coffee-bags-philadelphia", dedicated: true },
+      { name: "Pittsburgh", state: "PA", href: "/en/custom-coffee-bags-pittsburgh", dedicated: true },
       { name: "Allentown", state: "PA", href: "/en/contact?subject=Custom Coffee Allentown" },
     ],
   },
   {
     name: "North Carolina",
     cities: [
-      { name: "Charlotte", state: "NC", href: "/en/contact?subject=Custom Coffee Charlotte" },
-      { name: "Raleigh", state: "NC", href: "/en/contact?subject=Custom Coffee Raleigh" },
+      { name: "Charlotte", state: "NC", href: "/en/custom-coffee-bags-charlotte", dedicated: true },
+      { name: "Raleigh", state: "NC", href: "/en/custom-coffee-bags-raleigh", dedicated: true },
       { name: "Durham", state: "NC", href: "/en/contact?subject=Custom Coffee Durham" },
       { name: "Asheville", state: "NC", href: "/en/contact?subject=Custom Coffee Asheville" },
     ],
@@ -179,7 +179,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Tennessee",
     cities: [
-      { name: "Nashville", state: "TN", href: "/en/contact?subject=Custom Coffee Nashville" },
+      { name: "Nashville", state: "TN", href: "/en/custom-coffee-bags-nashville", dedicated: true },
       { name: "Memphis", state: "TN", href: "/en/contact?subject=Custom Coffee Memphis" },
       { name: "Knoxville", state: "TN", href: "/en/contact?subject=Custom Coffee Knoxville" },
     ],
@@ -195,7 +195,7 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Louisiana",
     cities: [
-      { name: "New Orleans", state: "LA", href: "/en/contact?subject=Custom Coffee New Orleans" },
+      { name: "New Orleans", state: "LA", href: "/en/custom-coffee-bags-new-orleans", dedicated: true },
       { name: "Baton Rouge", state: "LA", href: "/en/contact?subject=Custom Coffee Baton Rouge" },
     ],
   },
@@ -210,13 +210,13 @@ const STATES: { name: string; cities: City[] }[] = [
   {
     name: "Washington DC",
     cities: [
-      { name: "Washington DC", state: "DC", href: "/en/contact?subject=Custom Coffee Washington DC" },
+      { name: "Washington DC", state: "DC", href: "/en/custom-coffee-bags-washington-dc", dedicated: true },
     ],
   },
   {
     name: "Hawaii",
     cities: [
-      { name: "Honolulu", state: "HI", href: "/en/contact?subject=Custom Coffee Honolulu" },
+      { name: "Honolulu", state: "HI", href: "/en/custom-coffee-bags-honolulu", dedicated: true },
     ],
   },
 ];

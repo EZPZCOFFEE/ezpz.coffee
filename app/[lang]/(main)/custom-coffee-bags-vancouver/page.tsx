@@ -4,22 +4,22 @@ import CityPage, { CityPageData } from "../_components/CityPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Coffee Bags Vancouver | No Minimum | Ships Across Canada | EZPZ",
+    title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
     description:
-      "Custom branded coffee bags for Vancouver businesses. No minimum order, full design included, specialty coffee shipped across Canada from Montreal. EZPZ makes branded coffee simple.",
+      "Custom coffee bags for Vancouver businesses, shipped in 7–10 days. No minimum order, full design included. Vancouver brands choose EZPZ for traceable specialty coffee.",
     alternates: { canonical: "/custom-coffee-bags-vancouver" },
     openGraph: {
-      title: "Custom Coffee Bags Vancouver | No Minimum | Ships Across Canada | EZPZ",
+      title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
       description:
-        "Custom branded coffee bags for Vancouver businesses. No minimum order, full design included, specialty coffee shipped across Canada from Montreal.",
+        "Custom coffee bags for Vancouver businesses. No minimum order, full design included, traceable specialty coffee shipped from Montreal.",
       type: "website",
       url: "https://www.ezpz.coffee/en/custom-coffee-bags-vancouver",
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Vancouver" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Coffee Bags Vancouver | No Minimum | EZPZ",
-      description: "Custom branded coffee bags for Vancouver businesses. No minimum order, design included.",
+      title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
+      description: "Custom coffee bags for Vancouver businesses. No minimum order, design included.",
       images: ["/assets/banner-01.jpg"],
     },
   };
@@ -33,7 +33,7 @@ const data: CityPageData = {
   subheadline:
     "Vancouver's coffee culture is world class. Your branded coffee should be too — with no minimums and full design included.",
   bodyIntro:
-    "Vancouver is one of the world's great coffee cities. The standards are high and the competition is fierce. If you are a Vancouver restaurant, hotel, retailer, or brand looking to stand out with your own custom branded coffee — EZPZ ships directly to Vancouver, typically within 7 to 10 business days from order confirmation. No minimum order. Full custom bag design included. 100% traceable specialty coffee.",
+    "From Gastown restaurants to Coal Harbour hotels, from Main Street boutiques to Kitsilano wellness brands — Vancouver businesses understand quality and sustainability better than almost anywhere. EZPZ ships custom branded specialty coffee from our Montreal roastery to Vancouver in 7 to 10 business days. Our 100% traceable sourcing aligns perfectly with Vancouver's values-driven consumer culture.",
   deliveryTime: "7 to 10 business days",
   canonicalPath: "/custom-coffee-bags-vancouver",
   howItWorks: [
@@ -71,24 +71,41 @@ const data: CityPageData = {
     },
     {
       n: "03",
-      title: "Quality that meets Vancouver standards",
-      body: "We source only 80+ SCA specialty grade coffees from fully traceable origins. Vancouver has world-class coffee standards — our quality matches them.",
+      title: "Traceable sourcing that matches Vancouver values",
+      body: "We source only 80+ SCA specialty grade coffees from fully traceable origins. Vancouver consumers care deeply about where their coffee comes from — our transparency delivers on that.",
     },
     {
       n: "04",
-      title: "Ships coast to coast",
+      title: "Ships coast to coast reliably",
       body: "From our Montreal roastery to your Vancouver door in 7 to 10 business days. Tracked, reliable, and just as fast as local suppliers without the minimum requirements.",
     },
   ],
-};
-
-const dataWithRelated: typeof data = {
-  ...data,
+  whoWeServe: [
+    {
+      title: "Restaurants & Gastown Dining",
+      body: "From Gastown bistros to Coal Harbour waterfront restaurants — custom branded coffee adds a premium touchpoint that keeps your brand on the counter long after dinner.",
+    },
+    {
+      title: "Boutique Hotels & Lodges",
+      body: "Vancouver's boutique hotel scene demands premium experiences. A custom coffee bag in every room tells guests you care about every detail of their stay.",
+    },
+    {
+      title: "Wellness Brands & Studios",
+      body: "Kitsilano yoga studios, Main Street wellness brands, and Yaletown fitness clubs use custom branded coffee to build a daily ritual their community returns to.",
+    },
+    {
+      title: "Sustainable & Lifestyle Brands",
+      body: "Vancouver's values-driven retail and lifestyle sector chooses EZPZ because our traceable, specialty-grade coffee aligns with the sustainability story your brand already tells.",
+    },
+  ],
+  deliveryBody:
+    "EZPZ ships from our Montreal roastery to Vancouver in 7 to 10 business days via tracked Canada Post or courier. First orders take 2 to 3 weeks total from design approval to delivery. Repeat orders ship faster since your design is already saved. We deliver to all Vancouver neighbourhoods — Gastown, Yaletown, Kitsilano, Main Street, Commercial Drive, Coal Harbour — as well as Burnaby, Surrey, Richmond, and the rest of Metro Vancouver. For volume orders or retail distribution, contact us for bulk pricing.",
   relatedCities: [
-    { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
+    { city: "Victoria", href: "/en/custom-coffee-bags-victoria" },
+    { city: "Kelowna", href: "/en/custom-coffee-bags-kelowna" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
 };
 
-const VancouverPage = () => <CityPage data={dataWithRelated} />;
+const VancouverPage = () => <CityPage data={data} />;
 export default VancouverPage;

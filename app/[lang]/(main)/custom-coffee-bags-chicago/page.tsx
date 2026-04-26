@@ -6,20 +6,20 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Custom Coffee Bags Chicago | No Minimum Order | EZPZ Coffee",
     description:
-      "Custom branded coffee bags for Chicago businesses. No minimum order, full design included, specialty coffee shipped from Montreal to Chicago. Build your coffee brand today.",
+      "Custom coffee bags for Chicago businesses, shipped in 7–10 days. No minimum order, full design included. Chicago brands choose EZPZ for specialty branded coffee.",
     alternates: { canonical: "/custom-coffee-bags-chicago" },
     openGraph: {
       title: "Custom Coffee Bags Chicago | No Minimum Order | EZPZ Coffee",
       description:
-        "Custom branded coffee bags for Chicago businesses. No minimum order, full design included, specialty coffee shipped from Montreal to Chicago.",
+        "Custom coffee bags for Chicago businesses. No minimum order, full design included, specialty coffee shipped from Montreal to Chicago.",
       type: "website",
       url: "https://www.ezpz.coffee/en/custom-coffee-bags-chicago",
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Chicago" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Coffee Bags Chicago | No Minimum | EZPZ",
-      description: "Custom branded coffee bags for Chicago businesses. No minimum order, design included.",
+      title: "Custom Coffee Bags Chicago | No Minimum Order | EZPZ Coffee",
+      description: "Custom coffee bags for Chicago businesses. No minimum order, design included.",
       images: ["/assets/banner-01.jpg"],
     },
   };
@@ -29,11 +29,11 @@ const data: CityPageData = {
   city: "Chicago",
   province: "Illinois",
   eyebrow: "Custom Coffee Bags — Chicago",
-  headline: "Custom coffee bags for Chicago brands. No minimums. Full design included.",
+  headline: "Custom coffee bags for Chicago brands. Zero minimums.",
   subheadline:
     "Chicago's restaurants, hotels, and retailers trust EZPZ to bring their coffee brand to life — with no minimum orders and specialty coffee from traceable origins.",
   bodyIntro:
-    "Chicago has one of the most vibrant restaurant and hospitality scenes in America. Whether you are running a deep-dish institution in the Loop, a boutique hotel in River North, or a fitness studio in Lincoln Park — a branded coffee product adds a premium touch that customers notice and remember. EZPZ ships directly to Chicago from our Montreal roastery, typically within 7 to 10 business days. No minimum order. Full custom design included.",
+    "From River North restaurants to Loop hotels, from Wicker Park boutiques to Lincoln Park fitness studios — Chicago businesses build some of the most loyal local customer bases in America. A custom branded coffee bag sold at the counter of a Pilsen café or gifted to a Gold Coast client keeps your brand top of mind every morning. EZPZ ships from Montreal to Chicago in 7 to 10 business days.",
   deliveryTime: "7 to 10 business days",
   canonicalPath: "/custom-coffee-bags-chicago",
   allMarketsHref: "/en/locations/usa",
@@ -78,9 +78,34 @@ const data: CityPageData = {
     },
     {
       n: "04",
-      title: "Direct shipping to Chicago",
-      body: "From our Montreal roastery to your Chicago door in 7 to 10 business days. Tracked and reliable — no import headaches on your end.",
+      title: "Built for Chicago's neighbourhoods",
+      body: "River North, Wicker Park, Lincoln Park, Pilsen, Gold Coast — EZPZ serves Chicago businesses across every neighbourhood with the same no-minimum, design-included approach.",
     },
+  ],
+  whoWeServe: [
+    {
+      title: "Restaurants & Deep Dish Icons",
+      body: "From River North fine dining to Wicker Park neighbourhood restaurants — custom branded coffee adds a premium extension to your menu and a memorable takeaway for loyal customers.",
+    },
+    {
+      title: "Hotels & Loop Properties",
+      body: "Downtown Chicago hotels, Magnificent Mile properties, and Streeterville boutique stays trust EZPZ to brand their in-room and lobby coffee experience.",
+    },
+    {
+      title: "Retailers & Lincoln Park Boutiques",
+      body: "Lincoln Park shops, Wicker Park boutiques, and Gold Coast gift stores add custom branded coffee as a high-margin retail product with strong repeat purchase appeal.",
+    },
+    {
+      title: "Financial & Corporate Gifting",
+      body: "Chicago's financial district, LaSalle Street firms, and Merchandise Mart companies trust EZPZ for premium branded coffee gifts that make a strong impression on clients and colleagues.",
+    },
+  ],
+  deliveryBody:
+    "EZPZ ships from Montreal to Chicago in 7 to 10 business days via tracked international courier. We deliver to all Chicago neighbourhoods — River North, the Loop, Wicker Park, Lincoln Park, Pilsen, Gold Coast, Hyde Park, and beyond. First orders take 2 to 3 weeks total from design approval. Repeat orders are faster since your design is already on file. No import paperwork on your end. For large hospitality or corporate orders, contact us for volume pricing.",
+  relatedCities: [
+    { city: "Minneapolis", href: "/en/custom-coffee-bags-minneapolis" },
+    { city: "Detroit", href: "/en/custom-coffee-bags-detroit" },
+    { city: "New York", href: "/en/custom-coffee-bags-new-york" },
   ],
 };
 

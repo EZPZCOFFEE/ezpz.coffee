@@ -4,22 +4,22 @@ import CityPage, { CityPageData } from "../_components/CityPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Coffee Bags Toronto | Ships Fast | No Minimum | EZPZ Coffee",
+    title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
     description:
-      "Custom branded coffee bags for Toronto businesses. No minimum order, full design included, roasted in Montreal and shipped fast to Toronto. EZPZ makes branded coffee easy.",
+      "Custom coffee bags for Toronto businesses, shipped in 5–7 days from Montreal. No minimum order, full design included. Toronto brands trust EZPZ.",
     alternates: { canonical: "/custom-coffee-bags-toronto" },
     openGraph: {
-      title: "Custom Coffee Bags Toronto | Ships Fast | No Minimum | EZPZ Coffee",
+      title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
       description:
-        "Custom branded coffee bags for Toronto businesses. No minimum order, full design included, roasted in Montreal and shipped fast to Toronto.",
+        "Custom coffee bags for Toronto businesses, shipped in 5–7 days. No minimum order, full design included. Toronto brands trust EZPZ.",
       type: "website",
       url: "https://www.ezpz.coffee/en/custom-coffee-bags-toronto",
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Toronto" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Coffee Bags Toronto | Ships Fast | No Minimum | EZPZ",
-      description: "Custom branded coffee bags for Toronto businesses. No minimum order, design included.",
+      title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
+      description: "Custom coffee bags for Toronto businesses. No minimum order, design included.",
       images: ["/assets/banner-01.jpg"],
     },
   };
@@ -29,11 +29,11 @@ const data: CityPageData = {
   city: "Toronto",
   province: "Ontario",
   eyebrow: "Custom Coffee Bags — Toronto",
-  headline: "Custom coffee bags for Toronto brands. Shipped fast. No minimums.",
+  headline: "Custom coffee bags for Toronto brands. Zero minimums.",
   subheadline:
     "Toronto's restaurants, hotels, and retailers trust EZPZ to put their brand on specialty coffee — with no minimums and full design included.",
   bodyIntro:
-    "Toronto is home to some of Canada's most exciting restaurants, boutiques, hotels, and brands. If you are one of them and you want to add a branded coffee product to your lineup — EZPZ ships directly to Toronto, typically within 5 to 7 business days from order confirmation. No minimum order. Full custom bag design included. Specialty grade coffee from traceable origins around the world.",
+    "From the King West restaurant corridor to boutique hotels in Yorkville, from Queen Street retailers to Liberty Village creative studios — Toronto businesses compete on brand as much as product. EZPZ ships custom branded coffee bags from Montreal to Toronto typically within 5 to 7 business days. Whether you are launching a new product or scaling an existing brand, zero minimums means zero risk.",
   deliveryTime: "5 to 7 business days",
   canonicalPath: "/custom-coffee-bags-toronto",
   howItWorks: [
@@ -76,19 +76,36 @@ const data: CityPageData = {
     },
     {
       n: "04",
-      title: "Specialty grade coffee",
-      body: "We source only 80+ SCA specialty grade coffees from fully traceable origins. Every bag is roasted to order in Montreal — never pre-packaged or sitting in a warehouse.",
+      title: "Built for Toronto's competitive market",
+      body: "King West, Yorkville, Queen Street, Liberty Village — EZPZ serves businesses across every Toronto neighbourhood and industry. We know what Toronto brands need.",
     },
   ],
-};
-
-const dataWithRelated: typeof data = {
-  ...data,
+  whoWeServe: [
+    {
+      title: "Restaurants & Hospitality",
+      body: "From King West bistros to Distillery District dining — sell your own branded coffee, offer it on your menu, or use it as a signature takeaway gift that keeps your brand visible.",
+    },
+    {
+      title: "Boutique Hotels & B&Bs",
+      body: "Yorkville hotels, boutique properties on Jarvis Street, and design-forward stays across Toronto trust EZPZ to brand their in-room coffee experience.",
+    },
+    {
+      title: "Retailers & Concept Stores",
+      body: "Queen Street boutiques, Kensington Market shops, and Leslieville retailers add custom branded coffee as a high-margin retail product that drives repeat traffic.",
+    },
+    {
+      title: "Creative Studios & Agencies",
+      body: "Liberty Village agencies, media companies, and tech firms in the financial district use branded coffee as a premium client gift and office culture touchpoint.",
+    },
+  ],
+  deliveryBody:
+    "EZPZ ships from our Montreal roastery to Toronto in 5 to 7 business days via tracked courier. First orders take 2 to 3 weeks total from design approval to delivery — including the time to roast and pack your order. Repeat orders are faster since your design is already on file. We ship to all Toronto neighbourhoods including downtown, Etobicoke, Scarborough, North York, and the GTA. Need a large order for a chain or multi-location rollout? Contact us for volume pricing and scheduled delivery.",
   relatedCities: [
-    { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
-    { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
+    { city: "Mississauga", href: "/en/custom-coffee-bags-mississauga" },
+    { city: "Hamilton", href: "/en/custom-coffee-bags-hamilton" },
+    { city: "Ottawa", href: "/en/custom-coffee-bags-ottawa" },
   ],
 };
 
-const TorontoPage = () => <CityPage data={dataWithRelated} />;
+const TorontoPage = () => <CityPage data={data} />;
 export default TorontoPage;
