@@ -453,13 +453,14 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
     <html lang={lang}>
       <body className={fontVariables}>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2R52RRKHM3" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18087558623" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-2R52RRKHM3');
+            gtag('config', 'AW-18087558623');
           `}
         </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
