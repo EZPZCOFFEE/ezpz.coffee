@@ -36,7 +36,7 @@ const TRUST_LOGOS = [
   { file: "janine", name: "Janine", href: "https://www.janine.ca" },
   { file: "regine", name: "Régine Café-Brunch", href: "https://www.caferegine.com" },
   { file: "stephen", name: "Le Mount Stephen Hôtel", href: "https://www.hotelmountstephen.com" },
-  { file: "tunnel", name: "Tunnel Espresso", href: "https://www.tunnelespresso.ca" },
+  { file: "tunnel", name: "Tunnel Espresso", href: "https://tunnelespressobar.ca" },
 ];
 
 /* Featured coffees carousel — restore when product imagery is ready.
