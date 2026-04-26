@@ -34,7 +34,7 @@ const TRUST_LOGOS = [
   { file: "cowork", name: "Cowork", href: "https://www.coworkgroup.ca" },
   { file: "fairmont", name: "Fairmont Hotels & Resorts", href: "https://www.fairmont.com" },
   { file: "janine", name: "Janine", href: "https://www.janine.ca" },
-  { file: "regine", name: "Régine Café-Brunch", href: "https://www.caferegine.com" },
+  { file: "regine", name: "Régine Café-Brunch", href: "https://reginecafe.ca/fr/" },
   { file: "stephen", name: "Le Mount Stephen Hôtel", href: "https://www.hotelmountstephen.com" },
   { file: "tunnel", name: "Tunnel Espresso", href: "https://tunnelespressobar.ca" },
 ];
