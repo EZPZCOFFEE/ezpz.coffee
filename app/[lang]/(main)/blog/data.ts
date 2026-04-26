@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "best-coffee-shops-montreal-2026",
+    category: "Montreal Coffee Guide",
+    categoryColor: "#c43e14",
+    title: "The 15 Best Coffee Shops in Montreal in 2026",
+    excerpt:
+      "From world-ranked specialty roasters to beloved neighbourhood gems — your ultimate guide to Montreal's most exciting coffee scene, curated by the team at EZPZ Coffee.",
+    date: "April 25, 2026",
+    readTime: "8 min read",
+    color: "#1a1a2e",
+    initials: "MC",
+    image: "/assets/blog/montreal-coffee.svg",
+    published: true,
+  },
+  {
     slug: "mothers-day-coffee-gift-ideas-canada",
     category: "Gift Ideas",
     categoryColor: "#c43e14",

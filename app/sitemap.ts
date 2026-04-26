@@ -19,6 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/terms-of-use",
     "/en/mothers-day",
     "/en/blog/mothers-day-coffee-gift-ideas-canada",
+    "/en/blog/best-coffee-shops-montreal-2026",
+    "/en/blog/custom-coffee-bags-corporate-gifts-canada",
     "/en/coffee-week",
     "/en/white-label/restaurants",
     "/en/white-label/hotels",
