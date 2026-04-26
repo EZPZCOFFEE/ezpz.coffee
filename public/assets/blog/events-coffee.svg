@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e0e1a"/>
+      <stop offset="100%" style="stop-color:#1a1a2d"/>
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a3d"/>
+      <stop offset="100%" style="stop-color:#1a1a2d"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="140" x2="800" y2="140" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- Coffee bag body -->
+  <rect x="280" y="60" width="150" height="230" rx="7" fill="url(#bagGrad)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+  <!-- Top seal -->
+  <rect x="288" y="60" width="134" height="26" rx="4" fill="rgba(0,0,0,0.25)"/>
+  <line x1="288" y1="73" x2="422" y2="73" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="346" y="60" width="5" height="14" rx="1" fill="rgba(255,255,255,0.1)"/>
+  <rect x="359" y="60" width="5" height="14" rx="1" fill="rgba(255,255,255,0.1)"/>
+  <!-- Bottom gusset -->
+  <rect x="288" y="265" width="134" height="25" rx="4" fill="rgba(0,0,0,0.2)"/>
+  <!-- Side seams -->
+  <rect x="280" y="86" width="10" height="179" fill="rgba(0,0,0,0.2)"/>
+  <rect x="420" y="86" width="10" height="179" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Label panel on bag -->
+  <rect x="298" y="102" width="114" height="140" rx="3" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="355" y="148" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="3">YOUR</text>
+  <text x="355" y="168" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.85)" text-anchor="middle" letter-spacing="3">BRAND</text>
+  <line x1="318" y1="180" x2="392" y2="180" stroke="rgba(255,255,255,0.2)" stroke-width="0.75"/>
+  <text x="355" y="198" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.45)" text-anchor="middle" font-style="italic">Specialty Coffee</text>
+  <text x="355" y="214" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1.5">CANADA</text>
+  <!-- Valve -->
+  <circle cx="355" cy="237" r="5.5" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <circle cx="355" cy="237" r="2" fill="rgba(255,255,255,0.1)"/>
+
+  <!-- Left side: conference badge / lanyard -->
+  <!-- Badge card -->
+  <rect x="107" y="170" width="96" height="110" rx="5" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+  <!-- Badge header strip -->
+  <rect x="107" y="170" width="96" height="28" rx="5" fill="rgba(232,82,26,0.25)"/>
+  <rect x="107" y="186" width="96" height="12" fill="rgba(232,82,26,0.25)"/>
+  <text x="155" y="188" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="rgba(232,82,26,0.9)" text-anchor="middle" letter-spacing="1.5">EXHIBITOR</text>
+  <!-- Badge name lines -->
+  <rect x="120" y="210" width="72" height="5" rx="2" fill="rgba(255,255,255,0.2)"/>
+  <rect x="126" y="222" width="60" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <rect x="130" y="232" width="52" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <!-- Badge QR-like block -->
+  <rect x="134" y="247" width="24" height="24" rx="1" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <rect x="137" y="250" width="7" height="7" fill="rgba(255,255,255,0.15)"/>
+  <rect x="148" y="250" width="7" height="7" fill="rgba(255,255,255,0.15)"/>
+  <rect x="137" y="261" width="7" height="7" fill="rgba(255,255,255,0.15)"/>
+  <rect x="148" y="258" width="4" height="4" fill="rgba(255,255,255,0.1)"/>
+  <!-- Lanyard cord -->
+  <path d="M140 170 Q130 130 155 110 Q180 90 165 170" fill="none" stroke="rgba(232,82,26,0.4)" stroke-width="2" stroke-dasharray="3 2"/>
+  <!-- Clip -->
+  <rect x="150" y="110" width="10" height="6" rx="1" fill="rgba(255,255,255,0.2)"/>
+
+  <!-- Right side: trade show booth / event stats -->
+  <rect x="470" y="125" width="190" height="165" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <!-- Panel header -->
+  <rect x="470" y="125" width="190" height="28" rx="4" fill="rgba(232,82,26,0.15)"/>
+  <rect x="470" y="141" width="190" height="12" fill="rgba(232,82,26,0.15)"/>
+  <text x="565" y="144" font-family="Arial, sans-serif" font-size="7.5" font-weight="700" fill="#e8521a" text-anchor="middle" letter-spacing="2">EVENT REACH</text>
+
+  <!-- Stat rows -->
+  <line x1="484" y1="172" x2="646" y2="172" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="484" y="168" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">TRADE SHOWS</text>
+  <rect x="484" y="176" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="484" y="176" width="104" height="5" rx="2" fill="rgba(232,82,26,0.65)"/>
+
+  <line x1="484" y1="200" x2="646" y2="200" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="484" y="196" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">CONFERENCES</text>
+  <rect x="484" y="204" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="484" y="204" width="95" height="5" rx="2" fill="rgba(232,82,26,0.55)"/>
+
+  <line x1="484" y1="228" x2="646" y2="228" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="484" y="224" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">PRODUCT LAUNCHES</text>
+  <rect x="484" y="232" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="484" y="232" width="88" height="5" rx="2" fill="rgba(232,82,26,0.5)"/>
+
+  <line x1="484" y1="256" x2="646" y2="256" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="484" y="252" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">CORP. RETREATS</text>
+  <rect x="484" y="260" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="484" y="260" width="78" height="5" rx="2" fill="rgba(232,82,26,0.45)"/>
+
+  <line x1="484" y1="278" x2="646" y2="278" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="484" y="274" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.4)" letter-spacing="1">BRAND RECALL</text>
+  <rect x="484" y="282" width="110" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
+  <rect x="484" y="282" width="108" height="5" rx="2" fill="rgba(232,82,26,0.75)"/>
+
+  <!-- Footer label -->
+  <text x="400" y="398" font-family="Arial, sans-serif" font-size="8.5" fill="rgba(255,255,255,0.2)" text-anchor="middle" letter-spacing="3">EVENTS &amp; FUNCTIONS · CUSTOM BRANDED COFFEE · CANADA</text>
+</svg>
