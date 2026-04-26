@@ -30,14 +30,14 @@ const ADVANTAGE_ITEMS = [
 ];
 
 const TRUST_LOGOS = [
-  { file: "avenue", name: "Avenue" },
-  { file: "cowork", name: "Cowork" },
-  { file: "fairmont", name: "Fairmont" },
-  { file: "janine", name: "Janine" },
-  { file: "regine", name: "Regine" },
-  { file: "stephen", name: "Stephen" },
-  { file: "tunnel", name: "Tunnel Espresso" },
-] as const;
+  { file: "avenue", name: "L'Avenue", href: "https://www.restaurantlavenue.com" },
+  { file: "cowork", name: "Cowork", href: "https://www.coworkgroup.ca" },
+  { file: "fairmont", name: "Fairmont Hotels & Resorts", href: "https://www.fairmont.com" },
+  { file: "janine", name: "Janine", href: "https://www.janine.ca" },
+  { file: "regine", name: "Régine Café-Brunch", href: "https://www.caferegine.com" },
+  { file: "stephen", name: "Le Mount Stephen Hôtel", href: "https://www.hotelmountstephen.com" },
+  { file: "tunnel", name: "Tunnel Espresso", href: "https://www.tunnelespresso.ca" },
+];
 
 /* Featured coffees carousel — restore when product imagery is ready.
  * Also re-add in HomeLanding: sectionFade (see git history), imports
@@ -325,16 +325,18 @@ const HomeLanding = () => {
             {t("trustedBy.title")}
           </motion.h2>
           <motion.div className={styles.trustedByGrid} role="list" {...trustedByListStagger}>
-            {TRUST_LOGOS.map(({ file, name }) => (
+            {TRUST_LOGOS.map(({ file, name, href }) => (
               <motion.div key={file} className={styles.trustedByLogoWrap} role="listitem" {...fadeChild}>
-                <Image
-                  src={`/logos/${file}.png`}
-                  alt={t("trustedBy.logoAlt", { name })}
-                  width={360}
-                  height={140}
-                  sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
-                  className={styles.trustedByLogo}
-                />
+                <a href={href} target="_blank" rel="noopener noreferrer" className={styles.trustedByLogoLink} aria-label={name}>
+                  <Image
+                    src={`/logos/${file}.png`}
+                    alt={t("trustedBy.logoAlt", { name })}
+                    width={360}
+                    height={140}
+                    sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
+                    className={styles.trustedByLogo}
+                  />
+                </a>
               </motion.div>
             ))}
           </motion.div>

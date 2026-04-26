@@ -67,7 +67,7 @@ export const BLOG_POSTS: BlogPost[] = [
     color: "#1a3a5c",
     initials: "BB",
     image: "/assets/blog/brand-building.svg",
-    published: false,
+    published: true,
   },
   {
     slug: "what-makes-specialty-coffee-traceable",
@@ -81,7 +81,7 @@ export const BLOG_POSTS: BlogPost[] = [
     color: "#3d2a1a",
     initials: "CE",
     image: "/assets/blog/coffee-traceable.svg",
-    published: false,
+    published: true,
   },
   {
     slug: "custom-coffee-bags-vs-pre-packaged-coffee",
@@ -95,6 +95,6 @@ export const BLOG_POSTS: BlogPost[] = [
     color: "#4a1a2d",
     initials: "BT",
     image: "/assets/blog/custom-vs-prepackaged.svg",
-    published: false,
+    published: true,
   },
 ];
