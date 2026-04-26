@@ -82,5 +82,13 @@ const data: CityPageData = {
   ],
 };
 
-const VancouverPage = () => <CityPage data={data} />;
+const dataWithRelated: typeof data = {
+  ...data,
+  relatedCities: [
+    { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
+    { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
+  ],
+};
+
+const VancouverPage = () => <CityPage data={dataWithRelated} />;
 export default VancouverPage;

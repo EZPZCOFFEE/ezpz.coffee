@@ -193,7 +193,13 @@ const Page = () => (
         <p className={styles.p}>
           The design process takes less than 10 minutes. You pick your coffee, customize your bag,
           enter her address, and we take care of everything else. From your screen to her kitchen
-          counter in under two weeks.
+          counter in under two weeks. Have questions?{" "}
+          <Link href="/en/contact" className={styles.inlineLink}>Contact us</Link>{" "}
+          — our team is happy to help you choose the right coffee and personalize her bag. We ship
+          to{" "}
+          <Link href="/en/locations" className={styles.inlineLink}>every province in Canada</Link>.
+          And if you want a coffee brand for your business —{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>see how EZPZ compares to other Canadian suppliers</Link>.
         </p>
 
         <h2 className={styles.h2}>This Is the Year You Get It Right</h2>

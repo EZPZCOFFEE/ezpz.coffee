@@ -27,6 +27,15 @@ const COMPETITORS: { name: string; href?: string }[] = [
   { name: "Hutsul Coffee", href: "/en/compare/hutsul-coffee-alternative" },
 ];
 
+const COMPETITOR_PAGES: { name: string; blurb: string; href: string }[] = [
+  { name: "Rogue Wave Coffee", blurb: "Edmonton-based roaster with high minimum orders and no online design tool.", href: "/en/compare/rogue-wave-coffee-alternative" },
+  { name: "Canterbury Coffee", blurb: "BC distributor focused on grocery and foodservice — not brand builders.", href: "/en/compare/canterbury-coffee-alternative" },
+  { name: "Black Stripe Coffee", blurb: "Custom coffee supplier with limited transparency on pricing and MOQ.", href: "/en/compare/black-stripe-coffee-alternative" },
+  { name: "Virgin Hill Coffee", blurb: "Specialty roaster without an online design tool or zero-minimum offering.", href: "/en/compare/virgin-hill-coffee-alternative" },
+  { name: "Hutsul Coffee", blurb: "Wholesale-focused roaster with unclear minimum and turnaround requirements.", href: "/en/compare/hutsul-coffee-alternative" },
+  { name: "Roasters Pack", blurb: "Subscription-first model — not built for custom branded bag production.", href: "/en/compare/roasters-pack-alternative" },
+];
+
 const ROWS: { feature: string; ezpz: string; competitors: string[] }[] = [
   {
     feature: "Minimum order",
@@ -183,6 +192,23 @@ const ComparePage = () => {
                 <h3 className={styles.diffCardTitle}>{d.title}</h3>
                 <p className={styles.diffCardBody}>{d.body}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Head-to-head pages ── */}
+      <section className={styles.headToHead}>
+        <div className={styles.headToHeadInner}>
+          <span className={styles.eyebrow}>Detailed Comparisons</span>
+          <h2 className={styles.headToHeadTitle}>EZPZ vs every Canadian competitor</h2>
+          <div className={styles.headToHeadGrid}>
+            {COMPETITOR_PAGES.map((c) => (
+              <Link key={c.href} href={c.href} className={styles.headToHeadCard}>
+                <span className={styles.headToHeadName}>{c.name}</span>
+                <p className={styles.headToHeadBlurb}>{c.blurb}</p>
+                <span className={styles.headToHeadCta}>See full comparison →</span>
+              </Link>
             ))}
           </div>
         </div>

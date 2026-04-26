@@ -58,6 +58,8 @@ const Footer = () => {
             <Link href={`/${locale}/white-label`} className={styles.footerLink}>{t("whiteLabel")}</Link>
             <Link href={`/${locale}/blog`} className={styles.footerLink}>Blog</Link>
             <Link href={`/${locale}/compare`} className={styles.footerLink}>EZPZ vs Competitors</Link>
+            <Link href={`/${locale}/compare/rogue-wave-coffee-alternative`} className={styles.footerLink}>EZPZ vs Rogue Wave</Link>
+            <Link href={`/${locale}/compare/canterbury-coffee-alternative`} className={styles.footerLink}>EZPZ vs Canterbury</Link>
             <Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
           </nav>
         </div>

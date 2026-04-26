@@ -158,10 +158,14 @@ const Page = () => (
           processing method, and the cupping score for every single origin we carry.
         </p>
         <p className={styles.p}>
-          When you order a custom bag through EZPZ — whether you are a Montreal restaurant, a
-          Toronto hotel, or a Vancouver boutique — you are not getting anonymous commodity coffee.
-          You are getting a specific, documented lot of specialty coffee, and we can tell you
-          exactly where it came from.
+          When you order a{" "}
+          <Link href="/en/custom-coffee-bags-montreal" className={styles.inlineLink}>custom bag</Link>{" "}
+          through EZPZ — whether you are a Montreal restaurant, a Toronto hotel, or a Vancouver
+          boutique — you are not getting anonymous commodity coffee. You are getting a specific,
+          documented lot of specialty coffee, and we can tell you exactly where it came from.
+          You can also explore our{" "}
+          <Link href="/en/white-label" className={styles.inlineLink}>white label program</Link>{" "}
+          to build a full branded coffee line under your own name.
         </p>
 
         <h2 className={styles.h2}>The Third Wave Coffee Movement</h2>
@@ -190,6 +194,8 @@ const Page = () => (
         </p>
         <p className={styles.p}>
           That story is worth paying for. And it is a story only traceable coffee can tell.
+          Ready to put that story on your own bag?{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>See how EZPZ compares to other Canadian suppliers.</Link>
         </p>
 
       </article>

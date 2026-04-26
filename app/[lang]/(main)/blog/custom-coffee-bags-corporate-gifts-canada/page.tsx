@@ -262,7 +262,14 @@ const Page = () => (
         <p className={styles.p}>
           Custom coffee bags are one of the most effective, most memorable, and most on-brand corporate
           gifts available to Canadian businesses right now. With no minimums, full design included, and
-          specialty coffee that actually tastes incredible. There&apos;s no reason to settle for generic.
+          specialty coffee that actually tastes incredible — there&apos;s no reason to settle for generic.
+          We ship to{" "}
+          <Link href="/en/locations" className={styles.inlineLink}>businesses across Canada</Link>,
+          from Montreal to Vancouver. For larger programs — branded coffee for hotel chains, franchise
+          groups, or national retailers — our{" "}
+          <Link href="/en/white-label" className={styles.inlineLink}>white label solutions</Link>{" "}
+          are built for scale. And if you&apos;re comparing your options,{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>see how EZPZ compares to every other supplier in Canada</Link>.
         </p>
 
       </article>

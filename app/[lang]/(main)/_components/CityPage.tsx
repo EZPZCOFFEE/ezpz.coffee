@@ -15,6 +15,7 @@ export interface CityPageData {
   canonicalPath: string;
   allMarketsHref?: string;
   allMarketsLabel?: string;
+  relatedCities?: { city: string; href: string }[];
 }
 
 const BREADCRUMB_BASE = "https://www.ezpz.coffee/en";
@@ -102,6 +103,23 @@ const CityPage = ({ data }: { data: CityPageData }) => {
           </div>
         </div>
       </section>
+
+      {/* ── Related Pages ── */}
+      {data.relatedCities && data.relatedCities.length > 0 && (
+        <section className={styles.relatedPages} aria-labelledby="related-pages-heading">
+          <div className={styles.relatedPagesInner}>
+            <span id="related-pages-heading" className={styles.relatedPagesTitle}>Related Markets</span>
+            <div className={styles.relatedPagesGrid}>
+              <Link href="/en/locations" className={styles.relatedPageCard}>← All Canadian Markets</Link>
+              {data.relatedCities.map(({ city, href }) => (
+                <Link key={city} href={href} className={styles.relatedPageCard}>
+                  Custom Coffee Bags {city} →
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── CTA ── */}
       <section className={styles.cta}>

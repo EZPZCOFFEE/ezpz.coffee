@@ -378,7 +378,14 @@ const Page = () => (
           <Link href="/en/design" className={styles.inlineLink}>
             Visit ezpz.coffee/en/design
           </Link>{" "}
-          to start building your own coffee brand today.
+          to start building your own coffee brand today. You can also explore our{" "}
+          <Link href="/en/white-label" className={styles.inlineLink}>white label solutions</Link>{" "}
+          for restaurants and hotels, or{" "}
+          <Link href="/en/custom-coffee-bags-montreal" className={styles.inlineLink}>
+            learn more about custom coffee bags in Montreal
+          </Link>.{" "}
+          See how we{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>compare to every other Canadian supplier</Link>.
         </p>
 
       </article>

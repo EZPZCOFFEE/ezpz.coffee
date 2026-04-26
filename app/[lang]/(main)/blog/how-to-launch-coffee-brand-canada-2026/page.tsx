@@ -172,7 +172,8 @@ const Page = () => (
             <strong>In-store:</strong> If you have a physical location — restaurant, café, boutique,
             gym — your branded coffee bags sell themselves when displayed near the checkout.
             Montreal and Toronto customers especially love locally branded products they can bring
-            home.
+            home.{" "}
+            <Link href="/en/locations" className={styles.inlineLink}>See all cities we serve.</Link>
           </li>
           <li className={styles.li}>
             <strong>Online:</strong> Add your coffee to your Shopify or e-commerce store. Coffee
@@ -184,8 +185,9 @@ const Page = () => (
             holidays or major events.
           </li>
           <li className={styles.li}>
-            <strong>Distribution:</strong> If you are ready to scale, EZPZ can help connect you
-            with distributors across Canada to get your product on more shelves — from Quebec to
+            <strong>Distribution and white label:</strong> If you are ready to scale, our{" "}
+            <Link href="/en/white-label" className={styles.inlineLink}>white label solutions</Link>{" "}
+            include distribution support to get your product on more shelves — from Quebec to
             British Columbia.
           </li>
         </ul>
@@ -196,6 +198,8 @@ const Page = () => (
           support, and in-house roasting in Montreal, EZPZ removes every barrier between your idea
           and a real product in customers&apos; hands. Whether you are based in Montreal, Toronto,
           Quebec City, or anywhere else in Canada — we ship directly to you in 2 to 3 weeks.
+          Wondering how we stack up against other Canadian suppliers?{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>See our full comparison.</Link>
         </p>
 
       </article>

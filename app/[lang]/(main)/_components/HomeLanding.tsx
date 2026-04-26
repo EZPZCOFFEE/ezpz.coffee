@@ -268,6 +268,11 @@ const HomeLanding = () => {
               </motion.article>
             ))}
           </motion.div>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/compare`} className={styles.btnOutline}>
+              See how EZPZ compares to competitors →
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -278,6 +283,11 @@ const HomeLanding = () => {
           </motion.h2>
           <motion.p className={styles.geoBody} {...fadeChild}>{t("geo.body")}</motion.p>
           <motion.p className={styles.geoCities} {...fadeChild}>{t("geo.cities")}</motion.p>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/locations`} className={styles.btnOutline}>
+              View all markets we serve →
+            </Link>
+          </motion.div>
         </motion.div>
       </section>
 
@@ -295,6 +305,9 @@ const HomeLanding = () => {
               Request a free sample
             </Link>
           </motion.div>
+          <motion.p {...fadeChild} className={styles.freeSampleMeta}>
+            Or <Link href={`/${locale}/blog`} className={styles.freeSampleMetaLink}>read our guides and tips</Link> on building a coffee brand.
+          </motion.p>
         </motion.div>
       </section>
 

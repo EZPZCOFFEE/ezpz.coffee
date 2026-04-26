@@ -245,6 +245,9 @@ const WhiteLabelSolutionsPage = () => {
             <Link href={`/${locale}/contact`} className={styles.whiteLabelFinalCtaPrimary}>
               Get a quote
             </Link>
+            <Link href={`/${locale}/compare`} className={styles.whiteLabelFinalCtaSecondary}>
+              See how we compare →
+            </Link>
           </div>
         </motion.div>
       </section>

@@ -121,7 +121,10 @@ const Page = () => (
         <h2 className={styles.h2}>Option 2 — Custom Branded Coffee Bags</h2>
         <p className={styles.p}>
           This means working with a roaster like EZPZ Coffee in Montreal to produce coffee under
-          your own brand name, in your own custom packaging, with your own design.
+          your own brand name, in your own custom packaging, with your own design. For restaurants,
+          hotels, and retailers ready to go further,{" "}
+          <Link href="/en/white-label" className={styles.inlineLink}>white label solutions</Link>{" "}
+          extend this to ready-to-drink and Nespresso-compatible capsules as well.
         </p>
 
         <h3 className={styles.h3}>Pros</h3>
@@ -234,8 +237,12 @@ const Page = () => (
         </p>
         <p className={styles.p}>
           Pre-packaged coffee has its place, but it is a short-term solution. Custom branded coffee
-          is a long-term brand asset. Whether you are in Montreal, Toronto, Quebec City, or
-          Vancouver — the math and the brand logic both point in the same direction.
+          is a long-term brand asset. Whether you are in{" "}
+          <Link href="/en/custom-coffee-bags-montreal" className={styles.inlineLink}>Montreal</Link>,{" "}
+          <Link href="/en/custom-coffee-bags-toronto" className={styles.inlineLink}>Toronto</Link>,{" "}
+          Quebec City, or Vancouver — the math and the brand logic both point in the same direction.
+          Not sure which supplier to choose?{" "}
+          <Link href="/en/compare" className={styles.inlineLink}>Compare EZPZ to every competitor.</Link>
         </p>
 
       </article>
