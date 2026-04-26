@@ -31,11 +31,37 @@ const CityPage = ({ data }: { data: CityPageData }) => {
     ],
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: `EZPZ Coffee — Custom Coffee Bags ${data.city}`,
+    url: `https://www.ezpz.coffee/en${data.canonicalPath}`,
+    logo: "https://www.ezpz.coffee/logo.svg",
+    image: "https://www.ezpz.coffee/_next/static/media/banner-01.15cqmow69pk9l.jpg",
+    description: `Custom branded coffee bags for ${data.city} businesses. No minimum order, full design included, specialty coffee roasted in Montreal and shipped to ${data.city}, ${data.province}.`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "3780 Rue Saint-Patrick",
+      addressLocality: "Montréal",
+      addressRegion: "QC",
+      postalCode: "H4E 1A2",
+      addressCountry: "CA",
+    },
+    email: "help@ezpz.coffee",
+    priceRange: "$$",
+    areaServed: data.city,
+    telephone: "+15140000000",
+  };
+
   return (
     <div className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
       {/* ── Breadcrumb ── */}

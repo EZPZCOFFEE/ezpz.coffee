@@ -33,6 +33,8 @@ const JSON_LD = {
   name: "EZPZ Coffee",
   url: "https://www.ezpz.coffee",
   logo: "https://www.ezpz.coffee/logo.svg",
+  image: "https://www.ezpz.coffee/_next/static/media/banner-01.15cqmow69pk9l.jpg",
+  description: "Canada's only custom coffee bag supplier with zero minimum order. Custom branded bags, white label solutions, and specialty coffee roasted in Montreal.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "3780 Rue Saint-Patrick",
@@ -41,9 +43,17 @@ const JSON_LD = {
     postalCode: "H4E 1A2",
     addressCountry: "CA",
   },
-  description:
-    "Custom branded coffee bags and white label coffee solutions with no minimum order across Canada.",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 45.4706,
+    longitude: -73.5772,
+  },
+  telephone: "+15140000000",
+  email: "help@ezpz.coffee",
+  priceRange: "$$",
+  servesCuisine: "Coffee",
   areaServed: "Canada",
+  openingHours: "Mo-Fr 09:00-17:00",
 };
 
 const HomePage = () => {

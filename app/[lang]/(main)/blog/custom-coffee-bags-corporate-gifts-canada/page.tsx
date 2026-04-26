@@ -25,12 +25,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Custom Coffee Bags: The Best Corporate Gift for Canadian Businesses in 2026",
+  description: "Forget generic gifts. Here's why custom branded coffee bags are what your clients will actually remember — and exactly how to do it right.",
+  datePublished: "2026-04-22",
+  author: { "@type": "Organization", name: "EZPZ Coffee Team" },
+  publisher: {
+    "@type": "Organization",
+    name: "EZPZ Coffee",
+    url: "https://www.ezpz.coffee",
+    logo: { "@type": "ImageObject", url: "https://www.ezpz.coffee/logo.svg" },
+  },
+  url: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-corporate-gifts-canada",
+  image: "https://www.ezpz.coffee/assets/blog/corporate-gifts.svg",
+};
+
 const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "custom-coffee-bags-corporate-gifts-canada"
 );
 
 const Page = () => (
   <div className={styles.page}>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
 
     {/* ── Hero ──────────────────────────────────────────────────── */}
     <section className={styles.hero}>

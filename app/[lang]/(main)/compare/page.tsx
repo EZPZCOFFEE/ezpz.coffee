@@ -122,9 +122,29 @@ const isNegative = (val: string) =>
   val.toLowerCase().includes("high minimums") ||
   val.toLowerCase().includes("large volume");
 
+const WEBPAGE_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "EZPZ Coffee vs Competitors — Best Custom Coffee Bags in Canada",
+  url: "https://www.ezpz.coffee/en/compare",
+  description: "Compare EZPZ Coffee to Rogue Wave Coffee, Canterbury Coffee, Black Stripe Coffee, Virgin Hill Coffee, Hutsul Coffee, and Roasters Pack. EZPZ is the only Canadian custom coffee bag supplier with zero minimums, free bag design, and an online design tool.",
+  isPartOf: { "@type": "WebSite", url: "https://www.ezpz.coffee", name: "EZPZ Coffee" },
+  about: {
+    "@type": "LocalBusiness",
+    name: "EZPZ Coffee",
+    url: "https://www.ezpz.coffee",
+  },
+  keywords: "custom coffee bags Canada, EZPZ vs Rogue Wave Coffee, EZPZ vs Canterbury Coffee, custom coffee alternative Canada, no minimum custom coffee, branded coffee bags Canada",
+};
+
 const ComparePage = () => {
   return (
     <div className={styles.page}>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_LD) }}
+      />
 
       {/* ── Hero ── */}
       <section className={styles.hero}>

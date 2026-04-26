@@ -27,12 +27,34 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Why a Custom Coffee Bag Is the Best Mother's Day Gift You Can Give",
+  description: "Skip the flowers that wilt and the chocolates that disappear. Give her something she will use every morning and smile every time she does.",
+  datePublished: "2026-04-22",
+  author: { "@type": "Organization", name: "EZPZ Coffee Team" },
+  publisher: {
+    "@type": "Organization",
+    name: "EZPZ Coffee",
+    url: "https://www.ezpz.coffee",
+    logo: { "@type": "ImageObject", url: "https://www.ezpz.coffee/logo.svg" },
+  },
+  url: "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
+  image: "https://www.ezpz.coffee/assets/blog/mothers-day-coffee.svg",
+};
+
 const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "mothers-day-coffee-gift-ideas-canada"
 );
 
 const Page = () => (
   <div className={styles.page}>
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
 
     {/* ── Hero ──────────────────────────────────────────────────── */}
     <section className={styles.hero}>
