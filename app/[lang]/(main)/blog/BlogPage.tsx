@@ -37,7 +37,7 @@ const BlogPage = () => {
                 aria-disabled={!post.published}
               >
                 <div className={styles.cardImage}>
-                  <img src={post.image} alt={post.title} className={styles.cardImg} />
+                  <img src={post.image} alt={post.title} loading="lazy" className={styles.cardImg} />
                 </div>
                 <div className={styles.cardBody}>
                   <span className={styles.cardCategory} style={{ color: post.categoryColor }}>

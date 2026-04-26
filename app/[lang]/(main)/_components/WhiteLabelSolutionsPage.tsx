@@ -63,7 +63,7 @@ const WhiteLabelSolutionsPage = () => {
           priority
           placeholder="blur"
           quality={80}
-          sizes="100vw"
+          sizes="(max-width: 1920px) 100vw, 1920px"
           className={classNames(styles.heroPhotoImage, styles.heroPhotoImageCenter)}
         />
         <div className={styles.heroGradient} />

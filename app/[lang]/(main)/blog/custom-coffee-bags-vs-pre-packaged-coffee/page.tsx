@@ -273,7 +273,7 @@ const Page = () => (
               className={styles.moreCard}
             >
               <div className={styles.moreCardImage}>
-                <img src={post.image} alt={post.title} className={styles.moreCardImg} />
+                <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
               <div className={styles.moreCardBody}>
                 <span className={styles.moreCardCategory} style={{ color: post.categoryColor }}>

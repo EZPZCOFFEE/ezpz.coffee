@@ -129,9 +129,10 @@ const HomeLanding = () => {
           alt="Custom branded coffee bags with no minimum order in Canada"
           fill
           priority
+          loading="eager"
           placeholder="blur"
           quality={80}
-          sizes="(max-width: 767px) 828px, 100vw"
+          sizes="(max-width: 767px) 828px, (max-width: 1920px) 100vw, 1920px"
           className={styles.heroPhotoImage}
         />
         <div className={styles.heroGradient} aria-hidden />
