@@ -521,7 +521,8 @@
     "sampleBag": "Sachet échantillon",
     "shop": "Boutique",
     "toggleMenu": "Ouvrir/fermer le menu de navigation",
-    "whiteLabel": "Solutions en marque blanche"
+    "whiteLabel": "Solutions en marque blanche",
+    "industries": "Industries"
   },
   "newsletterPopup": {
     "ariaLabel": "Inscription à l'infolettre",

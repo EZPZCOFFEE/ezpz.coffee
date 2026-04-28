@@ -29,6 +29,7 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
     { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
+    { labelKey: "industries", pathSuffix: "/industries" },
     { labelKey: "ourCoffee", pathSuffix: "/coffee" },
 { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     ...(showDevNav ? [
