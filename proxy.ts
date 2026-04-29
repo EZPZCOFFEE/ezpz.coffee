@@ -37,8 +37,11 @@ export default async function middleware(request: NextRequest): Promise<NextResp
   const siteLocked = await getPasswordWallEnabled();
   console.log("[middleware] Password wall enabled:", siteLocked);
 
-  // Site lock logic
-  if (siteLocked && !isPasswordPage) {
+  // Site lock logic — exempt crawlers so public pages stay indexable
+  const userAgent = request.headers.get("user-agent") ?? "";
+  const isCrawler = /googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|facebot|ia_archiver/i.test(userAgent);
+
+  if (siteLocked && !isPasswordPage && !isCrawler) {
     const isUnlocked = request.cookies.get(UNLOCK_COOKIE_NAME)?.value === "true";
 
     if (!isUnlocked) {
