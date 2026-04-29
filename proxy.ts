@@ -70,6 +70,12 @@ export default async function middleware(request: NextRequest): Promise<NextResp
 
   // Handle GET requests with i18n routing
   if (request.method === "GET") {
+    // Explicit 301 for root — next-intl's createMiddleware issues a 307 by default
+    if (pathname === "/") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/en";
+      return NextResponse.redirect(url, { status: 301 });
+    }
     return intlMiddleware(request);
   }
 
