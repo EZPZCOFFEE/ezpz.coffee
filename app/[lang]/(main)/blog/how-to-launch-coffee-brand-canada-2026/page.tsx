@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "How to Launch Your Own Coffee Brand in Canada in 2026 | Montreal | EZPZ Coffee",
   description:
     "A complete step-by-step guide to creating your own white label coffee brand in Canada with no minimum order — from choosing your beans to designing your bag. Written by EZPZ Coffee, Montreal's custom coffee experts.",
-  alternates: { canonical: "/blog/how-to-launch-coffee-brand-canada-2026" },
+  alternates: { canonical: "/en/blog/how-to-launch-coffee-brand-canada-2026" },
   openGraph: {
     title: "How to Launch Your Own Coffee Brand in Canada in 2026 | EZPZ Coffee",
     description:

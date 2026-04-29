@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Wedding Venues | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for wedding venues. A favor every guest uses for weeks. No minimum order, full design included. Wedding venues across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-wedding-venues" },
+    alternates: { canonical: "/en/custom-coffee-bags-wedding-venues" },
     openGraph: {
       title: "Custom Coffee Bags for Wedding Venues | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for wedding venues. Venue branded gift, couple favor, memorable guest takeaway. No minimum.",

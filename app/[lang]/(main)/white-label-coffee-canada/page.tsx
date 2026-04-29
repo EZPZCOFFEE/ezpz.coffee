@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "White Label Coffee Canada | No Minimum | Full Design Included | EZPZ",
     description:
       "White label coffee solutions for Canadian businesses. Custom branded bags, no minimum order, full design included. Roasted fresh in Montreal, shipped across Canada. EZPZ.",
-    alternates: { canonical: "/white-label-coffee-canada" },
+    alternates: { canonical: "/en/white-label-coffee-canada" },
     openGraph: {
       title: "White Label Coffee Canada | No Minimum | Full Design Included | EZPZ",
       description:

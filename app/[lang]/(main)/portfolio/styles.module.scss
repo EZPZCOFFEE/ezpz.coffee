@@ -1,0 +1,204 @@
+.page {
+  font-family: var(--font-montserrat), var(--font-family);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+/* ── Hero ───────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: #111111;
+  padding: var(--spacing-galaxy) var(--spacing-state) calc(var(--spacing-galaxy) + 60px);
+  overflow: hidden;
+}
+
+.heroAngle {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: var(--color-white);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.heroInner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: var(--line-height-tight);
+  color: var(--color-white);
+  margin: 0 0 var(--spacing-country);
+}
+
+.heroSub {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.7);
+  line-height: var(--line-height-relaxed);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* ── Grid ───────────────────────────────────────────────────── */
+
+.gridSection {
+  padding: var(--spacing-galaxy) var(--spacing-state);
+}
+
+.gridInner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-country);
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.cardImage {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cardInitials {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-extrabold);
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: var(--spacing-state);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-house);
+}
+
+.cardIndustry {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+}
+
+.cardName {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: var(--color-neutral);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-top: var(--spacing-house);
+  transition: gap 0.15s ease;
+
+  .card:hover & {
+    gap: 0.5em;
+  }
+}
+
+/* ── CTA ────────────────────────────────────────────────────── */
+
+.cta {
+  background: var(--color-accent);
+  padding: var(--spacing-galaxy) var(--spacing-state);
+}
+
+.ctaInner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-country);
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.ctaTitle {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background: var(--color-white);
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 0.9em 2em;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: #111111;
+    color: var(--color-white);
+  }
+}

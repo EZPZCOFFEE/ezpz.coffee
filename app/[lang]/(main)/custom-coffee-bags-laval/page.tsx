@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Laval | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Laval businesses, delivered in 3–5 days from Montreal. No minimum order, full design included. Laval brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-laval" },
+    alternates: { canonical: "/en/custom-coffee-bags-laval" },
     openGraph: {
       title: "Custom Coffee Bags Laval | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Laval businesses. No minimum order, full design included, delivered in 3–5 days from Montreal.",

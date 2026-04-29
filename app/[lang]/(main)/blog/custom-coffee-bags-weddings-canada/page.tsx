@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Custom Coffee Bags for Weddings in Canada | Unique Wedding Favors | EZPZ",
   description:
     "Custom coffee bags make unforgettable wedding favors. Personalized with the couple's names, a wedding date, and specialty coffee — no minimum order, ships across Canada.",
-  alternates: { canonical: "/blog/custom-coffee-bags-weddings-canada" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-weddings-canada" },
   openGraph: {
     title: "Custom Coffee Bags for Weddings in Canada | Unique Wedding Favors | EZPZ",
     description:

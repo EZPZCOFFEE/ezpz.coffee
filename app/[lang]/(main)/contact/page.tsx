@@ -9,7 +9,7 @@ import styles from "./styles.module.scss";
 export const metadata: Metadata = {
   title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
   description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/en/contact" },
   openGraph: {
     title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
     description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",

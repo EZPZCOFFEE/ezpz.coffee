@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Restaurants | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for restaurants. Turn a meal into a lasting morning ritual. No minimum order, full design included. Restaurants across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-restaurants" },
+    alternates: { canonical: "/en/custom-coffee-bags-restaurants" },
     openGraph: {
       title: "Custom Coffee Bags for Restaurants | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for restaurants. High retail margins, daily brand visibility, no minimum order.",

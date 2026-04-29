@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Law Firms | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for law firms. A client gift as distinguished as your practice. No minimum order, full design included. Law firms across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-law-firms" },
+    alternates: { canonical: "/en/custom-coffee-bags-law-firms" },
     openGraph: {
       title: "Custom Coffee Bags for Law Firms | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for law firms. Premium client gifting, memorable and talked about, no minimum.",

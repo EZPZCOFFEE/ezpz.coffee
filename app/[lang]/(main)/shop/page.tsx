@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Shop Custom Coffee Bags | EZPZ Coffee",
   description:
     "Browse and order custom branded coffee bags, ready-to-drink cans, and Nespresso-compatible capsules. No minimums. Roasted in Montreal, delivered across Canada.",
+  alternates: { canonical: "/en/shop" },
   openGraph: {
     title: "Shop Custom Coffee Bags | EZPZ Coffee",
     description:

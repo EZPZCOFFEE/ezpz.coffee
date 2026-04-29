@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Dental Offices | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for dental offices. The most ironic patient gift they will love and remember. No minimum order, full design included. Dental offices across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-dental-offices" },
+    alternates: { canonical: "/en/custom-coffee-bags-dental-offices" },
     openGraph: {
       title: "Custom Coffee Bags for Dental Offices | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for dental offices. Memorable, shareable, patient retention tool. No minimum order.",

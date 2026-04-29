@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Private Label Coffee for Retailers & Boutiques | EZPZ Coffee",
     description:
       "Add a high margin private label coffee to your shelves with zero production headaches. Custom blends, branded packaging, no minimums. Exclusive to your store.",
-    alternates: { canonical: "/white-label/retailers" },
+    alternates: { canonical: "/en/white-label/retailers" },
     openGraph: {
       title: "Private Label Coffee for Retailers & Boutiques | EZPZ Coffee",
       description:

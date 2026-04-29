@@ -9,7 +9,7 @@ import styles from "./blogPost.module.scss";
 export const metadata: Metadata = {
   title: "Custom Coffee Bags as Corporate Gifts: The Ultimate Guide for Canadian Businesses | EZPZ Coffee",
   description: "Looking for a unique corporate gift your clients will actually love? Discover why custom branded coffee bags are the best gift for clients, employees, and events in Canada.",
-  alternates: { canonical: "/blog/custom-coffee-bags-corporate-gifts-canada" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-corporate-gifts-canada" },
   openGraph: {
     title: "Custom Coffee Bags as Corporate Gifts | EZPZ Coffee",
     description: "Looking for a unique corporate gift your clients will actually love? Discover why custom branded coffee bags are the best gift for clients, employees, and events in Canada.",

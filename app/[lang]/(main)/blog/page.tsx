@@ -5,7 +5,7 @@ import BlogPage from "./BlogPage";
 export const metadata: Metadata = {
   title: "Blog | Coffee Branding Tips & Industry News | EZPZ Coffee",
   description: "Coffee branding tips, white label guides, and industry news from the EZPZ Coffee team. Everything you need to build a coffee brand in Canada.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/en/blog" },
   openGraph: {
     title: "The EZPZ Blog | Coffee Branding Tips & News",
     description: "Everything you need to know about building a coffee brand in Canada.",

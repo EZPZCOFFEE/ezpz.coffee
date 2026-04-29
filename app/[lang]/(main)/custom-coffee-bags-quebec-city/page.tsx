@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Quebec City | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Quebec City businesses, shipped in 7–10 days. No minimum order, full design included. Quebec City brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-quebec-city" },
+    alternates: { canonical: "/en/custom-coffee-bags-quebec-city" },
     openGraph: {
       title: "Custom Coffee Bags Quebec City | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Quebec City businesses. No minimum order, full design included, shipped from Montreal.",

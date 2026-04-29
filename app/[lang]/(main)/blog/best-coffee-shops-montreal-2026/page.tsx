@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "15 Best Coffee Shops in Montreal 2026 | Ultimate Guide | EZPZ Coffee",
   description:
     "Discover the 15 best coffee shops in Montreal in 2026. From world-ranked specialty cafés to hidden neighbourhood gems — your ultimate Montreal coffee guide from the experts at EZPZ Coffee.",
-  alternates: { canonical: "/blog/best-coffee-shops-montreal-2026" },
+  alternates: { canonical: "/en/blog/best-coffee-shops-montreal-2026" },
   openGraph: {
     title: "15 Best Coffee Shops in Montreal 2026 | Ultimate Guide | EZPZ Coffee",
     description:

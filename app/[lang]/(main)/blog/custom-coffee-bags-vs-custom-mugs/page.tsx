@@ -8,7 +8,7 @@ import styles from "./blogPost.module.scss";
 export const metadata: Metadata = {
   title: "Custom Coffee Bags vs Custom Mugs | Which Is the Better Gift? | EZPZ Coffee",
   description: "Thinking about custom mugs for your next corporate gift or brand merchandise? Here is why custom specialty coffee bags are a smarter, more memorable, and higher impact choice.",
-  alternates: { canonical: "/blog/custom-coffee-bags-vs-custom-mugs" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-vs-custom-mugs" },
   openGraph: {
     title: "Custom Coffee Bags vs Custom Mugs | Which Is the Better Gift? | EZPZ Coffee",
     description: "Thinking about custom mugs for your next corporate gift or brand merchandise? Here is why custom specialty coffee bags are a smarter, more memorable, and higher impact choice.",

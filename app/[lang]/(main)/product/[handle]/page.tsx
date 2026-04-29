@@ -1,4 +1,5 @@
 import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
+import type { Metadata } from "next";
 import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { getDemoProduct } from "@/lib/data/demo-products";
 import { GET_PRODUCT } from "@utils/queries/get-product";
@@ -10,6 +11,13 @@ interface ProductPageProps {
   params: Promise<{
     handle: string;
   }>;
+}
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const { handle } = await params;
+  return {
+    alternates: { canonical: `/en/product/${handle}` },
+  };
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {

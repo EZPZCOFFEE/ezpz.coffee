@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Canterbury Coffee Alternative for Small Business | EZPZ Coffee Canada",
     description:
       "Canterbury Coffee serves large grocery and foodservice chains. EZPZ serves everyone else — restaurants, boutiques, hotels — with no minimums and full custom design included.",
-    alternates: { canonical: "/compare/canterbury-coffee-alternative" },
+    alternates: { canonical: "/en/compare/canterbury-coffee-alternative" },
     openGraph: {
       title: "Canterbury Coffee Alternative for Small Business | EZPZ Coffee Canada",
       description:

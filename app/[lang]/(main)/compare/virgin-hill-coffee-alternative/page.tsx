@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Virgin Hill Coffee Alternative | No Minimum Custom Coffee Bags | EZPZ",
     description:
       "Looking at Virgin Hill Coffee for custom bags? EZPZ offers no minimums, design always included, and a fully online ordering process for Canadian brands of any size.",
-    alternates: { canonical: "/compare/virgin-hill-coffee-alternative" },
+    alternates: { canonical: "/en/compare/virgin-hill-coffee-alternative" },
     openGraph: {
       title: "Virgin Hill Coffee Alternative | No Minimum Custom Coffee Bags | EZPZ",
       description:

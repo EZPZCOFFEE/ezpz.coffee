@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Raleigh | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Raleigh businesses, shipped in 7–10 days. No minimum order, full design included. Raleigh brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-raleigh" },
+    alternates: { canonical: "/en/custom-coffee-bags-raleigh" },
     openGraph: {
       title: "Custom Coffee Bags Raleigh | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Raleigh businesses. No minimum order, full design included, specialty coffee shipped from Montreal in 7–10 days.",

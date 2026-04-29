@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Gyms | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for gyms and fitness studios. Fuel your members with your brand's specialty coffee. No minimum order, full design included. Gyms across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-gyms" },
+    alternates: { canonical: "/en/custom-coffee-bags-gyms" },
     openGraph: {
       title: "Custom Coffee Bags for Gyms | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for gyms. Natural lifestyle fit, loyal member base, retail revenue. No minimum order.",

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Montreal | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Montreal businesses, roasted fresh in Montreal. No minimum order, full design included. EZPZ serves Montreal brands of every size.",
-    alternates: { canonical: "/custom-coffee-bags-montreal" },
+    alternates: { canonical: "/en/custom-coffee-bags-montreal" },
     openGraph: {
       title: "Custom Coffee Bags Montreal | No Minimum Order | EZPZ Coffee",
       description:

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Event Planners | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for event planners. The event favor nobody throws away. No minimum order, full design included. Event planners across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-event-planners" },
+    alternates: { canonical: "/en/custom-coffee-bags-event-planners" },
     openGraph: {
       title: "Custom Coffee Bags for Event Planners | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for event planners. Unique favor, fully customizable, no minimum for exact quantities.",

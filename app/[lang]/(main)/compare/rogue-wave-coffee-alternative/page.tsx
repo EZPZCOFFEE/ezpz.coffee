@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Rogue Wave Coffee Alternative | Custom Coffee Bags No Minimum | EZPZ",
     description:
       "Looking for a Rogue Wave Coffee alternative for custom branded bags? EZPZ offers no minimum orders, full design included, specialty coffee roasted in Montreal, and ships across Canada.",
-    alternates: { canonical: "/compare/rogue-wave-coffee-alternative" },
+    alternates: { canonical: "/en/compare/rogue-wave-coffee-alternative" },
     openGraph: {
       title: "Rogue Wave Coffee Alternative | Custom Coffee Bags No Minimum | EZPZ",
       description:

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Yoga Studios | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for yoga studios. Mindful mornings start with your studio's specialty coffee. No minimum order, full design included. Yoga studios across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-yoga-studios" },
+    alternates: { canonical: "/en/custom-coffee-bags-yoga-studios" },
     openGraph: {
       title: "Custom Coffee Bags for Yoga Studios | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for yoga studios. Values alignment, morning ritual integration, retail revenue. No minimum order.",

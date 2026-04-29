@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Black Stripe Coffee Alternative | Custom Branded Coffee No Minimum | EZPZ",
     description:
       "Comparing Black Stripe Coffee for custom branded bags? EZPZ offers more flexibility, no minimums, full design support, and specialty coffee for Canadian brands of any size.",
-    alternates: { canonical: "/compare/black-stripe-coffee-alternative" },
+    alternates: { canonical: "/en/compare/black-stripe-coffee-alternative" },
     openGraph: {
       title: "Black Stripe Coffee Alternative | Custom Branded Coffee No Minimum | EZPZ",
       description:

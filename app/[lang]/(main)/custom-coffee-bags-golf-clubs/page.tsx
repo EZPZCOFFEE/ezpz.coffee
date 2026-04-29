@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Golf Clubs | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for golf clubs. The premium member gift for those who have everything. No minimum order, full design included. Golf clubs across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-golf-clubs" },
+    alternates: { canonical: "/en/custom-coffee-bags-golf-clubs" },
     openGraph: {
       title: "Custom Coffee Bags for Golf Clubs | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for golf clubs. Premium member gifts, tournament prizes, pro shop retail. No minimum.",

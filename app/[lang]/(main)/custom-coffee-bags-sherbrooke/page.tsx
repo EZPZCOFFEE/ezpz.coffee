@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Sherbrooke | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Sherbrooke businesses, shipped in 5–7 days. No minimum order, full design included. Sherbrooke brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-sherbrooke" },
+    alternates: { canonical: "/en/custom-coffee-bags-sherbrooke" },
     openGraph: {
       title: "Custom Coffee Bags Sherbrooke | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Sherbrooke businesses. No minimum order, full design included, shipped from Montreal in 5–7 days.",

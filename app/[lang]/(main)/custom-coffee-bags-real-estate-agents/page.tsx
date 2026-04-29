@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Real Estate Agents | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for real estate agents. The closing gift that keeps your brand top of mind for referrals. No minimum order, full design included. Real estate agents across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-real-estate-agents" },
+    alternates: { canonical: "/en/custom-coffee-bags-real-estate-agents" },
     openGraph: {
       title: "Custom Coffee Bags for Real Estate Agents | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for real estate agents. Unforgettable closing gift, daily brand visibility, referral generation. No minimum.",

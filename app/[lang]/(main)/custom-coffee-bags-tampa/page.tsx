@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Tampa | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Tampa businesses, shipped in 7–10 days. No minimum order, full design included. Tampa brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-tampa" },
+    alternates: { canonical: "/en/custom-coffee-bags-tampa" },
     openGraph: {
       title: "Custom Coffee Bags Tampa | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Tampa businesses. No minimum order, full design included, specialty coffee shipped from Montreal in 7–10 days.",

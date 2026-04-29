@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Moncton | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Moncton businesses, shipped in 7–10 days. No minimum order, full design included. Moncton brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-moncton" },
+    alternates: { canonical: "/en/custom-coffee-bags-moncton" },
     openGraph: {
       title: "Custom Coffee Bags Moncton | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Moncton businesses. No minimum order, full design included, shipped from Montreal in 7–10 days.",

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Co-working Spaces | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for co-working spaces. Build community with your own specialty coffee blend. No minimum order, full design included. Co-working spaces across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-co-working-spaces" },
+    alternates: { canonical: "/en/custom-coffee-bags-co-working-spaces" },
     openGraph: {
       title: "Custom Coffee Bags for Co-working Spaces | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for co-working spaces. Community building, member retention, brand differentiator. No minimum.",

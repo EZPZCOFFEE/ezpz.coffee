@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Wineries | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for wineries. Your terroir story now in coffee form. No minimum order, full design included. Wineries across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-wineries" },
+    alternates: { canonical: "/en/custom-coffee-bags-wineries" },
     openGraph: {
       title: "Custom Coffee Bags for Wineries | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for wineries. Terroir storytelling, cellar door retail, wine club gifting. No minimum.",

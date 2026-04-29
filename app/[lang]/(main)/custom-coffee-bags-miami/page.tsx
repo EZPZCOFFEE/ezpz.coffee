@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Miami | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Miami businesses, shipped in 7–10 days. No minimum order, full design included. Miami brands choose EZPZ for premium branded specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-miami" },
+    alternates: { canonical: "/en/custom-coffee-bags-miami" },
     openGraph: {
       title: "Custom Coffee Bags Miami | No Minimum Order | EZPZ Coffee",
       description:

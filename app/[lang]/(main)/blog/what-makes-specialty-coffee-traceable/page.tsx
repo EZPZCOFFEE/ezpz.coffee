@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "What Makes Specialty Coffee Traceable? Montreal Coffee Experts Explain | EZPZ",
   description:
     "Learn what farm-to-bag traceability means in the specialty coffee world, why it matters for your Montreal or Toronto brand, and how EZPZ Coffee guarantees full transparency in every bag.",
-  alternates: { canonical: "/blog/what-makes-specialty-coffee-traceable" },
+  alternates: { canonical: "/en/blog/what-makes-specialty-coffee-traceable" },
   openGraph: {
     title: "What Makes Specialty Coffee Traceable? | EZPZ Coffee",
     description:

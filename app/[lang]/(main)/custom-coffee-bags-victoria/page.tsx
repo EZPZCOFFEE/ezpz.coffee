@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Victoria BC | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Victoria BC businesses, shipped in 7–10 days. No minimum order, full design included. Victoria brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-victoria" },
+    alternates: { canonical: "/en/custom-coffee-bags-victoria" },
     openGraph: {
       title: "Custom Coffee Bags Victoria BC | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Victoria BC businesses. No minimum order, full design included, shipped from Montreal in 7–10 days.",

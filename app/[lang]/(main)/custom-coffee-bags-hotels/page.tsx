@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Hotels | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for hotels. Transform your in-room guest experience. No minimum order, full design included. Hotels across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-hotels" },
+    alternates: { canonical: "/en/custom-coffee-bags-hotels" },
     openGraph: {
       title: "Custom Coffee Bags for Hotels | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for hotels. Premium in-room experience, lobby retail, no minimum order.",

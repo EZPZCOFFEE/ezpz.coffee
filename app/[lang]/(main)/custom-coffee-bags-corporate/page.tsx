@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Corporate Gifting | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for corporate gifting. Daily brand visibility in every client's morning. No minimum order, full design included. Corporate clients across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-corporate" },
+    alternates: { canonical: "/en/custom-coffee-bags-corporate" },
     openGraph: {
       title: "Custom Coffee Bags for Corporate Gifting | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for corporate gifting. Daily brand visibility, premium feel, no minimum per client.",

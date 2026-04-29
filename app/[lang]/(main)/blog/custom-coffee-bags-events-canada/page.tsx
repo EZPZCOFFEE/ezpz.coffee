@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Custom Coffee Bags for Events and Corporate Functions in Canada | EZPZ Coffee",
   description:
     "Branded coffee bags for trade shows, conferences, product launches, and corporate events across Canada. No minimum order, full design included, ships nationwide.",
-  alternates: { canonical: "/blog/custom-coffee-bags-events-canada" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-events-canada" },
   openGraph: {
     title: "Custom Coffee Bags for Events and Corporate Functions in Canada | EZPZ Coffee",
     description:

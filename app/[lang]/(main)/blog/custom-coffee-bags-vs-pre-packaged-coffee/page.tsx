@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Custom Coffee Bags vs Pre-Packaged Coffee: What's Right for Your Business? | EZPZ",
   description:
     "Thinking about selling coffee at your Montreal or Toronto business? We break down the pros and cons of custom branded bags vs pre-packaged coffee so you can make the best decision for your brand.",
-  alternates: { canonical: "/blog/custom-coffee-bags-vs-pre-packaged-coffee" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-vs-pre-packaged-coffee" },
   openGraph: {
     title: "Custom Coffee Bags vs Pre-Packaged Coffee | EZPZ Coffee",
     description:

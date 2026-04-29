@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ",
     description:
       "Considering Hutsul Coffee for custom branded bags? See how EZPZ compares with zero minimums, full design support, and specialty coffee roasted in Montreal.",
-    alternates: { canonical: "/compare/hutsul-coffee-alternative" },
+    alternates: { canonical: "/en/compare/hutsul-coffee-alternative" },
     openGraph: {
       title: "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ",
       description:

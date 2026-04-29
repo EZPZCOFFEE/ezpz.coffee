@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
     description: "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
-    alternates: { canonical: "/white-label" },
+    alternates: { canonical: "/en/white-label" },
     openGraph: {
       title: "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
       description: "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",

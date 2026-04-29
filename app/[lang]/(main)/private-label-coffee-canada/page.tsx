@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Private Label Coffee Canada | No Minimum | Custom Bags | EZPZ",
     description:
       "Private label coffee for Canadian businesses. Put your brand on specialty grade coffee with no minimum order, full design included, roasted in Montreal. EZPZ.",
-    alternates: { canonical: "/private-label-coffee-canada" },
+    alternates: { canonical: "/en/private-label-coffee-canada" },
     openGraph: {
       title: "Private Label Coffee Canada | No Minimum | Custom Bags | EZPZ",
       description:

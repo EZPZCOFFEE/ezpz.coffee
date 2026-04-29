@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Spas | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for spas. Extend your luxury experience into every morning at home. No minimum order, full design included. Spas across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-spas" },
+    alternates: { canonical: "/en/custom-coffee-bags-spas" },
     openGraph: {
       title: "Custom Coffee Bags for Spas | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for spas. Extends the luxury experience, high-margin retail, brand recall. No minimum order.",

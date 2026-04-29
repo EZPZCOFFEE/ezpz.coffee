@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Airbnb Hosts | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for Airbnb hosts. The detail that turns a 4-star stay into a 5-star review. No minimum order, full design included. Airbnb hosts across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-airbnb" },
+    alternates: { canonical: "/en/custom-coffee-bags-airbnb" },
     openGraph: {
       title: "Custom Coffee Bags for Airbnb Hosts | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for Airbnb hosts. 5-star reviews, memorable guest experience, no minimum order.",

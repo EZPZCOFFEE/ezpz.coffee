@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Medical Clinics | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for medical clinics. Show patients you care beyond the appointment. No minimum order, full design included. Medical clinics across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-medical-clinics" },
+    alternates: { canonical: "/en/custom-coffee-bags-medical-clinics" },
     openGraph: {
       title: "Custom Coffee Bags for Medical Clinics | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for medical clinics. Patient appreciation, warm brand positioning, staff gifting. No minimum.",

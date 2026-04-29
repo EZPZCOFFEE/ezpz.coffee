@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags London Ontario | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for London Ontario businesses, shipped in 5–7 days. No minimum order, full design included. London Ontario brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-london-ontario" },
+    alternates: { canonical: "/en/custom-coffee-bags-london-ontario" },
     openGraph: {
       title: "Custom Coffee Bags London Ontario | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for London Ontario businesses. No minimum order, full design included, shipped from Montreal in 5–7 days.",

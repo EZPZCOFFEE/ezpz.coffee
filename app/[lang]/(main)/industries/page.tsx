@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Every Industry | EZPZ Coffee Canada",
     description:
       "EZPZ Coffee creates custom branded coffee bags for restaurants, hotels, gyms, spas, offices, and more. No minimum order. Full design included. Ships across Canada and the USA.",
-    alternates: { canonical: "/industries" },
+    alternates: { canonical: "/en/industries" },
     openGraph: {
       title: "Custom Coffee Bags for Every Industry | EZPZ Coffee Canada",
       description: "Custom branded coffee bags for restaurants, hotels, gyms, spas, offices, and more. No minimum order. Full design included.",

@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Roasters Pack Alternative for Business | White Label Coffee Canada | EZPZ",
     description:
       "The Roasters Pack is great for coffee lovers. EZPZ is built for coffee brands. Custom branded bags, no minimums, full white label solutions across Canada.",
-    alternates: { canonical: "/compare/roasters-pack-alternative" },
+    alternates: { canonical: "/en/compare/roasters-pack-alternative" },
     openGraph: {
       title: "Roasters Pack Alternative for Business | White Label Coffee Canada | EZPZ",
       description:

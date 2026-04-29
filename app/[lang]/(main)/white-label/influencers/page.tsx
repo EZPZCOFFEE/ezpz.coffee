@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Brand for Creators & Influencers | EZPZ Coffee",
     description:
       "Launch your own coffee brand and turn your audience into daily customers. Custom blends, stunning packaging, direct to fan fulfillment. Your name on every bag.",
-    alternates: { canonical: "/white-label/influencers" },
+    alternates: { canonical: "/en/white-label/influencers" },
     openGraph: {
       title: "Custom Coffee Brand for Creators & Influencers | EZPZ Coffee",
       description:

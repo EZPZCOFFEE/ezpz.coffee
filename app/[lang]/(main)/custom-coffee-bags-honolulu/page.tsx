@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Honolulu | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Honolulu businesses, shipped in 14–21 days. No minimum order, full design included. Honolulu brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-honolulu" },
+    alternates: { canonical: "/en/custom-coffee-bags-honolulu" },
     openGraph: {
       title: "Custom Coffee Bags Honolulu | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Honolulu businesses. No minimum order, full design included, specialty coffee shipped from Montreal in 14–21 days.",

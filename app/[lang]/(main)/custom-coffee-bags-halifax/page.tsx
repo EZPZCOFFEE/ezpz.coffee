@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Halifax | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Halifax businesses, shipped in 7–10 days. No minimum order, full design included. Halifax brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-halifax" },
+    alternates: { canonical: "/en/custom-coffee-bags-halifax" },
     openGraph: {
       title: "Custom Coffee Bags Halifax | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Halifax businesses. No minimum order, full design included, shipped from Montreal in 7–10 days.",

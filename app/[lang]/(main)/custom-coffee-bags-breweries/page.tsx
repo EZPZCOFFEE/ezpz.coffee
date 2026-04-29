@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Breweries | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for breweries. You nailed the craft beer — now nail the morning after. No minimum order, full design included. Breweries across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-breweries" },
+    alternates: { canonical: "/en/custom-coffee-bags-breweries" },
     openGraph: {
       title: "Custom Coffee Bags for Breweries | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for breweries. Brand extension beyond beer, taproom retail, craft community crossover. No minimum.",

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Mother's Day Coffee Gift Canada | Custom Coffee Bags for Mom | EZPZ Coffee",
   description:
     "Give mom a gift she'll actually use every morning. Design a custom coffee bag with her name, a personal message, and specialty coffee she'll love. No minimum order. Ships across Canada.",
-  alternates: { canonical: "/mothers-day" },
+  alternates: { canonical: "/en/mothers-day" },
   openGraph: {
     title: "The Most Thoughtful Mother's Day Gift | Custom Coffee Bags | EZPZ Coffee",
     description:

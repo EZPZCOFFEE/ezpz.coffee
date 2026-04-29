@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Coffee Week Montreal 2027 | February 1–7",
   description:
     "Discover, taste, and vote for the best coffee shops in Montreal. One week, one special creation per café, one city united by great coffee.",
+  alternates: { canonical: "/en/coffee-week" },
   openGraph: {
     title: "Coffee Week Montreal 2027",
     description:

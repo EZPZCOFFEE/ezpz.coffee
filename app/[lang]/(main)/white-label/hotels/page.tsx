@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "White Label Coffee for Hotels & Hospitality | EZPZ Coffee",
     description:
       "Custom branded coffee for hotels, resorts, and hospitality venues. In room capsules, restaurant bags, and minibar cans — all under your brand. No minimums.",
-    alternates: { canonical: "/white-label/hotels" },
+    alternates: { canonical: "/en/white-label/hotels" },
     openGraph: {
       title: "White Label Coffee for Hotels & Hospitality | EZPZ Coffee",
       description:

@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags — Markets We Serve Across Canada | EZPZ",
     description:
       "EZPZ ships custom branded coffee bags to businesses across Canada. Montreal, Toronto, Vancouver, Calgary, Ottawa, and 40+ more cities. No minimum order.",
-    alternates: { canonical: "/locations" },
+    alternates: { canonical: "/en/locations" },
     openGraph: {
       title: "Custom Coffee Bags — Markets We Serve Across Canada | EZPZ",
       description:

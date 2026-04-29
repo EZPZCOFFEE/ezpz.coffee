@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Subscription Boxes | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for subscription boxes. A white-label premium product your subscribers love every month. No minimum order, full design included. Subscription boxes across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-subscription-boxes" },
+    alternates: { canonical: "/en/custom-coffee-bags-subscription-boxes" },
     openGraph: {
       title: "Custom Coffee Bags for Subscription Boxes | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for subscription boxes. White label, monthly orders, premium product subscribers love.",

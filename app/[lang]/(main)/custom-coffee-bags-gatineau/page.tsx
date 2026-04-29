@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Gatineau | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Gatineau businesses, shipped in 5–7 days. No minimum order, full design included. Gatineau and Hull businesses choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-gatineau" },
+    alternates: { canonical: "/en/custom-coffee-bags-gatineau" },
     openGraph: {
       title: "Custom Coffee Bags Gatineau | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Gatineau businesses. No minimum order, full design included, shipped from Montreal in 5–7 days.",

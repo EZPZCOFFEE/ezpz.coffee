@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Food Trucks | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for food trucks. Branded merchandise your superfans buy at the window. No minimum order, full design included. Food trucks across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-food-trucks" },
+    alternates: { canonical: "/en/custom-coffee-bags-food-trucks" },
     openGraph: {
       title: "Custom Coffee Bags for Food Trucks | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for food trucks. Superfan merchandise, event sales, no minimum to test.",

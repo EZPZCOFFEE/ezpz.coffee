@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About Us | EZPZ Coffee",
   description:
     "Founded in Montreal by coffee industry veterans. EZPZ helps hundreds of brands create custom coffee bags with no minimum order.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/en/about" },
   openGraph: {
     title: "About Us | EZPZ Coffee",
     description:

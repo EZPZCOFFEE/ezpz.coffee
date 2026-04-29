@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Best Custom Coffee Bags Canada | EZPZ vs Competitors | No Minimum",
     description:
       "See how EZPZ Coffee compares to Rogue Wave Coffee, Canterbury Coffee, Black Stripe Coffee, Virgin Hill Coffee, Hutsul Coffee and others. No minimums, full design included, roasted in Montreal.",
-    alternates: { canonical: "/compare" },
+    alternates: { canonical: "/en/compare" },
     openGraph: {
       title: "Best Custom Coffee Bags Canada | EZPZ vs Competitors | No Minimum",
       description:

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Longueuil | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Longueuil businesses, delivered in 3–5 days from Montreal. No minimum order, full design included. South Shore brands choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-longueuil" },
+    alternates: { canonical: "/en/custom-coffee-bags-longueuil" },
     openGraph: {
       title: "Custom Coffee Bags Longueuil | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Longueuil businesses. No minimum order, full design included, delivered in 3–5 days.",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "The Best Mother's Day Gift for Coffee Lovers in Canada | EZPZ Coffee",
   description:
     "Looking for a Mother's Day gift that's personal, unique, and actually useful? Discover why a custom coffee bag is the gift every Canadian mom will love in 2026.",
-  alternates: { canonical: "/blog/mothers-day-coffee-gift-ideas-canada" },
+  alternates: { canonical: "/en/blog/mothers-day-coffee-gift-ideas-canada" },
   openGraph: {
     title: "The Best Mother's Day Gift for Coffee Lovers in Canada | EZPZ Coffee",
     description:

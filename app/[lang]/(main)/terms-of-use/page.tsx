@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: "/terms-of-use",
+      canonical: "/en/terms-of-use",
     },
     openGraph: {
       title: t("ogTitle"),

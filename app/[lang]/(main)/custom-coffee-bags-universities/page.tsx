@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags for Universities | No Minimum | EZPZ Coffee",
     description:
       "Custom branded coffee bags for universities. Alumni engagement, convocation gifting, campus retail. No minimum order, full design included. Universities across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/custom-coffee-bags-universities" },
+    alternates: { canonical: "/en/custom-coffee-bags-universities" },
     openGraph: {
       title: "Custom Coffee Bags for Universities | No Minimum | EZPZ Coffee",
       description: "Custom branded coffee bags for universities. Alumni engagement, fundraising, convocation gifts. No minimum.",

@@ -7,7 +7,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Custom Coffee Bags Las Vegas | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Las Vegas businesses, shipped in 10–14 days. No minimum order, full design included. Las Vegas brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/custom-coffee-bags-las-vegas" },
+    alternates: { canonical: "/en/custom-coffee-bags-las-vegas" },
     openGraph: {
       title: "Custom Coffee Bags Las Vegas | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Las Vegas businesses. No minimum order, full design included, specialty coffee shipped from Montreal.",

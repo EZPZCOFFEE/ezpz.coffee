@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Custom Coffee Bags for Airbnb Hosts in Canada | EZPZ Coffee",
   description:
     "One small detail that earns five-star reviews. Discover why Canadian Airbnb hosts are adding custom branded coffee to their welcome experience — with no minimum order.",
-  alternates: { canonical: "/blog/custom-coffee-bags-airbnb-canada" },
+  alternates: { canonical: "/en/blog/custom-coffee-bags-airbnb-canada" },
   openGraph: {
     title: "Custom Coffee Bags for Airbnb Hosts in Canada | EZPZ Coffee",
     description:
