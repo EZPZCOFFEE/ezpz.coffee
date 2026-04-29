@@ -65,8 +65,9 @@ export const ContactForm = () => {
     const result = await contact({ ...fields, subject: `[${fields.inquiry}] ${fields.subject}` });
     setSubmitting(false);
     if (result.success) {
-      if (typeof window !== "undefined" && typeof (window as Window & { gtag?: Function }).gtag === "function") {
-        (window as Window & { gtag: Function }).gtag("event", "conversion", {
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "conversion", {
           send_to: "AW-18087558623/sAJUCJvYy5scEN_76LBD",
           value: 1.0,
           currency: "CAD",
