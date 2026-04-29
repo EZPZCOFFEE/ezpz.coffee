@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#111111"/>
+
+  <!-- Left side: mug (loser) -->
+  <g opacity="0.55">
+    <!-- Mug body -->
+    <rect x="180" y="220" width="180" height="200" rx="12" fill="#2a2a2a" stroke="#3a3a3a" stroke-width="2"/>
+    <!-- Mug handle -->
+    <path d="M360 270 Q430 270 430 320 Q430 370 360 370" fill="none" stroke="#3a3a3a" stroke-width="18" stroke-linecap="round"/>
+    <!-- Mug rim -->
+    <rect x="175" y="210" width="190" height="22" rx="8" fill="#333333"/>
+    <!-- Generic logo on mug -->
+    <rect x="215" y="270" width="100" height="12" rx="3" fill="#444444"/>
+    <rect x="230" y="292" width="70" height="8" rx="3" fill="#3a3a3a"/>
+    <rect x="225" y="310" width="90" height="8" rx="3" fill="#3a3a3a"/>
+    <!-- X mark above mug -->
+    <line x1="250" y1="155" x2="290" y2="195" stroke="#cc3333" stroke-width="6" stroke-linecap="round"/>
+    <line x1="290" y1="155" x2="250" y2="195" stroke="#cc3333" stroke-width="6" stroke-linecap="round"/>
+    <!-- Label below mug -->
+    <text x="270" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#666666" letter-spacing="2">CUSTOM MUG</text>
+  </g>
+
+  <!-- VS text in center -->
+  <circle cx="600" cy="315" r="50" fill="#1a1a1a" stroke="#333333" stroke-width="2"/>
+  <text x="600" y="325" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="28" font-weight="900" fill="#e8521a">VS</text>
+
+  <!-- Right side: coffee bag (winner) -->
+  <g>
+    <!-- Bag body -->
+    <rect x="760" y="190" width="210" height="260" rx="8" fill="#e8521a"/>
+    <!-- Bag fold top -->
+    <path d="M760 210 Q865 180 970 210 L970 215 Q865 185 760 215 Z" fill="#c43e14"/>
+    <!-- Bag top seal line -->
+    <rect x="760" y="190" width="210" height="28" rx="8" fill="#c43e14"/>
+    <!-- Valve circle -->
+    <circle cx="865" cy="204" r="10" fill="#a33510"/>
+    <circle cx="865" cy="204" r="5" fill="#8a2d0e"/>
+    <!-- Bag design area - white label-ish -->
+    <rect x="785" y="240" width="160" height="150" rx="4" fill="rgba(255,255,255,0.12)"/>
+    <!-- Brand name on bag -->
+    <text x="865" y="285" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#ffffff" letter-spacing="1">YOUR</text>
+    <text x="865" y="308" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="20" font-weight="900" fill="#ffffff" letter-spacing="1">BRAND</text>
+    <!-- Divider line -->
+    <line x1="800" y1="320" x2="930" y2="320" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+    <!-- Coffee details on bag -->
+    <text x="865" y="342" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="1">SINGLE ORIGIN</text>
+    <text x="865" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.7)" letter-spacing="1">ETHIOPIA · 250G</text>
+    <!-- Checkmark above bag -->
+    <circle cx="865" cy="165" r="22" fill="#2d9e2d"/>
+    <path d="M852 165 L862 175 L880 155" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Winner label below -->
+    <text x="865" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e8521a" letter-spacing="2">COFFEE BAG</text>
+  </g>
+
+  <!-- Arrow pointing right (winner) -->
+  <g>
+    <path d="M490 315 L680 315" stroke="#e8521a" stroke-width="3" stroke-dasharray="8,4" opacity="0.6"/>
+    <polygon points="680,308 695,315 680,322" fill="#e8521a" opacity="0.8"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="600" y="530" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing="1">WHY A COFFEE BAG BEATS A MUG</text>
+  <text x="600" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.45)" letter-spacing="3">EVERY SINGLE TIME</text>
+
+  <!-- EZPZ branding watermark -->
+  <text x="600" y="95" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="13" fill="rgba(255,255,255,0.2)" letter-spacing="5">EZPZ COFFEE</text>
+</svg>

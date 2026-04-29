@@ -139,4 +139,18 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/assets/blog/events-coffee.svg",
     published: true,
   },
+  {
+    slug: "custom-coffee-bags-vs-custom-mugs",
+    category: "Business Tips",
+    categoryColor: "#e8521a",
+    title: "Why a Custom Coffee Bag Beats a Custom Mug Every Single Time",
+    excerpt:
+      "Custom mugs are predictable and forgotten. Here is why Canadian businesses are switching to custom specialty coffee bags for corporate gifts, brand merchandise, and client appreciation.",
+    date: "April 28, 2026",
+    readTime: "6 min read",
+    color: "#1a2a1a",
+    initials: "BT",
+    image: "/assets/blog/coffee-bag-vs-mug.svg",
+    published: true,
+  },
 ];
