@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { headers } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { PropsWithChildren } from "react";
@@ -427,9 +428,15 @@ const fontVariables = [
   spaceMono.variable,
 ].join(" ");
 
-export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  return {
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: pathname || undefined,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ lang: locale }));

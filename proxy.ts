@@ -76,7 +76,14 @@ export default async function middleware(request: NextRequest): Promise<NextResp
       url.pathname = "/en";
       return NextResponse.redirect(url, { status: 301 });
     }
-    return intlMiddleware(request);
+    // Inject x-pathname so server components can generate dynamic canonical tags
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-pathname", pathname);
+    const patchedRequest = new NextRequest(request.url, {
+      headers: requestHeaders,
+      method: request.method,
+    });
+    return intlMiddleware(patchedRequest);
   }
 
   // CSRF protection for non-GET requests
