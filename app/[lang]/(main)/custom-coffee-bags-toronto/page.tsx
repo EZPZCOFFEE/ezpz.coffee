@@ -105,6 +105,20 @@ const data: CityPageData = {
     { city: "Hamilton", href: "/en/custom-coffee-bags-hamilton" },
     { city: "Ottawa", href: "/en/custom-coffee-bags-ottawa" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Toronto take?",
+      a: "Once your design is approved and your order is roasted, we ship via tracked courier from Montreal to Toronto. Most Toronto orders arrive within 2 business days of shipping. The total timeline is 5 to 7 business days for repeat orders and 2 to 3 weeks for first-time orders (which includes the roast, pack, and design approval steps).",
+    },
+    {
+      q: "Can I order just one bag to test before committing to volume?",
+      a: "Yes — EZPZ is the only custom coffee supplier in Canada with a genuine zero minimum order. You can order a single bag to taste the coffee, see the packaging quality, and validate your concept before scaling up. This is especially valuable for Toronto restaurants and startups testing a new product line.",
+    },
+    {
+      q: "Do you ship to all Toronto neighbourhoods and the GTA?",
+      a: "Yes. We ship to all Toronto addresses including King West, Yorkville, the Distillery District, Liberty Village, Queen Street West, Leslieville, Etobicoke, Scarborough, and North York. We also serve the full GTA including Mississauga, Markham, Vaughan, and Brampton. If you have multiple locations, we can ship to each address separately.",
+    },
+  ],
 };
 
 const TorontoPage = () => <CityPage data={data} />;

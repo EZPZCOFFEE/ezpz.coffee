@@ -284,6 +284,24 @@ const HomeLanding = () => {
           </motion.h2>
           <motion.p className={styles.geoBody} {...fadeChild}>{t("geo.body")}</motion.p>
           <motion.p className={styles.geoCities} {...fadeChild}>{t("geo.cities")}</motion.p>
+          <motion.div {...fadeChild} className={styles.cityLinksGrid}>
+            {[
+              { city: "Montreal", path: "/custom-coffee-bags-montreal" },
+              { city: "Toronto", path: "/custom-coffee-bags-toronto" },
+              { city: "Vancouver", path: "/custom-coffee-bags-vancouver" },
+              { city: "Calgary", path: "/custom-coffee-bags-calgary" },
+              { city: "Ottawa", path: "/custom-coffee-bags-ottawa" },
+              { city: "Edmonton", path: "/custom-coffee-bags-edmonton" },
+              { city: "Winnipeg", path: "/custom-coffee-bags-winnipeg" },
+              { city: "Quebec City", path: "/custom-coffee-bags-quebec-city" },
+              { city: "Halifax", path: "/custom-coffee-bags-halifax" },
+              { city: "Kelowna", path: "/custom-coffee-bags-kelowna" },
+            ].map(({ city, path }) => (
+              <Link key={city} href={`/${locale}${path}`} className={styles.cityLink}>
+                {city}
+              </Link>
+            ))}
+          </motion.div>
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/locations`} className={styles.btnOutline}>
               View all markets we serve →

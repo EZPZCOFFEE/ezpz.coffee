@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
     { city: "Kelowna", href: "/en/custom-coffee-bags-kelowna" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Victoria take?",
+      a: "Victoria orders ship via tracked Canada Post or courier and typically arrive in 7 to 10 business days from order confirmation. We ship to the island and deliver to Government Street, Fernwood, James Bay, Oak Bay, Esquimalt, and Saanich. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Victoria businesses use EZPZ?",
+      a: "Inner Harbour boutique hotels and inns, Government Street gift shops, Oak Bay restaurants and tea rooms, Fernwood independent cafés, and corporate gifting programs for Victoria's legal and government sector all use EZPZ. Victoria's tourism-heavy economy makes branded coffee especially effective as a premium takeaway souvenir.",
+    },
+    {
+      q: "Can a Victoria Airbnb or bed and breakfast use EZPZ with a small order?",
+      a: "Yes — zero minimum means a single bag is a valid order. Victoria's thriving B&B and short-term rental market is one of our strongest Airbnb hosting segments. A custom branded coffee bag in your kitchen tells guests you've thought about every detail — it's also a natural conversation starter and social media moment.",
+    },
+  ],
 };
 
 const VictoriaPage = () => <CityPage data={data} />;

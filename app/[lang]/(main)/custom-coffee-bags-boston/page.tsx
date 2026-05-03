@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "New York", href: "/en/custom-coffee-bags-new-york" },
     { city: "Philadelphia", href: "/en/custom-coffee-bags-philadelphia" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Boston take?",
+      a: "Boston is one of the closest US cities to Montreal — orders typically arrive in 5 to 7 business days via tracked international courier. We deliver to Back Bay, South End, Beacon Hill, Cambridge, Somerville, Brookline, and the greater Boston metro. First-time orders take 2 to 3 weeks total from design approval. No import paperwork required on your end.",
+    },
+    {
+      q: "What Boston businesses use EZPZ?",
+      a: "Back Bay restaurants and Newbury Street boutiques, Cambridge biotech and tech company gifting programs, Beacon Hill law firms, Harvard and MIT alumni and departmental gift programs, boutique hotels in the South End, and the Seaport District's fast-growing hospitality sector all use EZPZ. Boston's educated, premium-oriented consumer base is ideal for specialty coffee branding.",
+    },
+    {
+      q: "Is cross-border ordering complicated for Boston businesses?",
+      a: "Not at all — we handle all Canadian export paperwork. You order online at ezpz.coffee, we handle the logistics, and your bags arrive at your Boston address within days of shipping. Payment is in Canadian dollars (typically 20-30% less than equivalent US pricing) or we can arrange USD invoicing. No customs delays, no forms to fill out on your end.",
+    },
+  ],
 };
 
 const BostonPage = () => <CityPage data={data} />;

@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
     { city: "Brampton", href: "/en/custom-coffee-bags-brampton" },
   ],
+  faq: [
+    {
+      q: "How long does delivery to Mississauga take from Montreal?",
+      a: "Mississauga orders ship from Montreal in 5 to 7 business days via tracked courier. We deliver to Port Credit, Streetsville, Meadowvale, Erin Mills, City Centre, Square One area, Clarkson, and all Mississauga postal codes. First-time orders take 2 to 3 weeks total from design approval. Repeat orders are faster since your design is saved.",
+    },
+    {
+      q: "What Mississauga industries use branded coffee the most?",
+      a: "Corporate offices near Pearson Airport and along the Hurontario corridor, Port Credit restaurants and waterfront dining, Square One-area retailers, catering companies across Peel Region, and hotel properties throughout Mississauga are the strongest users of custom branded coffee. The airport corporate cluster is especially active for executive gifting.",
+    },
+    {
+      q: "Is there any minimum order for Mississauga businesses?",
+      a: "No minimum, ever. Whether you need 5 bags for a key client meeting or 5,000 for an annual gifting program, EZPZ serves Mississauga businesses at any scale. For orders of 100 bags or more, contact us for volume pricing and a custom quote.",
+    },
+  ],
 };
 
 const MississaugaPage = () => <CityPage data={data} />;

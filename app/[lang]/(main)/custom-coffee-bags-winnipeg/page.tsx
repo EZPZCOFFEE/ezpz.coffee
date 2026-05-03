@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Edmonton", href: "/en/custom-coffee-bags-edmonton" },
     { city: "Saskatoon", href: "/en/custom-coffee-bags-saskatoon" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Winnipeg take?",
+      a: "Winnipeg orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to all Winnipeg neighbourhoods including the Exchange District, Osborne Village, The Forks area, Wolseley, St. Boniface, and surrounding communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "Is bilingual French and English bag design available for Winnipeg?",
+      a: "Yes — Manitoba's strong Franco-Manitoban community means many Winnipeg businesses benefit from bilingual bag design. We offer French/English bilingual layouts, French-only, or English-only designs at no extra cost. Businesses in St. Boniface especially appreciate the option to lead with French copy that reflects their community's character.",
+    },
+    {
+      q: "What Winnipeg businesses use EZPZ most?",
+      a: "Exchange District restaurants and bars, Osborne Village boutiques and wellness studios, The Forks market vendors, corporate offices in downtown Winnipeg, and the growing tech and creative sector across the city. Winnipeg's vibrant arts and food culture is building brands that want to stand out with premium products.",
+    },
+  ],
 };
 
 const WinnipegPage = () => <CityPage data={data} />;

@@ -105,6 +105,20 @@ const data: CityPageData = {
     { city: "Kelowna", href: "/en/custom-coffee-bags-kelowna" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Vancouver take?",
+      a: "Vancouver orders ship from our Montreal roastery via tracked Canada Post or courier and arrive in 7 to 10 business days from order confirmation. First-time orders take 2 to 3 weeks total (design approval plus roast and ship). Repeat orders are faster since your design is already saved and ready to go.",
+    },
+    {
+      q: "What makes EZPZ different for Vancouver's sustainability-conscious market?",
+      a: "Our fully traceable specialty coffee sourcing aligns directly with Vancouver's values-driven consumer culture. Every origin is documented to the farm or cooperative level — no vague 'blend' labelling, no mystery sourcing. We source only 80+ SCA specialty grade coffees, roasted fresh to order. Vancouver consumers care about where their coffee comes from, and our transparency delivers on that expectation.",
+    },
+    {
+      q: "Do you ship to all Metro Vancouver neighbourhoods?",
+      a: "Yes — we deliver to all Vancouver addresses including Gastown, Yaletown, Kitsilano, Main Street, Commercial Drive, Coal Harbour, and East Vancouver. We also ship to Burnaby, Surrey, Richmond, North Vancouver, West Vancouver, Langley, and Coquitlam. For retail or hospitality distribution across Metro Vancouver, contact us for volume pricing.",
+    },
+  ],
 };
 
 const VancouverPage = () => <CityPage data={data} />;

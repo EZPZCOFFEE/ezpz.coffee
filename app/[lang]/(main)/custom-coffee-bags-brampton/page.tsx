@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Mississauga", href: "/en/custom-coffee-bags-mississauga" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
+  faq: [
+    {
+      q: "How long does delivery to Brampton take from Montreal?",
+      a: "Brampton orders ship from our Montreal roastery and arrive in 5 to 7 business days via tracked courier. We deliver to Downtown, Bramalea, Springdale, Castlemore, Huttonville, and all Brampton postal codes. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Brampton industries use custom branded coffee?",
+      a: "Brampton's South Asian restaurant corridor, corporate gifting programs in the Queen Street business district, logistics and distribution companies near the airport, event catering companies, and community organization gifts are the most common use cases. Brampton's diverse business community uses branded coffee as a premium, universally appreciated gift.",
+    },
+    {
+      q: "Can I order a small quantity first to try before scaling up?",
+      a: "Yes — EZPZ has absolutely no minimum order. You can order 1 bag to test the quality and packaging before committing to a larger quantity. This is especially popular with Brampton restaurateurs and event organizers who want to validate a branded coffee concept risk-free.",
+    },
+  ],
 };
 
 const BramptonPage = () => <CityPage data={data} />;

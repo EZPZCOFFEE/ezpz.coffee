@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Saskatoon", href: "/en/custom-coffee-bags-saskatoon" },
     { city: "Winnipeg", href: "/en/custom-coffee-bags-winnipeg" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Regina take?",
+      a: "Regina orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to all Regina areas including Cathedral Village, the Warehouse District, Downtown, and surrounding communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Regina industries use EZPZ?",
+      a: "Saskatchewan government offices and legislative assembly programs, legal and accounting firms in the downtown core, Victoria Avenue restaurants, creative businesses in Cathedral Village, and the growing tech sector at Innovation Place all use EZPZ. Regina's government-heavy economy makes it a natural market for premium corporate and executive gifts.",
+    },
+    {
+      q: "Is there a minimum order for Regina businesses?",
+      a: "No minimum. EZPZ serves Regina businesses of every size — from a law firm ordering 10 bags as client holiday gifts to a government department ordering 1,000 for a conference. Same zero-minimum policy, same full design included, same specialty-grade coffee, regardless of quantity.",
+    },
+  ],
 };
 
 const ReginaPage = () => <CityPage data={data} />;

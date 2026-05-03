@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Seattle", href: "/en/custom-coffee-bags-seattle" },
     { city: "Phoenix", href: "/en/custom-coffee-bags-phoenix" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Denver take?",
+      a: "Denver orders ship from our Montreal roastery and arrive in 10 to 14 business days via tracked international courier. We deliver to all Denver areas including RiNo, Cherry Creek, Highland, LoDo, Capitol Hill, and the greater Denver metro including Boulder and Fort Collins. First-time orders take 3 to 4 weeks total. No import paperwork.",
+    },
+    {
+      q: "Does EZPZ's traceable sourcing fit Denver's outdoor and wellness culture?",
+      a: "Perfectly. Denver's outdoor, wellness, and sustainability-focused brand ecosystem values transparency and quality. Our farm-traceable specialty coffee — sourced from documented origins, roasted fresh to order — aligns with the same values that drive Colorado's conscious consumer market. For RiNo creative brands, Cherry Creek boutiques, and sustainability-focused companies, traceable coffee is a natural story to tell.",
+    },
+    {
+      q: "What Denver businesses use EZPZ most?",
+      a: "LoDo restaurants and Union Station-area hospitality venues, Cherry Creek boutiques and luxury retailers, RiNo art district galleries and creative studios, Capitol Hill bars and neighbourhood restaurants, and corporate gifting programs for Denver's growing tech and professional services sector all use EZPZ.",
+    },
+  ],
 };
 
 const DenverPage = () => <CityPage data={data} />;

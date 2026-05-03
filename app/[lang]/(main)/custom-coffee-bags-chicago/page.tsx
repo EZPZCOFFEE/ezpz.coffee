@@ -107,6 +107,20 @@ const data: CityPageData = {
     { city: "Detroit", href: "/en/custom-coffee-bags-detroit" },
     { city: "New York", href: "/en/custom-coffee-bags-new-york" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Chicago take?",
+      a: "Chicago orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked international courier. We deliver to all Chicago neighbourhoods — River North, the Loop, Wicker Park, Lincoln Park, Pilsen, Gold Coast, Hyde Park, and beyond. First-time orders take 2 to 3 weeks total. No import paperwork on your end.",
+    },
+    {
+      q: "What Chicago industries use custom branded coffee most?",
+      a: "River North restaurants and Magnificent Mile hotels, Wicker Park boutiques and creative studios, the Loop's financial and legal sector corporate gifting programs, Gold Coast luxury properties, and the Chicago events and catering industry are the heaviest EZPZ users. Chicago's strong hospitality and corporate culture makes branded coffee a natural premium gift.",
+    },
+    {
+      q: "How does EZPZ compare to Chicago-based specialty coffee suppliers?",
+      a: "The key differences are zero minimums and full design included. Local Chicago roasters often require minimum quantities of 50 to 100 bags and charge separately for custom packaging design. EZPZ has no minimum, includes design at no extra cost, and ships directly to your Chicago address in 7 to 10 business days with full tracking.",
+    },
+  ],
 };
 
 const ChicagoPage = () => <CityPage data={data} />;

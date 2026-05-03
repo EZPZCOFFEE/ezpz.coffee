@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Portland", href: "/en/custom-coffee-bags-portland" },
     { city: "San Francisco", href: "/en/custom-coffee-bags-san-francisco" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Seattle take?",
+      a: "Seattle orders ship from our Montreal roastery and arrive in 10 to 14 business days via tracked international courier. We deliver to all Seattle neighbourhoods including Capitol Hill, Pioneer Square, Ballard, Fremont, Belltown, South Lake Union, and the greater Seattle metro. First-time orders take 3 to 4 weeks total. No import paperwork on your end.",
+    },
+    {
+      q: "Does custom coffee even make sense in Seattle, the home of Starbucks?",
+      a: "Absolutely — and that's exactly the point. Seattle's sophisticated coffee culture means consumers can tell the difference between commodity and specialty. Serving or gifting EZPZ's 80+ SCA specialty coffee in your custom branded bag signals quality in a market where people know their coffee. It's not competing with Starbucks — it's positioned entirely above it.",
+    },
+    {
+      q: "What Seattle businesses use EZPZ?",
+      a: "Pioneer Square restaurants and Capitol Hill boutiques, South Lake Union tech companies with employee gifting programs, Belltown boutique hotels, Pike Place Market-adjacent hospitality businesses, and Pacific Northwest lifestyle brands throughout the Seattle metro all use EZPZ. Seattle's coffee literacy makes specialty-grade sourcing an especially powerful signal.",
+    },
+  ],
 };
 
 const SeattlePage = () => <CityPage data={data} />;

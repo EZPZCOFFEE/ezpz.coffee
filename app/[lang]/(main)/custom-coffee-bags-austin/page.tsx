@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Houston", href: "/en/custom-coffee-bags-houston" },
     { city: "Dallas", href: "/en/custom-coffee-bags-dallas" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Austin take?",
+      a: "Austin orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked international courier. We deliver to South Congress, East Austin, Rainey Street, The Domain, Downtown, and the greater Austin metro. First-time orders take 2 to 3 weeks total from design approval. No import paperwork on your end.",
+    },
+    {
+      q: "What Austin industries use custom branded coffee most?",
+      a: "East Austin restaurants and South Congress boutiques, tech campuses along Mopac and in the Domain, music venue and entertainment brands, 6th Street hospitality businesses, and the growing corporate gifting market in Austin's booming business sector all use EZPZ. Austin's fast-growing creative and tech economy creates strong demand for premium branded products.",
+    },
+    {
+      q: "Can I order branded coffee ahead of SXSW, ACL, or other Austin events?",
+      a: "Yes — we ship year-round and many Austin event companies order ahead of festival season. For SXSW in March, order by late January for safe lead time. For ACL in October, order by late August. Branded coffee bags are a standout gift or activation item at Austin's major events — order 3 to 4 weeks before your event to ensure delivery.",
+    },
+  ],
 };
 
 const AustinPage = () => <CityPage data={data} />;

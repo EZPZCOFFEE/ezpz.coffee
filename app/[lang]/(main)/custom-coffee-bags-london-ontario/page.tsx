@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Hamilton", href: "/en/custom-coffee-bags-hamilton" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to London, Ontario take?",
+      a: "London ON orders ship from our Montreal roastery and arrive in 5 to 7 business days via tracked courier. We deliver to Downtown, Richmond Row, Wortley Village, Old East Village, Byron, and White Oaks. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What London Ontario industries use EZPZ most?",
+      a: "Western University corporate gifts and alumni programs, Richmond Row restaurant and bar corridor, downtown professional services (law, medical, dental), London hospitals and health networks, and the growing tech sector in Old East Village are the most active markets for branded coffee in London.",
+    },
+    {
+      q: "Is there a minimum order for London Ontario businesses?",
+      a: "No minimum whatsoever. Start with a single bag to test the quality, then scale to whatever volume fits your program. EZPZ serves London businesses of any size — from solo practitioners wanting 5 branded bags for client gifts to university departments ordering 500 for an alumni event.",
+    },
+  ],
 };
 
 const LondonOntarioPage = () => <CityPage data={data} />;

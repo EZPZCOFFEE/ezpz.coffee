@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Winnipeg", href: "/en/custom-coffee-bags-winnipeg" },
     { city: "Regina", href: "/en/custom-coffee-bags-regina" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Saskatoon take?",
+      a: "Saskatoon orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to all Saskatoon areas including Broadway Avenue, Riversdale, River Landing, Sutherland, and surrounding communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Saskatoon businesses benefit most from custom coffee bags?",
+      a: "Broadway Avenue restaurants and music venues, the River Landing food and arts district, corporate offices downtown, University of Saskatchewan alumni and departmental gift programs, and agriculture-sector companies looking for premium executive gifts are the most active EZPZ users in Saskatoon.",
+    },
+    {
+      q: "Is EZPZ the only no-minimum custom coffee option for Saskatoon?",
+      a: "To our knowledge, yes — EZPZ is the only custom coffee supplier in Canada with a genuine zero minimum order that serves Saskatoon. Most competitors require minimums of 50 to 100 bags and charge setup fees. We have no minimums and include full design at no extra cost, regardless of order size.",
+    },
+  ],
 };
 
 const SaskatoonPage = () => <CityPage data={data} />;

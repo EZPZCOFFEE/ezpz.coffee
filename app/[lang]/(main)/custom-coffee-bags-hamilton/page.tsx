@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
     { city: "London", href: "/en/custom-coffee-bags-london-ontario" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Hamilton take?",
+      a: "Hamilton orders ship from our Montreal roastery and arrive in 5 to 7 business days via tracked courier. We deliver to James Street North, Locke Street, Westdale, Dundas, Ancaster, Stoney Creek, and Waterdown. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "How does custom coffee fit Hamilton's growing food and arts scene?",
+      a: "Hamilton's James Street North gallery district, Locke Street restaurant corridor, and the emerging Barton Village food scene are building brands that compete with Toronto's best. A premium custom coffee bag — on the counter or as a takeaway — reinforces that brand identity at a fraction of what traditional marketing costs.",
+    },
+    {
+      q: "Do you offer volume pricing for Hamilton event venues and wedding facilities?",
+      a: "Yes — for orders of 100+ bags, contact us for a custom volume quote. Hamilton's wedding venues, conference centres, and hospitality properties regularly order in volume for events, seasonal programs, and client gifting. We also offer repeat-order scheduling for ongoing programs.",
+    },
+  ],
 };
 
 const HamiltonPage = () => <CityPage data={data} />;

@@ -107,6 +107,20 @@ const data: CityPageData = {
     { city: "Atlanta", href: "/en/custom-coffee-bags-atlanta" },
     { city: "New York", href: "/en/custom-coffee-bags-new-york" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Miami take?",
+      a: "Miami orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked international courier. We deliver to South Beach, Brickell, Wynwood, Coconut Grove, Coral Gables, Design District, Aventura, and beyond. First-time orders take 2 to 3 weeks total from design approval. No import paperwork on your end.",
+    },
+    {
+      q: "Is bilingual Spanish and English bag design available for Miami?",
+      a: "Yes — Miami's bilingual market makes our Spanish/English option especially relevant. Our design team handles Spanish-only, English-only, or bilingual Spanish/English layouts at no extra cost. For Brickell corporate clients, Little Havana restaurants, or Doral businesses with primarily Spanish-speaking clientele, we design bags that resonate authentically with your audience.",
+    },
+    {
+      q: "What Miami businesses use EZPZ most?",
+      a: "Wynwood art district boutiques and galleries, South Beach and South of Fifth boutique hotels, Brickell corporate gifting programs, Design District luxury retail and lifestyle brands, Coconut Grove wellness studios, and the hospitality sector across Miami Beach. Miami's high-energy, luxury-leaning brand ecosystem makes premium custom coffee a natural fit.",
+    },
+  ],
 };
 
 const MiamiPage = () => <CityPage data={data} />;

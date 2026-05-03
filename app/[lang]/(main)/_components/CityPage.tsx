@@ -18,11 +18,22 @@ export interface CityPageData {
   allMarketsHref?: string;
   allMarketsLabel?: string;
   relatedCities?: { city: string; href: string }[];
+  faq?: { q: string; a: string }[];
 }
 
 const BREADCRUMB_BASE = "https://www.ezpz.coffee/en";
 
 const CityPage = ({ data }: { data: CityPageData }) => {
+  const faqSchema = data.faq && data.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: data.faq.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  } : null;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -61,6 +72,12 @@ const CityPage = ({ data }: { data: CityPageData }) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -159,6 +176,24 @@ const CityPage = ({ data }: { data: CityPageData }) => {
               Delivered to your {data.city} door.
             </h2>
             <p className={styles.introText}>{data.deliveryBody}</p>
+          </div>
+        </section>
+      )}
+
+      {/* ── FAQ ── */}
+      {data.faq && data.faq.length > 0 && (
+        <section className={styles.faq}>
+          <div className={styles.faqInner}>
+            <span className={styles.eyebrow}>FAQ</span>
+            <h2 className={styles.faqHeading}>Common questions about custom coffee bags in {data.city}.</h2>
+            <dl className={styles.faqList}>
+              {data.faq.map(({ q, a }) => (
+                <div key={q} className={styles.faqItem}>
+                  <dt className={styles.faqQuestion}>{q}</dt>
+                  <dd className={styles.faqAnswer}>{a}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
       )}

@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Gatineau", href: "/en/custom-coffee-bags-gatineau" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
+  faq: [
+    {
+      q: "How fast can custom coffee bags be delivered to Ottawa?",
+      a: "Ottawa is about 2 hours from Montreal by road — shipping typically arrives in 1 to 2 business days from our roastery. First-time orders take 2 to 3 weeks total from design approval. Repeat orders arrive in well under a week. We deliver to ByWard Market, Glebe, Westboro, Centretown, Hintonburg, and all Ottawa postal codes.",
+    },
+    {
+      q: "Do Ottawa government offices and federal departments use EZPZ?",
+      a: "Yes — federal agencies, Crown corporations, lobbying and consulting firms on Wellington Street, and associations throughout Ottawa use our custom coffee as a premium corporate gift and boardroom amenity. Ottawa's government and professional services sector is one of our most active markets for branded coffee.",
+    },
+    {
+      q: "Can I get bilingual French and English bag designs for Ottawa clients?",
+      a: "Absolutely — bilingual design is standard at no extra cost. Many Ottawa businesses specifically need French/English packaging to reflect the bilingual nature of the National Capital Region. Our design team handles both official language layouts seamlessly, and we can produce French-only and English-only versions simultaneously for different audiences.",
+    },
+  ],
 };
 
 const OttawaPage = () => <CityPage data={data} />;

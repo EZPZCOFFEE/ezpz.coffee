@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Seattle", href: "/en/custom-coffee-bags-seattle" },
     { city: "San Francisco", href: "/en/custom-coffee-bags-san-francisco" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Portland take?",
+      a: "Portland OR orders ship from our Montreal roastery and arrive in 10 to 14 business days via tracked international courier. We deliver to all Portland neighbourhoods including Pearl District, Alberta Arts District, Division Street, Hawthorne, Sellwood, and the greater Portland metro. First-time orders take 3 to 4 weeks total. No import paperwork.",
+    },
+    {
+      q: "Why would a Portland business order from a Canadian coffee company?",
+      a: "Specialty coffee quality, zero minimums, and full design included — Portland's discerning coffee culture values all of these, regardless of where the roaster is based. Our Ethiopian, Colombian, and Brazilian single origins are the same quality you'd find at Portland's best independent roasters. And unlike local Portland suppliers, we include full custom bag design and have no minimum order.",
+    },
+    {
+      q: "What Portland businesses use EZPZ?",
+      a: "Pearl District galleries, boutiques and restaurants, Division Street and Hawthorne neighbourhood cafés and shops, Alberta Arts District studios and creative businesses, downtown corporate gifting programs, and eco-conscious lifestyle brands throughout Portland use EZPZ. Portland's independent business community is a natural fit for premium custom coffee.",
+    },
+  ],
 };
 
 const PortlandPage = () => <CityPage data={data} />;

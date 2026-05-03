@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Edmonton", href: "/en/custom-coffee-bags-edmonton" },
     { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
   ],
+  faq: [
+    {
+      q: "How long does shipping take from Montreal to Calgary?",
+      a: "Calgary orders ship from our Montreal roastery and typically arrive in 7 to 10 business days via tracked courier. First-time orders take 2 to 3 weeks total from design approval to delivery. Repeat orders are faster since your design is saved. We deliver to all Calgary postal codes including downtown, Beltline, 17th Avenue, Kensington, Inglewood, and Marda Loop.",
+    },
+    {
+      q: "What Calgary industries use custom branded coffee most?",
+      a: "Calgary's energy sector, professional services firms (law, engineering, accounting), downtown boutique hotels on Stephen Avenue, and 17th Avenue restaurants are the heaviest users of custom branded coffee. Corporate gifting in the oil and gas sector is especially strong — a premium coffee bag with your firm's branding makes a more memorable impression than a standard promotional item.",
+    },
+    {
+      q: "Is there a minimum order for Calgary corporate gifting programs?",
+      a: "No minimum at all. Whether you need 5 bags for a key client presentation or 5,000 for an annual corporate gifting program, EZPZ accommodates any volume with the same no-minimum policy and full design included. Volume orders of 100+ bags qualify for bulk pricing — contact us for a custom quote.",
+    },
+  ],
 };
 
 const CalgaryPage = () => <CityPage data={data} />;

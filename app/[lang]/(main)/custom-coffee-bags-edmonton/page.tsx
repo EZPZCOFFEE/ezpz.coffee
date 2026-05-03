@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Calgary", href: "/en/custom-coffee-bags-calgary" },
     { city: "Winnipeg", href: "/en/custom-coffee-bags-winnipeg" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Edmonton take?",
+      a: "Edmonton orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to all Edmonton areas including Downtown, Whyte Avenue, Old Strathcona, 124 Street, Glenora, and surrounding communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Edmonton industries use custom branded coffee?",
+      a: "Government of Alberta departments, oil and gas support companies, Whyte Avenue restaurants and boutiques, Old Strathcona entertainment venues, 124 Street galleries and shops, and corporate meeting planners across the city are the most active users. Edmonton's combination of government, energy, and arts sectors creates strong demand for premium branded gifts.",
+    },
+    {
+      q: "What coffee origins are most popular with Edmonton businesses?",
+      a: "Our Ethiopian Yirgacheffe and Colombian Huila single origins are consistently the most popular for corporate gifting in Alberta — they're bright, balanced, and crowd-pleasing. Our Guatemalan Huehuetenango is also a favourite for clients who prefer a richer, full-bodied cup. We help you choose the right origin for your audience.",
+    },
+  ],
 };
 
 const EdmontonPage = () => <CityPage data={data} />;

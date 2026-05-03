@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
     { city: "Gatineau", href: "/en/custom-coffee-bags-gatineau" },
   ],
+  faq: [
+    {
+      q: "How long does delivery from Montreal to Quebec City take?",
+      a: "Quebec City is about 2.5 hours from Montreal by road, so shipping is typically 1 to 2 business days. First-time orders take 2 to 3 weeks total from design approval to delivery. Repeat orders arrive in well under a week. We deliver to Vieux-Québec, Saint-Roch, Montcalm, Limoilou, and Sainte-Foy.",
+    },
+    {
+      q: "Can I get bilingual or French-only bag designs for Quebec City?",
+      a: "Absolutely — our design team handles French-only, English-only, or bilingual French/English layouts at no extra cost. For Quebec City businesses where French is the primary commercial language, we recommend leading with French copy. Both language versions can be produced simultaneously if you serve both markets.",
+    },
+    {
+      q: "What Quebec City industries use EZPZ most?",
+      a: "Historic hotels and inns in Vieux-Québec, Old City restaurants in Saint-Roch and the Haute-Ville, government and National Assembly-area corporate gifting programs, tour operators in the Plains of Abraham area, and cultural venues throughout the city all use EZPZ. Any Quebec City business adding a premium branded touchpoint is a natural fit.",
+    },
+  ],
 };
 
 const QuebecCityPage = () => <CityPage data={data} />;

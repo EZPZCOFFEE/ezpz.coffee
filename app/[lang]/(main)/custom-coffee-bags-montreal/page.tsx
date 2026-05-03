@@ -104,6 +104,20 @@ const data: CityPageData = {
     { city: "Laval", href: "/en/custom-coffee-bags-laval" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
+  faq: [
+    {
+      q: "How quickly can I get custom coffee bags delivered in Montreal?",
+      a: "Since EZPZ is based in Montreal — roasting at Canadian Roasting Society in the city's southwest — your order ships faster than any other supplier. First orders take 2 to 3 weeks total from design approval to delivery. Repeat orders ship within 3 to 5 business days. Local pickup at our Montreal roastery is also available by arrangement.",
+    },
+    {
+      q: "Can I get bilingual French and English text on my bags?",
+      a: "Absolutely. Our design team handles French-only, English-only, or bilingual layouts at no extra cost. Whether you want French-first packaging for a Plateau bistro or bilingual bags for a Westmount corporate gift, we accommodate both official languages without additional fees.",
+    },
+    {
+      q: "What kinds of Montreal businesses use EZPZ?",
+      a: "We work with restaurants on the Plateau and in Old Montreal, boutique hotels in the Golden Square Mile and Vieux-Montréal, wellness studios in Rosemont and Outremont, Mile End concept stores, Westmount boutiques, and corporate offices downtown. Any Montreal business looking to strengthen their brand with premium, tangible coffee is a natural fit.",
+    },
+  ],
 };
 
 const MontrealPage = () => <CityPage data={data} />;

@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Ottawa", href: "/en/custom-coffee-bags-ottawa" },
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
   ],
+  faq: [
+    {
+      q: "Can Gatineau businesses order custom coffee bags in French?",
+      a: "Oui — our team is fully bilingual. We handle French-language bag copy, French-only communication, and French/English bilingual design at no extra cost. For Gatineau businesses where French is the primary commercial language, we recommend a French-first layout that reflects local culture.",
+    },
+    {
+      q: "How long does shipping from Montreal to Gatineau take?",
+      a: "Gatineau is about 2 hours from Montreal. Orders ship via tracked courier and typically arrive the next business day from shipping. First-time orders take 2 to 3 weeks total from design approval. Repeat orders arrive in under a week.",
+    },
+    {
+      q: "Do federal government offices and NGOs in Gatineau use EZPZ?",
+      a: "Yes — government departments, federal agencies, and National Capital Region organizations use our custom coffee as a corporate gift and meeting room amenity. The Hull sector's proximity to Ottawa federal offices makes Gatineau a natural market for premium branded coffee. Contact us for volume pricing on institutional orders.",
+    },
+  ],
 };
 
 const GatineauPage = () => <CityPage data={data} />;

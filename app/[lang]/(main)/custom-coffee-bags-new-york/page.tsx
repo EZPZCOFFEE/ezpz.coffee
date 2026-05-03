@@ -107,6 +107,20 @@ const data: CityPageData = {
     { city: "Philadelphia", href: "/en/custom-coffee-bags-philadelphia" },
     { city: "Boston", href: "/en/custom-coffee-bags-boston" },
   ],
+  faq: [
+    {
+      q: "Does EZPZ ship custom coffee bags to New York City?",
+      a: "Yes — we ship to all five boroughs and the greater New York metro. Orders arrive in 7 to 10 business days via tracked international courier from our Montreal roastery. First-time orders take 2 to 3 weeks total from design approval. We handle all Canadian export documentation — no paperwork required on your end.",
+    },
+    {
+      q: "What New York businesses use EZPZ?",
+      a: "Brooklyn food brands and Williamsburg boutiques, Manhattan boutique hotels in SoHo and the West Village, corporate gifting programs for Midtown financial firms, NoLIta concept stores, and entertainment companies in the Meatpacking District all use EZPZ. New York's brand-obsessed market is a natural fit for premium custom coffee.",
+    },
+    {
+      q: "What makes EZPZ different from US-based custom coffee suppliers?",
+      a: "Zero minimums — most US competitors require 50 to 100 bags. Full design included at no extra cost — US competitors typically charge $100-$300 in setup or design fees. Specialty-grade traceable sourcing — not commodity coffee in branded bags. And roasted fresh to order, not sitting in a warehouse. We ship to NYC seamlessly with no customs hassle on your end.",
+    },
+  ],
 };
 
 const NewYorkPage = () => <CityPage data={data} />;

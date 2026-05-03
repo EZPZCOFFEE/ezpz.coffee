@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Moncton", href: "/en/custom-coffee-bags-moncton" },
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Halifax take?",
+      a: "Halifax orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. Maritime shipping routes are well-connected. We deliver to Historic Properties, Spring Garden Road, North End, Downtown Halifax, Dartmouth Crossing, and surrounding HRM communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "What Halifax businesses use EZPZ?",
+      a: "Historic Properties waterfront restaurants, Spring Garden Road boutiques, downtown Halifax boutique hotels, North End neighbourhood cafés, Dartmouth Crossing retailers, and corporate gifting programs for Halifax-based professional services firms. Halifax's growing food and hospitality scene is an ideal market for branded coffee as a premium takeaway.",
+    },
+    {
+      q: "Is there a minimum order for Atlantic Canada businesses?",
+      a: "No minimum anywhere in Canada, including Nova Scotia. Whether you're a sole proprietor ordering 5 bags as client gifts or a Halifax hotel ordering 500 bags for in-room amenities, EZPZ accommodates any volume. For 100+ bags, contact us for volume pricing.",
+    },
+  ],
 };
 
 const HalifaxPage = () => <CityPage data={data} />;

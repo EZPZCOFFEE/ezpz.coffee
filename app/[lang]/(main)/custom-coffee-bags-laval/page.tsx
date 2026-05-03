@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
     { city: "Longueuil", href: "/en/custom-coffee-bags-longueuil" },
   ],
+  faq: [
+    {
+      q: "How quickly can orders reach Laval from Montreal?",
+      a: "Laval is just across the Rivière des Prairies from our Montreal roastery — shipping is typically 1 business day. First-time orders take 2 to 3 weeks total from design approval to delivery. Repeat orders arrive in 3 to 5 business days. We can also arrange local pickup at our southwest Montreal facility.",
+    },
+    {
+      q: "Can I order a small quantity to test before scaling?",
+      a: "Yes — EZPZ has no minimum order, period. You can order a single bag to test the product quality and packaging before committing to volume. This is especially valuable for Laval restaurateurs and independent retailers who want to validate a branded coffee concept before adding it to their offering.",
+    },
+    {
+      q: "What kinds of Laval businesses use EZPZ?",
+      a: "Centropolis-area restaurants, Carrefour Laval-area boutiques, CrossFit gyms and yoga studios, family-owned cafés in Sainte-Rose and Vimont, and wellness clinics throughout Chomedey. Laval's active suburban business community is a strong fit for branded coffee as a premium gift or retail product.",
+    },
+  ],
 };
 
 const LavalPage = () => <CityPage data={data} />;

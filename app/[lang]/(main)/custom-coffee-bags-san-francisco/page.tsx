@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Los Angeles", href: "/en/custom-coffee-bags-los-angeles" },
     { city: "Seattle", href: "/en/custom-coffee-bags-seattle" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to San Francisco take?",
+      a: "San Francisco orders ship from our Montreal roastery and arrive in 10 to 14 business days via tracked international courier. We deliver to all SF neighbourhoods including Mission District, SoMa, North Beach, Castro, Hayes Valley, and the greater Bay Area including Oakland, Berkeley, and the South Bay. First-time orders take 3 to 4 weeks total. No import paperwork.",
+    },
+    {
+      q: "How does EZPZ's traceable sourcing fit SF's values?",
+      a: "The Bay Area's emphasis on transparency, ethical sourcing, and quality aligns directly with our farm-traceable specialty coffee program. Every origin is documented to the producer level — no vague blend labelling, no mystery sourcing. We source only 80+ SCA specialty grade coffees, roasted fresh to order at our Montreal facility. SF's conscious consumer market rewards brands that can tell this story authentically.",
+    },
+    {
+      q: "What SF and Bay Area businesses use EZPZ?",
+      a: "SoMa tech companies with employee and client gifting programs, Hayes Valley boutiques, Mission District restaurants and coffee bars, Marina District boutique hotels, and the startup gifting sector throughout Silicon Valley all use EZPZ. Bay Area tech culture treats branded gifts as an extension of company values — specialty coffee with traceable origins fits that brand ethos perfectly.",
+    },
+  ],
 };
 
 const SanFranciscoPage = () => <CityPage data={data} />;

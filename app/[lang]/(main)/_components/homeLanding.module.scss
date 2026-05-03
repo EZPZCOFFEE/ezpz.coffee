@@ -1452,6 +1452,32 @@
   font-weight: var(--font-weight-semibold);
 }
 
+.cityLinksGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-town);
+  margin-top: var(--spacing-state);
+}
+
+.cityLink {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: var(--color-accent);
+    color: #ffffff;
+  }
+}
+
 /* ── Blog preview ──────────────────────────────────────────── */
 .blog {
   width: 100%;

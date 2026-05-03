@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
     { city: "Quebec City", href: "/en/custom-coffee-bags-quebec-city" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Sherbrooke take?",
+      a: "Sherbrooke is about 1.5 hours from Montreal. Shipping typically takes 1 to 2 business days. First-time orders take 2 to 3 weeks total from design approval. Repeat orders arrive in well under a week. We deliver to all Sherbrooke neighbourhoods including Downtown, Fleurimont, Rock Forest, Lennoxville, and Brompton.",
+    },
+    {
+      q: "Can I get French-only or bilingual bag designs for Sherbrooke?",
+      a: "Absolutely — our design team handles French-only, English-only, or bilingual French/English layouts at no extra cost. For Sherbrooke's predominantly French-speaking business community, we always recommend reviewing French copy first to ensure it resonates authentically with local customers.",
+    },
+    {
+      q: "What Sherbrooke businesses use EZPZ most?",
+      a: "Restaurants on King Street and Rue Wellington, boutique hotels near Place Sherbrooke, Université de Sherbrooke-affiliated businesses looking for alumni or promotional gifts, and the growing creative and tech sector in downtown Sherbrooke all use EZPZ. Any local business wanting to elevate their brand with a premium product is a good fit.",
+    },
+  ],
 };
 
 const SherbrookePage = () => <CityPage data={data} />;

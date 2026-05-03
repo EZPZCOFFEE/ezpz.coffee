@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
     { city: "Laval", href: "/en/custom-coffee-bags-laval" },
   ],
+  faq: [
+    {
+      q: "How quickly can orders reach Longueuil from Montreal?",
+      a: "Longueuil is just across the Jacques-Cartier Bridge from our Montreal roastery — shipping is typically 1 business day. First-time orders take 2 to 3 weeks total from design approval. Repeat orders arrive in 3 to 5 business days. Local pickup at our Montreal facility is also available by arrangement.",
+    },
+    {
+      q: "What Longueuil neighbourhoods do you deliver to?",
+      a: "We ship to all of Longueuil including Vieux-Longueuil, Greenfield Park, Saint-Hubert, LeMoyne, and the Quartier Maisons-Alfort area. If you have multiple South Shore locations, we can coordinate separate deliveries or a single consolidated shipment.",
+    },
+    {
+      q: "What kinds of Longueuil businesses use custom coffee bags?",
+      a: "Chemin Chambly restaurants, Saint-Hubert corporate offices, Greenfield Park wellness studios, and family-owned boutiques on the South Shore all use EZPZ. Longueuil's growing food and wellness scene is a strong fit for branded coffee as a retail product or premium client gift.",
+    },
+  ],
 };
 
 const LongueuilPage = () => <CityPage data={data} />;

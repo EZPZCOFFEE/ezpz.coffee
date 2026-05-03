@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Halifax", href: "/en/custom-coffee-bags-halifax" },
     { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Moncton take?",
+      a: "Moncton orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to Downtown Moncton, Dieppe, Riverview, and surrounding Greater Moncton communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "Can I get bilingual French and English bag designs for Moncton?",
+      a: "Yes — Moncton's bilingual character is one of Canada's strongest, with both English and French as everyday commercial languages. Our team designs French/English bilingual bags, French-only, and English-only layouts at no extra cost. For Dieppe-based businesses in particular, a French-first bilingual design is often the right call.",
+    },
+    {
+      q: "What kinds of Moncton businesses use custom coffee bags?",
+      a: "Main Street restaurants and bars, Magnetic Hill-area event venues and hotels, Champlain Place-adjacent retailers, corporate gifting programs for Greater Moncton professional services, and community organizations across New Brunswick all use EZPZ. Moncton's geographic centre in the Maritimes also makes it a hub for regional distribution.",
+    },
+  ],
 };
 
 const MonctonPage = () => <CityPage data={data} />;

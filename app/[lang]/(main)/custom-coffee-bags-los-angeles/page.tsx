@@ -107,6 +107,20 @@ const data: CityPageData = {
     { city: "San Diego", href: "/en/custom-coffee-bags-san-diego" },
     { city: "Las Vegas", href: "/en/custom-coffee-bags-las-vegas" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Los Angeles take?",
+      a: "LA orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked international courier. We deliver to all of greater Los Angeles — Hollywood, Silver Lake, Venice, Beverly Hills, Culver City, Burbank, Pasadena, and beyond. First-time orders take 2 to 3 weeks total. No import paperwork required on your end.",
+    },
+    {
+      q: "What does EZPZ's traceable sourcing mean for LA's sustainability market?",
+      a: "Los Angeles has one of the most values-conscious consumer markets in North America. Our farm-traceable specialty coffee — documented to the producer level — meets the transparency expectations of LA's discerning buyers. Every origin we source is 80+ SCA specialty grade, roasted fresh to order, never warehouse stock. For LA brands, this aligns with the quality story you're already telling.",
+    },
+    {
+      q: "What LA businesses use custom branded coffee most?",
+      a: "Hollywood production companies and talent agencies, Beverly Hills luxury hotels, Venice Beach and Echo Park lifestyle brands, Silver Lake and Los Feliz concept stores, and SoHo House-style membership clubs throughout the city are the strongest EZPZ markets in LA. The entertainment and lifestyle brand sector leads usage.",
+    },
+  ],
 };
 
 const LosAngelesPage = () => <CityPage data={data} />;

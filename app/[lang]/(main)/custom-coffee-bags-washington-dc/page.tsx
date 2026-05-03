@@ -60,6 +60,20 @@ const data: CityPageData = {
     { city: "Philadelphia", href: "/en/custom-coffee-bags-philadelphia" },
     { city: "New York", href: "/en/custom-coffee-bags-new-york" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Washington DC take?",
+      a: "Washington DC is relatively close to Montreal — orders typically arrive in 7 to 10 business days via tracked international courier. We deliver to Dupont Circle, Georgetown, Capitol Hill, Shaw, Adams Morgan, and surrounding Virginia and Maryland suburbs. First-time orders take 2 to 3 weeks total from design approval. No import paperwork required on your end.",
+    },
+    {
+      q: "What DC industries are the biggest users of custom branded coffee?",
+      a: "Federal lobbying firms and K Street associations, think tanks and policy organizations, boutique hotels in Georgetown and Dupont Circle, Embassy Row diplomatic gifting programs, convention and events sector at the Walter E. Washington Convention Center, and law firms throughout the DC metro are the most active EZPZ markets in Washington.",
+    },
+    {
+      q: "Is cross-border shipping complicated for DC government contractors?",
+      a: "Not at all — we handle all Canadian export documentation. All you need is a shipping address. Orders arrive via tracked courier with no customs delays or forms required on your end. For government contractors with specific procurement requirements, contact us to arrange invoicing and documentation that meets your organization's needs.",
+    },
+  ],
 };
 
 const WashingtonDCPage = () => <CityPage data={data} />;

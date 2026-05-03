@@ -58,6 +58,20 @@ const data: CityPageData = {
     { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
     { city: "Victoria", href: "/en/custom-coffee-bags-victoria" },
   ],
+  faq: [
+    {
+      q: "How long does shipping from Montreal to Kelowna take?",
+      a: "Kelowna orders ship from our Montreal roastery and arrive in 7 to 10 business days via tracked Canada Post or courier. We deliver to Downtown, Pandosy Village, Rutland, Black Mountain, West Kelowna, and surrounding Okanagan communities. First-time orders take 2 to 3 weeks total from design approval.",
+    },
+    {
+      q: "How does EZPZ fit Kelowna's winery and hospitality sector?",
+      a: "Okanagan wineries, Mission Hill-area luxury properties, lakefront resort hotels, and boutique inns throughout the valley use custom branded coffee as a premium guest amenity that extends their brand beyond wine. A coffee bag with your winery's label on the kitchen counter is daily brand exposure — something a wine label never achieves on its own.",
+    },
+    {
+      q: "Can Kelowna Airbnb hosts and vacation rentals use EZPZ?",
+      a: "Absolutely — our zero minimum makes EZPZ perfect for Okanagan vacation rental hosts who want to stand out. Even a single bag of custom branded coffee left for guests creates a memorable, shareable experience. Many Kelowna Airbnb hosts reorder regularly for back-to-back guest seasons.",
+    },
+  ],
 };
 
 const KelownaPage = () => <CityPage data={data} />;
