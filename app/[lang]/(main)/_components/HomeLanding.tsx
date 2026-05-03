@@ -336,6 +336,7 @@ const HomeLanding = () => {
                     alt={t("trustedBy.logoAlt", { name })}
                     width={360}
                     height={140}
+                    loading="lazy"
                     sizes="(max-width: 639px) 45vw, (max-width: 1023px) 33vw, 340px"
                     className={styles.trustedByLogo}
                   />

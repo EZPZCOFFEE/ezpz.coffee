@@ -58,12 +58,12 @@ const WhiteLabelSolutionsPage = () => {
       <section className={styles.heroPhoto} aria-label={tLanding("ariaLabel")}>
         <Image
           src={banner02}
-          alt=""
+          alt="Custom white label coffee bags, cans, and Nespresso capsules for Canadian brands"
           fill
           priority
           placeholder="blur"
           quality={80}
-          sizes="(max-width: 1920px) 100vw, 1920px"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           className={classNames(styles.heroPhotoImage, styles.heroPhotoImageCenter)}
         />
         <div className={styles.heroGradient} />
@@ -161,6 +161,7 @@ const WhiteLabelSolutionsPage = () => {
               alt={t(`sections.${sectionKey}.imageAlt`)}
               width={image.width}
               height={image.height}
+              loading="lazy"
               sizes="(max-width: 768px) 100vw, 420px"
               placeholder="blur"
               className={styles.whiteLabelSplitImage}

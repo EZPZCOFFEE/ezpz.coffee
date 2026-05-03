@@ -138,6 +138,7 @@ const ShopPage = async () => {
                           src={product.featuredImage.url}
                           alt={product.featuredImage.altText ?? product.title}
                           fill
+                          loading="lazy"
                           className={styles.image}
                           sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
                         />

@@ -125,7 +125,7 @@ const CustomBagLandingPage = () => {
             </Link>
           </div>
           <div className={styles.heroImageWrap}>
-            <Image src={bagPng} alt="Custom EZPZ coffee bag" width={420} height={520} className={styles.heroImage} priority />
+            <Image src={bagPng} alt="Custom branded coffee bag with your logo — EZPZ Coffee" width={420} height={520} sizes="(max-width: 768px) 100vw, 420px" className={styles.heroImage} priority />
           </div>
         </div>
         <div className={styles.heroAngle} />

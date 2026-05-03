@@ -134,6 +134,7 @@ const WhiteLabelVerticalPage = ({ data }: Props) => {
               alt={product.imageAlt}
               width={img.width}
               height={img.height}
+              loading="lazy"
               sizes="(max-width: 767px) 100vw, 460px"
               placeholder="blur"
               className={styles.productImg}

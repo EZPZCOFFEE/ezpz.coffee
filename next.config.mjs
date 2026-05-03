@@ -10,6 +10,8 @@ const nextConfig = {
   images: {
     // Allow quality props used on next/image (default config only allows [75] in Next 15+).
     qualities: [75, 80, 85, 100],
+    // Cap max srcset width at 1920px — 3840 is unnecessary for any real viewport.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
   },
   async redirects() {
     return [
