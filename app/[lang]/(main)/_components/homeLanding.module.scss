@@ -1544,3 +1544,115 @@
     text-decoration: underline;
   }
 }
+
+/* ── How it works learn more link ─────────────────────────────── */
+.howItWorksLearnMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-white);
+    text-decoration-color: rgba(255, 255, 255, 0.55);
+  }
+}
+
+/* ── White label secondary link ───────────────────────────────── */
+.whiteLabelSecondaryLink {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 0, 0, 0.18);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* ── Geo locations link ───────────────────────────────────────── */
+.geoLocationsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: var(--spacing-country);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255, 255, 255, 0.18);
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-white);
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ── FAQ quick nav links ─────────────────────────────────────── */
+.faqQuickLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-state) var(--spacing-planet);
+  justify-content: center;
+  width: 100%;
+  padding: var(--spacing-country) 0;
+  margin-bottom: var(--spacing-planet);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.faqQuickLink {
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(0, 0, 0, 0.15);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+
+/* ── Related pages footer strip ──────────────────────────────── */
+.relatedPages {
+  width: 100%;
+  background: var(--color-white);
+  padding: var(--spacing-planet) var(--spacing-state);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.relatedPagesInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-state) var(--spacing-planet);
+  justify-content: center;
+}
+
+.relatedPageLink {
+  font-size: 0.75rem;
+  color: var(--color-neutral);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  opacity: 0.6;
+  transition: opacity 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+}
