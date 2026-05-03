@@ -272,6 +272,15 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
+      <section className={styles.geo} aria-labelledby="geo-heading">
+        <motion.div className={styles.sectionInnerNarrow} {...staggerParent}>
+          <motion.h2 id="geo-heading" className={styles.advantagesTitle} {...fadeChild}>
+            {t("geo.title")}
+          </motion.h2>
+          <motion.p className={styles.geoBody} {...fadeChild}>{t("geo.body")}</motion.p>
+          <motion.p className={styles.geoCities} {...fadeChild}>{t("geo.cities")}</motion.p>
+        </motion.div>
+      </section>
 
       <section className={styles.freeSample}>
         <motion.div className={styles.freeSampleInner} {...staggerParent}>
