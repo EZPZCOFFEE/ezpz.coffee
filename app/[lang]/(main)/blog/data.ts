@@ -140,6 +140,20 @@ export const BLOG_POSTS: BlogPost[] = [
     published: true,
   },
   {
+    slug: "best-coffee-roasters-montreal-2026",
+    category: "Montreal Coffee Guide",
+    categoryColor: "#c43e14",
+    title: "The 10 Best Coffee Roasters in Montreal in 2026",
+    excerpt:
+      "From world-ranked micro-roasters to beloved neighbourhood institutions — your complete guide to the roasters putting Montreal on the global specialty coffee map.",
+    date: "May 1, 2026",
+    readTime: "7 min read",
+    color: "#1a1a2e",
+    initials: "MC",
+    image: "/assets/blog/montreal-roasters.svg",
+    published: true,
+  },
+  {
     slug: "custom-coffee-bags-vs-custom-mugs",
     category: "Business Tips",
     categoryColor: "#e8521a",

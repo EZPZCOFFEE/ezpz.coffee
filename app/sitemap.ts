@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/custom-coffee-bags-weddings-canada",
     "/en/blog/custom-coffee-bags-events-canada",
     "/en/blog/custom-coffee-bags-vs-custom-mugs",
+    "/en/blog/best-coffee-roasters-montreal-2026",
     "/en/coffee-week",
     "/en/white-label/restaurants",
     "/en/white-label/hotels",
