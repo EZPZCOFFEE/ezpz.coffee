@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Script from "next/script";
 
 import WhiteLabelSolutionsPage from "../_components/WhiteLabelSolutionsPage";
@@ -131,6 +132,15 @@ const WhiteLabelRoutePage = () => {
           <dd>Yes. EZPZ Coffee provides coffee samples for B2B clients. Contact help@ezpz.coffee to request samples before placing a white label order.</dd>
         </dl>
       </section>
+      <nav aria-label="Related guides" style={{ padding: "32px 24px", borderTop: "1px solid #ebebeb", maxWidth: "900px", margin: "0 auto" }}>
+        <p style={{ fontWeight: 600, marginBottom: "12px", fontSize: "0.9rem", color: "#111" }}>Related guides</p>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <li><Link href="/en/what-is-white-label-coffee-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>What is white label coffee in Canada?</Link></li>
+          <li><Link href="/en/custom-coffee-bags-no-minimum-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee bags with no minimum</Link></li>
+          <li><Link href="/en/best-white-label-coffee-supplier-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
+          <li><Link href="/en/how-much-do-custom-coffee-bags-cost-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
+        </ul>
+      </nav>
     </>
   );
 };

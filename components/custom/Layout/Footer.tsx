@@ -52,6 +52,16 @@ const Footer = () => {
             <Link href={`/${locale}/industries`} className={styles.footerLink}>Industries we serve</Link>
           </nav>
 
+          {/* Guides column */}
+          <nav className={styles.footerNavCol} aria-label="Guides">
+            <span className={styles.footerNavHeading}>Guides</span>
+            <Link href={`/${locale}/what-is-white-label-coffee-canada`} className={styles.footerLink}>What Is White Label Coffee?</Link>
+            <Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} className={styles.footerLink}>No Minimum Coffee Bags</Link>
+            <Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} className={styles.footerLink}>Coffee Bag Pricing</Link>
+            <Link href={`/${locale}/best-white-label-coffee-supplier-canada`} className={styles.footerLink}>Best Supplier in Canada</Link>
+            <Link href={`/${locale}/custom-coffee-for-restaurants-canada`} className={styles.footerLink}>Coffee for Restaurants</Link>
+          </nav>
+
           {/* Company column */}
           <nav className={styles.footerNavCol} aria-label="Company">
             <span className={styles.footerNavHeading}>{t("companyHeading")}</span>

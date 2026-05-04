@@ -154,6 +154,16 @@ const FAQPage = async () => {
           <dd>EZPZ Coffee products are naturally gluten-free and vegan. Coffee is tree nuts and allergen-free. Roasted in a facility that does not process common allergens.</dd>
         </dl>
       </section>
+      <nav aria-label="Related guides" style={{ padding: "32px 24px", borderTop: "1px solid #ebebeb", maxWidth: "900px", margin: "0 auto" }}>
+        <p style={{ fontWeight: 600, marginBottom: "12px", fontSize: "0.9rem", color: "#111" }}>Related guides</p>
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <li><Link href={`/${locale}/what-is-white-label-coffee-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>What is white label coffee in Canada?</Link></li>
+          <li><Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee bags with no minimum</Link></li>
+          <li><Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
+          <li><Link href={`/${locale}/best-white-label-coffee-supplier-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
+          <li><Link href={`/${locale}/custom-coffee-for-restaurants-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee for restaurants in Canada</Link></li>
+        </ul>
+      </nav>
       <div className={styles.ctaSection}>
         <div className={styles.ctaInner}>
           <h2 className={styles.ctaTitle}>Still have questions?</h2>

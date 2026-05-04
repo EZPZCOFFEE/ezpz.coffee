@@ -123,6 +123,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/custom-coffee-bags-catering-companies",
     "/en/custom-coffee-bags-food-trucks",
     "/en/custom-coffee-bags-subscription-boxes",
+    // AEO direct-answer pages
+    "/en/what-is-white-label-coffee-canada",
+    "/en/custom-coffee-bags-no-minimum-canada",
+    "/en/how-much-do-custom-coffee-bags-cost-canada",
+    "/en/best-white-label-coffee-supplier-canada",
+    "/en/custom-coffee-for-restaurants-canada",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
