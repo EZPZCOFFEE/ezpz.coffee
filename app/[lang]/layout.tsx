@@ -462,6 +462,45 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "EZPZ Coffee",
+              alternateName: "EZPZ",
+              url: "https://www.ezpz.coffee",
+              logo: "https://www.ezpz.coffee/logo.svg",
+              description:
+                "EZPZ Coffee is Canada's only custom coffee bag supplier with zero minimum order. We offer white label specialty coffee bags, ready-to-drink coffee, and Nespresso capsules for restaurants, hotels, retailers, and brands. Roasted fresh in Montreal and shipped across Canada and the USA.",
+              foundingLocation: "Montreal, Quebec, Canada",
+              areaServed: ["Canada", "United States"],
+              email: "help@ezpz.coffee",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "3780 Rue Saint-Patrick",
+                addressLocality: "Montreal",
+                addressRegion: "QC",
+                postalCode: "H4E 1A2",
+                addressCountry: "CA",
+              },
+              sameAs: [
+                "https://www.instagram.com/ezpzcoffee",
+                "https://www.linkedin.com/company/ezpzcoffee",
+              ],
+              knowsAbout: [
+                "Custom coffee bags",
+                "White label coffee",
+                "Private label coffee",
+                "Specialty coffee",
+                "Coffee branding",
+                "Custom coffee packaging",
+                "Coffee corporate gifts",
+              ],
+            }),
+          }}
+        />
       </head>
       <body className={fontVariables}>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>

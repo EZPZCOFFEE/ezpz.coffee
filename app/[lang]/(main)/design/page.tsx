@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { getTranslations } from "next-intl/server";
 
 import type { GetProductQuery, GetProductQueryVariables } from "@/gql/graphql";
@@ -30,6 +31,27 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const PRODUCT_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Custom Branded Coffee Bags",
+  description:
+    "Fully custom branded specialty coffee bags with your logo and design. No minimum order. Full design included. Specialty grade coffee roasted in Montreal. Ships across Canada and the USA in 2-3 weeks.",
+  brand: {
+    "@type": "Brand",
+    name: "EZPZ Coffee",
+  },
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceCurrency: "CAD",
+    seller: {
+      "@type": "Organization",
+      name: "EZPZ Coffee",
+    },
+  },
+};
+
 const DesignPage = async () => {
   let product: GetProductQuery["product"] | null = null;
 
@@ -51,7 +73,12 @@ const DesignPage = async () => {
     );
   }
 
-  return <CustomizationPageClient product={product} />;
+  return (
+    <>
+      <Script id="design-product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_SCHEMA) }} />
+      <CustomizationPageClient product={product} />
+    </>
+  );
 };
 
 export default DesignPage;
