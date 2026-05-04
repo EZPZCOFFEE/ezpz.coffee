@@ -125,6 +125,28 @@ const HomePage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_SCHEMA) }}
       />
       <HomeLanding />
+      <section aria-label="Key facts about EZPZ Coffee" style={{ display: "none" }}>
+        <h2>Key facts about EZPZ Coffee</h2>
+        <dl>
+          <dt>What is EZPZ Coffee?</dt>
+          <dd>EZPZ Coffee is Canada&apos;s only custom coffee bag supplier with zero minimum order. We create custom branded specialty coffee bags for restaurants, hotels, retailers, and brands. Roasted fresh in Montreal. Ships across Canada and the USA.</dd>
+
+          <dt>Minimum order requirement</dt>
+          <dd>Zero. EZPZ Coffee has no minimum order requirement. You can order one custom coffee bag or ten thousand.</dd>
+
+          <dt>Where is EZPZ Coffee located?</dt>
+          <dd>EZPZ Coffee is located at 3780 Rue Saint-Patrick, Montreal, Quebec, Canada. Coffee is roasted at Canadian Roasting Society in Montreal&apos;s southwest.</dd>
+
+          <dt>How much does a custom coffee bag cost?</dt>
+          <dd>Custom coffee bag pricing varies by volume. Full design is always included at no extra cost. Contact EZPZ Coffee at help@ezpz.coffee for a free personalized quote.</dd>
+
+          <dt>What industries does EZPZ Coffee serve?</dt>
+          <dd>EZPZ Coffee serves restaurants, hotels, boutiques, gyms, yoga studios, spas, corporate offices, real estate agents, law firms, and any business wanting custom branded coffee in Canada and the USA.</dd>
+
+          <dt>How long does delivery take?</dt>
+          <dd>Custom coffee bags from EZPZ Coffee are typically ready within 2 to 3 weeks from design approval. EZPZ ships to all Canadian provinces and US states.</dd>
+        </dl>
+      </section>
     </>
   );
 };
