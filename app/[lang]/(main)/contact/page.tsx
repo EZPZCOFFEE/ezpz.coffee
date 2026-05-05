@@ -100,7 +100,7 @@ const ContactPage = async () => {
                     <InstagramLogo size={20} />
                     Instagram
                   </a>
-                  <a href="https://www.linkedin.com/company/ezpz-coffee" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                  <a href="https://www.linkedin.com/company/ezpzcoffee/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                     <LinkedinLogo size={20} />
                     LinkedIn
                   </a>
