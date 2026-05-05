@@ -340,3 +340,37 @@
   letter-spacing: 0.1em;
   color: var(--color-accent);
 }
+
+
+// ── TL;DR summary box (AEO) ───────────────────────────────────────────────────
+
+.tldr {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px 20px 20px;
+  background: rgba(255, 66, 0, 0.06);
+  border-left: 4px solid #ff4200;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.tldrLabel {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ff4200;
+  white-space: nowrap;
+  padding-top: 3px;
+  flex-shrink: 0;
+}
+
+.tldrText {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: #333;
+  margin: 0;
+}
+

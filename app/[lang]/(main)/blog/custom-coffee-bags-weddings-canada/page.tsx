@@ -75,6 +75,12 @@ const Page = () => (
       </div>
     </section>
 
+    {/* ── TL;DR ─────────────────────────────────────────────────── */}
+    <div className={styles.tldr} role="note" aria-label="Article summary">
+      <strong className={styles.tldrLabel}>TL;DR</strong>
+      <p className={styles.tldrText}>Custom coffee bags are the wedding favor guests take home and use every morning. EZPZ Coffee creates them for Canadian weddings with the couple's names and date on specialty coffee bags, with zero minimum order.</p>
+    </div>
+
     {/* ── Article ───────────────────────────────────────────────── */}
     <div className={styles.articleWrapper}>
       <article className={styles.article}>

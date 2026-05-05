@@ -74,6 +74,12 @@ const Page = () => (
       </div>
     </section>
 
+    {/* ── TL;DR ─────────────────────────────────────────────────── */}
+    <div className={styles.tldr} role="note" aria-label="Article summary">
+      <strong className={styles.tldrLabel}>TL;DR</strong>
+      <p className={styles.tldrText}>Canadian Airbnb hosts can significantly boost guest reviews by leaving a custom branded coffee bag on the counter. EZPZ Coffee creates them with zero minimum order, full design included, and 2-to-3-week delivery.</p>
+    </div>
+
     {/* ── Article ───────────────────────────────────────────────── */}
     <div className={styles.articleWrapper}>
       <article className={styles.article}>

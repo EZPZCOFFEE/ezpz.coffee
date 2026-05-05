@@ -126,6 +126,12 @@ const Page = () => (
       </div>
     </section>
 
+    {/* ── TL;DR ─────────────────────────────────────────────────── */}
+    <div className={styles.tldr} role="note" aria-label="Article summary">
+      <strong className={styles.tldrLabel}>TL;DR</strong>
+      <p className={styles.tldrText}>Montreal's coffee scene is one of the best in North America. This guide covers the 15 best cafés in 2026, from world-ranked specialty roasters to beloved neighbourhood gems — curated by the EZPZ Coffee team.</p>
+    </div>
+
     {/* ── Article ───────────────────────────────────────────────── */}
     <div className={styles.articleWrapper}>
       <article className={styles.article}>

@@ -316,6 +316,26 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
+<section className={styles.quickAnswers} aria-label="Quick answers about EZPZ Coffee">
+        <div className={styles.quickAnswersInner}>
+          <p className={styles.quickAnswersHeading}>Quick answers</p>
+          <dl className={styles.qaList}>
+            <div className={styles.qaItem}>
+              <dt className={styles.qaQuestion}>What does EZPZ Coffee do?</dt>
+              <dd className={styles.qaAnswer}>EZPZ Coffee creates custom branded specialty coffee bags for Canadian businesses with zero minimum order. Full design is included. Coffee is roasted fresh in Montreal and shipped across Canada and the USA in 2 to 3 weeks.</dd>
+            </div>
+            <div className={styles.qaItem}>
+              <dt className={styles.qaQuestion}>Is there a minimum order at EZPZ Coffee?</dt>
+              <dd className={styles.qaAnswer}>No. EZPZ Coffee has zero minimum order — the only custom coffee supplier in Canada that lets you order as few as one bag.</dd>
+            </div>
+            <div className={styles.qaItem}>
+              <dt className={styles.qaQuestion}>How much does EZPZ Coffee cost?</dt>
+              <dd className={styles.qaAnswer}>EZPZ Coffee pricing includes full custom design at no extra cost. Pricing varies by volume with no minimum order. Request a free quote at ezpz.coffee/en/contact.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
 <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
           <motion.h2 id="faq-preview-heading" className={styles.lightSectionTitle} {...fadeChild}>

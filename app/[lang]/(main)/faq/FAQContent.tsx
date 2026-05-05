@@ -10,6 +10,7 @@ import styles from "./styles.module.scss";
 
 interface FAQItem {
   question: string;
+  directAnswer?: string;
   answer: string;
 }
 
@@ -23,7 +24,7 @@ interface FAQContentProps {
   categories: FAQCategory[];
 }
 
-const FAQAccordionItem = ({ question, answer }: FAQItem) => {
+const FAQAccordionItem = ({ question, directAnswer, answer }: FAQItem) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -45,6 +46,7 @@ const FAQAccordionItem = ({ question, answer }: FAQItem) => {
       <div className={`${styles.answerWrap} ${open ? styles.answerWrapOpen : ""}`}>
         <div className={styles.answerWrapInner}>
           <dd className={styles.answer}>
+            {directAnswer && <span className={styles.directAnswer}>{directAnswer}</span>}
             <span className={styles.answerText}>{answer}</span>
           </dd>
         </div>

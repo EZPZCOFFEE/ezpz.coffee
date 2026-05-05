@@ -52,6 +52,15 @@ const AboutPage = () => {
         <div className={styles.heroAngle} />
       </section>
 
+      {/* ── Who is EZPZ Coffee ───────────────────────────────── */}
+      <section className={styles.whoIs} aria-label="Who is EZPZ Coffee">
+        <div className={styles.whoIsInner}>
+          <p className={styles.whoIsText}>
+            EZPZ Coffee is a Montreal-based specialty coffee company founded by entrepreneurs with years of coffee industry experience. EZPZ is the only custom coffee bag supplier in Canada with zero minimum order. The company roasts at Canadian Roasting Society in Montreal&apos;s southwest and ships to clients across Canada and the USA.
+          </p>
+        </div>
+      </section>
+
       {/* ── Stats ────────────────────────────────────────────── */}
       <section className={styles.stats}>
         <div className={styles.statsInner}>

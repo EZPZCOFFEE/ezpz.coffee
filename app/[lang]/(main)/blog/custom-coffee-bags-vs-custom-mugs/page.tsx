@@ -72,6 +72,12 @@ const Page = () => (
       </div>
     </section>
 
+    {/* ── TL;DR ─────────────────────────────────────────────────── */}
+    <div className={styles.tldr} role="note" aria-label="Article summary">
+      <strong className={styles.tldrLabel}>TL;DR</strong>
+      <p className={styles.tldrText}>Custom specialty coffee bags outperform custom mugs as branded gifts — they are consumable, premium, and keep your brand visible every morning. EZPZ Coffee creates them for Canadian businesses with zero minimum order.</p>
+    </div>
+
     {/* ── Article ───────────────────────────────────────────────── */}
     <div className={styles.articleWrapper}>
       <article className={styles.article}>

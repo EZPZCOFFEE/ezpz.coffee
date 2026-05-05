@@ -189,3 +189,15 @@
     font-size: clamp(1.25rem, 3vw, 1.65rem);
   }
 }
+
+// ── Direct Answer (AEO) ───────────────────────────────────────────────────────
+
+.directAnswer {
+  font-size: 0.92rem;
+  font-weight: var(--font-weight-semibold);
+  color: #111;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  line-height: 1.6;
+}

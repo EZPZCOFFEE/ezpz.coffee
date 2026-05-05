@@ -206,6 +206,12 @@ const Page = () => (
       </div>
     </section>
 
+    {/* ── TL;DR ─────────────────────────────────────────────────── */}
+    <div className={styles.tldr} role="note" aria-label="Article summary">
+      <strong className={styles.tldrLabel}>TL;DR</strong>
+      <p className={styles.tldrText}>Montreal is home to world-class specialty coffee roasters in 2026, including Café Pista, Café Saint-Henri, and Dispatch Coffee. EZPZ Coffee roasts its white label products at Canadian Roasting Society in Montreal's southwest.</p>
+    </div>
+
     {/* ── Article ───────────────────────────────────────────────── */}
     <div className={styles.articleWrapper}>
       <article className={styles.article}>

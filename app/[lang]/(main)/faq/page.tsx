@@ -38,47 +38,47 @@ const FAQPage = async () => {
     {
       title: t("categories.general.title"),
       items: [
-        { question: t("categories.general.items.specialty.question"), answer: t("categories.general.items.specialty.answer") },
-        { question: t("categories.general.items.wholeBeans.question"), answer: t("categories.general.items.wholeBeans.answer") },
-        { question: t("categories.general.items.roastingLocation.question"), answer: t("categories.general.items.roastingLocation.answer") },
-        { question: t("categories.general.items.thirdWave.question"), answer: t("categories.general.items.thirdWave.answer") },
+        { question: t("categories.general.items.specialty.question"), directAnswer: "Yes. EZPZ Coffee uses only specialty grade arabica, each scoring 80 or above on the SCA cupping test, sourced from traceable farms and roasted fresh in Montreal.", answer: t("categories.general.items.specialty.answer") },
+        { question: t("categories.general.items.wholeBeans.question"), directAnswer: "No. You can choose whole bean or any grind size when placing your order.", answer: t("categories.general.items.wholeBeans.answer") },
+        { question: t("categories.general.items.roastingLocation.question"), directAnswer: "EZPZ Coffee roasts all coffees at Canadian Roasting Society in the southwest of Montreal, Quebec, Canada.", answer: t("categories.general.items.roastingLocation.answer") },
+        { question: t("categories.general.items.thirdWave.question"), directAnswer: "Third-wave coffee treats coffee as an artisanal product, emphasizing traceability, farming practices, and quality from farm to cup. It emerged on the US West Coast in the early 2000s.", answer: t("categories.general.items.thirdWave.answer") },
       ],
     },
     {
       title: t("categories.preparation.title"),
       items: [
-        { question: t("categories.preparation.items.storage.question"), answer: t("categories.preparation.items.storage.answer") },
-        { question: t("categories.preparation.items.brewing.question"), answer: t("categories.preparation.items.brewing.answer") },
-        { question: t("categories.preparation.items.freshness.question"), answer: t("categories.preparation.items.freshness.answer") },
-        { question: t("categories.preparation.items.duration.question"), answer: t("categories.preparation.items.duration.answer") },
+        { question: t("categories.preparation.items.storage.question"), directAnswer: "Store your coffee in a cool, dry place away from direct sunlight. Do not refrigerate or freeze it, as this alters the flavor.", answer: t("categories.preparation.items.storage.answer") },
+        { question: t("categories.preparation.items.brewing.question"), directAnswer: "EZPZ coffees work well with any brewing method — pour-over, French press, espresso, and more.", answer: t("categories.preparation.items.brewing.answer") },
+        { question: t("categories.preparation.items.freshness.question"), directAnswer: "All EZPZ bags include a one-way valve that prevents oxidation. Reseal the bag after each use to keep your coffee fresh.", answer: t("categories.preparation.items.freshness.answer") },
+        { question: t("categories.preparation.items.duration.question"), directAnswer: "With proper storage, your coffee stays fresh for 5 to 6 weeks after roasting. Grind right before brewing for best results.", answer: t("categories.preparation.items.duration.answer") },
       ],
     },
     {
       title: t("categories.shipping.title"),
       items: [
-        { question: t("categories.shipping.items.regions.question"), answer: t("categories.shipping.items.regions.answer") },
-        { question: t("categories.shipping.items.deliveryTime.question"), answer: t("categories.shipping.items.deliveryTime.answer") },
+        { question: t("categories.shipping.items.regions.question"), directAnswer: "EZPZ Coffee ships across Canada and the USA. Shipping options and rates are calculated at checkout.", answer: t("categories.shipping.items.regions.answer") },
+        { question: t("categories.shipping.items.deliveryTime.question"), directAnswer: "Orders are processed within 3 to 4 business days, with delivery taking 3 to 5 days depending on your location.", answer: t("categories.shipping.items.deliveryTime.answer") },
       ],
     },
     {
       title: t("categories.returns.title"),
       items: [
-        { question: t("categories.returns.items.policy.question"), answer: t("categories.returns.items.policy.answer") },
+        { question: t("categories.returns.items.policy.question"), directAnswer: "All EZPZ Coffee products are final sale. Custom branded products cannot be returned.", answer: t("categories.returns.items.policy.answer") },
       ],
     },
     {
       title: t("categories.dietary.title"),
       items: [
-        { question: t("categories.dietary.items.allergens.question"), answer: t("categories.dietary.items.allergens.answer") },
+        { question: t("categories.dietary.items.allergens.question"), directAnswer: "Yes. EZPZ Coffee contains no allergens, additives, or flavorings. It is naturally gluten-free and vegan.", answer: t("categories.dietary.items.allergens.answer") },
       ],
     },
     {
       title: t("categories.b2b.title"),
       items: [
-        { question: t("categories.b2b.items.samples.question"), answer: t("categories.b2b.items.samples.answer") },
-        { question: t("categories.b2b.items.recipes.question"), answer: t("categories.b2b.items.recipes.answer") },
-        { question: t("categories.b2b.items.distribution.question"), answer: t("categories.b2b.items.distribution.answer") },
-        { question: t("categories.b2b.items.turnaround.question"), answer: t("categories.b2b.items.turnaround.answer") },
+        { question: t("categories.b2b.items.samples.question"), directAnswer: "Yes. Contact EZPZ Coffee to request a sample kit before placing your first white label order.", answer: t("categories.b2b.items.samples.answer") },
+        { question: t("categories.b2b.items.recipes.question"), directAnswer: "Yes. EZPZ Coffee develops custom ready-to-drink recipes tailored to your brand's taste profile and audience.", answer: t("categories.b2b.items.recipes.answer") },
+        { question: t("categories.b2b.items.distribution.question"), directAnswer: "Yes. EZPZ Coffee has industry relationships and can help place your branded coffee in retail locations, hotels, and more across Canada.", answer: t("categories.b2b.items.distribution.answer") },
+        { question: t("categories.b2b.items.turnaround.question"), directAnswer: "Most white label bag orders are ready within 2 to 3 weeks from design approval. RTD and capsule orders take 4 to 6 weeks depending on volume.", answer: t("categories.b2b.items.turnaround.answer") },
       ],
     },
   ];

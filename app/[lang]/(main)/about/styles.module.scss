@@ -411,3 +411,25 @@
     border-color: var(--color-white);
   }
 }
+
+// ── Who is EZPZ Coffee (AEO) ─────────────────────────────────────────────────
+
+.whoIs {
+  background: #f8f8f8;
+  padding: 32px 24px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.whoIsInner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.whoIsText {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0;
+  border-left: 3px solid var(--color-accent);
+  padding-left: 20px;
+}

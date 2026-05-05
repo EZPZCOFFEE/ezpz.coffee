@@ -1656,3 +1656,107 @@
     color: var(--color-accent);
   }
 }
+
+// ── Quick Answers (AEO) ───────────────────────────────────────────────────────
+
+.quickAnswers {
+  background: #fff;
+  padding: 48px 24px 40px;
+  border-top: 1px solid #ebebeb;
+}
+
+.quickAnswersInner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quickAnswersHeading {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+.qaList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qaItem {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 18px;
+}
+
+.qaQuestion {
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-bold);
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.qaAnswer {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: #555;
+  margin: 0;
+}
+
+// ── White Label at a Glance ───────────────────────────────────────────────────
+
+.wlGlance {
+  background: #f8f8f8;
+  padding: 36px 24px;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.wlGlanceInner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.wlGlanceTitle {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  white-space: nowrap;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.wlGlanceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  flex: 1;
+}
+
+.wlGlanceItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 140px;
+}
+
+.wlGlanceDt {
+  font-size: 0.73rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #888;
+}
+
+.wlGlanceDd {
+  font-size: 0.88rem;
+  font-weight: var(--font-weight-semibold);
+  color: #111;
+  margin: 0;
+}
