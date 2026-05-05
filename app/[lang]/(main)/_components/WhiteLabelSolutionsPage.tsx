@@ -110,34 +110,6 @@ const WhiteLabelSolutionsPage = () => {
         </div>
       </div>
 
-      <div className={styles.wlGlance} aria-label="White label at a glance">
-        <div className={styles.wlGlanceInner}>
-          <p className={styles.wlGlanceTitle}>At a glance</p>
-          <dl className={styles.wlGlanceList}>
-            <div className={styles.wlGlanceItem}>
-              <dt className={styles.wlGlanceDt}>What it is</dt>
-              <dd className={styles.wlGlanceDd}>Your brand on specialty coffee. EZPZ handles everything.</dd>
-            </div>
-            <div className={styles.wlGlanceItem}>
-              <dt className={styles.wlGlanceDt}>Minimum order</dt>
-              <dd className={styles.wlGlanceDd}>Zero for bags. 8,000 units for RTD.</dd>
-            </div>
-            <div className={styles.wlGlanceItem}>
-              <dt className={styles.wlGlanceDt}>Design</dt>
-              <dd className={styles.wlGlanceDd}>Full custom design always included.</dd>
-            </div>
-            <div className={styles.wlGlanceItem}>
-              <dt className={styles.wlGlanceDt}>Turnaround</dt>
-              <dd className={styles.wlGlanceDd}>2 to 3 weeks from approval.</dd>
-            </div>
-            <div className={styles.wlGlanceItem}>
-              <dt className={styles.wlGlanceDt}>Ships</dt>
-              <dd className={styles.wlGlanceDd}>Across Canada and the USA.</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-
       <section className={styles.wlForSection}>
         <div className={styles.wlForInner}>
           <span className={styles.wlForEyebrow}>Who is this for?</span>
