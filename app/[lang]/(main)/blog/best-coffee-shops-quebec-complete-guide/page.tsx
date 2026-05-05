@@ -6,22 +6,22 @@ import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
 export const metadata: Metadata = {
-  title: "The Complete Quebec Coffee Bible: Every Great Coffee Shop in Quebec | EZPZ Coffee",
+  title: "Best Coffee Shops Montreal & Quebec 2026 | The Complete Guide | EZPZ Coffee",
   description:
-    "The most comprehensive guide to specialty coffee in Quebec. Every great coffee shop in Montreal, Quebec City, Laval, Sherbrooke, Gatineau, the Laurentians, and beyond — curated by EZPZ Coffee.",
+    "Looking for the best coffee shops in Montreal? We cover every great café in Montreal and across Quebec — 50+ spots including 4 world-ranked cafés. Your ultimate 2026 guide.",
   alternates: { canonical: "/en/blog/best-coffee-shops-quebec-complete-guide" },
   openGraph: {
-    title: "The Complete Quebec Coffee Bible: Every Great Coffee Shop in Quebec | EZPZ Coffee",
+    title: "Best Coffee Shops Montreal & Quebec 2026 | 50+ Cafés Reviewed | EZPZ",
     description:
-      "The most comprehensive guide to specialty coffee in Quebec. Every great coffee shop in Montreal, Quebec City, Laval, Sherbrooke, Gatineau, the Laurentians, and beyond.",
+      "The most complete guide to the best coffee shops in Montreal and Quebec. 50+ cafés including 4 world-ranked spots — from Mile End to Quebec City.",
     type: "article",
     url: "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
-    images: [{ url: "/assets/blog/quebec-coffee-bible.svg", width: 800, height: 420, alt: "The Quebec Coffee Bible — Every Great Coffee Shop in the Province" }],
+    images: [{ url: "/assets/blog/quebec-coffee-bible.svg", width: 800, height: 420, alt: "Best Coffee Shops Montreal & Quebec 2026 — The Complete Guide" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Quebec Coffee Bible: Every Great Coffee Shop in the Province | EZPZ Coffee",
-    description: "50+ cafés across 8 regions. The most comprehensive Quebec coffee guide ever written.",
+    title: "Best Coffee Shops Montreal & Quebec 2026 | The Complete Guide | EZPZ Coffee",
+    description: "50+ cafés including 4 world-ranked Montreal spots. The most complete Montreal and Quebec coffee guide ever written.",
     images: ["/assets/blog/quebec-coffee-bible.svg"],
   },
 };
@@ -79,6 +79,43 @@ const jsonLd = {
   ],
 };
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the best coffee shop in Montreal?",
+      acceptedAnswer: { "@type": "Answer", text: "According to the World's 100 Best Coffee Shops 2026, the best coffee shop in Montreal is Café Pista, ranked number 34 in all of North America. Other top-ranked Montreal coffee shops include Café Saint-Henri at number 60, Micro Espresso at number 89, and Café Éclair at number 91." },
+    },
+    {
+      "@type": "Question",
+      name: "Where can I find specialty coffee in Montreal?",
+      acceptedAnswer: { "@type": "Answer", text: "Montreal has dozens of excellent specialty coffee shops. The best areas for specialty coffee in Montreal are Mile End, the Plateau-Mont-Royal, Saint-Henri, and the Quartier des Spectacles. Key addresses include Café Pista on Saint-Laurent, Café Saint-Henri on Notre-Dame West, Micro Espresso on Avenue du Parc, and Caffè Olimpico on Saint-Viateur." },
+    },
+    {
+      "@type": "Question",
+      name: "What neighbourhood has the best coffee shops in Montreal?",
+      acceptedAnswer: { "@type": "Answer", text: "Mile End has the highest concentration of excellent coffee shops in Montreal, including Café Pista, Caffè Olimpico, Café Éclair, and Ambros Coffee Roasters. The Plateau-Mont-Royal and Saint-Henri are also excellent neighbourhoods for coffee in Montreal." },
+    },
+    {
+      "@type": "Question",
+      name: "Is Montreal known for coffee?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Montreal is one of Canada's great coffee cities and is increasingly recognized internationally. In 2026, four Montreal cafés were ranked among the top 100 best coffee shops in all of North America — more than any other Canadian city." },
+    },
+    {
+      "@type": "Question",
+      name: "What is the most famous coffee shop in Montreal?",
+      acceptedAnswer: { "@type": "Answer", text: "Caffè Olimpico on Rue Saint-Viateur in Mile End is arguably Montreal's most famous coffee shop, having served the neighbourhood since the 1970s. For specialty coffee, Café Pista is Montreal's most internationally recognized café, ranked number 34 in North America in 2026." },
+    },
+    {
+      "@type": "Question",
+      name: "Where do locals drink coffee in Montreal?",
+      acceptedAnswer: { "@type": "Answer", text: "Montreal locals frequent neighbourhood cafés like Café Larue and Fils in Villeray, September Café in Saint-Henri, Pikolo Espresso Bar near Parc, and Café Myriade across multiple neighbourhoods. Caffè Olimpico in Mile End remains a local institution after decades of operation." },
+    },
+  ],
+};
+
 const MORE_SLUGS = ["best-coffee-shops-montreal-2026", "best-coffee-roasters-montreal-2026", "how-to-launch-coffee-brand-canada-2026"];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
@@ -89,6 +126,10 @@ const Page = () => (
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+    />
 
     {/* ── Hero ──────────────────────────────────────────────────── */}
     <section className={styles.hero}>
@@ -96,19 +137,19 @@ const Page = () => (
       <div className={styles.heroInner}>
         <span className={styles.heroCategory}>Quebec Coffee Bible</span>
         <h1 className={styles.heroTitle}>
-          The Quebec Coffee Bible: Every Great Coffee Shop in the Province
+          The Best Coffee Shops in Montreal and Quebec: The Complete 2026 Bible
         </h1>
         <p className={styles.heroSubtitle}>
-          The most complete guide to specialty coffee in Quebec ever written. From the world-ranked
-          cafés of Montreal to hidden gems in the Eastern Townships — every cup worth drinking
-          in the province.
+          The most complete guide to the best coffee shops in Montreal and Quebec ever written.
+          From the world-ranked cafés of Montreal to hidden gems across the province — every cup
+          worth drinking in 2026.
         </p>
         <div className={styles.heroMeta}>
           <span>May 4, 2026</span>
           <span className={styles.heroMetaDot} />
           <span>25 min read</span>
           <span className={styles.heroMetaDot} />
-          <span className={styles.heroScope}>The most comprehensive Quebec coffee guide online — 4,000+ words covering 50+ cafés across the province</span>
+          <span className={styles.heroScope}>The most comprehensive Quebec coffee guide online — 4,000+ words covering <Link href="/en/locations" className={styles.heroScope} style={{ textDecoration: "underline" }}>50+ cafés</Link> across the province</span>
         </div>
       </div>
     </section>
@@ -156,6 +197,14 @@ const Page = () => (
             coffee shops in all of North America.
           </p>
           <p className={styles.p}>
+            People searching for the best coffee shops in Montreal will find everything they need right here.
+            Montreal alone has over 30 incredible specialty cafés covered in this guide — including four
+            that ranked among the top 100 best coffee shops in all of North America in 2026. But this guide
+            goes further than any other Montreal coffee guide online. We cover not just Montreal but every
+            great café across the entire province of Quebec — from Quebec City to the Eastern Townships
+            to the Laurentians.
+          </p>
+          <p className={styles.p}>
             This guide is the most comprehensive map of great coffee in Quebec ever written. We have
             covered Montreal in other posts — the{" "}
             <Link href="/en/blog/best-coffee-shops-montreal-2026" className={styles.inlineLink}>15 best coffee shops</Link>{" "}
@@ -164,7 +213,9 @@ const Page = () => (
             This is the full picture. Every city. Every region. Every cup worth going out of your way for.
           </p>
           <p className={styles.p}>
-            At EZPZ Coffee, we roast specialty coffee fresh in Montreal at Canadian Roasting Society
+            At <Link href="/en" className={styles.inlineLink}>EZPZ Coffee</Link>, we roast specialty coffee
+            fresh in Montreal at{" "}
+            <Link href="/en/about" className={styles.inlineLink}>Canadian Roasting Society</Link>{" "}
             and ship custom branded bags across Canada. We know this province&apos;s coffee culture
             from the inside. This is our bible.
           </p>
@@ -180,17 +231,20 @@ const Page = () => (
           <p className={styles.p}>
             Each café listing includes the address, what makes it worth visiting, and what to order.
             We have tried to be honest — this is not a paid guide and we receive no compensation from
-            any café listed here. These are the places we would recommend to a friend.
+            any café listed here. These are the places we would recommend to a friend. Whether you are
+            building a personal Montreal café guide, planning a coffee crawl, or simply looking for
+            where to get coffee in Montreal on your next visit — this is the only list you need.
           </p>
 
           {/* ── Montreal ─────────────────────────────────────────── */}
-          <h2 id="montreal" className={styles.h2}>Montréal — The Heart of Quebec Coffee</h2>
+          <h2 id="montreal" className={styles.h2}>Montréal — Home of the Best Coffee Shops in Quebec</h2>
 
           <h3 id="montreal-world-ranked" className={styles.h3}>The World Ranked — The Best of the Best</h3>
           <p className={styles.p}>
             These four Montreal cafés were named among the top 100 best coffee shops in all of North
             America in 2026 by The World&apos;s 100 Best Coffee Shops — evaluated by over 200 judges
-            across more than 4,600 establishments.
+            across more than 4,600 establishments. They represent the very peak of specialty coffee
+            in Montreal and among the best cafes in Montreal by any measure.
           </p>
 
           {/* Pista */}
@@ -256,6 +310,42 @@ const Page = () => (
             with a deeply personal and intimate service style.
           </p>
           <div className={styles.orderBlock}><strong>What to order:</strong> Ask the barista what is tasting best that day. The answer will surprise you.</div>
+
+          {/* ── Why Montreal ──────────────────────────────────────── */}
+          <h2 className={styles.h2}>Why Montreal Has the Best Coffee Shops in Canada</h2>
+          <p className={styles.p}>
+            Montreal&apos;s coffee shop scene is unlike any other city in Canada. Four factors combine
+            to create something truly special.
+          </p>
+          <p className={styles.p}>
+            <strong>First, the culture.</strong> Montrealers live in their cafés in a way that Canadians
+            in other cities simply do not. A Montreal coffee shop is not just a place to grab a drink —
+            it is a living room, a workspace, a meeting place, a community hub. This cultural expectation
+            pushes café owners to be excellent because their customers will stay for hours and they will
+            know immediately if something is not right.
+          </p>
+          <p className={styles.p}>
+            <strong>Second, the competition.</strong> Montreal has more specialty coffee shops per capita
+            than any other Canadian city. When you have Café Pista, Café Saint-Henri, Micro Espresso,
+            and Café Éclair all operating at a world-class level in the same city, everyone around them
+            has to raise their game or close. The competition has produced extraordinary quality across
+            the board — and when you&apos;re looking for the best espresso in Montreal or the best latte
+            in Montreal, you will find that the options are genuinely world-class.
+          </p>
+          <p className={styles.p}>
+            <strong>Third, the openness.</strong> Montreal&apos;s bilingual, multicultural character
+            means it absorbs influences from everywhere — Italian espresso traditions, Japanese pour-over
+            precision, Scandinavian roasting philosophy, and North American third-wave values all coexist
+            and cross-pollinate in ways that produce genuinely innovative coffee experiences. The best
+            pour-over in Montreal can stand beside the best pour-over anywhere in the world.
+          </p>
+          <p className={styles.p}>
+            <strong>Fourth, Canadian Roasting Society.</strong> The shared roasting facility in
+            Montreal&apos;s southwest has become a hub for the city&apos;s specialty coffee community —
+            giving independent roasters access to world-class equipment and creating a collaborative
+            environment that lifts the entire scene. If you&apos;re wondering where to get coffee in
+            Montreal, the trails all lead back to what&apos;s being roasted here.
+          </p>
 
           <div className={styles.regionDivider}><span>Montreal Icons</span></div>
 
@@ -665,8 +755,10 @@ const Page = () => (
           </p>
           <p className={styles.p}>
             At EZPZ Coffee, we are proud to be part of this story. We roast specialty grade, 100%
-            traceable coffee at Canadian Roasting Society in Montreal&apos;s southwest — the same
-            facility that houses Dreamy Coffee Supermarket, mentioned in this guide. When you create a{" "}
+            traceable coffee at{" "}
+            <Link href="/en/about" className={styles.inlineLink}>Canadian Roasting Society</Link>{" "}
+            in Montreal&apos;s southwest — the same facility that houses Dreamy Coffee Supermarket,
+            mentioned in this guide. When you create a{" "}
             <Link href="/en/design" className={styles.inlineLink}>custom branded coffee bag with EZPZ</Link>,
             you are not just getting a label on generic beans. You are getting specialty coffee rooted
             in the same values and culture that produced four of North America&apos;s top 100 coffee shops.
@@ -678,6 +770,55 @@ const Page = () => (
             <Link href="/en/white-label" className={styles.inlineLink}>EZPZ delivers</Link>.
             Zero minimum order. Full design included. 2 to 3 weeks to delivery.{" "}
             <Link href="/en/contact" className={styles.inlineLink}>Contact us</Link> to get started.
+          </p>
+
+          {/* ── FAQ ───────────────────────────────────────────────── */}
+          <h2 className={styles.h2}>Frequently Asked Questions About Montreal Coffee Shops</h2>
+
+          <h3 className={styles.h3}>What is the best coffee shop in Montreal?</h3>
+          <p className={styles.p}>
+            According to the World&apos;s 100 Best Coffee Shops 2026, the best coffee shop in Montreal
+            is Café Pista, ranked number 34 in all of North America. Other top-ranked Montreal coffee
+            shops include Café Saint-Henri at number 60, Micro Espresso at number 89, and Café Éclair
+            at number 91.
+          </p>
+
+          <h3 className={styles.h3}>Where can I find specialty coffee in Montreal?</h3>
+          <p className={styles.p}>
+            Montreal has dozens of excellent specialty coffee shops. The best areas for specialty
+            coffee in Montreal are Mile End, the Plateau-Mont-Royal, Saint-Henri, and the Quartier des
+            Spectacles. Key addresses include Café Pista on Saint-Laurent, Café Saint-Henri on
+            Notre-Dame West, Micro Espresso on Avenue du Parc, and Caffè Olimpico on Saint-Viateur.
+          </p>
+
+          <h3 className={styles.h3}>What neighbourhood has the best coffee shops in Montreal?</h3>
+          <p className={styles.p}>
+            Mile End has the highest concentration of excellent coffee shops in Montreal, including
+            Café Pista, Caffè Olimpico, Café Éclair, and Ambros Coffee Roasters. The
+            Plateau-Mont-Royal and Saint-Henri are also excellent neighbourhoods for coffee in Montreal.
+          </p>
+
+          <h3 className={styles.h3}>Is Montreal known for coffee?</h3>
+          <p className={styles.p}>
+            Yes. Montreal is one of Canada&apos;s great coffee cities and is increasingly recognized
+            internationally. In 2026, four Montreal cafés were ranked among the top 100 best coffee
+            shops in all of North America — more than any other Canadian city.
+          </p>
+
+          <h3 className={styles.h3}>What is the most famous coffee shop in Montreal?</h3>
+          <p className={styles.p}>
+            Caffè Olimpico on Rue Saint-Viateur in Mile End is arguably Montreal&apos;s most famous
+            coffee shop, having served the neighbourhood since the 1970s. For specialty coffee,
+            Café Pista is Montreal&apos;s most internationally recognized café, ranked number 34
+            in North America in 2026.
+          </p>
+
+          <h3 className={styles.h3}>Where do locals drink coffee in Montreal?</h3>
+          <p className={styles.p}>
+            Montreal locals frequent neighbourhood cafés like Café Larue and Fils in Villeray,
+            September Café in Saint-Henri, Pikolo Espresso Bar near Parc, and Café Myriade across
+            multiple neighbourhoods. Caffè Olimpico in Mile End remains a local institution after
+            decades of operation.
           </p>
 
         </article>
