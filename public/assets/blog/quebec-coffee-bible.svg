@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="qbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080e1c"/>
+      <stop offset="100%" style="stop-color:#0d1828"/>
+    </linearGradient>
+    <linearGradient id="qaccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="qmapfill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2840;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#0f1e35;stop-opacity:0.7"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#qbg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+
+  <!-- Simplified Quebec province outline -->
+  <!-- Southern Quebec / St Lawrence Valley -->
+  <polygon points="180,380 200,340 230,310 270,290 320,285 380,280 440,278 510,275 560,270 600,265 640,260 670,265 680,280 670,300 640,320 600,340 560,355 510,365 460,372 400,378 350,382 280,385 220,386" fill="url(#qmapfill)" stroke="rgba(100,140,200,0.25)" stroke-width="1.5"/>
+  <!-- Northern Quebec extension -->
+  <polygon points="230,310 240,260 260,220 290,190 340,170 400,160 460,155 510,158 550,168 590,185 620,210 640,240 640,260 600,265 560,270 510,275 440,278 380,280 320,285 270,290" fill="url(#qmapfill)" stroke="rgba(100,140,200,0.2)" stroke-width="1.5"/>
+  <!-- Far north -->
+  <polygon points="260,220 280,180 310,145 360,120 420,108 480,106 530,112 570,128 600,155 620,180 620,210 590,185 550,168 510,158 460,155 400,160 340,170 290,190" fill="rgba(15,28,52,0.85)" stroke="rgba(100,140,200,0.15)" stroke-width="1"/>
+
+  <!-- St Lawrence River hint -->
+  <path d="M 220,345 Q 320,330 440,318 Q 560,308 660,295" fill="none" stroke="rgba(60,120,200,0.2)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- City dots with glow -->
+  <!-- Montreal -->
+  <circle cx="370" cy="320" r="5" fill="#c43e14" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="370" cy="320" r="2.5" fill="#ff6a3d"/>
+  <!-- Quebec City -->
+  <circle cx="505" cy="288" r="4" fill="#c43e14" filter="url(#glow)" opacity="0.85"/>
+  <circle cx="505" cy="288" r="2" fill="#ff6a3d"/>
+  <!-- Sherbrooke -->
+  <circle cx="415" cy="345" r="3.5" fill="#c43e14" filter="url(#glow)" opacity="0.8"/>
+  <!-- Laval -->
+  <circle cx="362" cy="307" r="3" fill="#c43e14" filter="url(#glow)" opacity="0.75"/>
+  <!-- Gatineau -->
+  <circle cx="308" cy="308" r="3" fill="#c43e14" filter="url(#glow)" opacity="0.7"/>
+  <!-- Saguenay -->
+  <circle cx="522" cy="248" r="2.5" fill="#c43e14" filter="url(#glow)" opacity="0.65"/>
+
+  <!-- Connection lines between cities -->
+  <line x1="370" y1="320" x2="505" y2="288" stroke="rgba(196,62,20,0.18)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="370" y1="320" x2="415" y2="345" stroke="rgba(196,62,20,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="370" y1="320" x2="308" y2="308" stroke="rgba(196,62,20,0.15)" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="370" y1="320" x2="362" y2="307" stroke="rgba(196,62,20,0.12)" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Coffee cup icons at city locations -->
+  <!-- Cup at Montreal -->
+  <g transform="translate(383, 298)">
+    <rect x="-7" y="0" width="14" height="10" rx="1" fill="#e8521a" opacity="0.85"/>
+    <rect x="-5" y="10" width="10" height="2" rx="0.5" fill="#c43e14" opacity="0.85"/>
+    <path d="M 7,3 Q 11,3 11,7 Q 11,11 7,11" fill="none" stroke="#e8521a" stroke-width="1.5" opacity="0.85"/>
+    <path d="M -3,-4 Q -3,-7 0,-7 Q 0,-4 0,-4" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M 2,-3 Q 2,-6 5,-6 Q 5,-3 5,-3" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <!-- Cup at Quebec City -->
+  <g transform="translate(518, 270)">
+    <rect x="-6" y="0" width="12" height="9" rx="1" fill="#e8521a" opacity="0.75"/>
+    <rect x="-4" y="9" width="8" height="1.5" rx="0.5" fill="#c43e14" opacity="0.75"/>
+    <path d="M 6,2.5 Q 9.5,2.5 9.5,6 Q 9.5,9.5 6,9.5" fill="none" stroke="#e8521a" stroke-width="1.3" opacity="0.75"/>
+    <path d="M -2,-3 Q -2,-6 0.5,-6" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+    <path d="M 2,-2 Q 2,-5 4.5,-5" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-linecap="round"/>
+  </g>
+  <!-- Small cup at Sherbrooke -->
+  <g transform="translate(428, 332)">
+    <rect x="-5" y="0" width="10" height="7.5" rx="0.8" fill="#c43e14" opacity="0.65"/>
+    <rect x="-3.5" y="7.5" width="7" height="1.5" rx="0.4" fill="#a33210" opacity="0.65"/>
+    <path d="M 5,2 Q 8,2 8,5 Q 8,8 5,8" fill="none" stroke="#c43e14" stroke-width="1.2" opacity="0.65"/>
+  </g>
+
+  <!-- Star/sparkle accents -->
+  <g opacity="0.4">
+    <circle cx="290" cy="240" r="1.2" fill="#c43e14"/>
+    <circle cx="460" cy="200" r="1" fill="#c43e14"/>
+    <circle cx="560" cy="310" r="1.2" fill="#c43e14"/>
+    <circle cx="340" cy="360" r="1" fill="#c43e14"/>
+  </g>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#qaccent)"/>
+
+  <!-- Text content - left side -->
+  <text x="72" y="148" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">QUEBEC COFFEE BIBLE</text>
+  <text x="72" y="198" font-family="Georgia, serif" font-size="38" font-weight="900" fill="white" letter-spacing="-1">The Complete</text>
+  <text x="72" y="244" font-family="Georgia, serif" font-size="38" font-weight="900" fill="white" letter-spacing="-1">Guide to</text>
+  <text x="72" y="290" font-family="Georgia, serif" font-size="38" font-weight="900" fill="url(#qaccent)" letter-spacing="-1">Quebec Coffee</text>
+  <text x="72" y="340" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.5)" letter-spacing="0.5">50+ cafés · 8 regions · 4,000+ words</text>
+
+  <!-- Divider -->
+  <rect x="72" y="158" width="40" height="2" fill="url(#qaccent)" opacity="0.8"/>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="362" width="120" height="28" rx="3" fill="rgba(196,62,20,0.15)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <text x="132" y="381" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner decorative element -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(196,62,20,0.04)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(196,62,20,0.12)" stroke-width="1"/>
+</svg>

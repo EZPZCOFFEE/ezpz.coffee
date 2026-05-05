@@ -129,6 +129,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/how-much-do-custom-coffee-bags-cost-canada",
     "/en/best-white-label-coffee-supplier-canada",
     "/en/custom-coffee-for-restaurants-canada",
+    // Quebec Coffee Bible blog post
+    "/en/blog/best-coffee-shops-quebec-complete-guide",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

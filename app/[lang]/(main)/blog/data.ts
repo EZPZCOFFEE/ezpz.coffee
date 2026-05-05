@@ -167,4 +167,18 @@ export const BLOG_POSTS: BlogPost[] = [
     image: "/assets/blog/coffee-bag-vs-mug.svg",
     published: true,
   },
+  {
+    slug: "best-coffee-shops-quebec-complete-guide",
+    category: "Quebec Coffee Bible",
+    categoryColor: "#c43e14",
+    title: "The Quebec Coffee Bible: Every Great Coffee Shop in the Province",
+    excerpt:
+      "The most comprehensive guide to specialty coffee in Quebec ever written. From four world-ranked Montreal cafés to hidden gems in the Eastern Townships — every cup worth drinking in the province.",
+    date: "May 4, 2026",
+    readTime: "25 min read",
+    color: "#080e1c",
+    initials: "QB",
+    image: "/assets/blog/quebec-coffee-bible.svg",
+    published: true,
+  },
 ];
