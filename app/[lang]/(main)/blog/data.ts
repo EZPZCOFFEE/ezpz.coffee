@@ -168,6 +168,20 @@ export const BLOG_POSTS: BlogPost[] = [
     published: true,
   },
   {
+    slug: "canadian-roasting-society-montreal-best-roaster",
+    category: "Behind the Beans",
+    categoryColor: "#c43e14",
+    title: "Canadian Roasting Society: The Facility Behind Montreal's Best Coffee",
+    excerpt:
+      "The story of the Montreal roasting facility where EZPZ Coffee roasts every bag — and why it is home to some of the most exciting specialty coffee in Canada.",
+    date: "May 6, 2026",
+    readTime: "6 min read",
+    color: "#120a04",
+    initials: "CRS",
+    image: "/assets/blog/canadian-roasting-society.svg",
+    published: true,
+  },
+  {
     slug: "best-coffee-shops-toronto-2026",
     category: "Toronto Coffee Guide",
     categoryColor: "#c43e14",

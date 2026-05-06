@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="crbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#120a04"/>
+      <stop offset="100%" style="stop-color:#1c0e06"/>
+    </linearGradient>
+    <linearGradient id="craccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="drumgrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3a1a08"/>
+      <stop offset="100%" style="stop-color:#1e0d04"/>
+    </linearGradient>
+    <filter id="crglow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="heatglow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#crbg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+
+  <!-- Roaster machine body (right side) -->
+  <!-- Main drum housing -->
+  <rect x="530" y="180" width="200" height="140" rx="8" fill="url(#drumgrad)" stroke="rgba(196,62,20,0.2)" stroke-width="1.5"/>
+  <!-- Drum cylinder -->
+  <ellipse cx="630" cy="250" rx="70" ry="55" fill="rgba(40,18,6,0.9)" stroke="rgba(196,62,20,0.3)" stroke-width="1.5"/>
+  <ellipse cx="630" cy="250" rx="58" ry="45" fill="rgba(30,14,4,0.8)" stroke="rgba(196,62,20,0.15)" stroke-width="1"/>
+  <!-- Drum rotation lines -->
+  <line x1="572" y1="250" x2="688" y2="250" stroke="rgba(196,62,20,0.12)" stroke-width="1"/>
+  <line x1="594" y1="208" x2="666" y2="292" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+  <line x1="594" y1="292" x2="666" y2="208" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+  <!-- Center hub -->
+  <circle cx="630" cy="250" r="10" fill="rgba(196,62,20,0.4)" stroke="rgba(196,62,20,0.6)" stroke-width="1.5"/>
+  <circle cx="630" cy="250" r="4" fill="#c43e14" opacity="0.8"/>
+
+  <!-- Heat glow from bottom of machine -->
+  <ellipse cx="630" cy="340" rx="60" ry="18" fill="rgba(196,62,20,0.15)" filter="url(#heatglow)"/>
+  <ellipse cx="630" cy="340" rx="35" ry="10" fill="rgba(232,82,26,0.2)" filter="url(#heatglow)"/>
+
+  <!-- Machine legs -->
+  <rect x="555" y="318" width="12" height="35" rx="2" fill="rgba(40,18,6,0.9)" stroke="rgba(196,62,20,0.15)" stroke-width="1"/>
+  <rect x="693" y="318" width="12" height="35" rx="2" fill="rgba(40,18,6,0.9)" stroke="rgba(196,62,20,0.15)" stroke-width="1"/>
+
+  <!-- Control panel on machine -->
+  <rect x="540" y="195" width="50" height="60" rx="4" fill="rgba(20,10,3,0.8)" stroke="rgba(196,62,20,0.2)" stroke-width="1"/>
+  <!-- Gauges -->
+  <circle cx="556" cy="215" r="8" fill="rgba(30,14,4,0.9)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <circle cx="576" cy="215" r="8" fill="rgba(30,14,4,0.9)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <circle cx="556" cy="215" r="3" fill="rgba(196,62,20,0.6)"/>
+  <circle cx="576" cy="215" r="3" fill="rgba(232,82,26,0.5)"/>
+  <!-- Dials -->
+  <circle cx="556" cy="237" r="6" fill="rgba(25,12,3,0.9)" stroke="rgba(196,62,20,0.3)" stroke-width="1"/>
+  <circle cx="576" cy="237" r="6" fill="rgba(25,12,3,0.9)" stroke="rgba(196,62,20,0.3)" stroke-width="1"/>
+
+  <!-- Smoke / steam wisps -->
+  <path d="M 610,178 Q 608,165 613,155 Q 617,145 615,135" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 630,175 Q 627,160 633,148 Q 638,136 636,124" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 650,180 Q 648,167 654,156 Q 659,146 657,136" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Coffee beans scattered -->
+  <g fill="rgba(196,62,20,0.35)" opacity="0.7">
+    <ellipse cx="500" cy="360" rx="6" ry="4" transform="rotate(-20,500,360)"/>
+    <ellipse cx="515" cy="375" rx="5" ry="3.5" transform="rotate(15,515,375)"/>
+    <ellipse cx="488" cy="380" rx="6" ry="4" transform="rotate(-35,488,380)"/>
+    <ellipse cx="720" cy="370" rx="5" ry="3.5" transform="rotate(10,720,370)"/>
+    <ellipse cx="740" cy="355" rx="6" ry="4" transform="rotate(-25,740,355)"/>
+    <ellipse cx="760" cy="378" rx="5" ry="3" transform="rotate(20,760,378)"/>
+  </g>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#craccent)"/>
+
+  <!-- Text content - left side -->
+  <text x="72" y="148" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">BEHIND THE BEANS</text>
+  <rect x="72" y="158" width="40" height="2" fill="url(#craccent)" opacity="0.8"/>
+  <text x="72" y="202" font-family="Georgia, serif" font-size="28" font-weight="900" fill="white" letter-spacing="-0.5">Canadian</text>
+  <text x="72" y="240" font-family="Georgia, serif" font-size="28" font-weight="900" fill="white" letter-spacing="-0.5">Roasting</text>
+  <text x="72" y="278" font-family="Georgia, serif" font-size="28" font-weight="900" fill="url(#craccent)" letter-spacing="-0.5">Society</text>
+  <text x="72" y="318" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.4)" letter-spacing="0.5">3780 Rue Saint-Patrick · Montréal, QC</text>
+  <text x="72" y="340" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.35)" letter-spacing="0.5">Where EZPZ Coffee is roasted</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="362" width="120" height="28" rx="3" fill="rgba(196,62,20,0.15)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <text x="132" y="381" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner accent -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(196,62,20,0.03)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+</svg>
