@@ -168,6 +168,20 @@ export const BLOG_POSTS: BlogPost[] = [
     published: true,
   },
   {
+    slug: "best-coffee-shops-toronto-2026",
+    category: "Toronto Coffee Guide",
+    categoryColor: "#c43e14",
+    title: "The 15 Best Coffee Shops in Toronto in 2026",
+    excerpt:
+      "Toronto's coffee scene has exploded into one of the most exciting in North America. From Pilot Coffee Roasters to hidden gems in Leslieville — your complete guide to the 15 best cafés in 2026.",
+    date: "May 3, 2026",
+    readTime: "7 min read",
+    color: "#0c1a18",
+    initials: "TC",
+    image: "/assets/blog/toronto-coffee.svg",
+    published: true,
+  },
+  {
     slug: "best-coffee-shops-quebec-complete-guide",
     category: "Quebec Coffee Bible",
     categoryColor: "#c43e14",
