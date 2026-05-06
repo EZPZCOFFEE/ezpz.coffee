@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 import {
   getHeroHintFade,
@@ -22,6 +22,15 @@ import canShadowPng from "@/public/assets/can-shadow.png";
 import capsulePng from "@/public/assets/capsule.png";
 
 import styles from "./homeLanding.module.scss";
+
+const ACCORDION_ITEMS = [
+  { title: "YOUR DESIGN", body: "Full custom bag design included at no extra cost. You bring your logo and brand colors. We handle the rest." },
+  { title: "YOUR ROASTING", body: "Fresh roasted at Canadian Roasting Society in Montreal on professional Probat equipment." },
+  { title: "YOUR PACKAGING", body: "Custom branded bags, ready-to-drink cans, or Nespresso capsules. Your brand on every format." },
+  { title: "YOUR QUALITY CONTROL", body: "Every batch is quality checked before it ships. Specialty grade 80+ SCA score guaranteed." },
+  { title: "YOUR LOGISTICS", body: "We ship directly to your door across Canada and the USA. No warehousing required on your end." },
+  { title: "YOUR FULFILLMENT", body: "From one bag to ten thousand. Zero minimum. Same quality every single time." },
+];
 
 const SPLIT_SECTIONS = [
   { theme: "dark" as const, imageFirst: true, image: bagPng, sectionKey: "coffeeBags" as const },
@@ -40,6 +49,8 @@ const WhiteLabelSolutionsPage = () => {
   const scrollToHeroCopy = useCallback(() => {
     document.getElementById("hero-copy")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
+
+  const [openItem, setOpenItem] = useState<number | null>(null);
 
   const heroHintMotion = getHeroHintFade(motionOff);
   const { staggerParent, fadeChild } = getStaggerReveal(motionOff);
@@ -109,6 +120,44 @@ const WhiteLabelSolutionsPage = () => {
           </Link>
         </div>
       </div>
+
+      {/* ── What We Handle accordion ──────────────────────────── */}
+      <section className={styles.wlAccordion}>
+        <div className={styles.wlAccordionInner}>
+          <span className={styles.wlForEyebrow}>02.5_ What We Handle</span>
+          <h2 className={styles.wlAccordionHeadline}>
+            Let us be your<br />
+            <span className={styles.wlAccordionHeadlineAccent}>everything.</span>
+          </h2>
+          <p className={styles.wlAccordionSubtext}>
+            Skip the roastery. Skip the designers. Skip the logistics headache. We handle it all
+            so you can focus on selling your brand.
+          </p>
+          <div className={styles.wlAccordionGrid}>
+            {ACCORDION_ITEMS.map((item, i) => (
+              <div key={item.title} className={styles.wlAccordionItem}>
+                <button
+                  type="button"
+                  className={styles.wlAccordionBtn}
+                  onClick={() => setOpenItem(openItem === i ? null : i)}
+                  aria-expanded={openItem === i}
+                >
+                  <span className={styles.wlAccordionIcon} aria-hidden>
+                    {openItem === i ? "−" : "+"}
+                  </span>
+                  <span className={styles.wlAccordionTitle}>{item.title}</span>
+                </button>
+                {openItem === i && (
+                  <p className={styles.wlAccordionBody}>{item.body}</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className={styles.wlAccordionFooter}>
+            You bring the brand. We bring the rest.
+          </p>
+        </div>
+      </section>
 
       <section className={styles.wlForSection}>
         <div className={styles.wlForInner}>

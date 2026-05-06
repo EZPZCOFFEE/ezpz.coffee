@@ -1760,3 +1760,121 @@
   color: #111;
   margin: 0;
 }
+
+/* ── What We Handle accordion ───────────────────────────────── */
+
+.wlAccordion {
+  background: var(--color-black);
+  padding: var(--spacing-galaxy) var(--spacing-state);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wlAccordionInner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.wlAccordionHeadline {
+  margin: var(--spacing-country) 0 var(--spacing-state);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.wlAccordionHeadlineAccent {
+  color: var(--color-accent);
+}
+
+.wlAccordionSubtext {
+  margin: 0 0 var(--spacing-planet);
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+.wlAccordionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--spacing-planet);
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wlAccordionItem {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wlAccordionBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-state);
+  padding: var(--spacing-country) var(--spacing-state);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+.wlAccordionIcon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  border: 1px solid rgba(196, 62, 20, 0.4);
+  border-radius: 2px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+
+  .wlAccordionBtn[aria-expanded="true"] & {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+  }
+}
+
+.wlAccordionTitle {
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-extrabold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-white);
+}
+
+.wlAccordionBody {
+  margin: 0;
+  padding: 0 var(--spacing-state) var(--spacing-country) calc(var(--spacing-state) + 24px + var(--spacing-state));
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.wlAccordionFooter {
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
