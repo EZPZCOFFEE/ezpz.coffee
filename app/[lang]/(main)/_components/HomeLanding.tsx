@@ -188,11 +188,6 @@ const HomeLanding = () => {
               </motion.div>
             ))}
           </motion.div>
-          <motion.div {...fadeChild} className={styles.landingMotionInline}>
-            <Link href={`/${locale}/white-label`} className={styles.howItWorksLearnMore}>
-              Learn more about our process →
-            </Link>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -226,11 +221,6 @@ const HomeLanding = () => {
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
-            </Link>
-          </motion.div>
-          <motion.div {...fadeChild} className={styles.landingMotionInline}>
-            <Link href={`/${locale}/industries`} className={styles.whiteLabelSecondaryLink}>
-              See all industries we serve →
             </Link>
           </motion.div>
         </motion.div>
@@ -289,11 +279,6 @@ const HomeLanding = () => {
           </motion.h2>
           <motion.p className={styles.geoBody} {...fadeChild}>{t("geo.body")}</motion.p>
           <motion.p className={styles.geoCities} {...fadeChild}>{t("geo.cities")}</motion.p>
-          <motion.div {...fadeChild}>
-            <Link href={`/${locale}/locations`} className={styles.geoLocationsLink}>
-              See all Canadian markets →
-            </Link>
-          </motion.div>
         </motion.div>
       </section>
 
@@ -349,12 +334,6 @@ const HomeLanding = () => {
               </motion.div>
             ))}
           </motion.dl>
-          <motion.div className={styles.faqQuickLinks} {...fadeChild}>
-            <Link href={`/${locale}/compare`} className={styles.faqQuickLink}>See how we compare to competitors</Link>
-            <Link href={`/${locale}/industries`} className={styles.faqQuickLink}>Browse industries we serve</Link>
-            <Link href={`/${locale}/locations`} className={styles.faqQuickLink}>View all Canadian markets we serve</Link>
-            <Link href={`/${locale}/blog`} className={styles.faqQuickLink}>Read our blog</Link>
-          </motion.div>
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/faq`} className={styles.btnOutline}>
               {t("faqPreview.seeAll")}
@@ -388,16 +367,6 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      <section className={styles.relatedPages} aria-label="Related pages">
-        <div className={styles.relatedPagesInner}>
-          <Link href={`/${locale}/custom-coffee-bags-montreal`} className={styles.relatedPageLink}>Custom Coffee Bags Montreal</Link>
-          <Link href={`/${locale}/custom-coffee-bags-toronto`} className={styles.relatedPageLink}>Custom Coffee Bags Toronto</Link>
-          <Link href={`/${locale}/custom-coffee-bags-vancouver`} className={styles.relatedPageLink}>Custom Coffee Bags Vancouver</Link>
-          <Link href={`/${locale}/white-label-coffee-canada`} className={styles.relatedPageLink}>White Label Coffee Canada</Link>
-          <Link href={`/${locale}/private-label-coffee-canada`} className={styles.relatedPageLink}>Private Label Coffee Canada</Link>
-          <Link href={`/${locale}/compare`} className={styles.relatedPageLink}>Compare Coffee Suppliers</Link>
-        </div>
-      </section>
     </div>
   );
 };
