@@ -174,8 +174,18 @@
 }
 
 .errorText {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   color: #e53e3e;
+  line-height: 1.6;
+}
+
+.errorLink {
+  color: #e53e3e;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover { opacity: 0.75; }
 }
 
 .submitBtn {

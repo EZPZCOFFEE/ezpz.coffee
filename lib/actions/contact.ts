@@ -49,7 +49,7 @@ export async function contact(
 
   if (error) {
     console.error("[contact] Resend error:", error);
-    return { success: false, error: "Failed to send message. Please try again." };
+    return { success: false, error: "SEND_FAILED" };
   }
 
   return { success: true };

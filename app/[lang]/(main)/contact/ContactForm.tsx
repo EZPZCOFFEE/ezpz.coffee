@@ -164,7 +164,19 @@ export const ContactForm = () => {
         {errors.message && <span className={styles.errorText}>{errors.message}</span>}
       </div>
 
-      {serverError && <p className={styles.errorText}>{serverError}</p>}
+      {serverError && (
+        serverError === "SEND_FAILED" ? (
+          <p className={styles.errorText}>
+            Oops — looks like there&apos;s an issue with our contact form right now.{" "}
+            <a href="mailto:help@ezpz.coffee" className={styles.errorLink}>
+              Send us an email directly at help@ezpz.coffee
+            </a>{" "}
+            and we&apos;ll get back to you within 24 hours.
+          </p>
+        ) : (
+          <p className={styles.errorText}>{serverError}</p>
+        )
+      )}
 
       <button type="submit" className={styles.submitBtn} disabled={submitting}>
         {submitting ? t("form.submitting") : t("form.submit")}
