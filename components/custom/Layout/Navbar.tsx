@@ -23,7 +23,24 @@ interface NavItem {
   hash?: string;
 }
 
+interface NavDropdown {
+  labelKey: string;
+  pathSuffix: string;
+  items: { labelKey: string; pathSuffix: string; isAll?: boolean }[];
+}
+
 const showDevNav = process.env.NEXT_PUBLIC_SHOW_DEV_NAV === "true";
+
+const SERVICES_DROPDOWN: NavDropdown = {
+  labelKey: "services",
+  pathSuffix: "/services",
+  items: [
+    { labelKey: "customCoffeeBags", pathSuffix: "/services/custom-coffee-bags" },
+    { labelKey: "readyToDrink", pathSuffix: "/services/ready-to-drink" },
+    { labelKey: "nespressoCapsules", pathSuffix: "/services/nespresso-capsules" },
+    { labelKey: "allServices", pathSuffix: "/services", isAll: true },
+  ],
+};
 
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
@@ -74,9 +91,16 @@ const isNavItemActive = (item: NavItem, pathname: string | null): boolean => {
   return normalizedPath === suffix || normalizedPath.startsWith(`${suffix}/`);
 };
 
+const isDropdownActive = (dropdown: NavDropdown, pathname: string | null): boolean => {
+  if (!pathname) return false;
+  const normalizedPath = stripLocalePrefix(pathname);
+  return normalizedPath === dropdown.pathSuffix || normalizedPath.startsWith(`${dropdown.pathSuffix}/`);
+};
+
 interface NavbarVariantProps {
   leftNavItems: NavItem[];
   rightNavItems: NavItem[];
+  dropdowns?: NavDropdown[];
   pathname: string | null;
   locale: string;
 }
@@ -110,6 +134,7 @@ const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
 const DesktopNavbar = ({
   leftNavItems,
   rightNavItems,
+  dropdowns,
   pathname,
   locale,
   logoVariant,
@@ -138,6 +163,37 @@ const DesktopNavbar = ({
 
       <div className={styles.desktopNavbarRight}>
         <ul className={styles.navList}>
+          {/* Services dropdown */}
+          {dropdowns?.map((dropdown) => {
+            const active = isDropdownActive(dropdown, pathname);
+            return (
+              <li
+                key={dropdown.labelKey}
+                className={classNames(styles.navItem, styles.navDropdownWrapper, { [styles.navItem__active]: active })}
+              >
+                <Link href={`/${locale}${dropdown.pathSuffix}`} className={classNames(styles.navLink, styles.navDropdownTrigger)}>
+                  {t(dropdown.labelKey)} <span className={styles.navDropdownCaret} aria-hidden>▾</span>
+                </Link>
+                <div className={styles.navDropdownPanel} role="menu">
+                  {dropdown.items.map((item) =>
+                    item.isAll ? (
+                      <span key={item.labelKey}>
+                        <hr className={styles.navDropdownDivider} />
+                        <Link href={`/${locale}${item.pathSuffix}`} className={styles.navDropdownAllLink} role="menuitem">
+                          {t(item.labelKey)} →
+                        </Link>
+                      </span>
+                    ) : (
+                      <Link key={item.labelKey} href={`/${locale}${item.pathSuffix}`} className={styles.navDropdownLink} role="menuitem">
+                        {t(item.labelKey)}
+                      </Link>
+                    )
+                  )}
+                </div>
+              </li>
+            );
+          })}
+
           {rightNavItems.map((item) => {
             const isActive = isNavItemActive(item, pathname);
             const itemClassName = classNames(styles.navItem, { [styles.navItem__active]: isActive });
@@ -163,6 +219,7 @@ const DesktopNavbar = ({
 const MobileNavbar = ({
   leftNavItems,
   rightNavItems,
+  dropdowns,
   pathname,
   locale,
   logoVariant,
@@ -176,6 +233,7 @@ const MobileNavbar = ({
   const t = useTranslations("nav");
   const navItems = [...leftNavItems, ...rightNavItems];
   const menuId = useId();
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   return (
     <div className={styles.mobileNavbar} data-state={mobileMenuOpen ? "open" : "closed"}>
@@ -227,6 +285,38 @@ const MobileNavbar = ({
               </li>
             );
           })}
+
+          {/* Services dropdown for mobile */}
+          {dropdowns?.map((dropdown) => (
+            <li key={dropdown.labelKey} className={styles.mobileMenuItem}>
+              <button
+                type="button"
+                className={styles.mobileServicesToggle}
+                onClick={() => setServicesOpen((prev) => !prev)}
+                aria-expanded={servicesOpen}
+              >
+                {t(dropdown.labelKey)}
+                <span className={classNames(styles.mobileServicesChevron, { [styles.mobileServicesChevronOpen]: servicesOpen })} aria-hidden>
+                  ▾
+                </span>
+              </button>
+              {servicesOpen && (
+                <ul className={styles.mobileServicesSubList}>
+                  {dropdown.items.map((item) => (
+                    <li key={item.labelKey} className={styles.mobileServicesSubItem}>
+                      <Link
+                        href={`/${locale}${item.pathSuffix}`}
+                        className={styles.mobileServicesSubLink}
+                        onClick={() => { setServicesOpen(false); onMobileMenuOpenChange(false); }}
+                      >
+                        {t(item.labelKey)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
@@ -339,6 +429,7 @@ const Navbar = () => {
         <DesktopNavbar
           leftNavItems={leftNavItems}
           rightNavItems={rightNavItems}
+          dropdowns={[SERVICES_DROPDOWN]}
           pathname={pathname}
           locale={locale}
           logoVariant={logoVariant}
@@ -346,6 +437,7 @@ const Navbar = () => {
         <MobileNavbar
           leftNavItems={leftNavItems}
           rightNavItems={rightNavItems}
+          dropdowns={[SERVICES_DROPDOWN]}
           pathname={pathname}
           locale={locale}
           logoVariant={logoVariant}

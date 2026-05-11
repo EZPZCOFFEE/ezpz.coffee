@@ -33,9 +33,9 @@ const ACCORDION_ITEMS = [
 ];
 
 const SPLIT_SECTIONS = [
-  { theme: "dark" as const, imageFirst: true, image: bagPng, sectionKey: "coffeeBags" as const },
-  { theme: "light" as const, imageFirst: false, image: canShadowPng, sectionKey: "cannedDrinks" as const },
-  { theme: "dark" as const, imageFirst: true, image: capsulePng, sectionKey: "coffeePods" as const },
+  { theme: "dark" as const, imageFirst: true, image: bagPng, sectionKey: "coffeeBags" as const, learnMorePath: "/services/custom-coffee-bags", learnMoreLabel: "Learn more about custom coffee bags" },
+  { theme: "light" as const, imageFirst: false, image: canShadowPng, sectionKey: "cannedDrinks" as const, learnMorePath: "/services/ready-to-drink", learnMoreLabel: "Learn more about ready-to-drink" },
+  { theme: "dark" as const, imageFirst: true, image: capsulePng, sectionKey: "coffeePods" as const, learnMorePath: "/services/nespresso-capsules", learnMoreLabel: "Learn more about Nespresso capsules" },
 ];
 
 const WhiteLabelSolutionsPage = () => {
@@ -181,7 +181,7 @@ const WhiteLabelSolutionsPage = () => {
 
       <div id="hero-copy" />
 
-      {SPLIT_SECTIONS.map(({ theme, imageFirst, image, sectionKey }) => {
+      {SPLIT_SECTIONS.map(({ theme, imageFirst, image, sectionKey, learnMorePath, learnMoreLabel }) => {
         const hasNoMOQ = sectionKey === "coffeeBags";
         const hasExtra = sectionKey === "coffeeBags" || sectionKey === "coffeePods";
 
@@ -199,6 +199,9 @@ const WhiteLabelSolutionsPage = () => {
             )}
             <Link href={`/${locale}/contact`} className={styles.whiteLabelSplitCta}>
               Get a quote
+            </Link>
+            <Link href={`/${locale}${learnMorePath}`} className={styles.whiteLabelSecondaryLink} style={{ display: "inline-block", marginTop: "var(--spacing-state)" }}>
+              {learnMoreLabel} →
             </Link>
           </motion.div>
         );

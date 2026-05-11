@@ -553,7 +553,12 @@
     "industries": "Industries",
     "portfolio": "Portfolio",
     "pricing": "Pricing",
-    "blog": "Blog"
+    "blog": "Blog",
+    "services": "Services",
+    "customCoffeeBags": "Custom Coffee Bags",
+    "readyToDrink": "Ready-to-Drink",
+    "nespressoCapsules": "Nespresso Capsules",
+    "allServices": "All Services"
   },
   "newsletterPopup": {
     "ariaLabel": "Newsletter signup",
