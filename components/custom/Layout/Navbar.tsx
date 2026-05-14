@@ -45,7 +45,6 @@ const SERVICES_DROPDOWN: NavDropdown = {
 const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
-    { labelKey: "mothersDay", pathSuffix: "/mothers-day" },
     { labelKey: "ourCoffee", pathSuffix: "/coffee" },
 { labelKey: "whiteLabel", pathSuffix: "/white-label" },
     ...(showDevNav ? [

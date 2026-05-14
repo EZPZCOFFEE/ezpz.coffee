@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import styles from "./announcementBanner.module.scss";
 
-const STORAGE_KEY = "ezpz-announcement-dismissed-mothers-day-2026";
+const STORAGE_KEY = "ezpz-announcement-dismissed-free-bag-2026";
 
 const AnnouncementBanner = () => {
   const [visible, setVisible] = useState(false);
@@ -33,8 +33,8 @@ const AnnouncementBanner = () => {
   return (
     <div ref={ref} className={styles.banner}>
       <p className={styles.text}>
-        🌸 Mother&apos;s Day is May 10th | Design a custom coffee bag for mom! Order by May 3rd.{" "}
-        <Link href="/en/mothers-day" className={styles.link}>Shop now</Link>
+        ✦ Get your first bag free — no catch, no minimum.{" "}
+        <Link href="/en/contact" className={styles.link}>Claim it now</Link>
       </p>
       <button
         type="button"
