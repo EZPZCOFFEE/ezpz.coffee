@@ -11,7 +11,7 @@ const SERVICES = [
     title: "Custom Branded Coffee Bags",
     body: "From farm to your customer's door — full custom bag design, specialty-grade sourcing, roasting, packaging, and logistics. Zero minimum order. Ships across Canada and the USA.",
     stats: [
-      { num: "0", label: "Minimum order" },
+      { num: "1", label: "Minimum order" },
       { num: "2–3 wks", label: "From design to delivery" },
       { num: "500+", label: "Brands served" },
     ],

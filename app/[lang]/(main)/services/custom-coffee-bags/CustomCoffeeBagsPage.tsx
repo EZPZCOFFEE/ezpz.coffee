@@ -45,7 +45,7 @@ const WHO_ITS_FOR = [
 ];
 
 const STATS = [
-  { num: "0", label: "Minimum order" },
+  { num: "1", label: "Minimum order" },
   { num: "2–3 weeks", label: "From design to delivery" },
   { num: "80+", label: "SCA score on all our beans" },
   { num: "500+", label: "Canadian brands served" },
