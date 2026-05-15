@@ -127,8 +127,11 @@ const NespressoCapsulesPage = () => {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
+        <div className={styles.heroBg} aria-hidden />
+        <div className={styles.heroGridOverlay} aria-hidden />
+        <div className={styles.heroRadialGlow} aria-hidden />
         <div className={styles.heroContent}>
-          <div className={styles.heroInner}>
+          <div className={styles.heroLeft}>
             <span className={styles.heroLabel}>01_ Nespresso Capsules</span>
             <h1 className={styles.heroTitle}>Your brand. In every Nespresso machine in Canada.</h1>
             <p className={styles.heroSubtitle}>
@@ -138,9 +141,30 @@ const NespressoCapsulesPage = () => {
               <Link href={`/${locale}/contact`} className={styles.heroBtnPrimary}>Get a free quote</Link>
               <a href="#process" className={styles.heroBtnSecondary}>Learn more</a>
             </div>
+            <div className={styles.heroStats}>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>100%</span>
+                <span className={styles.heroStatLabel}>Nespresso Classic compatible</span>
+              </div>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>2–3 weeks</span>
+                <span className={styles.heroStatLabel}>Production timeline</span>
+              </div>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>3 intensities</span>
+                <span className={styles.heroStatLabel}>Mild, balanced, intense</span>
+              </div>
+            </div>
           </div>
-          <div className={styles.heroImageWrap}>
-            <Image src={capsulePng} alt="Custom branded Nespresso-compatible capsule" className={styles.heroProductImage} placeholder="blur" />
+          <div className={styles.heroRight}>
+            <div className={styles.heroImageContainer}>
+              <div className={styles.heroImageGlow} aria-hidden />
+              <div className={styles.heroAccentDot1} aria-hidden />
+              <div className={styles.heroAccentDot2} aria-hidden />
+              <div className={styles.heroAccentDot3} aria-hidden />
+              <div className={styles.heroAccentLine} aria-hidden />
+              <Image src={capsulePng} alt="Custom branded Nespresso-compatible capsule" className={styles.heroProductImage} placeholder="blur" />
+            </div>
           </div>
         </div>
       </section>

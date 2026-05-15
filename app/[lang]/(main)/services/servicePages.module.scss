@@ -6,25 +6,54 @@
 
 .hero {
   position: relative;
-  background: #111111;
-  padding: calc(var(--layout-navbar-height, 56px) + var(--spacing-cluster)) var(--spacing-state) var(--spacing-cluster);
-  min-height: 62vh;
+  background: #0D0A07;
+  min-height: 90vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid #2A1F14;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D0A07 0%, #1A1008 50%, #0D0A07 100%);
+  z-index: 0;
+}
+
+.heroGridOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.heroRadialGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse 60% 50% at 75% 50%, rgba(255, 66, 0, 0.07) 0%, transparent 70%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-cluster);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: calc(var(--layout-navbar-height, 56px) + var(--spacing-cluster)) var(--spacing-state) var(--spacing-cluster);
 
   @media (min-width: 768px) {
     padding: calc(var(--layout-navbar-height, 56px) + var(--spacing-cluster)) var(--spacing-cluster) var(--spacing-cluster);
   }
-}
-
-.heroContent {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: var(--spacing-cluster);
-  width: 100%;
-  max-width: 1060px;
 
   @media (max-width: 767px) {
     flex-direction: column;
@@ -33,33 +62,112 @@
   }
 }
 
-.heroInner {
-  flex: 1;
+.heroLeft {
+  flex: 0 0 55%;
   min-width: 0;
-  max-width: 580px;
-}
-
-.heroImageWrap {
-  flex-shrink: 0;
-  width: min(300px, 30vw);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
 
   @media (max-width: 767px) {
-    width: 140px;
-    align-self: flex-end;
+    flex: none;
+    width: 100%;
   }
 }
 
-.heroProductImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  max-height: 420px;
+.heroRight {
+  flex: 0 0 42%;
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media (max-width: 767px) {
-    max-height: 140px;
+    flex: none;
+    width: 100%;
+    min-height: 280px;
+  }
+}
+
+.heroImageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImageGlow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(193, 122, 58, 0.18) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.heroAccentDot1 {
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.8;
+  z-index: 2;
+}
+
+.heroAccentDot2 {
+  position: absolute;
+  bottom: 18%;
+  left: 6%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.heroAccentDot3 {
+  position: absolute;
+  top: 40%;
+  right: 3%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 2;
+}
+
+.heroAccentLine {
+  position: absolute;
+  bottom: 10%;
+  right: 14%;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 66, 0, 0.5));
+  z-index: 2;
+}
+
+.heroProductImage {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  transform: rotate(4deg);
+  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 40px rgba(193, 122, 58, 0.15));
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+  &:hover {
+    transform: rotate(3deg) scale(1.02);
+    filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 60px rgba(193, 122, 58, 0.25));
+  }
+
+  @media (max-width: 767px) {
+    max-height: 260px;
+    transform: rotate(3deg);
   }
 }
 
@@ -75,21 +183,21 @@
 
 .heroTitle {
   margin: 0 0 var(--spacing-state);
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
   font-weight: var(--font-weight-extrabold);
-  line-height: 1.05;
-  letter-spacing: 0.01em;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
   color: var(--color-white);
   text-transform: uppercase;
 }
 
 .heroSubtitle {
   margin: 0 0 var(--spacing-planet);
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-relaxed);
-  color: rgba(255, 255, 255, 0.72);
-  max-width: 52ch;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 50ch;
 }
 
 .heroBtnGroup {
@@ -97,6 +205,7 @@
   flex-wrap: wrap;
   gap: var(--spacing-state);
   align-items: center;
+  margin-bottom: var(--spacing-planet);
 }
 
 .heroBtnPrimary {
@@ -130,13 +239,43 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
   text-decoration: none;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   transition: border-color 0.15s ease, background 0.15s ease;
 
   &:hover {
     border-color: var(--color-white);
     background: rgba(255, 255, 255, 0.08);
   }
+}
+
+.heroStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-planet);
+  padding-top: var(--spacing-planet);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.heroStatNum {
+  font-size: 1.05rem;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-white);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.heroStatLabel {
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-semibold);
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 // ── Section wrappers ──────────────────────────────────────────────────────────

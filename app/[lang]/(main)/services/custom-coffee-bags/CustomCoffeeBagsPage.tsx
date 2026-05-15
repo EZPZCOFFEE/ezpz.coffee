@@ -157,8 +157,11 @@ const CustomCoffeeBagsPage = () => {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
+        <div className={styles.heroBg} aria-hidden />
+        <div className={styles.heroGridOverlay} aria-hidden />
+        <div className={styles.heroRadialGlow} aria-hidden />
         <div className={styles.heroContent}>
-          <div className={styles.heroInner}>
+          <div className={styles.heroLeft}>
             <span className={styles.heroLabel}>01_ Custom Coffee Bags</span>
             <h1 className={styles.heroTitle}>Your bag. Your brand. We handle everything.</h1>
             <p className={styles.heroSubtitle}>
@@ -168,9 +171,30 @@ const CustomCoffeeBagsPage = () => {
               <Link href={`/${locale}/design`} className={styles.heroBtnPrimary}>Start designing</Link>
               <Link href={`/${locale}/contact`} className={styles.heroBtnSecondary}>Get a free quote</Link>
             </div>
+            <div className={styles.heroStats}>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>1 bag</span>
+                <span className={styles.heroStatLabel}>Minimum order</span>
+              </div>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>2–3 weeks</span>
+                <span className={styles.heroStatLabel}>Design to delivery</span>
+              </div>
+              <div className={styles.heroStat}>
+                <span className={styles.heroStatNum}>500+</span>
+                <span className={styles.heroStatLabel}>Canadian brands</span>
+              </div>
+            </div>
           </div>
-          <div className={styles.heroImageWrap}>
-            <Image src={bagPng} alt="Custom branded coffee bag" className={styles.heroProductImage} placeholder="blur" />
+          <div className={styles.heroRight}>
+            <div className={styles.heroImageContainer}>
+              <div className={styles.heroImageGlow} aria-hidden />
+              <div className={styles.heroAccentDot1} aria-hidden />
+              <div className={styles.heroAccentDot2} aria-hidden />
+              <div className={styles.heroAccentDot3} aria-hidden />
+              <div className={styles.heroAccentLine} aria-hidden />
+              <Image src={bagPng} alt="Custom branded coffee bag" className={styles.heroProductImage} placeholder="blur" />
+            </div>
           </div>
         </div>
       </section>
