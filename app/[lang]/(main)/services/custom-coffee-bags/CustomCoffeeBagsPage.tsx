@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useState } from "react";
+
+import bagPng from "@/public/assets/bag.png";
 
 import styles from "../servicePages.module.scss";
 
@@ -154,15 +157,20 @@ const CustomCoffeeBagsPage = () => {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <span className={styles.heroLabel}>01_ Custom Coffee Bags</span>
-          <h1 className={styles.heroTitle}>Your bag. Your brand. We handle everything.</h1>
-          <p className={styles.heroSubtitle}>
-            From the farm to your customer&apos;s door — EZPZ manages every step of your custom coffee bag program so you can focus on what you do best: running your business.
-          </p>
-          <div className={styles.heroBtnGroup}>
-            <Link href={`/${locale}/design`} className={styles.heroBtnPrimary}>Start designing</Link>
-            <Link href={`/${locale}/contact`} className={styles.heroBtnSecondary}>Get a free quote</Link>
+        <div className={styles.heroContent}>
+          <div className={styles.heroInner}>
+            <span className={styles.heroLabel}>01_ Custom Coffee Bags</span>
+            <h1 className={styles.heroTitle}>Your bag. Your brand. We handle everything.</h1>
+            <p className={styles.heroSubtitle}>
+              From the farm to your customer&apos;s door — EZPZ manages every step of your custom coffee bag program so you can focus on what you do best: running your business.
+            </p>
+            <div className={styles.heroBtnGroup}>
+              <Link href={`/${locale}/design`} className={styles.heroBtnPrimary}>Start designing</Link>
+              <Link href={`/${locale}/contact`} className={styles.heroBtnSecondary}>Get a free quote</Link>
+            </div>
+          </div>
+          <div className={styles.heroImageWrap}>
+            <Image src={bagPng} alt="Custom branded coffee bag" className={styles.heroProductImage} placeholder="blur" />
           </div>
         </div>
       </section>

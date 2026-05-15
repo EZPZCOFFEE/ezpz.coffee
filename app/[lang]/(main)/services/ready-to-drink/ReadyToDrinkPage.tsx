@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useState } from "react";
+
+import canShadowPng from "@/public/assets/can-shadow.png";
 
 import styles from "../servicePages.module.scss";
 
@@ -104,15 +107,20 @@ const ReadyToDrinkPage = () => {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <span className={styles.heroLabel}>01_ Ready-to-Drink Coffee</span>
-          <h1 className={styles.heroTitle}>Your brand. Ready to crack open.</h1>
-          <p className={styles.heroSubtitle}>
-            Custom branded ready-to-drink coffee in cans, bottles, or cartons. Full recipe development. Your design. Delivered across Canada and the USA.
-          </p>
-          <div className={styles.heroBtnGroup}>
-            <Link href={`/${locale}/contact`} className={styles.heroBtnPrimary}>Get a free quote</Link>
-            <a href="#process" className={styles.heroBtnSecondary}>Learn about our process</a>
+        <div className={styles.heroContent}>
+          <div className={styles.heroInner}>
+            <span className={styles.heroLabel}>01_ Ready-to-Drink Coffee</span>
+            <h1 className={styles.heroTitle}>Your brand. Ready to crack open.</h1>
+            <p className={styles.heroSubtitle}>
+              Custom branded ready-to-drink coffee in cans, bottles, or cartons. Full recipe development. Your design. Delivered across Canada and the USA.
+            </p>
+            <div className={styles.heroBtnGroup}>
+              <Link href={`/${locale}/contact`} className={styles.heroBtnPrimary}>Get a free quote</Link>
+              <a href="#process" className={styles.heroBtnSecondary}>Learn about our process</a>
+            </div>
+          </div>
+          <div className={styles.heroImageWrap}>
+            <Image src={canShadowPng} alt="Custom branded ready-to-drink coffee can" className={styles.heroProductImage} placeholder="blur" />
           </div>
         </div>
       </section>

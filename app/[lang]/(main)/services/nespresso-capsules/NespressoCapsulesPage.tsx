@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useState } from "react";
+
+import capsulePng from "@/public/assets/capsule.png";
 
 import styles from "../servicePages.module.scss";
 
@@ -124,15 +127,20 @@ const NespressoCapsulesPage = () => {
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <span className={styles.heroLabel}>01_ Nespresso Capsules</span>
-          <h1 className={styles.heroTitle}>Your brand. In every Nespresso machine in Canada.</h1>
-          <p className={styles.heroSubtitle}>
-            Custom branded Nespresso-compatible capsules filled with specialty coffee. Perfect for hotels, offices, corporate gifting, and premium retail.
-          </p>
-          <div className={styles.heroBtnGroup}>
-            <Link href={`/${locale}/contact`} className={styles.heroBtnPrimary}>Get a free quote</Link>
-            <a href="#process" className={styles.heroBtnSecondary}>Learn more</a>
+        <div className={styles.heroContent}>
+          <div className={styles.heroInner}>
+            <span className={styles.heroLabel}>01_ Nespresso Capsules</span>
+            <h1 className={styles.heroTitle}>Your brand. In every Nespresso machine in Canada.</h1>
+            <p className={styles.heroSubtitle}>
+              Custom branded Nespresso-compatible capsules filled with specialty coffee. Perfect for hotels, offices, corporate gifting, and premium retail.
+            </p>
+            <div className={styles.heroBtnGroup}>
+              <Link href={`/${locale}/contact`} className={styles.heroBtnPrimary}>Get a free quote</Link>
+              <a href="#process" className={styles.heroBtnSecondary}>Learn more</a>
+            </div>
+          </div>
+          <div className={styles.heroImageWrap}>
+            <Image src={capsulePng} alt="Custom branded Nespresso-compatible capsule" className={styles.heroProductImage} placeholder="blur" />
           </div>
         </div>
       </section>
