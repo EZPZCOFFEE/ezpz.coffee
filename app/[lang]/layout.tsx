@@ -469,14 +469,10 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "EZPZ Coffee",
-              alternateName: "EZPZ",
+              alternateName: "EZPZ Coffee Canada",
               url: "https://www.ezpz.coffee",
               logo: "https://www.ezpz.coffee/logo.svg",
-              description:
-                "EZPZ Coffee is Canada's only custom coffee bag supplier with zero minimum order. We offer white label specialty coffee bags, ready-to-drink coffee, and Nespresso capsules for restaurants, hotels, retailers, and brands. Roasted fresh in Montreal and shipped across Canada and the USA.",
               foundingLocation: "Montreal, Quebec, Canada",
-              areaServed: ["Canada", "United States"],
-              email: "help@ezpz.coffee",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "3780 Rue Saint-Patrick",
@@ -485,18 +481,11 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
                 postalCode: "H4E 1A2",
                 addressCountry: "CA",
               },
+              description:
+                "EZPZ Coffee is a Montreal-based company offering custom branded coffee bags with zero minimum order. White label specialty coffee roasted in Montreal.",
               sameAs: [
-                "https://www.instagram.com/ezpzcoffee",
-                "https://www.linkedin.com/company/ezpzcoffee",
-              ],
-              knowsAbout: [
-                "Custom coffee bags",
-                "White label coffee",
-                "Private label coffee",
-                "Specialty coffee",
-                "Coffee branding",
-                "Custom coffee packaging",
-                "Coffee corporate gifts",
+                "https://www.instagram.com/ezpz.coffee/",
+                "https://www.linkedin.com/company/ezpzcoffee/",
               ],
             }),
           }}
