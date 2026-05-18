@@ -17,7 +17,7 @@ export default function NotFound() {
         style={{
           margin: 0,
           padding: 0,
-          background: "#111111",
+          background: "#0D0A07",
           fontFamily:
             "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
           minHeight: "100vh",
@@ -57,7 +57,7 @@ export default function NotFound() {
               letterSpacing: "-0.01em",
             }}
           >
-            Lost in the beans?
+            Lost in the beans.
           </h1>
 
           <p
@@ -68,9 +68,7 @@ export default function NotFound() {
               margin: "0 0 40px",
             }}
           >
-            The page you are looking for does not exist.
-            <br />
-            Let us get you back on track.
+            This page does not exist.
           </p>
 
           <div
@@ -99,7 +97,7 @@ export default function NotFound() {
                 borderRadius: "2px",
               }}
             >
-              Go to homepage
+              Back to homepage
             </a>
             <a
               href="/en/design"

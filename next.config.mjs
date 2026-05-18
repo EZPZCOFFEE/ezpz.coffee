@@ -21,6 +21,11 @@ const nextConfig = {
         destination: "https://www.ezpz.coffee/:path*",
         permanent: true,
       },
+      { source: "/admin", destination: "/en", permanent: true },
+      { source: "/search", destination: "/en", permanent: true },
+      { source: "/wpm", destination: "/en", permanent: true },
+      { source: "/cdn", destination: "/en", permanent: true },
+      { source: "/b", destination: "/en", permanent: true },
     ];
   },
 };
