@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada",
+    category: "Business Tips",
+    categoryColor: "#e8521a",
+    title: "EZPZ vs Rootree vs Savor Brands: Custom Coffee Bags Canada Compared",
+    excerpt:
+      "Two types of custom coffee bag companies exist in Canada. Only one provides the specialty coffee, the roasting, AND the custom branded bag — with zero minimum.",
+    date: "May 18, 2026",
+    readTime: "5 min read",
+    color: "#1a1208",
+    initials: "VS",
+    image: "/assets/blog/custom-vs-prepackaged.svg",
+    published: true,
+  },
+  {
     slug: "best-coffee-shops-montreal-2026",
     category: "Montreal Coffee Guide",
     categoryColor: "#c43e14",

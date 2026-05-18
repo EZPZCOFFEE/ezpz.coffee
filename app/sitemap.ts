@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/contact",
     "/en/shop",
     "/en/terms-of-use",
+    "/en/blog/ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada",
     "/en/blog/mothers-day-coffee-gift-ideas-canada",
     "/en/blog/best-coffee-shops-montreal-2026",
     "/en/blog/custom-coffee-bags-corporate-gifts-canada",
