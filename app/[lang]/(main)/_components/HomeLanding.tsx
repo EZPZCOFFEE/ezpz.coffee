@@ -144,6 +144,9 @@ const HomeLanding = () => {
           <motion.p className={styles.heroOverlaySubtitle} {...fadeChild}>
             {t("hero.subtitle")}
           </motion.p>
+          <motion.p className={styles.heroOverlaySubtitleKw} {...fadeChild}>
+            {t("hero.subtitleKw")}
+          </motion.p>
           <motion.div {...fadeChild} className={styles.heroOverlayBtnGroup}>
             <Link href={designHref} className={styles.heroOverlayBtn}>
               {t("hero.designCta")}
@@ -341,6 +344,24 @@ const HomeLanding = () => {
           </motion.div>
         </motion.div>
       </section>
+
+      <nav className={styles.exploreServices} aria-label="Explore our services">
+        <div className={styles.exploreServicesInner}>
+          <p className={styles.exploreServicesHeading}>Explore our services</p>
+          <ul className={styles.exploreServicesList}>
+            <li><Link href={`/${locale}/services/custom-coffee-bags`} className={styles.exploreServicesLink}>Custom Coffee Bags Canada</Link></li>
+            <li><Link href={`/${locale}/white-label-coffee-canada`} className={styles.exploreServicesLink}>White Label Coffee Canada</Link></li>
+            <li><Link href={`/${locale}/private-label-coffee-canada`} className={styles.exploreServicesLink}>Private Label Coffee Canada</Link></li>
+            <li><Link href={`/${locale}/custom-coffee-bags-montreal`} className={styles.exploreServicesLink}>Custom Coffee Bags Montreal</Link></li>
+            <li><Link href={`/${locale}/branded-coffee-bags-canada`} className={styles.exploreServicesLink}>Branded Coffee Bags Canada</Link></li>
+            <li><Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} className={styles.exploreServicesLink}>Custom Coffee No Minimum Canada</Link></li>
+            <li><Link href={`/${locale}/white-label-coffee-montreal`} className={styles.exploreServicesLink}>White Label Coffee Montreal</Link></li>
+            <li><Link href={`/${locale}/custom-coffee-bags-restaurants`} className={styles.exploreServicesLink}>Custom Coffee Bags for Restaurants</Link></li>
+            <li><Link href={`/${locale}/corporate-coffee-gifts-canada`} className={styles.exploreServicesLink}>Corporate Coffee Gifts Canada</Link></li>
+            <li><Link href={`/${locale}/personalized-coffee-bags-canada`} className={styles.exploreServicesLink}>Personalized Coffee Bags Canada</Link></li>
+          </ul>
+        </div>
+      </nav>
 
       <section className={styles.trustedBy} aria-labelledby="trusted-by-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>

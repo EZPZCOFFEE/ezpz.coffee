@@ -6,12 +6,12 @@ import WhiteLabelSolutionsPage from "../_components/WhiteLabelSolutionsPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
-    description: "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
+    title: "White Label Coffee Canada | Private Label Coffee Bags | EZPZ Montreal",
+    description: "White label and private label coffee solutions in Canada. Custom branded bags, RTD, and Nespresso capsules. Zero minimum order, full design included, roasted in Montreal.",
     alternates: { canonical: "/en/white-label" },
     openGraph: {
-      title: "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
-      description: "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
+      title: "White Label Coffee Canada | Private Label Coffee Bags | EZPZ Montreal",
+      description: "White label and private label coffee solutions in Canada. Custom branded bags, RTD, and Nespresso capsules. Zero minimum order, full design included, roasted in Montreal.",
       type: "website",
       url: "https://www.ezpz.coffee/en/white-label",
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "White Label Coffee Canada | EZPZ Coffee" }],
@@ -107,6 +107,15 @@ const WhiteLabelRoutePage = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_SCHEMA) }}
       />
       <WhiteLabelSolutionsPage />
+      <section aria-label="White label coffee Canada intro" style={{ maxWidth: "900px", margin: "0 auto", padding: "32px 24px 0" }}>
+        <p style={{ fontSize: "1.05rem", lineHeight: "1.8", color: "#333", marginBottom: "16px" }}>
+          EZPZ Coffee is Canada&apos;s leading white label coffee supplier — offering private label coffee bags, ready-to-drink coffee, and Nespresso capsules with zero minimum order. Our white label coffee Canada program is used by restaurants, hotels, boutiques, and brands across the country who want to sell specialty coffee under their own brand name.
+        </p>
+        <p style={{ fontSize: "1.05rem", lineHeight: "1.8", color: "#333", marginBottom: "0" }}>
+          Whether you are looking for white label coffee Canada wide or private label coffee Canada sourced and roasted locally in Montreal — EZPZ handles everything from design to fulfillment. Private label coffee Canada has never been more accessible: start with a single bag and scale as your brand grows.
+        </p>
+      </section>
+
       <section aria-label="Key facts about EZPZ Coffee white label program" style={{ display: "none" }}>
         <h2>Key facts about EZPZ Coffee white label program</h2>
         <dl>

@@ -119,10 +119,13 @@ const PrivateLabelCanadaPage = () => {
       <section className={styles.intro}>
         <div className={styles.introInner}>
           <p className={styles.introText}>
-            Private label coffee lets you sell coffee under your own brand without roasting it yourself. You supply the brand — logo, packaging, and identity — and EZPZ supplies the product. We roast specialty grade coffee to order at Canadian Roasting Society in Montreal, pack it in your fully custom-designed bag, and ship it directly to you or your customers anywhere in Canada.
+            Private label coffee in Canada — also called white label coffee — is one of the highest-margin, lowest-complexity product additions available to Canadian restaurants, hotels, retailers, and brands. EZPZ Coffee is Canada&apos;s only private label coffee supplier with zero minimum order. Private label coffee Canada brands trust us for one reason: we provide the coffee, the design, the roasting, and the delivery — all in one place.
           </p>
           <p className={styles.introText}>
-            Where most private label coffee programs in Canada start at 50 to 500 units per order, EZPZ has no minimum at all. Restaurants, hotels, retailers, gyms, and corporate brands across Canada use EZPZ to launch or grow their private label coffee line without tying up capital in inventory or committing to volume they are not sure they can move.
+            Private label coffee lets you sell coffee under your own brand without roasting it yourself. You supply the brand — logo, packaging, and identity — and EZPZ supplies the product. We roast specialty grade private label coffee Canada wide at Canadian Roasting Society in Montreal, pack it in your fully custom-designed bag, and ship it directly to you or your customers anywhere in Canada.
+          </p>
+          <p className={styles.introText}>
+            Where most private label coffee Canada programs start at 50 to 500 units per order, EZPZ has no minimum at all. Restaurants, hotels, retailers, gyms, and corporate brands across Canada use EZPZ to launch or grow their private label coffee line without tying up capital in inventory.
           </p>
         </div>
       </section>

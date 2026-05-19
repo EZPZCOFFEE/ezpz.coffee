@@ -133,6 +133,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/how-much-do-custom-coffee-bags-cost-canada",
     "/en/best-white-label-coffee-supplier-canada",
     "/en/custom-coffee-for-restaurants-canada",
+    // Keyword landing pages
+    "/en/branded-coffee-bags-canada",
+    "/en/corporate-coffee-gifts-canada",
+    "/en/personalized-coffee-bags-canada",
+    "/en/white-label-coffee-montreal",
     // City coffee guide blog posts
     "/en/blog/best-coffee-shops-toronto-2026",
     "/en/blog/canadian-roasting-society-montreal-best-roaster",

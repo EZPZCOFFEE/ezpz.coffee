@@ -329,11 +329,11 @@
       "twitterDescription": "Personalize every detail and see the preview instantly."
     },
     "home": {
-      "description": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada.",
-      "ogDescription": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada.",
-      "ogTitle": "Custom Coffee Bags Canada | No Minimum Order | EZPZ Coffee",
-      "title": "Custom Coffee Bags Canada | No Minimum Order | EZPZ Coffee",
-      "twitterDescription": "Design and sell your own branded coffee bags with no minimum order. EZPZ Coffee offers white label specialty coffee, custom packaging, and full production support across Canada."
+      "description": "Canada's only custom coffee bags supplier with zero minimum order. White label coffee, branded bags, and private label solutions for restaurants, hotels, and brands. Roasted in Montreal.",
+      "ogDescription": "Canada's only custom coffee bags supplier with zero minimum order. White label coffee, branded bags, and private label solutions for restaurants, hotels, and brands. Roasted in Montreal.",
+      "ogTitle": "Custom Coffee Bags Canada | No Minimum | White Label Coffee | EZPZ",
+      "title": "Custom Coffee Bags Canada | No Minimum | White Label Coffee | EZPZ",
+      "twitterDescription": "Canada's only custom coffee bags supplier with zero minimum order. White label coffee, branded bags, and private label solutions. Roasted in Montreal."
     },
     "termsOfUse": {
       "description": "Read the terms and conditions for using EZPZ.coffee, including order policies, intellectual property, and liability information.",
@@ -363,7 +363,8 @@
     "hero": {
       "designCta": "Design your bag",
       "headline": "Your brand. Your coffee.",
-      "subtitle": "Custom coffee bags with no minimum order, designed, roasted, and delivered across Canada."
+      "subtitle": "Custom coffee bags with no minimum order, designed, roasted, and delivered across Canada.",
+      "subtitleKw": "Custom coffee bags Canada — white label, branded, and personalized. Zero minimum order."
     },
     "heroPhoto": {
       "ariaLabel": "EZPZ lifestyle hero",
@@ -405,7 +406,7 @@
         {
           "number": "01",
           "title": "Design your bag",
-          "body": "Use our online tool to create your custom bag with your logo, colors, and style."
+          "body": "Use our online tool to create your custom bag with your logo, colors, and style. Whether you need custom coffee bags in Montreal, Toronto, or anywhere across Canada — our process is simple."
         },
         {
           "number": "02",
@@ -470,7 +471,7 @@
     },
     "geo": {
       "title": "Serving businesses across Canada",
-      "body": "From Montreal to Vancouver, EZPZ Coffee works with restaurants, hotels, retailers, and brands across Canada. Whether you're launching a new coffee product or scaling an existing one, we make it simple, no matter where you are.",
+      "body": "From custom coffee bags in Montreal to branded coffee for restaurants in Toronto and Vancouver — EZPZ ships white label specialty coffee across Canada with zero minimum order.",
       "cities": "Currently serving: Montreal, Toronto, Vancouver, Calgary, Ottawa, and beyond."
     },
     "faqPreview": {
@@ -492,6 +493,14 @@
         {
           "question": "Do you offer distribution support?",
           "answer": "Yes, we have industry contacts and can help you get your product distributed across Canada."
+        },
+        {
+          "question": "What are the best custom coffee bags in Canada?",
+          "answer": "EZPZ Coffee is Canada's top-rated custom coffee bag supplier with zero minimum order, full design included, and specialty-grade coffee roasted in Montreal. We offer white label coffee bags, personalized coffee bags, and branded coffee bags for restaurants, hotels, and retailers across Canada."
+        },
+        {
+          "question": "Do you offer private label coffee in Canada?",
+          "answer": "Yes. EZPZ Coffee offers full private label and white label coffee solutions in Canada with zero minimum order. We handle design, roasting, packaging, and fulfillment — you sell under your own brand."
         }
       ]
     },

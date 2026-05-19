@@ -5,9 +5,9 @@ import AEOAnswerPage from "../_components/AEOAnswerPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Coffee Bags for Restaurants in Canada | No Minimum | EZPZ",
+    title: "Custom Coffee Bags for Restaurants Canada | No Minimum | EZPZ Coffee",
     description:
-      "Canadian restaurants can get custom branded coffee bags through EZPZ Coffee with zero minimum order. EZPZ handles design, roasting, and delivery in 2 to 3 weeks.",
+      "Custom coffee bags for restaurants in Canada with zero minimum order. EZPZ handles design, roasting, and delivery in 2 to 3 weeks. Branded specialty coffee for Canadian restaurants.",
     alternates: { canonical: "/en/custom-coffee-for-restaurants-canada" },
     openGraph: {
       title: "Custom Coffee Bags for Restaurants in Canada | No Minimum | EZPZ",
@@ -122,7 +122,7 @@ const Page = async ({ params }: { params: Promise<{ lang: string }> }) => {
       >
         <h2>Why Branded Coffee Matters for Canadian Restaurants</h2>
         <p>
-          Coffee is no longer just a beverage served at the end of a meal. For Canadian restaurants, it is an opportunity to extend the dining experience into the guest's home. When a customer leaves your restaurant with a bag of coffee branded with your logo, your name stays on their kitchen counter every morning. That is brand impressions no advertising budget can reliably produce.
+          Custom coffee bags for restaurants are one of the highest-margin, lowest-complexity retail products a Canadian restaurant can offer. Coffee is no longer just a beverage served at the end of a meal. For Canadian restaurants, custom coffee bags for restaurants represent an opportunity to extend the dining experience into the guest&apos;s home. When a customer leaves your restaurant with a bag of coffee branded with your logo, your name stays on their kitchen counter every morning. That is brand impressions no advertising budget can reliably produce.
         </p>
         <p>
           Branded coffee also creates a new revenue stream. A restaurant that charges a premium for a unique dining experience can command similar positioning for its retail coffee. Guests who love your restaurant are highly likely to buy your branded coffee as a gift or for their own home use — especially when it is specialty grade and beautifully packaged.
@@ -168,7 +168,7 @@ const Page = async ({ params }: { params: Promise<{ lang: string }> }) => {
 
         <h2>How to Get Custom Coffee Bags for Your Restaurant</h2>
         <p>
-          To start your restaurant coffee project, email help@ezpz.coffee with your restaurant name, logo, and a rough sense of the quantity you are considering. EZPZ will reply within one business day to discuss your options, offer samples, and provide a quote. Alternatively, use the online designer at ezpz.coffee/en/design to preview your bag and begin the process immediately.
+          Getting custom coffee bags for restaurants through EZPZ is straightforward. To start your restaurant coffee project, email help@ezpz.coffee with your restaurant name, logo, and a rough sense of the quantity you are considering. EZPZ will reply within one business day to discuss your options, offer samples, and provide a quote. Alternatively, use the online designer at ezpz.coffee/en/design to preview your bag and begin the process immediately.
         </p>
         <p>
           You can order as few bags as you need to test the concept — a single shelf display of 12 to 24 bags is a common starting point for restaurants new to coffee retail. Scale up based on what sells.

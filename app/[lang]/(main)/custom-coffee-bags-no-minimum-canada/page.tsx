@@ -192,7 +192,10 @@ const Page = async ({ params }: { params: Promise<{ lang: string }> }) => {
 
         <h2>How to Place Your No-Minimum Custom Coffee Bag Order</h2>
         <p>
-          Ordering from EZPZ Coffee takes minutes. Use the online bag designer at ezpz.coffee/en/design to select your coffee, upload your logo, and preview your bag. Alternatively, email help@ezpz.coffee with your logo and a description of what you need. EZPZ will create a bag design for your approval, typically within a few business days. Once you approve, your bags are roasted, packaged, and shipped within 2 to 3 weeks.
+          EZPZ Coffee is the only custom coffee bag supplier in Canada with a genuine zero minimum — making us the go-to choice for businesses searching for custom coffee no minimum Canada wide. Whether you need one personalized bag or ten thousand branded bags, the answer is always yes.
+        </p>
+        <p>
+          Ordering is simple. Use the online bag designer at ezpz.coffee/en/design to select your coffee, upload your logo, and preview your bag. Alternatively, email help@ezpz.coffee with your logo and a description of what you need. EZPZ will create a bag design for your approval, typically within a few business days. Once you approve, your bags are roasted, packaged, and shipped within 2 to 3 weeks. Custom coffee no minimum Canada — that is the EZPZ promise.
         </p>
         <p>
           There is no contract, no subscription, and no obligation to reorder. Every order stands on its own.

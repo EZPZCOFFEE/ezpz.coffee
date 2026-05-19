@@ -37,7 +37,7 @@ const ACCORDION_ITEMS = [
 ];
 
 const WHO_ITS_FOR = [
-  { emoji: "🍽️", title: "Restaurants", body: "Add a high-margin retail product your diners take home and brew every morning." },
+  { emoji: "🍽️", title: "Restaurants", body: "Custom coffee bags for restaurants are one of our most popular services. Add a high-margin retail product your diners take home and brew every morning." },
   { emoji: "🏨", title: "Hotels", body: "Elevate the in-room experience and create a branded touchpoint guests remember." },
   { emoji: "🛍️", title: "Boutiques", body: "A premium product that fits naturally alongside your existing merchandise." },
   { emoji: "🏋️", title: "Gyms and Studios", body: "Fuel your community with a product that aligns with their active lifestyle." },
@@ -165,7 +165,7 @@ const CustomCoffeeBagsPage = () => {
             <span className={styles.heroLabel}>01_ Custom Coffee Bags</span>
             <h1 className={styles.heroTitle}>Your bag. Your brand. We handle everything.</h1>
             <p className={styles.heroSubtitle}>
-              From the farm to your customer&apos;s door — EZPZ manages every step of your custom coffee bag program so you can focus on what you do best: running your business.
+              From the farm to your customer&apos;s door — EZPZ manages every step of your custom coffee bag program. Branded coffee bags Canada restaurants, hotels, and retailers trust — with zero minimum order and full design always included.
             </p>
             <div className={styles.heroBtnGroup}>
               <Link href={`/${locale}/design`} className={styles.heroBtnPrimary}>Start designing</Link>

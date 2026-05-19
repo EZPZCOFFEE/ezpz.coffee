@@ -4,12 +4,12 @@ import CityPage, { CityPageData } from "../_components/CityPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Coffee Bags Montreal | No Minimum Order | EZPZ Coffee",
+    title: "Custom Coffee Bags Montreal | White Label Coffee Montreal | EZPZ",
     description:
-      "Custom coffee bags for Montreal businesses, roasted fresh in Montreal. No minimum order, full design included. EZPZ serves Montreal brands of every size.",
+      "Custom coffee bags for Montreal businesses, roasted fresh in Montreal. No minimum order, full design included. White label coffee Montreal — EZPZ serves Montreal brands of every size.",
     alternates: { canonical: "/en/custom-coffee-bags-montreal" },
     openGraph: {
-      title: "Custom Coffee Bags Montreal | No Minimum Order | EZPZ Coffee",
+      title: "Custom Coffee Bags Montreal | White Label Coffee Montreal | EZPZ",
       description:
         "Custom coffee bags roasted fresh in Montreal. No minimum order, full design included. EZPZ serves Montreal brands of every size.",
       type: "website",
@@ -32,7 +32,7 @@ const data: CityPageData = {
   headline: "Custom coffee bags for Montreal brands. Roasted here. Zero minimums.",
   subheadline: "The only custom coffee supplier in Canada with no minimum order — and we roast every bag fresh in Montreal.",
   bodyIntro:
-    "From the Plateau-Mont-Royal restaurant scene to boutique hotels in Old Montreal, from Mile End coffee shops to Westmount wellness studios — Montreal businesses understand that branding matters. EZPZ Coffee is rooted in Montreal, roasting every order fresh at Canadian Roasting Society in the city's southwest. When you order with us, your coffee goes from our roastery to your door faster than any other supplier in Canada. No minimum order. Full custom design included. No hidden fees.",
+    "Looking for white label coffee in Montreal? EZPZ Coffee is Montreal's premier custom coffee bag supplier — roasting specialty coffee at Canadian Roasting Society and delivering branded coffee bags Montreal restaurants, hotels, and businesses trust, with zero minimum order. From the Plateau-Mont-Royal restaurant scene to boutique hotels in Old Montreal, from Mile End coffee shops to Westmount wellness studios — Montreal businesses understand that branding matters. White label coffee Montreal has never been more accessible: full design included, no hidden fees, and your coffee goes from our roastery to your door faster than any other supplier in Canada. Branded coffee bags Montreal businesses rely on — delivered in 2 to 3 weeks.",
   deliveryTime: "2 to 3 weeks",
   canonicalPath: "/custom-coffee-bags-montreal",
   howItWorks: [

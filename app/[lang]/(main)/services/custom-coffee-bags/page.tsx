@@ -5,12 +5,12 @@ import CustomCoffeeBagsPage from "./CustomCoffeeBagsPage";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Custom Branded Coffee Bags Canada | Full Service | No Minimum | EZPZ Coffee",
+    title: "Custom Coffee Bags Canada | Branded Coffee Bags | Full Service | EZPZ",
     description:
       "EZPZ Coffee handles everything for your custom branded coffee bags — design, sourcing, roasting, packaging, logistics, and fulfillment. No minimum order. Ships across Canada and the USA.",
     alternates: { canonical: "/en/services/custom-coffee-bags" },
     openGraph: {
-      title: "Custom Branded Coffee Bags Canada | Full Service | No Minimum | EZPZ Coffee",
+      title: "Custom Coffee Bags Canada | Branded Coffee Bags | Full Service | EZPZ",
       description:
         "EZPZ Coffee handles everything for your custom branded coffee bags — design, sourcing, roasting, packaging, logistics, and fulfillment. No minimum order. Ships across Canada and the USA.",
       type: "website",
@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Branded Coffee Bags Canada | Full Service | No Minimum | EZPZ Coffee",
+      title: "Custom Coffee Bags Canada | Branded Coffee Bags | Full Service | EZPZ",
       description:
         "EZPZ Coffee handles everything for your custom branded coffee bags — design, sourcing, roasting, packaging, logistics, and fulfillment. No minimum order. Ships across Canada and the USA.",
       images: ["/assets/banner-01.jpg"],

@@ -151,6 +151,15 @@
   max-width: 42ch;
 }
 
+.heroOverlaySubtitleKw {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
 .heroOverlayBtn {
   display: inline-flex;
   align-items: center;
@@ -1877,4 +1886,52 @@
   margin: 0;
   text-align: center;
   letter-spacing: 0.04em;
+}
+
+.exploreServices {
+  background: var(--color-white);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  padding: var(--spacing-state) var(--spacing-state);
+}
+
+.exploreServicesInner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--spacing-country);
+}
+
+.exploreServicesHeading {
+  font-size: 0.68rem;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(0, 0, 0, 0.35);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.exploreServicesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-state) var(--spacing-planet);
+}
+
+.exploreServicesLink {
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
 }
