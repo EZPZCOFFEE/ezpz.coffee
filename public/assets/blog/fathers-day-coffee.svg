@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D0A07"/>
+      <stop offset="100%" style="stop-color:#1a1208"/>
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a1f12"/>
+      <stop offset="100%" style="stop-color:#1a1208"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff4200"/>
+      <stop offset="100%" style="stop-color:#e83800"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="140" x2="800" y2="140" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+
+  <!-- Radial glow behind bag -->
+  <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" style="stop-color:rgba(255,66,0,0.12)"/>
+    <stop offset="100%" style="stop-color:rgba(255,66,0,0)"/>
+  </radialGradient>
+  <ellipse cx="370" cy="175" rx="180" ry="160" fill="url(#glow)"/>
+
+  <!-- Coffee bag -->
+  <rect x="290" y="55" width="160" height="240" rx="7" fill="url(#bagGrad)" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+  <!-- Top seal -->
+  <rect x="298" y="55" width="144" height="26" rx="4" fill="rgba(0,0,0,0.35)"/>
+  <line x1="298" y1="68" x2="442" y2="68" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="353" y="55" width="5" height="14" rx="1" fill="rgba(255,255,255,0.07)"/>
+  <rect x="382" y="55" width="5" height="14" rx="1" fill="rgba(255,255,255,0.07)"/>
+  <!-- Bottom gusset -->
+  <rect x="298" y="270" width="144" height="25" rx="4" fill="rgba(0,0,0,0.3)"/>
+  <!-- Side seams -->
+  <rect x="290" y="81" width="10" height="189" fill="rgba(0,0,0,0.2)"/>
+  <rect x="440" y="81" width="10" height="189" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Accent stripe at top of label -->
+  <rect x="308" y="98" width="124" height="4" rx="0" fill="url(#accentGrad)" opacity="0.85"/>
+
+  <!-- Label panel -->
+  <rect x="308" y="102" width="124" height="150" rx="0" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <!-- Label content -->
+  <text x="370" y="130" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="rgba(255,66,0,0.85)" text-anchor="middle" letter-spacing="3">FOR DAD</text>
+  <text x="370" y="153" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="rgba(255,255,255,0.92)" text-anchor="middle" letter-spacing="3">YOUR</text>
+  <text x="370" y="171" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="rgba(255,255,255,0.92)" text-anchor="middle" letter-spacing="3">NAME</text>
+  <line x1="328" y1="181" x2="412" y2="181" stroke="rgba(255,66,0,0.3)" stroke-width="0.75"/>
+  <text x="370" y="200" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.45)" text-anchor="middle" font-style="italic">Specialty Coffee</text>
+  <text x="370" y="218" font-family="Arial, sans-serif" font-size="6.5" fill="rgba(255,255,255,0.28)" text-anchor="middle" letter-spacing="2">EZPZ · CANADA</text>
+  <!-- Valve -->
+  <circle cx="370" cy="238" r="5" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <circle cx="370" cy="238" r="2" fill="rgba(255,255,255,0.07)"/>
+
+  <!-- Left side: bold coffee mug icon -->
+  <circle cx="155" cy="210" r="52" fill="none" stroke="rgba(255,66,0,0.1)" stroke-width="1"/>
+  <circle cx="155" cy="210" r="38" fill="none" stroke="rgba(255,66,0,0.07)" stroke-width="1"/>
+  <!-- Mug body -->
+  <rect x="128" y="190" width="46" height="38" rx="4" fill="rgba(255,66,0,0.18)" stroke="rgba(255,66,0,0.45)" stroke-width="1.5"/>
+  <!-- Mug handle -->
+  <path d="M174 199 Q190 199 190 209 Q190 219 174 219" fill="none" stroke="rgba(255,66,0,0.45)" stroke-width="1.5"/>
+  <!-- Steam lines -->
+  <path d="M138 188 Q140 180 138 172" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M151 188 Q153 179 151 170" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M164 188 Q166 180 164 172" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- "DAD" in mug -->
+  <text x="151" y="213" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.55)" text-anchor="middle" letter-spacing="1.5">DAD</text>
+
+  <!-- Right side: tasting notes panel -->
+  <rect x="490" y="140" width="172" height="150" rx="4" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="490" y="140" width="172" height="26" rx="4" fill="rgba(255,66,0,0.15)"/>
+  <rect x="490" y="154" width="172" height="12" fill="rgba(255,66,0,0.15)"/>
+  <text x="576" y="157" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="rgba(255,66,0,0.9)" text-anchor="middle" letter-spacing="2">TASTING NOTES</text>
+
+  <!-- Note rows -->
+  <text x="504" y="182" font-family="Arial, sans-serif" font-size="6.5" fill="rgba(255,255,255,0.35)" letter-spacing="1">BRAZIL DARK ROAST</text>
+  <text x="504" y="194" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.6)" font-style="italic">Dark Choc, Vanilla, Brown Sugar</text>
+
+  <line x1="504" y1="202" x2="648" y2="202" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="504" y="216" font-family="Arial, sans-serif" font-size="6.5" fill="rgba(255,255,255,0.35)" letter-spacing="1">COLOMBIA MEDIUM</text>
+  <text x="504" y="228" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.6)" font-style="italic">Caramel, Red Apple, Hazelnut</text>
+
+  <line x1="504" y1="236" x2="648" y2="236" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="504" y="250" font-family="Arial, sans-serif" font-size="6.5" fill="rgba(255,255,255,0.35)" letter-spacing="1">ETHIOPIA LIGHT</text>
+  <text x="504" y="262" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.6)" font-style="italic">Blueberry, Jasmine, Lemon</text>
+
+  <!-- Orange accent dots -->
+  <circle cx="108" cy="72" r="4" fill="rgba(255,66,0,0.25)"/>
+  <circle cx="130" cy="58" r="2.5" fill="rgba(255,66,0,0.18)"/>
+  <circle cx="650" cy="72" r="4" fill="rgba(255,66,0,0.25)"/>
+  <circle cx="680" cy="58" r="3" fill="rgba(255,66,0,0.18)"/>
+  <circle cx="700" cy="82" r="2" fill="rgba(255,66,0,0.15)"/>
+
+  <!-- Father's Day label at bottom -->
+  <text x="400" y="398" font-family="Arial, sans-serif" font-size="8.5" fill="rgba(255,255,255,0.18)" text-anchor="middle" letter-spacing="3">FATHER&apos;S DAY GIFT · CUSTOM COFFEE · CANADA</text>
+</svg>
