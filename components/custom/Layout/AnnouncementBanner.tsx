@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import styles from "./announcementBanner.module.scss";
 
-const STORAGE_KEY = "ezpz-announcement-dismissed-free-bag-2026";
+const STORAGE_KEY = "ezpz-announcement-dismissed-fathers-day-2026";
 
 const AnnouncementBanner = () => {
   const [visible, setVisible] = useState(false);
@@ -33,8 +33,8 @@ const AnnouncementBanner = () => {
   return (
     <div ref={ref} className={styles.banner}>
       <p className={styles.text}>
-        ✦ Get your first bag free — no catch, no minimum.{" "}
-        <Link href="/en/contact" className={styles.link}>Claim it now</Link>
+        ✦ Father&apos;s Day is June 15th — Design a personalized coffee bag for dad! Order by June 8th.{" "}
+        <Link href="/en/blog/coffee-gifts-fathers-day-canada-2026" className={styles.link}>Shop now</Link>
       </p>
       <button
         type="button"

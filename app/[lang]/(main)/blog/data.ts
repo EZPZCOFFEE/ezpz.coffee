@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "coffee-gifts-fathers-day-canada-2026",
+    category: "Gift Ideas",
+    categoryColor: "#c43e14",
+    title: "The Best Coffee Gifts for Father's Day in Canada 2026",
+    excerpt:
+      "Skip the tie and the gift card. Give dad a personalized specialty coffee bag he will use every morning and think of you every time he does.",
+    date: "May 25, 2026",
+    readTime: "6 min read",
+    color: "#0D0A07",
+    initials: "GI",
+    image: "/assets/blog/fathers-day-coffee.svg",
+    published: true,
+  },
+  {
     slug: "ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada",
     category: "Business Tips",
     categoryColor: "#e8521a",

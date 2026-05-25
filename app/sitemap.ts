@@ -138,6 +138,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/corporate-coffee-gifts-canada",
     "/en/personalized-coffee-bags-canada",
     "/en/white-label-coffee-montreal",
+    // Gift landing pages
+    "/en/fathers-day",
+    // Gift blog posts
+    "/en/blog/coffee-gifts-fathers-day-canada-2026",
     // City coffee guide blog posts
     "/en/blog/best-coffee-shops-toronto-2026",
     "/en/blog/canadian-roasting-society-montreal-best-roaster",
