@@ -34,6 +34,7 @@ const ADVANTAGE_ITEMS = [
 
 const TRUST_LOGOS = [
   { file: "avenue", name: "L'Avenue", href: "https://www.restaurantlavenue.com" },
+  { file: "cafepublic", name: "Café Public", href: "https://cafepublic.ca/" },
   { file: "cowork", name: "Cowork", href: "https://www.montrealcowork.com/fr-ca" },
   { file: "fairmont", name: "Fairmont Hotels & Resorts", href: "https://www.fairmont.com" },
   { file: "janine", name: "Janine", href: "https://www.janine.ca" },
