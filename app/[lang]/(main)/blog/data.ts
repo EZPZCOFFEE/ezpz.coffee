@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "custom-coffee-bags-vs-custom-mugs-canada",
+    category: "Business Tips",
+    categoryColor: "#e8521a",
+    title: "Custom Coffee Bags vs Custom Mugs in Canada: There Is No Contest",
+    excerpt:
+      "VistaPrint, Printful, Printify, and Printbest all sell custom mugs in Canada. Here is why Canadian brands are choosing EZPZ custom coffee bags instead — and the data that makes the case.",
+    date: "May 26, 2026",
+    readTime: "7 min read",
+    color: "#0D0A07",
+    initials: "BT",
+    image: "/assets/blog/coffee-bags-vs-mugs-canada.svg",
+    published: true,
+  },
+  {
     slug: "coffee-gifts-fathers-day-canada-2026",
     category: "Gift Ideas",
     categoryColor: "#c43e14",

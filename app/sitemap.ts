@@ -142,6 +142,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/fathers-day",
     // Gift blog posts
     "/en/blog/coffee-gifts-fathers-day-canada-2026",
+    "/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
     // City coffee guide blog posts
     "/en/blog/best-coffee-shops-toronto-2026",
     "/en/blog/canadian-roasting-society-montreal-best-roaster",
