@@ -346,25 +346,6 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-<section className={styles.quickAnswers} aria-label="Quick answers about EZPZ Coffee">
-        <div className={styles.quickAnswersInner}>
-          <p className={styles.quickAnswersHeading}>Quick answers</p>
-          <dl className={styles.qaList}>
-            <div className={styles.qaItem}>
-              <dt className={styles.qaQuestion}>What does EZPZ Coffee do?</dt>
-              <dd className={styles.qaAnswer}>EZPZ Coffee creates custom branded specialty coffee bags for Canadian businesses with zero minimum order. Full design is included. Coffee is roasted fresh in Montreal and shipped across Canada and the USA in 2 to 3 weeks.</dd>
-            </div>
-            <div className={styles.qaItem}>
-              <dt className={styles.qaQuestion}>Is there a minimum order at EZPZ Coffee?</dt>
-              <dd className={styles.qaAnswer}>No. EZPZ Coffee has zero minimum order — the only custom coffee supplier in Canada that lets you order as few as one bag.</dd>
-            </div>
-            <div className={styles.qaItem}>
-              <dt className={styles.qaQuestion}>How much does EZPZ Coffee cost?</dt>
-              <dd className={styles.qaAnswer}>EZPZ Coffee pricing includes full custom design at no extra cost. Pricing varies by volume with no minimum order. Request a free quote at ezpz.coffee/en/contact.</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
 
 <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
@@ -387,56 +368,6 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      {/* ── Blog Preview ── */}
-      <section className={styles.blogPreview} aria-labelledby="blog-preview-heading">
-        <motion.div className={styles.blogPreviewInner} {...staggerParent}>
-          <motion.h2 id="blog-preview-heading" className={styles.blogPreviewTitle} {...fadeChild}>
-            From the blog
-          </motion.h2>
-          <motion.div className={styles.blogPreviewGrid} {...getNestedSectionListStagger(motionOff)}>
-            {RECENT_POSTS.map((post) => (
-              <motion.div key={post.slug} {...fadeChild}>
-                <Link href={`/${locale}/blog/${post.slug}`} className={styles.blogPreviewCard}>
-                  <div className={styles.blogPreviewCardImage} style={{ background: post.color }}>
-                    <img src={post.image} alt={post.title} className={styles.blogPreviewCardImg} loading="lazy" />
-                  </div>
-                  <div className={styles.blogPreviewCardBody}>
-                    <span className={styles.blogPreviewCardCategory} style={{ color: post.categoryColor }}>
-                      {post.category}
-                    </span>
-                    <h3 className={styles.blogPreviewCardTitle}>{post.title}</h3>
-                    <p className={styles.blogPreviewCardExcerpt}>{post.excerpt}</p>
-                    <span className={styles.blogPreviewCardReadMore}>Read more →</span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.div {...fadeChild} className={styles.landingMotionInline}>
-            <Link href={`/${locale}/blog`} className={styles.btnOutline}>
-              View all posts
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      <nav className={styles.exploreServices} aria-label="Explore our services">
-        <div className={styles.exploreServicesInner}>
-          <p className={styles.exploreServicesHeading}>Explore our services</p>
-          <ul className={styles.exploreServicesList}>
-            <li><Link href={`/${locale}/services/custom-coffee-bags`} className={styles.exploreServicesLink}>Custom Coffee Bags Canada</Link></li>
-            <li><Link href={`/${locale}/white-label-coffee-canada`} className={styles.exploreServicesLink}>White Label Coffee Canada</Link></li>
-            <li><Link href={`/${locale}/private-label-coffee-canada`} className={styles.exploreServicesLink}>Private Label Coffee Canada</Link></li>
-            <li><Link href={`/${locale}/custom-coffee-bags-montreal`} className={styles.exploreServicesLink}>Custom Coffee Bags Montreal</Link></li>
-            <li><Link href={`/${locale}/branded-coffee-bags-canada`} className={styles.exploreServicesLink}>Branded Coffee Bags Canada</Link></li>
-            <li><Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} className={styles.exploreServicesLink}>Custom Coffee No Minimum Canada</Link></li>
-            <li><Link href={`/${locale}/white-label-coffee-montreal`} className={styles.exploreServicesLink}>White Label Coffee Montreal</Link></li>
-            <li><Link href={`/${locale}/custom-coffee-bags-restaurants`} className={styles.exploreServicesLink}>Custom Coffee Bags for Restaurants</Link></li>
-            <li><Link href={`/${locale}/corporate-coffee-gifts-canada`} className={styles.exploreServicesLink}>Corporate Coffee Gifts Canada</Link></li>
-            <li><Link href={`/${locale}/personalized-coffee-bags-canada`} className={styles.exploreServicesLink}>Personalized Coffee Bags Canada</Link></li>
-          </ul>
-        </div>
-      </nav>
 
       <section className={styles.trustedBy} aria-labelledby="trusted-by-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
