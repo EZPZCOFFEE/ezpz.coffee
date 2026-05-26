@@ -199,7 +199,7 @@ const HomeLanding = () => {
           </div>
           <div className={styles.statDivider} aria-hidden />
           <div className={styles.statItem}>
-            <span className={styles.statNum}>0</span>
+            <span className={styles.statNum}>1</span>
             <span className={styles.statLabel}>Minimum order</span>
           </div>
         </div>
