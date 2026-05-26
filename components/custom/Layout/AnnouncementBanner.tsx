@@ -33,8 +33,8 @@ const AnnouncementBanner = () => {
   return (
     <div ref={ref} className={styles.banner}>
       <p className={styles.text}>
-        ✦ Father&apos;s Day is June 15th — Design a personalized coffee bag for dad! Order by June 8th.{" "}
-        <Link href="/en/blog/coffee-gifts-fathers-day-canada-2026" className={styles.link}>Shop now</Link>
+        ✦ Father&apos;s Day is June 15th — Give dad a personalized specialty coffee bag! Order by June 8th.{" "}
+        <Link href="/en/fathers-day" className={styles.link}>Shop now</Link>
       </p>
       <button
         type="button"

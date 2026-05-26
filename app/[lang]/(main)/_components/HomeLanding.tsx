@@ -11,7 +11,10 @@ import { getHeroHintFade, getNestedSectionListStagger, getStaggerReveal } from "
 import banner01 from "@/public/assets/banner-01.jpg";
 import bannerBase from "@/public/assets/banner-base.jpg";
 
+import { BLOG_POSTS } from "../blog/data";
 import styles from "./homeLanding.module.scss";
+
+const RECENT_POSTS = BLOG_POSTS.filter((p) => p.published).slice(0, 3);
 
 const WHITE_LABEL_BODY_KEYS = [
   "bodyLine1",
@@ -152,7 +155,7 @@ const HomeLanding = () => {
               {t("hero.designCta")}
             </Link>
             <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.heroSampleLink}>
-              Request a free sample
+              Request a free sample →
             </Link>
           </motion.div>
         </motion.div>
@@ -176,6 +179,31 @@ const HomeLanding = () => {
           </button>
         </motion.div>
       </section>
+
+      {/* ── Stats Bar ── */}
+      <div className={styles.statsBar} aria-label="Key statistics">
+        <div className={styles.statsBarInner}>
+          <div className={styles.statItem}>
+            <span className={styles.statNum}>500+</span>
+            <span className={styles.statLabel}>Brands served</span>
+          </div>
+          <div className={styles.statDivider} aria-hidden />
+          <div className={styles.statItem}>
+            <span className={styles.statNum}>100%</span>
+            <span className={styles.statLabel}>Canadian roasted</span>
+          </div>
+          <div className={styles.statDivider} aria-hidden />
+          <div className={styles.statItem}>
+            <span className={styles.statNum}>2–3 wks</span>
+            <span className={styles.statLabel}>Average turnaround</span>
+          </div>
+          <div className={styles.statDivider} aria-hidden />
+          <div className={styles.statItem}>
+            <span className={styles.statNum}>0</span>
+            <span className={styles.statLabel}>Minimum order</span>
+          </div>
+        </div>
+      </div>
 
       <section className={styles.howItWorks} aria-labelledby="how-it-works-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
@@ -201,6 +229,9 @@ const HomeLanding = () => {
             <br />
             {t("whiteLabel.titleLine2")}
           </motion.h2>
+          <motion.p className={styles.wlSectionSubtext} {...fadeChild}>
+            {t("whiteLabel.sectionSubtext")}
+          </motion.p>
           <motion.div className={styles.whiteLabelBannerBody} {...whiteLabelBodyStagger}>
             {WHITE_LABEL_BODY_KEYS.map((key) => (
               <motion.p key={key} className={styles.heroSubtitle} {...fadeChild}>
@@ -251,6 +282,17 @@ const HomeLanding = () => {
               </motion.blockquote>
             ))}
           </motion.div>
+          <motion.p className={styles.googleReviewCta} {...fadeChild}>
+            Happy EZPZ customer?{" "}
+            <a
+              href="https://g.page/r/ezpzcoffee/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.googleReviewLink}
+            >
+              Leave us a Google review ★★★★★
+            </a>
+          </motion.p>
         </motion.div>
       </section>
 
@@ -340,6 +382,39 @@ const HomeLanding = () => {
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/faq`} className={styles.btnOutline}>
               {t("faqPreview.seeAll")}
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ── Blog Preview ── */}
+      <section className={styles.blogPreview} aria-labelledby="blog-preview-heading">
+        <motion.div className={styles.blogPreviewInner} {...staggerParent}>
+          <motion.h2 id="blog-preview-heading" className={styles.blogPreviewTitle} {...fadeChild}>
+            From the blog
+          </motion.h2>
+          <motion.div className={styles.blogPreviewGrid} {...getNestedSectionListStagger(motionOff)}>
+            {RECENT_POSTS.map((post) => (
+              <motion.div key={post.slug} {...fadeChild}>
+                <Link href={`/${locale}/blog/${post.slug}`} className={styles.blogPreviewCard}>
+                  <div className={styles.blogPreviewCardImage} style={{ background: post.color }}>
+                    <img src={post.image} alt={post.title} className={styles.blogPreviewCardImg} loading="lazy" />
+                  </div>
+                  <div className={styles.blogPreviewCardBody}>
+                    <span className={styles.blogPreviewCardCategory} style={{ color: post.categoryColor }}>
+                      {post.category}
+                    </span>
+                    <h3 className={styles.blogPreviewCardTitle}>{post.title}</h3>
+                    <p className={styles.blogPreviewCardExcerpt}>{post.excerpt}</p>
+                    <span className={styles.blogPreviewCardReadMore}>Read more →</span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/blog`} className={styles.btnOutline}>
+              View all posts
             </Link>
           </motion.div>
         </motion.div>

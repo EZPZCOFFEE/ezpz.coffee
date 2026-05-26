@@ -47,6 +47,8 @@ const Footer = () => {
             <Link href={`/${locale}/design`} className={styles.footerLink}>{t("design")}</Link>
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>{t("ourCoffee")}</Link>
             <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>Custom Coffee Bags</Link>
+            <Link href={`/${locale}/services`} className={styles.footerLink}>Services</Link>
+            <Link href={`/${locale}/blog`} className={styles.footerLink}>Blog</Link>
             <Link href={`/${locale}/locations`} className={styles.footerLink}>Canadian Markets</Link>
             <Link href={`/${locale}/locations/usa`} className={styles.footerLink}>US Markets</Link>
             <Link href={`/${locale}/industries`} className={styles.footerLink}>Industries we serve</Link>
@@ -67,9 +69,10 @@ const Footer = () => {
             <span className={styles.footerNavHeading}>{t("companyHeading")}</span>
             <Link href={`/${locale}/about`} className={styles.footerLink}>{t("aboutUs")}</Link>
             <Link href={`/${locale}/white-label`} className={styles.footerLink}>{t("whiteLabel")}</Link>
-            <Link href={`/${locale}/blog`} className={styles.footerLink}>Blog</Link>
             <Link href={`/${locale}/compare`} className={styles.footerLink}>EZPZ vs Competitors</Link>
-<Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
+            <Link href={`/${locale}/portfolio`} className={styles.footerLink}>Our Work</Link>
+            <Link href={`/${locale}/coffee-week`} className={styles.footerLink}>Coffee Week</Link>
+            <Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
           </nav>
         </div>
 

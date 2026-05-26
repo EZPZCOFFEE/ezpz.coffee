@@ -430,18 +430,18 @@
       "items": [
         {
           "quote": "Working with EZPZ was seamless from start to finish. Our branded coffee became one of our best-selling products.",
-          "author": "Sarah L.",
-          "role": "Boutique Owner"
+          "author": "Owner",
+          "role": "Montreal Boutique"
         },
         {
           "quote": "The quality is outstanding and the process was so simple. We had our custom bags in hand within weeks.",
-          "author": "Marc T.",
-          "role": "Restaurant Manager"
+          "author": "Manager",
+          "role": "Toronto Restaurant"
         },
         {
           "quote": "EZPZ helped us launch our coffee brand with zero headaches. Highly recommend to any business looking to add coffee to their lineup.",
-          "author": "Julie R.",
-          "role": "Retail Brand"
+          "author": "Founder",
+          "role": "Canadian Retail Brand"
         }
       ]
     },
@@ -512,8 +512,9 @@
       "bodyLine5": "Bags, ready-to-drink, or Nespresso-compatible capsules.",
       "bodyLine6": "Your brand. Your coffee.",
       "learnMore": "Learn more",
-      "titleLine1": "White label",
-      "titleLine2": "Brand building"
+      "titleLine1": "Three ways to put your brand",
+      "titleLine2": "on specialty coffee.",
+      "sectionSubtext": "Bags, ready-to-drink, or Nespresso capsules — all roasted fresh in Montreal with zero minimum order."
     }
   },
   "whiteLabelPage": {
