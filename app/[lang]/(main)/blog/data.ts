@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "private-label-coffee-canada-complete-guide",
+    category: "Complete Guide",
+    categoryColor: "#e8521a",
+    title: "Private Label Coffee in Canada: The Complete 2026 Guide",
+    excerpt:
+      "The most comprehensive, Canada-specific guide to private label coffee ever written. Everything from costs and minimums to choosing your coffee and pricing for profit.",
+    date: "June 1, 2026",
+    readTime: "12 min read",
+    color: "#0D0A07",
+    initials: "PL",
+    image: "/assets/blog/private-label-coffee-canada.svg",
+    published: true,
+  },
+  {
     slug: "custom-coffee-bags-vs-custom-mugs-canada",
     category: "Business Tips",
     categoryColor: "#e8521a",
