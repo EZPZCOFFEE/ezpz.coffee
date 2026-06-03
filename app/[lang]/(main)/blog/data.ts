@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "complete-guide-coffee-roasters-montreal-2026",
+    category: "Montreal Coffee Guide",
+    categoryColor: "#c43e14",
+    title: "Every Coffee Roaster in Montreal in 2026: The Complete Guide",
+    excerpt:
+      "The most comprehensive list of Montreal coffee roasters ever compiled. From four world-ranked operations to nano-roasters nobody has written about — 40+ roasters covered.",
+    date: "June 2, 2026",
+    readTime: "15 min read",
+    color: "#060d1a",
+    initials: "CG",
+    image: "/assets/blog/complete-guide-montreal-roasters.svg",
+    published: true,
+  },
+  {
     slug: "private-label-coffee-canada-complete-guide",
     category: "Complete Guide",
     categoryColor: "#e8521a",

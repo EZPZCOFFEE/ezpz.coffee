@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060d1a"/>
+      <stop offset="100%" style="stop-color:#0f1e30"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a842"/>
+      <stop offset="100%" style="stop-color:#b8922e"/>
+    </linearGradient>
+    <linearGradient id="drumGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2a3d"/>
+      <stop offset="100%" style="stop-color:#0d1a2d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="420" fill="url(#bg)"/>
+
+  <!-- Grid -->
+  <line x1="0" y1="140" x2="800" y2="140" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="0" y1="280" x2="800" y2="280" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+
+  <!-- LEFT: Title block -->
+  <!-- Complete Guide badge -->
+  <rect x="40" y="38" width="128" height="19" rx="2" fill="rgba(196,62,20,0.25)" stroke="rgba(232,82,26,0.5)" stroke-width="1"/>
+  <text x="104" y="51" font-family="Arial, sans-serif" font-size="7.5" font-weight="800" fill="#e8521a" text-anchor="middle" letter-spacing="2">COMPLETE GUIDE</text>
+
+  <!-- Main title -->
+  <text x="40" y="96" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="rgba(255,255,255,0.45)" letter-spacing="0.1em">EVERY COFFEE ROASTER IN</text>
+  <text x="40" y="128" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff" letter-spacing="-0.02em">MONTRÉAL</text>
+  <text x="40" y="152" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#e8521a" letter-spacing="0.12em">2026</text>
+
+  <!-- 40+ stat pill -->
+  <rect x="40" y="170" width="115" height="38" rx="4" fill="rgba(212,168,66,0.12)" stroke="rgba(212,168,66,0.3)" stroke-width="1"/>
+  <text x="97" y="185" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="rgba(212,168,66,0.9)" text-anchor="middle">40+</text>
+  <text x="97" y="200" font-family="Arial, sans-serif" font-size="7" fill="rgba(255,255,255,0.38)" text-anchor="middle" letter-spacing="1.5">ROASTERS COVERED</text>
+
+  <!-- Sections preview -->
+  <text x="40" y="238" font-family="Arial, sans-serif" font-size="6.5" fill="rgba(255,255,255,0.2)" letter-spacing="2.5">IN THIS GUIDE</text>
+  <line x1="40" y1="244" x2="230" y2="244" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="40" y="264" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.45)">★  4 world-ranked operations</text>
+  <text x="40" y="281" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.42)">→  The CRS community roasters</text>
+  <text x="40" y="298" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.38)">→  Montreal's historic institutions</text>
+  <text x="40" y="315" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">→  Specialists &amp; rising stars</text>
+  <text x="40" y="332" font-family="Arial, sans-serif" font-size="8" fill="rgba(255,255,255,0.28)">→  Nano-roasters &amp; hidden gems</text>
+
+  <!-- RIGHT: Roasting drum -->
+  <ellipse cx="570" cy="205" rx="100" ry="86" fill="url(#drumGrad)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+  <ellipse cx="570" cy="205" rx="78" ry="65" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <ellipse cx="570" cy="205" rx="56" ry="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <circle cx="570" cy="205" r="13" fill="rgba(212,168,66,0.16)" stroke="rgba(212,168,66,0.38)" stroke-width="1.5"/>
+  <circle cx="570" cy="205" r="5.5" fill="rgba(212,168,66,0.38)"/>
+  <!-- Spokes -->
+  <line x1="570" y1="119" x2="570" y2="136" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="570" y1="274" x2="570" y2="291" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="470" y1="205" x2="487" y2="205" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="653" y1="205" x2="670" y2="205" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="499" y1="136" x2="511" y2="148" stroke="rgba(255,255,255,0.09)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="641" y1="136" x2="629" y2="148" stroke="rgba(255,255,255,0.09)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="499" y1="274" x2="511" y2="262" stroke="rgba(255,255,255,0.09)" stroke-width="2" stroke-linecap="round"/>
+  <line x1="641" y1="274" x2="629" y2="262" stroke="rgba(255,255,255,0.09)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Drum text -->
+  <text x="570" y="199" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="rgba(212,168,66,0.55)" text-anchor="middle" letter-spacing="2.5">SPECIALTY</text>
+  <text x="570" y="215" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="rgba(212,168,66,0.55)" text-anchor="middle" letter-spacing="2.5">ROASTER</text>
+  <rect x="470" y="199" width="200" height="3" fill="url(#accentGrad)" opacity="0.5"/>
+
+  <!-- Flames -->
+  <path d="M516 293 Q527 271 539 289 Q551 267 563 285 Q575 265 587 283 Q599 268 611 286 Q623 272 635 293Z" fill="url(#accentGrad)" opacity="0.6"/>
+  <path d="M532 293 Q541 277 550 291 Q559 273 568 288 Q577 276 586 291 Q595 279 604 293Z" fill="#e8521a" opacity="0.4"/>
+
+  <!-- Steam wisps -->
+  <path d="M538 117 Q533 98 540 79 Q547 60 543 42" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M570" y1="115" Q565 94 572 74 Q579 54 575 36" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M602 117 Q607 98 600 79 Q593 60 597 42" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Stand -->
+  <rect x="520" y="291" width="100" height="12" rx="2" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <rect x="538" y="303" width="11" height="20" rx="1" fill="rgba(255,255,255,0.06)"/>
+  <rect x="591" y="303" width="11" height="20" rx="1" fill="rgba(255,255,255,0.06)"/>
+  <rect x="528" y="323" width="84" height="5" rx="1" fill="rgba(255,255,255,0.06)"/>
+
+  <!-- Footer -->
+  <text x="400" y="400" font-family="Arial, sans-serif" font-size="7.5" fill="rgba(255,255,255,0.15)" text-anchor="middle" letter-spacing="3">MONTREAL COFFEE GUIDE · 40+ ROASTERS · EZPZ COFFEE 2026</text>
+</svg>
