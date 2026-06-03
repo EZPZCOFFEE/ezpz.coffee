@@ -75,7 +75,7 @@
 
   <!-- Steam wisps -->
   <path d="M538 117 Q533 98 540 79 Q547 60 543 42" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round"/>
-  <path d="M570" y1="115" Q565 94 572 74 Q579 54 575 36" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M570 115 Q565 94 572 74 Q579 54 575 36" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-linecap="round"/>
   <path d="M602 117 Q607 98 600 79 Q593 60 597 42" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2" stroke-linecap="round"/>
 
   <!-- Stand -->
