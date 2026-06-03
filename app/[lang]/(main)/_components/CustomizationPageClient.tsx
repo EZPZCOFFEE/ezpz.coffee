@@ -164,6 +164,15 @@ const CustomizationContent: React.FC = () => {
     // Reset form and open cart
     formMethods.reset();
     openCart();
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18087558623/sAJUCJvYy5scEN_76LBD",
+        value: 25.0,
+        currency: "CAD",
+        transaction_id: Date.now().toString(),
+      });
+    }
   };
 
   return (

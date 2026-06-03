@@ -172,6 +172,16 @@ export const ProductView = () => {
                 quantity={quantity}
                 className={styles.addToCartBtn}
                 disabled={!isAvailable}
+                onClick={() => {
+                  if (typeof window.gtag === "function") {
+                    window.gtag("event", "conversion", {
+                      send_to: "AW-18087558623/sAJUCJvYy5scEN_76LBD",
+                      value: 30.0,
+                      currency: "CAD",
+                      transaction_id: Date.now().toString(),
+                    });
+                  }
+                }}
               >
                 {isAvailable ? t("addToCart") : t("soldOut")}
               </AddToCartButton>
