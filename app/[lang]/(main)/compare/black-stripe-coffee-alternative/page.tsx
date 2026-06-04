@@ -3,6 +3,14 @@ import Link from "next/link";
 
 import styles from "./blackStripe.module.scss";
 
+const OTHER_COMPARISONS = [
+  { label: "EZPZ vs Rogue Wave Coffee", href: "/en/compare/rogue-wave-coffee-alternative" },
+  { label: "EZPZ vs Canterbury Coffee", href: "/en/compare/canterbury-coffee-alternative" },
+  { label: "EZPZ vs Virgin Hill Coffee", href: "/en/compare/virgin-hill-coffee-alternative" },
+  { label: "EZPZ vs Hutsul Coffee", href: "/en/compare/hutsul-coffee-alternative" },
+  { label: "EZPZ vs Roasters Pack", href: "/en/compare/roasters-pack-alternative" },
+];
+
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Black Stripe Coffee Alternative | Custom Branded Coffee No Minimum | EZPZ",
@@ -199,6 +207,18 @@ const BlackStripePage = () => {
           <Link href="/en/compare" className={styles.backLinkAnchor}>← See all competitor comparisons</Link>
         </div>
       </div>
+
+      {/* ── Other comparisons ── */}
+      <section style={{ background: "#f8f7f5", padding: "3rem 1.5rem", borderTop: "1px solid #e8e8e8" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: "1rem" }}>Other comparisons</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+            {OTHER_COMPARISONS.map(({ label, href }) => (
+              <Link key={href} href={href} style={{ display: "inline-block", padding: "8px 16px", background: "#ffffff", border: "1px solid #e0e0e0", borderRadius: "4px", fontSize: "0.82rem", fontWeight: 600, color: "#374151", textDecoration: "none" }}>{label}</Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Final CTA ── */}
       <section className={styles.cta}>

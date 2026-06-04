@@ -57,6 +57,10 @@ const data: CityPageData = {
   relatedCities: [
     { city: "Edmonton", href: "/en/custom-coffee-bags-edmonton" },
     { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
+    { city: "Saskatoon", href: "/en/custom-coffee-bags-saskatoon" },
+    { city: "Regina", href: "/en/custom-coffee-bags-regina" },
+    { city: "Winnipeg", href: "/en/custom-coffee-bags-winnipeg" },
+    { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
   faq: [
     {

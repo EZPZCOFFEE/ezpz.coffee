@@ -102,6 +102,10 @@ const data: CityPageData = {
   relatedCities: [
     { city: "Quebec City", href: "/en/custom-coffee-bags-quebec-city" },
     { city: "Laval", href: "/en/custom-coffee-bags-laval" },
+    { city: "Longueuil", href: "/en/custom-coffee-bags-longueuil" },
+    { city: "Sherbrooke", href: "/en/custom-coffee-bags-sherbrooke" },
+    { city: "Gatineau", href: "/en/custom-coffee-bags-gatineau" },
+    { city: "Ottawa", href: "/en/custom-coffee-bags-ottawa" },
     { city: "Toronto", href: "/en/custom-coffee-bags-toronto" },
   ],
   faq: [

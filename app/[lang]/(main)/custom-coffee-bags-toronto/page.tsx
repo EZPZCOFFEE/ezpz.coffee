@@ -104,6 +104,10 @@ const data: CityPageData = {
     { city: "Mississauga", href: "/en/custom-coffee-bags-mississauga" },
     { city: "Hamilton", href: "/en/custom-coffee-bags-hamilton" },
     { city: "Ottawa", href: "/en/custom-coffee-bags-ottawa" },
+    { city: "Brampton", href: "/en/custom-coffee-bags-brampton" },
+    { city: "London Ontario", href: "/en/custom-coffee-bags-london-ontario" },
+    { city: "Montreal", href: "/en/custom-coffee-bags-montreal" },
+    { city: "Vancouver", href: "/en/custom-coffee-bags-vancouver" },
   ],
   faq: [
     {

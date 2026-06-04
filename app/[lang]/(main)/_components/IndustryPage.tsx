@@ -2,6 +2,33 @@ import Link from "next/link";
 
 import styles from "./industryPage.module.scss";
 
+const ALL_INDUSTRIES: { label: string; href: string }[] = [
+  { label: "Hotels", href: "/en/custom-coffee-bags-hotels" },
+  { label: "Restaurants", href: "/en/custom-coffee-bags-restaurants" },
+  { label: "Gyms", href: "/en/custom-coffee-bags-gyms" },
+  { label: "Boutiques", href: "/en/custom-coffee-bags-boutiques" },
+  { label: "Spas", href: "/en/custom-coffee-bags-spas" },
+  { label: "Offices", href: "/en/custom-coffee-bags-offices" },
+  { label: "Real Estate Agents", href: "/en/custom-coffee-bags-real-estate-agents" },
+  { label: "Yoga Studios", href: "/en/custom-coffee-bags-yoga-studios" },
+  { label: "Golf Clubs", href: "/en/custom-coffee-bags-golf-clubs" },
+  { label: "Co-Working Spaces", href: "/en/custom-coffee-bags-co-working-spaces" },
+  { label: "Wineries", href: "/en/custom-coffee-bags-wineries" },
+  { label: "Breweries", href: "/en/custom-coffee-bags-breweries" },
+  { label: "Food Trucks", href: "/en/custom-coffee-bags-food-trucks" },
+  { label: "Catering Companies", href: "/en/custom-coffee-bags-catering-companies" },
+  { label: "Event Planners", href: "/en/custom-coffee-bags-event-planners" },
+  { label: "Universities", href: "/en/custom-coffee-bags-universities" },
+  { label: "Subscription Boxes", href: "/en/custom-coffee-bags-subscription-boxes" },
+  { label: "Dental Offices", href: "/en/custom-coffee-bags-dental-offices" },
+  { label: "Medical Clinics", href: "/en/custom-coffee-bags-medical-clinics" },
+  { label: "Law Firms", href: "/en/custom-coffee-bags-law-firms" },
+  { label: "Country Clubs", href: "/en/custom-coffee-bags-country-clubs" },
+  { label: "Wedding Venues", href: "/en/custom-coffee-bags-wedding-venues" },
+  { label: "Airbnb Hosts", href: "/en/custom-coffee-bags-airbnb" },
+  { label: "Corporate", href: "/en/custom-coffee-bags-corporate" },
+];
+
 export interface IndustryPageData {
   industry: string;
   eyebrow: string;
@@ -26,6 +53,7 @@ const HOW_IT_WORKS_DEFAULT = [
 
 const IndustryPage = ({ data }: { data: IndustryPageData }) => {
   const howItWorks = data.howItWorks ?? HOW_IT_WORKS_DEFAULT;
+  const relatedIndustries = ALL_INDUSTRIES.filter((i) => !i.href.endsWith(data.canonicalPath));
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -145,6 +173,18 @@ const IndustryPage = ({ data }: { data: IndustryPageData }) => {
           <p className={styles.testimonialQuote}>{data.testimonial.quote}</p>
           <p className={styles.testimonialAuthor}>{data.testimonial.author}</p>
           <p className={styles.testimonialRole}>{data.testimonial.role}</p>
+        </div>
+      </section>
+
+      {/* ── Related Industries ── */}
+      <section className={styles.related}>
+        <div className={styles.relatedInner}>
+          <span className={styles.eyebrow}>More industries we serve</span>
+          <div className={styles.relatedGrid}>
+            {relatedIndustries.map(({ label, href }) => (
+              <Link key={href} href={href} className={styles.relatedLink}>{label}</Link>
+            ))}
+          </div>
         </div>
       </section>
 
