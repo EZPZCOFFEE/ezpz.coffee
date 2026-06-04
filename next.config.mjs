@@ -40,7 +40,7 @@ const nextConfig = {
       // Blog paths missing /en/ prefix
       { source: "/blog/:slug*", destination: "/en/blog/:slug*", permanent: true },
       // Custom coffee bag city/industry pages missing /en/ prefix
-      { source: "/custom-coffee-bags-:slug*", destination: "/en/custom-coffee-bags-:slug*", permanent: true },
+      { source: "/custom-coffee-bags-:slug(.*)", destination: "/en/custom-coffee-bags-:slug", permanent: true },
       // Catch-all: any path not already starting with a known prefix
       {
         source: "/:path((?!en|fr|api|_next|favicon|sitemap|robots|llms|manifest|opengraph|twitter).*)",

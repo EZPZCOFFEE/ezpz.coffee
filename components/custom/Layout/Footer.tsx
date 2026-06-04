@@ -70,8 +70,6 @@ const Footer = () => {
             <Link href={`/${locale}/about`} className={styles.footerLink}>{t("aboutUs")}</Link>
             <Link href={`/${locale}/white-label`} className={styles.footerLink}>{t("whiteLabel")}</Link>
             <Link href={`/${locale}/compare`} className={styles.footerLink}>EZPZ vs Competitors</Link>
-            <Link href={`/${locale}/portfolio`} className={styles.footerLink}>Our Work</Link>
-            <Link href={`/${locale}/coffee-week`} className={styles.footerLink}>Coffee Week</Link>
             <Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
           </nav>
         </div>
