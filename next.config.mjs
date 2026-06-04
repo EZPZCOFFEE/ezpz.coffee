@@ -41,9 +41,9 @@ const nextConfig = {
       { source: "/blog/:slug*", destination: "/en/blog/:slug*", permanent: true },
       // Custom coffee bag city/industry pages missing /en/ prefix
       { source: "/custom-coffee-bags-:slug(.*)", destination: "/en/custom-coffee-bags-:slug", permanent: true },
-      // Catch-all: any path not already starting with a known prefix
+      // Catch-all: any path not already starting with a known prefix or pointing to a static file
       {
-        source: "/:path((?!en|fr|api|_next|favicon|sitemap|robots|llms|manifest|opengraph|twitter).*)",
+        source: "/:path((?!en|fr|api|_next|favicon|sitemap|robots|llms|manifest|opengraph|twitter|logo|logos|assets|bags|cart|color-picker|upload)[^.]*)",
         destination: "/en/:path*",
         permanent: true,
       },
