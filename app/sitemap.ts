@@ -4,6 +4,7 @@ import { MetadataRoute } from "next";
 import { shopifyQuery } from "@/lib/interfaces/shopify";
 import { ShopifyCollectionOperation, GET_COLLECTION } from "@/lib/queries/get-collection";
 import { baseUrl } from "@utils/base-url";
+import { COMBOS, getComboSlug } from "@/lib/programmatic-seo/data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routesMap: MetadataRoute.Sitemap = [
@@ -180,5 +181,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...routesMap, ...productRoutes];
+  const comboRoutes: MetadataRoute.Sitemap = COMBOS.map((combo) => ({
+    url: `${baseUrl}/en/${getComboSlug(combo)}`,
+    lastModified: new Date().toISOString(),
+  }));
+
+  return [...routesMap, ...productRoutes, ...comboRoutes];
 }
