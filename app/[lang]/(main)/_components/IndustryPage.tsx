@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import styles from "./industryPage.module.scss";
+import { getCombosForIndustry } from "@/lib/programmatic-seo/data";
 
 const ALL_INDUSTRIES: { label: string; href: string }[] = [
   { label: "Hotels", href: "/en/custom-coffee-bags-hotels" },
@@ -54,6 +55,10 @@ const HOW_IT_WORKS_DEFAULT = [
 const IndustryPage = ({ data }: { data: IndustryPageData }) => {
   const howItWorks = data.howItWorks ?? HOW_IT_WORKS_DEFAULT;
   const relatedIndustries = ALL_INDUSTRIES.filter((i) => !i.href.endsWith(data.canonicalPath));
+
+  // Derive industry slug from canonicalPath (e.g. "/custom-coffee-bags-restaurants" → "restaurants")
+  const industrySlug = data.canonicalPath.replace(/^\/custom-coffee-bags-/, "");
+  const cityComboLinks = getCombosForIndustry(industrySlug);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -175,6 +180,20 @@ const IndustryPage = ({ data }: { data: IndustryPageData }) => {
           <p className={styles.testimonialRole}>{data.testimonial.role}</p>
         </div>
       </section>
+
+      {/* ── City-specific pages ── */}
+      {cityComboLinks.length > 0 && (
+        <section className={styles.related}>
+          <div className={styles.relatedInner}>
+            <span className={styles.eyebrow}>Explore by city</span>
+            <div className={styles.relatedGrid}>
+              {cityComboLinks.map(({ label, href }) => (
+                <Link key={href} href={href} className={styles.relatedLink}>{label}</Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Related Industries ── */}
       <section className={styles.related}>

@@ -55,15 +55,15 @@ export const CITIES: Record<string, CityData> = {
       "Montreal businesses benefit from a bilingual, design-conscious consumer base that responds strongly to branded packaging—especially in the food and hospitality sectors.",
     industryContext: {
       restaurants:
-        "Montreal's 6,000+ restaurants range from world-class French bistros in Old Montreal to trendy mile-end brunch spots, all competing for brand recognition in a saturated market.",
+        "Montreal's 6,000+ restaurants range from world-class French bistros in Old Montreal to trendy Mile End brunch spots, all competing for brand recognition in a saturated market.",
       hotels:
         "From boutique hotels in Griffintown to luxury properties downtown, Montreal's hotel industry serves 11 million visitors annually who increasingly expect elevated in-room experiences.",
       boutiques:
-        "Montreal's retail scene—particularly in Plateau-Mont-Royal and Old Montreal—is anchor to hundreds of independent boutiques where branded coffee gifts drive repeat customer loyalty.",
+        "Montreal's retail scene—particularly in Plateau-Mont-Royal and Old Montreal—anchors hundreds of independent boutiques where branded coffee gifts drive repeat customer loyalty.",
       gyms:
         "Montreal's wellness market spans CrossFit boxes, boutique cycling studios, and yoga-centric gyms, all looking to build tribe-like brand communities around their identity.",
       offices:
-        "With over 550,000 office workers in Greater Montreal—especially in tech, finance, and pharma—corporate gifting and branded amenities are a standard part of client retention.",
+        "With over 550,000 office workers in Greater Montreal—especially in tech, finance, and pharma—corporate gifting and branded amenities are standard parts of client retention.",
       spas:
         "Montreal's spa industry—from downtown day spas to Laurentian destination retreats—uses premium branded products as part of the holistic, elevated experience guests pay for.",
     },
@@ -81,7 +81,7 @@ export const CITIES: Record<string, CityData> = {
       "Toronto's multicultural, trend-forward consumer base sets national retail and hospitality benchmarks—what resonates here often spreads to other Canadian cities within 12 months.",
     industryContext: {
       restaurants:
-        "Toronto has over 8,000 restaurants and is home to some of Canada's most Instagrammed dining experiences—branded touchpoints like coffee packaging have become a differentiator.",
+        "Toronto has over 8,000 restaurants and is home to some of Canada's most Instagrammed dining experiences—branded touchpoints like coffee packaging have become a key differentiator.",
       hotels:
         "Toronto's hospitality sector welcomes over 27 million visitors per year, with hotel brands competing fiercely on in-room amenity quality and recognizable presentation.",
       boutiques:
@@ -164,12 +164,112 @@ export const CITIES: Record<string, CityData> = {
         "Ottawa hotels serve a steady stream of government delegates, conference attendees, and tourists visiting Parliament Hill—in-room branded amenities reinforce the capital city experience.",
       boutiques:
         "Westboro and Glebe boutiques serve an educated, affluent demographic with strong preferences for locally-sourced, thoughtfully branded products.",
-      gyms:
-        "Ottawa's active, health-conscious population—fueled partly by a large public-sector workforce with work-life balance priorities—supports a thriving boutique fitness market.",
       offices:
         "Ottawa's government contractors, law firms, and tech companies (Shopify, Kinaxis) rely on polished branded gifts to communicate professionalism to clients and recruits.",
       spas:
         "Ottawa spas cater to professionals seeking high-quality relaxation—branded retail helps them capture incremental revenue while extending the spa experience beyond the visit.",
+    },
+  },
+  edmonton: {
+    slug: "edmonton",
+    name: "Edmonton",
+    region: "AB",
+    country: "CA",
+    population: "1.0 million",
+    coffeeContext:
+      "Edmonton's coffee scene has matured rapidly, with Whyte Ave and the ICE District supporting a vibrant specialty coffee culture among a young, professional population.",
+    neighborhoods: ["Whyte Avenue", "ICE District", "Old Strathcona", "Garneau", "Glenora"],
+    marketInsight:
+      "Edmonton's economy—anchored in energy, government, and a fast-growing tech sector—supports a business community that values professional, high-quality branded gifts year-round.",
+    industryContext: {
+      restaurants:
+        "Edmonton's Whyte Ave and downtown restaurant scene is increasingly brand-conscious, with restaurateurs recognizing that a cohesive identity extends well beyond the dining room.",
+      hotels:
+        "Edmonton hotels serve conference traffic, government visitors, and oil sector travelers—branded in-room amenities help properties stand out in a market driven heavily by business travel.",
+      offices:
+        "Edmonton's energy and government sectors drive consistent demand for premium corporate gifts that communicate stability, professionalism, and quality.",
+      gyms:
+        "Edmonton's fitness community is active and growing—boutique studios and CrossFit gyms across Old Strathcona and Garneau use branded merchandise to deepen member loyalty.",
+    },
+  },
+  winnipeg: {
+    slug: "winnipeg",
+    name: "Winnipeg",
+    region: "MB",
+    country: "CA",
+    population: "780,000",
+    coffeeContext:
+      "Winnipeg's coffee scene punches above its weight—Exchange District cafés and an engaged food community have built a specialty coffee market that appreciates craft and design.",
+    neighborhoods: ["Exchange District", "The Forks", "Osborne Village", "St. Boniface", "Wolseley"],
+    marketInsight:
+      "Winnipeg's tight-knit business community rewards brand authenticity and local identity—businesses that invest in quality branded products earn loyal, vocal advocates.",
+    industryContext: {
+      restaurants:
+        "Winnipeg's Exchange District and Osborne Village dining scene is growing in ambition and brand sophistication—custom coffee bags help restaurants build identity beyond the meal.",
+      hotels:
+        "Winnipeg hotels serve a mix of leisure travelers and conference attendees—branded amenities help properties create memorable stays in a competitive market.",
+      offices:
+        "Winnipeg's professional services and government sectors value premium corporate gifts that reflect the city's reputation for straightforward quality.",
+    },
+  },
+  "quebec-city": {
+    slug: "quebec-city",
+    name: "Québec City",
+    region: "QC",
+    country: "CA",
+    population: "550,000",
+    coffeeContext:
+      "Québec City's European character and strong café culture—particularly in Saint-Jean-Baptiste and Old Quebec—create a market that appreciates quality and aesthetic presentation above all else.",
+    neighborhoods: ["Old Quebec", "Saint-Jean-Baptiste", "Saint-Roch", "Montcalm", "Limoilou"],
+    marketInsight:
+      "Québec City's mix of French cultural pride and tourism-driven economy means businesses that lead with local identity and premium presentation consistently outperform generic competitors.",
+    industryContext: {
+      restaurants:
+        "Québec City's world-famous Old Town restaurant scene serves millions of tourists annually—branded coffee creates a take-home touchpoint that extends the experience across borders.",
+      hotels:
+        "Québec City's hospitality industry is built on heritage and charm—boutique hotels in Old Quebec use branded amenities to reinforce the authentic, storied experience they promise.",
+      boutiques:
+        "Saint-Roch and Saint-Jean-Baptiste boutiques serve both locals and tourists looking for distinctive Quebec-made products—branded coffee is a natural, high-margin addition.",
+    },
+  },
+  halifax: {
+    slug: "halifax",
+    name: "Halifax",
+    region: "NS",
+    country: "CA",
+    population: "440,000",
+    coffeeContext:
+      "Halifax's coffee scene reflects the city's Maritime character—community-oriented, craft-forward, and increasingly sophisticated in both taste and brand awareness.",
+    neighborhoods: ["North End", "Spring Garden Road", "Dartmouth", "Downtown Halifax", "Quinpool"],
+    marketInsight:
+      "Halifax's rapidly growing population and thriving startup ecosystem have created a business community that actively seeks premium local branding partners for gifts and amenities.",
+    industryContext: {
+      restaurants:
+        "Halifax's North End restaurant scene and waterfront dining corridor are gaining national attention—branded coffee helps these businesses create lasting impressions on visiting journalists and food critics.",
+      hotels:
+        "Halifax's hotel market benefits from strong summer tourism and year-round conference traffic—branded in-room coffee signals quality to a growing base of discerning travelers.",
+      boutiques:
+        "Spring Garden Road and North End boutiques serve Halifax's design-conscious community—branded coffee gifts align perfectly with the locally-made, quality-first product curation these stores champion.",
+    },
+  },
+  hamilton: {
+    slug: "hamilton",
+    name: "Hamilton",
+    region: "ON",
+    country: "CA",
+    population: "570,000",
+    coffeeContext:
+      "Hamilton's James Street North arts corridor and Locke Street have fostered a specialty coffee culture that mirrors the city's creative, independent-business identity.",
+    neighborhoods: ["James Street North", "Locke Street", "Barton Village", "Westdale", "Concession Street"],
+    marketInsight:
+      "Hamilton's transformation from industrial city to creative hub has created a market that values authenticity and craft—businesses here earn loyalty by leading with genuine brand identity.",
+    industryContext: {
+      restaurants:
+        "Hamilton's James Street North dining scene is one of Ontario's most exciting—restaurants here attract food media attention, making branded touchpoints an important part of the press-ready experience.",
+      hotels:
+        "Hamilton's growing event and conference market is driving hotel development—branded amenities help properties differentiate in a market where guests arrive with high expectations.",
+      boutiques:
+        "Locke Street and James Street North boutiques serve Hamilton's creative community—branded coffee gifts complement the handcrafted, design-forward products these stores are known for.",
     },
   },
   "new-york": {
@@ -354,6 +454,180 @@ export const CITIES: Record<string, CityData> = {
         "Denver's spa and wellness scene caters to active professionals seeking recovery and relaxation—branded retail products serve as both revenue drivers and guest experience amplifiers.",
     },
   },
+  boston: {
+    slug: "boston",
+    name: "Boston",
+    region: "MA",
+    country: "US",
+    population: "675,000",
+    coffeeContext:
+      "Boston's coffee culture is driven by a young, highly educated population—Somerville, Cambridge, and the South End support a dense specialty coffee scene that values craft and traceability.",
+    neighborhoods: ["South End", "Cambridge", "Somerville", "Back Bay", "Fenway"],
+    marketInsight:
+      "Boston's concentration of universities, hospitals, and biotech firms creates a professional market that treats premium branded gifts as a meaningful investment in long-term relationships.",
+    industryContext: {
+      restaurants:
+        "Boston's South End and Back Bay restaurant scene is one of the Northeast's most sophisticated—branded coffee creates a take-home memory that reinforces the quality diners experience at the table.",
+      hotels:
+        "Boston's hotel market serves an enormous conference and academic calendar as well as major tourism—in-room branded coffee helps properties compete on the strength of their details.",
+      boutiques:
+        "Boston's independent boutique scene in Cambridge and the South End serves a design-aware, socially conscious shopper who values locally-curated, branded product selections.",
+      gyms:
+        "Boston's dense student and professional population drives a strong boutique fitness market in Fenway, Back Bay, and Cambridge where brand identity and community define the offering.",
+      offices:
+        "Boston's life sciences, financial services, and tech sectors (Kendall Square is one of the world's top innovation hubs) set an extremely high bar for corporate gift quality.",
+      spas:
+        "Boston spa clients in Back Bay and Beacon Hill expect premium retail offerings that match the quality of their treatments—branded take-homes are a natural extension of the wellness experience.",
+    },
+  },
+  "san-francisco": {
+    slug: "san-francisco",
+    name: "San Francisco",
+    region: "CA",
+    country: "US",
+    population: "870,000",
+    coffeeContext:
+      "San Francisco is the intellectual capital of American specialty coffee—Mission District roasters and SoMa cafés serve a tech-driven population that helped define what 'third wave' means.",
+    neighborhoods: ["Mission District", "Hayes Valley", "SoMa", "Castro", "North Beach"],
+    marketInsight:
+      "San Francisco's tech economy creates an extremely well-paid, brand-savvy consumer class—businesses that invest in quality branded products signal alignment with the city's craft-first values.",
+    industryContext: {
+      restaurants:
+        "San Francisco's restaurant culture—particularly in the Mission and Hayes Valley—is one of the most influential in the US, where every detail including take-home coffee packaging is content.",
+      hotels:
+        "San Francisco's hotel market serves tech conference traffic, international tourism, and Napa Valley travelers—branded in-room amenities speak directly to the quality expectations of this market.",
+      boutiques:
+        "Hayes Valley and the Castro's independent boutiques serve a design-forward, values-driven shopper who selects products based on story, craft, and aesthetic coherence.",
+      gyms:
+        "San Francisco's fitness culture is as competitive as its tech industry—boutique studios in SoMa and the Castro attract members who consider the gym's brand a reflection of their own identity.",
+      offices:
+        "With more venture capital per capita than any other city, San Francisco's startup and tech ecosystem relies on premium corporate gifts to build relationships in a market where first impressions are everything.",
+      spas:
+        "San Francisco's wellness industry caters to a population that views self-care as a lifestyle priority—branded retail extends the spa identity into clients' daily rituals at home.",
+    },
+  },
+  nashville: {
+    slug: "nashville",
+    name: "Nashville",
+    region: "TN",
+    country: "US",
+    population: "715,000",
+    coffeeContext:
+      "Nashville's coffee scene has grown dramatically alongside the city's decade-long boom—12South, East Nashville, and The Gulch now host specialty roasters serving a rapidly expanding, brand-conscious audience.",
+    neighborhoods: ["12South", "East Nashville", "The Gulch", "Germantown", "Sylvan Park"],
+    marketInsight:
+      "Nashville's hospitality industry is among the US's fastest-growing—the city's music tourism, bachelorette economy, and corporate relocation wave have created intense competition for memorable brand experiences.",
+    industryContext: {
+      restaurants:
+        "Nashville's restaurant scene has gone from regional staple to national destination—Germantown and East Nashville restaurants are now reviewed by national publications that reward brand cohesion.",
+      hotels:
+        "Nashville's hotel boom has been extraordinary—hundreds of new properties are competing for guests who expect elevated amenities, making branded in-room coffee a genuine differentiator.",
+      boutiques:
+        "12South boutiques are known nationally for their curated, locally-leaning product mix—branded coffee is a high-margin, photogenic addition to any Southern hospitality-themed retail floor.",
+      gyms:
+        "Nashville's booming population of young professionals and music-industry creatives supports a thriving boutique fitness market where studio branding is treated as seriously as the programming.",
+      offices:
+        "Nashville's growing corporate headquarters (Amazon, Alliance Bernstein, Oracle) have elevated the bar for professional gifting in a city that's rapidly becoming a major business hub.",
+    },
+  },
+  portland: {
+    slug: "portland",
+    name: "Portland",
+    region: "OR",
+    country: "US",
+    population: "650,000",
+    coffeeContext:
+      "Portland's coffee culture is legendary—the city has one of the highest roaster-to-resident ratios in the US and a consumer base that takes quality, provenance, and packaging as seriously as the coffee itself.",
+    neighborhoods: ["Pearl District", "Alberta Arts District", "Division Street", "Mississippi Ave", "Hawthorne"],
+    marketInsight:
+      "Portland consumers are among the most discerning in the US when it comes to brand authenticity—they reward local, craft-forward businesses and are vocal champions of the brands they trust.",
+    industryContext: {
+      restaurants:
+        "Portland's restaurant scene—on Division Street, Alberta, and Mississippi Ave—is known for its creative, locally-obsessed identity, where branded coffee packaging fits naturally into the narrative.",
+      hotels:
+        "Portland's boutique hotel scene attracts travelers who specifically seek out locally-curated experiences—branded in-room coffee from a quality supplier is a meaningful signal of that commitment.",
+      boutiques:
+        "Pearl District and Alberta Arts District boutiques serve one of the US's most dedicated local-first shopping communities—branded coffee is both a revenue driver and a brand statement.",
+      gyms:
+        "Portland's fitness culture—grounded in outdoor activity, cycling, and yoga—prizes mission-driven brands that reflect a commitment to craft and community over corporate polish.",
+      offices:
+        "Portland's tech and creative sectors value authenticity in everything, including corporate gifts—a beautifully branded bag from a quality supplier resonates far more than a generic gift basket.",
+    },
+  },
+  atlanta: {
+    slug: "atlanta",
+    name: "Atlanta",
+    region: "GA",
+    country: "US",
+    population: "500,000 (metro 6.2M)",
+    coffeeContext:
+      "Atlanta's specialty coffee scene has grown dramatically in Inman Park, Ponce City Market, and Grant Park—a city where coffee culture is becoming as integral to the brand landscape as its food and music scenes.",
+    neighborhoods: ["Inman Park", "Ponce City Market", "Grant Park", "Buckhead", "Old Fourth Ward"],
+    marketInsight:
+      "Atlanta's role as a media, entertainment, and corporate hub creates a business environment where branded gifting is expected—and where quality packaging is a direct proxy for professionalism.",
+    industryContext: {
+      restaurants:
+        "Atlanta's restaurant scene—from Ponce City Market's food hall to Buckhead's fine dining—is experiencing a nationally recognized renaissance where brand presentation matches food quality.",
+      hotels:
+        "Atlanta's hotel market serves one of the US's busiest convention calendars alongside its film production boom—in-room branded amenities are increasingly part of the property's identity pitch.",
+      boutiques:
+        "Inman Park and Ponce City Market boutiques serve Atlanta's creative class—shoppers who actively seek out brands with strong visual identities and locally-rooted stories.",
+      gyms:
+        "Atlanta's fitness market is among the South's most competitive, with boutique studios in Virginia-Highland and Buckhead competing hard for affluent members who prioritize brand experience.",
+      offices:
+        "Atlanta's growing tech sector and corporate headquarters (Delta, Coca-Cola, Home Depot) create a sophisticated market for branded corporate gifts that reflect business-class professionalism.",
+    },
+  },
+  philadelphia: {
+    slug: "philadelphia",
+    name: "Philadelphia",
+    region: "PA",
+    country: "US",
+    population: "1.5 million",
+    coffeeContext:
+      "Philadelphia's coffee culture is anchored in Fishtown, Rittenhouse Square, and Graduate Hospital—a city where specialty coffee has become a defining part of the neighborhood dining identity.",
+    neighborhoods: ["Fishtown", "Rittenhouse Square", "Passyunk", "Northern Liberties", "Graduate Hospital"],
+    marketInsight:
+      "Philadelphia's underdog, value-driven business culture means brands that deliver genuine quality over style alone earn deep loyalty—but quality packaging is still an essential signal in a competitive market.",
+    industryContext: {
+      restaurants:
+        "Philadelphia's Passyunk Ave and Fishtown dining scenes are nationally acclaimed—restaurateurs here understand that branded take-home products extend the experience and build repeat business.",
+      hotels:
+        "Philadelphia's hotel market has modernized significantly, with boutique properties in Old City and Rittenhouse attracting travelers who expect thoughtful, locally-inspired room amenities.",
+      boutiques:
+        "Fishtown and Rittenhouse boutiques serve Philadelphia's design-conscious community—customers who appreciate quality and authenticity in every product on the shelf, including coffee.",
+      gyms:
+        "Philadelphia's fitness market spans boutique studios in Rittenhouse to community gyms in Fishtown—branded merchandise is a growing revenue stream and member retention tool across segments.",
+      offices:
+        "Philadelphia's law firms, healthcare networks, and financial services sector represent a steady market for premium corporate gifts that reinforce professional relationships.",
+    },
+  },
+  "washington-dc": {
+    slug: "washington-dc",
+    name: "Washington, DC",
+    region: "DC",
+    country: "US",
+    population: "700,000",
+    coffeeContext:
+      "Washington DC's coffee culture has elevated rapidly—Shaw, Logan Circle, and Capitol Hill now host world-class specialty cafés serving a professional class that drinks coffee seriously and brands even more so.",
+    neighborhoods: ["Shaw", "Logan Circle", "Capitol Hill", "Georgetown", "14th Street"],
+    marketInsight:
+      "DC's concentration of policy professionals, lobbying firms, and embassies creates a market where branded gifts communicate influence and quality—appearances genuinely matter.",
+    industryContext: {
+      restaurants:
+        "DC's Shaw and 14th Street restaurant scenes are nationally recognized—branded coffee creates a cohesive identity that ties the dining experience to a daily at-home ritual for guests.",
+      hotels:
+        "DC hotels serve a year-round stream of government delegates, international visitors, and conference attendees—in-room branded coffee is a subtle but effective signal of property quality.",
+      boutiques:
+        "Georgetown and Logan Circle boutiques serve a professional, design-aware clientele who appreciate curated retail selections that reflect the city's sophisticated cultural identity.",
+      gyms:
+        "DC's professional population—known for long hours and competitive ambition—supports a thriving boutique fitness market where branded merchandise is a badge of community membership.",
+      offices:
+        "DC's lobbying firms, law practices, trade associations, and government contractors rely on impeccable branded gifts to maintain relationships in an environment where perception is everything.",
+      spas:
+        "DC spas serve a clientele of high-stress professionals who invest seriously in wellness—branded retail products reinforce the spa's positioning as a quality, result-driven experience.",
+    },
+  },
 };
 
 // ── Industry data ─────────────────────────────────────────────────────────────
@@ -480,79 +754,181 @@ export const PRODUCTS: Record<string, ProductData> = {
   },
 };
 
-// ── 50 valid combos ────────────────────────────────────────────────────────────
+// ── Combos ─────────────────────────────────────────────────────────────────────
 
 export const COMBOS: ComboData[] = [
-  // custom-coffee-bags × restaurants (10)
+  // ── custom-coffee-bags × restaurants (17) ──────────────────────────────────
   { product: "custom-coffee-bags", industry: "restaurants", city: "montreal" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "toronto" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "vancouver" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "calgary" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "ottawa" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "edmonton" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "winnipeg" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "halifax" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "new-york" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "chicago" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "miami" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "seattle" },
   { product: "custom-coffee-bags", industry: "restaurants", city: "los-angeles" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "boston" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "san-francisco" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "nashville" },
+  { product: "custom-coffee-bags", industry: "restaurants", city: "portland" },
 
-  // custom-coffee-bags × hotels (8)
+  // ── custom-coffee-bags × hotels (15) ──────────────────────────────────────
   { product: "custom-coffee-bags", industry: "hotels", city: "montreal" },
   { product: "custom-coffee-bags", industry: "hotels", city: "toronto" },
   { product: "custom-coffee-bags", industry: "hotels", city: "vancouver" },
   { product: "custom-coffee-bags", industry: "hotels", city: "calgary" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "ottawa" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "edmonton" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "quebec-city" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "new-york" },
   { product: "custom-coffee-bags", industry: "hotels", city: "chicago" },
   { product: "custom-coffee-bags", industry: "hotels", city: "miami" },
-  { product: "custom-coffee-bags", industry: "hotels", city: "new-york" },
   { product: "custom-coffee-bags", industry: "hotels", city: "austin" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "boston" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "nashville" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "washington-dc" },
+  { product: "custom-coffee-bags", industry: "hotels", city: "san-francisco" },
 
-  // custom-coffee-bags × boutiques (5)
+  // ── custom-coffee-bags × boutiques (12) ───────────────────────────────────
   { product: "custom-coffee-bags", industry: "boutiques", city: "montreal" },
   { product: "custom-coffee-bags", industry: "boutiques", city: "toronto" },
   { product: "custom-coffee-bags", industry: "boutiques", city: "vancouver" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "quebec-city" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "halifax" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "hamilton" },
   { product: "custom-coffee-bags", industry: "boutiques", city: "new-york" },
   { product: "custom-coffee-bags", industry: "boutiques", city: "los-angeles" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "chicago" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "san-francisco" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "boston" },
+  { product: "custom-coffee-bags", industry: "boutiques", city: "portland" },
 
-  // custom-coffee-bags × offices (3)
+  // ── custom-coffee-bags × gyms (10) ────────────────────────────────────────
+  { product: "custom-coffee-bags", industry: "gyms", city: "montreal" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "toronto" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "vancouver" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "calgary" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "new-york" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "los-angeles" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "miami" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "chicago" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "boston" },
+  { product: "custom-coffee-bags", industry: "gyms", city: "seattle" },
+
+  // ── custom-coffee-bags × offices (6) ──────────────────────────────────────
   { product: "custom-coffee-bags", industry: "offices", city: "toronto" },
   { product: "custom-coffee-bags", industry: "offices", city: "montreal" },
   { product: "custom-coffee-bags", industry: "offices", city: "calgary" },
+  { product: "custom-coffee-bags", industry: "offices", city: "new-york" },
+  { product: "custom-coffee-bags", industry: "offices", city: "boston" },
+  { product: "custom-coffee-bags", industry: "offices", city: "san-francisco" },
 
-  // white-label-coffee × restaurants (5)
+  // ── custom-coffee-bags × spas (8) ─────────────────────────────────────────
+  { product: "custom-coffee-bags", industry: "spas", city: "montreal" },
+  { product: "custom-coffee-bags", industry: "spas", city: "toronto" },
+  { product: "custom-coffee-bags", industry: "spas", city: "vancouver" },
+  { product: "custom-coffee-bags", industry: "spas", city: "new-york" },
+  { product: "custom-coffee-bags", industry: "spas", city: "los-angeles" },
+  { product: "custom-coffee-bags", industry: "spas", city: "miami" },
+  { product: "custom-coffee-bags", industry: "spas", city: "austin" },
+  { product: "custom-coffee-bags", industry: "spas", city: "washington-dc" },
+
+  // ── white-label-coffee × restaurants (8) ──────────────────────────────────
   { product: "white-label-coffee", industry: "restaurants", city: "montreal" },
   { product: "white-label-coffee", industry: "restaurants", city: "toronto" },
   { product: "white-label-coffee", industry: "restaurants", city: "vancouver" },
+  { product: "white-label-coffee", industry: "restaurants", city: "edmonton" },
   { product: "white-label-coffee", industry: "restaurants", city: "new-york" },
   { product: "white-label-coffee", industry: "restaurants", city: "chicago" },
+  { product: "white-label-coffee", industry: "restaurants", city: "boston" },
+  { product: "white-label-coffee", industry: "restaurants", city: "san-francisco" },
 
-  // white-label-coffee × hotels (5)
+  // ── white-label-coffee × hotels (7) ───────────────────────────────────────
   { product: "white-label-coffee", industry: "hotels", city: "montreal" },
   { product: "white-label-coffee", industry: "hotels", city: "toronto" },
   { product: "white-label-coffee", industry: "hotels", city: "vancouver" },
   { product: "white-label-coffee", industry: "hotels", city: "new-york" },
   { product: "white-label-coffee", industry: "hotels", city: "miami" },
+  { product: "white-label-coffee", industry: "hotels", city: "nashville" },
+  { product: "white-label-coffee", industry: "hotels", city: "washington-dc" },
 
-  // white-label-coffee × gyms (3)
+  // ── white-label-coffee × gyms (5) ─────────────────────────────────────────
   { product: "white-label-coffee", industry: "gyms", city: "toronto" },
   { product: "white-label-coffee", industry: "gyms", city: "montreal" },
   { product: "white-label-coffee", industry: "gyms", city: "vancouver" },
+  { product: "white-label-coffee", industry: "gyms", city: "new-york" },
+  { product: "white-label-coffee", industry: "gyms", city: "los-angeles" },
 
-  // branded-coffee-bags × boutiques (4)
+  // ── white-label-coffee × boutiques (6) ────────────────────────────────────
+  { product: "white-label-coffee", industry: "boutiques", city: "montreal" },
+  { product: "white-label-coffee", industry: "boutiques", city: "toronto" },
+  { product: "white-label-coffee", industry: "boutiques", city: "vancouver" },
+  { product: "white-label-coffee", industry: "boutiques", city: "new-york" },
+  { product: "white-label-coffee", industry: "boutiques", city: "los-angeles" },
+  { product: "white-label-coffee", industry: "boutiques", city: "san-francisco" },
+
+  // ── white-label-coffee × offices (5) ──────────────────────────────────────
+  { product: "white-label-coffee", industry: "offices", city: "toronto" },
+  { product: "white-label-coffee", industry: "offices", city: "montreal" },
+  { product: "white-label-coffee", industry: "offices", city: "vancouver" },
+  { product: "white-label-coffee", industry: "offices", city: "new-york" },
+  { product: "white-label-coffee", industry: "offices", city: "chicago" },
+
+  // ── white-label-coffee × spas (4) ─────────────────────────────────────────
+  { product: "white-label-coffee", industry: "spas", city: "montreal" },
+  { product: "white-label-coffee", industry: "spas", city: "toronto" },
+  { product: "white-label-coffee", industry: "spas", city: "miami" },
+  { product: "white-label-coffee", industry: "spas", city: "new-york" },
+
+  // ── branded-coffee-bags × boutiques (6) ───────────────────────────────────
   { product: "branded-coffee-bags", industry: "boutiques", city: "montreal" },
   { product: "branded-coffee-bags", industry: "boutiques", city: "toronto" },
   { product: "branded-coffee-bags", industry: "boutiques", city: "new-york" },
   { product: "branded-coffee-bags", industry: "boutiques", city: "los-angeles" },
+  { product: "branded-coffee-bags", industry: "boutiques", city: "chicago" },
+  { product: "branded-coffee-bags", industry: "boutiques", city: "portland" },
 
-  // branded-coffee-bags × restaurants (4)
+  // ── branded-coffee-bags × restaurants (7) ─────────────────────────────────
   { product: "branded-coffee-bags", industry: "restaurants", city: "montreal" },
   { product: "branded-coffee-bags", industry: "restaurants", city: "toronto" },
   { product: "branded-coffee-bags", industry: "restaurants", city: "vancouver" },
   { product: "branded-coffee-bags", industry: "restaurants", city: "denver" },
+  { product: "branded-coffee-bags", industry: "restaurants", city: "nashville" },
+  { product: "branded-coffee-bags", industry: "restaurants", city: "philadelphia" },
+  { product: "branded-coffee-bags", industry: "restaurants", city: "atlanta" },
 
-  // branded-coffee-bags × spas (3)
+  // ── branded-coffee-bags × spas (5) ────────────────────────────────────────
   { product: "branded-coffee-bags", industry: "spas", city: "montreal" },
   { product: "branded-coffee-bags", industry: "spas", city: "toronto" },
   { product: "branded-coffee-bags", industry: "spas", city: "miami" },
+  { product: "branded-coffee-bags", industry: "spas", city: "los-angeles" },
+  { product: "branded-coffee-bags", industry: "spas", city: "austin" },
+
+  // ── branded-coffee-bags × hotels (5) ──────────────────────────────────────
+  { product: "branded-coffee-bags", industry: "hotels", city: "montreal" },
+  { product: "branded-coffee-bags", industry: "hotels", city: "toronto" },
+  { product: "branded-coffee-bags", industry: "hotels", city: "new-york" },
+  { product: "branded-coffee-bags", industry: "hotels", city: "miami" },
+  { product: "branded-coffee-bags", industry: "hotels", city: "vancouver" },
+
+  // ── branded-coffee-bags × offices (4) ─────────────────────────────────────
+  { product: "branded-coffee-bags", industry: "offices", city: "toronto" },
+  { product: "branded-coffee-bags", industry: "offices", city: "montreal" },
+  { product: "branded-coffee-bags", industry: "offices", city: "new-york" },
+  { product: "branded-coffee-bags", industry: "offices", city: "washington-dc" },
+
+  // ── branded-coffee-bags × gyms (4) ────────────────────────────────────────
+  { product: "branded-coffee-bags", industry: "gyms", city: "toronto" },
+  { product: "branded-coffee-bags", industry: "gyms", city: "montreal" },
+  { product: "branded-coffee-bags", industry: "gyms", city: "vancouver" },
+  { product: "branded-coffee-bags", industry: "gyms", city: "new-york" },
 ];
+
+// ── Helpers ────────────────────────────────────────────────────────────────────
 
 export function getComboSlug(combo: ComboData): string {
   return `${combo.product}-for-${combo.industry}-${combo.city}`;
@@ -562,7 +938,6 @@ export function parseComboSlug(
   slug: string
 ): { product: ProductData; industry: IndustryData; city: CityData } | null {
   const productSlugs = Object.keys(PRODUCTS);
-  const industrySlugs = Object.keys(INDUSTRIES);
   const citySlugs = Object.keys(CITIES).sort((a, b) => b.length - a.length);
 
   let matchedProduct: ProductData | null = null;
@@ -606,4 +981,24 @@ export function parseComboSlug(
   if (!isValid) return null;
 
   return { product: matchedProduct, industry: matchedIndustry, city: matchedCity };
+}
+
+/** Returns combo links for a given industry slug (used by IndustryPage) */
+export function getCombosForIndustry(
+  industrySlug: string
+): { label: string; href: string }[] {
+  return COMBOS.filter((c) => c.industry === industrySlug).map((c) => ({
+    label: `${PRODUCTS[c.product].name} — ${CITIES[c.city].name}`,
+    href: `/en/${getComboSlug(c)}`,
+  }));
+}
+
+/** Returns combo links for a given city slug (used by CityPage) */
+export function getCombosForCity(
+  citySlug: string
+): { label: string; href: string }[] {
+  return COMBOS.filter((c) => c.city === citySlug).map((c) => ({
+    label: `${PRODUCTS[c.product].name} for ${INDUSTRIES[c.industry].namePlural}`,
+    href: `/en/${getComboSlug(c)}`,
+  }));
 }

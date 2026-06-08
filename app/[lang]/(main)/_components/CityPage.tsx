@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import styles from "./cityPage.module.scss";
+import { getCombosForCity } from "@/lib/programmatic-seo/data";
 
 export interface CityPageData {
   city: string;
@@ -24,6 +25,10 @@ export interface CityPageData {
 const BREADCRUMB_BASE = "https://www.ezpz.coffee/en";
 
 const CityPage = ({ data }: { data: CityPageData }) => {
+  // Derive city slug from canonicalPath (e.g. "/custom-coffee-bags-montreal" → "montreal")
+  const citySlug = data.canonicalPath.replace(/^\/custom-coffee-bags-/, "");
+  const industryComboLinks = getCombosForCity(citySlug);
+
   const faqSchema = data.faq && data.faq.length > 0 ? {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -194,6 +199,22 @@ const CityPage = ({ data }: { data: CityPageData }) => {
                 </div>
               ))}
             </dl>
+          </div>
+        </section>
+      )}
+
+      {/* ── Industry combo pages ── */}
+      {industryComboLinks.length > 0 && (
+        <section className={styles.relatedPages} aria-labelledby="industry-combos-heading">
+          <div className={styles.relatedPagesInner}>
+            <span id="industry-combos-heading" className={styles.relatedPagesTitle}>By industry in {data.city}</span>
+            <div className={styles.relatedPagesGrid}>
+              {industryComboLinks.map(({ label, href }) => (
+                <Link key={href} href={href} className={styles.relatedPageCard}>
+                  {label} →
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
