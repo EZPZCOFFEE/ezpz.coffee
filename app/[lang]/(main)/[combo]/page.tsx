@@ -128,7 +128,7 @@ function buildPageContent(
       paragraphs: [
         `Getting started with ${product.shortName} for your ${city.name} ${industry.name.toLowerCase()} takes less time than you'd expect. You send us your logo and brand colours. We handle the rest — artwork, print, roasting, and shipping. No design experience required, no minimum order anxiety.`,
         `Our turnaround is ${product.turnaround} from artwork approval. With a ${product.moq} minimum and ${product.priceRange} per bag depending on quantity and customization level, ${product.shortName} are within reach for independent ${industry.namePlural.toLowerCase()} and enterprise brands alike. ${currencyNote}`,
-        `Every bag comes with specialty-grade coffee, roasted fresh in Montreal and shipped directly to your door. We source responsibly and roast to order — so whether you're ordering 12 bags for a soft launch or 500 for a seasonal gift program, quality is consistent across every single unit.`,
+        `Every bag comes with specialty-grade coffee, roasted fresh in Montreal and shipped directly to your door. We source responsibly and roast to order — so whether you're ordering 1 bag for a soft launch or 500 for a seasonal gift program, quality is consistent across every single unit.`,
       ],
     },
     {

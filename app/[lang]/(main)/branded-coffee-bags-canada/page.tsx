@@ -86,7 +86,7 @@ const Page = () => (
           Canadian businesses ordering branded coffee bags include restaurants who want a premium retail product, hotels creating memorable in-room experiences, boutiques looking for high-margin merchandise, gyms selling to loyal members, corporate offices gifting to employees and clients, real estate agents using them as closing gifts, event planners creating memorable favors, and any brand that wants daily visibility in their customers&apos; homes.
         </p>
         <p className={styles.p}>
-          Branded coffee bags Canada has never been easier to access. EZPZ works with businesses of every size — from a single-location café ordering 12 bags to a national hotel chain ordering thousands.
+          Branded coffee bags Canada has never been easier to access. EZPZ works with businesses of every size — from a single-location café ordering 1 bag to a national hotel chain ordering thousands.
         </p>
 
         <h2 className={styles.h2}>Why EZPZ is Canada&apos;s Best Branded Coffee Bag Supplier</h2>
