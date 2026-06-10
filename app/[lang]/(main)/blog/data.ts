@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "cafe-public-ezpz-custom-coffee-bags-case-study",
+    category: "Client Story",
+    categoryColor: "#c43e14",
+    title: "How Café Public Launched Their Own Branded Coffee With EZPZ",
+    excerpt:
+      "One of Quebec's most exciting specialty coffee platforms chose EZPZ to create their signature blend. Here is how the Mélange Café Public came to life.",
+    date: "June 10, 2026",
+    readTime: "5 min read",
+    color: "#1a0a05",
+    initials: "CS",
+    image: "/assets/blog/cafe-public-case-study.svg",
+    published: true,
+  },
+  {
     slug: "complete-guide-coffee-roasters-montreal-2026",
     category: "Montreal Coffee Guide",
     categoryColor: "#c43e14",
