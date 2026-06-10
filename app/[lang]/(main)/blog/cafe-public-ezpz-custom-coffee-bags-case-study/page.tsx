@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     url: "https://www.ezpz.coffee/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
     images: [
       {
-        url: "/assets/blog/cafe-public-case-study.svg",
-        width: 800,
-        height: 420,
+        url: "/assets/blog/cafe-public-case-study.webp",
+        width: 1080,
+        height: 1080,
         alt: "Café Public × EZPZ Coffee — Mélange Café Public Case Study",
       },
     ],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "How Café Public Launched Their Own Branded Coffee With EZPZ | Case Study",
     description:
       "One of Quebec's most exciting specialty coffee platforms chose EZPZ to create their signature blend. Here is the full story.",
-    images: ["/assets/blog/cafe-public-case-study.svg"],
+    images: ["/assets/blog/cafe-public-case-study.webp"],
   },
 };
 
@@ -49,7 +49,7 @@ const jsonLd = {
         name: "EZPZ Coffee",
         url: "https://www.ezpz.coffee",
       },
-      image: "https://www.ezpz.coffee/assets/blog/cafe-public-case-study.svg",
+      image: "https://www.ezpz.coffee/assets/blog/cafe-public-case-study.webp",
       url: "https://www.ezpz.coffee/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
       wordCount: 1100,
       about: {

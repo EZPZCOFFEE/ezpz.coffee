@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="cpbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e0704"/>
+      <stop offset="100%" style="stop-color:#1a0d06"/>
+    </linearGradient>
+    <linearGradient id="cpaccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="bagbrown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5c2e10"/>
+      <stop offset="100%" style="stop-color:#3b1a08"/>
+    </linearGradient>
+    <linearGradient id="baglabel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b1a08"/>
+      <stop offset="100%" style="stop-color:#2a1005"/>
+    </linearGradient>
+    <filter id="cpglow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#cpbg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+
+  <!-- Warm glow behind bag -->
+  <ellipse cx="590" cy="230" rx="130" ry="160" fill="rgba(92,46,16,0.18)" filter="url(#softglow)"/>
+
+  <!-- Coffee bag shape (right side) -->
+  <!-- Bag body -->
+  <rect x="490" y="80" width="190" height="260" rx="12" fill="url(#bagbrown)" stroke="rgba(196,62,20,0.2)" stroke-width="1.5"/>
+  <!-- Bag top gusset fold -->
+  <rect x="496" y="80" width="178" height="22" rx="6" fill="rgba(70,35,12,0.9)" stroke="rgba(196,62,20,0.15)" stroke-width="1"/>
+  <!-- Seal line -->
+  <rect x="496" y="96" width="178" height="4" rx="1" fill="rgba(196,62,20,0.12)"/>
+  <!-- Bag bottom gusset -->
+  <rect x="496" y="322" width="178" height="18" rx="6" fill="rgba(55,26,8,0.9)" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+
+  <!-- Label on bag -->
+  <rect x="506" y="108" width="158" height="198" rx="6" fill="url(#baglabel)" stroke="rgba(139,90,43,0.3)" stroke-width="1"/>
+
+  <!-- Label content: "public" script-style -->
+  <text x="585" y="138" font-family="Georgia, serif" font-size="11" font-style="italic" font-weight="400" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="1">public</text>
+
+  <!-- "CAFÉ PUBLIC" bold display text -->
+  <text x="585" y="170" font-family="Georgia, serif" font-size="22" font-weight="900" fill="rgba(255,255,255,0.92)" text-anchor="middle" letter-spacing="-0.5">CAFÉ</text>
+  <text x="585" y="198" font-family="Georgia, serif" font-size="22" font-weight="900" fill="rgba(255,255,255,0.92)" text-anchor="middle" letter-spacing="-0.5">PUBLIC</text>
+  <!-- Divider -->
+  <rect x="530" y="206" width="110" height="1.5" rx="1" fill="rgba(255,255,255,0.15)"/>
+  <!-- EZPZ collab text -->
+  <text x="585" y="226" font-family="Georgia, serif" font-size="13" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">× EZPZ</text>
+
+  <!-- Tasting notes on label -->
+  <text x="585" y="258" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.45)" text-anchor="middle" letter-spacing="0.5">Notes de dégustation</text>
+  <text x="585" y="272" font-family="Georgia, serif" font-size="8.5" fill="rgba(255,255,255,0.35)" text-anchor="middle" letter-spacing="0.3">Classique · Chocolat · Noisette</text>
+
+  <!-- Weight -->
+  <text x="585" y="296" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="1">250g · Brésil</text>
+
+  <!-- Degassing valve dot -->
+  <circle cx="655" cy="118" r="5" fill="rgba(196,62,20,0.2)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <circle cx="655" cy="118" r="2.5" fill="rgba(196,62,20,0.5)"/>
+
+  <!-- Coffee beans scattered near bag -->
+  <g opacity="0.5">
+    <ellipse cx="470" cy="340" rx="6" ry="4" transform="rotate(-20,470,340)" fill="rgba(196,62,20,0.5)"/>
+    <ellipse cx="455" cy="360" rx="5" ry="3.5" transform="rotate(15,455,360)" fill="rgba(196,62,20,0.4)"/>
+    <ellipse cx="700" cy="355" rx="6" ry="4" transform="rotate(-30,700,355)" fill="rgba(196,62,20,0.45)"/>
+    <ellipse cx="718" cy="340" rx="5" ry="3.5" transform="rotate(10,718,340)" fill="rgba(196,62,20,0.35)"/>
+  </g>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#cpaccent)"/>
+
+  <!-- Text content — left side -->
+  <text x="72" y="148" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">CLIENT STORY</text>
+  <rect x="72" y="158" width="40" height="2" fill="url(#cpaccent)" opacity="0.8"/>
+
+  <text x="72" y="202" font-family="Georgia, serif" font-size="26" font-weight="900" fill="white" letter-spacing="-0.5">Café Public</text>
+  <text x="72" y="236" font-family="Georgia, serif" font-size="26" font-weight="900" fill="white" letter-spacing="-0.5">× EZPZ Coffee</text>
+  <rect x="72" y="248" width="280" height="1.5" fill="rgba(255,255,255,0.08)"/>
+
+  <text x="72" y="276" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.5)" letter-spacing="0.2">Mélange Café Public</text>
+  <text x="72" y="298" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.35)" letter-spacing="0.2">Roasted at Canadian Roasting Society</text>
+  <text x="72" y="318" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.3)" letter-spacing="0.2">Montréal, Québec</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="362" width="120" height="28" rx="3" fill="rgba(196,62,20,0.15)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <text x="132" y="381" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner accent -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(196,62,20,0.03)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+</svg>

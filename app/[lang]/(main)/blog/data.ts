@@ -24,7 +24,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     color: "#1a0a05",
     initials: "CS",
-    image: "/assets/blog/cafe-public-case-study.svg",
+    image: "/assets/blog/cafe-public-case-study.webp",
     published: true,
   },
   {
