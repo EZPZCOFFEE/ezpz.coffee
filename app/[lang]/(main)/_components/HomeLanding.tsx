@@ -283,17 +283,6 @@ const HomeLanding = () => {
               </motion.blockquote>
             ))}
           </motion.div>
-          <motion.p className={styles.googleReviewCta} {...fadeChild}>
-            Happy EZPZ customer?{" "}
-            <a
-              href="https://g.page/r/ezpzcoffee/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.googleReviewLink}
-            >
-              Leave us a Google review ★★★★★
-            </a>
-          </motion.p>
         </motion.div>
       </section>
 
