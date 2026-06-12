@@ -94,6 +94,46 @@ export const ContactForm = () => {
   }
 
   return (
+    <div style={{ position: "relative" }}>
+      {/* ── Temporary overlay while form is down ── */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 10,
+        background: "rgba(255, 255, 255, 0.92)",
+        backdropFilter: "blur(4px)",
+        borderRadius: "8px",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "1rem",
+        padding: "2rem",
+        textAlign: "center",
+      }}>
+        <p style={{ fontSize: "0.85rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#c43e14", margin: 0 }}>
+          Form temporarily unavailable
+        </p>
+        <p style={{ fontSize: "1.05rem", fontWeight: 700, color: "#111111", margin: 0, lineHeight: 1.4 }}>
+          Send us an email directly — we reply within 24 hours.
+        </p>
+        <a
+          href="mailto:help@ezpz.coffee"
+          style={{
+            display: "inline-block",
+            padding: "14px 32px",
+            background: "#c43e14",
+            color: "#ffffff",
+            fontWeight: 700,
+            fontSize: "1rem",
+            borderRadius: "4px",
+            textDecoration: "none",
+          }}
+        >
+          help@ezpz.coffee
+        </a>
+      </div>
+
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <div className={styles.row}>
         <div className={styles.field}>
@@ -182,5 +222,6 @@ export const ContactForm = () => {
         {submitting ? t("form.submitting") : t("form.submit")}
       </button>
     </form>
+    </div>
   );
 };
