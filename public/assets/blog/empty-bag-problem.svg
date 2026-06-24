@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="ebg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0604"/>
+      <stop offset="100%" style="stop-color:#150b05"/>
+    </linearGradient>
+    <linearGradient id="eaccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <filter id="eglow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#ebg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+
+  <!-- Empty bag (right, grey/ghost) -->
+  <rect x="510" y="90" width="150" height="220" rx="10" fill="rgba(80,70,60,0.15)" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <rect x="516" y="90" width="138" height="18" rx="5" fill="rgba(60,50,40,0.1)"/>
+  <rect x="516" y="295" width="138" height="15" rx="5" fill="rgba(60,50,40,0.1)"/>
+  <!-- Empty label -->
+  <rect x="522" y="116" width="126" height="162" rx="4" fill="rgba(60,50,40,0.08)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="585" y="205" font-family="Georgia, serif" font-size="13" fill="rgba(255,255,255,0.12)" text-anchor="middle" font-weight="700">EMPTY</text>
+  <!-- Question mark inside -->
+  <text x="585" y="230" font-family="Georgia, serif" font-size="32" fill="rgba(255,255,255,0.06)" text-anchor="middle" font-weight="900">?</text>
+
+  <!-- Full bag (right, vivid/accent) -->
+  <rect x="660" y="75" width="110" height="260" rx="10" fill="rgba(92,35,10,0.5)" stroke="rgba(196,62,20,0.35)" stroke-width="1.5"/>
+  <rect x="665" y="75" width="100" height="18" rx="5" fill="rgba(70,25,8,0.6)"/>
+  <rect x="665" y="320" width="100" height="15" rx="5" fill="rgba(55,20,5,0.6)"/>
+  <!-- Full label -->
+  <rect x="668" y="100" width="94" height="214" rx="4" fill="rgba(196,62,20,0.2)" stroke="rgba(196,62,20,0.3)" stroke-width="1"/>
+  <text x="715" y="185" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="800" letter-spacing="1">YOUR</text>
+  <text x="715" y="200" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle" font-weight="800" letter-spacing="1">BRAND</text>
+  <!-- Checkmark -->
+  <text x="715" y="235" font-family="Georgia, serif" font-size="22" fill="rgba(196,62,20,0.9)" text-anchor="middle">✓</text>
+  <!-- Glow behind full bag -->
+  <ellipse cx="715" cy="210" rx="55" ry="120" fill="rgba(196,62,20,0.08)" filter="url(#eglow)"/>
+  <!-- Valve dot -->
+  <circle cx="748" cy="92" r="5" fill="rgba(196,62,20,0.3)" stroke="rgba(196,62,20,0.5)" stroke-width="1"/>
+  <circle cx="748" cy="92" r="2.5" fill="rgba(196,62,20,0.7)"/>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#eaccent)"/>
+
+  <!-- Text — left -->
+  <text x="72" y="148" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">THE MANIFESTO</text>
+  <rect x="72" y="158" width="40" height="2" fill="url(#eaccent)" opacity="0.8"/>
+
+  <text x="72" y="208" font-family="Georgia, serif" font-size="36" font-weight="900" fill="white" letter-spacing="-1">The Empty</text>
+  <text x="72" y="254" font-family="Georgia, serif" font-size="36" font-weight="900" fill="url(#eaccent)" letter-spacing="-1">Bag Problem</text>
+
+  <rect x="72" y="268" width="340" height="1.5" fill="rgba(255,255,255,0.07)"/>
+
+  <text x="72" y="296" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.42)" letter-spacing="0.2">Every packaging company is selling you</text>
+  <text x="72" y="314" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.42)" letter-spacing="0.2">half a product. We are selling the whole thing.</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="355" width="120" height="28" rx="3" fill="rgba(196,62,20,0.15)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <text x="132" y="374" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner accent -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(196,62,20,0.03)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+</svg>

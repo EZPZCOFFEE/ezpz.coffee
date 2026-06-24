@@ -153,6 +153,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/canadian-roasting-society-montreal-best-roaster",
     "/en/blog/best-coffee-shops-quebec-complete-guide",
     "/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
+    "/en/blog/empty-bag-problem-canadian-coffee-packaging",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

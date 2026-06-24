@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "empty-bag-problem-canadian-coffee-packaging",
+    category: "The Manifesto",
+    categoryColor: "#c43e14",
+    title: "The Empty Bag Problem",
+    excerpt:
+      "Every coffee packaging company in Canada is selling you half a product. Here is why that is costing you thousands, and the only company solving it.",
+    date: "June 12, 2026",
+    readTime: "8 min read",
+    color: "#0a0604",
+    initials: "MP",
+    image: "/assets/blog/empty-bag-problem.svg",
+    published: true,
+  },
+  {
     slug: "cafe-public-ezpz-custom-coffee-bags-case-study",
     category: "Client Story",
     categoryColor: "#c43e14",
