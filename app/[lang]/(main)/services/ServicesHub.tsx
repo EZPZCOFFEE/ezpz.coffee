@@ -42,6 +42,18 @@ const SERVICES = [
     href: "/services/nespresso-capsules",
     cta: "Learn more →",
   },
+  {
+    label: "04_ Coffee Dropshipping",
+    title: "Coffee Dropshipping Canada",
+    body: "Sell branded specialty coffee online without ever touching it. We roast in Montreal, pack in your brand, and ship direct to your customers. Zero minimum. No monthly fees.",
+    stats: [
+      { num: "0", label: "Minimum to start" },
+      { num: "None", label: "Monthly software fees" },
+      { num: "Direct", label: "Ships to your customers" },
+    ],
+    href: "/coffee-dropshipping-canada",
+    cta: "Learn more →",
+  },
 ];
 
 const ServicesHub = () => {

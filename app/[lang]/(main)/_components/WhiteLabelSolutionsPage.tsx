@@ -302,6 +302,12 @@ const WhiteLabelSolutionsPage = () => {
               See how we compare →
             </Link>
           </div>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Selling coffee online?{" "}
+            <Link href={`/${locale}/coffee-dropshipping-canada`} style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              See our coffee dropshipping service →
+            </Link>
+          </p>
         </motion.div>
       </section>
     </div>

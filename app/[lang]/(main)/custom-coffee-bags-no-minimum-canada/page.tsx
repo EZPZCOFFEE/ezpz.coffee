@@ -123,8 +123,11 @@ const Page = async ({ params }: { params: Promise<{ lang: string }> }) => {
         <h2>EZPZ vs Coffee Dropshipping — What&apos;s the Difference?</h2>
         <p>
           When searching for no-minimum custom coffee bags in Canada, you will come across two very
-          different types of services. The first is coffee dropshipping — platforms like Sharehaus
-          that ship generic coffee in a bag with your label on it directly to your customer. You never
+          different types of services. The first is{" "}
+          <a href="/en/coffee-dropshipping-canada" style={{ color: "var(--color-accent)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            coffee dropshipping Canada
+          </a>{" "}
+          — platforms that ship generic coffee in a bag with your label on it directly to your customer. You never
           touch the product, never see it, and never hold it in your hands. The coffee inside is
           a commodity blend, not a specialty product. The model is built for online-only stores where
           the brand owner acts as a middleman.

@@ -175,6 +175,12 @@ const PrivateLabelCanadaPage = () => {
             <Link href="/en/design" className={styles.ctaPrimary}>Design your bag</Link>
             <Link href="/en/contact" className={styles.ctaSecondary}>Get a free quote</Link>
           </div>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Want to sell coffee online without holding inventory?{" "}
+            <Link href="/en/coffee-dropshipping-canada" style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              See our coffee dropshipping service →
+            </Link>
+          </p>
         </div>
       </section>
     </div>
