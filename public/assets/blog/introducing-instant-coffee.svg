@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="ibg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080503"/>
+      <stop offset="100%" style="stop-color:#120a05"/>
+    </linearGradient>
+    <linearGradient id="iaccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="ijar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e0f06"/>
+      <stop offset="100%" style="stop-color:#0d0804"/>
+    </linearGradient>
+    <linearGradient id="ilid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#8b2b0c"/>
+    </linearGradient>
+    <filter id="iglow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="ijarGlow">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#ibg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+
+  <!-- Glow behind jar -->
+  <ellipse cx="620" cy="230" rx="90" ry="110" fill="rgba(196,62,20,0.09)" filter="url(#ijarGlow)"/>
+
+  <!-- Jar body -->
+  <rect x="540" y="80" width="160" height="240" rx="18" fill="url(#ijar)" stroke="rgba(196,62,20,0.22)" stroke-width="1.5"/>
+  <!-- Jar label area -->
+  <rect x="554" y="108" width="132" height="186" rx="6" fill="rgba(196,62,20,0.07)" stroke="rgba(196,62,20,0.14)" stroke-width="1"/>
+  <!-- Label accent bar -->
+  <rect x="554" y="108" width="132" height="5" rx="2" fill="url(#iaccent)" opacity="0.9"/>
+  <!-- Label text -->
+  <text x="620" y="163" font-family="Georgia, serif" font-size="8.5" font-weight="800" fill="rgba(196,62,20,0.85)" text-anchor="middle" letter-spacing="2.5">FREEZE-DRIED</text>
+  <text x="620" y="184" font-family="Georgia, serif" font-size="20" font-weight="900" fill="rgba(255,255,255,0.88)" text-anchor="middle">EZPZ</text>
+  <text x="620" y="200" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.35)" text-anchor="middle" letter-spacing="2">INSTANT COFFEE</text>
+  <line x1="568" y1="212" x2="672" y2="212" stroke="rgba(196,62,20,0.22)" stroke-width="1"/>
+  <text x="620" y="230" font-family="Georgia, serif" font-size="7.5" fill="rgba(255,255,255,0.22)" text-anchor="middle">SPECIALTY GRADE · MONTREAL</text>
+  <text x="620" y="246" font-family="Georgia, serif" font-size="7.5" fill="rgba(255,255,255,0.22)" text-anchor="middle">LYOPHILISÉ · 80+ SCA</text>
+  <!-- Lid -->
+  <rect x="530" y="52" width="180" height="36" rx="12" fill="url(#ilid)"/>
+  <rect x="548" y="60" width="144" height="6" rx="3" fill="rgba(255,255,255,0.10)"/>
+  <!-- Rim -->
+  <rect x="540" y="80" width="160" height="10" rx="4" fill="rgba(196,62,20,0.35)"/>
+  <!-- Jar shine -->
+  <rect x="554" y="113" width="7" height="186" rx="3" fill="rgba(255,255,255,0.03)"/>
+  <!-- Steam wisps -->
+  <path d="M600 46 Q604 38 600 30" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M616 42 Q620 32 616 22" stroke="rgba(255,255,255,0.09)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M632 46 Q636 36 632 26" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#iaccent)"/>
+
+  <!-- Text — left -->
+  <text x="72" y="142" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">PRODUCT LAUNCH</text>
+  <rect x="72" y="152" width="40" height="2" fill="url(#iaccent)" opacity="0.8"/>
+
+  <text x="72" y="202" font-family="Georgia, serif" font-size="34" font-weight="900" fill="white" letter-spacing="-0.5">Introducing</text>
+  <text x="72" y="246" font-family="Georgia, serif" font-size="34" font-weight="900" fill="url(#iaccent)" letter-spacing="-0.5">Instant Coffee</text>
+
+  <rect x="72" y="260" width="330" height="1.5" fill="rgba(255,255,255,0.07)"/>
+
+  <text x="72" y="287" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.40)" letter-spacing="0.2">Freeze-dried, specialty grade, custom branded.</text>
+  <text x="72" y="305" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.40)" letter-spacing="0.2">Instant coffee, reinvented.</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="348" width="120" height="28" rx="3" fill="rgba(196,62,20,0.15)" stroke="rgba(196,62,20,0.4)" stroke-width="1"/>
+  <text x="132" y="367" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(196,62,20,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner accent -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(196,62,20,0.03)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+</svg>

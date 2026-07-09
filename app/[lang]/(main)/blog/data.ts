@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "introducing-freeze-dried-instant-coffee",
+    category: "Product Launch",
+    categoryColor: "#c43e14",
+    title: "Introducing Freeze-Dried Instant Coffee by EZPZ",
+    excerpt:
+      "We just added a new product to the lineup: premium freeze-dried instant coffee. Specialty grade, full flavor preserved, custom branded, zero minimum. Instant coffee, reinvented.",
+    date: "June 12, 2026",
+    readTime: "5 min read",
+    color: "#080503",
+    initials: "PL",
+    image: "/assets/blog/introducing-instant-coffee.svg",
+    published: true,
+  },
+  {
     slug: "empty-bag-problem-canadian-coffee-packaging",
     category: "The Manifesto",
     categoryColor: "#c43e14",
