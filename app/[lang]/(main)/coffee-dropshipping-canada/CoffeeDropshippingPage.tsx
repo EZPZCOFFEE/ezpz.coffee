@@ -375,12 +375,18 @@ const CoffeeDropshippingPage = () => {
               <p className={styles.statLabel}>Minimum to start with EZPZ</p>
             </div>
           </div>
-          <div style={{ marginTop: "2.5rem" }}>
+          <div style={{ marginTop: "2.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <Link
               href={`/${locale}/blog/empty-bag-problem-canadian-coffee-packaging`}
-              style={{ display: "inline-flex", alignItems: "center", gap: "0.4em", fontSize: "0.85rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: "2px" }}
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.4em", fontSize: "0.85rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: "2px", width: "fit-content" }}
             >
               Read: The Empty Bag Problem — why most packaging suppliers are selling you half a product →
+            </Link>
+            <Link
+              href={`/${locale}/instant-coffee`}
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.4em", fontSize: "0.85rem", fontWeight: 700, color: "rgba(196,62,20,0.8)", textDecoration: "none", borderBottom: "1px solid rgba(196,62,20,0.3)", paddingBottom: "2px", width: "fit-content" }}
+            >
+              Also available: freeze-dried instant coffee under your brand →
             </Link>
           </div>
         </div>

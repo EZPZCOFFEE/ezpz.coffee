@@ -54,6 +54,18 @@ const SERVICES = [
     href: "/coffee-dropshipping-canada",
     cta: "Learn more →",
   },
+  {
+    label: "05_ Instant Coffee",
+    title: "Freeze-Dried Instant Coffee",
+    body: "Premium freeze-dried specialty coffee that preserves full flavor and aroma. Custom branded in jars, sachets, or sticks. The instant coffee that actually tastes like a real cup.",
+    stats: [
+      { num: "Freeze-dried", label: "Not spray-dried" },
+      { num: "80+ SCA", label: "Specialty grade" },
+      { num: "0", label: "Minimum order" },
+    ],
+    href: "/instant-coffee",
+    cta: "Learn more →",
+  },
 ];
 
 const ServicesHub = () => {

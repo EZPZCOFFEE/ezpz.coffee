@@ -568,7 +568,8 @@
     "customCoffeeBags": "Custom Coffee Bags",
     "readyToDrink": "Ready-to-Drink",
     "nespressoCapsules": "Nespresso Capsules",
-    "allServices": "All Services"
+    "allServices": "All Services",
+    "instantCoffee": "Instant Coffee"
   },
   "newsletterPopup": {
     "ariaLabel": "Newsletter signup",

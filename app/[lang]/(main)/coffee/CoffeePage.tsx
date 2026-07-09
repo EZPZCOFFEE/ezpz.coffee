@@ -153,6 +153,32 @@ const CoffeePage = () => {
         </div>
       </section>
 
+      {/* ── Available formats ────────────────────────────────── */}
+      <section className={styles.cta} style={{ background: "#f8f7f5" }}>
+        <div className={styles.ctaInner}>
+          <h2 className={styles.ctaTitle} style={{ color: "#111" }}>Available in multiple formats.</h2>
+          <p className={styles.ctaSubtitle} style={{ color: "#6b7280" }}>
+            The same specialty coffee, in every format your brand needs.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center", marginTop: "1rem" }}>
+            {[
+              { label: "Custom Coffee Bags", href: `/${locale}/services/custom-coffee-bags` },
+              { label: "Nespresso Capsules", href: `/${locale}/services/nespresso-capsules` },
+              { label: "Ready-to-Drink", href: `/${locale}/services/ready-to-drink` },
+              { label: "Freeze-Dried Instant Coffee", href: `/${locale}/instant-coffee` },
+            ].map((f) => (
+              <Link
+                key={f.label}
+                href={f.href}
+                style={{ display: "inline-flex", alignItems: "center", padding: "0.6em 1.4em", background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: "4px", fontSize: "0.85rem", fontWeight: 700, color: "#111", textDecoration: "none", transition: "border-color 0.15s" }}
+              >
+                {f.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ──────────────────────────────────────────────── */}
       <section className={styles.cta}>
         <div className={styles.ctaInner}>

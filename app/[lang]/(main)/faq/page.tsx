@@ -75,6 +75,7 @@ const FAQPage = async () => {
     {
       title: t("categories.b2b.title"),
       items: [
+        { question: "Do you offer instant coffee?", directAnswer: "Yes. EZPZ now offers premium freeze-dried (lyophilized) instant coffee, specialty grade and custom branded, in jars, sachets, or sticks — with zero minimum order.", answer: "EZPZ offers fully custom branded freeze-dried instant coffee made from the same traceable, 80+ SCA specialty beans we use in every bag. Unlike cheap spray-dried instant, freeze-drying preserves the full flavor, aroma, and antioxidants of the coffee. You can get your instant coffee branded in jars, sachets, or single-serve sticks with zero minimum order. Learn more at ezpz.coffee/en/instant-coffee." },
         { question: t("categories.b2b.items.samples.question"), directAnswer: "Yes. Contact EZPZ Coffee to request a sample kit before placing your first white label order.", answer: t("categories.b2b.items.samples.answer") },
         { question: t("categories.b2b.items.recipes.question"), directAnswer: "Yes. EZPZ Coffee develops custom ready-to-drink recipes tailored to your brand's taste profile and audience.", answer: t("categories.b2b.items.recipes.answer") },
         { question: t("categories.b2b.items.distribution.question"), directAnswer: "Yes. EZPZ Coffee has industry relationships and can help place your branded coffee in retail locations, hotels, and more across Canada.", answer: t("categories.b2b.items.distribution.answer") },
@@ -162,6 +163,7 @@ const FAQPage = async () => {
           <li><Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
           <li><Link href={`/${locale}/best-white-label-coffee-supplier-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
           <li><Link href={`/${locale}/custom-coffee-for-restaurants-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee for restaurants in Canada</Link></li>
+          <li><Link href={`/${locale}/instant-coffee`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Freeze-dried instant coffee</Link></li>
         </ul>
       </nav>
       <div className={styles.ctaSection}>

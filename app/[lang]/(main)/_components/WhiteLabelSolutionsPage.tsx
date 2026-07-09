@@ -308,6 +308,12 @@ const WhiteLabelSolutionsPage = () => {
               See our coffee dropshipping service →
             </Link>
           </p>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Looking for something instant?{" "}
+            <Link href={`/${locale}/instant-coffee`} style={{ color: "rgba(255,255,255,0.9)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              Explore our freeze-dried instant coffee →
+            </Link>
+          </p>
         </motion.div>
       </section>
     </div>

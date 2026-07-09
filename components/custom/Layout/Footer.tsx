@@ -48,6 +48,7 @@ const Footer = () => {
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>{t("ourCoffee")}</Link>
             <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>Custom Coffee Bags</Link>
             <Link href={`/${locale}/services`} className={styles.footerLink}>Services</Link>
+            <Link href={`/${locale}/instant-coffee`} className={styles.footerLink}>Instant Coffee</Link>
             <Link href={`/${locale}/blog`} className={styles.footerLink}>Blog</Link>
             <Link href={`/${locale}/locations`} className={styles.footerLink}>Canadian Markets</Link>
             <Link href={`/${locale}/locations/usa`} className={styles.footerLink}>US Markets</Link>

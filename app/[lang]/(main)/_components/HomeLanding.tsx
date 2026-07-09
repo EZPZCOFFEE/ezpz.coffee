@@ -333,6 +333,9 @@ const HomeLanding = () => {
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
             Or <Link href={`/${locale}/blog`} className={styles.freeSampleMetaLink}>read our guides and tips</Link> on building a coffee brand.
           </motion.p>
+          <motion.p {...fadeChild} className={styles.freeSampleMeta}>
+            New: <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>freeze-dried instant coffee</Link> — specialty grade, custom branded.
+          </motion.p>
         </motion.div>
       </section>
 

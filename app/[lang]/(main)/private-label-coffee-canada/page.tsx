@@ -181,6 +181,12 @@ const PrivateLabelCanadaPage = () => {
               See our coffee dropshipping service →
             </Link>
           </p>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Looking for an instant option?{" "}
+            <Link href="/en/instant-coffee" style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              Explore our freeze-dried instant coffee →
+            </Link>
+          </p>
         </div>
       </section>
     </div>
