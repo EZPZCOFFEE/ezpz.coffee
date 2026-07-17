@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "osler-records-ezpz-custom-coffee-bags-case-study",
+    category: "Client Story",
+    categoryColor: "#c43e14",
+    title: "How Osler Records Launched Their Own House Blend With EZPZ",
+    excerpt:
+      "Toronto's Junction Triangle music venue and coffee shop created their own branded House Blend — 75% Brazil, 25% Colombia, fully washed — with EZPZ. Here is the full story.",
+    date: "July 16, 2026",
+    readTime: "5 min read",
+    color: "#080503",
+    initials: "OR",
+    image: "/assets/blog/osler-records-case-study.png",
+    published: true,
+  },
+  {
     slug: "how-to-choose-private-label-coffee-supplier-canada",
     category: "Buyer's Guide",
     categoryColor: "#c43e14",
