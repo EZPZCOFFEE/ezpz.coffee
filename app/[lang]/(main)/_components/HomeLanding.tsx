@@ -388,40 +388,69 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
-      {/* ── Case study ── */}
+      {/* ── Case studies ── */}
       <section style={{ background: "#f8f7f5", borderTop: "1px solid #e8e8e8", padding: "var(--spacing-galaxy) var(--spacing-state)" }}>
         <motion.div style={{ maxWidth: "1060px", margin: "0 auto" }} {...staggerParent}>
           <motion.p {...fadeChild} style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--color-accent)", marginBottom: "0.75rem" }}>
-            Client Story
+            Client Stories
           </motion.p>
           <motion.h2 {...fadeChild} style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2rem", lineHeight: 1.15 }}>
             See how real brands do it.
           </motion.h2>
-          <motion.div {...fadeChild}>
+          <motion.div {...fadeChild} style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.25rem" }}>
+
+            {/* Café Public */}
             <Link
               href={`/${locale}/blog/cafe-public-ezpz-custom-coffee-bags-case-study`}
-              style={{ display: "flex", gap: "2rem", background: "#ffffff", border: "1px solid #e8e8e8", borderRadius: "8px", overflow: "hidden", textDecoration: "none", color: "inherit", transition: "box-shadow 0.2s ease", maxWidth: "720px" }}
+              style={{ display: "flex", flexDirection: "column", background: "#ffffff", border: "1px solid #e8e8e8", borderRadius: "8px", overflow: "hidden", textDecoration: "none", color: "inherit", transition: "box-shadow 0.2s ease" }}
             >
-              <div style={{ width: "220px", flexShrink: 0, overflow: "hidden", background: "#f0ece6" }}>
+              <div style={{ height: "200px", overflow: "hidden", background: "#f0ece6", flexShrink: 0 }}>
                 <img
                   src="/assets/blog/cafe-public-case-study.webp"
                   alt="Café Public × EZPZ — Mélange Café Public"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
-              <div style={{ padding: "1.75rem 1.75rem 1.75rem 0", display: "flex", flexDirection: "column", gap: "0.6rem", justifyContent: "center" }}>
+              <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1 }}>
                 <span style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>Café Public × EZPZ</span>
-                <h3 style={{ fontSize: "1.05rem", fontWeight: 800, color: "#111111", margin: 0, lineHeight: 1.35 }}>
+                <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#111111", margin: 0, lineHeight: 1.35 }}>
                   How Café Public Launched Their Own Branded Coffee With EZPZ
                 </h3>
-                <p style={{ fontSize: "0.85rem", color: "#6b7280", margin: 0, lineHeight: 1.65 }}>
+                <p style={{ fontSize: "0.83rem", color: "#6b7280", margin: 0, lineHeight: 1.65, flex: 1 }}>
                   From concept to shelf in weeks. One of Quebec&apos;s most exciting specialty coffee platforms creates their signature blend — zero complications.
                 </p>
-                <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-accent)", display: "flex", alignItems: "center", gap: "4px", marginTop: "0.25rem" }}>
+                <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-accent)", marginTop: "0.5rem" }}>
                   Read the case study →
                 </span>
               </div>
             </Link>
+
+            {/* Osler Records */}
+            <Link
+              href={`/${locale}/blog/osler-records-ezpz-custom-coffee-bags-case-study`}
+              style={{ display: "flex", flexDirection: "column", background: "#ffffff", border: "1px solid #e8e8e8", borderRadius: "8px", overflow: "hidden", textDecoration: "none", color: "inherit", transition: "box-shadow 0.2s ease" }}
+            >
+              <div style={{ height: "200px", overflow: "hidden", background: "#b8c832", flexShrink: 0 }}>
+                <img
+                  src="/assets/blog/osler-records-case-study.png"
+                  alt="Osler Records × EZPZ — House Blend"
+                  style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", padding: "1rem" }}
+                />
+              </div>
+              <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1 }}>
+                <span style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>Osler Records × EZPZ</span>
+                <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#111111", margin: 0, lineHeight: 1.35 }}>
+                  How Osler Records Launched Their Own House Blend With EZPZ
+                </h3>
+                <p style={{ fontSize: "0.83rem", color: "#6b7280", margin: 0, lineHeight: 1.65, flex: 1 }}>
+                  Toronto&apos;s Junction Triangle music venue and coffee bar created their own branded House Blend — roasted fresh in Montreal, on the shelf in weeks.
+                </p>
+                <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-accent)", marginTop: "0.5rem" }}>
+                  Read the case study →
+                </span>
+              </div>
+            </Link>
+
           </motion.div>
         </motion.div>
       </section>
