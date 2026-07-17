@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#070604"/>
+      <stop offset="100%" style="stop-color:#110d08"/>
+    </linearGradient>
+    <linearGradient id="hacc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#hbg)"/>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#hacc)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+  <line x1="266" y1="0" x2="266" y2="420" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+  <line x1="533" y1="0" x2="533" y2="420" stroke="rgba(255,255,255,0.018)" stroke-width="1"/>
+
+  <!-- Right panel background -->
+  <rect x="470" y="24" width="290" height="370" rx="6" fill="rgba(255,255,255,0.025)" stroke="rgba(196,62,20,0.12)" stroke-width="1"/>
+
+  <!-- Checklist items (right side) -->
+  <!-- Item 1 -->
+  <rect x="492" y="44" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.7)" stroke-width="1.5"/>
+  <line x1="495" y1="51" x2="498" y2="54" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="498" y1="54" x2="504" y2="48" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="514" y="56" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.45)">Minimum order quantity</text>
+
+  <!-- Item 2 -->
+  <rect x="492" y="68" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.7)" stroke-width="1.5"/>
+  <line x1="495" y1="75" x2="498" y2="78" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="498" y1="78" x2="504" y2="72" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="514" y="80" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.45)">Design included?</text>
+
+  <!-- Item 3 -->
+  <rect x="492" y="92" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.7)" stroke-width="1.5"/>
+  <line x1="495" y1="99" x2="498" y2="102" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="498" y1="102" x2="504" y2="96" stroke="#c43e14" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="514" y="104" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.45)">Coffee or roasting only?</text>
+
+  <!-- Item 4 -->
+  <rect x="492" y="116" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.35)" stroke-width="1.5"/>
+  <text x="514" y="128" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.28)">Coffee quality &amp; grade</text>
+
+  <!-- Item 5 -->
+  <rect x="492" y="140" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.35)" stroke-width="1.5"/>
+  <text x="514" y="152" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.28)">Roasting location &amp; freshness</text>
+
+  <!-- Item 6 -->
+  <rect x="492" y="164" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.35)" stroke-width="1.5"/>
+  <text x="514" y="176" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.28)">Packaging formats available</text>
+
+  <!-- Item 7 -->
+  <rect x="492" y="188" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.25)" stroke-width="1.5"/>
+  <text x="514" y="200" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.2)">Fulfillment &amp; dropshipping</text>
+
+  <!-- Item 8 -->
+  <rect x="492" y="212" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.25)" stroke-width="1.5"/>
+  <text x="514" y="224" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.2)">All-in costs &amp; fees</text>
+
+  <!-- Item 9 -->
+  <rect x="492" y="236" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.20)" stroke-width="1.5"/>
+  <text x="514" y="248" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.18)">Production turnaround</text>
+
+  <!-- Item 10 -->
+  <rect x="492" y="260" width="14" height="14" rx="3" fill="none" stroke="rgba(196,62,20,0.20)" stroke-width="1.5"/>
+  <text x="514" y="272" font-family="Georgia, serif" font-size="9" fill="rgba(255,255,255,0.18)">Who is this supplier for?</text>
+
+  <!-- Divider in panel -->
+  <line x1="492" y1="288" x2="740" y2="288" stroke="rgba(196,62,20,0.12)" stroke-width="1"/>
+  <text x="492" y="308" font-family="Georgia, serif" font-size="8" fill="rgba(196,62,20,0.5)" letter-spacing="1.5">10 QUESTIONS TO ASK</text>
+
+  <!-- Left text block -->
+  <text x="72" y="132" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">BUYER'S GUIDE</text>
+  <rect x="72" y="142" width="40" height="2" fill="url(#hacc)" opacity="0.8"/>
+
+  <!-- Large "10" -->
+  <text x="68" y="232" font-family="Georgia, serif" font-size="110" font-weight="900" fill="rgba(196,62,20,0.08)" letter-spacing="-4">10</text>
+
+  <text x="72" y="212" font-family="Georgia, serif" font-size="28" font-weight="900" fill="white" letter-spacing="-0.5">How to Choose</text>
+  <text x="72" y="244" font-family="Georgia, serif" font-size="28" font-weight="900" fill="url(#hacc)" letter-spacing="-0.5">a Private Label</text>
+  <text x="72" y="276" font-family="Georgia, serif" font-size="28" font-weight="900" fill="white" letter-spacing="-0.5">Coffee Supplier</text>
+
+  <rect x="72" y="290" width="370" height="1.5" fill="rgba(255,255,255,0.06)"/>
+
+  <text x="72" y="316" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.38)" letter-spacing="0.2">10 questions to ask before you commit.</text>
+  <text x="72" y="333" font-family="Georgia, serif" font-size="12" fill="rgba(255,255,255,0.38)" letter-spacing="0.2">Canada · 2026</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="362" width="108" height="26" rx="3" fill="rgba(196,62,20,0.14)" stroke="rgba(196,62,20,0.38)" stroke-width="1"/>
+  <text x="126" y="380" font-family="Georgia, serif" font-size="10" font-weight="700" fill="rgba(196,62,20,0.88)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Right edge accent -->
+  <rect x="758" y="0" width="42" height="420" fill="rgba(196,62,20,0.025)"/>
+  <line x1="758" y1="0" x2="758" y2="420" stroke="rgba(196,62,20,0.08)" stroke-width="1"/>
+</svg>

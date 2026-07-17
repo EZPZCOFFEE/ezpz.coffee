@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "how-to-choose-private-label-coffee-supplier-canada",
+    category: "Buyer's Guide",
+    categoryColor: "#c43e14",
+    title: "How to Choose a Private Label Coffee Supplier in Canada",
+    excerpt:
+      "Not all private label coffee programs are built the same. Here are the 10 questions to ask any supplier before you commit, and the answers that separate a good fit from an expensive mistake.",
+    date: "June 13, 2026",
+    readTime: "9 min read",
+    color: "#070604",
+    initials: "BG",
+    image: "/assets/blog/how-to-choose-private-label-supplier.svg",
+    published: true,
+  },
+  {
     slug: "introducing-freeze-dried-instant-coffee",
     category: "Product Launch",
     categoryColor: "#c43e14",
