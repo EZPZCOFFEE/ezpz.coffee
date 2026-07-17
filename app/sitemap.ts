@@ -157,6 +157,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/coffee-dropshipping-canada",
     "/en/instant-coffee",
     "/en/blog/introducing-freeze-dried-instant-coffee",
+    "/en/compare/private-label-coffee-suppliers-canada",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

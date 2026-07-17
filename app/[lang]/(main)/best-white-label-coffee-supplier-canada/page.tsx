@@ -101,6 +101,7 @@ const RELATED = [
   { label: "Custom Coffee Bags With No Minimum in Canada", href: "/en/custom-coffee-bags-no-minimum-canada" },
   { label: "How Much Do Custom Coffee Bags Cost in Canada?", href: "/en/how-much-do-custom-coffee-bags-cost-canada" },
   { label: "Custom Coffee for Restaurants in Canada", href: "/en/custom-coffee-for-restaurants-canada" },
+  { label: "Private Label Coffee Suppliers Canada Compared", href: "/en/compare/private-label-coffee-suppliers-canada" },
 ];
 
 const Page = async ({ params }: { params: Promise<{ lang: string }> }) => {

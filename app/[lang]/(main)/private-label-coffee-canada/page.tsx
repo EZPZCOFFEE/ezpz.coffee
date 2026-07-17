@@ -187,6 +187,12 @@ const PrivateLabelCanadaPage = () => {
               Explore our freeze-dried instant coffee →
             </Link>
           </p>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Comparing private label suppliers?{" "}
+            <Link href="/en/compare/private-label-coffee-suppliers-canada" style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              See our honest supplier comparison →
+            </Link>
+          </p>
         </div>
       </section>
     </div>

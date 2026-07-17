@@ -34,6 +34,7 @@ const COMPETITOR_PAGES: { name: string; blurb: string; href: string }[] = [
   { name: "Virgin Hill Coffee", blurb: "Specialty roaster without an online design tool or zero-minimum offering.", href: "/en/compare/virgin-hill-coffee-alternative" },
   { name: "Hutsul Coffee", blurb: "Wholesale-focused roaster with unclear minimum and turnaround requirements.", href: "/en/compare/hutsul-coffee-alternative" },
   { name: "Roasters Pack", blurb: "Subscription-first model — not built for custom branded bag production.", href: "/en/compare/roasters-pack-alternative" },
+  { name: "Private Label Suppliers Canada", blurb: "Canterbury, Cafe Barista, and KW Coffee Collective compared side by side with EZPZ.", href: "/en/compare/private-label-coffee-suppliers-canada" },
 ];
 
 const ROWS: { feature: string; ezpz: string; competitors: string[] }[] = [
