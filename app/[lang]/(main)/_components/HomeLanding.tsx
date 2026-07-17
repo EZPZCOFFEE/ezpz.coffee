@@ -41,6 +41,7 @@ const TRUST_LOGOS = [
   { file: "regine", name: "Régine Café-Brunch", href: "https://reginecafe.ca/fr/" },
   { file: "stephen", name: "Le Mount Stephen Hôtel", href: "https://www.hotelmountstephen.com" },
   { file: "tunnel", name: "Tunnel Espresso", href: "https://tunnelespressobar.ca" },
+  { file: "osler-records", name: "Osler Records", href: "https://www.instagram.com/osler.records/" },
 ];
 
 /* Featured coffees carousel — restore when product imagery is ready.
