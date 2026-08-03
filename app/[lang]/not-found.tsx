@@ -11,8 +11,16 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} data-egg-cursor="bean">
       <div className={styles.inner}>
+        <button
+          type="button"
+          data-egg="cup-404"
+          aria-label="A coffee cup"
+          style={{ background: "none", border: "none", cursor: "pointer", fontSize: "4.5rem", lineHeight: 1, marginBottom: "0.5rem", display: "block", margin: "0 auto 0.5rem" }}
+        >
+          ☕
+        </button>
         <p className={styles.eyebrow}>404 Error</p>
         <h1 className={styles.headline}>Lost in the beans?</h1>
         <p className={styles.subtext}>

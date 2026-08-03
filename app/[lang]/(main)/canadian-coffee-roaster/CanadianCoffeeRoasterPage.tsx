@@ -196,7 +196,7 @@ const CanadianCoffeeRoasterPage = () => {
                 <span className={styles.heroStatNum}>Montreal</span>
                 <span className={styles.heroStatLabel}>Roasted in Canada</span>
               </div>
-              <div className={styles.heroStat}>
+              <div className={styles.heroStat} data-egg="zero-stat" style={{ cursor: "pointer" }}>
                 <span className={styles.heroStatNum}>0</span>
                 <span className={styles.heroStatLabel}>Minimum order</span>
               </div>
@@ -218,6 +218,7 @@ const CanadianCoffeeRoasterPage = () => {
                 alt="Custom branded coffee bag — Canadian coffee roaster for your brand"
                 className={styles.heroProductImage}
                 placeholder="blur"
+                data-egg="bag-image"
               />
             </div>
           </div>

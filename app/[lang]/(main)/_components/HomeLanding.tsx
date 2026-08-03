@@ -143,7 +143,7 @@ const HomeLanding = () => {
         <div className={styles.heroGradient} aria-hidden />
 
         <motion.div className={styles.heroOverlay} {...staggerParent}>
-          <motion.h1 className={styles.heroOverlayTitle} {...fadeChild}>
+          <motion.h1 className={styles.heroOverlayTitle} data-egg="hero-headline" {...fadeChild}>
             {t("hero.headline")}
           </motion.h1>
           <motion.p className={styles.heroOverlaySubtitle} {...fadeChild}>

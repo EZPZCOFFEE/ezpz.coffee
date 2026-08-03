@@ -8,6 +8,7 @@ import { PropsWithChildren } from "react";
 
 import { Locale, locales } from "@/i18n/types";
 import { baseUrl } from "@/lib/base-url";
+import EasterEggs from "@/components/EasterEggs";
 
 import "../global.scss";
 
@@ -493,6 +494,7 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
       </head>
       <body className={fontVariables}>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <EasterEggs />
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-18087558623" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

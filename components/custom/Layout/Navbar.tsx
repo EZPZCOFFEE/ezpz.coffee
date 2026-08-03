@@ -114,7 +114,7 @@ const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
   const locale = useLocale();
 
   return (
-    <Link href={`/${locale}`} className={styles.logo}>
+    <Link href={`/${locale}`} className={styles.logo} data-egg="logo">
       <Image
         src="/logo.svg"
         alt={t("logoAlt")}
