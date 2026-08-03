@@ -131,6 +131,12 @@ const AboutPage = () => {
           </p>
           <div className={styles.roastDivider} />
           <span className={styles.roastTagline}>Roasted fresh. Shipped fast. Always specialty-grade.</span>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.88rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
+            Learn more about{" "}
+            <Link href={`/${locale}/canadian-coffee-roaster`} style={{ color: "rgba(255,255,255,0.85)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              what makes EZPZ a different kind of Canadian coffee roaster →
+            </Link>
+          </p>
         </div>
       </section>
 

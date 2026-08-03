@@ -189,6 +189,12 @@ const CoffeePage = () => {
           <Link href={`/${locale}/design`} className={styles.ctaButton}>
             Design your bag <ArrowRight size={18} weight="bold" />
           </Link>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
+            Curious about our roasting process?{" "}
+            <Link href={`/${locale}/canadian-coffee-roaster`} style={{ color: "rgba(255,255,255,0.85)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              Learn about EZPZ as a Canadian coffee roaster →
+            </Link>
+          </p>
         </div>
       </section>
 

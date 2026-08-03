@@ -193,6 +193,12 @@ const PrivateLabelCanadaPage = () => {
               See our honest supplier comparison →
             </Link>
           </p>
+          <p style={{ marginTop: "0.75rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.6)" }}>
+            Want to understand what sets us apart as a Canadian coffee roaster?{" "}
+            <Link href="/en/canadian-coffee-roaster" style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              See the EZPZ difference →
+            </Link>
+          </p>
         </div>
       </section>
     </div>

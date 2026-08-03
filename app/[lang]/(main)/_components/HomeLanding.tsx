@@ -337,6 +337,9 @@ const HomeLanding = () => {
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
             New: <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>freeze-dried instant coffee</Link> — specialty grade, custom branded.
           </motion.p>
+          <motion.p {...fadeChild} className={styles.freeSampleMeta}>
+            Looking for a <Link href={`/${locale}/canadian-coffee-roaster`} className={styles.freeSampleMetaLink}>Canadian coffee roaster for your brand</Link>? See what makes EZPZ different.
+          </motion.p>
         </motion.div>
       </section>
 

@@ -148,6 +148,7 @@ const WhiteLabelRoutePage = () => {
           <li><Link href="/en/custom-coffee-bags-no-minimum-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee bags with no minimum</Link></li>
           <li><Link href="/en/best-white-label-coffee-supplier-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
           <li><Link href="/en/how-much-do-custom-coffee-bags-cost-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
+          <li><Link href="/en/canadian-coffee-roaster" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Find a Canadian coffee roaster for your brand</Link></li>
         </ul>
       </nav>
     </>
