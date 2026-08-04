@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "ezpz-tech-meets-coffee-custom-bag-tool",
+    category: "Behind the Brand",
+    categoryColor: "#c43e14",
+    title: "The Sticker Mule of Coffee",
+    excerpt:
+      "Sticker Mule made stickers effortless. Vistaprint put a design studio in your browser. So why was custom coffee still stuck with quotes and 5,000-unit minimums? Here's how EZPZ brought tech to coffee.",
+    date: "June 15, 2026",
+    readTime: "7 min read",
+    color: "#0D0A07",
+    initials: "BB",
+    image: "/assets/blog/ezpz-tech-meets-coffee.svg",
+    published: true,
+  },
+  {
     slug: "osler-records-ezpz-custom-coffee-bags-case-study",
     category: "Client Story",
     categoryColor: "#c43e14",
