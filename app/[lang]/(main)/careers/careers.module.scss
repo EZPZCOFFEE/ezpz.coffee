@@ -1,0 +1,540 @@
+.page {
+  font-family: var(--font-montserrat), var(--font-family);
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Hero ──────────────────────────────────────────────────────
+
+.hero {
+  position: relative;
+  background: #0D0A07;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid #2A1F14;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D0A07 0%, #1A1008 50%, #0D0A07 100%);
+  z-index: 0;
+}
+
+.heroGridOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.heroRadialGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(ellipse 70% 55% at 50% 60%, rgba(193, 122, 58, 0.1) 0%, transparent 70%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: calc(var(--layout-navbar-height, 56px) + var(--spacing-cluster)) var(--spacing-state) var(--spacing-cluster);
+
+  @media (min-width: 768px) {
+    padding: calc(var(--layout-navbar-height, 56px) + var(--spacing-cluster)) var(--spacing-cluster) var(--spacing-cluster);
+  }
+}
+
+.heroLabel {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-state);
+}
+
+.heroTitle {
+  margin: 0 0 var(--spacing-state);
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+
+.heroAccent {
+  color: var(--color-accent);
+}
+
+.heroSubtitle {
+  margin: 0 0 var(--spacing-planet);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 58ch;
+}
+
+.heroBtnGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-state);
+  margin-bottom: var(--spacing-planet);
+}
+
+.heroBtnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9em 2.2em;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-accent) 85%, black);
+    border-color: color-mix(in srgb, var(--color-accent) 85%, black);
+  }
+}
+
+.heroTagline {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.heroAccentLine {
+  width: 64px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+  margin-top: var(--spacing-planet);
+  opacity: 0.6;
+}
+
+// ── Section wrappers ──────────────────────────────────────────
+
+.sectionLight {
+  background: #ffffff;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+
+  @media (min-width: 768px) {
+    padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
+  }
+}
+
+.sectionGray {
+  background: #f4f4f4;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+
+  @media (min-width: 768px) {
+    padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
+  }
+}
+
+.sectionDark {
+  background: #111111;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--spacing-galaxy) var(--spacing-state);
+
+  @media (min-width: 768px) {
+    padding: calc(var(--spacing-cluster) + var(--spacing-country)) var(--spacing-state);
+  }
+}
+
+.sectionInner {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.sectionInnerNarrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+// ── Typography ────────────────────────────────────────────────
+
+.eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-country);
+}
+
+.eyebrowLight {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-country);
+}
+
+.headlineLight {
+  margin: 0 0 var(--spacing-planet);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #111111;
+}
+
+.headlineDark {
+  margin: 0 0 var(--spacing-planet);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.bodyText {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #374151;
+  margin: 0 0 var(--spacing-planet);
+  max-width: 760px;
+}
+
+.bodyDark {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 var(--spacing-planet);
+  max-width: 680px;
+}
+
+// ── Benefit cards ─────────────────────────────────────────────
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-country);
+  margin-top: var(--spacing-planet);
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.benefitCard {
+  background: #ffffff;
+  padding: var(--spacing-continent) var(--spacing-country);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-state);
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.benefitIcon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.benefitTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #111111;
+  margin: 0;
+}
+
+.benefitBody {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0;
+}
+
+// ── Role cards (accordion) ────────────────────────────────────
+
+.rolesStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: var(--spacing-planet);
+}
+
+.roleCard {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.roleCardBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-state);
+  padding: var(--spacing-country) 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &[aria-expanded="true"] .roleChevron {
+    color: #ffffff;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+}
+
+.roleCardMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-continent);
+  flex: 1;
+  min-width: 0;
+}
+
+.roleTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.rolePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-continent);
+}
+
+.rolePill {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+}
+
+.rolePillType {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  background: rgba(193, 122, 58, 0.12);
+  border-radius: 2px;
+}
+
+.roleChevron {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  border: 1px solid rgba(193, 122, 58, 0.4);
+  border-radius: 2px;
+  line-height: 1;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.roleBody {
+  padding: 0 0 var(--spacing-planet) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-country);
+}
+
+.roleDesc {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  max-width: 76ch;
+}
+
+.roleBulletLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0 0 var(--spacing-continent);
+}
+
+.roleBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-continent);
+}
+
+.roleBullet {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
+  padding-left: 1.2em;
+  position: relative;
+
+  &::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 0.78rem;
+  }
+}
+
+.roleApply {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75em 1.8em;
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  align-self: flex-start;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+}
+
+// ── How to apply ──────────────────────────────────────────────
+
+.applyEmailBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.85em 2em;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  border: 2px solid var(--color-accent);
+  margin-bottom: var(--spacing-country);
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-accent) 85%, black);
+    border-color: color-mix(in srgb, var(--color-accent) 85%, black);
+  }
+}
+
+.applyNote {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #6b7280;
+  margin: 0;
+  font-style: italic;
+  max-width: 58ch;
+}
+
+// ── Final CTA ─────────────────────────────────────────────────
+
+.finalCta {
+  background: #0D0A07;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+  border-top: 3px solid var(--color-accent);
+}
+
+.finalCtaInner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-country);
+}
+
+.finalCtaTitle {
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.finalCtaSubtext {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  max-width: 56ch;
+  line-height: 1.65;
+}
+
+.finalCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-accent);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  padding: 0.9em 2.4em;
+  border: 2px solid var(--color-accent);
+  margin-top: var(--spacing-state);
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--color-accent) 85%, black);
+    border-color: color-mix(in srgb, var(--color-accent) 85%, black);
+  }
+}

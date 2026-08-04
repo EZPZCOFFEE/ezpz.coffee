@@ -157,6 +157,12 @@ const AboutPage = () => {
               Contact us
             </Link>
           </div>
+          <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.65 }}>
+            Want to join the team?{" "}
+            <Link href={`/${locale}/careers`} style={{ color: "rgba(255,255,255,0.85)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              See open roles at EZPZ →
+            </Link>
+          </p>
         </div>
       </section>
 

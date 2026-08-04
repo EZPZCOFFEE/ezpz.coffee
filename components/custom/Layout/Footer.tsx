@@ -72,6 +72,9 @@ const Footer = () => {
             <Link href={`/${locale}/white-label`} className={styles.footerLink}>{t("whiteLabel")}</Link>
             <Link href={`/${locale}/compare`} className={styles.footerLink}>EZPZ vs Competitors</Link>
             <Link href={`/${locale}/contact`} className={styles.footerLink}>{t("contactUs")}</Link>
+            <Link href={locale === "fr" ? "/fr/carrieres" : "/en/careers"} className={styles.footerLink}>
+              {locale === "fr" ? "Carrières — Nous embauchons" : "Careers — We're Hiring"}
+            </Link>
           </nav>
         </div>
 
