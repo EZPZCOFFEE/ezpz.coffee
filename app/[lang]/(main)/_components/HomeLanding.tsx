@@ -200,7 +200,7 @@ const HomeLanding = () => {
             <span className={styles.statLabel}>Average turnaround</span>
           </div>
           <div className={styles.statDivider} aria-hidden />
-          <div className={styles.statItem}>
+          <div className={styles.statItem} data-egg="one-stat" style={{ cursor: "pointer" }}>
             <span className={styles.statNum}>1</span>
             <span className={styles.statLabel}>Minimum order</span>
           </div>

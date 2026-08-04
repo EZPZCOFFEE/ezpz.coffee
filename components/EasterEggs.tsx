@@ -24,7 +24,7 @@
  * EGG 15 — Type "therapy" → toast
  * EGG 16 — Random witty tagline appended to tab title on each page load
  * EGG 17 — Secret page at /en/secret  (see app/[lang]/(main)/secret/page.tsx)
- * EGG 18 — Click "0 minimum" stat → bean confetti burst (needs data-egg="zero-stat")
+ * EGG 18 — Click "1 minimum order" stat → bean confetti burst (needs data-egg="one-stat")
  * ================================================================ */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -616,20 +616,20 @@ export default function EasterEggs() {
     return () => clearTimeout(t);
   }, [pathname]);
 
-  /* EGG 18 ── Click "0" stat → bean confetti ────────────────────────────── */
+  /* EGG 18 ── Click "1 minimum order" stat → bean confetti ─────────────── */
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest<HTMLElement>('[data-egg="zero-stat"]');
+      const target = (e.target as HTMLElement).closest<HTMLElement>('[data-egg="one-stat"]');
       if (!target) return;
       const r = target.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
       if (prefersReducedMotion()) {
-        addToastRef.current("Zero. As in zero minimum. 🎉");
+        addToastRef.current("One bag. That's all it takes. 🎉");
         return;
       }
       confettiBurst(cx, cy);
-      addToastRef.current("Zero. As in zero minimum. 🎉");
+      addToastRef.current("One bag. That's all it takes. 🎉");
     };
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);

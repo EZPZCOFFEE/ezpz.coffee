@@ -65,7 +65,11 @@ const AboutPage = () => {
       <section className={styles.stats}>
         <div className={styles.statsInner}>
           {STATS.map((s) => (
-            <div key={s.label} className={styles.statItem}>
+            <div
+              key={s.label}
+              className={styles.statItem}
+              {...(s.number === "1" ? { "data-egg": "one-stat", style: { cursor: "pointer" } } : {})}
+            >
               <span className={styles.statNumber}>{s.number}</span>
               <span className={styles.statLabel}>{s.label}</span>
             </div>
