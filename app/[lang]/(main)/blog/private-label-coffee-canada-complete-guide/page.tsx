@@ -132,9 +132,9 @@ const TOC = [
 ];
 
 const RELATED_SLUGS = [
-  "ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada",
-  "how-to-launch-coffee-brand-canada-2026",
-  "custom-coffee-bags-vs-pre-packaged-coffee",
+  "how-to-choose-private-label-coffee-supplier-canada",
+  "coffee-dropshipping-canada-how-it-works",
+  "empty-bag-problem-canadian-coffee-packaging",
 ];
 const RELATED_POSTS = BLOG_POSTS.filter((p) => RELATED_SLUGS.includes(p.slug));
 

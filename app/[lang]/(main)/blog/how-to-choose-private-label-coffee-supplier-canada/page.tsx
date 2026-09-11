@@ -82,7 +82,7 @@ const jsonLd = {
 };
 
 const MORE_SLUGS = [
-  "private-label-coffee-canada-complete-guide",
+  "coffee-dropshipping-canada-how-it-works",
   "empty-bag-problem-canadian-coffee-packaging",
   "ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada",
 ];
