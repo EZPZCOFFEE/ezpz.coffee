@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Canadian Coffee Roaster for Your Brand | Private Label & Custom | EZPZ Coffee",
     description:
       "Looking for a Canadian coffee roaster to make your own brand? EZPZ roasts specialty grade coffee in Montreal for private label, custom bags, and wholesale. Zero minimum, design included.",
-    alternates: { canonical: "https://www.ezpz.coffee/en/canadian-coffee-roaster" },
+    alternates: { canonical: "/en/canadian-coffee-roaster" },
     openGraph: {
       title: "Canadian Coffee Roaster for Your Brand | Private Label & Custom | EZPZ Coffee",
       description:

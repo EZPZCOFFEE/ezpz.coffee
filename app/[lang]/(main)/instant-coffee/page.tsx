@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "EZPZ now offers premium freeze-dried (lyophilized) instant coffee. Specialty grade, full flavor and aroma preserved, roasted in Montreal. Custom branded, zero minimum. The instant coffee that tastes like a real cup.",
     alternates: {
-      canonical: "https://www.ezpz.coffee/en/instant-coffee",
+      canonical: "/en/instant-coffee",
     },
     openGraph: {
       title: "High-End Instant Coffee | Freeze-Dried Specialty Coffee | EZPZ Coffee",

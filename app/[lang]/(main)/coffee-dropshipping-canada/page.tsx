@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       "Start a coffee dropshipping business in Canada with EZPZ. Specialty-grade coffee roasted in Montreal, your brand, shipped direct to your customers. Zero minimum, no monthly software fees, no inventory.",
     alternates: {
-      canonical: "https://www.ezpz.coffee/en/coffee-dropshipping-canada",
+      canonical: "/en/coffee-dropshipping-canada",
     },
     openGraph: {
       title: "Coffee Dropshipping Canada | Private Label, Zero Minimum, No Monthly Fees | EZPZ",
