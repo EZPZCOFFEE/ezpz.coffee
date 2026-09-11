@@ -176,16 +176,21 @@
   gap: var(--spacing-house);
 }
 
-.optionHighlightsLight li {
-  color: rgba(255, 255, 255, 0.85);
-}
-
 .optionHighlights li {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-house);
   font-size: 0.9rem;
   color: var(--color-text-primary);
+  line-height: 1.55;
+}
+
+.optionHighlightsLight li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-house);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.55;
 }
 
