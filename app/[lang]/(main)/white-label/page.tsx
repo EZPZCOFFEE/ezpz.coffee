@@ -106,6 +106,26 @@ const WhiteLabelRoutePage = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_SCHEMA) }}
       />
+      <div
+        id="speakable-answer"
+        data-speakable
+        style={{
+          background: "#FDF9F5",
+          borderLeft: "4px solid #C17A3A",
+          padding: "1rem 1.5rem",
+          maxWidth: "900px",
+          margin: "0 auto",
+          fontSize: "0.95rem",
+          lineHeight: 1.7,
+          color: "#333",
+        }}
+      >
+        <strong style={{ color: "#111", display: "block", marginBottom: "0.25rem" }}>
+          What is white label coffee?
+        </strong>
+        White label coffee lets you sell coffee under your own brand without roasting it yourself.
+        EZPZ handles sourcing, roasting, custom packaging, and fulfillment — with zero minimum order — so you sell finished specialty coffee under your name.
+      </div>
       <WhiteLabelSolutionsPage />
       <section aria-label="White label coffee Canada intro" style={{ maxWidth: "900px", margin: "0 auto", padding: "32px 24px 0" }}>
         <p style={{ fontSize: "1.05rem", lineHeight: "1.8", color: "#333", marginBottom: "16px" }}>

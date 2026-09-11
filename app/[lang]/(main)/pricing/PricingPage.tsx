@@ -57,6 +57,30 @@ const PricingPage = () => {
         }}
       />
 
+      {/* ── Answer-first block (AEO/speakable) ───────────────── */}
+      <div
+        data-speakable
+        style={{
+          background: "#FDF9F5",
+          borderLeft: "4px solid #C17A3A",
+          padding: "1rem 1.5rem",
+          maxWidth: "820px",
+          margin: "0 auto",
+          fontSize: "0.95rem",
+          lineHeight: 1.7,
+          color: "#333",
+        }}
+      >
+        <strong style={{ color: "#111", display: "block", marginBottom: "0.25rem" }}>
+          Quick answer:
+        </strong>
+        EZPZ custom-label coffee bags start with zero minimum order — custom design is always included, no setup fees. Contact us for a quote scaled to your volume.
+        Fully custom printed bags start at a 5,000-unit minimum.
+        <a href="/en/contact?subject=Pricing Quote" style={{ color: "#C17A3A", marginLeft: "0.5rem", fontWeight: 700, textDecoration: "underline" }}>
+          Get a free quote →
+        </a>
+      </div>
+
       {/* ── Hero ──────────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroAngle} />
