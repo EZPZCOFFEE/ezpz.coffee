@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "coffee-dropshipping-canada-how-it-works",
+    category: "Guides",
+    categoryColor: "#c43e14",
+    title: "Coffee Dropshipping in Canada: How It Works",
+    excerpt:
+      "Zero inventory, zero minimum, design included. Here is exactly how coffee dropshipping works with EZPZ — from your customer's order to the finished bag on their doorstep.",
+    date: "June 18, 2026",
+    readTime: "8 min read",
+    color: "#0D0A07",
+    initials: "GD",
+    image: "/assets/blog/coffee-dropshipping-how-it-works.svg",
+    published: true,
+  },
+  {
     slug: "ezpz-tech-meets-coffee-custom-bag-tool",
     category: "Behind the Brand",
     categoryColor: "#c43e14",
