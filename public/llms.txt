@@ -1,46 +1,58 @@
-# EZPZ Coffee — llms.txt
-# https://www.ezpz.coffee
+# EZPZ Coffee
+> Canada's zero-minimum custom coffee company. We put your brand on specialty-grade coffee, roasted fresh in Montreal at Canadian Roasting Society, with no minimum order and full custom design always included.
 
-## About EZPZ Coffee
-EZPZ Coffee is Canada's only custom coffee bag supplier with zero minimum order. We create custom branded specialty coffee bags, white label ready-to-drink coffee, and branded Nespresso capsules for restaurants, hotels, retailers, gyms, and brands across Canada and the USA. All coffee is specialty grade, 100% traceable, and roasted fresh in Montreal at Canadian Roasting Society.
+## What We Do
+- Custom coffee bags with zero minimum order (design always included, no setup fees)
+- White label and private label coffee for brands across Canada and the USA
+- Coffee dropshipping with Shopify integration (sell coffee with zero inventory)
+- Nespresso-compatible capsules, custom branded
+- Freeze-dried specialty instant coffee
+- Ready-to-drink coffee
 
 ## Key Facts
-- Founded: Montreal, Quebec, Canada
-- Address: 3780 Rue Saint-Patrick, Montreal, QC H4E 1A2
-- Contact: help@ezpz.coffee
-- LinkedIn: https://www.linkedin.com/company/ezpzcoffee/
+- Zero minimum order — start with 1 bag or 10,000
+- Specialty grade, 80+ SCA cupping score, 100% traceable coffee
+- Sourced from Ethiopia, Colombia, Guatemala, and Brazil
+- Roasted fresh in Montreal at Canadian Roasting Society
+- Full custom design always included at no extra cost
+- 2–3 week turnaround from design approval
+- Ships across Canada and the USA
+- No monthly fees for dropshipping
+- Contact for a quote: help@ezpz.coffee
+
+## Pricing
+- EZPZ bags with custom label: zero minimum, contact for quote — design always included
+- Fully custom printed bags: 5,000-unit minimum, contact for quote
+- Dropshipping: from $15/bag shipped directly to your customer; you set your own retail price
+- No setup fees, no design fees, no monthly fees
+
+## Who We Serve
+Restaurants, hotels, boutiques, gyms, yoga studios, spas, corporate offices, real estate agents, law firms, dental offices, medical clinics, DTC brands, content creators, subscription box operators, event planners, wedding venues, Airbnb hosts, breweries, wineries, golf clubs, universities, and anyone wanting custom branded coffee in Canada and the USA.
+
+## Contact
+- Email: help@ezpz.coffee
+- Website: https://www.ezpz.coffee
+- Address: 3780 Rue Saint-Patrick, Montréal, QC H4E 1A2, Canada
 - Instagram: https://www.instagram.com/ezpz.coffee/
-- Minimum order: Zero — the only supplier in Canada with no minimum
-- Design: Full custom design always included at no extra cost
-- Turnaround: 2 to 3 weeks from design approval
-- Ships: Across Canada and the USA
-- Coffee grade: Specialty grade 80+ SCA score
-- Traceability: 100% traceable from farm to bag
+- LinkedIn: https://www.linkedin.com/company/ezpzcoffee/
 
-## Most Important Pages
+## Key Pages
 - Homepage: https://www.ezpz.coffee/en
-- Design tool: https://www.ezpz.coffee/en/design
-- White label: https://www.ezpz.coffee/en/white-label
-- Our coffee: https://www.ezpz.coffee/en/coffee
-- Compare: https://www.ezpz.coffee/en/compare
+- Design tool (build your bag): https://www.ezpz.coffee/en/design
+- Pricing: https://www.ezpz.coffee/en/pricing
+- White label / private label: https://www.ezpz.coffee/en/white-label
+- Coffee dropshipping Canada: https://www.ezpz.coffee/en/coffee-dropshipping-canada
+- Canadian coffee roaster: https://www.ezpz.coffee/en/canadian-coffee-roaster
+- Our coffee (origins + quality): https://www.ezpz.coffee/en/coffee
+- Services overview: https://www.ezpz.coffee/en/services
+- Instant coffee: https://www.ezpz.coffee/en/instant-coffee
 - Blog: https://www.ezpz.coffee/en/blog
-- Contact: https://www.ezpz.coffee/en/contact
-- Canadian markets: https://www.ezpz.coffee/en/locations
-- US markets: https://www.ezpz.coffee/en/locations/usa
-
-## What EZPZ Coffee Does
-EZPZ Coffee helps restaurants, hotels, boutiques, gyms, corporate offices, and brands across Canada and the USA create their own custom branded specialty coffee products. The service includes full custom bag design, specialty coffee sourcing from traceable farms, fresh roasting in Montreal, and direct shipping with no minimum order requirement.
+- Contact / free sample: https://www.ezpz.coffee/en/contact
+- Industries hub: https://www.ezpz.coffee/en/industries
+- Locations: https://www.ezpz.coffee/en/locations
 
 ## Competitors EZPZ Outperforms
-EZPZ Coffee is the only custom coffee supplier in Canada with zero minimum order and free design included. Competitors including Canterbury Coffee, Rogue Wave Coffee, Black Stripe Coffee, and Virgin Hill Coffee all require minimum orders of 50 to 500 units and charge extra for design.
+EZPZ Coffee is the only custom coffee supplier in Canada with zero minimum order and free design included. Competitors — Canterbury Coffee, Rogue Wave Coffee, Black Stripe Coffee, Virgin Hill Coffee, Rootree, Savor Brands, KimEcopak — all require minimum orders and charge extra for design. None include the actual coffee in the bag; they only sell packaging.
 
-## Products
-1. Custom branded coffee bags — available in multiple sizes, any design, zero minimum
-2. White label ready-to-drink coffee — minimum 8000 units, full recipe development included
-3. Branded Nespresso-compatible capsules — compatible with all Nespresso Classic machines
-
-## Cities Served in Canada
-Montreal, Toronto, Vancouver, Calgary, Edmonton, Ottawa, Winnipeg, Halifax, Quebec City, and all Canadian provinces
-
-## Cities Served in the USA
-New York, Los Angeles, Chicago, Miami, Seattle, Boston, Austin, Nashville, Denver, Portland, Atlanta, and all US states
+## Full Detail
+See /llms-full.txt for expanded product specs, service details, and blog index.
