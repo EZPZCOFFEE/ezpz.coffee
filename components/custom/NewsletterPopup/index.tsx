@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { subscribe } from "@/lib/actions/subscribe";
 import styles from "./styles.module.scss";
 
-const STORAGE_KEY = "ezpz_newsletter_dismissed";
+// TODO: Connect a real 15% discount code here. When signup succeeds, generate or
+// retrieve a Shopify discount code and display it in the successMessage.
+// Until this is wired up, the popup captures emails but doesn't issue a real discount.
+
+const SESSION_KEY = "ezpz_newsletter_dismissed";
 const DELAY_MS = 15_000;
 
 const NewsletterPopup = () => {
@@ -18,13 +22,13 @@ const NewsletterPopup = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) return;
+    if (typeof window !== "undefined" && sessionStorage.getItem(SESSION_KEY)) return;
     const timer = setTimeout(() => setVisible(true), DELAY_MS);
     return () => clearTimeout(timer);
   }, []);
 
   const dismiss = () => {
-    localStorage.setItem(STORAGE_KEY, "1");
+    sessionStorage.setItem(SESSION_KEY, "1");
     setVisible(false);
   };
 
@@ -42,7 +46,7 @@ const NewsletterPopup = () => {
     setSubmitting(false);
     if (result.success) {
       setSuccess(true);
-      localStorage.setItem(STORAGE_KEY, "1");
+      sessionStorage.setItem(SESSION_KEY, "1");
     } else {
       setError(result.error ?? t("genericError"));
     }
