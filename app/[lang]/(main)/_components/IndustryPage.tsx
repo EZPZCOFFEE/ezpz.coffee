@@ -70,6 +70,47 @@ const IndustryPage = ({ data }: { data: IndustryPageData }) => {
     ],
   };
 
+  const industryLower = data.industry.toLowerCase();
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Can ${industryLower} get custom branded coffee bags in Canada?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Yes. EZPZ Coffee creates fully custom branded coffee bags for ${industryLower} across Canada and the USA. Custom design is always included at no extra cost, with zero minimum order. You can start with a single bag.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `What is the minimum order for custom coffee bags for ${industryLower}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `EZPZ Coffee has zero minimum order for custom coffee bags, making it ideal for ${industryLower}. You can order a single bag to test your brand before scaling.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How long does it take to get custom coffee bags for ${industryLower}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Custom coffee bags for ${industryLower} take 2 to 3 weeks from design approval to delivery. EZPZ roasts the coffee fresh in Montreal and ships across Canada (3–10 business days) and to the USA (7–14 business days).`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Is the coffee inside EZPZ custom bags specialty grade?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Yes. Every EZPZ bag contains specialty-grade coffee scoring 80 or above on the SCA cupping scale, sourced from traceable farms in Ethiopia, Colombia, Guatemala, and Brazil, and roasted fresh in Montreal.`,
+        },
+      },
+    ],
+  };
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -88,6 +129,7 @@ const IndustryPage = ({ data }: { data: IndustryPageData }) => {
   return (
     <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
 
       {/* ── Breadcrumb ── */}
