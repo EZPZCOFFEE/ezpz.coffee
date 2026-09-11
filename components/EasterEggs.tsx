@@ -24,7 +24,7 @@
  * EGG 15 — Type "therapy" → toast
  * EGG 16 — Random witty tagline appended to tab title on each page load
  * EGG 17 — Secret page at /en/secret  (see app/[lang]/(main)/secret/page.tsx)
- * EGG 18 — Click "1 minimum order" stat → bean confetti burst (needs data-egg="one-stat")
+ * EGG 18 — Click "0 minimum order" stat → bean confetti burst (needs data-egg="one-stat")
  * ================================================================ */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -625,11 +625,11 @@ export default function EasterEggs() {
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
       if (prefersReducedMotion()) {
-        addToastRef.current("One bag. That's all it takes. 🎉");
+        addToastRef.current("Zero. As in zero minimum. 🎉");
         return;
       }
       confettiBurst(cx, cy);
-      addToastRef.current("One bag. That's all it takes. 🎉");
+      addToastRef.current("Zero. As in zero minimum. 🎉");
     };
     document.addEventListener("click", handler);
     return () => document.removeEventListener("click", handler);

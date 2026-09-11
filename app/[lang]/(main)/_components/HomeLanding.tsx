@@ -156,8 +156,8 @@ const HomeLanding = () => {
             <Link href={designHref} className={styles.heroOverlayBtn}>
               {t("hero.designCta")}
             </Link>
-            <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.heroSampleLink}>
-              Request a free sample →
+            <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.heroSampleBtn}>
+              Request a free sample
             </Link>
           </motion.div>
         </motion.div>
@@ -201,7 +201,7 @@ const HomeLanding = () => {
           </div>
           <div className={styles.statDivider} aria-hidden />
           <div className={styles.statItem} data-egg="one-stat" style={{ cursor: "pointer" }}>
-            <span className={styles.statNum}>1</span>
+            <span className={styles.statNum}>0</span>
             <span className={styles.statLabel}>Minimum order</span>
           </div>
         </div>
@@ -257,6 +257,38 @@ const HomeLanding = () => {
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/white-label`} className={styles.btnOutline}>
               {t("whiteLabel.learnMore")}
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ── Dropshipping section ── */}
+      <section className={styles.dropshipping} aria-labelledby="dropshipping-heading">
+        <motion.div className={styles.dropshippingInner} {...staggerParent}>
+          <motion.span className={styles.dropshippingEyebrow} {...fadeChild}>Sell online, zero inventory</motion.span>
+          <motion.h2 id="dropshipping-heading" className={styles.dropshippingTitle} {...fadeChild}>
+            Dropshipping, done for you.
+          </motion.h2>
+          <motion.p className={styles.dropshippingBody} {...fadeChild}>
+            Building an online coffee brand? We integrate with your Shopify store through Shopify Collective. When a customer orders, we roast, pack, and ship directly to them under your brand — you never touch inventory. Subscriptions work seamlessly too, perfect for recurring coffee delivery.
+          </motion.p>
+          <motion.ul className={styles.dropshippingFeatures} {...getNestedSectionListStagger(motionOff)}>
+            <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
+              <span className={styles.dropshippingFeatureDot} aria-hidden />
+              <span><strong>Automatic order flow</strong> — orders route to us, tracking returns to your store</span>
+            </motion.li>
+            <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
+              <span className={styles.dropshippingFeatureDot} aria-hidden />
+              <span><strong>Zero inventory</strong> — we fulfill and ship under your brand</span>
+            </motion.li>
+            <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
+              <span className={styles.dropshippingFeatureDot} aria-hidden />
+              <span><strong>Subscription-ready</strong> — recurring orders fulfilled automatically</span>
+            </motion.li>
+          </motion.ul>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/coffee-dropshipping-canada`} className={styles.btnOutline}>
+              Learn about dropshipping
             </Link>
           </motion.div>
         </motion.div>
@@ -344,7 +376,66 @@ const HomeLanding = () => {
       </section>
 
 
-<section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
+      {/* ── Bag comparison ── */}
+      <section className={styles.bagCompare} aria-labelledby="bag-compare-heading">
+        <motion.div className={styles.bagCompareInner} {...staggerParent}>
+          <motion.h2 id="bag-compare-heading" className={styles.bagCompareTitle} {...fadeChild}>
+            Which bag option is right for you?
+          </motion.h2>
+          <motion.div className={styles.bagCompareTable} role="table" aria-label="Bag option comparison" {...fadeChild}>
+            <div className={styles.bagCompareHead} role="row">
+              <div className={styles.bagCompareColLabel} role="columnheader"></div>
+              <div className={`${styles.bagCompareColHead} ${styles.bagCompareColHeadAccent}`} role="columnheader">
+                EZPZ Bags + Custom Label
+              </div>
+              <div className={styles.bagCompareColHead} role="columnheader">
+                Fully Custom Printed Bags
+              </div>
+            </div>
+            {[
+              { label: "Minimum order",  a: "Zero",                   b: "5,000 units (up to 5 designs)" },
+              { label: "Size",           a: "225g",                   b: "Any size (250g, 340g, 454g, 1kg…)" },
+              { label: "Branding",       a: "Your label on our bag",  b: "100% your design, no EZPZ mark" },
+              { label: "Price",          a: "from $11.75/bag",        b: "~$0.85/bag" },
+              { label: "Best for",       a: "Launching & testing",    b: "Scaling brands" },
+              { label: "Turnaround",     a: "~5 business days",       b: "2–3 weeks" },
+            ].map(({ label, a, b }) => (
+              <div key={label} className={styles.bagCompareRow} role="row">
+                <div className={styles.bagCompareRowLabel} role="rowheader">{label}</div>
+                <div className={`${styles.bagCompareCell} ${styles.bagCompareCellAccent}`} role="cell">{a}</div>
+                <div className={styles.bagCompareCell} role="cell">{b}</div>
+              </div>
+            ))}
+          </motion.div>
+          <motion.div {...fadeChild} className={styles.landingMotionInline}>
+            <Link href={`/${locale}/pricing`} className={styles.btnOutline}>
+              See full pricing
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ── Pricing teaser ── */}
+      <section className={styles.pricingTeaser} aria-labelledby="pricing-teaser-heading">
+        <motion.div className={styles.pricingTeaserInner} {...staggerParent}>
+          <motion.h2 id="pricing-teaser-heading" className={styles.pricingTeaserTitle} {...fadeChild}>
+            Transparent pricing, zero surprises.
+          </motion.h2>
+          <motion.p className={styles.pricingTeaserBody} {...fadeChild}>
+            Custom-label bags start with zero minimum, around $11.75/bag at 100 units, design included. Dropshipping from $15/bag with no inventory.
+          </motion.p>
+          <motion.div {...fadeChild} className={styles.pricingTeaserActions}>
+            <Link href={`/${locale}/pricing`} className={styles.pricingTeaserCta}>
+              See full pricing →
+            </Link>
+            <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.pricingTeaserSample}>
+              Want to taste first? Request a free sample kit →
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <section className={styles.faqPreview} aria-labelledby="faq-preview-heading">
         <motion.div className={styles.faqPreviewInner} {...staggerParent}>
           <motion.h2 id="faq-preview-heading" className={styles.lightSectionTitle} {...fadeChild}>
             {t("faqPreview.title")}
@@ -389,6 +480,23 @@ const HomeLanding = () => {
             ))}
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* ── Trust line + Instagram callout ── */}
+      <section className={styles.trustLine} aria-label="Social proof">
+        <div className={styles.trustLineInner}>
+          <p className={styles.trustLineText}>
+            Trusted by <strong>Fairmont, Café Public, Tunnel Espresso</strong>, and 500+ Canadian brands.
+          </p>
+          <a
+            href="https://www.instagram.com/ezpz.coffee/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.trustLineInstagram}
+          >
+            See what brands are making → <strong>@ezpz.coffee</strong>
+          </a>
+        </div>
       </section>
 
       {/* ── Case studies ── */}
