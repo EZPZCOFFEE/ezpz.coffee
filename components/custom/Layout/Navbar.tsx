@@ -47,11 +47,9 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
   left: [{ labelKey: "customBag", pathSuffix: "/design" }],
   right: [
     { labelKey: "ourCoffee", pathSuffix: "/coffee" },
-{ labelKey: "whiteLabel", pathSuffix: "/white-label" },
-    ...(showDevNav ? [
-      { labelKey: "portfolio", pathSuffix: "/portfolio" },
-      { labelKey: "pricing", pathSuffix: "/pricing" },
-    ] : []),
+    { labelKey: "whiteLabel", pathSuffix: "/white-label" },
+    { labelKey: "pricing", pathSuffix: "/pricing" },
+    ...(showDevNav ? [{ labelKey: "portfolio", pathSuffix: "/portfolio" }] : []),
     { labelKey: "aboutUs", pathSuffix: "/about" },
     { labelKey: "contactUs", pathSuffix: "/contact" },
   ],
@@ -60,6 +58,13 @@ const NAV_GROUPS: { left: NavItem[]; right: NavItem[] } = {
 const getNavHref = (locale: string, item: NavItem): string => {
   const path = item.pathSuffix === "/" ? `/${locale}` : `/${locale}${item.pathSuffix}`;
   return item.hash ? `${path}#${item.hash}` : path;
+};
+
+const getLangToggleHref = (currentLocale: string, pathname: string | null): string => {
+  const targetLocale = currentLocale === "en" ? "fr" : "en";
+  if (!pathname) return `/${targetLocale}`;
+  const stripped = stripLocalePrefix(pathname);
+  return stripped === "/" ? `/${targetLocale}` : `/${targetLocale}${stripped}`;
 };
 
 const stripLocalePrefix = (pathname: string): string => {
@@ -108,6 +113,17 @@ interface NavbarVariantProps {
 // ---------------------------------------------------------------------------
 // Presentational components
 // ---------------------------------------------------------------------------
+
+const LangToggle = ({ locale, pathname }: { locale: string; pathname: string | null }) => {
+  const href = getLangToggleHref(locale, pathname);
+  return (
+    <Link href={href} className={styles.langToggle} aria-label={locale === "en" ? "Passer en français" : "Switch to English"}>
+      <span className={locale === "en" ? styles.langActive : styles.langInactive}>EN</span>
+      <span className={styles.langSep} aria-hidden>|</span>
+      <span className={locale === "fr" ? styles.langActive : styles.langInactive}>FR</span>
+    </Link>
+  );
+};
 
 const Logo = ({ variant }: { variant: "default" | "overlay" }) => {
   const t = useTranslations("nav");
@@ -211,6 +227,7 @@ const DesktopNavbar = ({
         <span className={logoVariant === "overlay" ? styles.navCartHome : undefined}>
           <Cart />
         </span>
+        <LangToggle locale={locale} pathname={pathname} />
       </div>
     </nav>
   );
@@ -241,6 +258,7 @@ const MobileNavbar = ({
         <Logo variant={logoVariant} />
 
         <div className={styles.mobileHeaderActions}>
+          <LangToggle locale={locale} pathname={pathname} />
           <button
             className={styles.menuButton}
             type="button"

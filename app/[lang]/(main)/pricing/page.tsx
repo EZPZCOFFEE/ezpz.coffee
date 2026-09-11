@@ -3,20 +3,20 @@ import type { Metadata } from "next";
 import PricingPage from "./PricingPage";
 
 export const metadata: Metadata = {
-  title: "Pricing | Simple, Transparent Coffee Branding | EZPZ Coffee",
-  description: "No minimums, no hidden fees. See EZPZ Coffee's simple pricing for custom coffee bags, white label, and branded coffee programs.",
+  title: "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+  description: "Transparent pricing for custom coffee bags in Canada. EZPZ label bags start with zero minimum. See per-bag pricing, dropshipping rates, and fully custom options.",
   alternates: { canonical: "/en/pricing" },
   openGraph: {
-    title: "Simple, Transparent Pricing | EZPZ Coffee",
-    description: "No minimums. No hidden fees. No surprises. Straightforward pricing for your custom coffee brand.",
+    title: "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+    description: "Transparent pricing for custom coffee bags in Canada. EZPZ label bags start with zero minimum. See per-bag pricing, dropshipping rates, and fully custom options.",
     type: "website",
     url: "https://www.ezpz.coffee/en/pricing",
-    images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Simple, Transparent Pricing | EZPZ Coffee" }],
+    images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "EZPZ Coffee Pricing" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Simple, Transparent Pricing | EZPZ Coffee",
-    description: "No minimums. No hidden fees. No surprises. Straightforward pricing for your custom coffee brand.",
+    title: "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+    description: "Transparent pricing for custom coffee bags in Canada. Zero minimum, design always included.",
     images: ["/assets/banner-01.jpg"],
   },
 };

@@ -4,7 +4,7 @@
   overflow-x: hidden;
 }
 
-/* ── Hero ───────────────────────────────────────────────────── */
+// ── Hero ──────────────────────────────────────────────────────────────────────
 
 .hero {
   position: relative;
@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   height: 80px;
-  background: var(--color-white);
+  background: #f8f8f8;
   clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
@@ -28,183 +28,508 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-city);
+}
+
+.heroEyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
 }
 
 .heroTitle {
-  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-  font-weight: var(--font-weight-extrabold);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  line-height: var(--line-height-tight);
-  color: var(--color-white);
-  margin: 0 0 var(--spacing-country);
+  line-height: 1.1;
+  color: #ffffff;
+  margin: 0;
 }
 
 .heroSub {
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.7);
-  line-height: var(--line-height-relaxed);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
   max-width: 520px;
   margin: 0;
 }
 
-/* ── Tiers ──────────────────────────────────────────────────── */
+// ── Shared section pieces ─────────────────────────────────────────────────────
 
-.tiersSection {
-  padding: var(--spacing-galaxy) var(--spacing-state) var(--spacing-cluster);
+.sectionEyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-state);
 }
 
-.tiersInner {
+.sectionHeading {
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-country);
+}
+
+// ── Two-option section ────────────────────────────────────────────────────────
+
+.optionsSection {
+  background: #f8f8f8;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+}
+
+.optionsInner {
   max-width: 1060px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-country);
 }
 
-.tiersGrid {
+.optionsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-country);
   align-items: start;
 
-  @media (max-width: 860px) {
+  @media (max-width: 800px) {
     grid-template-columns: 1fr;
-    max-width: 480px;
-    margin: 0 auto;
-    width: 100%;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-/* ── Card ───────────────────────────────────────────────────── */
+// ── Option cards ──────────────────────────────────────────────────────────────
 
-.card {
+.optionCard {
   position: relative;
+  background: #ffffff;
+  border: 2px solid var(--color-accent);
+  padding: var(--spacing-planet) var(--spacing-country);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-country);
-  padding: var(--spacing-country);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: var(--color-white);
 }
 
-.cardPopular {
-  border-color: var(--color-accent);
-  border-width: 2px;
+.optionCardDark {
+  background: #111111;
+  border-color: #111111;
 }
 
-.popularBadge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-size: 0.7rem;
-  font-weight: var(--font-weight-bold);
+.optionTag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 0.3em 1em;
-  white-space: nowrap;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+  background: rgba(193, 122, 58, 0.1);
+  padding: 0.3em 0.85em;
+  border-radius: 2px;
+  align-self: flex-start;
 }
 
-.cardTop {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-house);
+.optionTagDark {
+  color: #111111;
+  background: rgba(193, 122, 58, 0.9);
 }
 
-.cardName {
+.optionName {
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-  font-weight: var(--font-weight-extrabold);
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: var(--color-text-primary);
   margin: 0;
+  line-height: 1.1;
 }
 
-.cardPopular .cardName {
-  color: var(--color-accent);
+.optionNameLight {
+  color: #ffffff;
 }
 
-.cardTagline {
-  font-size: 0.9rem;
+.optionDesc {
+  font-size: 0.95rem;
   color: var(--color-neutral);
-  line-height: var(--line-height-relaxed);
+  line-height: 1.7;
   margin: 0;
 }
 
-/* ── Feature list ───────────────────────────────────────────── */
+.optionDescLight {
+  color: rgba(255, 255, 255, 0.65);
+}
 
-.featureList {
+.optionHighlights {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-house);
-  flex: 1;
 }
 
-.featureItem {
+.optionHighlightsLight li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.optionHighlights li {
   display: flex;
   align-items: flex-start;
   gap: var(--spacing-house);
   font-size: 0.9rem;
   color: var(--color-text-primary);
-  line-height: var(--line-height-snug);
+  line-height: 1.55;
 }
 
-.featureIcon {
-  flex-shrink: 0;
-  margin-top: 2px;
+// ── Pricing table ─────────────────────────────────────────────────────────────
+
+.pricingTable {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pricingTableHead {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-house) var(--spacing-state);
+  background: #f4f4f4;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9ca3af;
+}
+
+.pricingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-house) var(--spacing-state);
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.pricingRowHighlight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-house) var(--spacing-state);
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  background: rgba(193, 122, 58, 0.06);
+  font-weight: 700;
+}
+
+.price {
+  font-weight: 800;
   color: var(--color-accent);
+  font-size: 1rem;
 }
 
-/* ── CTA button ─────────────────────────────────────────────── */
+.pricingNote {
+  padding: var(--spacing-house) var(--spacing-state);
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  font-style: italic;
+}
 
-.ctaButton {
+// ── Option CTAs ───────────────────────────────────────────────────────────────
+
+.optionCtaPrimary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-weight: var(--font-weight-bold);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  padding: 0.85em 1.5em;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.ctaButtonPrimary {
+  gap: 6px;
+  padding: 0.85em 1.8em;
   background: var(--color-accent);
-  color: var(--color-white);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
   border: 2px solid var(--color-accent);
+  transition: background 0.15s ease, border-color 0.15s ease;
+  align-self: flex-start;
 
   &:hover {
-    background: color-mix(in srgb, var(--color-accent) 85%, black);
-    border-color: color-mix(in srgb, var(--color-accent) 85%, black);
+    background: color-mix(in srgb, var(--color-accent) 82%, black);
+    border-color: color-mix(in srgb, var(--color-accent) 82%, black);
   }
 }
 
-.ctaButtonSecondary {
+.optionCtaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.85em 1.8em;
   background: transparent;
-  color: var(--color-text-primary);
-  border: 2px solid var(--color-text-primary);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: border-color 0.15s ease;
+  align-self: flex-start;
 
-  &:hover {
-    background: var(--color-text-primary);
-    color: var(--color-white);
+  &:hover { border-color: #ffffff; }
+}
+
+// ── Check icons ───────────────────────────────────────────────────────────────
+
+.checkIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkIconLight {
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+// ── Clarifier note ────────────────────────────────────────────────────────────
+
+.optionsClarifier {
+  margin-top: var(--spacing-country);
+  padding: var(--spacing-state) var(--spacing-country);
+  background: #fff8f2;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 4px 4px 0;
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #5a3e2b;
   }
 }
 
-/* ── Note ───────────────────────────────────────────────────── */
+// ── Dropshipping section ──────────────────────────────────────────────────────
 
-.note {
-  font-size: 0.875rem;
-  color: var(--color-neutral);
-  line-height: var(--line-height-relaxed);
-  text-align: center;
-  max-width: 560px;
+.dropshipSection {
+  background: #111111;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+}
+
+.dropshipInner {
+  max-width: 720px;
   margin: 0 auto;
+
+  .sectionHeading {
+    color: #ffffff;
+  }
+}
+
+.dropshipDesc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
+  margin: 0 0 var(--spacing-country);
+}
+
+.dropshipHighlight {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-state);
+  margin: var(--spacing-country) 0;
+  padding: var(--spacing-country) var(--spacing-planet);
+  border: 1px solid rgba(193, 122, 58, 0.3);
+  background: rgba(193, 122, 58, 0.08);
+  border-radius: 4px;
+}
+
+.dropshipPrice {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--color-accent);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.dropshipLabel {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.55;
+}
+
+.dropshipNote {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 var(--spacing-country);
+  line-height: 1.6;
+}
+
+.dropshipLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap 0.15s ease;
+
+  &:hover { gap: 8px; }
+}
+
+// ── What's included ───────────────────────────────────────────────────────────
+
+.includedSection {
+  background: #f8f8f8;
+  padding: var(--spacing-galaxy) var(--spacing-state);
+}
+
+.includedInner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.includedList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-country);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-house);
+}
+
+.includedItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-house);
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.includedNote {
+  font-size: 0.88rem;
+  color: var(--color-neutral);
+  line-height: 1.65;
+  margin: 0;
+  border-top: 1px solid #e8e8e8;
+  padding-top: var(--spacing-country);
+}
+
+.includedNoteLink {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sampleCta {
+  margin-top: var(--spacing-planet);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-state);
+  flex-wrap: wrap;
+}
+
+.sampleCtaText {
+  font-size: 0.9rem;
+  color: var(--color-neutral);
+  margin: 0;
+  font-style: italic;
+}
+
+.sampleCtaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap 0.15s ease;
+
+  &:hover { gap: 8px; }
+}
+
+// ── Bottom CTA banner ─────────────────────────────────────────────────────────
+
+.ctaBanner {
+  background: var(--color-accent);
+  padding: var(--spacing-galaxy) var(--spacing-state);
+  text-align: center;
+}
+
+.ctaBannerInner {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.ctaBannerTitle {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 var(--spacing-state);
+  line-height: 1.1;
+}
+
+.ctaBannerSub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
+  margin: 0 0 var(--spacing-planet);
+}
+
+.ctaBannerButtons {
+  display: flex;
+  gap: var(--spacing-country);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaBannerPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9em 2.2em;
+  background: #ffffff;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  border: 2px solid #ffffff;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+  }
+}
+
+.ctaBannerSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9em 2.2em;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transition: border-color 0.15s ease;
+
+  &:hover { border-color: #ffffff; }
 }

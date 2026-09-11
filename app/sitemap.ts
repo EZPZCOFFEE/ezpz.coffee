@@ -162,8 +162,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
     "/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
     "/en/canadian-coffee-roaster",
+    "/en/pricing",
+    "/en/case-studies",
     "/en/careers",
     "/fr/carrieres",
+    "/fr/tarifs",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),

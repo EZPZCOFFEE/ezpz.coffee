@@ -46,6 +46,7 @@ const Footer = () => {
             <span className={styles.footerNavHeading}>{t("shopHeading")}</span>
             <Link href={`/${locale}/design`} className={styles.footerLink}>{t("design")}</Link>
             <Link href={`/${locale}/coffee`} className={styles.footerLink}>{t("ourCoffee")}</Link>
+            <Link href={`/${locale}/pricing`} className={styles.footerLink}>Pricing</Link>
             <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>Custom Coffee Bags</Link>
             <Link href={`/${locale}/services`} className={styles.footerLink}>Services</Link>
             <Link href={`/${locale}/instant-coffee`} className={styles.footerLink}>Instant Coffee</Link>
@@ -58,6 +59,7 @@ const Footer = () => {
           {/* Guides column */}
           <nav className={styles.footerNavCol} aria-label="Guides">
             <span className={styles.footerNavHeading}>Guides</span>
+            <Link href={`/${locale}/pricing`} className={styles.footerLink}>Bag Pricing</Link>
             <Link href={`/${locale}/what-is-white-label-coffee-canada`} className={styles.footerLink}>What Is White Label Coffee?</Link>
             <Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} className={styles.footerLink}>No Minimum Coffee Bags</Link>
             <Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} className={styles.footerLink}>Coffee Bag Pricing</Link>
