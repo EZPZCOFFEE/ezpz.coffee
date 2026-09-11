@@ -431,10 +431,17 @@ const fontVariables = [
 
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = (await headers()).get("x-pathname") ?? "";
+  const enPath = pathname.replace(/^\/fr(\/|$)/, "/en$1") || "/en";
+  const frPath = pathname.replace(/^\/en(\/|$)/, "/fr$1") || "/fr";
   return {
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: pathname || undefined,
+      languages: {
+        "en": enPath,
+        "fr": frPath,
+        "x-default": enPath,
+      },
     },
   };
 }
@@ -468,25 +475,81 @@ const RootLayout = async ({ children, params }: RootLayoutProps) => {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "EZPZ Coffee",
-              alternateName: "EZPZ Coffee Canada",
-              url: "https://www.ezpz.coffee",
-              logo: "https://www.ezpz.coffee/logo.svg",
-              foundingLocation: "Montreal, Quebec, Canada",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "3780 Rue Saint-Patrick",
-                addressLocality: "Montreal",
-                addressRegion: "QC",
-                postalCode: "H4E 1A2",
-                addressCountry: "CA",
-              },
-              description:
-                "EZPZ Coffee is a Montreal-based company offering custom branded coffee bags with zero minimum order. White label specialty coffee roasted in Montreal.",
-              sameAs: [
-                "https://www.instagram.com/ezpz.coffee/",
-                "https://www.linkedin.com/company/ezpzcoffee/",
+              "@graph": [
+                {
+                  "@type": ["Organization", "LocalBusiness"],
+                  "@id": "https://www.ezpz.coffee/#organization",
+                  name: "EZPZ Coffee",
+                  alternateName: "EZPZ Coffee Canada",
+                  url: "https://www.ezpz.coffee",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://www.ezpz.coffee/logo.svg",
+                    width: 200,
+                    height: 60,
+                  },
+                  image: "https://www.ezpz.coffee/assets/banner-01.jpg",
+                  description:
+                    "Canada's zero-minimum custom coffee company. Custom branded coffee bags, white label, private label, and dropshipping, roasted fresh in Montreal, shipped across Canada and the USA.",
+                  email: "help@ezpz.coffee",
+                  foundingLocation: "Montreal, Quebec, Canada",
+                  address: {
+                    "@type": "PostalAddress",
+                    streetAddress: "3780 Rue Saint-Patrick",
+                    addressLocality: "Montréal",
+                    addressRegion: "QC",
+                    postalCode: "H4E 1A2",
+                    addressCountry: "CA",
+                  },
+                  geo: {
+                    "@type": "GeoCoordinates",
+                    latitude: 45.4729,
+                    longitude: -73.5741,
+                  },
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    contactType: "customer service",
+                    email: "help@ezpz.coffee",
+                    availableLanguage: ["English", "French"],
+                  },
+                  areaServed: [
+                    { "@type": "Country", name: "Canada" },
+                    { "@type": "Country", name: "United States" },
+                  ],
+                  knowsAbout: [
+                    "custom coffee bags",
+                    "private label coffee",
+                    "white label coffee",
+                    "coffee dropshipping",
+                    "specialty coffee roasting",
+                    "Nespresso capsules",
+                    "freeze-dried instant coffee",
+                    "ready-to-drink coffee",
+                    "coffee branding",
+                  ],
+                  sameAs: [
+                    "https://www.instagram.com/ezpz.coffee/",
+                    "https://www.linkedin.com/company/ezpzcoffee/",
+                  ],
+                  priceRange: "$$",
+                  servesCuisine: "Coffee",
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.ezpz.coffee/#website",
+                  url: "https://www.ezpz.coffee",
+                  name: "EZPZ Coffee",
+                  description: "Canada's zero-minimum custom coffee company",
+                  publisher: { "@id": "https://www.ezpz.coffee/#organization" },
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: {
+                      "@type": "EntryPoint",
+                      urlTemplate: "https://www.ezpz.coffee/en/blog?q={search_term_string}",
+                    },
+                    "query-input": "required name=search_term_string",
+                  },
+                },
               ],
             }),
           }}
