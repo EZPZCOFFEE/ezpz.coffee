@@ -347,6 +347,12 @@ const InstantCoffeePage = () => {
             >
               About our coffee →
             </Link>
+            <Link
+              href={`/${locale}/blog/introducing-freeze-dried-instant-coffee`}
+              style={{ display: "inline-flex", alignItems: "center", padding: "0.85em 2em", background: "transparent", color: "#C17A3A", fontSize: "0.88rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.07em", textDecoration: "none", border: "2px solid #C17A3A" }}
+            >
+              Read the launch post →
+            </Link>
           </div>
         </div>
       </section>

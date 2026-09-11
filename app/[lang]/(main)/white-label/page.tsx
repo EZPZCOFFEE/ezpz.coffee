@@ -169,6 +169,10 @@ const WhiteLabelRoutePage = () => {
           <li><Link href="/en/best-white-label-coffee-supplier-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
           <li><Link href="/en/how-much-do-custom-coffee-bags-cost-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
           <li><Link href="/en/canadian-coffee-roaster" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Find a Canadian coffee roaster for your brand</Link></li>
+          <li><Link href="/en/pricing" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>EZPZ pricing — custom bags and dropshipping</Link></li>
+          <li><Link href="/en/blog/how-to-choose-private-label-coffee-supplier-canada" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How to choose a private label coffee supplier in Canada</Link></li>
+          <li><Link href="/en/blog/empty-bag-problem-canadian-coffee-packaging" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>The Empty Bag Problem: why most suppliers sell you half a product</Link></li>
+          <li><Link href="/en/blog/private-label-coffee-canada-complete-guide" style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Private label coffee in Canada: the complete guide</Link></li>
         </ul>
       </nav>
     </>

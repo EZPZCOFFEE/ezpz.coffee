@@ -377,6 +377,12 @@ const CoffeeDropshippingPage = () => {
           </div>
           <div style={{ marginTop: "2.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             <Link
+              href={`/${locale}/blog/coffee-dropshipping-canada-how-it-works`}
+              style={{ display: "inline-flex", alignItems: "center", gap: "0.4em", fontSize: "0.85rem", fontWeight: 700, color: "rgba(255,255,255,0.75)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.25)", paddingBottom: "2px", width: "fit-content" }}
+            >
+              Read: Coffee dropshipping in Canada — how it works, step by step →
+            </Link>
+            <Link
               href={`/${locale}/blog/empty-bag-problem-canadian-coffee-packaging`}
               style={{ display: "inline-flex", alignItems: "center", gap: "0.4em", fontSize: "0.85rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", textDecoration: "none", borderBottom: "1px solid rgba(255,255,255,0.15)", paddingBottom: "2px", width: "fit-content" }}
             >
