@@ -85,11 +85,38 @@ const FAQ_SCHEMA = {
   ],
 };
 
+const ARTICLE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "How Much Do Custom Coffee Bags Cost in Canada? The Complete 2026 Pricing Guide",
+  description:
+    "Transparent, detailed pricing breakdown for custom coffee bags in Canada in 2026. Volume tiers, what's included vs. hidden fees, comparison with all major suppliers, and how to get the best price.",
+  datePublished: "2026-06-04",
+  dateModified: "2026-06-04",
+  author: { "@type": "Organization", name: "EZPZ Coffee Team" },
+  publisher: { "@type": "Organization", name: "EZPZ Coffee", url: "https://www.ezpz.coffee" },
+  image: "https://www.ezpz.coffee/assets/banner-01.jpg",
+  url: "https://www.ezpz.coffee/en/custom-coffee-bags-cost-guide-canada-2026",
+};
+
+const SPEAKABLE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "How Much Do Custom Coffee Bags Cost in Canada? 2026 Guide",
+  url: "https://www.ezpz.coffee/en/custom-coffee-bags-cost-guide-canada-2026",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable]"],
+  },
+};
+
 const Page = () => {
   return (
     <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_SCHEMA) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(DATASET_SCHEMA) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SPEAKABLE_SCHEMA) }} />
 
       {/* ── Hero ── */}
       <section className={styles.hero}>
@@ -108,6 +135,26 @@ const Page = () => {
           </div>
         </div>
       </section>
+
+      {/* ── Answer-first / speakable block ── */}
+      <div
+        data-speakable
+        style={{
+          background: "#FDF9F5",
+          borderLeft: "4px solid #C17A3A",
+          padding: "1rem 1.5rem",
+          maxWidth: "820px",
+          margin: "0 auto",
+          fontSize: "0.95rem",
+          lineHeight: 1.7,
+          color: "#333",
+        }}
+      >
+        <strong style={{ color: "#111", display: "block", marginBottom: "0.25rem" }}>Quick answer:</strong>
+        Custom coffee bag pricing in Canada varies by volume and supplier. At EZPZ Coffee, zero minimum order applies — design is always included at no extra cost.
+        Fully custom printed bags start at a 5,000-unit minimum. Coffee dropshipping starts at $15 per bag.
+        Contact <a href="mailto:help@ezpz.coffee" style={{ color: "#C17A3A" }}>help@ezpz.coffee</a> for a quote.
+      </div>
 
       {/* ── Key stats band ── */}
       <section className={styles.statBand}>
