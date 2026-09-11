@@ -33,7 +33,7 @@ const PricingPage = () => {
                 name: "How much does a custom coffee bag cost in Canada?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "EZPZ custom-label bags start with zero minimum, priced around $13.50/bag at 25–50 units and $11.75/bag at 100 units, with custom design always included. Fully custom printed bags are approximately $0.85/bag at a 5,000-unit minimum.",
+                  text: "EZPZ custom-label bags start with zero minimum order — custom design is always included with no setup fees. Fully custom printed bags start at a 5,000-unit minimum. Contact us for a quote tailored to your volume.",
                 },
               },
               {
@@ -86,33 +86,17 @@ const PricingPage = () => {
               <ul className={styles.optionHighlights}>
                 <li><Check size={14} weight="bold" className={styles.checkIcon} /> Zero minimum order — start with a single bag</li>
                 <li><Check size={14} weight="bold" className={styles.checkIcon} /> Custom label design included, no setup fees</li>
+                <li><Check size={14} weight="bold" className={styles.checkIcon} /> Price scales with volume — contact us for a quote</li>
               </ul>
 
-              <div className={styles.pricingTable}>
-                <div className={styles.pricingTableHead}>
-                  <span>Quantity</span>
-                  <span>Price / bag</span>
-                </div>
-                <div className={styles.pricingRow}>
-                  <span>25–50 bags</span>
-                  <span className={styles.price}>$13.50</span>
-                </div>
-                <div className={styles.pricingRow}>
-                  <span>50 bags</span>
-                  <span className={styles.price}>$12.50</span>
-                </div>
-                <div className={styles.pricingRowHighlight}>
-                  <span>100 bags</span>
-                  <span className={styles.price}>$11.75</span>
-                </div>
-                <div className={styles.pricingNote}>
-                  Pricing continues to improve at higher volumes.
-                </div>
+              <div className={styles.optionCtaGroup}>
+                <Link href={`/${locale}/contact?subject=EZPZ Label Bag Quote`} className={styles.optionCtaPrimary}>
+                  Get a quote <ArrowRight size={14} weight="bold" />
+                </Link>
+                <Link href={`/${locale}/design`} className={styles.optionCtaOutline}>
+                  Or design your bag <ArrowRight size={14} weight="bold" />
+                </Link>
               </div>
-
-              <Link href={`/${locale}/design`} className={styles.optionCtaPrimary}>
-                Design your bag <ArrowRight size={14} weight="bold" />
-              </Link>
             </div>
 
             {/* Option 2 — Fully Custom */}
@@ -124,9 +108,9 @@ const PricingPage = () => {
               </p>
 
               <ul className={`${styles.optionHighlights} ${styles.optionHighlightsLight}`}>
-                <li><Check size={14} weight="bold" className={styles.checkIconLight} /> Approx. $0.85 per bag</li>
                 <li><Check size={14} weight="bold" className={styles.checkIconLight} /> Minimum order: 5,000 units (splittable across up to 5 designs)</li>
                 <li><Check size={14} weight="bold" className={styles.checkIconLight} /> Paid upfront</li>
+                <li><Check size={14} weight="bold" className={styles.checkIconLight} /> Per-bag price drops significantly at scale — contact us for a quote</li>
               </ul>
 
               <Link href={`/${locale}/contact?subject=Fully Custom Printed Bags`} className={styles.optionCtaSecondary}>

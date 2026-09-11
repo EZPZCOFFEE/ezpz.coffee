@@ -396,9 +396,9 @@ const HomeLanding = () => {
               { label: "Minimum order",  a: "Zero",                   b: "5,000 units (up to 5 designs)" },
               { label: "Size",           a: "225g",                   b: "Any size (250g, 340g, 454g, 1kg…)" },
               { label: "Branding",       a: "Your label on our bag",  b: "100% your design, no EZPZ mark" },
-              { label: "Price",          a: "from $11.75/bag",        b: "~$0.85/bag" },
               { label: "Best for",       a: "Launching & testing",    b: "Scaling brands" },
               { label: "Turnaround",     a: "~5 business days",       b: "2–3 weeks" },
+              { label: "Pricing",        a: "Contact us for a quote", b: "Contact us for a quote" },
             ].map(({ label, a, b }) => (
               <div key={label} className={styles.bagCompareRow} role="row">
                 <div className={styles.bagCompareRowLabel} role="rowheader">{label}</div>
@@ -422,7 +422,7 @@ const HomeLanding = () => {
             Transparent pricing, zero surprises.
           </motion.h2>
           <motion.p className={styles.pricingTeaserBody} {...fadeChild}>
-            Custom-label bags start with zero minimum, around $11.75/bag at 100 units, design included. Dropshipping from $15/bag with no inventory.
+            Custom-label bags with zero minimum — design always included, no setup fees. Dropshipping from $15/bag with no inventory.
           </motion.p>
           <motion.div {...fadeChild} className={styles.pricingTeaserActions}>
             <Link href={`/${locale}/pricing`} className={styles.pricingTeaserCta}>

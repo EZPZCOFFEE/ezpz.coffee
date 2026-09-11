@@ -194,63 +194,14 @@
   line-height: 1.55;
 }
 
-// ── Pricing table ─────────────────────────────────────────────────────────────
-
-.pricingTable {
-  border: 1px solid #e8e8e8;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.pricingTableHead {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--spacing-house) var(--spacing-state);
-  background: #f4f4f4;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #9ca3af;
-}
-
-.pricingRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-house) var(--spacing-state);
-  border-top: 1px solid #f0f0f0;
-  font-size: 0.9rem;
-  color: var(--color-text-primary);
-}
-
-.pricingRowHighlight {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--spacing-house) var(--spacing-state);
-  border-top: 1px solid #f0f0f0;
-  font-size: 0.9rem;
-  color: var(--color-text-primary);
-  background: rgba(193, 122, 58, 0.06);
-  font-weight: 700;
-}
-
-.price {
-  font-weight: 800;
-  color: var(--color-accent);
-  font-size: 1rem;
-}
-
-.pricingNote {
-  padding: var(--spacing-house) var(--spacing-state);
-  border-top: 1px solid #f0f0f0;
-  font-size: 0.78rem;
-  color: #9ca3af;
-  font-style: italic;
-}
-
 // ── Option CTAs ───────────────────────────────────────────────────────────────
+
+.optionCtaGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-state);
+  align-items: flex-start;
+}
 
 .optionCtaPrimary {
   display: inline-flex;
@@ -272,6 +223,19 @@
     background: color-mix(in srgb, var(--color-accent) 82%, black);
     border-color: color-mix(in srgb, var(--color-accent) 82%, black);
   }
+}
+
+.optionCtaOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: gap 0.15s ease;
+
+  &:hover { gap: 8px; }
 }
 
 .optionCtaSecondary {
