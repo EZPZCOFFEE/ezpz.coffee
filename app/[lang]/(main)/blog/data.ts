@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "how-to-start-a-coffee-brand-canada",
+    category: "Guides",
+    categoryColor: "#c43e14",
+    title: "How to Start a Coffee Brand in Canada (2026 Guide)",
+    excerpt:
+      "Everything you need to launch your own coffee brand, from concept to first sale, without roasting a single bean or carrying inventory. The complete step-by-step guide.",
+    date: "June 20, 2026",
+    readTime: "11 min read",
+    color: "#0D0A07",
+    initials: "SB",
+    image: "/assets/blog/how-to-start-coffee-brand-canada.svg",
+    published: true,
+  },
+  {
     slug: "coffee-dropshipping-canada-how-it-works",
     category: "Guides",
     categoryColor: "#c43e14",

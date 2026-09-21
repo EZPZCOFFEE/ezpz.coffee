@@ -158,6 +158,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/instant-coffee",
     "/en/blog/introducing-freeze-dried-instant-coffee",
     "/en/compare/private-label-coffee-suppliers-canada",
+    "/en/blog/how-to-start-a-coffee-brand-canada",
     "/en/blog/coffee-dropshipping-canada-how-it-works",
     "/en/blog/how-to-choose-private-label-coffee-supplier-canada",
     "/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
