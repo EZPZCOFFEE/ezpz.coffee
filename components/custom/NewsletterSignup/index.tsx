@@ -49,6 +49,8 @@ const NewsletterSignup = () => {
     }
   };
 
+  // TODO (owner): verify the newsletter subscriber count in en.json ("2,000+") is accurate before publishing.
+  // This figure refers to newsletter subscribers, which is separate from the "500+ brands served" client count.
   // Parse the title with highlight markup
   const titleRaw = String(t.raw("title"));
   const titleParts = titleRaw.split(/<highlight>|<\/highlight>/);
