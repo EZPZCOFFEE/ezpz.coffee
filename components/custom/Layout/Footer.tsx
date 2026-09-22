@@ -77,6 +77,11 @@ const Footer = () => {
             <Link href={locale === "fr" ? "/fr/carrieres" : "/en/careers"} className={styles.footerLink}>
               {locale === "fr" ? "Carrières — Nous embauchons" : "Careers — We're Hiring"}
             </Link>
+            {/* TODO (owner): Replace "#" with the real Google Business Profile review link once GBP is set up.
+                Format: https://g.page/r/XXXXXXXXXXXXX/review  */}
+            <a href="#" className={styles.footerLink} style={{ opacity: 0.5, pointerEvents: "none" }}>
+              Leave us a Google review
+            </a>
           </nav>
         </div>
 
