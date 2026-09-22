@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 
 import { getHeroHintFade, getNestedSectionListStagger, getStaggerReveal } from "@/lib/motion/landingReveal";
 import banner01 from "@/public/assets/banner-01.jpg";
@@ -183,6 +183,7 @@ const HomeLanding = () => {
       </section>
 
       {/* ── Stats Bar ── */}
+      {/* TODO (owner): verify "500+ Brands served" reflects the current real client count before updating */}
       <div className={styles.statsBar} aria-label="Key statistics">
         <div className={styles.statsBarInner}>
           <div className={styles.statItem}>
@@ -294,6 +295,16 @@ const HomeLanding = () => {
         </motion.div>
       </section>
 
+      {/*
+        TODO (owner): Replace placeholder testimonials with real attributed quotes from actual clients
+        before re-enabling this section. Real candidates: Café Public, Osler Records, Tunnel Espresso,
+        L'Avenue, Fairmont. Each quote needs: exact text, author full name, business name, and ideally
+        a photo or logo. Set SHOW_TESTIMONIALS = true below once real quotes are ready.
+
+        The component structure below is ready to accept real data from the `testimonials.items`
+        dictionary array — just update en.json with real quotes and flip the flag.
+      */}
+      {(false as boolean) && (
       <section className={styles.testimonials} aria-labelledby="testimonials-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
           <motion.h2 id="testimonials-heading" className={styles.advantagesTitle} {...fadeChild}>
@@ -318,6 +329,7 @@ const HomeLanding = () => {
           </motion.div>
         </motion.div>
       </section>
+      )}
 
       <section className={styles.advantages} id="advantages" aria-labelledby="advantages-heading">
         <motion.div className={styles.advantagesInner} {...staggerParent}>
@@ -392,20 +404,35 @@ const HomeLanding = () => {
                 Fully Custom Printed Bags
               </div>
             </div>
-            {[
+            {([
               { label: "Minimum order",  a: "Zero",                   b: "5,000 units (up to 5 designs)" },
               { label: "Size",           a: "225g",                   b: "Any size (250g, 340g, 454g, 1kg…)" },
               { label: "Branding",       a: "Your label on our bag",  b: "100% your design, no EZPZ mark" },
               { label: "Best for",       a: "Launching & testing",    b: "Scaling brands" },
               { label: "Turnaround",     a: "~5 business days",       b: "2–3 weeks" },
-              { label: "Pricing",        a: "Contact us for a quote", b: "Contact us for a quote" },
-            ].map(({ label, a, b }) => (
+              {
+                label: "Pricing",
+                a: (
+                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}>
+                    <strong>From $11.75/bag</strong>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.6 }}>at 100 bags, zero minimum</span>
+                  </span>
+                ),
+                b: (
+                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}>
+                    <strong>From $0.85/bag</strong>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.55 }}>5,000 unit minimum</span>
+                  </span>
+                ),
+              },
+            ] as Array<{ label: string; a: React.ReactNode; b: React.ReactNode }>).map(({ label, a, b }) => (
               <div key={label} className={styles.bagCompareRow} role="row">
                 <div className={styles.bagCompareRowLabel} role="rowheader">{label}</div>
                 <div className={`${styles.bagCompareCell} ${styles.bagCompareCellAccent}`} role="cell">{a}</div>
                 <div className={styles.bagCompareCell} role="cell">{b}</div>
               </div>
             ))}
+
           </motion.div>
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/pricing`} className={styles.btnOutline}>
@@ -483,6 +510,7 @@ const HomeLanding = () => {
       </section>
 
       {/* ── Trust line + Instagram callout ── */}
+      {/* TODO (owner): verify "500+ Canadian brands" count is still accurate */}
       <section className={styles.trustLine} aria-label="Social proof">
         <div className={styles.trustLineInner}>
           <p className={styles.trustLineText}>
