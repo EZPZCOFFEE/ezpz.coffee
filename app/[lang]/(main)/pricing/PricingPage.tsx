@@ -104,6 +104,15 @@ const PricingPage = () => {
             <div className={styles.optionCard}>
               <span className={styles.optionTag}>Best for launching &amp; testing</span>
               <h3 className={styles.optionName}>EZPZ Bags with Custom Label</h3>
+              <p style={{ margin: "0 0 0.25rem", lineHeight: 1 }}>
+                <span style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.02em" }}>
+                  From $11.75
+                </span>
+                <span style={{ fontSize: "0.9rem", color: "#6b7280", fontWeight: 500 }}>/bag</span>
+              </p>
+              <p style={{ margin: "0 0 var(--spacing-country)", fontSize: "0.8rem", color: "#9ca3af" }}>
+                At 100 bags · zero minimum to start
+              </p>
               <p className={styles.optionDesc}>
                 Our high-quality 225g stand-up bags (degassing valve + resealable zip) with your custom-designed label applied.
               </p>
@@ -127,6 +136,15 @@ const PricingPage = () => {
             <div className={`${styles.optionCard} ${styles.optionCardDark}`}>
               <span className={`${styles.optionTag} ${styles.optionTagDark}`}>Best for scaling brands</span>
               <h3 className={`${styles.optionName} ${styles.optionNameLight}`}>Fully Custom Printed Bags</h3>
+              <p style={{ margin: "0 0 0.25rem", lineHeight: 1 }}>
+                <span style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)", fontWeight: 800, color: "var(--color-accent)", letterSpacing: "-0.02em" }}>
+                  From $0.85
+                </span>
+                <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.45)", fontWeight: 500 }}>/bag</span>
+              </p>
+              <p style={{ margin: "0 0 var(--spacing-country)", fontSize: "0.8rem", color: "rgba(255,255,255,0.35)" }}>
+                At 5,000 units · price drops further at scale
+              </p>
               <p className={`${styles.optionDesc} ${styles.optionDescLight}`}>
                 The entire bag printed to your exact design and size (250g, 340g, 454g, 1kg, and more). Zero EZPZ branding.
               </p>
