@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="cgbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#070604"/>
+      <stop offset="100%" style="stop-color:#0d0a06"/>
+    </linearGradient>
+    <linearGradient id="cgacc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c43e14"/>
+      <stop offset="100%" style="stop-color:#e8521a"/>
+    </linearGradient>
+    <linearGradient id="cgwarm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a2a14"/>
+      <stop offset="100%" style="stop-color:#0d1a0a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#cgbg)"/>
+
+  <!-- Subtle warm green undertone panel (festive) -->
+  <rect x="0" y="0" width="800" height="420" fill="rgba(20,40,12,0.18)"/>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#cgacc)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.016)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.016)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.016)" stroke-width="1"/>
+  <line x1="266" y1="0" x2="266" y2="420" stroke="rgba(255,255,255,0.016)" stroke-width="1"/>
+  <line x1="533" y1="0" x2="533" y2="420" stroke="rgba(255,255,255,0.016)" stroke-width="1"/>
+
+  <!-- Subtle star / snowflake decorations (premium, not kitschy) -->
+  <!-- Star 1 -->
+  <g transform="translate(68,52)" opacity="0.12">
+    <line x1="0" y1="-7" x2="0" y2="7" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-7" y1="0" x2="7" y2="0" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-5" y1="-5" x2="5" y2="5" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="5" y1="-5" x2="-5" y2="5" stroke="#f5f0e8" stroke-width="1"/>
+  </g>
+  <!-- Star 2 -->
+  <g transform="translate(410,390)" opacity="0.09">
+    <line x1="0" y1="-6" x2="0" y2="6" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-6" y1="0" x2="6" y2="0" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-4" y1="-4" x2="4" y2="4" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="4" y1="-4" x2="-4" y2="4" stroke="#f5f0e8" stroke-width="1"/>
+  </g>
+  <!-- Star 3 -->
+  <g transform="translate(440,30)" opacity="0.07">
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-5" y1="0" x2="5" y2="0" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke="#f5f0e8" stroke-width="1"/>
+    <line x1="3.5" y1="-3.5" x2="-3.5" y2="3.5" stroke="#f5f0e8" stroke-width="1"/>
+  </g>
+
+  <!-- Right panel: timeline -->
+  <rect x="470" y="24" width="290" height="372" rx="6" fill="rgba(255,255,255,0.022)" stroke="rgba(196,62,20,0.12)" stroke-width="1"/>
+
+  <!-- Timeline header -->
+  <text x="492" y="52" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(196,62,20,0.7)" letter-spacing="1.5">PLANNING TIMELINE</text>
+  <line x1="492" y1="60" x2="740" y2="60" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+
+  <!-- Timeline item 1 -->
+  <circle cx="499" cy="85" r="3" fill="rgba(196,62,20,0.7)"/>
+  <text x="512" y="82" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(196,62,20,0.85)" letter-spacing="0.5">8–10 WEEKS BEFORE</text>
+  <text x="512" y="94" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.45)">Decide concept &amp; quantities</text>
+  <line x1="499" y1="88" x2="499" y2="114" stroke="rgba(196,62,20,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Timeline item 2 -->
+  <circle cx="499" cy="117" r="3" fill="rgba(196,62,20,0.5)"/>
+  <text x="512" y="114" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(196,62,20,0.75)" letter-spacing="0.5">6–8 WEEKS BEFORE</text>
+  <text x="512" y="126" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.45)">Choose coffee · finalize design</text>
+  <line x1="499" y1="120" x2="499" y2="146" stroke="rgba(196,62,20,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Timeline item 3 -->
+  <circle cx="499" cy="149" r="3" fill="rgba(196,62,20,0.5)"/>
+  <text x="512" y="146" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(196,62,20,0.75)" letter-spacing="0.5">4–6 WEEKS BEFORE</text>
+  <text x="512" y="158" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.45)">Approve design · place order</text>
+  <line x1="499" y1="152" x2="499" y2="178" stroke="rgba(196,62,20,0.2)" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Timeline item 4 -->
+  <circle cx="499" cy="181" r="3" fill="rgba(196,62,20,0.35)"/>
+  <text x="512" y="178" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(196,62,20,0.6)" letter-spacing="0.5">2–4 WEEKS BEFORE</text>
+  <text x="512" y="190" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.38)">Receive gifts · distribute</text>
+
+  <!-- Divider -->
+  <line x1="492" y1="215" x2="740" y2="215" stroke="rgba(196,62,20,0.1)" stroke-width="1"/>
+
+  <!-- Christmas date -->
+  <text x="492" y="238" font-family="Georgia, serif" font-size="8" fill="rgba(196,62,20,0.45)" letter-spacing="1">DEC 25</text>
+  <text x="492" y="252" font-family="Georgia, serif" font-size="9" font-weight="700" fill="rgba(255,255,255,0.55)">Christmas Day</text>
+  <rect x="492" y="260" width="50" height="2" fill="url(#cgacc)" opacity="0.4"/>
+
+  <!-- Bottom label -->
+  <text x="492" y="296" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.2)" letter-spacing="0.5">Start 8–10 weeks early.</text>
+  <text x="492" y="310" font-family="Georgia, serif" font-size="8" fill="rgba(255,255,255,0.2)" letter-spacing="0.5">Zero minimum · design included.</text>
+
+  <!-- Left text block -->
+  <text x="72" y="132" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(196,62,20,0.9)" letter-spacing="3">CORPORATE GIFTING</text>
+  <rect x="72" y="142" width="40" height="2" fill="url(#cgacc)" opacity="0.8"/>
+
+  <!-- Large ghost text -->
+  <text x="44" y="274" font-family="Georgia, serif" font-size="110" font-weight="900" fill="rgba(196,62,20,0.045)" letter-spacing="-6">XG</text>
+
+  <text x="72" y="200" font-family="Georgia, serif" font-size="27" font-weight="900" fill="white" letter-spacing="-0.5">Christmas</text>
+  <text x="72" y="234" font-family="Georgia, serif" font-size="27" font-weight="900" fill="url(#cgacc)" letter-spacing="-0.5">Coffee Gifts</text>
+  <text x="72" y="268" font-family="Georgia, serif" font-size="27" font-weight="900" fill="white" letter-spacing="-0.5">Done Right</text>
+
+  <rect x="72" y="282" width="350" height="1.5" fill="rgba(255,255,255,0.055)"/>
+
+  <text x="72" y="308" font-family="Georgia, serif" font-size="11.5" fill="rgba(255,255,255,0.35)" letter-spacing="0.2">The planning guide. 2026.</text>
+  <text x="72" y="326" font-family="Georgia, serif" font-size="11.5" fill="rgba(255,255,255,0.35)" letter-spacing="0.2">Zero minimum · Roasted in Montreal</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="358" width="108" height="26" rx="3" fill="rgba(196,62,20,0.14)" stroke="rgba(196,62,20,0.38)" stroke-width="1"/>
+  <text x="126" y="376" font-family="Georgia, serif" font-size="10" font-weight="700" fill="rgba(196,62,20,0.88)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Right edge accent -->
+  <rect x="758" y="0" width="42" height="420" fill="rgba(196,62,20,0.022)"/>
+  <line x1="758" y1="0" x2="758" y2="420" stroke="rgba(196,62,20,0.07)" stroke-width="1"/>
+</svg>

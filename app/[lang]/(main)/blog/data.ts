@@ -14,6 +14,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "christmas-coffee-gifts-preparation-guide",
+    category: "Corporate Gifting",
+    categoryColor: "#c43e14",
+    title: "How to Prepare Your Christmas Coffee Gifts (Without the Last-Minute Panic)",
+    excerpt:
+      "Custom branded coffee is a beloved holiday gift, but only if you plan ahead. Here's your complete timeline, quantity, design, and ordering checklist to get it done right and on time.",
+    date: "June 22, 2026",
+    readTime: "7 min read",
+    color: "#0D0A07",
+    initials: "XG",
+    image: "/assets/blog/christmas-coffee-gifts.svg",
+    published: true,
+  },
+  {
     slug: "how-to-start-a-coffee-brand-canada",
     category: "Guides",
     categoryColor: "#c43e14",
