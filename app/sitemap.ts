@@ -170,6 +170,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/careers",
     "/fr/carrieres",
     "/fr/tarifs",
+    // City × Industry landing pages
+    "/en/custom-coffee-restaurants-toronto",
+    "/en/custom-coffee-restaurants-montreal",
+    "/en/custom-coffee-hotels-toronto",
+    "/en/custom-coffee-hotels-vancouver",
+    "/en/custom-coffee-cafes-montreal",
+    "/en/custom-coffee-corporate-offices-toronto",
+    "/en/custom-coffee-restaurants-vancouver",
+    "/en/custom-coffee-hotels-montreal",
+    "/en/custom-coffee-corporate-offices-montreal",
+    "/en/custom-coffee-cafes-toronto",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
