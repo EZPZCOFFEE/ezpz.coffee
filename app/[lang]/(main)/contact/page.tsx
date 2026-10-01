@@ -6,24 +6,30 @@ import { Suspense } from "react";
 import { ContactForm } from "./ContactForm";
 import styles from "./styles.module.scss";
 
-export const metadata: Metadata = {
-  title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
-  description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
-  alternates: { canonical: "/en/contact" },
-  openGraph: {
-    title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
-    description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
-    type: "website",
-    url: "https://www.ezpz.coffee/en/contact",
-    images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Contact EZPZ Coffee" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact EZPZ Coffee | Get a Custom Coffee Quote | Montreal",
-    description: "Get in touch with EZPZ Coffee. Whether you need a single custom bag or a full white label coffee brand, we'll respond within 24 hours.",
-    images: ["/assets/banner-01.jpg"],
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const t = await getTranslations("metadata.contact");
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: { canonical: `/${lang}/contact` },
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      type: "website",
+      url: `https://www.ezpz.coffee/${lang}/contact`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: t("ogTitle") }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("twitterTitle"),
+      description: t("twitterDescription"),
+      images: ["/assets/banner-01.jpg"],
+    },
+  };
+}
 
 const ContactPage = async () => {
   const t = await getTranslations("contact");
@@ -34,12 +40,8 @@ const ContactPage = async () => {
       {/* ── Hero ───────────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <h1 className={styles.heroTitle}>Let&apos;s talk <span className={styles.heroAccent}>coffee.</span></h1>
-          <p className={styles.heroSubtitle}>
-            Whether you&apos;re looking for a single custom bag or launching a full white label brand,
-            we&apos;d love to hear from you. Fill out the form and we&apos;ll get back to you within
-            24 hours with a personalized quote.
-          </p>
+          <h1 className={styles.heroTitle}>{t("heroTitle")}</h1>
+          <p className={styles.heroSubtitle}>{t("heroSubtitle")}</p>
         </div>
         <div className={styles.heroAngle} />
       </section>
@@ -51,10 +53,8 @@ const ContactPage = async () => {
           {/* Form */}
           <div className={styles.formWrap}>
             <div className={styles.formHeader}>
-              <h2 className={styles.formTitle}>Let us build your coffee brand together.</h2>
-              <p className={styles.formSubtext}>
-                Whether you need 1 bag or 10,000, we are here to help. Fill out the form and we will get back to you within 24 hours with a personalized quote.
-              </p>
+              <h2 className={styles.formTitle}>{t("formTitle")}</h2>
+              <p className={styles.formSubtext}>{t("formSubtext")}</p>
             </div>
             <Suspense>
               <ContactForm />
@@ -94,7 +94,7 @@ const ContactPage = async () => {
               <div className={styles.sidebarDivider} />
 
               <div className={styles.sidebarSocial}>
-                <span className={styles.sidebarLabel}>Follow us</span>
+                <span className={styles.sidebarLabel}>{t("followUs")}</span>
                 <div className={styles.socialLinks}>
                   <a href="https://www.instagram.com/ezpz.coffee/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
                     <InstagramLogo size={20} />
@@ -109,9 +109,9 @@ const ContactPage = async () => {
             </div>
 
             <p className={styles.directEmail}>
-              Prefer to chat? Email us directly at{" "}
+              {t("preferEmailPre")}{" "}
               <a href="mailto:help@ezpz.coffee" className={styles.directEmailLink}>help@ezpz.coffee</a>
-              {" "}and we&apos;ll respond within 24 hours.
+              {" "}{t("preferEmailPost")}
             </p>
           </aside>
 

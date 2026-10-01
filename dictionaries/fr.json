@@ -11,7 +11,46 @@
         ]
       }
     },
-    "title": "À propos d'EZPZ"
+    "title": "À propos d'EZPZ",
+    "heroTitle": "Nous rendons le café",
+    "heroTitleAccent": "facile à personnaliser.",
+    "heroSubtitle": "EZPZ a été fondé par des vétérans de l'industrie du café qui en avaient assez de voir de belles marques se buter à une production coûteuse, complexe et exigeant des quantités minimales élevées. Alors nous avons bâti la solution.",
+    "whoIsText": "EZPZ Coffee est une entreprise de café de spécialité basée à Montréal, fondée par des entrepreneurs avec des années d'expérience dans l'industrie du café. EZPZ est le seul fournisseur de sacs de café personnalisés au Canada sans minimum de commande. L'entreprise torréfie à la Société canadienne de torréfaction dans le sud-ouest de Montréal et livre des clients partout au Canada et aux États-Unis.",
+    "statsLabels": {
+      "brands": "Marques servies",
+      "minimum": "Minimum de commande",
+      "specialty": "Café de spécialité"
+    },
+    "storyEyebrow": "Notre histoire",
+    "storyTitle": "Bâti par des gens qui connaissent le café.",
+    "storyBody1": "Fondée à Montréal, EZPZ a été créée par des entrepreneurs avec des années d'expérience dans l'industrie du café. Nous avons constaté un manque : les entreprises voulaient vendre leur propre café de marque, mais les obstacles étaient trop nombreux. Trop de minimums, trop de complexité, trop peu de transparence.",
+    "storyBody2": "Nous avons bâti EZPZ pour changer cela. Aujourd'hui, nous aidons des centaines de marques partout au Canada à concrétiser leur vision café, simplement, à prix abordable et sans compromis.",
+    "pullQuote": "Les grandes marques ne devraient pas avoir besoin d'un entrepôt pour se lancer.",
+    "valuesEyebrow": "Nos valeurs",
+    "valuesTitle": "Ce en quoi nous croyons",
+    "values": [
+      {
+        "title": "Transparence",
+        "body": "Nous vous disons exactement d'où vient votre café, qui l'a cultivé et comment il a été traité."
+      },
+      {
+        "title": "Simplicité",
+        "body": "Aucun minimum, aucun frais caché, aucun processus compliqué. Juste un excellent café à votre image."
+      },
+      {
+        "title": "Qualité",
+        "body": "Nous travaillons uniquement avec des grains de café de spécialité, torréfiés en interne à la Société canadienne de torréfaction à Montréal."
+      }
+    ],
+    "roastTagline": "Torréfié frais. Livré rapidement. Toujours de spécialité.",
+    "roastBody": "Tous nos cafés sont torréfiés à la Société canadienne de torréfaction, située dans le sud-ouest de Montréal. Notre processus de torréfaction interne nous donne un contrôle total sur la qualité, la fraîcheur et les délais de production.",
+    "roastLearnMore": "En savoir plus sur ce qui fait d'EZPZ un torréfacteur canadien différent",
+    "ctaTitle": "Prêt à bâtir votre marque de café?",
+    "ctaSubtitle": "Rejoignez des centaines de marques qui utilisent déjà EZPZ.",
+    "ctaDesign": "Créez votre sachet",
+    "ctaContact": "Nous contacter",
+    "ctaHiring": "Vous voulez rejoindre l'équipe?",
+    "ctaHiringLink": "Voir les postes ouverts chez EZPZ"
   },
   "cart": {
     "cartAlt": "Panier d'achat",
@@ -54,6 +93,13 @@
   "contact": {
     "title": "Contactez-nous",
     "intro": "Vous avez des questions sur votre commande, vos sachets personnalisés ou autre chose ? Nous sommes là pour vous aider.",
+    "heroTitle": "Parlons café.",
+    "heroSubtitle": "Que vous cherchiez un seul sachet personnalisé ou que vous lanciez une marque blanche complète, nous serions ravis d'avoir de vos nouvelles. Remplissez le formulaire et nous vous répondrons dans les 24 heures avec une proposition personnalisée.",
+    "formTitle": "Bâtissons votre marque de café ensemble.",
+    "formSubtext": "Que vous ayez besoin d'un seul sachet ou de 10 000, nous sommes là pour vous aider. Remplissez le formulaire et nous vous répondrons dans les 24 heures avec une proposition personnalisée.",
+    "followUs": "Suivez-nous",
+    "preferEmailPre": "Vous préférez écrire directement ? Envoyez-nous un courriel à",
+    "preferEmailPost": "et nous répondrons dans les 24 heures.",
     "form": {
       "name": "Votre nom",
       "namePlaceholder": "Jean Tremblay",
@@ -81,6 +127,27 @@
   },
   "faq": {
     "categories": {
+      "b2b": {
+        "title": "Marque blanche et B2B",
+        "items": {
+          "samples": {
+            "question": "Puis-je commander des échantillons avant de m'engager?",
+            "answer": "Absolument. Nous vous encourageons à le faire. Contactez-nous et nous vous enverrons un kit d'échantillons pour que vous puissiez goûter et évaluer la qualité avant de passer votre première commande."
+          },
+          "recipes": {
+            "question": "Offrez-vous des recettes personnalisées pour les boissons prêtes à boire?",
+            "answer": "Oui. Notre équipe travaille avec vous pour élaborer des recettes adaptées au profil gustatif et à la clientèle cible de votre marque."
+          },
+          "distribution": {
+            "question": "Pouvez-vous aider à distribuer mon produit?",
+            "answer": "Oui. Nous avons de solides contacts dans l'industrie et pouvons vous aider à placer votre café de marque dans des commerces de détail, des hôtels et d'autres points de vente partout au Canada."
+          },
+          "turnaround": {
+            "question": "Quel est le délai de production pour les commandes en marque blanche?",
+            "answer": "La plupart des commandes de sacs en marque blanche sont prêtes dans les 2 à 3 semaines suivant l'approbation du design. Les commandes de boissons prêtes à boire et de capsules peuvent prendre 4 à 6 semaines selon le volume."
+          }
+        }
+      },
       "dietary": {
         "items": {
           "allergens": {
@@ -173,6 +240,8 @@
   },
   "footer": {
     "address": "3780 Rue Saint-Patrick, Montréal QC H4E 1A2",
+    "email": "help@ezpz.coffee",
+    "copyright": "© EZPZ {year} · Tous droits réservés",
     "blog": "Blogue",
     "brand": "EZPZ {year}",
     "contactUs": "Nous contacter",
@@ -181,7 +250,28 @@
     "navigation": "Navigation du pied de page",
     "ourCoffee": "Notre café",
     "shop": "Boutique",
-    "termsOfUse": "Conditions d'utilisation"
+    "termsOfUse": "Conditions d'utilisation",
+    "shopHeading": "Boutique",
+    "companyHeading": "Compagnie",
+    "design": "Créez votre sachet",
+    "aboutUs": "À propos",
+    "whiteLabel": "Marque blanche",
+    "pricingLink": "Tarifs",
+    "customBagsLink": "Sacs de café personnalisés",
+    "servicesLink": "Services",
+    "instantCoffeeLink": "Café instantané",
+    "canadianMarketsLink": "Marchés canadiens",
+    "usMarketsLink": "Marchés américains",
+    "industriesLink": "Industries desservies",
+    "guidesHeading": "Guides",
+    "bagPricingLink": "Tarification des sacs",
+    "whatIsWLLink": "Qu'est-ce que la marque blanche?",
+    "noMinimumLink": "Sacs sans minimum de commande",
+    "coffeeBagCostLink": "Coût des sacs de café",
+    "bestSupplierLink": "Meilleur fournisseur au Canada",
+    "coffeeForRestLink": "Café pour restaurants",
+    "vsCompetitorsLink": "EZPZ versus les concurrents",
+    "leaveReviewLink": "Laissez-nous un avis Google"
   },
   "home": {
     "addToCart": "Ajouter au panier",
@@ -326,6 +416,14 @@
       "title": "Café en marque blanche Canada | Café personnalisé | EZPZ Coffee",
       "twitterDescription": "Lancez votre propre marque de café avec EZPZ. Nous gérons tout, torréfaction, emballage et distribution.",
       "twitterTitle": "Café en marque blanche Canada | Café personnalisé | EZPZ Coffee"
+    },
+    "pricing": {
+      "title": "Tarifs des sacs de café personnalisés | Sans minimum | EZPZ Coffee",
+      "description": "Tarification transparente pour les sacs de café personnalisés au Canada. Sacs avec étiquette EZPZ, sans minimum de commande. Consultez nos prix par sachet, nos tarifs dropshipping et nos options entièrement personnalisées.",
+      "ogTitle": "Tarifs des sacs de café personnalisés | Sans minimum | EZPZ Coffee",
+      "ogDescription": "Tarification transparente pour les sacs de café personnalisés au Canada. Sacs avec étiquette EZPZ, sans minimum. Consultez nos prix par sachet et nos options personnalisées.",
+      "twitterTitle": "Tarifs des sacs de café personnalisés | Sans minimum | EZPZ Coffee",
+      "twitterDescription": "Tarification transparente pour les sacs de café personnalisés au Canada. Sans minimum, design toujours inclus."
     }
   },
   "landing": {

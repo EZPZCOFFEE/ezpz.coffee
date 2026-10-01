@@ -54,6 +54,13 @@
   "contact": {
     "title": "Get in touch",
     "intro": "Have questions about your order, custom bags, or anything else? We're here to help.",
+    "heroTitle": "Let's talk coffee.",
+    "heroSubtitle": "Whether you're looking for a single custom bag or launching a full white label brand, we'd love to hear from you. Fill out the form and we'll get back to you within 24 hours with a personalized quote.",
+    "formTitle": "Let us build your coffee brand together.",
+    "formSubtext": "Whether you need 1 bag or 10,000, we are here to help. Fill out the form and we will get back to you within 24 hours with a personalized quote.",
+    "followUs": "Follow us",
+    "preferEmailPre": "Prefer to chat? Email us directly at",
+    "preferEmailPost": "and we'll respond within 24 hours.",
     "form": {
       "name": "Your name",
       "namePlaceholder": "John Smith",
@@ -205,7 +212,24 @@
     "whiteLabel": "White label",
     "contactUs": "Contact",
     "faq": "FAQ",
-    "termsOfUse": "Terms of use"
+    "termsOfUse": "Terms of use",
+    "pricingLink": "Pricing",
+    "customBagsLink": "Custom Coffee Bags",
+    "servicesLink": "Services",
+    "instantCoffeeLink": "Instant Coffee",
+    "blog": "Blog",
+    "canadianMarketsLink": "Canadian Markets",
+    "usMarketsLink": "US Markets",
+    "industriesLink": "Industries we serve",
+    "guidesHeading": "Guides",
+    "bagPricingLink": "Bag Pricing",
+    "whatIsWLLink": "What Is White Label Coffee?",
+    "noMinimumLink": "No Minimum Coffee Bags",
+    "coffeeBagCostLink": "Coffee Bag Pricing",
+    "bestSupplierLink": "Best Supplier in Canada",
+    "coffeeForRestLink": "Coffee for Restaurants",
+    "vsCompetitorsLink": "EZPZ vs Competitors",
+    "leaveReviewLink": "Leave us a Google review"
   },
   "home": {
     "addToCart": "Add to cart",
@@ -350,6 +374,14 @@
       "title": "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
       "twitterDescription": "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
       "twitterTitle": "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee"
+    },
+    "pricing": {
+      "title": "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+      "description": "Transparent pricing for custom coffee bags in Canada. EZPZ label bags start with zero minimum. See per-bag pricing, dropshipping rates, and fully custom options.",
+      "ogTitle": "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+      "ogDescription": "Transparent pricing for custom coffee bags in Canada. EZPZ label bags start with zero minimum. See per-bag pricing, dropshipping rates, and fully custom options.",
+      "twitterTitle": "Custom Coffee Bag Pricing | Zero Minimum | EZPZ Coffee",
+      "twitterDescription": "Transparent pricing for custom coffee bags in Canada. Zero minimum, design always included."
     }
   },
   "landing": {

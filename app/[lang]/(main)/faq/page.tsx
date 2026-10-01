@@ -7,19 +7,22 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import FAQContent from "./FAQContent";
 import styles from "./styles.module.scss";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   const t = await getTranslations("metadata.faq");
 
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: "/en/faq" },
+    alternates: { canonical: `/${lang}/faq` },
     openGraph: {
       title: t("ogTitle"),
       description: t("ogDescription"),
       type: "website",
-      url: "https://www.ezpz.coffee/en/faq",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "FAQ | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/faq`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: t("ogTitle") }],
     },
     twitter: {
       card: "summary_large_image",
@@ -30,9 +33,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const FAQPage = async () => {
+const FAQPage = async ({ params }: Props) => {
+  const { lang: locale } = await params;
   const t = await getTranslations("faq");
-  const locale = "en";
 
   const categories = [
     {
@@ -75,7 +78,7 @@ const FAQPage = async () => {
     {
       title: t("categories.b2b.title"),
       items: [
-        { question: "Do you offer instant coffee?", directAnswer: "Yes. EZPZ now offers premium freeze-dried (lyophilized) instant coffee, specialty grade and custom branded, in jars, sachets, or sticks — with zero minimum order.", answer: "EZPZ offers fully custom branded freeze-dried instant coffee made from the same traceable, 80+ SCA specialty beans we use in every bag. Unlike cheap spray-dried instant, freeze-drying preserves the full flavor, aroma, and antioxidants of the coffee. You can get your instant coffee branded in jars, sachets, or single-serve sticks with zero minimum order. Learn more at ezpz.coffee/en/instant-coffee." },
+        { question: locale === "fr" ? "Offrez-vous du café instantané?" : "Do you offer instant coffee?", directAnswer: locale === "fr" ? "Oui. EZPZ offre maintenant du café instantané lyophilisé de qualité supérieure, café de spécialité et de marque personnalisée, en pots, sachets ou bâtonnets, sans minimum de commande." : "Yes. EZPZ now offers premium freeze-dried (lyophilized) instant coffee, specialty grade and custom branded, in jars, sachets, or sticks — with zero minimum order.", answer: locale === "fr" ? "EZPZ offre un café instantané lyophilisé entièrement personnalisé, fabriqué à partir des mêmes grains de spécialité traçables SCA 80+ que nous utilisons dans chaque sachet. Contrairement au café instantané bon marché par atomisation, la lyophilisation préserve toute la saveur, l'arôme et les antioxydants du café. Obtenez votre café instantané de marque en pots, sachets ou bâtonnets à usage unique, sans minimum de commande. Apprenez-en plus sur ezpz.coffee/fr/instant-coffee." : "EZPZ offers fully custom branded freeze-dried instant coffee made from the same traceable, 80+ SCA specialty beans we use in every bag. Unlike cheap spray-dried instant, freeze-drying preserves the full flavor, aroma, and antioxidants of the coffee. You can get your instant coffee branded in jars, sachets, or single-serve sticks with zero minimum order. Learn more at ezpz.coffee/en/instant-coffee." },
         { question: t("categories.b2b.items.samples.question"), directAnswer: "Yes. Contact EZPZ Coffee to request a sample kit before placing your first white label order.", answer: t("categories.b2b.items.samples.answer") },
         { question: t("categories.b2b.items.recipes.question"), directAnswer: "Yes. EZPZ Coffee develops custom ready-to-drink recipes tailored to your brand's taste profile and audience.", answer: t("categories.b2b.items.recipes.answer") },
         { question: t("categories.b2b.items.distribution.question"), directAnswer: "Yes. EZPZ Coffee has industry relationships and can help place your branded coffee in retail locations, hotels, and more across Canada.", answer: t("categories.b2b.items.distribution.answer") },
@@ -155,23 +158,23 @@ const FAQPage = async () => {
           <dd>EZPZ Coffee products are naturally gluten-free and vegan. Coffee is tree nuts and allergen-free. Roasted in a facility that does not process common allergens.</dd>
         </dl>
       </section>
-      <nav aria-label="Related guides" style={{ padding: "32px 24px", borderTop: "1px solid #ebebeb", maxWidth: "900px", margin: "0 auto" }}>
-        <p style={{ fontWeight: 600, marginBottom: "12px", fontSize: "0.9rem", color: "#111" }}>Related guides</p>
+      <nav aria-label={locale === "fr" ? "Guides connexes" : "Related guides"} style={{ padding: "32px 24px", borderTop: "1px solid #ebebeb", maxWidth: "900px", margin: "0 auto" }}>
+        <p style={{ fontWeight: 600, marginBottom: "12px", fontSize: "0.9rem", color: "#111" }}>{locale === "fr" ? "Guides connexes" : "Related guides"}</p>
         <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <li><Link href={`/${locale}/what-is-white-label-coffee-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>What is white label coffee in Canada?</Link></li>
-          <li><Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee bags with no minimum</Link></li>
-          <li><Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>How much do custom coffee bags cost?</Link></li>
-          <li><Link href={`/${locale}/best-white-label-coffee-supplier-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Best white label coffee supplier in Canada</Link></li>
-          <li><Link href={`/${locale}/custom-coffee-for-restaurants-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Custom coffee for restaurants in Canada</Link></li>
-          <li><Link href={`/${locale}/instant-coffee`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>Freeze-dried instant coffee</Link></li>
+          <li><Link href={`/${locale}/what-is-white-label-coffee-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Qu'est-ce que la marque blanche au Canada?" : "What is white label coffee in Canada?"}</Link></li>
+          <li><Link href={`/${locale}/custom-coffee-bags-no-minimum-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Sacs de café personnalisés sans minimum" : "Custom coffee bags with no minimum"}</Link></li>
+          <li><Link href={`/${locale}/how-much-do-custom-coffee-bags-cost-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Combien coûtent les sacs de café personnalisés?" : "How much do custom coffee bags cost?"}</Link></li>
+          <li><Link href={`/${locale}/best-white-label-coffee-supplier-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Meilleur fournisseur de marque blanche au Canada" : "Best white label coffee supplier in Canada"}</Link></li>
+          <li><Link href={`/${locale}/custom-coffee-for-restaurants-canada`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Café personnalisé pour restaurants au Canada" : "Custom coffee for restaurants in Canada"}</Link></li>
+          <li><Link href={`/${locale}/instant-coffee`} style={{ fontSize: "0.85rem", color: "#ff4200", textDecoration: "underline" }}>{locale === "fr" ? "Café instantané lyophilisé" : "Freeze-dried instant coffee"}</Link></li>
         </ul>
       </nav>
       <div className={styles.ctaSection}>
         <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>Still have questions?</h2>
-          <p className={styles.ctaBody}>Our team is happy to help. Reach out and we&apos;ll get back to you within 24 hours.</p>
+          <h2 className={styles.ctaTitle}>{locale === "fr" ? "Vous avez d'autres questions?" : "Still have questions?"}</h2>
+          <p className={styles.ctaBody}>{locale === "fr" ? "Notre équipe est là pour vous aider. Écrivez-nous et nous vous répondrons dans les 24 heures." : "Our team is happy to help. Reach out and we'll get back to you within 24 hours."}</p>
           <Link href={`/${locale}/contact`} className={styles.ctaButton}>
-            Contact us <ArrowRight size={16} weight="bold" />
+            {locale === "fr" ? "Nous contacter" : "Contact us"} <ArrowRight size={16} weight="bold" />
           </Link>
         </div>
       </div>

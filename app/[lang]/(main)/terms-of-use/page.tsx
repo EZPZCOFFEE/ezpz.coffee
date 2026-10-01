@@ -3,20 +3,27 @@ import { getTranslations } from "next-intl/server";
 
 import TermsContent from "./TermsContent";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   const t = await getTranslations("metadata.termsOfUse");
 
   return {
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: "/en/terms-of-use",
+      canonical: `/${lang}/terms-of-use`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/terms-of-use",
+        "fr-CA": "https://www.ezpz.coffee/fr/terms-of-use",
+      },
     },
     openGraph: {
       title: t("ogTitle"),
       description: t("ogDescription"),
       type: "website",
-      url: "https://www.ezpz.coffee/en/terms-of-use",
+      url: `https://www.ezpz.coffee/${lang}/terms-of-use`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Terms of Use | EZPZ Coffee" }],
     },
     twitter: {
