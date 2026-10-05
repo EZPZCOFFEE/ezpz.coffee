@@ -3,29 +3,37 @@ import Script from "next/script";
 
 import InstantCoffeePage from "./InstantCoffeePage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Café instantané lyophilisé de spécialité | Marque privée | EZPZ Coffee"
+    : "High-End Instant Coffee | Freeze-Dried Specialty Coffee | EZPZ Coffee";
+  const description = isFr
+    ? "EZPZ propose maintenant du café instantané lyophilisé de qualité supérieure. Grade spécialité, saveur et arôme préservés, torréfié à Montréal. Personnalisé sous votre marque, aucun minimum. Le café instantané qui goûte comme une vraie tasse."
+    : "EZPZ now offers premium freeze-dried (lyophilized) instant coffee. Specialty grade, full flavor and aroma preserved, roasted in Montreal. Custom branded, zero minimum. The instant coffee that tastes like a real cup.";
+
   return {
-    title: "High-End Instant Coffee | Freeze-Dried Specialty Coffee | EZPZ Coffee",
-    description:
-      "EZPZ now offers premium freeze-dried (lyophilized) instant coffee. Specialty grade, full flavor and aroma preserved, roasted in Montreal. Custom branded, zero minimum. The instant coffee that tastes like a real cup.",
+    title,
+    description,
     alternates: {
-      canonical: "/en/instant-coffee",
+      canonical: `/${lang}/instant-coffee`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/instant-coffee",
+        "fr-CA": "https://www.ezpz.coffee/fr/instant-coffee",
+      },
     },
     openGraph: {
-      title: "High-End Instant Coffee | Freeze-Dried Specialty Coffee | EZPZ Coffee",
-      description:
-        "EZPZ now offers premium freeze-dried (lyophilized) instant coffee. Specialty grade, full flavor and aroma preserved, roasted in Montreal. Custom branded, zero minimum. The instant coffee that tastes like a real cup.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/instant-coffee",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Freeze-Dried Specialty Instant Coffee | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/instant-coffee`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café instantané lyophilisé de spécialité | EZPZ Coffee" : "Freeze-Dried Specialty Instant Coffee | EZPZ Coffee" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "High-End Instant Coffee | Freeze-Dried Specialty Coffee | EZPZ Coffee",
-      description:
-        "EZPZ now offers premium freeze-dried (lyophilized) instant coffee. Specialty grade, full flavor and aroma preserved, roasted in Montreal. Custom branded, zero minimum.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 

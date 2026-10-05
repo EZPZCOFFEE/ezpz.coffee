@@ -2,25 +2,37 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Sacs de café personnalisés pour restaurants | Aucun minimum | EZPZ Coffee"
+    : "Custom Coffee Bags for Restaurants | No Minimum | EZPZ Coffee";
+  const description = isFr
+    ? "Sacs de café personnalisés pour les restaurants. Transformez un repas en ritual matinal mémorable. Aucun minimum de commande, design inclus. Les restaurants du Canada et des États-Unis choisissent EZPZ."
+    : "Custom branded coffee bags for restaurants. Turn a meal into a lasting morning ritual. No minimum order, full design included. Restaurants across Canada and the USA choose EZPZ.";
+
   return {
-    title: "Custom Coffee Bags for Restaurants | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for restaurants. Turn a meal into a lasting morning ritual. No minimum order, full design included. Restaurants across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-restaurants" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-restaurants`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-restaurants",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-restaurants",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Restaurants | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for restaurants. High retail margins, daily brand visibility, no minimum order.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-restaurants",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Restaurants" }],
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-restaurants`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour restaurants" : "Custom Coffee Bags for Restaurants" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Restaurants | EZPZ Coffee",
-      description: "Custom branded coffee bags for restaurants. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +67,36 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-restaurants",
 };
 
-const RestaurantsPage = () => <IndustryPage data={data} />;
+const frData: IndustryPageData = {
+  industry: "Restaurants",
+  eyebrow: "Café personnalisé pour les restaurants",
+  headline: "Mettez le nom de votre restaurant sur le café que vos clients rapportent chez eux.",
+  subheadline: "Un sachet de café de spécialité à votre image trône sur le comptoir de cuisine de vos clients pendant des semaines : un rappel quotidien de l'expérience que vous avez créée pour eux.",
+  intro: "Le café personnalisé transforme un repas en souvenir durable. Quand un client de votre restaurant rapporte un sachet chez lui, il le prépare chaque matin en pensant à votre salle, à votre cuisine, à votre hospitalité. Ce type de rappel de marque est impossible à acheter avec de la publicité. Les restaurants de Montréal et de Toronto découvrent le café personnalisé comme produit de détail, cadeau corporatif et véritable différenciateur de l'expérience gastronomique. L'économie est convaincante : un sachet de 250 g de café de spécialité qui coûte 8 $ à produire peut se vendre 24 à 28 $ sur le comptoir d'un restaurant sans effort et sans risque d'inventaire, puisque EZPZ n'a aucun minimum de commande. Vous ne commandez jamais trop. Vous ne vous retrouvez jamais avec des stocks invendus. Que vous gériez une salle gastronomique ou un bistro de quartier bien-aimé, le produit fonctionne de la même façon : un emballage magnifiquement conçu avec votre logo, votre nom et votre histoire, rempli de café de spécialité traçable SCA 80+ torréfié frais à Montréal. Livré directement à votre restaurant en 3 à 10 jours ouvrables au Canada, 7 à 14 jours ouvrables aux États-Unis.",
+  whoOrders: [
+    { title: "Restaurants gastronomiques", body: "Les restaurants haut de gamme ajoutent le café personnalisé comme produit à emporter premium et cadeau corporatif pour leurs clients de salles privées. Cela correspond au positionnement qualité du menu." },
+    { title: "Bistros et restaurants de quartier", body: "Les bistros de quartier vendent le café personnalisé au comptoir comme merchandise. C'est un prolongement naturel de l'identité communautaire que leurs habitués adorent ramener à la maison et offrir à leurs proches." },
+    { title: "Restaurants brunch", body: "Les restaurants brunch sont un choix naturel, leurs clients sont déjà passionnés de café. Un sachet vendu à la caisse transforme chaque petit-déjeuner du dimanche en une semaine de visibilité de marque à la maison." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez le nom de votre restaurant et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes et ne requiert aucun designer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée. Nous vous suggérons des origines correspondant au profil de saveur et à l'histoire de votre restaurant." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre restaurant", body: "Nous livrons directement à l'adresse de votre restaurant. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Marges de détail élevées sans risque d'inventaire", body: "Un sachet qui coûte 8 $ à produire se vend 24 à 28 $ sur votre comptoir. Aucun minimum signifie que vous ne commandez jamais trop. Testez avec 10 sacs. Développez quand ils sont vendus." },
+    { n: "02", title: "Visibilité de marque quotidienne à la maison", body: "Chaque matin où votre client prépare votre café, il voit votre nom et se souvient de votre restaurant. Aucune publicité n'atteint ce type de rappel quotidien organique." },
+    { n: "03", title: "Un ajout unique au menu et une option cadeau", body: "Inscrivez-le à votre menu comme produit à emporter. Offrez-le comme cadeau corporatif pour vos clients de salles privées. C'est un sujet de conversation qui enrichit l'histoire de votre marque." },
+    { n: "04", title: "Cadeaux pour événements corporatifs et repas privés", body: "Les restaurants qui accueillent des événements privés peuvent inclure le café personnalisé comme cadeau à emporter premium pour les clients corporatifs, un cadeau qu'ils utiliseront vraiment et dont ils se souviendront." },
+  ],
+  testimonial: {
+    quote: "On les vend au comptoir à 24 $ le sachet et ils s'envolent chaque dimanche matin après le brunch. Nos habitués en achètent un toutes les quelques semaines.",
+    author: "Marisol T.",
+    role: "Propriétaire, restaurant brunch de quartier, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-restaurants",
+};
+
+const RestaurantsPage = () => <IndustryPage data={data} frData={frData} />;
 export default RestaurantsPage;

@@ -3,28 +3,45 @@ import Script from "next/script";
 
 import AEOAnswerPage from "../_components/AEOAnswerPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Meilleur fournisseur de café marque blanche au Canada 2026 | EZPZ"
+    : "Best White Label Coffee Supplier in Canada 2026 | EZPZ vs All";
+  const description = isFr
+    ? "EZPZ Coffee est le principal fournisseur de café marque blanche au Canada : aucun minimum de commande, design personnalisé complet, café de spécialité torréfié à Montréal, livraison en 2 à 3 semaines."
+    : "EZPZ Coffee is Canada's leading white label coffee supplier with zero minimum order, full custom design, specialty grade coffee roasted in Montreal, and 2–3 week delivery across Canada and the USA.";
+
   return {
-    title: "Best White Label Coffee Supplier in Canada 2026 | EZPZ vs All",
-    description:
-      "EZPZ Coffee is Canada's leading white label coffee supplier with zero minimum order, full custom design, specialty grade coffee roasted in Montreal, and 2–3 week delivery across Canada and the USA.",
-    alternates: { canonical: "/en/best-white-label-coffee-supplier-canada" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/best-white-label-coffee-supplier-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/best-white-label-coffee-supplier-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/best-white-label-coffee-supplier-canada",
+      },
+    },
     openGraph: {
-      title: "Best White Label Coffee Supplier in Canada 2026 | EZPZ vs All",
-      description:
-        "EZPZ Coffee is Canada's leading white label coffee supplier with zero minimum order, full custom design, specialty grade coffee roasted in Montreal, and 2–3 week delivery.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/best-white-label-coffee-supplier-canada",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Best White Label Coffee Supplier Canada | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/best-white-label-coffee-supplier-canada`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Meilleur fournisseur de café marque blanche au Canada | EZPZ Coffee" : "Best White Label Coffee Supplier Canada | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Best White Label Coffee Supplier in Canada 2026 | EZPZ Coffee",
-      description: "Zero minimum. Full design included. Specialty grade. Ships Canada and USA in 2–3 weeks. EZPZ Coffee.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
 }
+
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",

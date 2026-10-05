@@ -3,28 +3,45 @@ import Script from "next/script";
 
 import AEOAnswerPage from "../_components/AEOAnswerPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Sacs de café personnalisés sans minimum de commande au Canada | EZPZ Coffee"
+    : "Custom Coffee Bags With No Minimum Order in Canada | EZPZ Coffee";
+  const description = isFr
+    ? "EZPZ Coffee est le seul fournisseur de sacs de café personnalisés au Canada avec un vrai zéro minimum de commande. Commandez un sachet ou dix mille. Design toujours inclus."
+    : "EZPZ Coffee is the only custom coffee bag supplier in Canada with a genuine zero minimum order. Order one bag or ten thousand. Full design always included.";
+
   return {
-    title: "Custom Coffee Bags With No Minimum Order in Canada | EZPZ Coffee",
-    description:
-      "EZPZ Coffee is the only custom coffee bag supplier in Canada with a genuine zero minimum order. Order one bag or ten thousand. Full design always included.",
-    alternates: { canonical: "/en/custom-coffee-bags-no-minimum-canada" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-no-minimum-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-no-minimum-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-no-minimum-canada",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags With No Minimum Order in Canada | EZPZ Coffee",
-      description:
-        "EZPZ Coffee is the only custom coffee bag supplier in Canada with a genuine zero minimum order. Order one bag or ten thousand. Full design always included.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-no-minimum-canada",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags No Minimum Canada | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-no-minimum-canada`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés sans minimum au Canada | EZPZ Coffee" : "Custom Coffee Bags No Minimum Canada | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Custom Coffee Bags With No Minimum Order in Canada | EZPZ Coffee",
-      description: "Canada's only custom coffee bag supplier with zero minimum order. Full design included. Ships across Canada and the USA.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
 }
+
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",

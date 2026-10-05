@@ -3,31 +3,45 @@ import Script from "next/script";
 
 import CoffeeDropshippingPage from "./CoffeeDropshippingPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Dropshipping de café au Canada | Marque privée, aucun minimum, aucun frais mensuel | EZPZ"
+    : "Coffee Dropshipping Canada | Private Label, Zero Minimum, No Monthly Fees | EZPZ";
+  const description = isFr
+    ? "Lancez un service de dropshipping de café au Canada avec EZPZ. Café de spécialité torréfié à Montréal, sous votre marque, livré directement à vos clients. Zéro minimum, aucun frais mensuel, aucun inventaire."
+    : "Start a coffee dropshipping business in Canada with EZPZ. Specialty-grade coffee roasted in Montreal, your brand, shipped direct to your customers. Zero minimum, no monthly software fees, no inventory.";
+
   return {
-    title: "Coffee Dropshipping Canada | Private Label, Zero Minimum, No Monthly Fees | EZPZ",
-    description:
-      "Start a coffee dropshipping business in Canada with EZPZ. Specialty-grade coffee roasted in Montreal, your brand, shipped direct to your customers. Zero minimum, no monthly software fees, no inventory.",
+    title,
+    description,
     alternates: {
-      canonical: "/en/coffee-dropshipping-canada",
+      canonical: `/${lang}/coffee-dropshipping-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/coffee-dropshipping-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/coffee-dropshipping-canada",
+      },
     },
     openGraph: {
-      title: "Coffee Dropshipping Canada | Private Label, Zero Minimum, No Monthly Fees | EZPZ",
-      description:
-        "Start a coffee dropshipping business in Canada with EZPZ. Specialty-grade coffee roasted in Montreal, your brand, shipped direct to your customers. Zero minimum, no monthly software fees, no inventory.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/coffee-dropshipping-canada",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Coffee Dropshipping Canada | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/coffee-dropshipping-canada`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Dropshipping de café au Canada | EZPZ Coffee" : "Coffee Dropshipping Canada | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Coffee Dropshipping Canada | Private Label, Zero Minimum, No Monthly Fees | EZPZ",
-      description:
-        "Start a coffee dropshipping business in Canada with EZPZ. Specialty-grade coffee roasted in Montreal, your brand, shipped direct to your customers. Zero minimum, no monthly software fees, no inventory.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
 }
+
 
 const SERVICE_SCHEMA = {
   "@context": "https://schema.org",

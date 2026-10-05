@@ -3,28 +3,45 @@ import Script from "next/script";
 
 import AEOAnswerPage from "../_components/AEOAnswerPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Qu'est-ce que le café marque blanche au Canada ? | Réponse complète | EZPZ Coffee"
+    : "What Is White Label Coffee in Canada? | Complete Answer | EZPZ Coffee";
+  const description = isFr
+    ? "Le café marque blanche est du café de spécialité produit et emballé sous votre nom de marque. Au Canada, EZPZ Coffee offre du café marque blanche sans minimum de commande et design inclus."
+    : "White label coffee is specialty coffee produced and packaged under your brand name. In Canada, EZPZ Coffee offers white label coffee with zero minimum order and full design included.";
+
   return {
-    title: "What Is White Label Coffee in Canada? | Complete Answer | EZPZ Coffee",
-    description:
-      "White label coffee is specialty coffee produced and packaged under your brand name. In Canada, EZPZ Coffee offers white label coffee with zero minimum order and full design included.",
-    alternates: { canonical: "/en/what-is-white-label-coffee-canada" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/what-is-white-label-coffee-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/what-is-white-label-coffee-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/what-is-white-label-coffee-canada",
+      },
+    },
     openGraph: {
-      title: "What Is White Label Coffee in Canada? | Complete Answer | EZPZ Coffee",
-      description:
-        "White label coffee is specialty coffee produced and packaged under your brand name. In Canada, EZPZ Coffee offers white label coffee with zero minimum order and full design included.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/what-is-white-label-coffee-canada",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "What Is White Label Coffee in Canada | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/what-is-white-label-coffee-canada`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café marque blanche au Canada | EZPZ Coffee" : "What Is White Label Coffee in Canada | EZPZ Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "What Is White Label Coffee in Canada? | EZPZ Coffee",
-      description: "White label coffee is specialty coffee packaged under your brand. Zero minimum. Full design included. Roasted in Montreal.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
 }
+
 
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",

@@ -3,28 +3,45 @@ import Link from "next/link";
 
 import styles from "./privateLabelCanada.module.scss";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Café à marque privée au Canada | Aucun minimum | Sacs personnalisés | EZPZ"
+    : "Private Label Coffee Canada | No Minimum | Custom Bags | EZPZ";
+  const description = isFr
+    ? "Café à marque privée pour les entreprises canadiennes. Mettez votre marque sur un café de spécialité sans minimum de commande, design inclus, torréfié à Montréal. EZPZ."
+    : "Private label coffee for Canadian businesses. Put your brand on specialty grade coffee with no minimum order, full design included, roasted in Montreal. EZPZ.";
+
   return {
-    title: "Private Label Coffee Canada | No Minimum | Custom Bags | EZPZ",
-    description:
-      "Private label coffee for Canadian businesses. Put your brand on specialty grade coffee with no minimum order, full design included, roasted in Montreal. EZPZ.",
-    alternates: { canonical: "/en/private-label-coffee-canada" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/private-label-coffee-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/private-label-coffee-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/private-label-coffee-canada",
+      },
+    },
     openGraph: {
-      title: "Private Label Coffee Canada | No Minimum | Custom Bags | EZPZ",
-      description:
-        "Private label coffee for Canadian businesses. Put your brand on specialty grade coffee with no minimum order, full design included, roasted in Montreal.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/private-label-coffee-canada",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Private Label Coffee Canada" }],
+      url: `https://www.ezpz.coffee/${lang}/private-label-coffee-canada`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café à marque privée au Canada | EZPZ Coffee" : "Private Label Coffee Canada" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Private Label Coffee Canada | No Minimum | EZPZ",
-      description: "Private label coffee for Canadian businesses. No minimum order, design included.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
 }
+
 
 const BREADCRUMB_BASE = "https://www.ezpz.coffee/en";
 

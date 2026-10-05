@@ -4,24 +4,37 @@ import Script from "next/script";
 
 import WhiteLabelSolutionsPage from "../_components/WhiteLabelSolutionsPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+
+  const title = isFr
+    ? "Café marque blanche Canada | Sacs de café à marque privée | EZPZ Montréal"
+    : "White Label Coffee Canada | Private Label Coffee Bags | EZPZ Montreal";
+  const description = isFr
+    ? "Solutions de café marque blanche et marque privée au Canada. Sacs personnalisés, prêt-à-boire et capsules Nespresso. Aucun minimum de commande, design inclus, torréfié à Montréal."
+    : "White label and private label coffee solutions in Canada. Custom branded bags, RTD, and Nespresso capsules. Zero minimum order, full design included, roasted in Montreal.";
+
   return {
-    title: "White Label Coffee Canada | Private Label Coffee Bags | EZPZ Montreal",
-    description: "White label and private label coffee solutions in Canada. Custom branded bags, RTD, and Nespresso capsules. Zero minimum order, full design included, roasted in Montreal.",
-    alternates: { canonical: "/en/white-label" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/white-label`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/white-label",
+        "fr-CA": "https://www.ezpz.coffee/fr/white-label",
+      },
+    },
     openGraph: {
-      title: "White Label Coffee Canada | Private Label Coffee Bags | EZPZ Montreal",
-      description: "White label and private label coffee solutions in Canada. Custom branded bags, RTD, and Nespresso capsules. Zero minimum order, full design included, roasted in Montreal.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/white-label",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "White Label Coffee Canada | EZPZ Coffee" }],
+      url: `https://www.ezpz.coffee/${lang}/white-label`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café marque blanche Canada | EZPZ Coffee" : "White Label Coffee Canada | EZPZ Coffee" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "White Label Coffee Canada | Custom Branded Coffee | EZPZ Coffee",
-      description: "Launch your own coffee brand with EZPZ. We handle everything, roasting, packaging, and distribution. Specialty coffee, your brand, no minimums.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
