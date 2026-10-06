@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Hamilton | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Hamilton | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises de Hamilton, livrés en 5 à 7 jours. Aucun minimum de commande, design inclus. Les marques de Hamilton choisissent EZPZ." : "Custom coffee bags for Hamilton businesses, shipped in 5–7 days. No minimum order, full design included. Hamilton brands choose EZPZ for specialty coffee.";
   return {
-    title: "Custom Coffee Bags Hamilton | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Hamilton businesses, shipped in 5–7 days. No minimum order, full design included. Hamilton brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-hamilton" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-hamilton`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-hamilton",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-hamilton",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Hamilton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Hamilton businesses. No minimum order, full design included, shipped from Montreal in 5–7 days.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-hamilton",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Hamilton" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-hamilton`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Hamilton" : "Custom Coffee Bags Hamilton" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Hamilton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Hamilton businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -74,5 +77,44 @@ const data: CityPageData = {
   ],
 };
 
-const HamiltonPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Hamilton", province: "Ontario",
+  eyebrow: "Sacs de café personnalisés — Hamilton",
+  headline: "Sacs de café personnalisés pour les marques de Hamilton. Aucun minimum.",
+  subheadline: "Les restaurants, galeries et entreprises créatives de Hamilton font confiance à EZPZ pour le café de spécialité de marque. Aucun minimum, design inclus.",
+  bodyIntro: "Du couloir artistique dynamique de James Street North aux restaurants branchés de Locke Street South, de la scène des brasseries artisanales d'Hamilton à la communauté universitaire de McMaster, Hamilton a transformé son identité industrielle en une culture créative vibrante. EZPZ livre des sacs de café de spécialité personnalisés depuis Montréal jusqu'à Hamilton en 5 à 7 jours ouvrables. Aucun minimum. Design complet inclus.",
+  deliveryTime: "5 à 7 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-hamilton",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Hamilton", body: "Nous livrons directement à votre adresse à Hamilton en 5 à 7 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Conçu pour la scène créative et gastronomique d'Hamilton", body: "De James Street North à Locke Street South, EZPZ livre un café de marque premium qui résonne avec le marché créatif et exigeant d'Hamilton." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et James Street North", body: "Les restaurants de James Street North, les bistros de Locke Street et les cafés du centre-ville d'Hamilton utilisent le café personnalisé pour garder leur marque visible dans les cuisines de leurs clients." },
+    { title: "Galeries et culture créative", body: "Les galeries d'art, les lieux de spectacle et les espaces créatifs d'Hamilton utilisent le café personnalisé comme cadeau distinctif pour leurs mécènes et collaborateurs." },
+    { title: "Brasseries artisanales et expériences gastronomiques", body: "Les brasseries artisanales et les restaurants gastronomiques d'Hamilton ajoutent le café personnalisé comme produit complémentaire à forte marge." },
+    { title: "Universitaire et campus McMaster", body: "Les entreprises et organisations liées à McMaster utilisent EZPZ pour des cadeaux de café de marque qui résonnent avec leur communauté académique." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Hamilton en 5 à 7 jours ouvrables par Postes Canada ou messagerie suivie. Nous livrons dans tous les quartiers d'Hamilton : centre-ville, James Street North, Locke Street, Westdale et les environs. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  relatedCities: [
+    { city: "Toronto", href: "/fr/custom-coffee-bags-toronto" },
+    { city: "Mississauga", href: "/fr/custom-coffee-bags-mississauga" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Hamilton ?", a: "Les commandes d'Hamilton arrivent en 5 à 7 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design." },
+    { q: "Quelles industries d'Hamilton utilisent le café personnalisé ?", a: "Les restaurants de James Street North, les galeries, les brasseries artisanales, les espaces créatifs et les organisations liées à McMaster sont les utilisateurs les plus actifs." },
+    { q: "Y a-t-il un minimum de commande pour Hamilton ?", a: "Aucun minimum. Que vous ayez besoin de quelques sacs pour un événement ou de milliers pour un programme de cadeaux, EZPZ s'adapte à tout volume." },
+  ],
+};
+
+const HamiltonPage = () => <CityPage data={data} frData={frData} />;
 export default HamiltonPage;

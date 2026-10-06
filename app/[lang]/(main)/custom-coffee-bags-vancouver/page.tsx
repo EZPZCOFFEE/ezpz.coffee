@@ -2,26 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Vancouver | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises de Vancouver, livrés en 7 à 10 jours. Aucun minimum de commande, design inclus. Les marques de Vancouver choisissent EZPZ pour le café de spécialité traçable." : "Custom coffee bags for Vancouver businesses, shipped in 7–10 days. No minimum order, full design included. Vancouver brands choose EZPZ for traceable specialty coffee.";
   return {
-    title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Vancouver businesses, shipped in 7–10 days. No minimum order, full design included. Vancouver brands choose EZPZ for traceable specialty coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-vancouver" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-vancouver`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-vancouver",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-vancouver",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
-      description:
-        "Custom coffee bags for Vancouver businesses. No minimum order, full design included, traceable specialty coffee shipped from Montreal.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-vancouver",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Vancouver" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-vancouver`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Vancouver" : "Custom Coffee Bags Vancouver" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Vancouver | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Vancouver businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -124,5 +126,48 @@ const data: CityPageData = {
   ],
 };
 
-const VancouverPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Vancouver", province: "Colombie-Britannique",
+  eyebrow: "Sacs de café personnalisés — Vancouver",
+  headline: "Sacs de café personnalisés pour les marques de Vancouver. Aucun minimum.",
+  subheadline: "La culture café de Vancouver est de classe mondiale. Votre café de marque devrait l'être aussi. Aucun minimum, design inclus.",
+  bodyIntro: "Des restaurants de Gastown aux hôtels de Coal Harbour, des boutiques de Main Street aux marques de bien-être de Kitsilano, les entreprises de Vancouver comprennent la qualité et la durabilité mieux que presque partout ailleurs. EZPZ livre des sacs de café de spécialité personnalisés depuis notre torréfacteur montréalais jusqu'à Vancouver en 7 à 10 jours ouvrables. Notre sourçage 100 % traçable correspond parfaitement à la culture de consommation axée sur les valeurs de Vancouver.",
+  deliveryTime: "7 à 10 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-vancouver",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Vancouver", body: "Nous livrons directement à votre adresse à Vancouver en 7 à 10 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Sourçage traçable en accord avec les valeurs de Vancouver", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Les consommateurs de Vancouver se soucient profondément de la provenance de leur café. Notre transparence répond à cette attente." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et gastronomie de Gastown", body: "Des bistros de Gastown aux restaurants en bord de mer de Coal Harbour, le café personnalisé ajoute un point de contact premium qui garde votre marque sur le comptoir bien après le dîner." },
+    { title: "Hôtels-boutiques et lodges", body: "La scène des hôtels-boutiques de Vancouver exige des expériences premium. Un sachet de café personnalisé dans chaque chambre dit à vos clients que vous vous souciez de chaque détail de leur séjour." },
+    { title: "Marques de bien-être et studios", body: "Les studios de yoga de Kitsilano, les marques de bien-être de Main Street et les clubs de fitness de Yaletown utilisent le café personnalisé pour bâtir un rituel quotidien auquel leur communauté revient." },
+    { title: "Marques durables et de mode de vie", body: "Le secteur de détail et de mode de vie axé sur les valeurs de Vancouver choisit EZPZ parce que notre café de spécialité traçable s'aligne avec l'histoire de durabilité que votre marque raconte déjà." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Vancouver en 7 à 10 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design. Les commandes répétées sont plus rapides. Nous livrons dans tous les quartiers de Vancouver : Gastown, Yaletown, Kitsilano, Main Street, Commercial Drive, Coal Harbour, ainsi qu'à Burnaby, Surrey, Richmond et tout le Grand Vancouver.",
+  relatedCities: [
+    { city: "Victoria", href: "/fr/custom-coffee-bags-victoria" },
+    { city: "Kelowna", href: "/fr/custom-coffee-bags-kelowna" },
+    { city: "Calgary", href: "/fr/custom-coffee-bags-calgary" },
+    { city: "Edmonton", href: "/fr/custom-coffee-bags-edmonton" },
+    { city: "Toronto", href: "/fr/custom-coffee-bags-toronto" },
+    { city: "Montréal", href: "/fr/custom-coffee-bags-montreal" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Vancouver ?", a: "Les commandes de Vancouver sont expédiées depuis notre torréfacteur montréalais par Postes Canada ou messagerie suivie et arrivent en 7 à 10 jours ouvrables après confirmation. Les premières commandes prennent 2 à 3 semaines au total. Les commandes répétées sont plus rapides." },
+    { q: "En quoi EZPZ se distingue-t-il pour le marché de Vancouver axé sur la durabilité ?", a: "Notre sourçage de café de spécialité entièrement traçable correspond directement à la culture de consommation axée sur les valeurs de Vancouver. Chaque origine est documentée jusqu'à la ferme ou la coopérative. Nous sourçons uniquement des cafés SCA 80+ de spécialité, torréfiés frais à la commande." },
+    { q: "Livrez-vous dans tous les quartiers du Grand Vancouver ?", a: "Oui. Nous livrons à toutes les adresses de Vancouver : Gastown, Yaletown, Kitsilano, Main Street, Commercial Drive et Coal Harbour. Nous livrons aussi à Burnaby, Surrey, Richmond, North Vancouver, West Vancouver, Langley et Coquitlam." },
+  ],
+};
+
+const VancouverPage = () => <CityPage data={data} frData={frData} />;
 export default VancouverPage;

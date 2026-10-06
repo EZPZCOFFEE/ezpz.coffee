@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Kelowna | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Kelowna | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises de Kelowna, livrés en 7 à 10 jours. Aucun minimum de commande, design inclus. Les marques de Kelowna choisissent EZPZ." : "Custom coffee bags for Kelowna businesses, shipped in 7–10 days. No minimum order, full design included. Kelowna brands choose EZPZ for specialty coffee.";
   return {
-    title: "Custom Coffee Bags Kelowna | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Kelowna businesses, shipped in 7–10 days. No minimum order, full design included. Kelowna wineries, hotels, and brands choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-kelowna" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-kelowna`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-kelowna",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-kelowna",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Kelowna | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Kelowna businesses. No minimum order, full design included, shipped from Montreal in 7–10 days.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-kelowna",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Kelowna" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-kelowna`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Kelowna" : "Custom Coffee Bags Kelowna" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Kelowna | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Kelowna businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -74,5 +77,44 @@ const data: CityPageData = {
   ],
 };
 
-const KelownaPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Kelowna", province: "Colombie-Britannique",
+  eyebrow: "Sacs de café personnalisés — Kelowna",
+  headline: "Sacs de café personnalisés pour les marques de Kelowna. Aucun minimum.",
+  subheadline: "Les restaurants, vignobles et hôtels de villégiature de Kelowna font confiance à EZPZ pour le café de spécialité de marque. Aucun minimum, design inclus.",
+  bodyIntro: "Des vignobles et domaines viticoles de l'Okanagan aux restaurants gastronomiques du front de lac, de la scène hôtelière de villégiature de Kelowna aux boutiques du quartier Bernard Avenue, Kelowna est un marché premium axé sur l'expérience. EZPZ livre des sacs de café de spécialité personnalisés depuis Montréal jusqu'à Kelowna en 7 à 10 jours ouvrables. Aucun minimum. Design complet inclus.",
+  deliveryTime: "7 à 10 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-kelowna",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Kelowna", body: "Nous livrons directement à votre adresse à Kelowna en 7 à 10 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Conçu pour le marché de villégiature et viticole de Kelowna", body: "Des vignobles de l'Okanagan aux hôtels de villégiature du lac, EZPZ livre un café de marque premium qui résonne avec les clients exigeants de Kelowna." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et gastronomie", body: "Les restaurants du front de lac, les bistros gastronomiques et les cafés de Bernard Avenue utilisent le café personnalisé pour prolonger l'expérience culinaire." },
+    { title: "Vignobles et domaines viticoles", body: "Les vignobles de l'Okanagan ajoutent le café personnalisé comme produit complémentaire de boutique de domaine à forte marge." },
+    { title: "Hôtels de villégiature et spas", body: "Les hôtels de villégiature et spas de Kelowna personnalisent leur expérience café pour offrir un séjour premium mémorable." },
+    { title: "Détaillants et boutiques lifestyle", body: "Les boutiques de Bernard Avenue et les commerces lifestyle de Kelowna ajoutent le café personnalisé comme produit différenciant." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Kelowna en 7 à 10 jours ouvrables par Postes Canada ou messagerie suivie. Nous livrons dans tous les quartiers de Kelowna. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  relatedCities: [
+    { city: "Vancouver", href: "/fr/custom-coffee-bags-vancouver" },
+    { city: "Victoria", href: "/fr/custom-coffee-bags-victoria" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Kelowna ?", a: "Les commandes de Kelowna arrivent en 7 à 10 jours ouvrables. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design." },
+    { q: "Quelles industries de Kelowna utilisent le café personnalisé ?", a: "Les vignobles de l'Okanagan, les hôtels de villégiature, les restaurants gastronomiques du front de lac et les boutiques de Bernard Avenue sont les utilisateurs les plus actifs." },
+    { q: "Y a-t-il un minimum de commande pour Kelowna ?", a: "Aucun minimum. EZPZ s'adapte à tout volume avec la même politique sans minimum et design inclus." },
+  ],
+};
+
+const KelownaPage = () => <CityPage data={data} frData={frData} />;
 export default KelownaPage;

@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Brampton | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Brampton | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises de Brampton, livrés en 5 à 7 jours. Aucun minimum de commande, design inclus. Les marques de Brampton choisissent EZPZ." : "Custom coffee bags for Brampton businesses, shipped in 5–7 days. No minimum order, full design included. Brampton brands choose EZPZ for specialty coffee.";
   return {
-    title: "Custom Coffee Bags Brampton | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Brampton businesses, shipped in 5–7 days. No minimum order, full design included. Brampton brands choose EZPZ for specialty branded coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-brampton" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-brampton`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-brampton",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-brampton",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Brampton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Brampton businesses. No minimum order, full design included, shipped from Montreal in 5–7 days.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-brampton",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Brampton" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-brampton`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Brampton" : "Custom Coffee Bags Brampton" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Brampton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Brampton businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -74,5 +77,44 @@ const data: CityPageData = {
   ],
 };
 
-const BramptonPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Brampton", province: "Ontario",
+  eyebrow: "Sacs de café personnalisés — Brampton",
+  headline: "Sacs de café personnalisés pour les marques de Brampton. Aucun minimum.",
+  subheadline: "Les restaurants, détaillants et entreprises de Brampton font confiance à EZPZ pour le café de spécialité de marque. Aucun minimum, design inclus.",
+  bodyIntro: "Des corridors commerciaux animés de Brampton aux restaurants familiaux de Queen Street, la communauté d'affaires diversifiée de Brampton est l'une des plus dynamiques de l'Ontario. EZPZ livre des sacs de café de spécialité personnalisés depuis Montréal jusqu'à Brampton en 5 à 7 jours ouvrables. Aucun minimum. Design complet inclus.",
+  deliveryTime: "5 à 7 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-brampton",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Brampton", body: "Nous livrons directement à votre adresse à Brampton en 5 à 7 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Conçu pour la communauté d'affaires diversifiée de Brampton", body: "Des restaurants de Queen Street aux entreprises du centre-ville de Brampton, EZPZ livre un café de marque premium qui résonne avec la clientèle diversifiée et exigeante de la ville." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et restauration familiale", body: "Les restaurants de Queen Street, les bistros du centre-ville et les cafés familiaux de Brampton utilisent le café personnalisé pour garder leur marque visible dans les cuisines de leurs clients." },
+    { title: "Détaillants et boutiques", body: "Les boutiques indépendantes de Brampton ajoutent le café personnalisé comme produit à forte marge qui attire et fidélise les clients locaux." },
+    { title: "Gyms et studios de fitness", body: "Les clubs de fitness, CrossFit et studios de yoga de Brampton offrent le café de marque comme extension de leur marque lifestyle." },
+    { title: "Corporatif et services professionnels", body: "Les firmes professionnelles et les entreprises de Brampton utilisent EZPZ pour des cadeaux de café de marque premium." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Brampton en 5 à 7 jours ouvrables par Postes Canada ou messagerie suivie. Nous livrons dans tous les quartiers de Brampton. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  relatedCities: [
+    { city: "Toronto", href: "/fr/custom-coffee-bags-toronto" },
+    { city: "Mississauga", href: "/fr/custom-coffee-bags-mississauga" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Brampton ?", a: "Les commandes de Brampton arrivent en 5 à 7 jours ouvrables. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design." },
+    { q: "Quelles industries de Brampton utilisent le café personnalisé ?", a: "Les restaurants familiaux, les boutiques indépendantes, les gyms et studios de fitness, et les firmes professionnelles de Brampton sont les utilisateurs les plus actifs." },
+    { q: "Y a-t-il un minimum de commande pour Brampton ?", a: "Aucun minimum. EZPZ s'adapte à tout volume avec la même politique sans minimum et design inclus." },
+  ],
+};
+
+const BramptonPage = () => <CityPage data={data} frData={frData} />;
 export default BramptonPage;

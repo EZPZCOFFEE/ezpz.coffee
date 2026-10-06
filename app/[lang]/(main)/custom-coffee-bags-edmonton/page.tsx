@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Edmonton | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Edmonton | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises d'Edmonton, livrés en 7 à 10 jours. Aucun minimum de commande, design inclus. Les marques d'Edmonton choisissent EZPZ pour le café de spécialité." : "Custom coffee bags for Edmonton businesses, shipped in 7–10 days. No minimum order, full design included. Edmonton brands choose EZPZ for specialty coffee.";
   return {
-    title: "Custom Coffee Bags Edmonton | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Edmonton businesses, shipped in 7–10 days. No minimum order, full design included. Edmonton brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-edmonton" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-edmonton`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-edmonton",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-edmonton",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Edmonton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Edmonton businesses. No minimum order, full design included, shipped from Montreal in 7–10 days.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-edmonton",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Edmonton" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-edmonton`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Edmonton" : "Custom Coffee Bags Edmonton" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Edmonton | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Edmonton businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -74,5 +77,44 @@ const data: CityPageData = {
   ],
 };
 
-const EdmontonPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Edmonton", province: "Alberta",
+  eyebrow: "Sacs de café personnalisés — Edmonton",
+  headline: "Sacs de café personnalisés pour les marques d'Edmonton. Aucun minimum.",
+  subheadline: "Les restaurants, la communauté artistique et les entreprises du secteur énergétique d'Edmonton font confiance à EZPZ pour le café de spécialité de marque. Aucun minimum, design inclus.",
+  bodyIntro: "De la populaire bande de restaurants et de bars de Whyte Avenue aux galeries et studios indépendants du 124 Street, de la culture de marché fermier du Vieux Strathcona aux tours pétrolières du centre-ville, Edmonton est une ville de fierté locale authentique et d'identité créative en pleine croissance. EZPZ livre des sacs de café de spécialité personnalisés depuis notre torréfacteur montréalais jusqu'à Edmonton en 7 à 10 jours ouvrables. Aucun minimum de commande. Design personnalisé complet toujours inclus.",
+  deliveryTime: "7 à 10 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-edmonton",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Edmonton", body: "Nous livrons directement à votre adresse à Edmonton en 7 à 10 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Conçu pour les secteurs artistique et énergétique d'Edmonton", body: "Que vous fassiez des cadeaux à un client du secteur énergétique en centre-ville ou que vous approvisionnez une boutique cadeaux de galerie sur le 124 Street, EZPZ livre un café de marque premium qui convient parfaitement aux deux contextes." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et gastronomie de Whyte Avenue", body: "Les restaurants de Whyte Avenue, les pubs du Vieux Strathcona et les cafés du Garneau ajoutent le café personnalisé comme point de contact premium pour leur clientèle locale fidèle." },
+    { title: "Corporatif et secteur énergétique", body: "Les sociétés pétrolières, firmes d'ingénierie et services professionnels du centre-ville d'Edmonton font confiance à EZPZ pour des cadeaux de café premium qui font forte impression." },
+    { title: "Organisations artistiques et galeries", body: "Les galeries du 124 Street, les salles du Fringe Festival et les organisations artistiques d'Edmonton utilisent le café personnalisé comme cadeau distinctif et mémorable pour leurs mécènes et collaborateurs." },
+    { title: "Secteur universitaire et campus", body: "Les cafés du secteur Université de l'Alberta, les commerces étudiants et les organisations du campus utilisent EZPZ pour bâtir un café de marque qui résonne avec leur communauté académique." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Edmonton en 7 à 10 jours ouvrables par Postes Canada ou messagerie suivie. Nous livrons dans toutes les zones d'Edmonton : centre-ville, Whyte Avenue, Vieux Strathcona, 124 Street, Glenora, Windermere et les communautés environnantes. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  relatedCities: [
+    { city: "Calgary", href: "/fr/custom-coffee-bags-calgary" },
+    { city: "Winnipeg", href: "/fr/custom-coffee-bags-winnipeg" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Edmonton ?", a: "Les commandes d'Edmonton arrivent en 7 à 10 jours ouvrables par Postes Canada ou messagerie suivie. Nous livrons dans toutes les zones d'Edmonton : centre-ville, Whyte Avenue, Vieux Strathcona, 124 Street, Glenora et les communautés environnantes. Les premières commandes prennent 2 à 3 semaines." },
+    { q: "Quelles industries d'Edmonton utilisent le café personnalisé ?", a: "Les ministères du gouvernement de l'Alberta, les entreprises de soutien au secteur pétrolier, les restaurants et boutiques de Whyte Avenue, les salles de spectacle du Vieux Strathcona, les galeries et commerces du 124 Street utilisent tous EZPZ." },
+    { q: "Quelles origines de café sont les plus populaires chez les entreprises d'Edmonton ?", a: "Notre Yirgacheffe éthiopien et notre Huila colombien en single origin sont systématiquement les plus populaires pour les cadeaux corporatifs en Alberta. Notre Huehuetenango guatémaltèque est aussi un favori pour les clients qui préfèrent une tasse plus riche et corsée." },
+  ],
+};
+
+const EdmontonPage = () => <CityPage data={data} frData={frData} />;
 export default EdmontonPage;

@@ -2,26 +2,28 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés Toronto | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les entreprises de Toronto, livrés en 5 à 7 jours depuis Montréal. Aucun minimum de commande, design inclus. Les marques de Toronto font confiance à EZPZ." : "Custom coffee bags for Toronto businesses, shipped in 5–7 days from Montreal. No minimum order, full design included. Toronto brands trust EZPZ.";
   return {
-    title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
-    description:
-      "Custom coffee bags for Toronto businesses, shipped in 5–7 days from Montreal. No minimum order, full design included. Toronto brands trust EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-toronto" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-toronto`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-toronto",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-toronto",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
-      description:
-        "Custom coffee bags for Toronto businesses, shipped in 5–7 days. No minimum order, full design included. Toronto brands trust EZPZ.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-toronto",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Toronto" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-toronto`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés Toronto" : "Custom Coffee Bags Toronto" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags Toronto | No Minimum Order | EZPZ Coffee",
-      description: "Custom coffee bags for Toronto businesses. No minimum order, design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -125,5 +127,49 @@ const data: CityPageData = {
   ],
 };
 
-const TorontoPage = () => <CityPage data={data} />;
+
+const frData: CityPageData = {
+  city: "Toronto", province: "Ontario",
+  eyebrow: "Sacs de café personnalisés — Toronto",
+  headline: "Sacs de café personnalisés pour les marques de Toronto. Aucun minimum.",
+  subheadline: "Les restaurants, hôtels et détaillants de Toronto font confiance à EZPZ pour mettre leur marque sur un café de spécialité. Aucun minimum, design inclus.",
+  bodyIntro: "Du corridor de restaurants de King West aux hôtels-boutiques de Yorkville, des détaillants de Queen Street aux studios créatifs de Liberty Village, les entreprises de Toronto se démarquent autant par leur marque que par leurs produits. EZPZ livre des sacs de café personnalisés depuis Montréal jusqu'à Toronto généralement en 5 à 7 jours ouvrables. Que vous lanciez un nouveau produit ou développiez une marque existante, zéro minimum signifie zéro risque.",
+  deliveryTime: "5 à 7 jours ouvrables",
+  canonicalPath: "/custom-coffee-bags-toronto",
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo, ajoutez votre nom de marque ou message, et choisissez votre style d'emballage. Notre outil en ligne prend moins de 10 minutes." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos cafés de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à Toronto", body: "Nous livrons directement à votre adresse à Toronto en 5 à 7 jours ouvrables après confirmation de la commande. Entièrement suivi." },
+  ],
+  whyPoints: [
+    { n: "01", title: "Aucun minimum de commande", body: "Commandez un sachet ou dix mille. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum." },
+    { n: "02", title: "Design personnalisé complet inclus", body: "Votre logo, couleurs de marque et message, pris en charge par notre équipe sans frais supplémentaires. Aucun frais de designer ni fichiers requis." },
+    { n: "03", title: "Café de grade spécialité", body: "Nous sourçons uniquement des cafés de spécialité SCA 80+ d'origines entièrement traçables. Chaque sachet est torréfié frais à Montréal à la commande." },
+    { n: "04", title: "Conçu pour le marché concurrentiel de Toronto", body: "King West, Yorkville, Queen Street, Liberty Village. EZPZ sert les entreprises de tous les quartiers et industries de Toronto. Nous savons ce dont les marques torontoises ont besoin." },
+  ],
+  whoWeServe: [
+    { title: "Restaurants et hospitalité", body: "Des bistros de King West aux tables du Distillery District, vendez votre propre café de marque, offrez-le à votre menu, ou utilisez-le comme cadeau signature qui garde votre marque visible." },
+    { title: "Hôtels-boutiques et B&B", body: "Les hôtels de Yorkville, les propriétés-boutiques sur Jarvis Street et les hébergements design à travers Toronto font confiance à EZPZ pour personnaliser leur expérience café en chambre." },
+    { title: "Détaillants et concept stores", body: "Les boutiques de Queen Street, les commerces du marché Kensington et les détaillants de Leslieville ajoutent le café personnalisé comme produit à forte marge qui génère du trafic répété." },
+    { title: "Studios créatifs et agences", body: "Les agences de Liberty Village, les entreprises médias et les firmes technologiques du quartier financier utilisent le café de marque comme cadeau client premium et point de contact de culture d'entreprise." },
+  ],
+  deliveryBody: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Toronto en 5 à 7 jours ouvrables par messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design. Les commandes répétées sont plus rapides car votre design est déjà en dossier. Nous livrons dans tous les quartiers de Toronto : centre-ville, Etobicoke, Scarborough, North York et le Grand Toronto. Pour une commande importante destinée à plusieurs emplacements, contactez-nous pour les tarifs de volume.",
+  relatedCities: [
+    { city: "Mississauga", href: "/fr/custom-coffee-bags-mississauga" },
+    { city: "Hamilton", href: "/fr/custom-coffee-bags-hamilton" },
+    { city: "Ottawa", href: "/fr/custom-coffee-bags-ottawa" },
+    { city: "Brampton", href: "/fr/custom-coffee-bags-brampton" },
+    { city: "London Ontario", href: "/fr/custom-coffee-bags-london-ontario" },
+    { city: "Montréal", href: "/fr/custom-coffee-bags-montreal" },
+    { city: "Vancouver", href: "/fr/custom-coffee-bags-vancouver" },
+  ],
+  faq: [
+    { q: "Combien de temps prend la livraison de Montréal à Toronto ?", a: "Une fois votre design approuvé et votre commande torréfiée, nous expédions par messagerie suivie de Montréal à Toronto. La plupart des commandes torontoises arrivent en 2 jours ouvrables après expédition. Le délai total est de 5 à 7 jours ouvrables pour les commandes répétées et de 2 à 3 semaines pour les premières commandes." },
+    { q: "Puis-je commander un seul sachet pour tester avant de m'engager sur le volume ?", a: "Oui. EZPZ est le seul fournisseur de café personnalisé au Canada avec un vrai zéro minimum de commande. Vous pouvez commander un seul sachet pour goûter le café, voir la qualité de l'emballage et valider votre concept avant de passer à l'échelle." },
+    { q: "Livrez-vous dans tous les quartiers de Toronto et le Grand Toronto ?", a: "Oui. Nous livrons à toutes les adresses de Toronto : King West, Yorkville, Distillery District, Liberty Village, Queen Street West, Leslieville, Etobicoke, Scarborough et North York. Nous desservons aussi tout le Grand Toronto : Mississauga, Markham, Vaughan et Brampton." },
+  ],
+};
+
+const TorontoPage = () => <CityPage data={data} frData={frData} />;
 export default TorontoPage;
