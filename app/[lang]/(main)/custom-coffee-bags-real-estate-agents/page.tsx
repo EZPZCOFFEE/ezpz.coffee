@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour agents immobiliers | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Real Estate Agents | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour agents immobiliers. Le cadeau de clôture qui génère des références. Aucun minimum, design inclus." : "Custom branded coffee bags for real estate agents. The closing gift that earns referrals. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Real Estate Agents | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for real estate agents. The closing gift that keeps your brand top of mind for referrals. No minimum order, full design included. Real estate agents across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-real-estate-agents" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-real-estate-agents`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-real-estate-agents",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-real-estate-agents",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Real Estate Agents | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for real estate agents. Unforgettable closing gift, daily brand visibility, referral generation. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-real-estate-agents",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Real Estate Agents" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-real-estate-agents`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour agents immobiliers" : "Custom Coffee Bags for Real Estate Agents" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Real Estate Agents | EZPZ Coffee",
-      description: "Custom branded coffee bags for real estate agents. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 

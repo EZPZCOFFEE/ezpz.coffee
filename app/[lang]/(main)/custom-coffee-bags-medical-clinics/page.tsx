@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour cliniques médicales | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Medical Clinics | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour cliniques médicales. Reconnaissance des patients qui génère de la fidélité. Aucun minimum, design inclus." : "Custom branded coffee bags for medical clinics. Patient appreciation that creates loyalty. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Medical Clinics | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for medical clinics. Show patients you care beyond the appointment. No minimum order, full design included. Medical clinics across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-medical-clinics" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-medical-clinics`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-medical-clinics",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-medical-clinics",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Medical Clinics | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for medical clinics. Patient appreciation, warm brand positioning, staff gifting. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-medical-clinics",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Medical Clinics" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-medical-clinics`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour cliniques médicales" : "Custom Coffee Bags for Medical Clinics" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Medical Clinics | EZPZ Coffee",
-      description: "Custom branded coffee bags for medical clinics. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 

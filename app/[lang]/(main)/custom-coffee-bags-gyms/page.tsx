@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour gyms | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Gyms | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour gyms et studios de fitness. Alimentez vos membres avec le café de spécialité de votre marque. Aucun minimum, design inclus." : "Custom branded coffee bags for gyms and fitness studios. Fuel your members with your brand's specialty coffee. No minimum order, full design included. Gyms across Canada and the USA choose EZPZ.";
   return {
-    title: "Custom Coffee Bags for Gyms | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for gyms and fitness studios. Fuel your members with your brand's specialty coffee. No minimum order, full design included. Gyms across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-gyms" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-gyms`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-gyms",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-gyms",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Gyms | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for gyms. Natural lifestyle fit, loyal member base, retail revenue. No minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-gyms",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Gyms" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-gyms`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour gyms" : "Custom Coffee Bags for Gyms" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Gyms | EZPZ Coffee",
-      description: "Custom branded coffee bags for gyms. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-gyms",
 };
 
-const GymsPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Gyms",
+  eyebrow: "Café personnalisé pour les gyms",
+  headline: "Alimentez vos membres avec le café de spécialité de votre marque.",
+  subheadline: "Les membres de gym sont soucieux de leur santé, fidèles à leur marque et à la recherche de produits qui correspondent à leur style de vie. Un carburant pré-entraînement qui porte votre marque, c'est parfaitement logique.",
+  intro: "Les protéines se vendent bien dans les gyms. La créatine et le pré-entraînement aussi. Mais le café de spécialité de marque est le produit que les propriétaires de gym négligent systématiquement, et c'est l'un des choix les plus naturels dans tout l'écosystème fitness. Pensez à vos membres : des gens soucieux de leur santé, qui valorisent la qualité et qui cherchent des rituels qui soutiennent leur mode de vie actif. Le café fait partie de ce rituel. Avant l'entraînement, après l'entraînement, ou dès le matin avant même de franchir votre porte, le café est une constante quotidienne pour la plupart des membres. Quand ce café porte la marque de votre gym, votre nom fait partie de leur routine quotidienne de la façon la plus intime qui soit. Aucun minimum signifie tester le concept avec une petite commande avant de s'engager dans un inventaire.",
+  whoOrders: [
+    { title: "Gyms CrossFit et studios de fitness fonctionnel", body: "Les boxes CrossFit ont des communautés intensément fidèles qui adorent les produits de marque. Un sachet de café personnalisé se vend lors des événements pour membres et trône dans la cuisine de chaque athlète." },
+    { title: "Studios de yoga et espaces de fitness de bien-être", body: "Les studios de fitness orientés yoga trouvent un alignement naturel avec le café de spécialité : les deux communautés valorisent la qualité, les origines et les rituels intentionnels." },
+    { title: "Studios d'entraînement personnel", body: "Les studios d'entraînement personnel haut de gamme utilisent le café de marque comme cadeau premium pour les nouveaux clients, les jalons atteints et les cadeaux de fin d'année." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre gym", body: "Livré directement à l'adresse de votre gym. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Alignement naturel avec le mode de vie de vos membres", body: "Le café fait déjà partie de la routine quotidienne de la plupart des membres. Le café de marque connecte votre gym au rituel qui structure leur journée entière, avant ou après l'entraînement." },
+    { n: "02", title: "Base de membres fidèles prête à acheter", body: "Les membres qui s'identifient à leur gym comme à une marque de vie sont les plus enclins à acheter des produits dérivés. Le café de marque se vend mieux que la plupart des vêtements, parce qu'il est utilisé tous les jours." },
+    { n: "03", title: "Revenus de vente au détail sans risque de stock minimum", body: "Commencez avec 10 sacs et voyez s'ils se vendent. Ils se vendront. Quand c'est fait, réapprovisionnez. Aucun risque, aucun stock invendu, aucune perte." },
+    { n: "04", title: "Renforcement de la fidélité à la marque", body: "Quand votre marque fait partie du rituel matinal d'un membre, elle fait partie de son identité. Ce lien émotionnel avec votre gym garde les membres abonnés et référents plus longtemps." },
+  ],
+  testimonial: {
+    quote: "Nos membres l'achètent parce que c'est NOTRE marque. C'est tout le concept : ça fait partie de leur matin, tout comme l'entraînement fait partie de leur journée.",
+    author: "Marcus R.",
+    role: "Propriétaire, gym CrossFit, Ottawa",
+  },
+  canonicalPath: "/custom-coffee-bags-gyms",
+};
+
+const GymsPage = () => <IndustryPage data={data} frData={frData} />;
 export default GymsPage;

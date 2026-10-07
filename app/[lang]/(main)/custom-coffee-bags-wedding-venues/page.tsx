@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour salles de mariage | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Wedding Venues | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les salles de mariage. L'expérience de marque dont les couples et les invités se souviennent. Aucun minimum, design inclus." : "Custom branded coffee bags for wedding venues. The venue-branded experience couples and guests remember. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Wedding Venues | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for wedding venues. A favor every guest uses for weeks. No minimum order, full design included. Wedding venues across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-wedding-venues" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-wedding-venues`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-wedding-venues",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-wedding-venues",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Wedding Venues | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for wedding venues. Venue branded gift, couple favor, memorable guest takeaway. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-wedding-venues",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Wedding Venues" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-wedding-venues`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour salles de mariage" : "Custom Coffee Bags for Wedding Venues" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Wedding Venues | EZPZ Coffee",
-      description: "Custom branded coffee bags for wedding venues. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-wedding-venues",
 };
 
-const WeddingVenuesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Salles de mariage",
+  eyebrow: "Café personnalisé pour les salles de mariage",
+  headline: "Votre salle de mariage. Une expérience de marque qui perdure après la soirée.",
+  subheadline: "Les salles de mariage occupent une position unique dans l'écosystème des cadeaux et faveurs. Elles sont la marque derrière la journée la plus importante du couple, et les détails d'hospitalité qu'elles fournissent reflètent directement sur leur réputation.",
+  intro: "Les salles de mariage occupent une position unique dans l'écosystème des cadeaux et faveurs. Elles sont la marque derrière la journée la plus importante du couple, et les détails d'hospitalité qu'elles fournissent reflètent directement sur leur réputation. Les faveurs de mariage génériques, les porte-clés, les bougies non déballées, les petits sacs de dragées, restent sur les tables ou finissent à la poubelle. Un sachet de café de spécialité personnalisé avec la marque de votre salle ou les noms du couple est la faveur que les invités emportent vraiment chez eux. Quand ils le préparent le lundi matin après le mariage, ils repensent à la soirée et au nom de votre salle est là. Cela génère un rappel de marque organique que vous ne pouvez pas acheter.",
+  whoOrders: [
+    { title: "Salles de mariage boutiques", body: "Les salles de mariage intimes utilisent le café de marque comme cadeau de bienvenue signature qui introduit la salle auprès des invités et donne le ton d'une expérience premium et attentive aux détails." },
+    { title: "Domaines et manoirs pour mariages", body: "Les grandes propriétés incluent le café de marque dans les forfaits de chambre pour les invités qui restent sur place, créant un point de contact premium qui prolonge l'expérience au-delà de la réception." },
+    { title: "Salles de réception et événements", body: "Les salles de réception qui accueillent des mariages et des événements premium utilisent le café de marque comme faveur standard incluse dans leurs forfaits pour différencier leur offre." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre salle", body: "Livré directement à l'adresse de votre salle de mariage. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Expérience de bienvenue avec la marque de la salle", body: "Un sachet de café de marque comme cadeau de bienvenue pour les invités ou en chambre introduit la salle de façon chaleureuse et premium, donnant le ton émotionnel de toute la soirée." },
+    { n: "02", title: "Recommandation de fournisseur de confiance pour les couples", body: "Les salles qui recommandent EZPZ aux couples pour leurs faveurs de mariage ajoutent une ligne de valeur à leur service et renforcent leur positionnement comme partenaire de confiance pour la planification." },
+    { n: "03", title: "Présence de marque durable chez les invités", body: "Les invités qui emportent un sachet de café chez eux voient le nom de votre salle sur leur comptoir pendant des semaines. Ce rappel génère des références quand des connaissances planifient leurs propres événements." },
+    { n: "04", title: "Faveur premium qui différencie vos forfaits", body: "En incluant le café de marque dans vos forfaits premium, vous créez une différence tangible et mémorable entre vos niveaux de service qui justifie l'écart de prix." },
+  ],
+  testimonial: {
+    quote: "Les couples en parlent dans chaque demande de renseignements maintenant, après l'avoir vu à d'autres mariages. On l'a ajouté à notre forfait premium et c'est devenu l'un de nos meilleurs arguments de vente.",
+    author: "Hélène B.",
+    role: "Directrice, salle de mariage, Québec",
+  },
+  canonicalPath: "/custom-coffee-bags-wedding-venues",
+};
+
+const WeddingVenuesPage = () => <IndustryPage data={data} frData={frData} />;
 export default WeddingVenuesPage;

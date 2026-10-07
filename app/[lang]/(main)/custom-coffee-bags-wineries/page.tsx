@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour vignobles | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Wineries | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les vignobles. Le produit de boutique que vos visiteurs emportent vraiment chez eux. Aucun minimum, design inclus." : "Custom branded coffee bags for wineries. The cellar door retail product your visitors actually take home. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Wineries | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for wineries. Your terroir story now in coffee form. No minimum order, full design included. Wineries across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-wineries" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-wineries`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-wineries",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-wineries",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Wineries | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for wineries. Terroir storytelling, cellar door retail, wine club gifting. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-wineries",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Wineries" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-wineries`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour vignobles" : "Custom Coffee Bags for Wineries" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Wineries | EZPZ Coffee",
-      description: "Custom branded coffee bags for wineries. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-wineries",
 };
 
-const WineriesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Vignobles",
+  eyebrow: "Café personnalisé pour les vignobles",
+  headline: "Les parallèles entre le vin et le café de spécialité. Votre vignoble a quelque chose à dire sur les deux.",
+  subheadline: "Les parallèles entre le vin et le café de spécialité sont profonds et sous-exploités. Les deux sont des produits agricoles où le terroir détermine le goût. Les deux ont des communautés construites autour de la provenance et du savoir-faire artisanal.",
+  intro: "Les parallèles entre le vin et le café de spécialité sont profonds et sous-exploités. Les deux sont des produits agricoles où le terroir, la combinaison spécifique de sol, de climat, d'altitude et de microorganismes, détermine le goût. Les deux ont des communautés construites autour de la provenance, du processus et du savoir-faire artisanal. La personne qui visite votre cave et écoute attentivement les notes de dégustation et les histoires de millésime comprend parfaitement l'histoire de l'origine d'un café éthiopien de haute altitude. Elle est précisément votre acheteur de café de spécialité personnalisé. La boutique de votre cave peut vendre votre propre café de marque comme produit de petit-déjeuner premium : la paire naturelle du vin.",
+  whoOrders: [
+    { title: "Vignobles de l'Okanagan et de la Colombie-Britannique", body: "Les vignobles du pays viticole de la CB utilisent le café de marque pour prolonger l'expérience du visiteur dans un produit de rituel matinal. La narration du terroir qui vend le vin vend également très bien le café de spécialité." },
+    { title: "Vignobles du Niagara et de l'Ontario", body: "Les vignobles de l'Ontario incluent le café de marque dans leurs coffrets cadeaux et leur boutique de cave comme complément premium au vin, particulièrement pour les visiteurs qui cherchent quelque chose de différent pour offrir." },
+    { title: "Vignobles de destination et resorts viticoles", body: "Les resorts viticoles de destination incluent le café de marque dans les expériences d'hébergement, les coffrets de service en chambre et les souvenirs de boutique premium." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre cave ou boutique", body: "Livré directement à votre cave ou boutique de vignoble. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Parallèle naturel de narration du terroir", body: "Le café de spécialité parle le même langage que le vin : l'origine, le processus, les notes de dégustation. Vos visiteurs comprennent et apprécient déjà ce vocabulaire. L'histoire du café se vend d'elle-même dans un environnement viticole." },
+    { n: "02", title: "Commerce de détail en cave sans risque de stock minimum", body: "Ajoutez le café de marque à votre boutique sans commander de gros volumes. Commencez avec 24 ou 48 sacs et voyez comment vos visiteurs réagissent. Aucun minimum signifie aucun risque d'invendu." },
+    { n: "03", title: "Produit de week-end et de matin pour compléter le vin", body: "Le café est le produit du matin que le vin ne peut pas être. En offrant les deux, votre boutique couvre deux moments de consommation quotidiens et augmente la valeur par visiteur." },
+    { n: "04", title: "Coffrets cadeaux de haute valeur", body: "Combinez votre vin et votre café de marque dans des coffrets cadeaux de haute valeur pour les événements des Fêtes, la Saint-Valentin et les anniversaires de clients." },
+  ],
+  testimonial: {
+    quote: "Ça a surpris les gens à la cave. Soudainement on avait un produit du matin, pas seulement un vin. Ça a ajouté une dimension à la marque que les visiteurs ont adorée, et les ventes sont fortes.",
+    author: "Pierre L.",
+    role: "Directeur, vignoble, Okanagan",
+  },
+  canonicalPath: "/custom-coffee-bags-wineries",
+};
+
+const WineriesPage = () => <IndustryPage data={data} frData={frData} />;
 export default WineriesPage;

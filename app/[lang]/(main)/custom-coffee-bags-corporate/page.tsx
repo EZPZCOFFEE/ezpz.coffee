@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour cadeaux corporatifs | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Corporate Gifting | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les cadeaux corporatifs. Visibilité de marque quotidienne chez chaque client. Aucun minimum, design inclus. Les entreprises du Canada et des États-Unis choisissent EZPZ." : "Custom branded coffee bags for corporate gifting. Daily brand visibility in every client's morning. No minimum order, full design included. Corporate clients across Canada and the USA choose EZPZ.";
   return {
-    title: "Custom Coffee Bags for Corporate Gifting | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for corporate gifting. Daily brand visibility in every client's morning. No minimum order, full design included. Corporate clients across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-corporate" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-corporate`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-corporate",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-corporate",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Corporate Gifting | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for corporate gifting. Daily brand visibility, premium feel, no minimum per client.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-corporate",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Corporate Gifting" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-corporate`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour cadeaux corporatifs" : "Custom Coffee Bags for Corporate Gifting" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Corporate Gifting | EZPZ Coffee",
-      description: "Custom branded coffee bags for corporate gifting. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-corporate",
 };
 
-const CorporatePage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Corporatif",
+  eyebrow: "Café personnalisé pour les cadeaux corporatifs",
+  headline: "Votre marque. Dans les mains de chaque client. Chaque matin.",
+  subheadline: "Les stylos de marque se perdent. Les carnets accumulent de la poussière. Un sachet de café de spécialité avec votre logo s'utilise chaque matin pendant des semaines et votre marque est là pour tout.",
+  intro: "Les cadeaux corporatifs sont une industrie de plusieurs milliards de dollars construite en grande partie sur des produits oubliables. Chaque automne, les équipes d'approvisionnement commandent des boîtes de carnets, stylos et chocolats de marque qui sont utilisés une fois, donnés ou jetés. Le problème n'est pas le budget, c'est le produit. Un sachet de café de spécialité personnalisé est le cadeau corporatif qui génère vraiment une exposition de marque quotidienne. Quand votre client prépare chaque matin le café de votre entreprise, il voit votre nom, votre logo et vos couleurs de marque. C'est trois à cinq minutes d'attention de marque concentrée, 365 jours par an, qu'aucun budget publicitaire ne peut reproduire. Aucun minimum signifie commander par client : cinq sacs pour vos cinq comptes les plus importants, ou cinq cents pour une campagne nationale.",
+  whoOrders: [
+    { title: "Cabinets de conseil et de services professionnels", body: "Les cabinets de conseil utilisent le café de marque comme cadeau de fin de mandat, cadeau de fin d'année et trousse de bienvenue pour les nouveaux clients, signalant une attention et une qualité que les cadeaux génériques ne transmettent jamais." },
+    { title: "Entreprises de services financiers", body: "Les conseillers financiers, sociétés de gestion de patrimoine et compagnies d'assurance utilisent le café de marque comme cadeau trimestriel pour les clients, gardant leur nom en tête entre les révisions et les renouvellements." },
+    { title: "Entreprises technologiques", body: "Les entreprises technologiques utilisent le café de marque pour les cadeaux de succès client, la reconnaissance des partenaires et la prospection commerciale. Un sachet personnalisé avec le nom de l'entreprise prospect a un très bon taux d'ouverture." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre bureau ou directement aux clients", body: "Livrez à votre bureau pour distribution ou envoyez directement à chaque client. Canada : 3 à 10 jours. États-Unis : 7 à 14 jours." },
+  ],
+  benefits: [
+    { n: "01", title: "Visibilité de marque quotidienne que la publicité ne peut pas acheter", body: "Chaque matin où votre client prépare votre café, il voit votre marque. C'est 3 à 5 minutes d'attention de marque concentrée par jour pendant 2 à 4 semaines par sachet. Aucun format publicitaire ne fait ça." },
+    { n: "02", title: "Sentiment premium à un prix accessible", body: "Un sachet de café de spécialité personnalisé est sincèrement premium sans le coût et la complexité du vin, des spiritueux ou des produits de luxe. C'est le point idéal pour les cadeaux professionnels." },
+    { n: "03", title: "Aucun minimum : cadeau par client, pas par campagne", body: "Commandez 5 sacs pour vos 5 clients les plus importants. Commandez 500 pour une campagne nationale. Le zéro minimum d'EZPZ rend la personnalisation par client économiquement viable." },
+    { n: "04", title: "Dont on parle et dont on se souvient", body: "Les cadeaux corporatifs mentionnés dans les courriels de remerciement sont rares. Le café de marque génère systématiquement une reconnaissance explicite, ce qui signifie qu'il active le signal de relation dans lequel vous investissez." },
+  ],
+  testimonial: {
+    quote: "On a arrêté d'envoyer des bouteilles de vin. Le café est mentionné dans les courriels de remerciement, le vin ne l'était jamais. Nos clients en parlent spécifiquement quand on les revoit.",
+    author: "Jean-Philippe P.",
+    role: "VP Marketing, cabinet conseil, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-corporate",
+};
+
+const CorporatePage = () => <IndustryPage data={data} frData={frData} />;
 export default CorporatePage;

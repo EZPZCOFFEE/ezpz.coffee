@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour country clubs | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Country Clubs | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les country clubs. Des cadeaux pour membres à la hauteur de vos standards. Aucun minimum, design inclus." : "Custom branded coffee bags for country clubs. Member gifts that match your club's standards. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Country Clubs | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for country clubs. A member gift as exclusive as your club. No minimum order, full design included. Country clubs across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-country-clubs" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-country-clubs`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-country-clubs",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-country-clubs",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Country Clubs | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for country clubs. Exclusivity signal, member appreciation, club shop retail. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-country-clubs",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Country Clubs" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-country-clubs`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour country clubs" : "Custom Coffee Bags for Country Clubs" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Country Clubs | EZPZ Coffee",
-      description: "Custom branded coffee bags for country clubs. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-country-clubs",
 };
 
-const CountryClubsPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Country clubs",
+  eyebrow: "Café personnalisé pour les country clubs",
+  headline: "Les standards de votre club. Dans le cadeau que vos membres attendent.",
+  subheadline: "Les country clubs sont dans le métier de l'exclusivité. Tout, des pelouses entretenues à l'argenterie de la salle à manger en passant par l'expérience des invités, communique que c'est un endroit où les standards ne sont pas seulement maintenus mais célébrés.",
+  intro: "Les country clubs sont dans le métier de l'exclusivité. Tout, des pelouses entretenues à l'argenterie de la salle à manger en passant par l'expérience des invités, communique que c'est un endroit où les standards ne sont pas seulement maintenus mais célébrés. Les cadeaux pour membres doivent respecter ce même standard. La balle de golf standard, le polo de marque générique, la bouteille de vin du supermarché réemballée : aucune de ces choses ne correspond à l'attente d'un membre de country club. Un café de spécialité personnalisé, présenté dans un emballage premium avec la marque et le crest de votre club, est un cadeau qui correspond à l'image que votre club cultive.",
+  whoOrders: [
+    { title: "Clubs de tennis et de raquette", body: "Les clubs de sports multiples et de lifestyle utilisent le café de marque comme cadeau saisonnier pour les membres qui plaît également aux joueurs compétitifs et aux membres sociaux." },
+    { title: "Clubs sociaux privés et de vie exclusive", body: "Les clubs privés exclusifs incluent le café de marque dans les coffrets de bienvenue pour les nouveaux membres, les cadeaux de remise de prix et les paniers des Fêtes premium pour le conseil d'administration." },
+    { title: "Clubs de yacht et de sports nautiques", body: "Les clubs maritimes utilisent le café de marque comme article de boutique premium et cadeau pour les membres qui participent aux régates et aux événements saisonniers." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré au club ou directement aux membres", body: "Livré à votre club pour distribution ou directement aux membres par courrier. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Signal d'exclusivité qui renforce la valeur de l'adhésion", body: "Un café de spécialité personnalisé auquel seuls les membres du club ont accès est un avantage d'adhésion en soi. Il renforce le sentiment d'appartenir à quelque chose de spécial, inaccessible ailleurs." },
+    { n: "02", title: "Reconnaissance des membres qui génère des renouvellements", body: "Les membres qui reçoivent des cadeaux de qualité se sentent valorisés par leur club. Ce sentiment de valeur est directement lié à la décision de renouveler l'adhésion, particulièrement pour les membres marginaux." },
+    { n: "03", title: "Cadeau pour tournois et cérémonies de remise de prix", body: "Le café de marque est le prix parfait pour les tournois de golf, de tennis et de bridge : premium, mémorable et utilisé quotidiennement bien après la remise." },
+    { n: "04", title: "Cohérence avec le positionnement premium du club", body: "Un club qui sert du café de spécialité personnalisé dans sa salle à manger et l'offre comme cadeau à ses membres maintient une cohérence de qualité que les membres remarquent et apprécient." },
+  ],
+  testimonial: {
+    quote: "Ça a élevé notre coffret cadeau de fin d'année de bien à exceptionnel. Les retours des membres ont été unanimes, et plusieurs ont demandé si on pouvait en faire un article permanent de la boutique du club.",
+    author: "Philippe M.",
+    role: "Directeur général, country club, Québec",
+  },
+  canonicalPath: "/custom-coffee-bags-country-clubs",
+};
+
+const CountryClubsPage = () => <IndustryPage data={data} frData={frData} />;
 export default CountryClubsPage;

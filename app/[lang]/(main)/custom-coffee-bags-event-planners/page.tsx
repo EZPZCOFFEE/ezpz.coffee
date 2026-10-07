@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour organisateurs d'événements | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Event Planners | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour organisateurs d'événements. La faveur qui rentre vraiment chez les participants. Aucun minimum, design inclus." : "Custom branded coffee bags for event planners. The event favor that actually goes home. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Event Planners | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for event planners. The event favor nobody throws away. No minimum order, full design included. Event planners across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-event-planners" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-event-planners`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-event-planners",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-event-planners",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Event Planners | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for event planners. Unique favor, fully customizable, no minimum for exact quantities.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-event-planners",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Event Planners" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-event-planners`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour organisateurs d'événements" : "Custom Coffee Bags for Event Planners" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Event Planners | EZPZ Coffee",
-      description: "Custom branded coffee bags for event planners. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-event-planners",
 };
 
-const EventPlannersPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Organisateurs d'événements",
+  eyebrow: "Café personnalisé pour les organisateurs d'événements",
+  headline: "La faveur d'événement que les participants emportent vraiment chez eux.",
+  subheadline: "Les organisateurs d'événements ont tout vu : le stylo de marque, le sac fourre-tout, la clé USB, les chocolats. Tout se retrouve dans la poubelle de l'hôtel ou dans un tiroir oublié. Un sachet de café de spécialité est différent.",
+  intro: "Les organisateurs d'événements ont tout vu : le stylo de marque, le sac fourre-tout, la clé USB, les chocolats. Tout est utilisé une fois et oublié, ou mis directement à la poubelle de l'hôtel. Un sachet de café de spécialité personnalisé est différent parce qu'il s'utilise pendant deux à quatre semaines, chaque matin. La faveur qui reste sur le comptoir de cuisine d'un participant génère un rappel quotidien de la marque de l'événement et de votre talent d'organisateur. Pour les événements corporatifs, c'est le rappel de marque dont votre client a besoin. Pour les mariages, c'est la faveur dont les invités parlent. Pour les conférences, c'est l'article qui différencie votre événement de tous les autres de la saison.",
+  whoOrders: [
+    { title: "Organisateurs d'événements corporatifs", body: "Les planificateurs corporatifs utilisent le café de marque comme article de sac de conférence, faveur de cérémonie de remise de prix et cadeau d'appréciation client qui reflète la qualité de l'événement." },
+    { title: "Organisateurs de mariages", body: "Les wedding planners recommandent EZPZ aux couples comme faveur de mariage premium qui se démarque des options génériques et que les invités emportent vraiment chez eux." },
+    { title: "Organisateurs de galas et d'événements de collecte de fonds", body: "Les organisateurs d'événements de bienfaisance utilisent le café de marque comme faveur de table premium qui contribue à la valeur perçue de l'expérience et renforce le don." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre bureau ou directement aux lieux d'événements", body: "Livré à votre bureau pour distribution ou directement au lieu de l'événement. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "La faveur que les participants emportent vraiment chez eux", body: "La plupart des faveurs d'événements restent derrière. Un sachet de café de spécialité personnalisé voyage dans les sacs des participants et se retrouve sur leur comptoir de cuisine pendant des semaines." },
+    { n: "02", title: "Entièrement personnalisable selon le thème ou la marque de l'événement", body: "Le sachet porte la marque de votre client, les couleurs de l'événement, le message choisi. Aucun minimum signifie que vous pouvez tester un design avant de commander pour tout l'événement." },
+    { n: "03", title: "Marge intégrée à votre service d'organisateur", body: "En proposant EZPZ à vos clients, vous ajoutez une ligne de valeur à vos forfaits qui justifie des honoraires plus élevés et différencie votre offre de la concurrence." },
+    { n: "04", title: "Réponse rapide pour les événements de dernière minute", body: "Les commandes standards livrent en 3 à 10 jours ouvrables au Canada. Pour les événements planifiés à l'avance, nous recommandons 3 à 4 semaines pour la première commande." },
+  ],
+  testimonial: {
+    quote: "J'ai utilisé EZPZ pour trois événements corporatifs cette année. Chaque client a demandé à les avoir à nouveau à leur prochain événement. C'est la meilleure recommandation que je puisse donner.",
+    author: "Véronique L.",
+    role: "Organisatrice d'événements, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-event-planners",
+};
+
+const EventPlannersPage = () => <IndustryPage data={data} frData={frData} />;
 export default EventPlannersPage;

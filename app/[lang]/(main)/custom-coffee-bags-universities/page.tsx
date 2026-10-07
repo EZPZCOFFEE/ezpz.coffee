@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour universités | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Universities | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les universités. L'engagement des diplômés qui dure au-delà de l'événement. Aucun minimum, design inclus." : "Custom branded coffee bags for universities. Alumni engagement that lasts beyond the event. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Universities | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for universities. Alumni engagement, convocation gifting, campus retail. No minimum order, full design included. Universities across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-universities" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-universities`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-universities",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-universities",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Universities | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for universities. Alumni engagement, fundraising, convocation gifts. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-universities",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Universities" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-universities`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour universités" : "Custom Coffee Bags for Universities" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Universities | EZPZ Coffee",
-      description: "Custom branded coffee bags for universities. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-universities",
 };
 
-const UniversitiesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Universités",
+  eyebrow: "Café personnalisé pour les universités",
+  headline: "L'engagement des diplômés. Chaque matin, sur leur comptoir de cuisine.",
+  subheadline: "Les diplômés universitaires sont parmi les communautés les plus fidèles à leur marque qui existent. Ils portent les vêtements, ils assistent aux événements, ils donnent quand on le leur demande, mais seulement quand ils se sentent connectés.",
+  intro: "Les diplômés universitaires sont parmi les communautés les plus fidèles à leur marque qui existent. Ils portent les vêtements, ils assistent aux événements, ils donnent quand on le leur demande, mais seulement quand ils se sentent connectés. Cette connexion s'estompe avec le temps et la distance. Un sachet de café de spécialité personnalisé avec la marque de l'université est le rappel quotidien qui maintient cette connexion active entre les événements. Le diplômé qui prépare chaque matin le café de son université ne pense pas activement à son alma mater, mais votre nom est là sur son comptoir, dans sa cuisine, faisant partie de son rituel quotidien. Quand la campagne de dons arrive, votre marque n'est pas une abstraction lointaine. Elle est sur son comptoir.",
+  whoOrders: [
+    { title: "Associations d'anciens élèves", body: "Les bureaux des anciens utilisent le café de marque comme cadeau de reconnaissance pour les donateurs, cadeau de réunion et pièce de campagne courrier direct qui génère des réponses des diplômés inactifs à des taux que le courrier traditionnel n'atteint jamais." },
+    { title: "Cafés du campus et syndicats étudiants", body: "Les opérations de restauration du campus ajoutent le café de marque comme article de vente au détail premium dans les cafétérias et les espaces étudiants, créant une ligne de revenus supplémentaire et renforçant l'identité de marque du campus." },
+    { title: "Équipes sportives et clubs universitaires", body: "Les programmes sportifs universitaires utilisent le café de marque comme article de marchandisage pour les équipes, les fans et les commanditaires d'athlètes, créant un nouveau point de contact de marque dans la communauté sportive." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré au bureau de l'université ou directement aux diplômés", body: "Livré au bureau de l'université pour distribution ou directement aux diplômés par courrier. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Engagement des diplômés qui dure au-delà de l'événement", body: "Un sachet de café donné lors d'une réunion ou d'un événement pour donateurs continue d'engager le diplômé chaque matin pendant des semaines. C'est un point de contact de relation qui prolonge l'impact de chaque initiative d'engagement." },
+    { n: "02", title: "Culture du don et cultivation des donateurs", body: "Les diplômés qui reçoivent des cadeaux de qualité associent l'université à une gestion attentive et réfléchie. Cette association est directement liée à des taux de dons plus élevés lors des campagnes suivantes." },
+    { n: "03", title: "Marchandisage du campus à forte marge", body: "Un sachet de café de marque vendu dans les boutiques du campus génère une marge bien supérieure à la plupart des articles vestimentaires. Il plaît aux diplômés, aux parents, aux visiteurs et aux membres actuels de la communauté." },
+    { n: "04", title: "Aucun minimum : adapté à la taille de chaque programme", body: "Que vous gériez un programme pour 50 diplômés VIP ou 50 000 pour une campagne nationale, EZPZ s'adapte sans minimum de commande." },
+  ],
+  testimonial: {
+    quote: "Les taux de dons des cohortes qui ont reçu le café en cadeau ont été mesurément plus élevés lors de notre dernière campagne. C'est un petit investissement avec un vrai retour.",
+    author: "Louise B.",
+    role: "Directrice des relations avec les anciens, université québécoise",
+  },
+  canonicalPath: "/custom-coffee-bags-universities",
+};
+
+const UniversitiesPage = () => <IndustryPage data={data} frData={frData} />;
 export default UniversitiesPage;

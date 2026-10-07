@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour spas | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Spas | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour spas. Prolongez l'expérience de luxe au-delà du traitement. Aucun minimum, design inclus." : "Custom branded coffee bags for spas. Extend the luxury experience beyond the appointment. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Spas | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for spas. Extend your luxury experience into every morning at home. No minimum order, full design included. Spas across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-spas" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-spas`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-spas",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-spas",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Spas | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for spas. Extends the luxury experience, high-margin retail, brand recall. No minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-spas",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Spas" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-spas`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour spas" : "Custom Coffee Bags for Spas" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Spas | EZPZ Coffee",
-      description: "Custom branded coffee bags for spas. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-spas",
 };
 
-const SpasPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Spas",
+  eyebrow: "Café personnalisé pour les spas",
+  headline: "L'expérience de votre spa. Prolongée dans chaque tasse du matin de votre cliente.",
+  subheadline: "L'expérience ne se termine pas quand la cliente franchit la porte. Les meilleurs spas comprennent que le sentiment qu'ils créent, le calme, le luxe, la sensation d'être choyé, peut être prolongé bien au-delà du traitement.",
+  intro: "L'expérience ne se termine pas quand la cliente franchit la porte. Les meilleurs spas comprennent que le sentiment qu'ils créent peut être prolongé bien au-delà du traitement. Un sachet de café de spécialité personnalisé avec la marque de votre spa est le produit qui fait ça mieux que n'importe quel autre article de vente au détail. Chaque matin où votre cliente prépare votre café, elle se reconnecte émotionnellement à l'expérience que vous avez créée. Ce rappel entraîne des rebookings et des références sans aucune dépense marketing. La marge est excellente : un sachet qui coûte 8 $ se vend 24 à 28 $ dans l'environnement d'un spa, ce qui représente une marge bien supérieure à la plupart des soins. Et comme il n'y a pas de minimum de commande, vous pouvez tester le concept avec une petite sélection et voir comment vos clientes réagissent.",
+  whoOrders: [
+    { title: "Spas de jour", body: "Les spas de jour avec un espace de vente au détail bien développé ajoutent le café de marque comme produit lifestyle à forte marge qui plaît aux clientes qui font déjà confiance à la marque pour leurs soins personnels." },
+    { title: "Spas de resort et de destination", body: "Les spas de resort incluent le café de marque dans les forfaits de traitement, les coffrets cadeaux VIP et comme aménité à emporter premium qui prolonge l'expérience du resort à la maison." },
+    { title: "Salons et instituts de beauté haut de gamme", body: "Les salons qui offrent des services premium utilisent le café de marque pour créer une expérience de service qui commence avec le traitement et continue chaque matin dans la cuisine de la cliente." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre spa", body: "Livré directement à l'adresse de votre spa. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Prolonge l'expérience de luxe au-delà du rendez-vous", body: "Chaque matin où votre cliente prépare le café de votre spa, elle se reconnecte émotionnellement à l'expérience que vous avez créée. Ce rappel génère des rebookings et des références sans dépense marketing." },
+    { n: "02", title: "Produit de vente au détail à forte marge", body: "Un sachet qui coûte 8 $ se vend 24 à 28 $ dans l'environnement d'un spa, une marge bien supérieure à la plupart des soins. Aucun minimum signifie aucun risque de stock." },
+    { n: "03", title: "Signal de qualité et de curation", body: "Un spa qui vend du café de spécialité traçable communique à ses clientes qu'il s'intéresse à la qualité dans tous les aspects de leur expérience, pas seulement dans les produits de soin." },
+    { n: "04", title: "Cadeaux et coffrets de traitement", body: "Incluez le café dans les coffrets cadeaux, les forfaits de fête des Mères ou les trousses de bienvenue. C'est la touche luxueuse et pratique qui différencie vos offres." },
+  ],
+  testimonial: {
+    quote: "Mes clientes en parlent avant même leur traitement. Il se vend tout seul, et quand elles n'en ont plus, elles appellent pour rebooker et en reprendre.",
+    author: "Marie-Claire D.",
+    role: "Propriétaire, spa, Québec",
+  },
+  canonicalPath: "/custom-coffee-bags-spas",
+};
+
+const SpasPage = () => <IndustryPage data={data} frData={frData} />;
 export default SpasPage;

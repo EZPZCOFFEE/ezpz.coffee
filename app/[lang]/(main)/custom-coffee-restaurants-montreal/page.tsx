@@ -1,21 +1,30 @@
 import { Metadata } from "next";
 import CityIndustryPage, { CityIndustryPageData } from "../_components/CityIndustryPage";
 
-export const metadata: Metadata = {
-  title: "Custom Coffee Bags for Montreal Restaurants | EZPZ Coffee",
-  description:
-    "Montreal has 6,000+ restaurants and the most discerning diners in Canada. Branded specialty coffee — bilingual design, roasted locally, zero minimum, from $11.75/bag.",
-  alternates: { canonical: "https://www.ezpz.coffee/en/custom-coffee-restaurants-montreal" },
-  openGraph: {
-    title: "Custom Coffee Bags for Montreal Restaurants | EZPZ Coffee",
-    description:
-      "Montreal has 6,000+ restaurants and the most discerning diners in Canada. Bilingual, locally roasted, zero minimum.",
-    url: "https://www.ezpz.coffee/en/custom-coffee-restaurants-montreal",
-    siteName: "EZPZ Coffee",
-    locale: "en_CA",
-    type: "website",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Café personnalisé pour les restaurants de Montréal | EZPZ Coffee" : "Custom Coffee Bags for Montreal Restaurants | EZPZ Coffee";
+  const description = isFr ? "Les restaurants de Montréal se distinguent avec leur propre café de spécialité de marque. Aucun minimum, design inclus, torréfié à Montréal." : "Montreal has 6,000+ restaurants and the most discerning diners in Canada. Branded specialty coffee — bilingual design, roasted locally, zero minimum, from $11.75/bag.";
+  return {
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-restaurants-montreal`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-restaurants-montreal",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-restaurants-montreal",
+      },
+    },
+    openGraph: {
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-restaurants-montreal`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café personnalisé pour les restaurants de Montréal" : "Custom Coffee Bags for Montreal Restaurants" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
+  };
+}
 
 const data: CityIndustryPageData = {
   canonicalPath: "/en/custom-coffee-restaurants-montreal",
@@ -94,6 +103,55 @@ const data: CityIndustryPageData = {
   cityPageHref: "/en/custom-coffee-bags-montreal",
 };
 
+
+const frData: CityIndustryPageData = {
+  canonicalPath: "/fr/custom-coffee-restaurants-montreal",
+  city: { name: "Montréal", province: "Québec", deliveryTime: "2 à 3 jours ouvrables" },
+  industry: {
+    name: "Restaurants",
+    parentHref: "/fr/custom-coffee-bags-restaurants",
+    parentLabel: "Restaurants",
+  },
+  hero: {
+    h1: "Café personnalisé pour les restaurants de Montréal",
+    subheadline: "Les restaurants de Montréal choisissent EZPZ pour leur café de spécialité de marque. Aucun minimum, design inclus, torréfié frais à Montréal.",
+    ctaSubject: "Café personnalisé pour les restaurants de Montréal",
+  },
+  aeoAnswer: "EZPZ fournit des sacs de café de spécialité personnalisés pour les restaurants de Montréal, Québec, torréfiés à la Canadian Roasting Society à Montréal, à partir de 11,75 $/sachet pour 100 sacs sans minimum. Livraison standard en 2 à 3 jours ouvrables. Le design bilingue français-anglais est disponible sans frais supplémentaires.",
+  why: {
+    heading: "Le café de marque dans la scène gastronomique de Montréal",
+    paragraphs: [
+      "Montréal est la ville où la culture café est née au Canada, avec son riche tissu de quartiers francophones. Les restaurants de Plateau-Mont-Royal, Mile End et Griffintown se démarquent par leur identité de marque autant que par leur menu. Dans ce marché compétitif, le café en fin de repas est le dernier point de contact avec vos clients, et c'est souvent le plus mémorable.",
+      "Un café de spécialité personnalisé avec le nom et le logo de votre restaurant transforme ce moment final en un ancrage de marque. Les clients qui emportent un sachet chez eux préparent votre café chaque matin et se souviennent de leur expérience. Ce rappel quotidien génère des rebookings, des références et des avis positifs sans aucune dépense marketing.",
+      "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Montréal en 2 à 3 jours ouvrables. Vous pouvez servir votre café de marque au restaurant et le vendre au comptoir à la sortie. Aucun minimum de commande signifie que vous pouvez commencer avec une petite quantité et ajuster selon la demande. La majorité des clients de Montréal préfèrent un design d'emballage en français : c'est naturel et local.",
+    ],
+  },
+  useCases: {
+    heading: "Comment les restaurants de Montréal utilisent le café de marque",
+    items: [
+    { title: "Service en fin de repas et café de maison", body: "Servez votre propre café de spécialité de marque en fin de repas. L'histoire de l'origine et le design du sachet créent un moment de conversation qui marque la mémoire de vos clients." },
+    { title: "Vente au comptoir comme produit à emporter", body: "Proposez des sacs de votre café de maison à la caisse ou à l'entrée. Les clients qui ont adoré leur café voudront en acheter pour chez eux, et chaque sachet maintient votre marque dans leur cuisine." },
+    { title: "Cadeaux corporatifs et événements privés", body: "Pour les événements privés, les réceptions d'entreprise et les sorties de groupe, utilisez votre café de marque comme cadeau de bienvenue ou faveur de table qui reflète la qualité de votre établissement." },
+    { title: "Coffrets et paniers cadeaux des Fêtes", body: "Créez des coffrets cadeaux premium avec votre café de maison pour les Fêtes. Les clients réguliers achètent ces coffrets pour offrir à leurs proches une expérience liée à leur restaurant préféré de Montréal." },
+    ],
+  },
+  localNote: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Montréal, Québec en 2 à 3 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  faq: [
+    { q: "Combien de temps prend la livraison depuis Montréal jusqu'à Montréal ?", a: "Les commandes pour Montréal sont expédiées depuis notre torréfacteur montréalais et arrivent en 2 à 3 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design. Les commandes répétées sont plus rapides car votre design est déjà en dossier." },
+    { q: "Comment les restaurants de Montréal servent-ils le café EZPZ en fin de repas ?", a: "La plupart des restaurants servent le café dans un filtre ou une cafetière French press, avec le sachet ouvert visible ou posé sur la table pour que les clients voient l'histoire de l'origine. D'autres servent la portion en capsule ou en dosette adaptée à leur équipement." },
+    { q: "Puis-je obtenir un design bilingue pour mon restaurant ?", a: "Oui. Le design bilingue français-anglais est standard sans frais supplémentaires. De nombreux restaurants de Montréal choisissent un design entièrement en français pour refléter leur identité locale." },
+  ],
+  siblings: [
+    { label: "Restaurants · Toronto", href: "/fr/custom-coffee-restaurants-toronto" },
+    { label: "Restaurants · Vancouver", href: "/fr/custom-coffee-restaurants-vancouver" },
+    { label: "Cafés · Montréal", href: "/fr/custom-coffee-cafes-montreal" },
+    { label: "Hôtels · Montréal", href: "/fr/custom-coffee-hotels-montreal" },
+    { label: "Gyms · Montréal", href: "/fr/custom-coffee-gyms-montreal" },
+  ],
+  ctaClose: "La dernière impression que vous laissez à vos clients de Montréal. Faites-la mémorable.",
+  cityPageHref: "/fr/custom-coffee-bags-montreal",
+};
+
 export default function Page() {
-  return <CityIndustryPage data={data} />;
+  return <CityIndustryPage data={data} frData={frData} />;
 }

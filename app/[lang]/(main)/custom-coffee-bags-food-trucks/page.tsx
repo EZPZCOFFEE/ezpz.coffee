@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour camions-restaurants | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Food Trucks | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les camions-restaurants. Commercialisez votre marque auprès de votre base de superfans. Aucun minimum, design inclus." : "Custom branded coffee bags for food trucks. Merchandise your brand to your superfan base. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Food Trucks | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for food trucks. Branded merchandise your superfans buy at the window. No minimum order, full design included. Food trucks across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-food-trucks" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-food-trucks`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-food-trucks",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-food-trucks",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Food Trucks | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for food trucks. Superfan merchandise, event sales, no minimum to test.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-food-trucks",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Food Trucks" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-food-trucks`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour camions-restaurants" : "Custom Coffee Bags for Food Trucks" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Food Trucks | EZPZ Coffee",
-      description: "Custom branded coffee bags for food trucks. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-food-trucks",
 };
 
-const FoodTrucksPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Camions-restaurants",
+  eyebrow: "Café personnalisé pour les camions-restaurants",
+  headline: "Votre marque de camion-restaurant. Dans la cuisine de vos superfans.",
+  subheadline: "La culture des camions-restaurants est construite sur la fidélité. Les habitués qui trouvent votre camion chaque semaine, qui suivent vos mises à jour de localisation, qui racontent votre histoire à tout le monde, ce sont des superfans. Et les superfans achètent des produits de marque.",
+  intro: "La culture des camions-restaurants est construite sur la fidélité. Les habitués qui trouvent votre camion chaque semaine, qui suivent vos mises à jour de localisation, qui racontent votre histoire à tout le monde, ce sont des superfans. Et les superfans achètent des produits de marque. Un sachet de café de spécialité personnalisé vendu au comptoir de service est le produit de marchandisage parfait pour un food truck : il est portable, consommable, et il reste dans la cuisine de votre client pendant deux à quatre semaines. Chaque matin où il prépare votre café, votre nom et votre logo sont présents. Quand ses amis visitent, le sachet est là sur le comptoir. C'est une publicité involontaire que vous ne pouvez pas acheter. Aucun minimum signifie commencer avec une petite quantité et voir comment vos habitués réagissent.",
+  whoOrders: [
+    { title: "Camions de rue et de spécialité alimentaire", body: "Les camions de rue avec une identité forte et une base de fans loyaux sur les réseaux sociaux ajoutent le café de marque comme article de marchandisage premium que les superfans achètent avec enthousiasme." },
+    { title: "Camions de café et de boissons", body: "Les camions mobiles de café et de boissons vendent leurs propres sacs de café de marque comme article complémentaire naturel : les clients qui aiment votre café veulent en faire chez eux." },
+    { title: "Camions de marchés fermiers et événements spéciaux", body: "Les camions qui servent des marchés, des festivals et des événements spéciaux ont un public captif prêt à acheter des produits de marque dans le moment de l'expérience." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre adresse", body: "Livré directement à votre adresse de stationnement ou de commissariat. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Revenus de marchandisage auprès de votre base de superfans", body: "Les superfans de camions-restaurants achètent des produits de marque sans avoir besoin qu'on les vende. Un sachet de café au comptoir est un achat d'impulsion pour quiconque adore le camion et boit du café." },
+    { n: "02", title: "Un produit que vos clients les plus fidèles cadeautent", body: "Les habitués achètent souvent deux sacs : un pour eux, un à offrir. Votre marque se propage dans le réseau de vos meilleurs clients sans aucun effort marketing de votre part." },
+    { n: "03", title: "Aucun minimum, aucun risque de stock", body: "Commencez avec 10 sacs et voyez si ça se vend. Ça se vendra. Quand c'est fait, réapprovisionnez. Aucun risque, aucun stock invendu." },
+    { n: "04", title: "Extension de marque au-delà de la cuisine", body: "Un food truck qui vend son propre café de spécialité dit à ses clients qu'il est plus qu'un camion de rue. C'est une déclaration d'identité de marque que peu de concurrents font." },
+  ],
+  testimonial: {
+    quote: "Je les ai mis sur le comptoir à mon prochain marché et ils se sont vendus avant midi. Mes habitués en prenaient deux à la fois : un pour eux, un à offrir.",
+    author: "Alex P.",
+    role: "Propriétaire, food truck, Ottawa",
+  },
+  canonicalPath: "/custom-coffee-bags-food-trucks",
+};
+
+const FoodTrucksPage = () => <IndustryPage data={data} frData={frData} />;
 export default FoodTrucksPage;

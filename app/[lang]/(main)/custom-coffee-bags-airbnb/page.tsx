@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour hôtes Airbnb | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Airbnb Hosts | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les hôtes Airbnb. Le détail qui génère des avis cinq étoiles. Aucun minimum, design inclus." : "Custom branded coffee bags for Airbnb hosts. The detail that earns 5-star reviews. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Airbnb Hosts | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for Airbnb hosts. The detail that turns a 4-star stay into a 5-star review. No minimum order, full design included. Airbnb hosts across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-airbnb" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-airbnb`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-airbnb",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-airbnb",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Airbnb Hosts | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for Airbnb hosts. 5-star reviews, memorable guest experience, no minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-airbnb",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Airbnb Hosts" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-airbnb`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour hôtes Airbnb" : "Custom Coffee Bags for Airbnb Hosts" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Airbnb Hosts | EZPZ Coffee",
-      description: "Custom branded coffee bags for Airbnb hosts. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-airbnb",
 };
 
-const AirbnbPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Hôtes Airbnb",
+  eyebrow: "Café personnalisé pour les hôtes Airbnb",
+  headline: "Le détail qui transforme un séjour ordinaire en avis cinq étoiles.",
+  subheadline: "Les avis Airbnb se gagnent et se perdent sur les détails. Les hôtes avec les meilleures notes ne sont pas ceux qui ont les plus belles propriétés, mais ceux qui soignent les petites choses.",
+  intro: "Les avis Airbnb se gagnent et se perdent sur les détails. Les hôtes avec les meilleures notes ne sont pas ceux qui ont les plus belles propriétés. Ce sont ceux qui soignent les petites choses : le mot de bienvenue manuscrit, les recommandations de restaurants locaux, le café de spécialité sur le comptoir avec le nom de l'hôte et un message d'accueil. Ce dernier détail coûte environ 12 dollars et il est mentionné dans les avis Airbnb plus souvent que le lit, la cuisine équipée et la vue. Les superhôtes savent qu'un avis exceptionnel nécessite un moment inattendu. Un sachet de café personnalisé est ce moment. Il dit aux clients que cet hôte a pensé à eux spécifiquement, a créé quelque chose juste pour leur séjour.",
+  whoOrders: [
+    { title: "Superhôtes d'appartements urbains", body: "Les hôtes d'appartements citadins utilisent le café de marque pour se démarquer dans des marchés urbains compétitifs où toutes les annonces se ressemblent. Un petit détail comme le café de spécialité personnalisé peut être décisif pour obtenir un rebooking." },
+    { title: "Hôtes de chalets et de cabanes rurales", body: "Les hôtes de propriétés rurales utilisent le café de marque pour compléter l'expérience chalet de leurs clients, qui arrivent souvent le soir et préparent du café frais le matin." },
+    { title: "Propriétaires de gîtes touristiques et de B&B", body: "Les B&B et les gîtes touristiques utilisent le café de marque comme extension naturelle de leur marque d'hospitalité locale, renforçant l'authenticité de l'expérience." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre propriété", body: "Livré directement à l'adresse de votre propriété Airbnb. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Le détail qui génère des avis cinq étoiles", body: "Les superhôtes savent que les avis exceptionnels viennent de détails inattendus. Un sachet de café de marque coûte moins qu'un repas au restaurant et est mentionné dans les avis plus souvent que n'importe quelle autre aménité." },
+    { n: "02", title: "Une expérience client mémorable et photographiée", body: "Les clients photographient les détails inhabituels et les partagent sur les réseaux sociaux. Un beau sachet de café personnalisé avec le nom de votre propriété génère une portée organique que vous ne pouvez pas acheter." },
+    { n: "03", title: "Fidélité et rebooking direct", body: "Les clients qui ont eu une expérience mémorable rebookent directement avec vous. Le café personnalisé est une partie de ce que rend un séjour mémorable et différent d'un hôtel générique." },
+    { n: "04", title: "Faible coût, fort impact sur la note globale", body: "Un investissement de 12 dollars par séjour génère un retour mesurable en avis cinq étoiles, en mentions de détails soignés et en rebookings. C'est le meilleur retour sur investissement dans vos aménités d'hôte." },
+  ],
+  testimonial: {
+    quote: "Trois clients ont mentionné les sacs de café dans leurs avis le mois dernier. C'est un sachet à 12 dollars et ça génère mes meilleurs avis. Meilleur retour sur investissement de tous mes achats d'hôte.",
+    author: "Amélie G.",
+    role: "Superhôte Airbnb, Québec",
+  },
+  canonicalPath: "/custom-coffee-bags-airbnb",
+};
+
+const AirbnbPage = () => <IndustryPage data={data} frData={frData} />;
 export default AirbnbPage;

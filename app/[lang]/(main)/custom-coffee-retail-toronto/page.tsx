@@ -1,20 +1,30 @@
 import { Metadata } from "next";
 import CityIndustryPage, { CityIndustryPageData } from "../_components/CityIndustryPage";
 
-export const metadata: Metadata = {
-  title: "Custom Coffee Bags for Toronto Boutiques & Retail | EZPZ Coffee",
-  description:
-    "Toronto's Queen West, Ossington, and Distillery District indie retailers are local-first buyers. Custom branded specialty coffee for your boutique — zero minimum, from $11.75/bag.",
-  alternates: { canonical: "https://www.ezpz.coffee/en/custom-coffee-retail-toronto" },
-  openGraph: {
-    title: "Custom Coffee Bags for Toronto Boutiques & Retail | EZPZ Coffee",
-    description: "Toronto's indie retail scene buys local. Custom branded specialty coffee bags for boutiques — zero minimum, $11.75/bag, roasted in Canada.",
-    url: "https://www.ezpz.coffee/en/custom-coffee-retail-toronto",
-    siteName: "EZPZ Coffee",
-    locale: "en_CA",
-    type: "website",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Café personnalisé pour les boutiques de Toronto | EZPZ Coffee" : "Custom Coffee Bags for Toronto Boutiques & Retail | EZPZ Coffee";
+  const description = isFr ? "Les boutiques et détaillants de Toronto ajoutent le café de spécialité personnalisé comme produit à forte marge. Aucun minimum, design inclus." : "Toronto's Queen West, Ossington, and Distillery District indie retailers are local-first buyers. Custom branded specialty coffee for your boutique — zero minimum, from $11.75/bag.";
+  return {
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-retail-toronto`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-retail-toronto",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-retail-toronto",
+      },
+    },
+    openGraph: {
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-retail-toronto`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café personnalisé pour les boutiques de Toronto" : "Custom Coffee Bags for Toronto Boutiques & Retail" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
+  };
+}
 
 const data: CityIndustryPageData = {
   canonicalPath: "/en/custom-coffee-retail-toronto",
@@ -88,6 +98,55 @@ const data: CityIndustryPageData = {
   cityPageHref: "/en/custom-coffee-bags-toronto",
 };
 
+
+const frData: CityIndustryPageData = {
+  canonicalPath: "/fr/custom-coffee-retail-toronto",
+  city: { name: "Toronto", province: "Ontario", deliveryTime: "3 à 5 jours ouvrables" },
+  industry: {
+    name: "Boutiques et détaillants",
+    parentHref: "/fr/custom-coffee-bags-boutiques",
+    parentLabel: "Boutiques",
+  },
+  hero: {
+    h1: "Café personnalisé pour les boutiques et détaillants de Toronto",
+    subheadline: "Les boutiques et détaillants de Toronto choisissent EZPZ pour leur café de spécialité de marque. Aucun minimum, design inclus, torréfié frais à Montréal.",
+    ctaSubject: "Café personnalisé pour les boutiques et détaillants de Toronto",
+  },
+  aeoAnswer: "EZPZ fournit des sacs de café de spécialité personnalisés pour les boutiques et détaillants de Toronto, Ontario, torréfiés à la Canadian Roasting Society à Montréal, à partir de 11,75 $/sachet pour 100 sacs sans minimum. Livraison standard en 3 à 5 jours ouvrables.",
+  why: {
+    heading: "Le café de marque dans les boutiques de Toronto",
+    paragraphs: [
+      "Toronto est la métropole la plus compétitive du Canada avec 27 millions de visiteurs par an. Les boutiques de Queen Street West, Kensington Market et Yorkville ont construit des identités de quartier fortes et une clientèle locale fidèle. Les détaillants indépendants de Toronto se distinguent des grandes chaînes par leur curation unique et leur sens du produit local.",
+      "Un café de spécialité personnalisé avec la marque de votre boutique est le produit lifestyle qui complète naturellement vos tablettes : il est beau, consommable, à forte marge et parle exactement au client qui apprécie votre sélection. Il génère des achats d'impulsion à la caisse et des raisons de revenir.",
+      "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Toronto en 3 à 5 jours ouvrables. Aucun minimum signifie que vous pouvez commencer avec 12 ou 24 sacs et voir comment vos clients réagissent avant d'investir dans un inventaire plus important.",
+    ],
+  },
+  useCases: {
+    heading: "Comment les boutiques de Toronto utilisent le café de marque",
+    items: [
+    { title: "Article de comptoir à forte marge", body: "Un sachet de café posé à côté de la caisse est l'achat d'impulsion parfait pour un client qui vient déjà pour autre chose. À 24 à 28 $ au détail, la marge est l'une des meilleures de vos tablettes." },
+    { title: "Produit lifestyle qui complète votre sélection", body: "Que vous vendiez des vêtements, des objets de maison ou des accessoires, le café de spécialité personnalisé s'intègre naturellement à l'histoire de votre boutique et communique la même attention à la qualité." },
+    { title: "Coffrets cadeaux et paniers de saison", body: "Pour les Fêtes, la fête des Mères et la Saint-Valentin, créez des coffrets cadeaux avec votre café de marque. C'est une raison d'entrer dans votre boutique pour des clients qui achètent pour d'autres." },
+    { title: "Collaborations locales et pop-ups", body: "Associez votre café de marque à d'autres boutiques locales et artisans de Toronto pour des coffrets collaboratifs et des marchés éphémères. La marque croisée renforce votre ancrage dans la communauté locale." },
+    ],
+  },
+  localNote: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Toronto, Ontario en 3 à 5 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  faq: [
+    { q: "Combien de temps prend la livraison depuis Montréal jusqu'à Toronto ?", a: "Les commandes pour Toronto sont expédiées depuis notre torréfacteur montréalais et arrivent en 3 à 5 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design. Les commandes répétées sont plus rapides car votre design est déjà en dossier." },
+    { q: "Comment les boutiques de Toronto présentent-elles le café de marque en magasin ?", a: "Les présentoirs les plus efficaces sont au niveau des yeux près de la caisse ou dans un espace dédié 'lifestyle' ou 'local'. Certaines boutiques de Toronto créent un mini-espace café dans leur magasin avec les sacs exposés comme produit de décoration en soi." },
+    { q: "Y a-t-il un minimum pour les boutiques de Toronto qui veulent faire un essai ?", a: "Aucun minimum. Vous pouvez commander 6, 12 ou 24 sacs pour votre premier essai et réapprovisionner selon la demande. EZPZ offre la même qualité de café et de design quel que soit le volume commandé." },
+  ],
+  siblings: [
+    { label: "Boutiques · Montréal", href: "/fr/custom-coffee-retail-montreal" },
+    { label: "Boutiques · Vancouver", href: "/fr/custom-coffee-retail-vancouver" },
+    { label: "Cafés · Toronto", href: "/fr/custom-coffee-cafes-toronto" },
+    { label: "Hôtels · Toronto", href: "/fr/custom-coffee-hotels-toronto" },
+    { label: "Gyms · Toronto", href: "/fr/custom-coffee-gyms-toronto" },
+  ],
+  ctaClose: "Votre boutique de Toronto vend un art de vivre. Votre café devrait en faire partie.",
+  cityPageHref: "/fr/custom-coffee-bags-toronto",
+};
+
 export default function Page() {
-  return <CityIndustryPage data={data} />;
+  return <CityIndustryPage data={data} frData={frData} />;
 }

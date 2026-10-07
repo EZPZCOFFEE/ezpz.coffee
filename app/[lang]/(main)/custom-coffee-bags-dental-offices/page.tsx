@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour cabinets dentaires | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Dental Offices | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour cabinets dentaires. Le cadeau patient dont on parle. Aucun minimum, design inclus." : "Custom branded coffee bags for dental offices. The patient gift that gets talked about. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Dental Offices | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for dental offices. The most ironic patient gift they will love and remember. No minimum order, full design included. Dental offices across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-dental-offices" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-dental-offices`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-dental-offices",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-dental-offices",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Dental Offices | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for dental offices. Memorable, shareable, patient retention tool. No minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-dental-offices",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Dental Offices" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-dental-offices`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour cabinets dentaires" : "Custom Coffee Bags for Dental Offices" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Dental Offices | EZPZ Coffee",
-      description: "Custom branded coffee bags for dental offices. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 

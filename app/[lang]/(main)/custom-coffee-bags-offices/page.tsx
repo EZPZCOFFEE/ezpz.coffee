@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour bureaux | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Offices | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les bureaux. Améliorez votre culture café de bureau et votre marque. Aucun minimum, design inclus." : "Custom branded coffee bags for offices. Upgrade your office coffee and brand culture. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Offices | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for offices. Specialty coffee that reflects your company culture and impresses clients. No minimum order, full design included. Offices across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-offices" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-offices`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-offices",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-offices",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Offices | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for offices. Employee morale, client impressions, culture signal. No minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-offices",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Offices" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-offices`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour bureaux" : "Custom Coffee Bags for Offices" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Offices | EZPZ Coffee",
-      description: "Custom branded coffee bags for offices. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-offices",
 };
 
-const OfficesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Bureaux",
+  eyebrow: "Café personnalisé pour les bureaux",
+  headline: "Votre bureau. Un café qui dit quelque chose sur votre culture d'entreprise.",
+  subheadline: "La machine à café du bureau est un artefact culturel. C'est là que les équipes se rassemblent, où les conversations se font et où le ton du lieu de travail est subtilement donné chaque matin. Le café générique dit quelque chose sur votre entreprise, et ce n'est pas le message que vous voulez envoyer.",
+  intro: "La machine à café du bureau est un artefact culturel. C'est là que les équipes se rassemblent, où les conversations se font et où le ton du lieu de travail est subtilement donné chaque matin. Des capsules génériques et du café de supermarché en vrac disent quelque chose sur votre entreprise, et ce n'est pas le message que vous voulez envoyer. Un café de spécialité personnalisé, avec le logo et le nom de votre entreprise sur le sachet, dit que vous vous souciez de la qualité et de l'expérience de vos employés. Les équipes de direction qui visitent vos bureaux remarquent ce que vous servez. Les candidats en entretien remarquent ce que vous servez. Les clients qui viennent pour des réunions remarquent ce que vous servez. Chaque point de contact dans l'environnement de bureau contribue à la perception que les gens ont de votre organisation.",
+  whoOrders: [
+    { title: "Startups technologiques et entreprises en croissance", body: "Les entreprises technologiques utilisent le café de bureau de marque comme signal de rétention de talents et de culture. Dans un marché d'embauche compétitif, chaque point de contact de l'expérience employé compte." },
+    { title: "Agences créatives et studios", body: "Les agences créatives utilisent le café de marque comme extension de leur identité de marque. Si votre agence est différente, votre café devrait l'être aussi." },
+    { title: "Cabinets professionnels et sièges sociaux", body: "Les firmes juridiques, financières et comptables utilisent le café de marque comme signal subtil de qualité pour les clients qui visitent leurs bureaux." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre bureau", body: "Livré directement à l'adresse de votre bureau. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Signal de moral et de rétention des employés", body: "Le café de spécialité personnalisé dans la cuisine dit aux employés que l'entreprise investit dans leur expérience. C'est un investissement modeste à impact disproportionné sur la façon dont les gens se sentent au travail." },
+    { n: "02", title: "Impression client à chaque visite", body: "Un client qui visite votre bureau et remarque un café de spécialité personnalisé comprend immédiatement que vous faites attention aux détails. C'est le même signal que les bureaux bien conçus et l'art soigneusement choisi." },
+    { n: "03", title: "Cadeau d'entreprise à partir de votre propre marque", body: "Utilisez votre café de bureau comme cadeau d'entreprise pour les clients, les partenaires et les nouvelles recrues. C'est cohérent, premium et mémorable." },
+    { n: "04", title: "Expérience de réunion différenciante", body: "Servir votre propre café de spécialité dans les réunions de conseil d'administration, les présentations clients et les séances de brainstorming transforme un besoin fonctionnel en point de contact de marque." },
+  ],
+  testimonial: {
+    quote: "Ça a remplacé les capsules et le moral de l'équipe a augmenté. Ce n'est pas une blague. Trois personnes en ont parlé dans leurs avis Glassdoor.",
+    author: "Sarah W.",
+    role: "Responsable des opérations, agence, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-offices",
+};
+
+const OfficesPage = () => <IndustryPage data={data} frData={frData} />;
 export default OfficesPage;

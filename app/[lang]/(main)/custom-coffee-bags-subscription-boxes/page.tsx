@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour boîtes d'abonnement | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Subscription Boxes | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les boîtes d'abonnement. L'article le mieux noté dans toute boîte lifestyle. Aucun minimum, design inclus." : "Custom branded coffee bags for subscription boxes. The highest-scoring item in any lifestyle box. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Subscription Boxes | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for subscription boxes. A white-label premium product your subscribers love every month. No minimum order, full design included. Subscription boxes across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-subscription-boxes" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-subscription-boxes`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-subscription-boxes",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-subscription-boxes",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Subscription Boxes | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for subscription boxes. White label, monthly orders, premium product subscribers love.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-subscription-boxes",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Subscription Boxes" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-subscription-boxes`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour boîtes d'abonnement" : "Custom Coffee Bags for Subscription Boxes" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Subscription Boxes | EZPZ Coffee",
-      description: "Custom branded coffee bags for subscription boxes. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-subscription-boxes",
 };
 
-const SubscriptionBoxesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Boîtes d'abonnement",
+  eyebrow: "Café personnalisé pour les boîtes d'abonnement",
+  headline: "L'article qui rend vos abonnés impatients d'ouvrir chaque boîte.",
+  subheadline: "Les curateurs de boîtes d'abonnement vivent et meurent par les scores de satisfaction des abonnés. Quand les abonnés notent le contenu d'une boîte, un produit peut faire ou défaire le mois.",
+  intro: "Les curateurs de boîtes d'abonnement vivent et meurent par les scores de satisfaction des abonnés. Quand les abonnés notent le contenu d'une boîte, un produit peut faire ou défaire le mois, et cet article est presque toujours celui qui est à la fois beau et vraiment utile. Un sachet de café de spécialité personnalisé coche toutes les cases : il est visuellement premium, il est consommable donc renouvelé chaque mois, et il est utilisé deux fois par jour par la plupart des abonnés. Aucun autre article de boîte lifestyle ne génère autant de points de contact par expédition. Et parce que le sachet porte votre marque de boîte et non la nôtre, chaque tasse renforce la connexion de l'abonné à votre curation.",
+  whoOrders: [
+    { title: "Boîtes d'abonnement lifestyle et de maison", body: "Les boîtes de curation lifestyle dans les catégories maison, rituel matinal et bien-être incluent le café de spécialité de marque comme article régulier très bien noté que les abonnés cherchent spécifiquement dans les expéditions récurrentes." },
+    { title: "Boîtes de bien-être et d'auto-soin", body: "Les boîtes de bien-être utilisent le café de spécialité comme produit qui prolonge le rituel d'auto-soin dans la routine matinale de l'abonné, au-delà de l'expérience d'unboxing." },
+    { title: "Boîtes cadeaux et de saison", body: "Les boîtes cadeaux saisonnières incluent le café de marque comme article premium qui justifie le prix de la boîte et génère des achats répétés lorsque les destinataires des cadeaux s'abonnent eux-mêmes." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre entrepôt ou centre de distribution", body: "Livré à votre entrepôt ou centre de distribution pour intégration dans les expéditions. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables." },
+  ],
+  benefits: [
+    { n: "01", title: "Votre marque, pas la nôtre", body: "Le sachet porte entièrement la marque de votre boîte d'abonnement. EZPZ fournit le produit de qualité. Votre marque reçoit tout le crédit. Les abonnés renforcent leur connexion à votre curation." },
+    { n: "02", title: "Scores de satisfaction des abonnés régulièrement élevés", body: "Le café de spécialité obtient systématiquement les scores de satisfaction les plus élevés dans les boîtes lifestyle : il est utilisé quotidiennement, apprécié pour sa qualité et mentionné dans les avis unboxing." },
+    { n: "03", title: "Produit renouvelable qui génère de l'anticipation", body: "Les abonnés qui adorent votre café l'attendent dans chaque expédition. Ce sentiment d'anticipation augmente l'engagement et réduit le churn d'une façon que peu d'articles de boîte peuvent faire." },
+    { n: "04", title: "Aucun minimum : scalable de quelques boîtes à des milliers", body: "Que vous envoyiez 50 boîtes ou 50 000, EZPZ s'adapte avec le même produit et la même qualité. Testez un volume réduit avant un lancement complet." },
+  ],
+  testimonial: {
+    quote: "Nos abonnés ont noté le sachet de café comme l'article le mieux noté de la boîte ce trimestre-là. On en a fait un article permanent et c'est le plus mentionné dans nos avis unboxing.",
+    author: "Chloe R.",
+    role: "Fondatrice, boîte d'abonnement lifestyle, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-subscription-boxes",
+};
+
+const SubscriptionBoxesPage = () => <IndustryPage data={data} frData={frData} />;
 export default SubscriptionBoxesPage;

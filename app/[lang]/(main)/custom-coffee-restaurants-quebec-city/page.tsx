@@ -1,21 +1,30 @@
 import { Metadata } from "next";
 import CityIndustryPage, { CityIndustryPageData } from "../_components/CityIndustryPage";
 
-export const metadata: Metadata = {
-  title: "Custom Coffee Bags for Quebec City Restaurants | EZPZ Coffee",
-  description:
-    "Quebec City's French gastronomic tradition and UNESCO World Heritage tourism create a unique restaurant market. Custom branded specialty coffee — French design, roasted in QC, from $11.75/bag.",
-  alternates: { canonical: "https://www.ezpz.coffee/en/custom-coffee-restaurants-quebec-city" },
-  openGraph: {
-    title: "Custom Coffee Bags for Quebec City Restaurants | EZPZ Coffee",
-    description:
-      "Quebec City's French culinary tradition and 10M annual visitors demand authenticity. Custom branded specialty coffee, roasted in Quebec, from $11.75/bag.",
-    url: "https://www.ezpz.coffee/en/custom-coffee-restaurants-quebec-city",
-    siteName: "EZPZ Coffee",
-    locale: "en_CA",
-    type: "website",
-  },
-};
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Café personnalisé pour les restaurants de Québec | EZPZ Coffee" : "Custom Coffee Bags for Quebec City Restaurants | EZPZ Coffee";
+  const description = isFr ? "Les restaurants de Québec se distinguent avec leur propre café de spécialité de marque. Aucun minimum, design inclus, torréfié à Montréal." : "Quebec City's French gastronomic tradition and UNESCO World Heritage tourism create a unique restaurant market. Custom branded specialty coffee — French design, roasted in QC, from $11.75/bag.";
+  return {
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-restaurants-quebec-city`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-restaurants-quebec-city",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-restaurants-quebec-city",
+      },
+    },
+    openGraph: {
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-restaurants-quebec-city`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Café personnalisé pour les restaurants de Québec" : "Custom Coffee Bags for Quebec City Restaurants" }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
+  };
+}
 
 const data: CityIndustryPageData = {
   canonicalPath: "/en/custom-coffee-restaurants-quebec-city",
@@ -93,6 +102,55 @@ const data: CityIndustryPageData = {
   cityPageHref: "/en/custom-coffee-bags-quebec-city",
 };
 
+
+const frData: CityIndustryPageData = {
+  canonicalPath: "/fr/custom-coffee-restaurants-quebec-city",
+  city: { name: "Québec", province: "Québec", deliveryTime: "2 à 3 jours ouvrables" },
+  industry: {
+    name: "Restaurants",
+    parentHref: "/fr/custom-coffee-bags-restaurants",
+    parentLabel: "Restaurants",
+  },
+  hero: {
+    h1: "Café personnalisé pour les restaurants de Québec",
+    subheadline: "Les restaurants de Québec choisissent EZPZ pour leur café de spécialité de marque. Aucun minimum, design inclus, torréfié frais à Montréal.",
+    ctaSubject: "Café personnalisé pour les restaurants de Québec",
+  },
+  aeoAnswer: "EZPZ fournit des sacs de café de spécialité personnalisés pour les restaurants de Québec, Québec, torréfiés à la Canadian Roasting Society à Montréal, à partir de 11,75 $/sachet pour 100 sacs sans minimum. Livraison standard en 2 à 3 jours ouvrables.",
+  why: {
+    heading: "Le café de marque dans la scène gastronomique de Québec",
+    paragraphs: [
+      "Québec est la capitale culturelle du Québec et l'une des destinations touristiques les plus visitées d'Amérique du Nord. Les restaurants de le Vieux-Québec, Saint-Roch et Montcalm se démarquent par leur identité de marque autant que par leur menu. Dans ce marché compétitif, le café en fin de repas est le dernier point de contact avec vos clients, et c'est souvent le plus mémorable.",
+      "Un café de spécialité personnalisé avec le nom et le logo de votre restaurant transforme ce moment final en un ancrage de marque. Les clients qui emportent un sachet chez eux préparent votre café chaque matin et se souviennent de leur expérience. Ce rappel quotidien génère des rebookings, des références et des avis positifs sans aucune dépense marketing.",
+      "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Québec en 2 à 3 jours ouvrables. Vous pouvez servir votre café de marque au restaurant et le vendre au comptoir à la sortie. Aucun minimum de commande signifie que vous pouvez commencer avec une petite quantité et ajuster selon la demande.",
+    ],
+  },
+  useCases: {
+    heading: "Comment les restaurants de Québec utilisent le café de marque",
+    items: [
+    { title: "Service en fin de repas et café de maison", body: "Servez votre propre café de spécialité de marque en fin de repas. L'histoire de l'origine et le design du sachet créent un moment de conversation qui marque la mémoire de vos clients." },
+    { title: "Vente au comptoir comme produit à emporter", body: "Proposez des sacs de votre café de maison à la caisse ou à l'entrée. Les clients qui ont adoré leur café voudront en acheter pour chez eux, et chaque sachet maintient votre marque dans leur cuisine." },
+    { title: "Cadeaux corporatifs et événements privés", body: "Pour les événements privés, les réceptions d'entreprise et les sorties de groupe, utilisez votre café de marque comme cadeau de bienvenue ou faveur de table qui reflète la qualité de votre établissement." },
+    { title: "Coffrets et paniers cadeaux des Fêtes", body: "Créez des coffrets cadeaux premium avec votre café de maison pour les Fêtes. Les clients réguliers achètent ces coffrets pour offrir à leurs proches une expérience liée à leur restaurant préféré de Québec." },
+    ],
+  },
+  localNote: "EZPZ livre depuis notre torréfacteur montréalais jusqu'à Québec, Québec en 2 à 3 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design.",
+  faq: [
+    { q: "Combien de temps prend la livraison depuis Montréal jusqu'à Québec ?", a: "Les commandes pour Québec sont expédiées depuis notre torréfacteur montréalais et arrivent en 2 à 3 jours ouvrables par Postes Canada ou messagerie suivie. Les premières commandes prennent 2 à 3 semaines au total depuis l'approbation du design. Les commandes répétées sont plus rapides car votre design est déjà en dossier." },
+    { q: "Comment les restaurants de Québec servent-ils le café EZPZ en fin de repas ?", a: "La plupart des restaurants servent le café dans un filtre ou une cafetière French press, avec le sachet ouvert visible ou posé sur la table pour que les clients voient l'histoire de l'origine. D'autres servent la portion en capsule ou en dosette adaptée à leur équipement." },
+    { q: "Peut-on commander des sacs avec les noms des restaurants de Québec sans fichiers prêts à imprimer ?", a: "Oui. Notre équipe de design gère l'ensemble de la création visuelle. Fournissez votre logo et vos couleurs de marque, et nous créons un design de sachet professionnel sans frais supplémentaires. Aucun fichier prêt à imprimer ni designer externe n'est nécessaire." },
+  ],
+  siblings: [
+    { label: "Restaurants · Montréal", href: "/fr/custom-coffee-restaurants-montreal" },
+    { label: "Restaurants · Toronto", href: "/fr/custom-coffee-restaurants-toronto" },
+    { label: "Cafés · Québec", href: "/fr/custom-coffee-cafes-quebec-city" },
+    { label: "Hôtels · Québec", href: "/fr/custom-coffee-hotels-quebec-city" },
+    { label: "Gyms · Québec", href: "/fr/custom-coffee-gyms-quebec-city" },
+  ],
+  ctaClose: "La dernière impression que vous laissez à vos clients de Québec. Faites-la mémorable.",
+  cityPageHref: "/fr/custom-coffee-bags-quebec-city",
+};
+
 export default function Page() {
-  return <CityIndustryPage data={data} />;
+  return <CityIndustryPage data={data} frData={frData} />;
 }

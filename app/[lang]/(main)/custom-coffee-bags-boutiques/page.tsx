@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour boutiques | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Boutiques | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour boutiques et détaillants lifestyle. Un produit que vos clients utilisent chaque matin. Aucun minimum, design inclus." : "Custom branded coffee bags for boutiques and lifestyle retailers. A product your customers use every morning. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Boutiques | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for boutiques. A high-margin retail product your customers love. No minimum order, full design included. Boutiques across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-boutiques" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-boutiques`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-boutiques",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-boutiques",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Boutiques | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for boutiques. High margins, natural product fit, no minimum order.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-boutiques",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Boutiques" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-boutiques`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour boutiques" : "Custom Coffee Bags for Boutiques" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Boutiques | EZPZ Coffee",
-      description: "Custom branded coffee bags for boutiques. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-boutiques",
 };
 
-const BoutiquesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Boutiques",
+  eyebrow: "Café personnalisé pour les boutiques",
+  headline: "Un produit que vos clients de boutique utiliseront chaque matin.",
+  subheadline: "Le café de spécialité de marque s'intègre naturellement aux vêtements, produits de maison et articles lifestyle, et c'est l'un des articles à plus forte marge que vous pouvez mettre sur vos tablettes.",
+  intro: "Les meilleures boutiques vendent un art de vivre, pas seulement un produit. Tout ce qui se trouve sur les tablettes, des bougies aux céramiques en passant par les vêtements, raconte une histoire sur l'identité et les aspirations du client. Un sachet de café de spécialité personnalisé s'intègre parfaitement à cette histoire. Il est premium, beau, et il s'utilise chaque matin, ce qui signifie que votre marque est présente dans la cuisine de votre client chaque jour pendant deux à quatre semaines. Aucune autre catégorie de produit ne génère autant de points de contact quotidiens à ce prix. La vraie opportunité est à la caisse, en complément d'achat impulsif : un client qui vient pour un pull repart souvent avec un sachet de café. La marge est excellente et il n'y a aucun risque de stock puisqu'il n'y a pas de minimum de commande.",
+  whoOrders: [
+    { title: "Boutiques de vêtements", body: "Les boutiques de prêt-à-porter utilisent le café de marque pour augmenter le panier moyen et créer une marque lifestyle qui s'étend au-delà du vêtement. Il se vend naturellement à la caisse comme achat d'impulsion." },
+    { title: "Magasins de produits de maison et de style de vie", body: "Les magasins lifestyle en milieu urbain ajoutent le café de marque à côté des bougies, des céramiques et des livres. Il complète la sélection et génère une marge élevée." },
+    { title: "Boutiques cadeaux et papeterie", body: "Les boutiques cadeaux utilisent le café de marque comme article clé qui attire les acheteurs à la recherche de quelque chose de différent des produits standard." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre boutique", body: "Livré directement à votre adresse. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Marges de vente au détail élevées sans risque de stock minimum", body: "Un sachet qui coûte 8 $ se vend 24 à 28 $ au détail et vos clients acceptent ce prix sans hésitation. Commencez petit, vendez tout, réapprovisionnez." },
+    { n: "02", title: "Complément naturel à votre gamme de produits existante", body: "Le café est un produit lifestyle qui se marie naturellement avec les vêtements, les produits de maison et les accessoires. Il ne semble pas hors de propos : il semble incontournable." },
+    { n: "03", title: "Trafic répété et fidélité à la boutique", body: "Les clients qui aiment votre café reviennent pour en acheter d'autres. Cela génère des visites en boutique supplémentaires et des opportunités de ventes croisées que les produits standards ne créent pas." },
+    { n: "04", title: "Signal d'identité de marque que vos clients portent chez eux", body: "Un sachet de café de marque dans la cuisine de votre client est une présence quotidienne de votre boutique dans sa vie. Aucun autre article de vente au détail ne fait ça." },
+  ],
+  testimonial: {
+    quote: "Il se marie parfaitement avec nos bougies et nos produits de maison. Les clients en prennent un à chaque visite. Nous avons dû réapprovisionner trois fois en deux mois.",
+    author: "Stéphanie L.",
+    role: "Propriétaire, boutique lifestyle, Montréal",
+  },
+  canonicalPath: "/custom-coffee-bags-boutiques",
+};
+
+const BoutiquesPage = () => <IndustryPage data={data} frData={frData} />;
 export default BoutiquesPage;

@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour microbrasseries | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Breweries | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les microbrasseries. L'extension de marque naturelle que vos clients de bière artisanale attendent. Aucun minimum, design inclus." : "Custom branded coffee bags for breweries. The natural brand extension your craft beer customers are ready for. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Breweries | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for breweries. You nailed the craft beer — now nail the morning after. No minimum order, full design included. Breweries across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-breweries" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-breweries`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-breweries",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-breweries",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Breweries | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for breweries. Brand extension beyond beer, taproom retail, craft community crossover. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-breweries",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Breweries" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-breweries`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour microbrasseries" : "Custom Coffee Bags for Breweries" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Breweries | EZPZ Coffee",
-      description: "Custom branded coffee bags for breweries. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-breweries",
 };
 
-const BreweriesPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Microbrasseries",
+  eyebrow: "Café personnalisé pour les microbrasseries",
+  headline: "La microbrasserie et le café de spécialité. La même philosophie, la même communauté.",
+  subheadline: "Les mouvements de la bière artisanale et du café de spécialité sont frères. Les deux ont émergé comme réaction à la commoditisation industrielle. Les deux ont construit des communautés fidèles autour de la qualité, de la provenance et des histoires de production.",
+  intro: "Les mouvements de la bière artisanale et du café de spécialité sont frères. Les deux ont émergé comme réaction à la commoditisation industrielle. Les deux ont construit des communautés fidèles autour de la qualité, de la provenance et des histoires de production. Les deux attirent le même groupe démographique : urbain, éduqué, axé sur l'expérience et prêt à payer plus pour quelque chose d'authentique. Les habitués de votre brasserie qui lisent attentivement les notes de dégustation sur vos canettes et demandent d'où viennent vos houblons sont prédisposés à aimer le café de spécialité pour exactement les mêmes raisons. L'extension de marque ne nécessite aucune explication à votre public existant.",
+  whoOrders: [
+    { title: "Brasseries artisanales avec salles de dégustation", body: "Les brasseries avec taproom ajoutent le café de marque à leur présentoir de marchandisage et constatent qu'il se vend régulièrement, particulièrement les matins de week-end quand les habitués achètent pour la semaine à venir." },
+    { title: "Brasseries avec salles d'événements et marchés", body: "Les brasseries qui accueillent des événements, des marchés et des rassemblements communautaires ont un public captif prêt à acheter des produits de marque dans le moment de l'expérience." },
+    { title: "Brasseries de destination et expériences de tourisme brassicole", body: "Les brasseries de destination intègrent le café de marque dans leurs coffrets cadeaux et souvenirs premium, ciblant les touristes brassicoles qui veulent emporter quelque chose au-delà de la bière." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré à votre brasserie", body: "Livré directement à votre brasserie. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Extension de marque naturelle au-delà de la bière", body: "Les habitués de bière artisanale sont prédisposés à aimer le café de spécialité : les valeurs sont identiques. Le café de votre brasserie est une extension de marque qui ne nécessite aucune explication à votre public existant." },
+    { n: "02", title: "Commerce de détail en taproom sans risque de stock minimum", body: "Commencez avec une petite quantité et voyez si ça se vend. Les clients de brasseries artisanales achètent des produits de marque de leur brasserie préférée. Le café se vendra." },
+    { n: "03", title: "Expérience de petit-déjeuner et de matin pour compléter la bière", body: "Le café est le produit du matin que la bière ne peut pas être. En offrant les deux, votre brasserie couvre tous les moments de consommation de votre public et augmente les revenus par client fidèle." },
+    { n: "04", title: "Coffrets cadeaux et éditions spéciales saisonnières", body: "Combinez votre bière de saison et votre café de marque dans des coffrets cadeaux de Noël, d'automne ou d'anniversaire. Les fans de bière artisanale adorent les collections thématiques." },
+  ],
+  testimonial: {
+    quote: "Café artisanal, bière artisanale. Nos habitués ne voient pas de différence dans la philosophie. Ça s'est vendu lors du premier week-end où on l'a mis sur l'étagère des marchandises.",
+    author: "Brendan F.",
+    role: "Brasseur, microbrasserie artisanale, Colombie-Britannique",
+  },
+  canonicalPath: "/custom-coffee-bags-breweries",
+};
+
+const BreweriesPage = () => <IndustryPage data={data} frData={frData} />;
 export default BreweriesPage;

@@ -2,25 +2,28 @@ import type { Metadata } from "next";
 
 import IndustryPage, { IndustryPageData } from "../_components/IndustryPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr ? "Sacs de café personnalisés pour clubs de golf | Aucun minimum | EZPZ Coffee" : "Custom Coffee Bags for Golf Clubs | No Minimum | EZPZ Coffee";
+  const description = isFr ? "Sacs de café personnalisés pour les clubs de golf. Le cadeau pour membres qui impressionne même ceux qui ont tout. Aucun minimum, design inclus." : "Custom branded coffee bags for golf clubs. The member gift that impresses even those who have everything. No minimum order, full design included.";
   return {
-    title: "Custom Coffee Bags for Golf Clubs | No Minimum | EZPZ Coffee",
-    description:
-      "Custom branded coffee bags for golf clubs. The premium member gift for those who have everything. No minimum order, full design included. Golf clubs across Canada and the USA choose EZPZ.",
-    alternates: { canonical: "/en/custom-coffee-bags-golf-clubs" },
+    title, description,
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-golf-clubs`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-golf-clubs",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-golf-clubs",
+      },
+    },
     openGraph: {
-      title: "Custom Coffee Bags for Golf Clubs | No Minimum | EZPZ Coffee",
-      description: "Custom branded coffee bags for golf clubs. Premium member gifts, tournament prizes, pro shop retail. No minimum.",
-      type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-golf-clubs",
-      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags for Golf Clubs" }],
+      title, description, type: "website",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-golf-clubs`,
+      images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: isFr ? "Sacs de café personnalisés pour clubs de golf" : "Custom Coffee Bags for Golf Clubs" }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: "Custom Coffee Bags for Golf Clubs | EZPZ Coffee",
-      description: "Custom branded coffee bags for golf clubs. No minimum order. Full design included.",
-      images: ["/assets/banner-01.jpg"],
-    },
+    twitter: { card: "summary_large_image", title, description, images: ["/assets/banner-01.jpg"] },
   };
 }
 
@@ -55,5 +58,37 @@ const data: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-golf-clubs",
 };
 
-const GolfClubsPage = () => <IndustryPage data={data} />;
+
+const frData: IndustryPageData = {
+  industry: "Clubs de golf",
+  eyebrow: "Café personnalisé pour les clubs de golf",
+  headline: "Le cadeau qui impressionne les membres de club de golf. Même ceux qui ont tout.",
+  subheadline: "Les membres de club de golf sont parmi les personnes les plus difficiles à satisfaire avec un cadeau. Ils ont tout, et ils ont des opinions fortes sur la qualité. Les produits de marque génériques ne les impressionnent pas.",
+  intro: "Les membres de club de golf sont parmi les personnes les plus difficiles à satisfaire avec un cadeau. Ils ont tout, et ils ont des opinions fortes sur la qualité. Les produits de marque génériques, les casquettes, les serviettes, les marqueurs de balle, sont perçus comme du matériel promotionnel. Ce qui les touche, c'est la qualité authentique présentée de façon réfléchie. Un café de spécialité traçable, torréfié frais à la commande, dans un emballage premium avec la marque et le crest de votre club, est un cadeau qui répond aux attentes élevées de vos membres. Il est consommable, donc renouvelable. Il est quotidien, donc mémorable. Et il est au bon prix pour un club qui veut signaler la qualité sans sembler extravagant.",
+  whoOrders: [
+    { title: "Clubs de golf privés", body: "Les clubs privés utilisent le café de marque comme cadeau d'appréciation pour les membres, trousse de bienvenue pour les nouveaux membres et cadeau des Fêtes qui reflète l'engagement du club envers la qualité et l'attention aux détails." },
+    { title: "Resorts de golf et parcours de destination", body: "Les resorts de golf incluent le café de marque dans les forfaits de chambre pour les clients qui restent sur place, créant un point de contact premium qui prolonge l'expérience du resort dès le matin." },
+    { title: "Clubs semi-privés et tournois de golf", body: "Les clubs semi-privés utilisent le café de marque comme prix de tournoi, cadeau de parrainage et article de pro-shop qui attire les golfeurs qui apprécient les produits de qualité artisanale." },
+  ],
+  howItWorks: [
+    { n: "01", title: "Créez votre sachet en ligne", body: "Téléchargez votre logo et vos couleurs de marque. Notre outil en ligne crée un sachet professionnel qui correspond à vos standards de marque sans designer ni fichiers prêts à imprimer." },
+    { n: "02", title: "Choisissez votre café", body: "Sélectionnez parmi nos origines de spécialité traçables : torréfaction légère, médium ou foncée, d'Éthiopie, de Colombie, du Brésil et plus. Nous vous aidons à choisir si nécessaire." },
+    { n: "03", title: "Nous torréfions frais à Montréal", body: "Votre café est torréfié à la commande à la Canadian Roasting Society à Montréal et emballé dans votre sachet personnalisé. Aucun minimum requis." },
+    { n: "04", title: "Livré au pro-shop ou à votre bureau du club", body: "Livré au pro-shop ou au bureau de votre club. Canada : 3 à 10 jours ouvrables. États-Unis : 7 à 14 jours ouvrables. Entièrement suivi." },
+  ],
+  benefits: [
+    { n: "01", title: "Cadeau premium pour membres au bon prix", body: "Un sachet de café de spécialité est premium sans être extravagant. Il est au prix idéal pour un club qui veut signaler la qualité sans soulever de questions sur les cotisations." },
+    { n: "02", title: "Prix de tournoi et de compétition mémorable", body: "Un sachet de café de marque avec le logo du tournoi est plus mémorable que la plupart des prix traditionnels : il s'utilise pendant des semaines et rappelle la victoire à chaque tasse." },
+    { n: "03", title: "Ventes dans le pro-shop sans risque de stock minimum", body: "Vendez des sacs dans votre pro-shop aux membres et aux visiteurs. Commencez avec 24 sacs et réapprovisionnez selon la demande. Aucun minimum signifie aucun risque." },
+    { n: "04", title: "Coffrets cadeaux pour les sponsors et les commanditaires", body: "Incluez le café de marque dans les coffrets de sponsors de tournois pour créer une expérience de parrainage premium qui dépasse les attentes habituelles des commanditaires." },
+  ],
+  testimonial: {
+    quote: "Nos membres ont adoré. Plusieurs ont demandé s'ils pouvaient commander des sacs supplémentaires à offrir comme cadeaux. Donc maintenant on les vend dans le pro-shop et ils se vendent régulièrement.",
+    author: "Robert M.",
+    role: "Directeur, club de golf privé, Ontario",
+  },
+  canonicalPath: "/custom-coffee-bags-golf-clubs",
+};
+
+const GolfClubsPage = () => <IndustryPage data={data} frData={frData} />;
 export default GolfClubsPage;
