@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Private Label Coffee Canada: The Complete Guide for 2026 | EZPZ Coffee",
   description:
     "Everything Canadian businesses need to know about private label coffee in 2026. What it is, how it works, how much it costs, and how to launch your own branded coffee with zero minimum order.",
-  alternates: { canonical: "/en/blog/private-label-coffee-canada-complete-guide" },
+  alternates: {
+      canonical: `/${lang}/blog/private-label-coffee-canada-complete-guide`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/private-label-coffee-canada-complete-guide",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/private-label-coffee-canada-complete-guide",
+      },
+    },
   openGraph: {
     title: "Private Label Coffee Canada: The Complete Guide for 2026 | EZPZ Coffee",
     description:
       "Everything Canadian businesses need to know about private label coffee in 2026. What it is, how it works, how much it costs, and how to launch your own branded coffee with zero minimum order.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/private-label-coffee-canada-complete-guide",
+    url: `https://www.ezpz.coffee/${lang}/blog/private-label-coffee-canada-complete-guide`,
     images: [
       {
         url: "/assets/banner-01.jpg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -138,7 +149,9 @@ const RELATED_SLUGS = [
 ];
 const RELATED_POSTS = BLOG_POSTS.filter((p) => RELATED_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
@@ -676,7 +689,7 @@ const Page = () => (
           {RELATED_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -703,6 +716,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

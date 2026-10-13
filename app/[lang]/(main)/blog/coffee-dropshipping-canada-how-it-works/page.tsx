@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Coffee Dropshipping in Canada: How to Launch a Coffee Brand With Zero Inventory | EZPZ",
   description:
     "Learn exactly how coffee dropshipping works in Canada. How EZPZ roasts, packs, and ships custom branded coffee directly to your customers — with zero inventory, zero minimum, and design included.",
-  alternates: { canonical: "/en/blog/coffee-dropshipping-canada-how-it-works" },
+  alternates: {
+      canonical: `/${lang}/blog/coffee-dropshipping-canada-how-it-works`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/coffee-dropshipping-canada-how-it-works",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/coffee-dropshipping-canada-how-it-works",
+      },
+    },
   openGraph: {
     title: "Coffee Dropshipping in Canada: How to Launch a Coffee Brand With Zero Inventory | EZPZ",
     description:
       "Learn exactly how coffee dropshipping works in Canada. How EZPZ roasts, packs, and ships custom branded coffee directly to your customers — with zero inventory, zero minimum, and design included.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/coffee-dropshipping-canada-how-it-works",
+    url: `https://www.ezpz.coffee/${lang}/blog/coffee-dropshipping-canada-how-it-works`,
     images: [
       {
         url: "/assets/blog/coffee-dropshipping-how-it-works.svg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/coffee-dropshipping-how-it-works.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -101,7 +112,9 @@ const MORE_SLUGS = [
 ];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script
       type="application/ld+json"
@@ -378,7 +391,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -401,6 +414,5 @@ const Page = () => (
       </div>
     </section>
   </div>
-);
-
-export default Page;
+  );
+}

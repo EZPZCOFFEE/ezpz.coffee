@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Best Coffee Shops Montreal & Quebec 2026 | The Complete Guide | EZPZ Coffee",
   description:
     "Looking for the best coffee shops in Montreal? We cover every great café in Montreal and across Quebec — 50+ spots including 4 world-ranked cafés. Your ultimate 2026 guide.",
-  alternates: { canonical: "/en/blog/best-coffee-shops-quebec-complete-guide" },
+  alternates: {
+      canonical: `/${lang}/blog/best-coffee-shops-quebec-complete-guide`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-shops-quebec-complete-guide",
+      },
+    },
   openGraph: {
     title: "Best Coffee Shops Montreal & Quebec 2026 | 50+ Cafés Reviewed | EZPZ",
     description:
       "The most complete guide to the best coffee shops in Montreal and Quebec. 50+ cafés including 4 world-ranked spots — from Mile End to Quebec City.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
+    url: `https://www.ezpz.coffee/${lang}/blog/best-coffee-shops-quebec-complete-guide`,
     images: [{ url: "/assets/blog/quebec-coffee-bible.svg", width: 800, height: 420, alt: "Best Coffee Shops Montreal & Quebec 2026 — The Complete Guide" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/quebec-coffee-bible.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -119,7 +130,9 @@ const faqJsonLd = {
 const MORE_SLUGS = ["best-coffee-shops-montreal-2026", "best-coffee-roasters-montreal-2026", "how-to-launch-coffee-brand-canada-2026"];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -207,9 +220,9 @@ const Page = () => (
           <p className={styles.p}>
             This guide is the most comprehensive map of great coffee in Quebec ever written. We have
             covered Montreal in other posts — the{" "}
-            <Link href="/en/blog/best-coffee-shops-montreal-2026" className={styles.inlineLink}>15 best coffee shops</Link>{" "}
+            <Link href={`/${lang}/blog/best-coffee-shops-montreal-2026`} className={styles.inlineLink}>15 best coffee shops</Link>{" "}
             and the{" "}
-            <Link href="/en/blog/best-coffee-roasters-montreal-2026" className={styles.inlineLink}>10 best roasters</Link>.
+            <Link href={`/${lang}/blog/best-coffee-roasters-montreal-2026`} className={styles.inlineLink}>10 best roasters</Link>.
             This is the full picture. Every city. Every region. Every cup worth going out of your way for.
           </p>
           <p className={styles.p}>
@@ -848,7 +861,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -868,6 +881,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

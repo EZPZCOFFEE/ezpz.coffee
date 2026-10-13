@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "15 Best Coffee Shops in Montreal 2026 | Ultimate Guide | EZPZ Coffee",
   description:
     "Discover the 15 best coffee shops in Montreal in 2026. From world-ranked specialty cafés to hidden neighbourhood gems — your ultimate Montreal coffee guide from the experts at EZPZ Coffee.",
-  alternates: { canonical: "/en/blog/best-coffee-shops-montreal-2026" },
+  alternates: {
+      canonical: `/${lang}/blog/best-coffee-shops-montreal-2026`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/best-coffee-shops-montreal-2026",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-shops-montreal-2026",
+      },
+    },
   openGraph: {
     title: "15 Best Coffee Shops in Montreal 2026 | Ultimate Guide | EZPZ Coffee",
     description:
       "Discover the 15 best coffee shops in Montreal in 2026. From world-ranked specialty cafés to hidden neighbourhood gems — your ultimate Montreal coffee guide from the experts at EZPZ Coffee.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/best-coffee-shops-montreal-2026",
+    url: `https://www.ezpz.coffee/${lang}/blog/best-coffee-shops-montreal-2026`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Best Coffee Shops in Montreal 2026" }],
   },
   twitter: {
@@ -26,6 +36,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -99,7 +110,9 @@ const jsonLd = {
 
 const OTHER_POSTS = BLOG_POSTS.filter((p) => p.slug !== "best-coffee-shops-montreal-2026" && p.published);
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -422,7 +435,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={`/en/blog/${post.slug}`}
+              href={`/${lang}/blog/${post.slug}`}
               className={styles.moreCard}
             >
               <div className={styles.moreCardImage}>
@@ -448,6 +461,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

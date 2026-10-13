@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "How to Launch Your Own Coffee Brand in Canada in 2026 | Montreal | EZPZ Coffee",
   description:
     "A complete step-by-step guide to creating your own white label coffee brand in Canada with no minimum order — from choosing your beans to designing your bag. Written by EZPZ Coffee, Montreal's custom coffee experts.",
-  alternates: { canonical: "/en/blog/how-to-launch-coffee-brand-canada-2026" },
+  alternates: {
+      canonical: `/${lang}/blog/how-to-launch-coffee-brand-canada-2026`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/how-to-launch-coffee-brand-canada-2026",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/how-to-launch-coffee-brand-canada-2026",
+      },
+    },
   openGraph: {
     title: "How to Launch Your Own Coffee Brand in Canada in 2026 | EZPZ Coffee",
     description:
       "A complete step-by-step guide to creating your own white label coffee brand in Canada with no minimum order — from choosing your beans to designing your bag.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/how-to-launch-coffee-brand-canada-2026",
+    url: `https://www.ezpz.coffee/${lang}/blog/how-to-launch-coffee-brand-canada-2026`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "How to Launch Your Own Coffee Brand in Canada" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -45,7 +56,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "how-to-launch-coffee-brand-canada-2026" && p.published
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -230,7 +243,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={`/en/blog/${post.slug}`}
+              href={`/${lang}/blog/${post.slug}`}
               className={styles.moreCard}
             >
               <div className={styles.moreCardImage}>
@@ -256,6 +269,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

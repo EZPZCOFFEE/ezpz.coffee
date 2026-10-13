@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "What Makes Specialty Coffee Traceable? Montreal Coffee Experts Explain | EZPZ",
   description:
     "Learn what farm-to-bag traceability means in the specialty coffee world, why it matters for your Montreal or Toronto brand, and how EZPZ Coffee guarantees full transparency in every bag.",
-  alternates: { canonical: "/en/blog/what-makes-specialty-coffee-traceable" },
+  alternates: {
+      canonical: `/${lang}/blog/what-makes-specialty-coffee-traceable`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/what-makes-specialty-coffee-traceable",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/what-makes-specialty-coffee-traceable",
+      },
+    },
   openGraph: {
     title: "What Makes Specialty Coffee Traceable? | EZPZ Coffee",
     description:
       "Learn what farm-to-bag traceability means in the specialty coffee world, why it matters for your Montreal or Toronto brand, and how EZPZ Coffee guarantees full transparency in every bag.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/what-makes-specialty-coffee-traceable",
+    url: `https://www.ezpz.coffee/${lang}/blog/what-makes-specialty-coffee-traceable`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "What Makes Specialty Coffee Traceable?" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -45,7 +56,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "what-makes-specialty-coffee-traceable" && p.published
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -226,7 +239,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={`/en/blog/${post.slug}`}
+              href={`/${lang}/blog/${post.slug}`}
               className={styles.moreCard}
             >
               <div className={styles.moreCardImage}>
@@ -252,6 +265,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

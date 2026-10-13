@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "How to Choose a Private Label Coffee Supplier in Canada (2026 Guide) | EZPZ Coffee",
   description:
     "Choosing a private label coffee supplier in Canada? Here are the 10 questions to ask before you commit, from minimums and design to packaging, fulfillment, and hidden costs.",
-  alternates: { canonical: "/en/blog/how-to-choose-private-label-coffee-supplier-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/how-to-choose-private-label-coffee-supplier-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/how-to-choose-private-label-coffee-supplier-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/how-to-choose-private-label-coffee-supplier-canada",
+      },
+    },
   openGraph: {
     title: "How to Choose a Private Label Coffee Supplier in Canada (2026 Guide) | EZPZ Coffee",
     description:
       "Choosing a private label coffee supplier in Canada? Here are the 10 questions to ask before you commit, from minimums and design to packaging, fulfillment, and hidden costs.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/how-to-choose-private-label-coffee-supplier-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/how-to-choose-private-label-coffee-supplier-canada`,
     images: [{ url: "/assets/blog/how-to-choose-private-label-supplier.svg", width: 800, height: 420, alt: "How to Choose a Private Label Coffee Supplier in Canada — EZPZ Coffee" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/how-to-choose-private-label-supplier.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -89,7 +100,8 @@ const MORE_SLUGS = [
 
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const HowToChoprivatelabelPage = () => {
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
   return (
     <div className={styles.page}>
       <script
@@ -276,7 +288,7 @@ const HowToChoprivatelabelPage = () => {
           <h2 className={styles.moreTitle}>More from the blog</h2>
           <div className={styles.moreGrid}>
             {morePosts.map((post) => (
-              <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+              <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
                 <div className={styles.moreCardImage}>
                   <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
                 </div>
@@ -296,6 +308,4 @@ const HowToChoprivatelabelPage = () => {
       </section>
     </div>
   );
-};
-
-export default HowToChoprivatelabelPage;
+}

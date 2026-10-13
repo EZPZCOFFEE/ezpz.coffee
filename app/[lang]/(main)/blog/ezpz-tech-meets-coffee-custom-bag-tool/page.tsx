@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "The Sticker Mule of Coffee: How EZPZ Brought Tech to Custom Coffee Bags | EZPZ",
   description:
     "Design your own custom coffee bag online in minutes — no designer, no minimums, no back-and-forth. Here's how EZPZ brought the ease of Sticker Mule, MOO, and Vistaprint to specialty coffee.",
-  alternates: { canonical: "/en/blog/ezpz-tech-meets-coffee-custom-bag-tool" },
+  alternates: {
+      canonical: `/${lang}/blog/ezpz-tech-meets-coffee-custom-bag-tool`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/ezpz-tech-meets-coffee-custom-bag-tool",
+      },
+    },
   openGraph: {
     title: "The Sticker Mule of Coffee: How EZPZ Brought Tech to Custom Coffee Bags",
     description:
       "Design your own custom coffee bag online in minutes — no designer, no minimums, no back-and-forth. Here's how EZPZ brought the ease of Sticker Mule, MOO, and Vistaprint to specialty coffee.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
+    url: `https://www.ezpz.coffee/${lang}/blog/ezpz-tech-meets-coffee-custom-bag-tool`,
     images: [
       {
         url: "/assets/blog/ezpz-tech-meets-coffee.svg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/ezpz-tech-meets-coffee.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -94,7 +105,9 @@ const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
 const ACCENT = "#c43e14";
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script
       type="application/ld+json"
@@ -403,7 +416,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img
                   src={post.image}
@@ -434,6 +447,5 @@ const Page = () => (
       </div>
     </section>
   </div>
-);
-
-export default Page;
+  );
+}

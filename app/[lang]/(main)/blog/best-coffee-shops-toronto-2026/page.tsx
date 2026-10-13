@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "The 15 Best Coffee Shops in Toronto in 2026 | EZPZ Coffee Guide",
   description:
     "Discover the best coffee shops in Toronto in 2026. From world-class specialty cafés in Kensington to hidden gems in the Annex — your complete Toronto coffee guide.",
-  alternates: { canonical: "/en/blog/best-coffee-shops-toronto-2026" },
+  alternates: {
+      canonical: `/${lang}/blog/best-coffee-shops-toronto-2026`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/best-coffee-shops-toronto-2026",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-shops-toronto-2026",
+      },
+    },
   openGraph: {
     title: "The 15 Best Coffee Shops in Toronto in 2026 | EZPZ Coffee Guide",
     description:
       "Discover the best coffee shops in Toronto in 2026. From world-class specialty cafés in Kensington to hidden gems in the Annex — your complete Toronto coffee guide.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/best-coffee-shops-toronto-2026",
+    url: `https://www.ezpz.coffee/${lang}/blog/best-coffee-shops-toronto-2026`,
     images: [{ url: "/assets/blog/toronto-coffee.svg", width: 800, height: 420, alt: "The 15 Best Coffee Shops in Toronto in 2026" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/toronto-coffee.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -142,7 +153,9 @@ const jsonLd = {
 const MORE_SLUGS = ["best-coffee-shops-montreal-2026", "best-coffee-roasters-montreal-2026", "how-to-launch-coffee-brand-canada-2026"];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -460,7 +473,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -480,6 +493,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

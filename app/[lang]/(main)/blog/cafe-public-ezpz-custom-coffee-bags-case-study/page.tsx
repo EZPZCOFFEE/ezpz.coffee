@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "How Café Public Launched Their Own Branded Coffee Bag With EZPZ | Case Study",
   description:
     "Café Public partnered with EZPZ Coffee to create the Mélange Café Public — a custom branded specialty coffee bag roasted in Montreal. Here is the full story.",
-  alternates: { canonical: "/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study" },
+  alternates: {
+      canonical: `/${lang}/blog/cafe-public-ezpz-custom-coffee-bags-case-study`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
+      },
+    },
   openGraph: {
     title: "How Café Public Launched Their Own Branded Coffee Bag With EZPZ | Case Study",
     description:
       "Café Public partnered with EZPZ Coffee to create the Mélange Café Public — a custom branded specialty coffee bag roasted in Montreal. Here is the full story.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
+    url: `https://www.ezpz.coffee/${lang}/blog/cafe-public-ezpz-custom-coffee-bags-case-study`,
     images: [
       {
         url: "/assets/blog/cafe-public-case-study.webp",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/cafe-public-case-study.webp"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -75,7 +86,9 @@ const MORE_SLUGS = [
 ];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script
       type="application/ld+json"
@@ -413,7 +426,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -436,6 +449,5 @@ const Page = () => (
       </div>
     </section>
   </div>
-);
-
-export default Page;
+  );
+}

@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "How to Prepare Custom Coffee Gifts for Christmas (2026 Planning Guide) | EZPZ Coffee",
   description:
     "Planning custom branded coffee for Christmas gifts? Here's your timeline, quantities, design, and ordering checklist to get holiday coffee gifts done right, and on time.",
-  alternates: { canonical: "/en/blog/christmas-coffee-gifts-preparation-guide" },
+  alternates: {
+      canonical: `/${lang}/blog/christmas-coffee-gifts-preparation-guide`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/christmas-coffee-gifts-preparation-guide",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/christmas-coffee-gifts-preparation-guide",
+      },
+    },
   openGraph: {
     title: "How to Prepare Custom Coffee Gifts for Christmas (2026 Planning Guide) | EZPZ Coffee",
     description:
       "Planning custom branded coffee for Christmas gifts? Here's your timeline, quantities, design, and ordering checklist to get holiday coffee gifts done right, and on time.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/christmas-coffee-gifts-preparation-guide",
+    url: `https://www.ezpz.coffee/${lang}/blog/christmas-coffee-gifts-preparation-guide`,
     images: [
       {
         url: "/assets/blog/christmas-coffee-gifts.svg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/christmas-coffee-gifts.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -100,7 +111,9 @@ const MORE_SLUGS = [
 ];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script
       type="application/ld+json"
@@ -318,7 +331,7 @@ const Page = () => (
         <h2 className={styles.h2}>The Simple Path to Stress-Free Christmas Gifts</h2>
         <p className={styles.p}>
           Here&apos;s the whole thing in a nutshell: decide early, choose a quality coffee,{" "}
-          <Link href="/en/blog/best-corporate-christmas-gift-custom-coffee-canada" className={styles.inlineLink}>
+          <Link href={`/${lang}/blog/best-corporate-christmas-gift-custom-coffee-canada`} className={styles.inlineLink}>
             design a bag worth gifting
           </Link>
           , order with buffer time, and sort your distribution. Do that, and your holiday gifts
@@ -381,7 +394,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -404,6 +417,5 @@ const Page = () => (
       </div>
     </section>
   </div>
-);
-
-export default Page;
+  );
+}

@@ -5,15 +5,25 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Custom Coffee Bags vs Custom Mugs | Which Is the Better Gift? | EZPZ Coffee",
   description: "Thinking about custom mugs for your next corporate gift or brand merchandise? Here is why custom specialty coffee bags are a smarter, more memorable, and higher impact choice.",
-  alternates: { canonical: "/en/blog/custom-coffee-bags-vs-custom-mugs" },
+  alternates: {
+      canonical: `/${lang}/blog/custom-coffee-bags-vs-custom-mugs`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-vs-custom-mugs",
+      },
+    },
   openGraph: {
     title: "Custom Coffee Bags vs Custom Mugs | Which Is the Better Gift? | EZPZ Coffee",
     description: "Thinking about custom mugs for your next corporate gift or brand merchandise? Here is why custom specialty coffee bags are a smarter, more memorable, and higher impact choice.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs",
+    url: `https://www.ezpz.coffee/${lang}/blog/custom-coffee-bags-vs-custom-mugs`,
     images: [{ url: "/assets/blog/coffee-bag-vs-mug.svg", width: 1200, height: 630, alt: "Custom Coffee Bags vs Custom Mugs" }],
   },
   twitter: {
@@ -23,6 +33,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/coffee-bag-vs-mug.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -45,7 +56,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "custom-coffee-bags-vs-custom-mugs"
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -304,7 +317,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -331,6 +344,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

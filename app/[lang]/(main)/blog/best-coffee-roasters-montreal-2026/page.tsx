@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "The 10 Best Coffee Roasters in Montreal in 2026 | EZPZ Coffee",
   description:
     "From world-ranked micro-roasters to beloved neighbourhood institutions — the complete guide to Montreal's best specialty coffee roasters in 2026, by the team at EZPZ Coffee.",
-  alternates: { canonical: "/en/blog/best-coffee-roasters-montreal-2026" },
+  alternates: {
+      canonical: `/${lang}/blog/best-coffee-roasters-montreal-2026`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/best-coffee-roasters-montreal-2026",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-roasters-montreal-2026",
+      },
+    },
   openGraph: {
     title: "The 10 Best Coffee Roasters in Montreal in 2026 | EZPZ Coffee",
     description:
       "From world-ranked micro-roasters to beloved neighbourhood institutions — your complete guide to the roasters putting Montreal on the global specialty coffee map.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/best-coffee-roasters-montreal-2026",
+    url: `https://www.ezpz.coffee/${lang}/blog/best-coffee-roasters-montreal-2026`,
     images: [
       {
         url: "/assets/blog/montreal-roasters.svg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/montreal-roasters.svg"],
   },
 };
+}
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -176,7 +187,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "best-coffee-roasters-montreal-2026"
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -367,7 +380,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -394,6 +407,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

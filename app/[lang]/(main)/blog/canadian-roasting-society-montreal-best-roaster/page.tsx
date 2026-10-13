@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Canadian Roasting Society: Why Montreal's Best Coffee Is Roasted Here | EZPZ",
   description:
     "Canadian Roasting Society at 3780 Rue Saint-Patrick in Montreal is home to Canada's most exciting coffee roasting community — and where every EZPZ Coffee bag is roasted fresh.",
-  alternates: { canonical: "/en/blog/canadian-roasting-society-montreal-best-roaster" },
+  alternates: {
+      canonical: `/${lang}/blog/canadian-roasting-society-montreal-best-roaster`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/canadian-roasting-society-montreal-best-roaster",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/canadian-roasting-society-montreal-best-roaster",
+      },
+    },
   openGraph: {
     title: "Canadian Roasting Society: Why Montreal's Best Coffee Is Roasted Here | EZPZ",
     description:
       "Canadian Roasting Society at 3780 Rue Saint-Patrick in Montreal is home to Canada's most exciting coffee roasting community — and where every EZPZ Coffee bag is roasted fresh.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/canadian-roasting-society-montreal-best-roaster",
+    url: `https://www.ezpz.coffee/${lang}/blog/canadian-roasting-society-montreal-best-roaster`,
     images: [{ url: "/assets/blog/canadian-roasting-society.svg", width: 800, height: 420, alt: "Canadian Roasting Society — The Facility Behind Montreal's Best Coffee" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/canadian-roasting-society.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -76,7 +87,9 @@ const MORE_SLUGS = [
 ];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -379,7 +392,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -399,6 +412,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

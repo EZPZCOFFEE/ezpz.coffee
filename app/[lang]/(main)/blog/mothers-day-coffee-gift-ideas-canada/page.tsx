@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "The Best Mother's Day Gift for Coffee Lovers in Canada | EZPZ Coffee",
   description:
     "Looking for a Mother's Day gift that's personal, unique, and actually useful? Discover why a custom coffee bag is the gift every Canadian mom will love in 2026.",
-  alternates: { canonical: "/en/blog/mothers-day-coffee-gift-ideas-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/mothers-day-coffee-gift-ideas-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/mothers-day-coffee-gift-ideas-canada",
+      },
+    },
   openGraph: {
     title: "The Best Mother's Day Gift for Coffee Lovers in Canada | EZPZ Coffee",
     description:
       "Looking for a Mother's Day gift that's personal, unique, and actually useful? Discover why a custom coffee bag is the gift every Canadian mom will love in 2026.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/mothers-day-coffee-gift-ideas-canada`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Best Mother's Day Gift for Coffee Lovers" }],
   },
   twitter: {
@@ -26,6 +36,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -48,7 +59,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "mothers-day-coffee-gift-ideas-canada"
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -263,7 +276,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -290,6 +303,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

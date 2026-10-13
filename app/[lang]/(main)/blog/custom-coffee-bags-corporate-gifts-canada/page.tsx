@@ -6,15 +6,25 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "./blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Custom Coffee Bags as Corporate Gifts: The Ultimate Guide for Canadian Businesses | EZPZ Coffee",
   description: "Looking for a unique corporate gift your clients will actually love? Discover why custom branded coffee bags are the best gift for clients, employees, and events in Canada.",
-  alternates: { canonical: "/en/blog/custom-coffee-bags-corporate-gifts-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/custom-coffee-bags-corporate-gifts-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-corporate-gifts-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-corporate-gifts-canada",
+      },
+    },
   openGraph: {
     title: "Custom Coffee Bags as Corporate Gifts | EZPZ Coffee",
     description: "Looking for a unique corporate gift your clients will actually love? Discover why custom branded coffee bags are the best gift for clients, employees, and events in Canada.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-corporate-gifts-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/custom-coffee-bags-corporate-gifts-canada`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags as Corporate Gifts" }],
   },
   twitter: {
@@ -24,6 +34,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -46,7 +57,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "custom-coffee-bags-corporate-gifts-canada"
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -322,7 +335,7 @@ const Page = () => (
           {OTHER_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -349,6 +362,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

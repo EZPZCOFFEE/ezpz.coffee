@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Custom Coffee Bags vs Custom Mugs Canada | Why Bags Win Every Time | EZPZ",
   description:
     "Comparing custom mugs from VistaPrint, Printful, Printify, and Printbest to custom coffee bags from EZPZ? Here is the honest breakdown of why Canadian brands are ditching mugs for coffee bags.",
-  alternates: { canonical: "/en/blog/custom-coffee-bags-vs-custom-mugs-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/custom-coffee-bags-vs-custom-mugs-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-vs-custom-mugs-canada",
+      },
+    },
   openGraph: {
     title: "Custom Coffee Bags vs Custom Mugs Canada | Why Bags Win Every Time | EZPZ",
     description:
       "Comparing custom mugs from VistaPrint, Printful, Printify, and Printbest to custom coffee bags from EZPZ? Here is the honest breakdown of why Canadian brands are ditching mugs for coffee bags.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/custom-coffee-bags-vs-custom-mugs-canada`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags vs Custom Mugs Canada | EZPZ Coffee" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -81,7 +92,9 @@ const RELATED_SLUGS = [
 ];
 const RELATED_POSTS = BLOG_POSTS.filter((p) => RELATED_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
@@ -435,7 +448,7 @@ const Page = () => (
           {RELATED_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -462,6 +475,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

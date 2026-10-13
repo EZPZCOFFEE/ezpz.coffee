@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "Custom Coffee Bags for Airbnb Hosts in Canada | EZPZ Coffee",
   description:
     "One small detail that earns five-star reviews. Discover why Canadian Airbnb hosts are adding custom branded coffee to their welcome experience — with no minimum order.",
-  alternates: { canonical: "/en/blog/custom-coffee-bags-airbnb-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/custom-coffee-bags-airbnb-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-airbnb-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-airbnb-canada",
+      },
+    },
   openGraph: {
     title: "Custom Coffee Bags for Airbnb Hosts in Canada | EZPZ Coffee",
     description:
       "One small detail that earns five-star reviews. Custom branded coffee for Airbnb hosts across Canada, no minimum order.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-airbnb-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/custom-coffee-bags-airbnb-canada`,
     images: [{ url: "/assets/blog/airbnb-coffee.svg", width: 800, height: 420, alt: "Custom Coffee Bags for Airbnb Hosts" }],
   },
   twitter: {
@@ -25,6 +35,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/airbnb-coffee.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -47,7 +58,9 @@ const OTHER_POSTS = BLOG_POSTS.filter(
   (p) => p.slug !== "custom-coffee-bags-airbnb-canada" && p.published
 );
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script
@@ -232,7 +245,7 @@ const Page = () => (
           {OTHER_POSTS.slice(0, 3).map((post) => (
             <Link
               key={post.slug}
-              href={`/en/blog/${post.slug}`}
+              href={`/${lang}/blog/${post.slug}`}
               className={styles.moreCard}
             >
               <div className={styles.moreCardImage}>
@@ -258,6 +271,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

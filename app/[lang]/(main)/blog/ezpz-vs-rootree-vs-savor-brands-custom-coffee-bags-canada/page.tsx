@@ -7,17 +7,27 @@ import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module
 
 const SLUG = "ezpz-vs-rootree-vs-savor-brands-custom-coffee-bags-canada";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "EZPZ vs Rootree vs Savor Brands: Custom Coffee Bags Canada Compared 2026",
   description:
     "Comparing custom coffee bag options in Canada? Here is the honest breakdown of EZPZ Coffee vs Rootree vs Savor Brands — and why Canadian brands are choosing EZPZ.",
-  alternates: { canonical: `/en/blog/${SLUG}` },
+  alternates: {
+      canonical: `/${lang}/blog/${SLUG}`,
+      languages: {
+        en: `https://www.ezpz.coffee/en/blog/${SLUG}`,
+        "fr-CA": `https://www.ezpz.coffee/fr/blog/${SLUG}`,
+      },
+    },
   openGraph: {
     title: "EZPZ vs Rootree vs Savor Brands: Custom Coffee Bags Canada Compared 2026",
     description:
       "Comparing custom coffee bag options in Canada? Here is the honest breakdown of EZPZ Coffee vs Rootree vs Savor Brands — and why Canadian brands are choosing EZPZ.",
     type: "article",
-    url: `https://www.ezpz.coffee/en/blog/${SLUG}`,
+    url: `https://www.ezpz.coffee/${lang}/blog/${SLUG}`,
     images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "EZPZ vs Rootree vs Savor Brands: Custom Coffee Bags Canada" }],
   },
   twitter: {
@@ -27,6 +37,7 @@ export const metadata: Metadata = {
     images: ["/assets/banner-01.jpg"],
   },
 };
+}
 
 const articleJsonLd = {
   "@context": "https://schema.org",
@@ -42,7 +53,7 @@ const articleJsonLd = {
     url: "https://www.ezpz.coffee",
     logo: { "@type": "ImageObject", url: "https://www.ezpz.coffee/logo.svg" },
   },
-  url: `https://www.ezpz.coffee/en/blog/${SLUG}`,
+  url: "https://www.ezpz.coffee/en/blog/${SLUG}",
   image: "https://www.ezpz.coffee/assets/blog/ezpz-vs-rootree-vs-savor-comparison.svg",
 };
 
@@ -115,7 +126,9 @@ const COMPARISON_ROWS: [string, string, string, string][] = [
   ["Ships to USA", "✓ Yes", "Limited", "Limited"],
 ];
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
@@ -380,7 +393,7 @@ const Page = () => (
           {RELATED_POSTS.map((post) => (
             <Link
               key={post.slug}
-              href={post.published ? `/en/blog/${post.slug}` : "#"}
+              href={post.published ? `/${lang}/blog/${post.slug}` : "#"}
               className={styles.moreCard}
               aria-disabled={!post.published}
             >
@@ -407,6 +420,5 @@ const Page = () => (
     </section>
 
   </div>
-);
-
-export default Page;
+  );
+}

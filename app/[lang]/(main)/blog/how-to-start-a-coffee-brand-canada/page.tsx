@@ -5,17 +5,27 @@ import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { BLOG_POSTS } from "../data";
 import styles from "../custom-coffee-bags-corporate-gifts-canada/blogPost.module.scss";
 
-export const metadata: Metadata = {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return {
   title: "How to Start a Coffee Brand in Canada: The Complete 2026 Guide | EZPZ Coffee",
   description:
     "Thinking of starting a coffee brand in Canada? This complete guide covers everything: from concept and sourcing to packaging, pricing, dropshipping, and launching, with zero inventory.",
-  alternates: { canonical: "/en/blog/how-to-start-a-coffee-brand-canada" },
+  alternates: {
+      canonical: `/${lang}/blog/how-to-start-a-coffee-brand-canada`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/blog/how-to-start-a-coffee-brand-canada",
+        "fr-CA": "https://www.ezpz.coffee/fr/blog/how-to-start-a-coffee-brand-canada",
+      },
+    },
   openGraph: {
     title: "How to Start a Coffee Brand in Canada: The Complete 2026 Guide | EZPZ Coffee",
     description:
       "Thinking of starting a coffee brand in Canada? This complete guide covers everything: from concept and sourcing to packaging, pricing, dropshipping, and launching, with zero inventory.",
     type: "article",
-    url: "https://www.ezpz.coffee/en/blog/how-to-start-a-coffee-brand-canada",
+    url: `https://www.ezpz.coffee/${lang}/blog/how-to-start-a-coffee-brand-canada`,
     images: [
       {
         url: "/assets/blog/how-to-start-coffee-brand-canada.svg",
@@ -33,6 +43,7 @@ export const metadata: Metadata = {
     images: ["/assets/blog/how-to-start-coffee-brand-canada.svg"],
   },
 };
+}
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -100,7 +111,9 @@ const MORE_SLUGS = [
 ];
 const morePosts = BLOG_POSTS.filter((p) => MORE_SLUGS.includes(p.slug));
 
-const Page = () => (
+export default async function Page({ params }: Props) {
+  const { lang } = await params;
+  return (
   <div className={styles.page}>
     <script
       type="application/ld+json"
@@ -202,7 +215,7 @@ const Page = () => (
         <div className={styles.quoteBlock}>
           <p className={styles.quoteText}>
             Not sure what to look for in a supplier?{" "}
-            <Link href="/en/blog/how-to-choose-private-label-coffee-supplier-canada" className={styles.inlineLink}>
+            <Link href={`/${lang}/blog/how-to-choose-private-label-coffee-supplier-canada`} className={styles.inlineLink}>
               Read our complete guide to choosing a private-label coffee supplier in Canada.
             </Link>
           </p>
@@ -373,7 +386,7 @@ const Page = () => (
         <h2 className={styles.moreTitle}>More from the blog</h2>
         <div className={styles.moreGrid}>
           {morePosts.map((post) => (
-            <Link key={post.slug} href={`/en/blog/${post.slug}`} className={styles.moreCard}>
+            <Link key={post.slug} href={`/${lang}/blog/${post.slug}`} className={styles.moreCard}>
               <div className={styles.moreCardImage}>
                 <img src={post.image} alt={post.title} loading="lazy" className={styles.moreCardImg} />
               </div>
@@ -396,6 +409,5 @@ const Page = () => (
       </div>
     </section>
   </div>
-);
-
-export default Page;
+  );
+}
