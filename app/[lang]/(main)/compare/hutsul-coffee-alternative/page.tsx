@@ -3,6 +3,8 @@ import Link from "next/link";
 
 import styles from "./hutsul.module.scss";
 
+type Props = { params: Promise<{ lang: string }> };
+
 const OTHER_COMPARISONS = [
   { label: "EZPZ vs Rogue Wave Coffee", href: "/en/compare/rogue-wave-coffee-alternative" },
   { label: "EZPZ vs Canterbury Coffee", href: "/en/compare/canterbury-coffee-alternative" },
@@ -11,25 +13,36 @@ const OTHER_COMPARISONS = [
   { label: "EZPZ vs Roasters Pack", href: "/en/compare/roasters-pack-alternative" },
 ];
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const title = isFr
+    ? "Alternative à Hutsul Coffee | Café de marque personnalisé Canada | EZPZ"
+    : "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ";
+  const description = isFr
+    ? "Vous considérez Hutsul Coffee pour des sacs de marque personnalisés? Voyez comment EZPZ se compare avec zéro minimum, support design complet et café de spécialité torréfié à Montréal."
+    : "Considering Hutsul Coffee for custom branded bags? See how EZPZ compares with zero minimums, full design support, and specialty coffee roasted in Montreal.";
   return {
-    title: "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ",
-    description:
-      "Considering Hutsul Coffee for custom branded bags? See how EZPZ compares with zero minimums, full design support, and specialty coffee roasted in Montreal.",
-    alternates: { canonical: "/en/compare/hutsul-coffee-alternative" },
+    title,
+    description,
+    alternates: {
+      canonical: `/${lang}/compare/hutsul-coffee-alternative`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/compare/hutsul-coffee-alternative",
+        "fr-CA": "https://www.ezpz.coffee/fr/compare/hutsul-coffee-alternative",
+      },
+    },
     openGraph: {
-      title: "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ",
-      description:
-        "Considering Hutsul Coffee for custom branded bags? See how EZPZ compares with zero minimums, full design support, and specialty coffee roasted in Montreal.",
+      title,
+      description,
       type: "website",
-      url: "https://www.ezpz.coffee/en/compare/hutsul-coffee-alternative",
+      url: `https://www.ezpz.coffee/${lang}/compare/hutsul-coffee-alternative`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "EZPZ vs Hutsul Coffee" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Hutsul Coffee Alternative | Custom Branded Coffee Canada | EZPZ",
-      description:
-        "No minimums, design included, ships across Canada. See how EZPZ compares to Hutsul Coffee.",
+      title,
+      description,
       images: ["/assets/banner-01.jpg"],
     },
   };
@@ -65,6 +78,24 @@ const REASONS = [
   },
 ];
 
+const REASONS_FR = [
+  {
+    n: "01",
+    title: "La clarté dès le début",
+    body: "Le programme de café personnalisé de Hutsul vous oblige à vous renseigner avant de pouvoir comprendre les prix, les minimums ou les délais. EZPZ est entièrement transparent. Nos prix, notre processus et nos délais sont publiés sur notre site. Vous savez exactement ce que vous obtenez avant de passer une seule commande.",
+  },
+  {
+    n: "02",
+    title: "Aucun engagement pour commencer",
+    body: "La plupart des torréfacteurs vous obligent à vous engager sur des quantités minimales avant même de pouvoir tester votre concept. EZPZ vous permet de commander un sachet. Cela signifie que vous pouvez concevoir votre sachet de marque, voir à quoi il ressemble, goûter le café, le partager avec votre équipe, avant de décider de passer à grande échelle. Le risque de commencer est essentiellement nul.",
+  },
+  {
+    n: "03",
+    title: "Une plateforme, pas seulement un produit",
+    body: "EZPZ n'est pas seulement un torréfacteur qui offre des étiquettes personnalisées. Nous sommes une plateforme complète de développement de marque : outil de conception en ligne, sélection d'origine, contrôle de qualité et support de distribution, tout en un seul endroit. Nous avons construit l'infrastructure que la plupart des torréfacteurs n'ont tout simplement pas.",
+  },
+];
+
 const TESTIMONIALS = [
   {
     quote: "Working with EZPZ was seamless from start to finish. Our branded coffee became one of our best-selling products.",
@@ -86,16 +117,20 @@ const isNegative = (val: string) =>
   val.includes("quote required") ||
   val === "Unclear";
 
-const HutsulPage = () => {
+export default async function HutsulPage({ params }: Props) {
+  const { lang } = await params;
+  const isFr = lang === "fr";
+  const reasons = isFr ? REASONS_FR : REASONS;
+
   return (
     <div className={styles.page}>
 
       {/* ── Breadcrumb ── */}
       <nav className={styles.breadcrumb} aria-label="Breadcrumb">
         <div className={styles.breadcrumbInner}>
-          <Link href="/en" className={styles.breadcrumbLink}>Home</Link>
+          <Link href={`/${lang}`} className={styles.breadcrumbLink}>{isFr ? "Accueil" : "Home"}</Link>
           <span className={styles.breadcrumbSep}>›</span>
-          <Link href="/en/compare" className={styles.breadcrumbLink}>Compare</Link>
+          <Link href={`/${lang}/compare`} className={styles.breadcrumbLink}>{isFr ? "Comparer" : "Compare"}</Link>
           <span className={styles.breadcrumbSep}>›</span>
           <span className={styles.breadcrumbCurrent}>EZPZ vs Hutsul Coffee</span>
         </div>
@@ -106,14 +141,18 @@ const HutsulPage = () => {
         <div className={styles.heroInner}>
           <span className={styles.eyebrow}>EZPZ vs Hutsul Coffee</span>
           <h1 className={styles.heroTitle}>
-            Custom coffee for Canadian brands — without the minimums.
+            {isFr
+              ? "Café personnalisé pour les marques canadiennes, sans les minimums."
+              : "Custom coffee for Canadian brands — without the minimums."}
           </h1>
           <p className={styles.heroSubtitle}>
-            Hutsul Coffee is a Canadian roaster with a custom program. EZPZ is a custom coffee platform with no minimums, design included, and an online process built for brands.
+            {isFr
+              ? "Hutsul Coffee est un torréfacteur canadien avec un programme personnalisé. EZPZ est une plateforme de café personnalisé sans minimum, avec design inclus et un processus en ligne conçu pour les marques."
+              : "Hutsul Coffee is a Canadian roaster with a custom program. EZPZ is a custom coffee platform with no minimums, design included, and an online process built for brands."}
           </p>
           <div className={styles.heroButtons}>
-            <Link href="/en/design" className={styles.heroPrimary}>Design your bag</Link>
-            <Link href="/en/contact" className={styles.heroSecondary}>Get a free quote</Link>
+            <Link href={`/${lang}/design`} className={styles.heroPrimary}>{isFr ? "Concevoir votre sachet" : "Design your bag"}</Link>
+            <Link href={`/${lang}/contact`} className={styles.heroSecondary}>{isFr ? "Obtenir un devis gratuit" : "Get a free quote"}</Link>
           </div>
         </div>
       </section>
@@ -121,15 +160,31 @@ const HutsulPage = () => {
       {/* ── Intro ── */}
       <section className={styles.intro}>
         <div className={styles.introInner}>
-          <p className={styles.introText}>
-            Hutsul Coffee is a Canadian roaster that offers custom coffee options for businesses. They serve clients across Canada and have built a reputation in their community for quality roasting.
-          </p>
-          <p className={styles.introText}>
-            Like most Canadian roasters, however, their custom coffee program comes with minimum order requirements and a traditional ordering process that involves quotes, back-and-forth emails, and longer lead times. For businesses that want to move quickly, test a concept without large upfront investment, or simply want a more streamlined brand-building experience — these are real barriers.
-          </p>
-          <p className={styles.introText}>
-            EZPZ was built to eliminate every one of those barriers. Here is how we compare.
-          </p>
+          {isFr ? (
+            <>
+              <p className={styles.introText}>
+                Hutsul Coffee est un torréfacteur canadien qui offre des options de café personnalisées pour les entreprises. Ils servent des clients partout au Canada et ont bâti une réputation dans leur communauté pour la qualité de leur torréfaction.
+              </p>
+              <p className={styles.introText}>
+                Comme la plupart des torréfacteurs canadiens, cependant, leur programme de café personnalisé vient avec des exigences de commande minimale et un processus de commande traditionnel qui implique des devis, des échanges de courriels et des délais plus longs. Pour les entreprises qui veulent avancer rapidement, tester un concept sans grand investissement initial ou simplement vouloir une expérience de développement de marque plus fluide, ce sont de vraies barrières.
+              </p>
+              <p className={styles.introText}>
+                EZPZ a été conçu pour éliminer chacune de ces barrières. Voici comment nous comparons.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className={styles.introText}>
+                Hutsul Coffee is a Canadian roaster that offers custom coffee options for businesses. They serve clients across Canada and have built a reputation in their community for quality roasting.
+              </p>
+              <p className={styles.introText}>
+                Like most Canadian roasters, however, their custom coffee program comes with minimum order requirements and a traditional ordering process that involves quotes, back-and-forth emails, and longer lead times. For businesses that want to move quickly, test a concept without large upfront investment, or simply want a more streamlined brand-building experience — these are real barriers.
+              </p>
+              <p className={styles.introText}>
+                EZPZ was built to eliminate every one of those barriers. Here is how we compare.
+              </p>
+            </>
+          )}
         </div>
       </section>
 
@@ -139,7 +194,7 @@ const HutsulPage = () => {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th className={styles.thFeature}>Feature</th>
+                <th className={styles.thFeature}>{isFr ? "Caractéristique" : "Feature"}</th>
                 <th className={`${styles.th} ${styles.thEzpz}`}>EZPZ Coffee</th>
                 <th className={styles.th}>Hutsul Coffee</th>
               </tr>
@@ -167,10 +222,14 @@ const HutsulPage = () => {
       {/* ── Why brands switch ── */}
       <section className={styles.reasons}>
         <div className={styles.reasonsInner}>
-          <span className={styles.eyebrow}>Why brands switch</span>
-          <h2 className={styles.reasonsTitle}>Why brands choose EZPZ over Hutsul Coffee.</h2>
+          <span className={styles.eyebrow}>{isFr ? "Pourquoi les marques changent" : "Why brands switch"}</span>
+          <h2 className={styles.reasonsTitle}>
+            {isFr
+              ? "Pourquoi les marques choisissent EZPZ plutôt que Hutsul Coffee."
+              : "Why brands choose EZPZ over Hutsul Coffee."}
+          </h2>
           <div className={styles.reasonsGrid}>
-            {REASONS.map((r) => (
+            {reasons.map((r) => (
               <div key={r.n} className={styles.reasonCard}>
                 <span className={styles.reasonNumber}>{r.n}</span>
                 <h3 className={styles.reasonCardTitle}>{r.title}</h3>
@@ -184,8 +243,8 @@ const HutsulPage = () => {
       {/* ── Testimonials ── */}
       <section className={styles.testimonials}>
         <div className={styles.testimonialsInner}>
-          <span className={styles.eyebrow}>What our customers say</span>
-          <h2 className={styles.testimonialsTitle}>Results that speak for themselves.</h2>
+          <span className={styles.eyebrow}>{isFr ? "Ce que disent nos clients" : "What our customers say"}</span>
+          <h2 className={styles.testimonialsTitle}>{isFr ? "Des résultats qui parlent d'eux-mêmes." : "Results that speak for themselves."}</h2>
           <div className={styles.testimonialsGrid}>
             {TESTIMONIALS.map((t) => (
               <div key={t.author} className={styles.testimonialCard}>
@@ -204,17 +263,21 @@ const HutsulPage = () => {
       {/* ── Back link ── */}
       <div className={styles.backLink}>
         <div className={styles.backLinkInner}>
-          <Link href="/en/compare" className={styles.backLinkAnchor}>← See all competitor comparisons</Link>
+          <Link href={`/${lang}/compare`} className={styles.backLinkAnchor}>
+            {isFr ? "← Voir toutes les comparaisons" : "← See all competitor comparisons"}
+          </Link>
         </div>
       </div>
 
       {/* ── Other comparisons ── */}
       <section style={{ background: "#f8f7f5", padding: "3rem 1.5rem", borderTop: "1px solid #e8e8e8" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: "1rem" }}>Other comparisons</p>
+          <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)", marginBottom: "1rem" }}>
+            {isFr ? "Autres comparaisons" : "Other comparisons"}
+          </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
             {OTHER_COMPARISONS.map(({ label, href }) => (
-              <Link key={href} href={href} style={{ display: "inline-block", padding: "8px 16px", background: "#ffffff", border: "1px solid #e0e0e0", borderRadius: "4px", fontSize: "0.82rem", fontWeight: 600, color: "#374151", textDecoration: "none" }}>{label}</Link>
+              <Link key={href} href={href.replace("/en/", `/${lang}/`)} style={{ display: "inline-block", padding: "8px 16px", background: "#ffffff", border: "1px solid #e0e0e0", borderRadius: "4px", fontSize: "0.82rem", fontWeight: 600, color: "#374151", textDecoration: "none" }}>{label}</Link>
             ))}
           </div>
         </div>
@@ -223,17 +286,23 @@ const HutsulPage = () => {
       {/* ── Final CTA ── */}
       <section className={styles.cta}>
         <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>No minimums. Full transparency. Your brand on specialty coffee.</h2>
-          <p className={styles.ctaSubtext}>Join 500+ Canadian brands who chose EZPZ. Start designing in under 10 minutes.</p>
+          <h2 className={styles.ctaTitle}>
+            {isFr
+              ? "Aucun minimum. Transparence totale. Votre marque sur du café de spécialité."
+              : "No minimums. Full transparency. Your brand on specialty coffee."}
+          </h2>
+          <p className={styles.ctaSubtext}>
+            {isFr
+              ? "Rejoignez plus de 500 marques canadiennes qui ont choisi EZPZ. Commencez à concevoir en moins de 10 minutes."
+              : "Join 500+ Canadian brands who chose EZPZ. Start designing in under 10 minutes."}
+          </p>
           <div className={styles.ctaButtons}>
-            <Link href="/en/design" className={styles.ctaPrimary}>Design your bag</Link>
-            <Link href="/en/contact" className={styles.ctaSecondary}>Get a free quote</Link>
+            <Link href={`/${lang}/design`} className={styles.ctaPrimary}>{isFr ? "Concevoir votre sachet" : "Design your bag"}</Link>
+            <Link href={`/${lang}/contact`} className={styles.ctaSecondary}>{isFr ? "Obtenir un devis gratuit" : "Get a free quote"}</Link>
           </div>
         </div>
       </section>
 
     </div>
   );
-};
-
-export default HutsulPage;
+}
