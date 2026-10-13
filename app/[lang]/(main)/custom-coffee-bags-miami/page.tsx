@@ -2,18 +2,27 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   return {
     title: "Custom Coffee Bags Miami | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Miami businesses, shipped in 7–10 days. No minimum order, full design included. Miami brands choose EZPZ for premium branded specialty coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-miami" },
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-miami`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-miami",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-miami",
+      },
+    },
     openGraph: {
       title: "Custom Coffee Bags Miami | No Minimum Order | EZPZ Coffee",
       description:
         "Custom coffee bags for Miami businesses. No minimum order, full design included, specialty coffee shipped from Montreal to Miami.",
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-miami",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-miami`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Miami" }],
     },
     twitter: {

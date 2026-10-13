@@ -2,17 +2,26 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   return {
     title: "Custom Coffee Bags Minneapolis | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Minneapolis businesses, shipped in 7–10 days. No minimum order, full design included. Minneapolis brands choose EZPZ for specialty coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-minneapolis" },
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-minneapolis`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-minneapolis",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-minneapolis",
+      },
+    },
     openGraph: {
       title: "Custom Coffee Bags Minneapolis | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Minneapolis businesses. No minimum order, full design included, specialty coffee shipped from Montreal in 7–10 days.",
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-minneapolis",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-minneapolis`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Minneapolis" }],
     },
     twitter: {

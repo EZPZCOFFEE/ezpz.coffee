@@ -2,17 +2,26 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   return {
     title: "Custom Coffee Bags Atlanta | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Atlanta businesses, shipped in 7–10 days. No minimum order, full design included. Atlanta brands choose EZPZ for specialty branded coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-atlanta" },
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-atlanta`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-atlanta",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-atlanta",
+      },
+    },
     openGraph: {
       title: "Custom Coffee Bags Atlanta | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Atlanta businesses. No minimum order, full design included, specialty coffee shipped from Montreal in 7–10 days.",
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-atlanta",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-atlanta`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Atlanta" }],
     },
     twitter: {

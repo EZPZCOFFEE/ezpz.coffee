@@ -2,18 +2,27 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   return {
     title: "Custom Coffee Bags Los Angeles | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Los Angeles businesses, shipped in 7–10 days. No minimum order, full design included. Los Angeles brands choose EZPZ for premium branded coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-los-angeles" },
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-los-angeles`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-los-angeles",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-los-angeles",
+      },
+    },
     openGraph: {
       title: "Custom Coffee Bags Los Angeles | No Minimum Order | EZPZ Coffee",
       description:
         "Custom coffee bags for Los Angeles businesses. No minimum order, full design included, specialty coffee shipped from Montreal to LA.",
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-los-angeles",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-los-angeles`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Los Angeles" }],
     },
     twitter: {

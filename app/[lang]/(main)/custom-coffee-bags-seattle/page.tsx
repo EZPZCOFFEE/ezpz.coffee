@@ -2,17 +2,26 @@ import type { Metadata } from "next";
 
 import CityPage, { CityPageData } from "../_components/CityPage";
 
-export async function generateMetadata(): Promise<Metadata> {
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   return {
     title: "Custom Coffee Bags Seattle | No Minimum Order | EZPZ Coffee",
     description:
       "Custom coffee bags for Seattle businesses, shipped in 10–14 days. No minimum order, full design included. Seattle brands choose EZPZ for specialty branded coffee.",
-    alternates: { canonical: "/en/custom-coffee-bags-seattle" },
+    alternates: {
+      canonical: `/${lang}/custom-coffee-bags-seattle`,
+      languages: {
+        en: "https://www.ezpz.coffee/en/custom-coffee-bags-seattle",
+        "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-seattle",
+      },
+    },
     openGraph: {
       title: "Custom Coffee Bags Seattle | No Minimum Order | EZPZ Coffee",
       description: "Custom coffee bags for Seattle businesses. No minimum order, full design included, specialty coffee shipped from Montreal.",
       type: "website",
-      url: "https://www.ezpz.coffee/en/custom-coffee-bags-seattle",
+      url: `https://www.ezpz.coffee/${lang}/custom-coffee-bags-seattle`,
       images: [{ url: "/assets/banner-01.jpg", width: 1200, height: 630, alt: "Custom Coffee Bags Seattle" }],
     },
     twitter: {
