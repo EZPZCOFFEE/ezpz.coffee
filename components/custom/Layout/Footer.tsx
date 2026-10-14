@@ -50,6 +50,7 @@ const Footer = () => {
             <Link href={`/${locale}/custom-bag`} className={styles.footerLink}>{t("customBagsLink")}</Link>
             <Link href={`/${locale}/services`} className={styles.footerLink}>{t("servicesLink")}</Link>
             <Link href={`/${locale}/instant-coffee`} className={styles.footerLink}>{t("instantCoffeeLink")}</Link>
+            <Link href={locale === "fr" ? `/${locale}/cafe-en-gros` : `/${locale}/wholesale-coffee-beans`} className={styles.footerLink}>{t("wholesaleCoffeeLink")}</Link>
             <Link href={`/${locale}/blog`} className={styles.footerLink}>{t("blog")}</Link>
             <Link href={`/${locale}/locations`} className={styles.footerLink}>{t("canadianMarketsLink")}</Link>
             <Link href={`/${locale}/locations/usa`} className={styles.footerLink}>{t("usMarketsLink")}</Link>

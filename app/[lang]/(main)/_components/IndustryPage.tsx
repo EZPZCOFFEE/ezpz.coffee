@@ -22,9 +22,10 @@ export interface IndustryPageData {
 interface IndustryPageProps {
   data: IndustryPageData;
   frData?: IndustryPageData;
+  showWholesaleLink?: boolean;
 }
 
-const IndustryPage = ({ data, frData }: IndustryPageProps) => {
+const IndustryPage = ({ data, frData, showWholesaleLink }: IndustryPageProps) => {
   const locale = useLocale();
   const isFr = locale === "fr";
   const d = isFr && frData ? frData : data;
@@ -282,6 +283,17 @@ const IndustryPage = ({ data, frData }: IndustryPageProps) => {
             <Link href={`/${locale}/design`} className={styles.ctaPrimary}>{isFr ? "Créez votre sachet" : "Design your bag"}</Link>
             <Link href={`/${locale}/contact`} className={styles.ctaSecondary}>{isFr ? "Obtenir une soumission gratuite" : "Get a free quote"}</Link>
           </div>
+          {showWholesaleLink && (
+            <p style={{ marginTop: "1.5rem", fontSize: "0.85rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.65 }}>
+              {isFr ? "Vous cherchez des grains en vrac à servir ? " : "Looking for bulk beans to brew and serve? "}
+              <Link
+                href={isFr ? `/${locale}/cafe-en-gros` : `/${locale}/wholesale-coffee-beans`}
+                style={{ color: "rgba(255,255,255,0.9)", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "3px" }}
+              >
+                {isFr ? "Voir notre programme de café en gros →" : "See our wholesale coffee beans program →"}
+              </Link>
+            </p>
+          )}
         </div>
       </section>
     </div>

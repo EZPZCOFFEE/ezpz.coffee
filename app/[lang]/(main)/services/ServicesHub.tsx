@@ -71,6 +71,18 @@ const ServicesHub = () => {
           href: "/instant-coffee",
           cta: "En savoir plus →",
         },
+        {
+          label: "06_ Café en gros",
+          title: "Café en gros",
+          body: "Grains de qualité spécialité en vrac pour restaurants, cafés, hôtels et bureaux. Torréfié frais à Montréal, constant d'un lot à l'autre, livré selon un calendrier récurrent.",
+          stats: [
+            { num: "SCA 80+", label: "Grade spécialité" },
+            { num: "Récurrente", label: "Livraison" },
+            { num: "Grains entiers", label: "Ou moulus" },
+          ],
+          href: "/cafe-en-gros",
+          cta: "En savoir plus →",
+        },
       ]
     : [
         {
@@ -133,13 +145,25 @@ const ServicesHub = () => {
           href: "/instant-coffee",
           cta: "Learn more →",
         },
+        {
+          label: "06_ Wholesale Coffee",
+          title: "Wholesale Coffee Beans",
+          body: "Specialty-grade bulk beans for restaurants, cafés, hotels, and offices. Roasted fresh in Montreal, consistent batch after batch, delivered on a recurring schedule.",
+          stats: [
+            { num: "80+ SCA", label: "Specialty grade" },
+            { num: "Recurring", label: "Delivery schedule" },
+            { num: "Whole bean", label: "Or ground" },
+          ],
+          href: "/wholesale-coffee-beans",
+          cta: "Learn more →",
+        },
       ];
 
   return (
     <div className={styles.page}>
       <section className={styles.hubHero}>
         <span className={styles.eyebrow}>{isFr ? "Nos services" : "Our Services"}</span>
-        <h1 className={styles.hubHeroTitle}>{isFr ? "Cinq façons de mettre votre marque sur un café de spécialité." : "Three ways to put your brand on specialty coffee."}</h1>
+        <h1 className={styles.hubHeroTitle}>{isFr ? "Six façons de mettre votre marque sur un café de spécialité." : "Six ways to put your brand on specialty coffee."}</h1>
         <p className={styles.hubHeroSubtitle}>
           {isFr
             ? "Que vous vouliez un sac de café de marque, un prêt-à-boire prêt pour les rayons ou des capsules pour chaque machine Nespresso, EZPZ gère tout, du design à la livraison."

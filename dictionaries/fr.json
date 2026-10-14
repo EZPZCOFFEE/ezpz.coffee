@@ -271,7 +271,8 @@
     "bestSupplierLink": "Meilleur fournisseur au Canada",
     "coffeeForRestLink": "Café pour restaurants",
     "vsCompetitorsLink": "EZPZ versus les concurrents",
-    "leaveReviewLink": "Laissez-nous un avis Google"
+    "leaveReviewLink": "Laissez-nous un avis Google",
+    "wholesaleCoffeeLink": "Café en gros"
   },
   "home": {
     "addToCart": "Ajouter au panier",
@@ -621,7 +622,8 @@
     "toggleMenu": "Ouvrir/fermer le menu de navigation",
     "whiteLabel": "Solutions en marque blanche",
     "industries": "Industries",
-    "pricing": "Tarifs"
+    "pricing": "Tarifs",
+    "wholesaleCoffee": "Café en gros"
   },
   "newsletterPopup": {
     "ariaLabel": "Inscription à l'infolettre",

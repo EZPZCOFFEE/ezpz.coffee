@@ -229,7 +229,8 @@
     "bestSupplierLink": "Best Supplier in Canada",
     "coffeeForRestLink": "Coffee for Restaurants",
     "vsCompetitorsLink": "EZPZ vs Competitors",
-    "leaveReviewLink": "Leave us a Google review"
+    "leaveReviewLink": "Leave us a Google review",
+    "wholesaleCoffeeLink": "Wholesale Coffee Beans"
   },
   "home": {
     "addToCart": "Add to cart",
@@ -601,7 +602,8 @@
     "readyToDrink": "Ready-to-Drink",
     "nespressoCapsules": "Nespresso Capsules",
     "allServices": "All Services",
-    "instantCoffee": "Instant Coffee"
+    "instantCoffee": "Instant Coffee",
+    "wholesaleCoffee": "Wholesale Coffee Beans"
   },
   "newsletterPopup": {
     "ariaLabel": "Newsletter signup",

@@ -90,5 +90,5 @@ const frData: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-hotels",
 };
 
-const HotelsPage = () => <IndustryPage data={data} frData={frData} />;
+const HotelsPage = () => <IndustryPage data={data} frData={frData} showWholesaleLink />;
 export default HotelsPage;

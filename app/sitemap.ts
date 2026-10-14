@@ -166,6 +166,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
     "/en/canadian-coffee-roaster",
     "/en/pricing",
+    "/en/wholesale-coffee-beans",
     "/en/case-studies",
     "/en/careers",
     "/fr/carrieres",
@@ -266,6 +267,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/fr/blog/ezpz-tech-meets-coffee-custom-bag-tool",
     "/fr/blog/osler-records-ezpz-custom-coffee-bags-case-study",
     // Translated landing pages
+    "/fr/cafe-en-gros",
     "/fr/case-studies",
     "/fr/instant-coffee",
     "/fr/white-label-coffee-canada",

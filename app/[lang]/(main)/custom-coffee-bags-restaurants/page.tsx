@@ -98,5 +98,5 @@ const frData: IndustryPageData = {
   canonicalPath: "/custom-coffee-bags-restaurants",
 };
 
-const RestaurantsPage = () => <IndustryPage data={data} frData={frData} />;
+const RestaurantsPage = () => <IndustryPage data={data} frData={frData} showWholesaleLink />;
 export default RestaurantsPage;

@@ -166,6 +166,7 @@ const CoffeePage = () => {
               { label: "Nespresso Capsules", href: `/${locale}/services/nespresso-capsules` },
               { label: "Ready-to-Drink", href: `/${locale}/services/ready-to-drink` },
               { label: "Freeze-Dried Instant Coffee", href: `/${locale}/instant-coffee` },
+              { label: "Wholesale Coffee Beans", href: `/${locale}/wholesale-coffee-beans` },
             ].map((f) => (
               <Link
                 key={f.label}

@@ -382,6 +382,9 @@ const HomeLanding = () => {
             New: <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>freeze-dried instant coffee</Link> — specialty grade, custom branded.
           </motion.p>
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
+            Serving coffee at your restaurant, café, or hotel? <Link href={`/${locale}/wholesale-coffee-beans`} className={styles.freeSampleMetaLink}>See our wholesale coffee beans program →</Link>
+          </motion.p>
+          <motion.p {...fadeChild} className={styles.freeSampleMeta}>
             Looking for a <Link href={`/${locale}/canadian-coffee-roaster`} className={styles.freeSampleMetaLink}>Canadian coffee roaster for your brand</Link>? See what makes EZPZ different.
           </motion.p>
         </motion.div>
