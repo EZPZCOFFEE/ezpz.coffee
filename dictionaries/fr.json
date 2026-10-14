@@ -438,7 +438,8 @@
     "hero": {
       "designCta": "Créer votre sachet",
       "headline": "Votre marque. Votre café.",
-      "subtitle": "Sachets de café personnalisés sans minimum de commande, conçus, torréfiés et livrés partout au Canada."
+      "subtitle": "Sachets de café personnalisés sans minimum de commande, conçus, torréfiés et livrés partout au Canada.",
+      "subtitleKw": "Sacs de café personnalisés Canada : marque blanche, étiquette personnalisée et prêt à vendre. Aucun minimum de commande."
     },
     "heroPhoto": {
       "ariaLabel": "Visuel principal EZPZ",
@@ -579,7 +580,8 @@
       "bodyLine6": "Votre marque. Votre café.",
       "learnMore": "En savoir plus",
       "titleLine1": "Marque blanche",
-      "titleLine2": "Construire la marque"
+      "titleLine2": "Construire la marque",
+      "sectionSubtext": "Sachets, boissons prêtes à boire ou capsules Nespresso, torréfiés frais à Montréal, sans minimum de commande."
     }
   },
   "whiteLabelPage": {
@@ -623,7 +625,13 @@
     "whiteLabel": "Solutions en marque blanche",
     "industries": "Industries",
     "pricing": "Tarifs",
-    "wholesaleCoffee": "Café en gros"
+    "wholesaleCoffee": "Café en gros",
+    "services": "Services",
+    "customCoffeeBags": "Sacs de café personnalisés",
+    "readyToDrink": "Prêt à boire",
+    "nespressoCapsules": "Capsules Nespresso",
+    "instantCoffee": "Café instantané",
+    "allServices": "Tous les services"
   },
   "newsletterPopup": {
     "ariaLabel": "Inscription à l'infolettre",
@@ -646,7 +654,9 @@
     "submitting": "Inscription...",
     "subscribe": "S'abonner",
     "successMessage": "C'est fait! Vérifiez votre boîte de réception pour votre code de réduction de 15%.",
-    "title": "Rejoignez notre liste et obtenez <highlight>15 % de réduction</highlight> sur votre première commande, plus des conseils pour bâtir une marque de café, des annonces de nouvelles origines et des offres exclusives."
+    "title": "Rejoignez notre liste et obtenez <highlight>15 % de réduction</highlight> sur votre première commande, plus des conseils pour bâtir une marque de café, des annonces de nouvelles origines et des offres exclusives.",
+    "subtext": "Obtenez 15 % de réduction sur votre première commande, plus des conseils mensuels sur les nouvelles origines, la construction de marque, des offres exclusives et les coulisses de notre torréfacteur montréalais.",
+    "reassurance": "Aucun spam. Désabonnez-vous en tout temps."
   },
   "passwordPage": {
     "adminLink": "Entrer en bêta-test",

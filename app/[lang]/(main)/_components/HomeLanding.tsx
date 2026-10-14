@@ -112,6 +112,7 @@ const LandingFeaturedCarousel = () => {
 const HomeLanding = () => {
   const t = useTranslations("landing");
   const locale = useLocale();
+  const isFr = locale === "fr";
   const reduceMotion = useReducedMotion();
   const motionOff = !!reduceMotion;
 
@@ -125,6 +126,32 @@ const HomeLanding = () => {
   const scrollToAdvantages = useCallback(() => {
     document.getElementById("advantages")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
+
+  const bagRows: Array<{ label: string; a: React.ReactNode; b: React.ReactNode }> = isFr
+    ? [
+      { label: "Minimum de commande", a: "Aucun",                            b: "5 000 unités (jusqu'à 5 designs)" },
+      { label: "Format",              a: "225 g",                            b: "Tout format (250 g, 340 g, 454 g, 1 kg...)" },
+      { label: "Image de marque",     a: "Votre étiquette sur notre sachet", b: "100 % votre design, sans marque EZPZ" },
+      { label: "Idéal pour",          a: "Lancement et test",                b: "Marques en croissance" },
+      { label: "Délai de production", a: "~5 jours ouvrables",               b: "2 à 3 semaines" },
+      {
+        label: "Tarif",
+        a: <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}><strong>Dès 11,75 $/sachet</strong><span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.6 }}>à 100 sachets, aucun minimum</span></span>,
+        b: <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}><strong>Dès 0,85 $/sachet</strong><span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.55 }}>minimum de 5 000 unités</span></span>,
+      },
+    ]
+    : [
+      { label: "Minimum order",  a: "Zero",                   b: "5,000 units (up to 5 designs)" },
+      { label: "Size",           a: "225g",                   b: "Any size (250g, 340g, 454g, 1kg…)" },
+      { label: "Branding",       a: "Your label on our bag",  b: "100% your design, no EZPZ mark" },
+      { label: "Best for",       a: "Launching & testing",    b: "Scaling brands" },
+      { label: "Turnaround",     a: "~5 business days",       b: "2–3 weeks" },
+      {
+        label: "Pricing",
+        a: <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}><strong>From $11.75/bag</strong><span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.6 }}>at 100 bags, zero minimum</span></span>,
+        b: <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}><strong>From $0.85/bag</strong><span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.55 }}>5,000 unit minimum</span></span>,
+      },
+    ];
 
   return (
     <div className={styles.landing}>
@@ -157,7 +184,7 @@ const HomeLanding = () => {
               {t("hero.designCta")}
             </Link>
             <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.heroSampleBtn}>
-              Request a free sample
+              {isFr ? "Demander un échantillon gratuit" : "Request a free sample"}
             </Link>
           </motion.div>
         </motion.div>
@@ -184,26 +211,26 @@ const HomeLanding = () => {
 
       {/* ── Stats Bar ── */}
       {/* TODO (owner): verify "500+ Brands served" reflects the current real client count before updating */}
-      <div className={styles.statsBar} aria-label="Key statistics">
+      <div className={styles.statsBar} aria-label={isFr ? "Statistiques clés" : "Key statistics"}>
         <div className={styles.statsBarInner}>
           <div className={styles.statItem}>
             <span className={styles.statNum}>500+</span>
-            <span className={styles.statLabel}>Brands served</span>
+            <span className={styles.statLabel}>{isFr ? "Marques servies" : "Brands served"}</span>
           </div>
           <div className={styles.statDivider} aria-hidden />
           <div className={styles.statItem}>
             <span className={styles.statNum}>100%</span>
-            <span className={styles.statLabel}>Canadian roasted</span>
+            <span className={styles.statLabel}>{isFr ? "Torréfié au Canada" : "Canadian roasted"}</span>
           </div>
           <div className={styles.statDivider} aria-hidden />
           <div className={styles.statItem}>
-            <span className={styles.statNum}>2–3 wks</span>
-            <span className={styles.statLabel}>Average turnaround</span>
+            <span className={styles.statNum}>{isFr ? "2 à 3 sem." : "2–3 wks"}</span>
+            <span className={styles.statLabel}>{isFr ? "Délai moyen de production" : "Average turnaround"}</span>
           </div>
           <div className={styles.statDivider} aria-hidden />
           <div className={styles.statItem} data-egg="one-stat" style={{ cursor: "pointer" }}>
             <span className={styles.statNum}>0</span>
-            <span className={styles.statLabel}>Minimum order</span>
+            <span className={styles.statLabel}>{isFr ? "Minimum de commande" : "Minimum order"}</span>
           </div>
         </div>
       </div>
@@ -266,30 +293,38 @@ const HomeLanding = () => {
       {/* ── Dropshipping section ── */}
       <section className={styles.dropshipping} aria-labelledby="dropshipping-heading">
         <motion.div className={styles.dropshippingInner} {...staggerParent}>
-          <motion.span className={styles.dropshippingEyebrow} {...fadeChild}>Sell online, zero inventory</motion.span>
+          <motion.span className={styles.dropshippingEyebrow} {...fadeChild}>{isFr ? "Vendez en ligne, zéro inventaire" : "Sell online, zero inventory"}</motion.span>
           <motion.h2 id="dropshipping-heading" className={styles.dropshippingTitle} {...fadeChild}>
-            Dropshipping, done for you.
+            {isFr ? "Dropshipping, clé en main." : "Dropshipping, done for you."}
           </motion.h2>
           <motion.p className={styles.dropshippingBody} {...fadeChild}>
-            Building an online coffee brand? We integrate with your Shopify store through Shopify Collective. When a customer orders, we roast, pack, and ship directly to them under your brand — you never touch inventory. Subscriptions work seamlessly too, perfect for recurring coffee delivery.
+            {isFr
+              ? "Vous bâtissez une marque de café en ligne ? Nous nous intégrons à votre boutique Shopify via Shopify Collective. Lorsqu'un client commande, nous torréfions, emballons et livrons directement sous votre marque : vous ne touchez jamais l'inventaire. Les abonnements fonctionnent sans friction, parfaits pour les livraisons récurrentes de café."
+              : "Building an online coffee brand? We integrate with your Shopify store through Shopify Collective. When a customer orders, we roast, pack, and ship directly to them under your brand — you never touch inventory. Subscriptions work seamlessly too, perfect for recurring coffee delivery."}
           </motion.p>
           <motion.ul className={styles.dropshippingFeatures} {...getNestedSectionListStagger(motionOff)}>
             <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
               <span className={styles.dropshippingFeatureDot} aria-hidden />
-              <span><strong>Automatic order flow</strong> — orders route to us, tracking returns to your store</span>
+              {isFr
+                ? <span><strong>Flux automatique des commandes</strong> : les commandes nous parviennent, le suivi retourne dans votre boutique</span>
+                : <span><strong>Automatic order flow</strong> — orders route to us, tracking returns to your store</span>}
             </motion.li>
             <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
               <span className={styles.dropshippingFeatureDot} aria-hidden />
-              <span><strong>Zero inventory</strong> — we fulfill and ship under your brand</span>
+              {isFr
+                ? <span><strong>Zéro inventaire</strong> : nous préparons et expédions sous votre marque</span>
+                : <span><strong>Zero inventory</strong> — we fulfill and ship under your brand</span>}
             </motion.li>
             <motion.li className={styles.dropshippingFeatureItem} {...fadeChild}>
               <span className={styles.dropshippingFeatureDot} aria-hidden />
-              <span><strong>Subscription-ready</strong> — recurring orders fulfilled automatically</span>
+              {isFr
+                ? <span><strong>Prêt pour les abonnements</strong> : les commandes récurrentes sont traitées automatiquement</span>
+                : <span><strong>Subscription-ready</strong> — recurring orders fulfilled automatically</span>}
             </motion.li>
           </motion.ul>
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/coffee-dropshipping-canada`} className={styles.btnOutline}>
-              Learn about dropshipping
+              {isFr ? "En savoir plus sur le dropshipping" : "Learn about dropshipping"}
             </Link>
           </motion.div>
         </motion.div>
@@ -365,27 +400,37 @@ const HomeLanding = () => {
       <section className={styles.freeSample}>
         <motion.div className={styles.freeSampleInner} {...staggerParent}>
           <motion.h2 className={styles.freeSampleTitle} {...fadeChild}>
-            Not sure yet? Try before you commit.
+            {isFr ? "Pas encore sûr ? Essayez avant de vous engager." : "Not sure yet? Try before you commit."}
           </motion.h2>
           <motion.p className={styles.freeSampleBody} {...fadeChild}>
-            We will send you a sample kit with our most popular coffee origins so you can taste the quality before placing your first order. No strings attached.
+            {isFr
+              ? "Nous vous envoyons un kit d'échantillons avec nos origines les plus populaires pour que vous puissiez goûter la qualité avant de passer votre première commande. Aucune obligation."
+              : "We will send you a sample kit with our most popular coffee origins so you can taste the quality before placing your first order. No strings attached."}
           </motion.p>
           <motion.div {...fadeChild}>
             <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.freeSampleBtn}>
-              Request a free sample
+              {isFr ? "Demander un échantillon gratuit" : "Request a free sample"}
             </Link>
           </motion.div>
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
-            Or <Link href={`/${locale}/blog`} className={styles.freeSampleMetaLink}>read our guides and tips</Link> on building a coffee brand.
+            {isFr
+              ? <><Link href={`/${locale}/blog`} className={styles.freeSampleMetaLink}>Consultez nos guides et conseils</Link> pour bâtir une marque de café.</>
+              : <>Or <Link href={`/${locale}/blog`} className={styles.freeSampleMetaLink}>read our guides and tips</Link> on building a coffee brand.</>}
           </motion.p>
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
-            New: <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>freeze-dried instant coffee</Link> — specialty grade, custom branded.
+            {isFr
+              ? <>Nouveau : <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>café instantané lyophilisé</Link> de spécialité, à votre image.</>
+              : <>New: <Link href={`/${locale}/instant-coffee`} className={styles.freeSampleMetaLink}>freeze-dried instant coffee</Link> — specialty grade, custom branded.</>}
           </motion.p>
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
-            Serving coffee at your restaurant, café, or hotel? <Link href={`/${locale}/wholesale-coffee-beans`} className={styles.freeSampleMetaLink}>See our wholesale coffee beans program →</Link>
+            {isFr
+              ? <>Vous servez du café dans votre restaurant, café ou hôtel ? <Link href={`/${locale}/cafe-en-gros`} className={styles.freeSampleMetaLink}>Voyez notre programme de café en gros →</Link></>
+              : <>Serving coffee at your restaurant, café, or hotel? <Link href={`/${locale}/wholesale-coffee-beans`} className={styles.freeSampleMetaLink}>See our wholesale coffee beans program →</Link></>}
           </motion.p>
           <motion.p {...fadeChild} className={styles.freeSampleMeta}>
-            Looking for a <Link href={`/${locale}/canadian-coffee-roaster`} className={styles.freeSampleMetaLink}>Canadian coffee roaster for your brand</Link>? See what makes EZPZ different.
+            {isFr
+              ? <>Vous cherchez un <Link href={`/${locale}/canadian-coffee-roaster`} className={styles.freeSampleMetaLink}>torréfacteur canadien pour votre marque</Link> ? Découvrez ce qui distingue EZPZ.</>
+              : <>Looking for a <Link href={`/${locale}/canadian-coffee-roaster`} className={styles.freeSampleMetaLink}>Canadian coffee roaster for your brand</Link>? See what makes EZPZ different.</>}
           </motion.p>
         </motion.div>
       </section>
@@ -395,40 +440,19 @@ const HomeLanding = () => {
       <section className={styles.bagCompare} aria-labelledby="bag-compare-heading">
         <motion.div className={styles.bagCompareInner} {...staggerParent}>
           <motion.h2 id="bag-compare-heading" className={styles.bagCompareTitle} {...fadeChild}>
-            Which bag option is right for you?
+            {isFr ? "Quelle option de sachet vous convient ?" : "Which bag option is right for you?"}
           </motion.h2>
-          <motion.div className={styles.bagCompareTable} role="table" aria-label="Bag option comparison" {...fadeChild}>
+          <motion.div className={styles.bagCompareTable} role="table" aria-label={isFr ? "Comparaison des options de sacs" : "Bag option comparison"} {...fadeChild}>
             <div className={styles.bagCompareHead} role="row">
               <div className={styles.bagCompareColLabel} role="columnheader"></div>
               <div className={`${styles.bagCompareColHead} ${styles.bagCompareColHeadAccent}`} role="columnheader">
-                EZPZ Bags + Custom Label
+                {isFr ? "Sacs EZPZ avec étiquette personnalisée" : "EZPZ Bags + Custom Label"}
               </div>
               <div className={styles.bagCompareColHead} role="columnheader">
-                Fully Custom Printed Bags
+                {isFr ? "Sacs entièrement imprimés sur mesure" : "Fully Custom Printed Bags"}
               </div>
             </div>
-            {([
-              { label: "Minimum order",  a: "Zero",                   b: "5,000 units (up to 5 designs)" },
-              { label: "Size",           a: "225g",                   b: "Any size (250g, 340g, 454g, 1kg…)" },
-              { label: "Branding",       a: "Your label on our bag",  b: "100% your design, no EZPZ mark" },
-              { label: "Best for",       a: "Launching & testing",    b: "Scaling brands" },
-              { label: "Turnaround",     a: "~5 business days",       b: "2–3 weeks" },
-              {
-                label: "Pricing",
-                a: (
-                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}>
-                    <strong>From $11.75/bag</strong>
-                    <span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.6 }}>at 100 bags, zero minimum</span>
-                  </span>
-                ),
-                b: (
-                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.18rem", width: "100%" }}>
-                    <strong>From $0.85/bag</strong>
-                    <span style={{ fontSize: "0.7rem", fontWeight: 400, opacity: 0.55 }}>5,000 unit minimum</span>
-                  </span>
-                ),
-              },
-            ] as Array<{ label: string; a: React.ReactNode; b: React.ReactNode }>).map(({ label, a, b }) => (
+            {bagRows.map(({ label, a, b }) => (
               <div key={label} className={styles.bagCompareRow} role="row">
                 <div className={styles.bagCompareRowLabel} role="rowheader">{label}</div>
                 <div className={`${styles.bagCompareCell} ${styles.bagCompareCellAccent}`} role="cell">{a}</div>
@@ -439,7 +463,7 @@ const HomeLanding = () => {
           </motion.div>
           <motion.div {...fadeChild} className={styles.landingMotionInline}>
             <Link href={`/${locale}/pricing`} className={styles.btnOutline}>
-              See full pricing
+              {isFr ? "Voir tous les tarifs" : "See full pricing"}
             </Link>
           </motion.div>
         </motion.div>
@@ -449,17 +473,19 @@ const HomeLanding = () => {
       <section className={styles.pricingTeaser} aria-labelledby="pricing-teaser-heading">
         <motion.div className={styles.pricingTeaserInner} {...staggerParent}>
           <motion.h2 id="pricing-teaser-heading" className={styles.pricingTeaserTitle} {...fadeChild}>
-            Transparent pricing, zero surprises.
+            {isFr ? "Tarification transparente, aucune surprise." : "Transparent pricing, zero surprises."}
           </motion.h2>
           <motion.p className={styles.pricingTeaserBody} {...fadeChild}>
-            Custom-label bags with zero minimum — design always included, no setup fees. Dropshipping from $15/bag with no inventory.
+            {isFr
+              ? "Sacs avec étiquette personnalisée sans minimum : design toujours inclus, sans frais d'installation. Dropshipping dès 15 $/sachet, aucun inventaire."
+              : "Custom-label bags with zero minimum — design always included, no setup fees. Dropshipping from $15/bag with no inventory."}
           </motion.p>
           <motion.div {...fadeChild} className={styles.pricingTeaserActions}>
             <Link href={`/${locale}/pricing`} className={styles.pricingTeaserCta}>
-              See full pricing →
+              {isFr ? "Voir tous les tarifs →" : "See full pricing →"}
             </Link>
             <Link href={`/${locale}/contact?subject=Free Sample Request`} className={styles.pricingTeaserSample}>
-              Want to taste first? Request a free sample kit →
+              {isFr ? "Vous voulez d'abord goûter ? Demandez un kit d'échantillons gratuit →" : "Want to taste first? Request a free sample kit →"}
             </Link>
           </motion.div>
         </motion.div>
@@ -514,10 +540,12 @@ const HomeLanding = () => {
 
       {/* ── Trust line + Instagram callout ── */}
       {/* TODO (owner): verify "500+ Canadian brands" count is still accurate */}
-      <section className={styles.trustLine} aria-label="Social proof">
+      <section className={styles.trustLine} aria-label={isFr ? "Preuve sociale" : "Social proof"}>
         <div className={styles.trustLineInner}>
           <p className={styles.trustLineText}>
-            Trusted by <strong>Fairmont, Café Public, Tunnel Espresso</strong>, and 500+ Canadian brands.
+            {isFr
+              ? <>Choisi par <strong>Fairmont, Café Public, Tunnel Espresso</strong> et plus de 500 marques canadiennes.</>
+              : <>Trusted by <strong>Fairmont, Café Public, Tunnel Espresso</strong>, and 500+ Canadian brands.</>}
           </p>
           <a
             href="https://www.instagram.com/ezpz.coffee/"
@@ -525,7 +553,9 @@ const HomeLanding = () => {
             rel="noopener noreferrer"
             className={styles.trustLineInstagram}
           >
-            See what brands are making → <strong>@ezpz.coffee</strong>
+            {isFr
+              ? <><span>Voyez ce que les marques créent →</span> <strong>@ezpz.coffee</strong></>
+              : <><span>See what brands are making →</span> <strong>@ezpz.coffee</strong></>}
           </a>
         </div>
       </section>
@@ -534,10 +564,10 @@ const HomeLanding = () => {
       <section style={{ background: "#f8f7f5", borderTop: "1px solid #e8e8e8", padding: "var(--spacing-galaxy) var(--spacing-state)" }}>
         <motion.div style={{ maxWidth: "1060px", margin: "0 auto" }} {...staggerParent}>
           <motion.p {...fadeChild} style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em", color: "var(--color-accent)", marginBottom: "0.75rem" }}>
-            Client Stories
+            {isFr ? "Témoignages clients" : "Client Stories"}
           </motion.p>
           <motion.h2 {...fadeChild} style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "#111111", marginBottom: "2rem", lineHeight: 1.15 }}>
-            See how real brands do it.
+            {isFr ? "Voyez comment de vraies marques l'ont fait." : "See how real brands do it."}
           </motion.h2>
           <motion.div {...fadeChild} style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.25rem" }}>
 
@@ -556,13 +586,17 @@ const HomeLanding = () => {
               <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1 }}>
                 <span style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>Café Public × EZPZ</span>
                 <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#111111", margin: 0, lineHeight: 1.35 }}>
-                  How Café Public Launched Their Own Branded Coffee With EZPZ
+                  {isFr
+                    ? "Comment Café Public a lancé son propre café de marque avec EZPZ"
+                    : "How Café Public Launched Their Own Branded Coffee With EZPZ"}
                 </h3>
                 <p style={{ fontSize: "0.83rem", color: "#6b7280", margin: 0, lineHeight: 1.65, flex: 1 }}>
-                  From concept to shelf in weeks. One of Quebec&apos;s most exciting specialty coffee platforms creates their signature blend — zero complications.
+                  {isFr
+                    ? "Du concept à l'étagère en quelques semaines. L'une des plateformes café de spécialité les plus enthousiasmantes du Québec crée son mélange signature, zéro complication."
+                    : <>From concept to shelf in weeks. One of Quebec&apos;s most exciting specialty coffee platforms creates their signature blend — zero complications.</>}
                 </p>
                 <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-accent)", marginTop: "0.5rem" }}>
-                  Read the case study →
+                  {isFr ? "Lire l'étude de cas →" : "Read the case study →"}
                 </span>
               </div>
             </Link>
@@ -582,13 +616,17 @@ const HomeLanding = () => {
               <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1 }}>
                 <span style={{ fontSize: "0.7rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-accent)" }}>Osler Records × EZPZ</span>
                 <h3 style={{ fontSize: "1rem", fontWeight: 800, color: "#111111", margin: 0, lineHeight: 1.35 }}>
-                  How Osler Records Launched Their Own House Blend With EZPZ
+                  {isFr
+                    ? "Comment Osler Records a lancé son propre mélange maison avec EZPZ"
+                    : "How Osler Records Launched Their Own House Blend With EZPZ"}
                 </h3>
                 <p style={{ fontSize: "0.83rem", color: "#6b7280", margin: 0, lineHeight: 1.65, flex: 1 }}>
-                  Toronto&apos;s Junction Triangle music venue and coffee bar created their own branded House Blend — roasted fresh in Montreal, on the shelf in weeks.
+                  {isFr
+                    ? "La salle de musique et le café du Junction Triangle à Toronto ont créé leur mélange maison : torréfié frais à Montréal, sur les étagères en quelques semaines."
+                    : <>Toronto&apos;s Junction Triangle music venue and coffee bar created their own branded House Blend — roasted fresh in Montreal, on the shelf in weeks.</>}
                 </p>
                 <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--color-accent)", marginTop: "0.5rem" }}>
-                  Read the case study →
+                  {isFr ? "Lire l'étude de cas →" : "Read the case study →"}
                 </span>
               </div>
             </Link>
