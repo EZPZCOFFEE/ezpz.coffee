@@ -164,6 +164,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/how-to-choose-private-label-coffee-supplier-canada",
     "/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
     "/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
+    "/en/blog/wholesale-coffee-beans-for-your-business-canada",
     "/en/canadian-coffee-roaster",
     "/en/pricing",
     "/en/wholesale-coffee-beans",
@@ -266,6 +267,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/fr/blog/how-to-choose-private-label-coffee-supplier-canada",
     "/fr/blog/ezpz-tech-meets-coffee-custom-bag-tool",
     "/fr/blog/osler-records-ezpz-custom-coffee-bags-case-study",
+    "/fr/blog/grains-cafe-en-gros-entreprise-canada",
     // Translated landing pages
     "/fr/cafe-en-gros",
     "/fr/case-studies",

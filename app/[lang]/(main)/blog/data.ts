@@ -1,5 +1,6 @@
 export interface BlogPost {
   slug: string;
+  slugFr?: string;
   category: string;
   categoryColor: string;
   title: string;
@@ -13,6 +14,21 @@ export interface BlogPost {
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "wholesale-coffee-beans-for-your-business-canada",
+    slugFr: "grains-cafe-en-gros-entreprise-canada",
+    category: "Wholesale",
+    categoryColor: "#c43e14",
+    title: "Wholesale Coffee Beans for Your Business: The Canadian Guide",
+    excerpt:
+      "Serving coffee at your restaurant, café, hotel, or office? Here's how to source great wholesale beans in Canada and serve a cup your guests actually remember.",
+    date: "June 24, 2026",
+    readTime: "6 min read",
+    color: "#0D0A07",
+    initials: "WC",
+    image: "/assets/blog/wholesale-coffee-beans-canada.svg",
+    published: true,
+  },
   {
     slug: "christmas-coffee-gifts-preparation-guide",
     category: "Corporate Gifting",

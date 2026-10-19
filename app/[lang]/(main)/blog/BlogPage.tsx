@@ -32,7 +32,7 @@ const BlogPage = () => {
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.slug}
-                href={post.published ? `/${locale}/blog/${post.slug}` : "#"}
+                href={post.published ? `/${locale}/blog/${locale === "fr" && post.slugFr ? post.slugFr : post.slug}` : "#"}
                 className={styles.card}
                 aria-disabled={!post.published}
               >
