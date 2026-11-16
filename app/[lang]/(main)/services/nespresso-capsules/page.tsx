@@ -37,13 +37,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const makeCapsuleOffer = (url: string) => ({
+  "@type": "Offer",
+  url,
+  priceCurrency: "CAD",
+  price: "0.85",
+  availability: "https://schema.org/InStock",
+  itemCondition: "https://schema.org/NewCondition",
+  seller: { "@type": "Organization", name: "EZPZ Coffee" },
+  hasMerchantReturnPolicy: {
+    "@type": "MerchantReturnPolicy",
+    applicableCountry: "CA",
+    returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  },
+  shippingDetails: {
+    "@type": "OfferShippingDetails",
+    shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+    shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+    deliveryTime: {
+      "@type": "ShippingDeliveryTime",
+      handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+      transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+    },
+  },
+});
+
 const PRODUCT_SCHEMA_EN = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Custom Branded Nespresso-Compatible Capsules",
   description: "Custom branded Nespresso-compatible capsules filled with specialty coffee. Compatible with all Nespresso Classic machines. Full custom packaging design included. Available for hotels, offices, corporate gifting, and retail across Canada and the USA.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
-  offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "CAD", seller: { "@type": "Organization", name: "EZPZ Coffee" } },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-CAPS",
+  offers: makeCapsuleOffer("https://www.ezpz.coffee/en/services/nespresso-capsules"),
 };
 
 const PRODUCT_SCHEMA_FR = {
@@ -52,7 +79,9 @@ const PRODUCT_SCHEMA_FR = {
   name: "Capsules compatibles Nespresso personnalisées",
   description: "Capsules compatibles Nespresso personnalisées remplies de café de spécialité. Compatible avec toutes les machines Nespresso Classic. Design d'emballage entièrement personnalisé inclus. Disponible pour les hôtels, les bureaux, les cadeaux corporatifs et le commerce de détail partout au Canada et aux États-Unis.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
-  offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "CAD", seller: { "@type": "Organization", name: "EZPZ Coffee" } },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-CAPS",
+  offers: makeCapsuleOffer("https://www.ezpz.coffee/fr/services/nespresso-capsules"),
 };
 
 const FAQ_SCHEMA_EN = {

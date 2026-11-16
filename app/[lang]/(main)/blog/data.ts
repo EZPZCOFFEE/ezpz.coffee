@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "wholesale-coffee-beans-for-restaurants-montreal-toronto-vancouver",
+    category: "Wholesale",
+    categoryColor: "#c43e14",
+    title: "Wholesale Coffee Beans for Restaurants: Why EZPZ Is the Quality Choice in Montreal, Toronto, and Vancouver",
+    excerpt:
+      "The last thing your guests taste before they leave is often the coffee. Here is why more restaurants in Montreal, Toronto, and Vancouver are switching to fresh, specialty-grade beans.",
+    date: "October 27, 2026",
+    readTime: "7 min read",
+    color: "#0D0A07",
+    initials: "WR",
+    image: "/assets/blog/wholesale-coffee-beans-canada.svg",
+    published: true,
+  },
+  {
     slug: "wholesale-coffee-beans-for-your-business-canada",
     slugFr: "grains-cafe-en-gros-entreprise-canada",
     category: "Wholesale",

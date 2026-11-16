@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/search", "/admin", "/wpm", "/cdn", "/b"],
+        disallow: ["/api/", "/search", "/admin", "/wpm", "/cdn", "/b", "/en/password", "/fr/password"],
       },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ClaudeBot", allow: "/" },

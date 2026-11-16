@@ -631,7 +631,8 @@
     "readyToDrink": "Prêt à boire",
     "nespressoCapsules": "Capsules Nespresso",
     "instantCoffee": "Café instantané",
-    "allServices": "Tous les services"
+    "allServices": "Tous les services",
+    "matcha": "Matcha"
   },
   "newsletterPopup": {
     "ariaLabel": "Inscription à l'infolettre",

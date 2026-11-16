@@ -40,6 +40,7 @@ const SERVICES_DROPDOWN: NavDropdown = {
     { labelKey: "nespressoCapsules", pathSuffix: "/services/nespresso-capsules" },
     { labelKey: "instantCoffee", pathSuffix: "/instant-coffee" },
     { labelKey: "wholesaleCoffee", pathSuffix: "/wholesale-coffee-beans" },
+    { labelKey: "matcha", pathSuffix: "/matcha" },
     { labelKey: "allServices", pathSuffix: "/services", isAll: true },
   ],
 };

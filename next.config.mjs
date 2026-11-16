@@ -29,6 +29,8 @@ const nextConfig = {
         destination: "https://www.ezpz.coffee/:path*",
         permanent: true,
       },
+      // Root → /en (must be before catch-all, which would send / to /en/ with trailing slash)
+      { source: "/", destination: "/en", permanent: true },
       // Legacy / Shopify leftover pages
       { source: "/admin", destination: "/en", permanent: true },
       { source: "/search", destination: "/en", permanent: true },

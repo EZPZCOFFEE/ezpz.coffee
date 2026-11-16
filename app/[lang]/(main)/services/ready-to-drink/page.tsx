@@ -37,13 +37,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const makeRtdOffer = (url: string) => ({
+  "@type": "Offer",
+  url,
+  priceCurrency: "CAD",
+  price: "11.75",
+  availability: "https://schema.org/InStock",
+  itemCondition: "https://schema.org/NewCondition",
+  seller: { "@type": "Organization", name: "EZPZ Coffee" },
+  hasMerchantReturnPolicy: {
+    "@type": "MerchantReturnPolicy",
+    applicableCountry: "CA",
+    returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+  },
+  shippingDetails: {
+    "@type": "OfferShippingDetails",
+    shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+    shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+    deliveryTime: {
+      "@type": "ShippingDeliveryTime",
+      handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+      transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+    },
+  },
+});
+
 const PRODUCT_SCHEMA_EN = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "Custom Ready-to-Drink Coffee",
   description: "Custom branded ready-to-drink coffee in cans, bottles, or cartons. Full recipe development, production, packaging, and fulfillment. Available across Canada and the USA. Minimum 8,000 units.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
-  offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "CAD", seller: { "@type": "Organization", name: "EZPZ Coffee" } },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-RTD",
+  offers: makeRtdOffer("https://www.ezpz.coffee/en/services/ready-to-drink"),
 };
 
 const PRODUCT_SCHEMA_FR = {
@@ -52,7 +79,9 @@ const PRODUCT_SCHEMA_FR = {
   name: "Café prêt-à-boire personnalisé",
   description: "Café prêt-à-boire personnalisé en cannettes, bouteilles ou cartons. Développement de la recette, production, emballage et exécution complets. Disponible partout au Canada et aux États-Unis. Minimum 8 000 unités.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
-  offers: { "@type": "Offer", availability: "https://schema.org/InStock", priceCurrency: "CAD", seller: { "@type": "Organization", name: "EZPZ Coffee" } },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-RTD",
+  offers: makeRtdOffer("https://www.ezpz.coffee/fr/services/ready-to-drink"),
 };
 
 const FAQ_SCHEMA_EN = {

@@ -34,11 +34,31 @@ const PRODUCT_SCHEMA = {
   description:
     "Custom branded specialty coffee bags for Canadian corporate gifts. Your logo on specialty coffee with zero minimum order. Full design included. Roasted in Montreal. Ships across Canada and the USA.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-CORP",
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/InStock",
+    url: "https://www.ezpz.coffee/en/corporate-coffee-gifts-canada",
     priceCurrency: "CAD",
+    price: "11.75",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "EZPZ Coffee" },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CA",
+      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+        transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+      },
+    },
   },
 };
 

@@ -8,7 +8,6 @@ import { COMBOS, getComboSlug } from "@/lib/programmatic-seo/data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routesMap: MetadataRoute.Sitemap = [
-    "",
     "/en",
     "/en/design",
     "/en/white-label",
@@ -164,10 +163,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/en/blog/how-to-choose-private-label-coffee-supplier-canada",
     "/en/blog/ezpz-tech-meets-coffee-custom-bag-tool",
     "/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
+    "/en/blog/wholesale-coffee-beans-for-restaurants-montreal-toronto-vancouver",
     "/en/blog/wholesale-coffee-beans-for-your-business-canada",
     "/en/canadian-coffee-roaster",
     "/en/pricing",
     "/en/wholesale-coffee-beans",
+    "/en/matcha",
     "/en/case-studies",
     "/en/careers",
     "/fr/carrieres",
@@ -269,6 +270,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/fr/blog/osler-records-ezpz-custom-coffee-bags-case-study",
     "/fr/blog/grains-cafe-en-gros-entreprise-canada",
     // Translated landing pages
+    "/fr/matcha",
     "/fr/cafe-en-gros",
     "/fr/case-studies",
     "/fr/instant-coffee",
@@ -405,7 +407,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     productRoutes =
       products?.map((product) => ({
-        url: `${baseUrl}/product/${product.handle}`,
+        url: `${baseUrl}/en/product/${product.handle}`,
         lastModified: (product.updatedAt as string) ?? new Date().toISOString(),
       })) ?? [];
   } catch (error) {

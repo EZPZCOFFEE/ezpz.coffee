@@ -34,11 +34,31 @@ const PRODUCT_SCHEMA = {
   description:
     "White label specialty coffee for Montreal businesses. Custom branded coffee bags roasted fresh at Canadian Roasting Society in Montreal. Zero minimum order. Ships across Canada and the USA in 2–3 weeks.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-CCB",
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/InStock",
+    url: "https://www.ezpz.coffee/en/white-label-coffee-montreal",
     priceCurrency: "CAD",
+    price: "11.75",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "EZPZ Coffee" },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CA",
+      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+        transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+      },
+    },
   },
 };
 

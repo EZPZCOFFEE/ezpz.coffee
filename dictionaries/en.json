@@ -603,7 +603,8 @@
     "nespressoCapsules": "Nespresso Capsules",
     "allServices": "All Services",
     "instantCoffee": "Instant Coffee",
-    "wholesaleCoffee": "Wholesale Coffee Beans"
+    "wholesaleCoffee": "Wholesale Coffee Beans",
+    "matcha": "Matcha"
   },
   "newsletterPopup": {
     "ariaLabel": "Newsletter signup",

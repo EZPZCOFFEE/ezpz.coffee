@@ -134,6 +134,7 @@ const IndustryPage = ({ data, frData, showWholesaleLink }: IndustryPageProps) =>
     ],
   };
 
+  const pageUrl = `${base}${d.canonicalPath.replace(/^\/(en|fr)/, "")}`;
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -142,12 +143,32 @@ const IndustryPage = ({ data, frData, showWholesaleLink }: IndustryPageProps) =>
       ? `Sacs de café de spécialité personnalisés pour les ${industryLower}. Aucun minimum de commande. Design inclus. Torréfié frais à Montréal et livré partout au Canada et aux États-Unis.`
       : `Custom branded specialty coffee bags for ${industryLower}. No minimum order. Full design included. Roasted fresh in Montreal and shipped across Canada and the USA.`,
     brand: { "@type": "Brand", name: "EZPZ Coffee" },
-    url: `${base}${d.canonicalPath}`,
+    image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+    sku: "EZPZ-CCB",
+    url: pageUrl,
     offers: {
       "@type": "Offer",
+      url: pageUrl,
       priceCurrency: "CAD",
+      price: "11.75",
       availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
       seller: { "@type": "Organization", name: "EZPZ Coffee" },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "CA",
+        returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+        shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+        },
+      },
     },
   };
 

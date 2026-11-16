@@ -34,11 +34,31 @@ const PRODUCT_SCHEMA = {
   description:
     "Custom branded coffee bags for Canadian businesses with your logo and design. Zero minimum order. Full design included. Specialty grade coffee roasted in Montreal. Ships across Canada and the USA in 2–3 weeks.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-CCB",
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/InStock",
+    url: "https://www.ezpz.coffee/en/branded-coffee-bags-canada",
     priceCurrency: "CAD",
+    price: "11.75",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "EZPZ Coffee" },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CA",
+      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+        transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+      },
+    },
   },
 };
 

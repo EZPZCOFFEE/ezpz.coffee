@@ -34,11 +34,31 @@ const PRODUCT_SCHEMA = {
   description:
     "Personalized specialty coffee bags for any occasion. Add a name, message, or date to a custom coffee bag. Zero minimum order, starting at one bag. Ships across Canada.",
   brand: { "@type": "Brand", name: "EZPZ Coffee" },
+  image: ["https://www.ezpz.coffee/assets/banner-01.jpg"],
+  sku: "EZPZ-PERS",
   offers: {
     "@type": "Offer",
-    availability: "https://schema.org/InStock",
+    url: "https://www.ezpz.coffee/en/personalized-coffee-bags-canada",
     priceCurrency: "CAD",
+    price: "11.75",
+    availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "EZPZ Coffee" },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CA",
+      returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: { "@type": "MonetaryAmount", value: "5.00", currency: "CAD" },
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "CA" },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: { "@type": "QuantitativeValue", minValue: 10, maxValue: 21, unitCode: "DAY" },
+        transitTime: { "@type": "QuantitativeValue", minValue: 3, maxValue: 10, unitCode: "DAY" },
+      },
+    },
   },
 };
 
