@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
-import { headers } from "next/headers";
+
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { PropsWithChildren } from "react";
@@ -429,20 +429,9 @@ const fontVariables = [
   spaceMono.variable,
 ].join(" ");
 
-export async function generateMetadata(): Promise<Metadata> {
-  const pathname = (await headers()).get("x-pathname") ?? "";
-  const enPath = pathname.replace(/^\/fr(\/|$)/, "/en$1") || "/en";
-  const frPath = pathname.replace(/^\/en(\/|$)/, "/fr$1") || "/fr";
+export function generateMetadata(): Metadata {
   return {
     metadataBase: new URL(baseUrl),
-    alternates: {
-      canonical: pathname || undefined,
-      languages: {
-        "en": enPath,
-        "fr": frPath,
-        "x-default": enPath,
-      },
-    },
   };
 }
 

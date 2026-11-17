@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/best-coffee-shops-montreal-2026`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/best-coffee-shops-montreal-2026",
+        "en-CA": "https://www.ezpz.coffee/en/blog/best-coffee-shops-montreal-2026",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-shops-montreal-2026",
+        "x-default": "https://www.ezpz.coffee/en/blog/best-coffee-shops-montreal-2026",
       },
     },
   openGraph: {

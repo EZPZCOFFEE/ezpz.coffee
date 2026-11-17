@@ -22,8 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/services/nespresso-capsules`,
       languages: {
-        en: "https://www.ezpz.coffee/en/services/nespresso-capsules",
+        "en-CA": "https://www.ezpz.coffee/en/services/nespresso-capsules",
         "fr-CA": "https://www.ezpz.coffee/fr/services/nespresso-capsules",
+        "x-default": "https://www.ezpz.coffee/en/services/nespresso-capsules",
       },
     },
     openGraph: {

@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/roasters-pack-alternative`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/roasters-pack-alternative",
+        "en-CA": "https://www.ezpz.coffee/en/compare/roasters-pack-alternative",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/roasters-pack-alternative",
+        "x-default": "https://www.ezpz.coffee/en/compare/roasters-pack-alternative",
       },
     },
     openGraph: {

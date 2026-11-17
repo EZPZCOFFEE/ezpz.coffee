@@ -8,7 +8,13 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Canadian Coffee Industry Statistics 2026: The Complete Data Guide | EZPZ Coffee",
     description:
       "Comprehensive Canadian coffee industry statistics for 2026. Daily consumption rates, private label market size, specialty coffee growth, Montreal's coffee scene, and branded coffee trends — all sourced and cited.",
-    alternates: { canonical: "/en/canadian-coffee-industry-statistics-2026" },
+    alternates: {
+      canonical: "https://www.ezpz.coffee/en/canadian-coffee-industry-statistics-2026",
+      languages: {
+        "en-CA": "https://www.ezpz.coffee/en/canadian-coffee-industry-statistics-2026",
+        "x-default": "https://www.ezpz.coffee/en/canadian-coffee-industry-statistics-2026",
+      },
+    },
     openGraph: {
       title: "Canadian Coffee Industry Statistics 2026: The Complete Data Guide",
       description:

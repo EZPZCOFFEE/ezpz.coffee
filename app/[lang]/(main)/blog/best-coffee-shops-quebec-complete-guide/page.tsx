@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/best-coffee-shops-quebec-complete-guide`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
+        "en-CA": "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/best-coffee-shops-quebec-complete-guide",
+        "x-default": "https://www.ezpz.coffee/en/blog/best-coffee-shops-quebec-complete-guide",
       },
     },
   openGraph: {

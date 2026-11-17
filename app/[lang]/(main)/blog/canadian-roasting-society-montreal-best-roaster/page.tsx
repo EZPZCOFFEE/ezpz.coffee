@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/canadian-roasting-society-montreal-best-roaster`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/canadian-roasting-society-montreal-best-roaster",
+        "en-CA": "https://www.ezpz.coffee/en/blog/canadian-roasting-society-montreal-best-roaster",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/canadian-roasting-society-montreal-best-roaster",
+        "x-default": "https://www.ezpz.coffee/en/blog/canadian-roasting-society-montreal-best-roaster",
       },
     },
   openGraph: {

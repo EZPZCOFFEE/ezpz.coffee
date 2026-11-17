@@ -22,8 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/services`,
       languages: {
-        en: "https://www.ezpz.coffee/en/services",
+        "en-CA": "https://www.ezpz.coffee/en/services",
         "fr-CA": "https://www.ezpz.coffee/fr/services",
+        "x-default": "https://www.ezpz.coffee/en/services",
       },
     },
     openGraph: {

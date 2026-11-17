@@ -23,8 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/white-label`,
       languages: {
-        en: "https://www.ezpz.coffee/en/white-label",
+        "en-CA": "https://www.ezpz.coffee/en/white-label",
         "fr-CA": "https://www.ezpz.coffee/fr/white-label",
+        "x-default": "https://www.ezpz.coffee/en/white-label",
       },
     },
     openGraph: {

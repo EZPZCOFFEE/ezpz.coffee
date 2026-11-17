@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/christmas-coffee-gifts-preparation-guide`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/christmas-coffee-gifts-preparation-guide",
+        "en-CA": "https://www.ezpz.coffee/en/blog/christmas-coffee-gifts-preparation-guide",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/christmas-coffee-gifts-preparation-guide",
+        "x-default": "https://www.ezpz.coffee/en/blog/christmas-coffee-gifts-preparation-guide",
       },
     },
   openGraph: {

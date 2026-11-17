@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/black-stripe-coffee-alternative`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/black-stripe-coffee-alternative",
+        "en-CA": "https://www.ezpz.coffee/en/compare/black-stripe-coffee-alternative",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/black-stripe-coffee-alternative",
+        "x-default": "https://www.ezpz.coffee/en/compare/black-stripe-coffee-alternative",
       },
     },
     openGraph: {

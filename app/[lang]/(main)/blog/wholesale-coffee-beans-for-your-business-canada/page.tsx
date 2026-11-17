@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/blog/wholesale-coffee-beans-for-your-business-canada`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/wholesale-coffee-beans-for-your-business-canada",
+        "en-CA": "https://www.ezpz.coffee/en/blog/wholesale-coffee-beans-for-your-business-canada",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/grains-cafe-en-gros-entreprise-canada",
+        "x-default": "https://www.ezpz.coffee/en/blog/wholesale-coffee-beans-for-your-business-canada",
       },
     },
     openGraph: {

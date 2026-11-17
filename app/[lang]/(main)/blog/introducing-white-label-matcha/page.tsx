@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/blog/introducing-white-label-matcha`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/introducing-white-label-matcha",
+        "en-CA": "https://www.ezpz.coffee/en/blog/introducing-white-label-matcha",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/introducing-white-label-matcha",
+        "x-default": "https://www.ezpz.coffee/en/blog/introducing-white-label-matcha",
       },
     },
     openGraph: {

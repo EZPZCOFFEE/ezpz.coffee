@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/rogue-wave-coffee-alternative`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/rogue-wave-coffee-alternative",
+        "en-CA": "https://www.ezpz.coffee/en/compare/rogue-wave-coffee-alternative",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/rogue-wave-coffee-alternative",
+        "x-default": "https://www.ezpz.coffee/en/compare/rogue-wave-coffee-alternative",
       },
     },
     openGraph: {

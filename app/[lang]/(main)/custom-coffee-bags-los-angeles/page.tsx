@@ -13,8 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/custom-coffee-bags-los-angeles`,
       languages: {
-        en: "https://www.ezpz.coffee/en/custom-coffee-bags-los-angeles",
+        "en-CA": "https://www.ezpz.coffee/en/custom-coffee-bags-los-angeles",
         "fr-CA": "https://www.ezpz.coffee/fr/custom-coffee-bags-los-angeles",
+        "x-default": "https://www.ezpz.coffee/en/custom-coffee-bags-los-angeles",
       },
     },
     openGraph: {

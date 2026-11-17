@@ -35,13 +35,19 @@ export async function generateMetadata({
   const regionLabel = city.country === "CA" ? city.region : city.region;
   const title = `${product.name} for ${industry.namePlural} in ${city.name}, ${regionLabel} | EZPZ Coffee`;
   const description = `${product.name} designed specifically for ${city.name} ${industry.namePlural.toLowerCase()}. ${product.moq}, ${product.turnaround} turnaround. Full design included. ${city.marketInsight.split("—")[0].trim()}.`;
-  const canonical = `/en/${comboSlug}`;
+  const canonical = `${baseUrl}/en/${comboSlug}`;
   const ogImage = "/assets/banner-01.jpg";
 
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: {
+      canonical,
+      languages: {
+        "en-CA": canonical,
+        "x-default": canonical,
+      },
+    },
     openGraph: {
       title,
       description,

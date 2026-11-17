@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/canterbury-coffee-alternative`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/canterbury-coffee-alternative",
+        "en-CA": "https://www.ezpz.coffee/en/compare/canterbury-coffee-alternative",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/canterbury-coffee-alternative",
+        "x-default": "https://www.ezpz.coffee/en/compare/canterbury-coffee-alternative",
       },
     },
     openGraph: {

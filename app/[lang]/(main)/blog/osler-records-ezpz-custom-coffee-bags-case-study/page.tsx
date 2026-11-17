@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/osler-records-ezpz-custom-coffee-bags-case-study`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
+        "en-CA": "https://www.ezpz.coffee/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/osler-records-ezpz-custom-coffee-bags-case-study",
+        "x-default": "https://www.ezpz.coffee/en/blog/osler-records-ezpz-custom-coffee-bags-case-study",
       },
     },
   openGraph: {

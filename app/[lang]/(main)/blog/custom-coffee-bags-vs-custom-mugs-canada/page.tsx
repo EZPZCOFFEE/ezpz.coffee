@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/custom-coffee-bags-vs-custom-mugs-canada`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
+        "en-CA": "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-vs-custom-mugs-canada",
+        "x-default": "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-custom-mugs-canada",
       },
     },
   openGraph: {

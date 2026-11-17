@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/hutsul-coffee-alternative`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/hutsul-coffee-alternative",
+        "en-CA": "https://www.ezpz.coffee/en/compare/hutsul-coffee-alternative",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/hutsul-coffee-alternative",
+        "x-default": "https://www.ezpz.coffee/en/compare/hutsul-coffee-alternative",
       },
     },
     openGraph: {

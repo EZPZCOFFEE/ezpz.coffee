@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/coffee-dropshipping-canada-how-it-works`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/coffee-dropshipping-canada-how-it-works",
+        "en-CA": "https://www.ezpz.coffee/en/blog/coffee-dropshipping-canada-how-it-works",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/coffee-dropshipping-canada-how-it-works",
+        "x-default": "https://www.ezpz.coffee/en/blog/coffee-dropshipping-canada-how-it-works",
       },
     },
   openGraph: {

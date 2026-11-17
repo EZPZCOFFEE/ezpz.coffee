@@ -20,8 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/${lang}/compare/private-label-coffee-suppliers-canada`,
       languages: {
-        en: "https://www.ezpz.coffee/en/compare/private-label-coffee-suppliers-canada",
+        "en-CA": "https://www.ezpz.coffee/en/compare/private-label-coffee-suppliers-canada",
         "fr-CA": "https://www.ezpz.coffee/fr/compare/private-label-coffee-suppliers-canada",
+        "x-default": "https://www.ezpz.coffee/en/compare/private-label-coffee-suppliers-canada",
       },
     },
     openGraph: {

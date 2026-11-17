@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/mothers-day-coffee-gift-ideas-canada`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
+        "en-CA": "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/mothers-day-coffee-gift-ideas-canada",
+        "x-default": "https://www.ezpz.coffee/en/blog/mothers-day-coffee-gift-ideas-canada",
       },
     },
   openGraph: {

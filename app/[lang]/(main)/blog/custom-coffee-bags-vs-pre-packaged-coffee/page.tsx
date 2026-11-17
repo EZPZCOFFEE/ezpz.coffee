@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/custom-coffee-bags-vs-pre-packaged-coffee`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-pre-packaged-coffee",
+        "en-CA": "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-pre-packaged-coffee",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/custom-coffee-bags-vs-pre-packaged-coffee",
+        "x-default": "https://www.ezpz.coffee/en/blog/custom-coffee-bags-vs-pre-packaged-coffee",
       },
     },
   openGraph: {

@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/how-to-choose-private-label-coffee-supplier-canada`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/how-to-choose-private-label-coffee-supplier-canada",
+        "en-CA": "https://www.ezpz.coffee/en/blog/how-to-choose-private-label-coffee-supplier-canada",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/how-to-choose-private-label-coffee-supplier-canada",
+        "x-default": "https://www.ezpz.coffee/en/blog/how-to-choose-private-label-coffee-supplier-canada",
       },
     },
   openGraph: {

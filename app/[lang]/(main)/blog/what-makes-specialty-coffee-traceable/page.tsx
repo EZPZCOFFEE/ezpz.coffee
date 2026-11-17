@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   alternates: {
       canonical: `/${lang}/blog/what-makes-specialty-coffee-traceable`,
       languages: {
-        en: "https://www.ezpz.coffee/en/blog/what-makes-specialty-coffee-traceable",
+        "en-CA": "https://www.ezpz.coffee/en/blog/what-makes-specialty-coffee-traceable",
         "fr-CA": "https://www.ezpz.coffee/fr/blog/what-makes-specialty-coffee-traceable",
+        "x-default": "https://www.ezpz.coffee/en/blog/what-makes-specialty-coffee-traceable",
       },
     },
   openGraph: {

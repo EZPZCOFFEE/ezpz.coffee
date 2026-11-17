@@ -257,7 +257,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/fr/blog/best-coffee-roasters-montreal-2026",
     "/fr/blog/coffee-gifts-fathers-day-canada-2026",
     "/fr/blog/custom-coffee-bags-vs-custom-mugs-canada",
-    "/fr/blog/best-coffee-shops-toronto-2026",
+
     "/fr/blog/canadian-roasting-society-montreal-best-roaster",
     "/fr/blog/best-coffee-shops-quebec-complete-guide",
     "/fr/blog/cafe-public-ezpz-custom-coffee-bags-case-study",
