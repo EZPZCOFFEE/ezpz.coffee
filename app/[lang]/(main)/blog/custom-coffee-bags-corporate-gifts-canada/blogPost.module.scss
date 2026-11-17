@@ -61,6 +61,20 @@
   flex-shrink: 0;
 }
 
+.heroImageWrap {
+  max-width: 760px;
+  margin: var(--spacing-planet) auto 0;
+  border-radius: 4px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── Article ────────────────────────────────────────────────── */
 
 .articleWrapper {
