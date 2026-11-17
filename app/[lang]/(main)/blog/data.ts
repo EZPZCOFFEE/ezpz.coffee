@@ -15,6 +15,20 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "introducing-white-label-matcha",
+    category: "Product Launch",
+    categoryColor: "#c43e14",
+    title: "Introducing White-Label Matcha: Now You Can Add Matcha to Your Brand",
+    excerpt:
+      "EZPZ is expanding beyond coffee. You can now launch your own organic Japanese matcha under your brand, through the same simple white-label program as our custom coffee. No minimum to start.",
+    date: "November 16, 2026",
+    readTime: "4 min read",
+    color: "#071a04",
+    initials: "WM",
+    image: "/assets/blog/introducing-white-label-matcha.svg",
+    published: true,
+  },
+  {
     slug: "wholesale-coffee-beans-for-restaurants-montreal-toronto-vancouver",
     category: "Wholesale",
     categoryColor: "#c43e14",
