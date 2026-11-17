@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <linearGradient id="mbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#071a04"/>
+      <stop offset="100%" style="stop-color:#0d2206"/>
+    </linearGradient>
+    <linearGradient id="maccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d6b1f"/>
+      <stop offset="100%" style="stop-color:#4a9c3a"/>
+    </linearGradient>
+    <linearGradient id="mpouch" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2a08"/>
+      <stop offset="100%" style="stop-color:#071a04"/>
+    </linearGradient>
+    <linearGradient id="mseal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d6b1f"/>
+      <stop offset="100%" style="stop-color:#1a4a10"/>
+    </linearGradient>
+    <filter id="mglow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="mpouchGlow">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="420" fill="url(#mbg)"/>
+
+  <!-- Subtle grid -->
+  <line x1="0" y1="105" x2="800" y2="105" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="210" x2="800" y2="210" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="0" y1="315" x2="800" y2="315" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="200" y1="0" x2="200" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="420" stroke="rgba(255,255,255,0.02)" stroke-width="1"/>
+
+  <!-- Glow behind pouch -->
+  <ellipse cx="625" cy="225" rx="95" ry="130" fill="rgba(58,124,42,0.09)" filter="url(#mpouchGlow)"/>
+
+  <!-- Pouch body -->
+  <rect x="542" y="85" width="166" height="268" rx="18" fill="url(#mpouch)" stroke="rgba(58,124,42,0.22)" stroke-width="1.5"/>
+  <!-- Pouch label area -->
+  <rect x="556" y="113" width="138" height="212" rx="6" fill="rgba(58,124,42,0.07)" stroke="rgba(58,124,42,0.14)" stroke-width="1"/>
+  <!-- Label accent bar -->
+  <rect x="556" y="113" width="138" height="5" rx="2" fill="url(#maccent)" opacity="0.9"/>
+  <!-- Label text -->
+  <text x="625" y="168" font-family="Georgia, serif" font-size="8.5" font-weight="800" fill="rgba(74,156,58,0.85)" text-anchor="middle" letter-spacing="2.5">ORGANIC</text>
+  <text x="625" y="194" font-family="Georgia, serif" font-size="22" font-weight="900" fill="rgba(255,255,255,0.88)" text-anchor="middle">MATCHA</text>
+  <text x="625" y="212" font-family="Georgia, serif" font-size="8" font-weight="700" fill="rgba(255,255,255,0.35)" text-anchor="middle" letter-spacing="2">JAPANESE · 85g</text>
+  <line x1="570" y1="224" x2="680" y2="224" stroke="rgba(58,124,42,0.22)" stroke-width="1"/>
+  <text x="625" y="243" font-family="Georgia, serif" font-size="7.5" fill="rgba(255,255,255,0.22)" text-anchor="middle">PREMIUM GRADE · PRODUCT OF JAPAN</text>
+  <text x="625" y="259" font-family="Georgia, serif" font-size="7.5" fill="rgba(255,255,255,0.22)" text-anchor="middle">CERTIFIED ORGANIC · GLUTEN FREE</text>
+  <!-- Top seal -->
+  <rect x="532" y="52" width="186" height="38" rx="12" fill="url(#mseal)"/>
+  <rect x="552" y="62" width="146" height="6" rx="3" fill="rgba(255,255,255,0.10)"/>
+  <!-- Tear notch -->
+  <polygon points="625,92 631,78 619,78" fill="rgba(255,255,255,0.10)"/>
+  <!-- Rim -->
+  <rect x="542" y="85" width="166" height="10" rx="4" fill="rgba(58,124,42,0.35)"/>
+  <!-- Pouch shine -->
+  <rect x="556" y="118" width="7" height="212" rx="3" fill="rgba(255,255,255,0.03)"/>
+  <!-- Steam wisps -->
+  <path d="M605 46 Q609 38 605 30" stroke="rgba(255,255,255,0.10)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M621 42 Q625 32 621 22" stroke="rgba(255,255,255,0.07)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M637 46 Q641 36 637 26" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Accent bar top -->
+  <rect x="0" y="0" width="800" height="4" fill="url(#maccent)"/>
+
+  <!-- Text — left -->
+  <text x="72" y="142" font-family="Georgia, serif" font-size="11" font-weight="700" fill="rgba(74,156,58,0.9)" letter-spacing="3">PRODUCT LAUNCH</text>
+  <rect x="72" y="152" width="40" height="2" fill="url(#maccent)" opacity="0.8"/>
+
+  <text x="72" y="202" font-family="Georgia, serif" font-size="34" font-weight="900" fill="white" letter-spacing="-0.5">Introducing</text>
+  <text x="72" y="246" font-family="Georgia, serif" font-size="34" font-weight="900" fill="url(#maccent)" letter-spacing="-0.5">Matcha</text>
+
+  <rect x="72" y="260" width="330" height="1.5" fill="rgba(255,255,255,0.07)"/>
+
+  <text x="72" y="287" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.40)" letter-spacing="0.2">Organic Japanese, white-label, no minimum.</text>
+  <text x="72" y="305" font-family="Georgia, serif" font-size="12.5" fill="rgba(255,255,255,0.40)" letter-spacing="0.2">Add matcha to your brand.</text>
+
+  <!-- EZPZ badge -->
+  <rect x="72" y="348" width="120" height="28" rx="3" fill="rgba(58,124,42,0.15)" stroke="rgba(58,124,42,0.4)" stroke-width="1"/>
+  <text x="132" y="367" font-family="Georgia, serif" font-size="10.5" font-weight="700" fill="rgba(74,156,58,0.9)" text-anchor="middle" letter-spacing="1">BY EZPZ COFFEE</text>
+
+  <!-- Corner accent -->
+  <rect x="756" y="0" width="44" height="420" fill="rgba(58,124,42,0.03)"/>
+  <line x1="756" y1="0" x2="756" y2="420" stroke="rgba(58,124,42,0.10)" stroke-width="1"/>
+</svg>
